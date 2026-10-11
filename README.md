@@ -13,6 +13,20 @@ CSS, JS, and image assets. It deploys as-is on Vercel (no build step).
 - `assets/` — images (e.g. `akash.webp`)
 - `favicon.svg`, `robots.txt`, `sitemap.xml`
 - `vercel.json` — enables clean URLs (`/blog` serves `blog.html`)
+- `tools/locations/` — generator for the international city pages (excluded from deploys via `.vercelignore`)
+
+## Location pages
+
+The 41 city pages in `locations/`, the country-grouped `locations.html` hub, the Locations menu,
+footer links and sitemap entries are generated from the data files in `tools/locations/`
+(`data_us.py`, `data_uk_ie.py`, `data_ca_au.py`, `data_eu.py`, `data_me_asia.py`).
+Edit the data, then run:
+
+```
+python3 tools/locations/build.py
+```
+
+The build is idempotent and leaves the hand-written state pages (Texas, Florida, etc.) in place.
 
 ## Deploy
 

@@ -254,3 +254,14 @@ a.card:hover .go span{transform:translateX(5px)}
 @media (max-width:1120px){.links,.nav-cta .btn-ghost{display:none}.menu-btn{display:block}.fgrid{grid-template-columns:1fr 1fr 1fr}.fgrid>div:first-child{grid-column:1/-1}}
 @media (max-width:960px){.hero-grid,.phero-grid,.split,.art-grid,.book-grid{grid-template-columns:1fr}.portrait{justify-self:start;max-width:340px;margin-top:10px}.g3,.g4,.steps{grid-template-columns:1fr 1fr}.sec-head{grid-template-columns:1fr;gap:16px}.sec-head p{justify-self:start}.aside{position:static}}
 @media (max-width:640px){body{font-size:16px}.wrap{padding:0 16px}.sec{padding:72px 0}.g2,.g3,.g4,.steps{grid-template-columns:1fr}.ticks.two{columns:1}.form .row{grid-template-columns:1fr}.band{padding:44px 24px;border-radius:24px}.fgrid{grid-template-columns:1fr 1fr}.badge.b1{left:-8px}.badge.b2{right:-6px}.mcta{display:block}.nav-cta .btn-dark{display:none}.hero{padding-top:110px}.phero{padding-top:104px}.cal{height:680px}.prose p,.prose ul,.prose ol{font-size:17px}}
+
+/* Locations hub: country groups */
+.country{margin-top:64px;scroll-margin-top:96px}
+.country:first-of-type{margin-top:0}
+section[id]{scroll-margin-top:72px}
+.country-h{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.country-h h3{font-size:clamp(26px,3vw,36px);letter-spacing:-.03em}
+.country-h span{color:var(--mute);font-size:14px;font-weight:500;white-space:nowrap}
+.country-note{color:var(--ink-2);margin:14px 0 22px;max-width:62ch}
+.sub{font-size:13px;text-transform:uppercase;letter-spacing:.14em;color:var(--mute);font-weight:600;margin:26px 0 12px}
+.card h4{font-size:22px;letter-spacing:-.03em}
