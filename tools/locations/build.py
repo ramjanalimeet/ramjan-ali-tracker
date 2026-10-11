@@ -121,9 +121,10 @@ SERVICES = [
     ("/seo-services/on-page-seo", "On-Page SEO"), ("/seo-services/content-seo", "Content SEO"),
     ("/seo-services/link-building", "Link Building"), ("/seo-services/seo-audits", "SEO Audits"),
 ]
+WA = '<a class="btn btn-wa" href="https://wa.me/8801839295114" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.1 4.9A10 10 0 0 0 3.3 17l-1.4 5.1 5.3-1.4a10 10 0 0 0 4.8 1.2h0a10 10 0 0 0 7.1-17zM12 20.2a8.3 8.3 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3a8.3 8.3 0 1 1 7.2 4.1zm4.6-6.2c-.3-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.6.1a6.8 6.8 0 0 1-2-1.2 7.5 7.5 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.5l.4-.5.3-.4v-.4l-.8-1.9c-.2-.5-.4-.4-.6-.5h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1.1 2.7 11.5 11.5 0 0 0 4.4 3.9 15 15 0 0 0 1.5.5 3.5 3.5 0 0 0 1.6.1c.5-.1 1.5-.6 1.7-1.2s.2-1.1.1-1.2-.2-.2-.5-.3z"/></svg>WhatsApp</a>'
 CONTRACT = ("Contract", "Month to month. Pause or cancel with a week of notice.")
 STEPS = ('<section class="sec"><div class="wrap"><div class="sec-head rv"><div><span class="eyebrow">How it works</span><h2>How an engagement runs.</h2></div><p>You always know what is being worked on this month, what lands next, and what I need from you.</p></div><ol class="steps"><li class="step rv"><h3>Audit</h3><p>I review your Google Business Profile, website, citations, reviews and the three competitors beating you in search. You keep the findings either way.</p></li><li class="step rv"><h3>Plan</h3><p>Target services, areas, languages and keywords, written down as one 90-day roadmap you approve before any work starts.</p></li><li class="step rv"><h3>Fix and build</h3><p>Profile cleanup, technical fixes, service and area pages, citations, and a review system. The foundations go in first.</p></li><li class="step rv"><h3>Grow and report</h3><p>Content, links and profile activity every month, with a plain-English report on rankings, calls and form leads.</p></li></ol></div></section>')
-BAND = ('<section class="sec tight"><div class="wrap"><div class="band rv"><span class="eyebrow" style="color:#8d9088">Next step</span><h2>{h}</h2><p>{p}</p><div class="cta-row"><a class="btn btn-accent" href="/free-seo-audit">Get my free audit <span class="arr">→</span></a><a class="btn btn-ghost-d" href="/book-a-call">Book a call</a></div><p class="fine">Free · no pitch · you keep the action plan</p></div></div></section>')
+BAND = ('<section class="sec tight"><div class="wrap"><div class="band rv"><span class="eyebrow" style="color:#8d9088">Next step</span><h2>{h}</h2><p>{p}</p><div class="cta-row">' + WA + '<a class="btn btn-ghost-d" href="/book-a-call">Book a call</a></div><p class="fine">Free · no pitch · you keep the action plan</p></div></div></section>')
 
 e = lambda s: html.escape(s, quote=False)  # noqa: E731
 a = lambda s: html.escape(s, quote=True)  # noqa: E731
@@ -259,7 +260,7 @@ def city_page(c, body, foot):
         f'<li><a href="/">Home</a></li><li><a href="/locations">Locations</a></li>'
         f'<li><a href="/locations#{ctry["anchor"]}">{e(ctry["name"])}</a></li><li aria-current="page">{e(name)}</li></ol></nav>'
         f'<div class="phero-grid"><div><span class="eyebrow">SEO · {e(name)}</span><h1>{c["h1"]}</h1><p class="lead">{e(c["lead"])}</p>'
-        '<div class="cta-row"><a class="btn btn-dark" href="/free-seo-audit">Get a free SEO audit <span class="arr">→</span></a><a class="btn btn-ghost" href="/book-a-call">Book a call</a></div></div>'
+        '<div class="cta-row">' + WA + '<a class="btn btn-ghost" href="/book-a-call">Book a call</a></div></div>'
         '<aside class="facts"><h2>At a glance</h2><ul>'
         + "".join(f"<li><b>{e(k)}</b><span>{e(v)}</span></li>" for k, v in facts)
         + "</ul></aside></div></div></section>"
@@ -344,7 +345,7 @@ def hub_page(body, foot):
         '<section class="phero"><div class="wrap"><nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="/">Home</a></li><li aria-current="page">Locations</li></ol></nav>'
         '<div class="phero-grid"><div><span class="eyebrow">Locations</span><h1>SEO services for businesses <span class="hl">worldwide</span>.</h1>'
         '<p class="lead">Search works differently in Leicester, Limassol and Lexington. Every plan is built around the exact cities, languages and directories that matter in your market. Find your country below, or book a call if yours is not listed yet.</p>'
-        '<div class="cta-row"><a class="btn btn-dark" href="/free-seo-audit">Get a free SEO audit <span class="arr">→</span></a><a class="btn btn-ghost" href="/book-a-call">Book a call</a></div></div>'
+        '<div class="cta-row">' + WA + '<a class="btn btn-ghost" href="/book-a-call">Book a call</a></div></div>'
         '<aside class="facts"><h2>At a glance</h2><ul>'
         f'<li><b>Countries</b><span>{n_countries} countries across five regions</span></li>'
         f'<li><b>Cities</b><span>{len(CITIES)} city pages, plus five US states</span></li>'
