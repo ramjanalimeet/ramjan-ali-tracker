@@ -24,3 +24,9 @@ required — it is served as static files with `cleanUrls` enabled.
 This snapshot was reconstructed from the deployed/rendered site. If you still have
 the original project sources (the Python build scripts: `build.py`, `seo.py`,
 `og.py`, etc.), prefer committing those for future edits.
+
+## Editing the menu, prices and generated pages
+
+- Menu, footer links and **all service prices** live in `tools/site_data.py`.
+- New pages (services hub, GEO & AI, Ecommerce, Shopify, Industries, Locations, About, Contact) are written in `tools/pages.py`.
+- After editing, run `python3 tools/build_site.py` to update every page and `sitemap.xml`.
