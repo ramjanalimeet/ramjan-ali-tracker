@@ -19,6 +19,27 @@ $$('.rv').forEach(el=>io.observe(el));
 $$('.faq details').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)$$('.faq details').forEach(o=>o!==d&&(o.open=false))}));
 const toast=m=>{const t=$('.toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),2600)};
 $$('[data-copy]').forEach(b=>b.addEventListener('click',async e=>{e.preventDefault();try{await navigator.clipboard.writeText(b.dataset.copy);toast('Email copied')}catch{toast(b.dataset.copy)}}));
+const CAL='https://cal.com/ramjanalimeet/book-a-call?embed=true';
+const isBook=l=>{try{const u=new URL(l.href,location.href);return u.origin===location.origin&&/^\/book-a-call(\.html)?\/?$/.test(u.pathname)&&!u.hash}catch{return false}};
+let dlg;
+const closeBook=()=>{if(dlg&&dlg.open)dlg.close()};
+const openBook=()=>{
+if(!dlg){dlg=document.createElement('dialog');dlg.className='bk';dlg.setAttribute('aria-label','Book a call');
+dlg.innerHTML='<div class="bk-box"><div class="bk-top"><strong>Book a free strategy call</strong><button class="bk-x" type="button" aria-label="Close">&times;</button></div><div class="bk-body"><div class="bk-load">Loading calendar…</div><iframe title="Book a call with Ramjan Ali Akash" allow="payment"></iframe></div><p class="bk-alt">Calendar not loading? <a href="'+CAL.split('?')[0]+'" target="_blank" rel="noopener">Open it in a new tab →</a></p></div>';
+document.body.append(dlg);
+$('.bk-x',dlg).addEventListener('click',closeBook);
+dlg.addEventListener('click',e=>{if(e.target===dlg)closeBook()});
+dlg.addEventListener('close',()=>document.documentElement.classList.remove('bk-open'));
+const f=$('iframe',dlg);f.addEventListener('load',()=>dlg.classList.add('ready'));f.src=CAL;}
+document.body.classList.remove('menu-open');mb.setAttribute('aria-expanded','false');
+document.documentElement.classList.add('bk-open');dlg.showModal();$('.bk-x',dlg).focus();};
+document.addEventListener('click',e=>{
+const a=e.target.closest&&e.target.closest('a[href]');
+if(!a||e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||a.target==='_blank'||!isBook(a))return;
+const inline=$('#cal-inline');
+if(inline){e.preventDefault();document.body.classList.remove('menu-open');inline.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});return}
+if(typeof HTMLDialogElement!=='function')return;
+e.preventDefault();openBook();});
 const lead=$('#lead');
 if(lead){
 const opened=Date.now();
