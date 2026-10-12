@@ -70,7 +70,12 @@ def nav_html(url):
     out = []
     for item in NAV:
         cur = ' aria-current="page"' if item["label"] == act else ""
-        if "children" in item:
+        if "groups" in item:
+            cols = "".join(f'<div class="dd-col"><p class="dd-h">{esc(t)}</p><ul>' + "".join(
+                f'<li><a href="{h}">{esc(n)}<small>{esc(d)}</small></a></li>' for n, h, d in kids) + "</ul></div>" for t, kids in item["groups"])
+            out.append(f'<li><a href="{item["href"]}"{cur} aria-haspopup="true">{esc(item["label"])}{CARET}</a><div class="dd dd-mega"><div class="dd-box">'
+                       f'<div class="dd-cols">{cols}</div><a class="dd-all" href="{item["all"][1]}">{esc(item["all"][0])} →</a></div></div></li>')
+        elif "children" in item:
             dd = "".join(f'<li><a href="{h}">{esc(n)}<small>{esc(d)}</small></a></li>' for n, h, d in item["children"])
             dd += f'<li class="all"><a href="{item["all"][1]}">{esc(item["all"][0])} →</a></li>'
             out.append(f'<li><a href="{item["href"]}"{cur} aria-haspopup="true">{esc(item["label"])}{CARET}</a><div class="dd"><ul>{dd}</ul></div></li>')
@@ -82,7 +87,12 @@ def nav_html(url):
 def mnav_html():
     out = []
     for item in NAV:
-        if "children" in item:
+        if "groups" in item:
+            lis = f'<li><a href="{item["all"][1]}">{esc(item["all"][0])}</a></li>'
+            for t, kids in item["groups"]:
+                lis += f'<li class="mh">{esc(t)}</li>' + "".join(f'<li><a href="{h}">{esc(n)}</a></li>' for n, h, _ in kids)
+            out.append(f"<details><summary>{esc(item['label'])}</summary><ul>{lis}</ul></details>")
+        elif "children" in item:
             lis = f'<li><a href="{item["all"][1]}">{esc(item["all"][0])}</a></li>'
             lis += "".join(f'<li><a href="{h}">{esc(n)}</a></li>' for n, h, _ in item["children"])
             out.append(f"<details><summary>{esc(item['label'])}</summary><ul>{lis}</ul></details>")

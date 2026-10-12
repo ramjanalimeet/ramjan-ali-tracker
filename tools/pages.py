@@ -26,6 +26,7 @@ def svc_cards():
         ("GEO & AI Visibility", "Show up in answers from ChatGPT, Gemini, Perplexity and Google AI Overviews.", "/seo-services/geo-ai-visibility", "From $599/month"),
         ("Ecommerce SEO", "Category, product and content work that brings buyers, not just visitors, to your store.", "/seo-services/ecommerce-seo", "From $799/month"),
         ("Shopify SEO", "Fix the duplicate URLs, slow themes and thin collections that hold Shopify stores back.", "/seo-services/shopify-seo", "From $699/month"),
+        ("SaaS SEO", "Feature, use-case and comparison pages that turn search into trials and demos.", "/seo-services/saas-seo", "From $899/month"),
         ("SEO Audit", "A complete review of your site and competitors, with every fix listed in priority order.", "/seo-services/seo-audits", "From $299 one-time"),
         ("Link Building", "Relevant links from real businesses, associations and publications in your niche.", "/seo-services/link-building", "From $499/month"),
     ]
@@ -40,12 +41,12 @@ PAGES = [
  "crumbs": [("Services", "/seo-services")],
  "eyebrow": "Services",
  "h1": 'SEO services with <span class="hl">clear pricing</span>.',
- "lead": "Eight services, one specialist. Pick a single service or combine them into one monthly plan. Every price is listed up front, and the final scope is agreed in writing before work starts.",
+ "lead": "Nine services, one specialist. Pick a single service or combine them into one monthly plan. Every price is listed up front, and the final scope is agreed in writing before work starts.",
  "facts": [("Markets", "USA, UK, Canada, Australia and the Middle East"), ("Platforms", "WordPress, Shopify, Webflow, Wix, Squarespace and custom"),
            ("Pricing", "Fixed and published. No hidden fees."), ("Contract", "Month to month. Pause or cancel with a week of notice.")],
  "sections": [
   ("cards", {"eyebrow": "Services", "h2": "Pick what your site needs.", "intro": "Not sure where to start? Most clients begin with an audit or a free strategy call, then add the services that will move revenue fastest.",
-             "cards": svc_cards(), "cols": 4}),
+             "cards": svc_cards(), "cols": 3}),
   ("split", {"alt": True, "eyebrow": "How to choose", "h2": "Which service fits your business?",
              "paras": ["<strong>Local businesses</strong> that need calls from nearby customers should start with Local SEO. It covers your Google Business Profile, website, reviews and local links in one plan.",
                        "<strong>Online stores</strong> should look at Ecommerce SEO, or Shopify SEO if you run on Shopify. Both focus on category and product pages, where most buying searches land.",
@@ -159,6 +160,39 @@ PAGES = [
          ("Do you work with Shopify Plus?", "Yes, including Shopify Markets, multi-language and multi-currency stores.")],
  "related": [("Ecommerce SEO", "/seo-services/ecommerce-seo"), ("Technical SEO", "/seo-services/technical-seo"), ("GEO & AI Visibility", "/seo-services/geo-ai-visibility"), ("SEO Audit", "/seo-services/seo-audits")],
 },
+# ---------------------------------------------------------------- SaaS
+{
+ "path": "seo-services/saas-seo.html",
+ "title": "SaaS SEO Services & Pricing | Ramjan Ali Akash",
+ "desc": "SaaS SEO that turns search into trials and demos: feature, use-case, comparison and integration pages, technical SEO and links. Plans from $899/month.",
+ "crumbs": [("Services", "/seo-services"), ("SaaS SEO", "/seo-services/saas-seo")],
+ "eyebrow": "Services · SaaS SEO",
+ "h1": 'SaaS SEO that drives <span class="hl">signups</span>.',
+ "lead": "Traffic is easy to buy and hard to keep. SaaS SEO builds the pages your buyers search for when they compare tools, look for alternatives and solve the problem your product fixes, so organic search becomes a steady source of trials and demos.",
+ "service": "SaaS SEO",
+ "facts": [("For", "B2B and B2C SaaS, from early stage to scale-up"), ("Focus", "Feature, use-case, comparison and integration pages"),
+           ("Measured by", "Trials, demos and signups from search"), ("Contract", "Month to month. Pause or cancel with a week of notice.")],
+ "sections": [
+  ("split", {"eyebrow": "Why it matters", "h2": "Blog traffic is not pipeline.",
+             "paras": ["Many SaaS companies publish lots of top-of-funnel articles that bring visitors who never sign up. Meanwhile the searches closest to a purchase, like \"best tool for X\", \"Y alternatives\" or \"Z integration\", go to competitors and review sites.",
+                       "SaaS SEO starts at the bottom of the funnel: the pages that convert. Then it builds outward with content that earns links and feeds those pages."],
+             "panel_title": "What I work on", "ticks": ["Keyword map by funnel stage", "Feature and use-case pages", "Comparison and alternatives pages", "Integration and template pages", "Technical SEO for app and marketing sites", "Programmatic pages that scale", "Links and PR mentions", "Visibility in AI answers"]}),
+  ("cards", {"eyebrow": "What is included", "h2": "What SaaS SEO includes.", "cards": [
+      ("Funnel keyword map", "Every search your buyers make, grouped by intent and matched to one page.", None, None),
+      ("Bottom-of-funnel pages", "Comparison, alternatives and use-case pages built to convert, not just rank.", None, None),
+      ("Product-led content", "Articles that show your product solving real problems, with clear paths to signup.", None, None),
+      ("Technical health", "Clean indexing between your marketing site, docs, blog and app.", None, None),
+      ("Authority", "Relevant links and mentions from industry publications and partners.", None, None),
+      ("Reporting", "Signups, trials and demos from organic search, not just traffic.", None, None)]}),
+  ("pricing", "saas-seo"),
+  ("steps", None),
+ ],
+ "faq": [("How long does SaaS SEO take?", "Bottom-of-funnel pages can start bringing signups within 2 to 4 months. Competitive category terms usually take 6 to 12 months."),
+         ("Do you write the content?", "Yes. I write or brief every page, and your team reviews product details before anything is published."),
+         ("Do you work with B2B SaaS?", "Yes, B2B and B2C. The strategy changes with deal size and sales cycle, but the funnel-first approach stays the same."),
+         ("How do you measure results?", "Signups, trials and demo requests from organic search, alongside rankings for the pages that matter.")],
+ "related": [("GEO & AI Visibility", "/seo-services/geo-ai-visibility"), ("Technical SEO", "/seo-services/technical-seo"), ("Link Building", "/seo-services/link-building"), ("SEO Audit", "/seo-services/seo-audits")],
+},
 # ---------------------------------------------------------------- Industries
 {
  "path": "industries.html",
@@ -226,7 +260,7 @@ def country(path, name, short, title, desc, h1, lead, facts, why_h2, why_paras, 
         secs.append(("cards", {"alt": True, "eyebrow": "Areas", "h2": cards_h2, "intro": cities, "cards": cards, "cols": 3}))
     else:
         secs.append(("cards", {"alt": True, "eyebrow": "Services", "h2": cards_h2, "cards": cards, "cols": 3}))
-    secs.append(("cards", {"eyebrow": "Services", "h2": f"SEO services in {short}.", "intro": "Every service is available in this market, with the same published pricing.", "cards": svc_cards(), "cols": 4}))
+    secs.append(("cards", {"eyebrow": "Services", "h2": f"SEO services in {short}.", "intro": "Every service is available in this market, with the same published pricing.", "cards": svc_cards(), "cols": 3}))
     secs.append(("steps", None))
     return {"path": path, "title": title, "desc": desc, "crumbs": [("Locations", "/locations"), (name, "/" + path[:-5])],
             "eyebrow": f"Locations · {name}", "h1": h1, "lead": lead, "facts": facts, "sections": secs, "faq": faq,

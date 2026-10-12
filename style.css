@@ -294,3 +294,11 @@ a.card:hover .go span{transform:translateX(5px)}
 .price-note{margin-top:22px}
 .card .tag+h3{margin-top:-4px}
 @media (max-width:960px){.prices{grid-template-columns:1fr;max-width:520px}}
+.dd-mega{left:50%;margin-left:-280px}
+.dd-box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:10px;box-shadow:0 24px 50px -20px rgba(17,18,16,.3);width:560px}
+.dd-cols{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.dd-mega ul{background:none;border:0;padding:0;min-width:0;box-shadow:none}
+.dd-h{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--mute);padding:10px 14px 4px}
+.dd-all{display:block;border-top:1px solid var(--line);margin-top:6px;padding:12px 14px 6px;font-weight:600;font-size:14px;text-decoration:none}
+.dd-all:hover{color:var(--accent-deep)}
+.mnav details li.mh{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--mute);padding:14px 0 4px 14px}

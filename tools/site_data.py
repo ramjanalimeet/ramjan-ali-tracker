@@ -10,15 +10,20 @@ WHATSAPP = "https://wa.me/8801839295114"
 # Primary navigation. Items with "children" get a dropdown.
 NAV = [
     {"label": "Home", "href": "/"},
-    {"label": "Services", "href": "/seo-services", "children": [
-        ("Local SEO", "/local-seo", "Rank in Google Maps and local results"),
-        ("Technical SEO", "/seo-services/technical-seo", "Speed, crawling, indexing and schema"),
-        ("On-Page SEO", "/seo-services/on-page-seo", "Titles, copy and page structure that rank"),
-        ("GEO & AI Visibility", "/seo-services/geo-ai-visibility", "Get cited by ChatGPT, Gemini and AI Overviews"),
-        ("Ecommerce SEO", "/seo-services/ecommerce-seo", "Category and product pages that sell"),
-        ("Shopify SEO", "/seo-services/shopify-seo", "Fix Shopify's SEO limits and grow sales"),
-        ("SEO Audit", "/seo-services/seo-audits", "A full review with a prioritized fix list"),
-        ("Link Building", "/seo-services/link-building", "Relevant links that build real authority"),
+    {"label": "Services", "href": "/seo-services", "groups": [
+        ("Core SEO Services", [
+            ("Local SEO", "/local-seo", "Rank in Google Maps and local results"),
+            ("GEO & AI Visibility", "/seo-services/geo-ai-visibility", "Get cited by ChatGPT, Gemini and AI Overviews"),
+            ("Ecommerce SEO", "/seo-services/ecommerce-seo", "Category and product pages that sell"),
+            ("Shopify SEO", "/seo-services/shopify-seo", "Fix Shopify's SEO limits and grow sales"),
+            ("SaaS SEO", "/seo-services/saas-seo", "Turn search into trials and demos"),
+        ]),
+        ("SEO by Specialization", [
+            ("Technical SEO", "/seo-services/technical-seo", "Speed, crawling, indexing and schema"),
+            ("On-Page SEO", "/seo-services/on-page-seo", "Titles, copy and page structure that rank"),
+            ("SEO Audit", "/seo-services/seo-audits", "A full review with a prioritized fix list"),
+            ("Link Building", "/seo-services/link-building", "Relevant links that build real authority"),
+        ]),
     ], "all": ("All services", "/seo-services")},
     {"label": "Industries", "href": "/industries"},
     {"label": "Locations", "href": "/locations", "children": [
@@ -39,7 +44,7 @@ FOOTER = [
     ("Services", [
         ("Local SEO", "/local-seo"), ("Technical SEO", "/seo-services/technical-seo"),
         ("On-Page SEO", "/seo-services/on-page-seo"), ("GEO & AI Visibility", "/seo-services/geo-ai-visibility"),
-        ("Ecommerce SEO", "/seo-services/ecommerce-seo"), ("Shopify SEO", "/seo-services/shopify-seo"),
+        ("Ecommerce SEO", "/seo-services/ecommerce-seo"), ("Shopify SEO", "/seo-services/shopify-seo"), ("SaaS SEO", "/seo-services/saas-seo"),
         ("SEO Audit", "/seo-services/seo-audits"), ("Link Building", "/seo-services/link-building"),
     ]),
     ("Industries", [
@@ -168,6 +173,17 @@ PRICING = {
          "items": ["Everything in Growth", "12 to 15 links a month", "Digital PR campaigns",
                    "Unlinked mention recovery", "Monthly strategy call"]},
     ]},
+    "saas-seo": {"name": "SaaS SEO", "tiers": [
+        {"name": "Starter", "price": 899, "unit": "/month", "for": "Early-stage SaaS finding product-market search fit.",
+         "items": ["Technical audit and fixes", "Keyword map by funnel stage", "4 pages or articles a month",
+                   "Feature and use-case page optimization", "Monthly report on signups from search"]},
+        {"name": "Growth", "price": 1499, "unit": "/month", "featured": True, "for": "SaaS with traction, ready to scale.",
+         "items": ["Everything in Starter", "8 pages or articles a month", "Comparison and alternatives pages",
+                   "Integration and template pages", "Relevant links and PR mentions"]},
+        {"name": "Pro", "price": 2499, "unit": "/month", "for": "Established SaaS in competitive categories.",
+         "items": ["Everything in Growth", "14 pages or articles a month", "Programmatic SEO for scalable pages",
+                   "AI search visibility tracking", "Monthly strategy call"]},
+    ]},
     "content-seo": {"name": "Content SEO", "tiers": [
         {"name": "Starter", "price": 449, "unit": "/month", "for": "4 pages or articles a month.",
          "items": ["Keyword research and topic plan", "Service, area or blog content",
@@ -197,4 +213,5 @@ PRICING_PAGES = {
     "seo-services/geo-ai-visibility.html": "geo-ai-visibility",
     "seo-services/ecommerce-seo.html": "ecommerce-seo",
     "seo-services/shopify-seo.html": "shopify-seo",
+    "seo-services/saas-seo.html": "saas-seo",
 }
