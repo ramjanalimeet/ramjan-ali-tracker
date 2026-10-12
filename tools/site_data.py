@@ -59,7 +59,7 @@ FOOTER = [
     ]),
     ("Company", [
         ("About", "/about"), ("Contact", "/contact"), ("Case Studies", "/case-studies"),
-        ("Blog", "/blog"), ("Free SEO Audit", "/free-seo-audit"), ("Book a Call", "/book-a-call"),
+        ("Pricing", "/pricing"), ("Blog", "/blog"), ("Free SEO Audit", "/free-seo-audit"), ("Book a Call", "/book-a-call"),
     ]),
 ]
 
@@ -215,3 +215,23 @@ PRICING_PAGES = {
     "seo-services/shopify-seo.html": "shopify-seo",
     "seo-services/saas-seo.html": "saas-seo",
 }
+
+
+# Trust points shown in a strip under the top section of every page.
+# Keep these strictly true.
+TRUST = [
+    "Published, fixed pricing",
+    "Month to month, no lock-in",
+    "You own every account",
+    "Replies within 24 hours",
+    "Free strategy call",
+]
+
+# Client reviews. Add only real reviews, with the client's permission.
+# The reviews section appears on the home page, service pages and the
+# pricing page as soon as this list has at least one entry.
+# Example:
+#   {"quote": "Calls from Google doubled in four months.", "name": "Jane Smith",
+#    "role": "Owner", "company": "Smith Roofing", "place": "Tampa, FL",
+#    "rating": 5, "source": "Google review"},
+REVIEWS = []

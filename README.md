@@ -27,6 +27,6 @@ the original project sources (the Python build scripts: `build.py`, `seo.py`,
 
 ## Editing the menu, prices and generated pages
 
-- Menu, footer links and **all service prices** live in `tools/site_data.py`.
+- Menu, footer links, **all service prices**, trust points and **client reviews** live in `tools/site_data.py`. Reviews appear on the home, service and pricing pages once you add real ones.
 - New pages (services hub, GEO & AI, Ecommerce, Shopify, Industries, Locations, About, Contact) are written in `tools/pages.py`.
 - After editing, run `python3 tools/build_site.py` to update every page and `sitemap.xml`.

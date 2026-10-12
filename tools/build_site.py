@@ -19,13 +19,18 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from site_data import SITE, EMAIL, WHATSAPP, NAV, FOOTER, PRICING, PRICING_PAGES  # noqa: E402
+from site_data import SITE, EMAIL, WHATSAPP, NAV, FOOTER, PRICING, PRICING_PAGES, TRUST, REVIEWS  # noqa: E402
 from pages import PAGES, STEPS  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CARET = '<svg class="car" viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>'
 OG_ALT = "Ramjan Ali Akash - SEO specialist for local businesses and online stores"
 P_START, P_END = "<!--pricing:start-->", "<!--pricing:end-->"
+T_START, T_END = "<!--trust:start-->", "<!--trust:end-->"
+R_START, R_END = "<!--reviews:start-->", "<!--reviews:end-->"
+JS_FLAG = "<script>document.documentElement.classList.add('js')</script>"
+INCLUDED = ["Free strategy call first", "Written scope and fixed price", "Everything stays in your name",
+            "Plain-English monthly report", "Replies within 24 hours"]
 
 
 def read(p):
@@ -74,7 +79,8 @@ def nav_html(url):
             cols = "".join(f'<div class="dd-col"><p class="dd-h">{esc(t)}</p><ul>' + "".join(
                 f'<li><a href="{h}">{esc(n)}<small>{esc(d)}</small></a></li>' for n, h, d in kids) + "</ul></div>" for t, kids in item["groups"])
             out.append(f'<li><a href="{item["href"]}"{cur} aria-haspopup="true">{esc(item["label"])}{CARET}</a><div class="dd dd-mega"><div class="dd-box">'
-                       f'<div class="dd-cols">{cols}</div><a class="dd-all" href="{item["all"][1]}">{esc(item["all"][0])} →</a></div></div></li>')
+                       f'<div class="dd-cols">{cols}</div><div class="dd-foot"><a class="dd-all" href="{item["all"][1]}">{esc(item["all"][0])} →</a>'
+                       '<a class="dd-all" href="/pricing">Compare pricing →</a></div></div></div></li>')
         elif "children" in item:
             dd = "".join(f'<li><a href="{h}">{esc(n)}<small>{esc(d)}</small></a></li>' for n, h, d in item["children"])
             dd += f'<li class="all"><a href="{item["all"][1]}">{esc(item["all"][0])} →</a></li>'
@@ -88,7 +94,7 @@ def mnav_html():
     out = []
     for item in NAV:
         if "groups" in item:
-            lis = f'<li><a href="{item["all"][1]}">{esc(item["all"][0])}</a></li>'
+            lis = f'<li><a href="{item["all"][1]}">{esc(item["all"][0])}</a></li><li><a href="/pricing">Compare pricing</a></li>'
             for t, kids in item["groups"]:
                 lis += f'<li class="mh">{esc(t)}</li>' + "".join(f'<li><a href="{h}">{esc(n)}</a></li>' for n, h, _ in kids)
             out.append(f"<details><summary>{esc(item['label'])}</summary><ul>{lis}</ul></details>")
@@ -142,7 +148,8 @@ def pricing_html(key):
         'Need a different scope? <a href="/book-a-call">Book a call</a> for a custom quote.'
     return (f'{P_START}<section class="sec alt" id="pricing"><div class="wrap"><div class="sec-head rv"><div><span class="eyebrow">Pricing</span>'
             f'<h2>{esc(p["name"])} pricing.</h2></div><p>Fixed prices, published up front. The exact scope is confirmed in writing after a free strategy call, before any work starts.</p></div>'
-            f'<div class="prices">{"".join(cards)}</div><p class="fine price-note">{note}</p></div></section>{P_END}')
+            f'<div class="prices">{"".join(cards)}</div><div class="incl rv"><b>Every plan includes</b><ul>{"".join(f"<li>{esc(i)}</li>" for i in INCLUDED)}</ul></div>'
+            f'<p class="fine price-note">{note}</p></div></section>{P_END}')
 
 
 def offers_ld(key):
@@ -172,6 +179,79 @@ def add_see_pricing(s):
     return s[:m.end(1)] + '<a class="btn btn-ghost" href="#pricing">See pricing</a>' + s[m.end(1):]
 
 
+BOOK_BTN = '<a class="btn btn-dark" href="/book-a-call">Book a free call <span class="arr">→</span></a>'
+
+
+# ------------------------------------------------------------------ trust, reviews, polish
+CHECK = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 8.5l2.5 2.5L12 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+
+
+def trust_html():
+    items = "".join(f"<li>{CHECK}{esc(t)}</li>" for t in TRUST)
+    return f'{T_START}<div class="trust" role="region" aria-label="Why clients trust me"><div class="wrap"><ul>{items}</ul></div></div>{T_END}'
+
+
+def reviews_html():
+    if not REVIEWS:
+        return f"{R_START}{R_END}"
+    cards = []
+    for r in REVIEWS:
+        n = int(r.get("rating", 5))
+        who = ", ".join(x for x in [r.get("role"), r.get("company")] if x)
+        meta = " · ".join(x for x in [r.get("place"), r.get("source")] if x)
+        cards.append(f'<figure class="review rv"><div class="stars" role="img" aria-label="{n} out of 5 stars">{"★" * n}{"☆" * (5 - n)}</div>'
+                     f'<blockquote>“{esc(r["quote"])}”</blockquote><figcaption><b>{esc(r["name"])}</b>'
+                     f'{f"<span>{esc(who)}</span>" if who else ""}{f"<small>{esc(meta)}</small>" if meta else ""}</figcaption></figure>')
+    return (f'{R_START}<section class="sec" id="reviews"><div class="wrap"><div class="sec-head rv"><div><span class="eyebrow">Client reviews</span>'
+            f'<h2>What clients say.</h2></div><p>Real feedback from real clients, shared with their permission.</p></div>'
+            f'<div class="reviews">{"".join(cards)}</div></div></section>{R_END}')
+
+
+def put_block(s, start, end, block, before):
+    """Replace a marked block, or insert it before the first match of one of `before`."""
+    if start in s:
+        return re.sub(re.escape(start) + ".*?" + re.escape(end), lambda m: block, s, count=1, flags=re.S)
+    for b in before:
+        i = s.find(b)
+        if i >= 0:
+            return s[:i] + block + s[i:]
+    return s
+
+
+def polish(s, url):
+    # Content fades in only when JavaScript runs, so it never stays hidden.
+    if JS_FLAG not in s:
+        s = s.replace('<meta charset="utf-8">', '<meta charset="utf-8">' + JS_FLAG, 1)
+    # Solid "Book a free call" button in the top section.
+    m = re.search(r'<section class="p?hero">.*?</section>', s, re.S)
+    if m:
+        top = m.group().replace('<a class="btn btn-ghost" href="/book-a-call">Book a call</a>', BOOK_BTN)
+        s = s[:m.start()] + top + s[m.end():]
+        # Trust strip directly under the top section.
+        if T_START in s:
+            s = put_block(s, T_START, T_END, trust_html(), [])
+        else:
+            m = re.search(r'<section class="p?hero">.*?</section>', s, re.S)
+            s = s[:m.end()] + trust_html() + s[m.end():]
+    # Reviews: before pricing on service pages, before the FAQ elsewhere.
+    if url == "/" or P_START in s:
+        s = put_block(s, R_START, R_END, reviews_html(), [P_START, '<section class="sec"><div class="wrap"><div class="sec-head rv"><div><span class="eyebrow">Questions</span>'])
+    return s
+
+
+def pricing_overview():
+    rows = []
+    for key, p in PRICING.items():
+        page = next((f for f, k in PRICING_PAGES.items() if k == key and not f.startswith("local-seo/")), None)
+        href = url_of(page) if page else "/seo-services"
+        cells = "".join(f'<div class="po-tier{" feat" if t.get("featured") else ""}"><span>{esc(t["name"])}</span><b>{money(t["price"])}</b><small>{esc(t["unit"])}</small></div>'
+                        for t in p["tiers"])
+        rows.append(f'<div class="po-row rv"><div class="po-name"><h3><a href="{href}">{esc(p["name"])}</a></h3><a class="po-link" href="{href}#pricing">What is included →</a></div><div class="po-tiers">{cells}</div></div>')
+    return ('<section class="sec"><div class="wrap"><div class="sec-head rv"><div><span class="eyebrow">All services</span><h2>Compare every plan.</h2></div>'
+            '<p>Prices in USD. Click any service to see exactly what each plan includes.</p></div>'
+            f'<div class="po">{"".join(rows)}</div><div class="incl rv"><b>Every plan includes</b><ul>{"".join(f"<li>{esc(i)}</li>" for i in INCLUDED)}</ul></div></div></section>')
+
+
 # ------------------------------------------------------------------ page generation
 def chrome_parts():
     idx = read("index.html")
@@ -186,7 +266,7 @@ def head_html(pg, ld):
     t, d = esc(pg["title"]), esc(pg["desc"])
     return ('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">'
             f'<title>{t}</title><meta name="description" content="{d}"><link rel="canonical" href="{url}">'
-            '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"><meta name="author" content="Ramjan Ali Akash">'
+            f'<meta name="robots" content="{"noindex, follow" if pg.get("noindex") else "index, follow, max-image-preview:large, max-snippet:-1"}"><meta name="author" content="Ramjan Ali Akash">'
             '<meta name="theme-color" content="#F2F3F0"><meta name="color-scheme" content="light"><meta property="og:type" content="website">'
             f'<meta property="og:site_name" content="Ramjan Ali Akash"><meta property="og:title" content="{t}"><meta property="og:description" content="{d}">'
             f'<meta property="og:url" content="{url}"><meta property="og:image" content="{SITE}/assets/og-default.png"><meta property="og:image:alt" content="{OG_ALT}">'
@@ -288,13 +368,13 @@ def render(pg, body, tail, wa):
         for i, (n, h) in enumerate(pg["crumbs"]))
     facts = "".join(f"<li><b>{esc(b)}</b><span>{s}</span></li>" for b, s in pg["facts"])
     has_pricing = any(k == "pricing" for k, _ in pg["sections"])
-    ctas = wa + '<a class="btn btn-ghost" href="/book-a-call">Book a call</a>' + ('<a class="btn btn-ghost" href="#pricing">See pricing</a>' if has_pricing else "")
+    ctas = wa + BOOK_BTN + ('<a class="btn btn-ghost" href="#pricing">See pricing</a>' if has_pricing else "")
     out = [f'<section class="phero"><div class="wrap"><nav aria-label="Breadcrumb"><ol class="crumbs">{crumbs}</ol></nav><div class="phero-grid"><div>'
            f'<span class="eyebrow">{esc(pg["eyebrow"])}</span><h1>{pg["h1"]}</h1><p class="lead">{pg["lead"]}</p><div class="cta-row">{ctas}</div></div>'
            f'<aside class="facts"><h2>At a glance</h2><ul>{facts}</ul></aside></div></div></section>']
     for kind, c in pg["sections"]:
         out.append({"cards": sec_cards, "split": sec_split, "steps": lambda _: sec_steps(),
-                    "pricing": pricing_html, "raw": lambda h: h}[kind](c))
+                    "pricing": pricing_html, "pricing_overview": lambda _: pricing_overview(), "raw": lambda h: h}[kind](c))
     if pg.get("faq"):
         out.append(sec_faq(pg["faq"]))
     if pg.get("related"):
@@ -327,8 +407,11 @@ def main():
     for f, key in PRICING_PAGES.items():
         s = inject_pricing(read(f), key)
         write(f, add_see_pricing(s))
-    # 4. sitemap
+    # 4. trust strip, reviews and polish on every page
     all_files = set(files) | {pg["path"] for pg in PAGES}
+    for f in sorted(all_files):
+        write(f, polish(read(f), url_of(f)))
+    # 5. sitemap
     sitemap([f for f in all_files if not f.startswith("404")])
     print(f"Updated {len(files)} pages, generated {len(PAGES)} pages, pricing on {len(PRICING_PAGES)} pages.")
 
