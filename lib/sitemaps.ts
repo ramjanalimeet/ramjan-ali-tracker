@@ -11,7 +11,7 @@ const SITE_UPDATED = "2026-10-13";
 type Entry = { path: string; lastmod: string; images?: string[] };
 export type SitemapName = "page" | "service" | "industry" | "location" | "post" | "case-study";
 
-const PORTRAIT = `${SITE_URL}/assets/akash.webp`;
+const PORTRAIT = `${SITE_URL}/assets/ramjan-ali-akash.webp`;
 
 const SITEMAPS: Record<SitemapName, () => Entry[]> = {
   page: () =>

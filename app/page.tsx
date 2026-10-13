@@ -81,13 +81,12 @@ export default function HomePage() {
               <span className="dot"></span>Local SEO &amp; AI Search Visibility
             </span>
             <h1>
-              Get found on Google, <span className="hl">Google Maps</span> and in AI search.
+              Get found first on <span className="hl">Google Maps</span> and in AI search.
             </h1>
             <p className="lead">
-              I'm <strong>Ramjan Ali Akash</strong>. I help home service businesses, roofers, plumbers, HVAC, septic and
-              other trades, show up in the <strong>Google map pack</strong>, local search results, and the answers{" "}
-              <strong>AI tools</strong> like ChatGPT, Gemini and Google's AI Overviews give when homeowners ask who to
-              call.
+              I&apos;m <strong>Ramjan Ali Akash</strong>, a local SEO specialist for home service businesses. I help
+              roofers, plumbers, HVAC companies and other trades rank in the <strong>Google map pack</strong> and get
+              recommended by <strong>ChatGPT, Gemini and AI Overviews</strong>, so more searches turn into calls.
             </p>
             <div className="cta-row">
               <WhatsAppButton />
@@ -111,7 +110,7 @@ export default function HomePage() {
           <div className="portrait">
             <div className="frame">
               <Image
-                src="/assets/akash.webp"
+                src="/assets/ramjan-ali-akash.webp"
                 alt="Portrait of Ramjan Ali Akash"
                 width={400}
                 height={432}
