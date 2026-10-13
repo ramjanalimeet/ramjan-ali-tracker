@@ -1684,3 +1684,39 @@ a.card:hover .go span {
   color: var(--ink) !important;
   margin-top: 4px;
 }
+
+/* Services mega menu */
+.dd.mega {
+  left: -120px;
+}
+.mega-box {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 18px 10px 8px;
+  width: 560px;
+  box-shadow: 0 24px 50px -20px rgba(17, 18, 16, 0.3);
+}
+.mega-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.mega-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--mute);
+  margin: 0 14px 6px;
+}
+.dd.mega ul {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  min-width: 0;
+}
+.dd.mega .all {
+  margin-top: 8px;
+}

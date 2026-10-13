@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL, TRADES } from "@/lib/site";
 import { POSTS } from "@/lib/posts";
+import { ALL_SERVICES } from "@/lib/services";
 
 const PAGES = [
   "",
@@ -18,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date("2026-10-13");
   return [
     ...PAGES.map((p) => `${SITE_URL}${p || "/"}`),
+    ...ALL_SERVICES.map((s) => `${SITE_URL}${s.href}`),
     ...TRADES.map((t) => `${SITE_URL}/local-seo/${t.slug}`),
     ...POSTS.map((p) => `${SITE_URL}/blog/${p.slug}`),
   ].map((url) => ({ url, lastModified }));

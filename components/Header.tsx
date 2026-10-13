@@ -3,16 +3,15 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { ALL_SERVICES, SERVICE_GROUPS } from "@/lib/services";
 import { TRADES } from "@/lib/site";
 
 const LINKS = [
-  { href: "/local-seo", label: "Local SEO", mobile: "Local SEO" },
-  { href: "/ai-search", label: "AI Search", mobile: "AI Search Visibility" },
-  { href: "/locations", label: "Locations", mobile: "Locations" },
-  { href: "/pricing", label: "Pricing", mobile: "Pricing" },
-  { href: "/case-studies", label: "Case Studies", mobile: "Case Studies" },
-  { href: "/blog", label: "Blog", mobile: "Blog" },
-  { href: "/free-seo-audit", label: "Free Audit", mobile: "Free Audit" },
+  { href: "/locations", label: "Locations" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/case-studies", label: "Case Studies" },
+  { href: "/blog", label: "Blog" },
+  { href: "/free-seo-audit", label: "Free Audit" },
 ];
 
 function Caret() {
@@ -38,9 +37,10 @@ export function Header() {
     return () => removeEventListener("keydown", onKey);
   }, [open]);
 
-  const isCurrent = (href: string) => pathname === href || (href === "/blog" && pathname.startsWith("/blog/"));
-  const current = (href: string) => (isCurrent(href) ? ("page" as const) : undefined);
-  const [localSeo, aiSearch, ...rest] = LINKS;
+  const page = (on: boolean) => (on ? ("page" as const) : undefined);
+  const isCurrent = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
+  const onServices = pathname === "/seo-services" || ALL_SERVICES.some((s) => pathname === s.href);
+  const onIndustries = pathname.startsWith("/local-seo/");
 
   return (
     <>
@@ -51,19 +51,43 @@ export function Header() {
           </Link>
           <nav aria-label="Main">
             <ul className="links">
-              {[localSeo, aiSearch].map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} aria-current={current(l.href)}>
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
               <li>
-                <Link
-                  href="/local-seo#trades"
-                  aria-current={pathname.startsWith("/local-seo/") ? "page" : undefined}
-                  aria-haspopup="true"
-                >
+                <Link href="/" aria-current={page(pathname === "/")}>
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/seo-services" aria-current={page(onServices)} aria-haspopup="true">
+                  Services
+                  <Caret />
+                </Link>
+                <div className="dd mega">
+                  <div className="mega-box">
+                    <div className="mega-cols">
+                      {SERVICE_GROUPS.map((g) => (
+                        <div key={g.title}>
+                          <p className="mega-title">{g.title}</p>
+                          <ul>
+                            {g.items.map((s) => (
+                              <li key={s.href}>
+                                <Link href={s.href}>
+                                  {s.name}
+                                  <small>{s.blurb}</small>
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="all">
+                      <Link href="/seo-services">All services →</Link>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <Link href="/local-seo#trades" aria-current={page(onIndustries)} aria-haspopup="true">
                   Industries
                   <Caret />
                 </Link>
@@ -83,9 +107,9 @@ export function Header() {
                   </ul>
                 </div>
               </li>
-              {rest.map((l) => (
+              {LINKS.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} aria-current={current(l.href)}>
+                  <Link href={l.href} aria-current={page(isCurrent(l.href))}>
                     {l.label}
                   </Link>
                 </li>
@@ -115,8 +139,20 @@ export function Header() {
         aria-label="Mobile"
         onClick={(e) => (e.target as HTMLElement).closest("a") && setOpen(false)}
       >
-        <Link href={localSeo.href}>{localSeo.mobile}</Link>
-        <Link href={aiSearch.href}>{aiSearch.mobile}</Link>
+        <Link href="/">Home</Link>
+        <details>
+          <summary>Services</summary>
+          <ul>
+            {ALL_SERVICES.map((s) => (
+              <li key={s.href}>
+                <Link href={s.href}>{s.name}</Link>
+              </li>
+            ))}
+            <li>
+              <Link href="/seo-services">All services</Link>
+            </li>
+          </ul>
+        </details>
         <details>
           <summary>Industries</summary>
           <ul>
@@ -127,9 +163,9 @@ export function Header() {
             ))}
           </ul>
         </details>
-        {rest.map((l) => (
+        {LINKS.map((l) => (
           <Link key={l.href} href={l.href}>
-            {l.mobile}
+            {l.label}
           </Link>
         ))}
         <Link className="btn btn-dark" href="/book-a-call">

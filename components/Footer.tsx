@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { EMAIL, SOCIAL, TRADES } from "@/lib/site";
+import { ALL_SERVICES } from "@/lib/services";
 import { SocialIcon } from "./SocialIcon";
 
 export function Footer() {
@@ -28,17 +29,13 @@ export function Footer() {
           <div>
             <h4>Services</h4>
             <ul>
-              <li>
-                <Link href="/local-seo">Local SEO</Link>
-              </li>
-              <li>
-                <Link href="/ai-search">AI Search Visibility</Link>
-              </li>
+              {ALL_SERVICES.map((sv) => (
+                <li key={sv.href}>
+                  <Link href={sv.href}>{sv.name}</Link>
+                </li>
+              ))}
               <li>
                 <Link href="/locations">Locations</Link>
-              </li>
-              <li>
-                <Link href="/pricing">Pricing</Link>
               </li>
               <li>
                 <Link href="/free-seo-audit">Free Audit</Link>
