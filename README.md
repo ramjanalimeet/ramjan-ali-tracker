@@ -15,7 +15,9 @@ npm run typecheck
 ## Structure
 
 - `app/` — one folder per page (`app/pricing/page.tsx` serves `/pricing`), plus
-  `layout.tsx` (header, footer, fonts), `globals.css`, `sitemap.ts`, `robots.ts`,
+  `layout.tsx` (header, footer, fonts), `globals.css`, `robots.ts`, the XML sitemaps
+  (`sitemap.xml` index plus `page-`, `service-`, `industry-`, `location-`, `post-` and
+  `case-study-sitemap.xml`, built in `lib/sitemaps.ts` and styled by `public/sitemap.xsl`),
   `opengraph-image.tsx` and `api/lead` (free audit form endpoint)
 - `components/` — shared pieces: `Header`, `Footer`, `CtaBand`, `Faq`, `HowItWorks`,
   `PricingPlans`, `LeadForm`, `PostCards`, `WhatsAppButton`
