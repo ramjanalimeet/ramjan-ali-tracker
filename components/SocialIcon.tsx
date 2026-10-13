@@ -35,23 +35,7 @@ export function SocialIcon({ name }: { name: string }) {
           <circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" />
         </svg>
       );
-    case "TikTok":
-      return (
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path
-            d="M16.5 2h-3.4v13.4a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.1a6.4 6.4 0 1 0 5.4 6.3V8.6a8 8 0 0 0 4.6 1.5V6.7a4.6 4.6 0 0 1-4.6-4.7z"
-            fill="currentColor"
-          />
-        </svg>
-      );
     default:
-      return (
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path
-            d="M17.8 2.5h3.3l-7.2 8.2 8.5 10.8h-6.6l-5.2-6.6-5.9 6.6H1.4l7.7-8.8L1 2.5h6.8l4.7 6 5.3-6zm-1.2 17h1.8L7.6 4.4H5.6z"
-            fill="currentColor"
-          />
-        </svg>
-      );
+      return null;
   }
 }

@@ -1889,6 +1889,30 @@ dialog.booking::backdrop {
   width: 100%;
   max-width: 380px;
 }
+.about-social {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 10px 10px 10px 18px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.about-social span {
+  font-size: 14px;
+  font-weight: 600;
+}
+.about-social .social {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.about-social .social a {
+  border-color: var(--line);
+  color: var(--ink);
+}
 .about-photo img {
   display: block;
   width: 100%;

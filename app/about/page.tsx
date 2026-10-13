@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { JsonLd } from "@/components/JsonLd";
+import { SocialIcon } from "@/components/SocialIcon";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { SITE_URL, SOCIAL, pageMeta } from "@/lib/site";
 
@@ -111,6 +112,18 @@ export default function AboutPage() {
                 sizes="(max-width: 960px) 300px, 380px"
                 priority
               />
+              <div className="about-social">
+                <span>Follow me</span>
+                <ul className="social">
+                  {SOCIAL.map((s) => (
+                    <li key={s.label}>
+                      <a href={s.href} aria-label={`Ramjan Ali Akash on ${s.label}`} rel="me noopener" target="_blank">
+                        <SocialIcon name={s.label} />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>

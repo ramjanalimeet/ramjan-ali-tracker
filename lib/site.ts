@@ -12,8 +12,6 @@ export const SOCIAL = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/ramjanalimeet/" },
   { label: "Facebook", href: "https://www.facebook.com/RamjanaliMeet" },
   { label: "Instagram", href: "https://www.instagram.com/ramjanali_akash/" },
-  { label: "TikTok", href: "https://www.tiktok.com/@ramjanali_akash" },
-  { label: "X", href: "https://x.com/RamjanaliMeet" },
 ] as const;
 
 const OG_IMAGE = { url: "/opengraph-image", width: 1200, height: 630, alt: OG_ALT };
