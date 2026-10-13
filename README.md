@@ -23,6 +23,9 @@ npm run typecheck
 - `lib/pricing.ts` — **every price on the site**; edit plans and prices here
 - `lib/industries/` — the 56 generated industry pages (one file per category);
   rendered by `app/local-seo/[slug]/page.tsx` and listed on `/industries`
+- `lib/cities/` — the 58 city location pages (US, UK, Europe, Canada, Australia,
+  Middle East); rendered by `app/locations/[city]/page.tsx` and listed on `/locations`.
+  `docs/location-research.md` explains why each city was picked
 - `lib/services.ts` — the Services menu and service pages list
 - `lib/posts.ts` — blog article list (each article lives in `app/blog/<slug>/page.tsx`)
 - `public/` — images and favicon

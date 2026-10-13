@@ -26,6 +26,11 @@ export const REGIONS = [
     text: "Google Business Profile, Apple Maps and the main national directories for your country, set up for each town you serve.",
   },
   {
+    id: "middle-east",
+    name: "Middle East",
+    text: "Google Maps and Apple Maps across the Gulf, where AC maintenance, waterproofing and pest control are searched all year.",
+  },
+  {
     id: "anywhere",
     name: "Anywhere else",
     text: "If your customers find local businesses on Google and ask AI tools for recommendations, the same playbook works for you.",

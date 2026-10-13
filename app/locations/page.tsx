@@ -3,6 +3,7 @@ import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { CITIES, CITY_GROUPS, citiesIn } from "@/lib/cities";
 import { REGIONS } from "@/lib/locations";
 import { type FaqItem, SITE_URL, faqSchema, pageMeta } from "@/lib/site";
 
@@ -135,7 +136,7 @@ export default function LocationsPage() {
           </div>
           <div className="grid g3">
             {REGIONS.map((r, i) => (
-              <div className="card rv" id={r.id} key={r.id}>
+              <div className="card rv" key={r.id}>
                 <span className="ic" aria-hidden="true">
                   {String(i + 1).padStart(2, "0")}
                 </span>
@@ -146,6 +147,54 @@ export default function LocationsPage() {
           </div>
         </div>
       </section>
+      <section className="sec tight alt" id="cities">
+        <div className="wrap">
+          <div className="sec-head rv">
+            <div>
+              <span className="eyebrow">{CITIES.length} city pages</span>
+              <h2>Cities I focus on.</h2>
+            </div>
+            <p>
+              Growing, mid-size markets where demand is strong and the map pack is still winnable. Pick a city to see
+              its searches, trades and service areas.
+            </p>
+          </div>
+          <nav className="chips ind-jump" aria-label="City groups" style={{ marginTop: 0 }}>
+            {CITY_GROUPS.map((g) => (
+              <a className="chip" href={`#${g.slug}`} key={g.slug}>
+                {g.name} ({citiesIn(g.slug).length})
+              </a>
+            ))}
+          </nav>
+        </div>
+      </section>
+      {CITY_GROUPS.map((g, gi) => {
+        const list = citiesIn(g.slug);
+        return (
+          <section className={gi % 2 ? "sec tight alt" : "sec tight"} id={g.slug} key={g.slug}>
+            <div className="wrap">
+              <div className="ind-head rv">
+                <h2>{g.name}</h2>
+                <span className="muted">{list.length} cities</span>
+              </div>
+              <p className="muted rv" style={{ margin: "-10px 0 22px", maxWidth: "70ch" }}>
+                {g.lead}
+              </p>
+              <div className="ind-grid">
+                {list.map((c) => (
+                  <Link className="ind-card rv" href={`/locations/${c.slug}`} key={c.slug}>
+                    <b>{c.place}</b>
+                    <small>{c.card}</small>
+                    <span className="arr" aria-hidden="true">
+                      →
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })}
       <section className="sec alt">
         <div className="wrap split">
           <div className="body rv">

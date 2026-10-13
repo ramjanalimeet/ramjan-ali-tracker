@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { CITIES } from "@/lib/cities";
 import { ALL_INDUSTRIES } from "@/lib/industries";
 import { SITE_URL } from "@/lib/site";
 import { POSTS } from "@/lib/posts";
@@ -22,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...PAGES.map((p) => `${SITE_URL}${p || "/"}`),
     ...ALL_SERVICES.map((s) => `${SITE_URL}${s.href}`),
     ...ALL_INDUSTRIES.map((t) => `${SITE_URL}/local-seo/${t.slug}`),
+    ...CITIES.map((c) => `${SITE_URL}/locations/${c.slug}`),
     ...POSTS.map((p) => `${SITE_URL}/blog/${p.slug}`),
   ].map((url) => ({ url, lastModified }));
 }

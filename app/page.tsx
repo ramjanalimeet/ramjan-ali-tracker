@@ -5,7 +5,7 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { PostCards } from "@/components/PostCards";
 import { AI_PLAN, fromPrice, usd } from "@/lib/pricing";
-import { REGIONS } from "@/lib/locations";
+import { CITIES, CITY_GROUPS } from "@/lib/cities";
 import { ALL_INDUSTRIES } from "@/lib/industries";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
@@ -453,13 +453,13 @@ export default function HomePage() {
               actually serve, with area pages, local listings and map rankings tracked town by town.
             </p>
             <div className="chips">
-              {REGIONS.map((r) => (
-                <Link className="chip" href={`/locations#${r.id}`} key={r.id}>
-                  {r.name}
+              {CITY_GROUPS.map((g) => (
+                <Link className="chip" href={`/locations#${g.slug}`} key={g.slug}>
+                  {g.name}
                 </Link>
               ))}
               <Link className="chip" href="/locations">
-                All locations →
+                All {CITIES.length} cities →
               </Link>
             </div>
           </div>
