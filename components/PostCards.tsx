@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { relatedPosts, seedOf } from "@/lib/links";
 import { POSTS, type Post, formatDate, topicOf } from "@/lib/posts";
 
 /** One article card. Set `reveal={false}` where cards mount after load (they would miss the scroll-in effect). */
@@ -30,7 +31,10 @@ export function PostCards({
   limit?: number;
   style?: React.CSSProperties;
 }) {
-  const posts = POSTS.filter((p) => p.slug !== exclude).slice(0, limit);
+  const current = exclude ? POSTS.find((p) => p.slug === exclude) : undefined;
+  const posts = current
+    ? relatedPosts([current.topic], limit ?? 3, seedOf(current.slug), current.slug)
+    : POSTS.slice(0, limit);
   return (
     <div className="grid g3" style={style}>
       {posts.map((p) => (

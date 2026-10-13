@@ -4,7 +4,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta({
-  title: "Book a Call | Local SEO & AI Search Strategy Call | Ramjan Ali Akash",
+  title: "Book a Free Local SEO & AI Search Strategy Call",
   description:
     "Book a free 30-minute Local SEO call. We will look at your Google Business Profile, rankings and competitors, and what would move your calls most.",
   path: "/book-a-call",
@@ -36,7 +36,7 @@ const SCHEMA = {
       "@type": "WebPage",
       "@id": "https://ramjan-akash.vercel.app/book-a-call#webpage",
       url: "https://ramjan-akash.vercel.app/book-a-call",
-      name: "Book a Call | Local SEO &amp; AI Search Strategy Call | Ramjan Ali Akash",
+      name: "Book a Free Local SEO & AI Search Strategy Call",
       description:
         "Book a free 30-minute Local SEO call. We will look at your Google Business Profile, rankings and competitors, and what would move your calls most.",
       isPartOf: {
@@ -113,7 +113,7 @@ export default function BookACallPage() {
           </div>
           <aside className="aside">
             <div className="panel">
-              <h3>On the call</h3>
+              <h2 className="h3">On the call</h2>
               <ul className="ticks">
                 <li>Your services, towns and goals</li>
                 <li>Where you rank now in the map pack</li>
@@ -124,7 +124,7 @@ export default function BookACallPage() {
               </ul>
             </div>
             <div className="panel">
-              <h3>Have these ready</h3>
+              <h2 className="h3">Have these ready</h2>
               <ul className="ticks">
                 <li>Your website address</li>
                 <li>The services you want more of</li>
@@ -132,7 +132,7 @@ export default function BookACallPage() {
               </ul>
             </div>
             <div className="panel">
-              <h3>Prefer email?</h3>
+              <h2 className="h3">Prefer email?</h2>
               <p>Send a few lines about your business and I'll reply within 24 hours.</p>
               <a className="btn btn-ghost btn-sm" href="mailto:raakash.meet@gmail.com">
                 raakash.meet@gmail.com

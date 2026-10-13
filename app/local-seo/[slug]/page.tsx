@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { HowItWorks } from "@/components/HowItWorks";
+import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { AiMock, MapMock } from "@/components/Mocks";
 import { PricingSection } from "@/components/PricingPlans";
@@ -263,6 +264,7 @@ export default async function IndustryPage({ params }: Props) {
         </div>
       </section>
 
+      <RelatedLinks page={`/local-seo/${ind.slug}`} topics={["local-seo", "google-maps", "ai-search"]} industries={0} />
       <CtaBand title={ind.cta} />
     </>
   );

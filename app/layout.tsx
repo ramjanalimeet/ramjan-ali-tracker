@@ -3,8 +3,10 @@ import { Instrument_Serif, Inter_Tight } from "next/font/google";
 import { BookingPopup } from "@/components/BookingPopup";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { JsonLd } from "@/components/JsonLd";
 import { MobileCta } from "@/components/MobileCta";
 import { SiteEffects } from "@/components/SiteEffects";
+import { SITE_SCHEMA } from "@/lib/schema";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -35,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${serif.variable} ${sans.variable}`}>
       <body>
+        <JsonLd data={SITE_SCHEMA} />
         <a className="skip" href="#main">
           Skip to content
         </a>

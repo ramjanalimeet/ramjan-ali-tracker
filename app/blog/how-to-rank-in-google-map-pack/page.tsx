@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { PostCards } from "@/components/PostCards";
+import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { pageMeta } from "@/lib/site";
 
@@ -245,6 +246,12 @@ export default function HowToRankInGoogleMapPackPage() {
           <PostCards exclude="how-to-rank-in-google-map-pack" limit={3} style={{ marginTop: 6 }} />
         </div>
       </section>
+      <RelatedLinks
+        page="/blog/how-to-rank-in-google-map-pack"
+        topics={["local-seo"]}
+        posts={0}
+        industriesTitle="Guides for your trade"
+      />
       <CtaBand title="Find out what is holding your rankings back." />
     </>
   );

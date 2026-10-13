@@ -4,6 +4,7 @@ import { Faq } from "@/components/Faq";
 import { HowItWorks } from "@/components/HowItWorks";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { SERVICE_GROUPS } from "@/lib/services";
+import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
 
@@ -193,6 +194,7 @@ export default function SeoServicesPage() {
       </section>
       <HowItWorks />
       <Faq items={FAQ} />
+      <RelatedLinks page="/seo-services" topics={["technical", "content", "strategy"]} />
       <CtaBand title="Find out what is holding your rankings back." />
     </>
   );

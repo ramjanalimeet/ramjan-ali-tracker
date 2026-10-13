@@ -2432,7 +2432,7 @@ dialog.booking::backdrop {
   font-size: 13px;
   color: var(--mute);
 }
-.spark {
+.sparkline {
   width: 120px;
   height: 36px;
 }
@@ -2493,5 +2493,143 @@ dialog.booking::backdrop {
   }
   .tchart .end {
     font-size: 21px;
+  }
+}
+.panel h2.h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* Related links block */
+.related-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+.related-posts {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.related-posts a {
+  display: block;
+  text-decoration: none;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 14px 16px;
+  font-weight: 600;
+  line-height: 1.35;
+  transition: border-color 0.2s;
+}
+.related-posts a:hover {
+  border-color: var(--ink);
+}
+.related-posts span {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--mute);
+  margin-bottom: 4px;
+}
+@media (max-width: 960px) {
+  .related-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+.related-grid:has(> :only-child) {
+  grid-template-columns: minmax(0, 720px);
+}
+
+/* Phone refinements: tighter rhythm, smaller cards, readable sizes */
+@media (max-width: 640px) {
+  .sec {
+    padding: 56px 0;
+  }
+  .sec.tight {
+    padding: 44px 0;
+  }
+  .hero {
+    padding: 96px 0 36px;
+  }
+  .phero {
+    padding: 92px 0 28px;
+  }
+  .lead {
+    font-size: 17px;
+    margin-top: 18px;
+  }
+  .sec-head {
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .grid {
+    gap: 12px;
+  }
+  .card {
+    padding: 22px 20px;
+    gap: 8px;
+  }
+  .card .ic {
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    font-size: 14px;
+  }
+  .card h3 {
+    font-size: 21px;
+  }
+  .card p {
+    font-size: 15.5px;
+  }
+  .step {
+    padding: 20px;
+  }
+  .panel {
+    padding: 22px 20px;
+  }
+  .facts {
+    padding: 20px;
+  }
+  .facts li b {
+    min-width: 84px;
+  }
+  .cta-row {
+    margin-top: 24px;
+  }
+  .chips {
+    gap: 8px;
+  }
+  .plan {
+    padding: 22px 18px 20px;
+  }
+  .plan .price {
+    font-size: 40px;
+    margin: 16px 0 14px;
+  }
+  .band h2 {
+    font-size: clamp(30px, 8vw, 40px);
+  }
+  .portrait {
+    max-width: 300px;
+  }
+  .badge {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  .faq summary {
+    font-size: 17px;
+  }
+  .ameta {
+    gap: 6px 14px;
+    flex-wrap: wrap;
+  }
+  .crumbs li[aria-current] {
+    overflow-wrap: anywhere;
   }
 }

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CtaBand } from "./CtaBand";
 import { JsonLd } from "./JsonLd";
 import { PostCards } from "./PostCards";
+import { RelatedLinks } from "./RelatedLinks";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { type Post, formatDate, topicOf } from "@/lib/posts";
 import { SITE_URL } from "@/lib/site";
@@ -102,6 +103,12 @@ export function ArticleLayout({ post, lead, children }: { post: Post; lead: stri
           <PostCards exclude={post.slug} limit={3} style={{ marginTop: 6 }} />
         </div>
       </section>
+      <RelatedLinks
+        page={`/blog/${post.slug}`}
+        topics={[post.topic]}
+        posts={0}
+        industriesTitle="Guides for your trade"
+      />
       <CtaBand title="Want this done for your business?" />
     </>
   );

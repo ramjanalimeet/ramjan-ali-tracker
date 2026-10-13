@@ -5,6 +5,7 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { AI_PLAN, usd } from "@/lib/pricing";
 import { PricingSection } from "@/components/PricingPlans";
+import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
 
@@ -359,6 +360,7 @@ export default function AiSearchPage() {
           </div>
         </div>
       </section>
+      <RelatedLinks page="/ai-search" topics={["ai-search"]} />
       <CtaBand title="Find out what AI says about your business." />
     </>
   );

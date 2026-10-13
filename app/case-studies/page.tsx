@@ -11,7 +11,7 @@ import { SITE_URL, pageMeta } from "@/lib/site";
 
 const TITLE = "Case Studies & 90-Day SEO Playbooks | Ramjan Ali Akash";
 const DESCRIPTION =
-  "How local SEO, GEO & AI visibility, technical SEO, on-page, link building and audits run for home service businesses: the starting point, first 90 days and results tracked.";
+  "How local SEO, GEO & AI visibility, technical SEO, on-page, link building and audits run for home service businesses, from starting point to results.";
 
 export const metadata = pageMeta({ title: TITLE, description: DESCRIPTION, path: "/case-studies" });
 

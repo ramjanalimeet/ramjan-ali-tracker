@@ -4,13 +4,14 @@ import { Faq } from "@/components/Faq";
 import { HowItWorks } from "@/components/HowItWorks";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ServiceChips } from "@/components/ServiceChips";
+import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta({
   title: "Local SEO Audits for Service Businesses | Ramjan Ali Akash",
   description:
-    "Local SEO and AI visibility audits for home service businesses: Google Business Profile, website, citations, reviews and competitor gaps, with a prioritized fix list.",
+    "SEO and AI visibility audits for home service businesses: Google Business Profile, website, citations, reviews and competitor gaps, with a prioritized fix list.",
   path: "/seo-services/seo-audits",
 });
 
@@ -52,7 +53,7 @@ const SCHEMA = {
       url: "https://ramjan-akash.vercel.app/seo-services/seo-audits",
       name: "Local SEO Audits for Service Businesses | Ramjan Ali Akash",
       description:
-        "Local SEO and AI visibility audits for home service businesses: Google Business Profile, website, citations, reviews and competitor gaps, with a prioritized fix list.",
+        "SEO and AI visibility audits for home service businesses: Google Business Profile, website, citations, reviews and competitor gaps, with a prioritized fix list.",
       isPartOf: {
         "@id": "https://ramjan-akash.vercel.app/#website",
       },
@@ -87,7 +88,7 @@ const SCHEMA = {
       "@type": "Service",
       name: "SEO Audits",
       description:
-        "Local SEO and AI visibility audits for home service businesses: Google Business Profile, website, citations, reviews and competitor gaps, with a prioritized fix list.",
+        "SEO and AI visibility audits for home service businesses: Google Business Profile, website, citations, reviews and competitor gaps, with a prioritized fix list.",
       url: "https://ramjan-akash.vercel.app/seo-services/seo-audits",
       provider: {
         "@id": "https://ramjan-akash.vercel.app/#business",
@@ -246,6 +247,7 @@ export default function SeoAuditsPage() {
       <HowItWorks />
       <Faq items={FAQ} />
       <ServiceChips exclude="/seo-services/seo-audits" />
+      <RelatedLinks page="/seo-services/seo-audits" topics={["strategy", "technical"]} />
       <CtaBand title="Find out what is holding your rankings back." />
     </>
   );

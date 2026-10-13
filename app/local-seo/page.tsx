@@ -6,6 +6,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { fromPrice, usd } from "@/lib/pricing";
 import { PricingSection } from "@/components/PricingPlans";
 import { ALL_INDUSTRIES } from "@/lib/industries";
+import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
 
@@ -381,6 +382,7 @@ export default function LocalSeoPage() {
         </div>
       </section>
       <Faq items={FAQ} />
+      <RelatedLinks page="/local-seo" topics={["local-seo", "google-maps", "content"]} />
       <CtaBand title="Find out what is holding your rankings back." />
     </>
   );

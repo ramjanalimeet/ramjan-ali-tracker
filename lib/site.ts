@@ -20,8 +20,15 @@ const OG_IMAGE = { url: "/opengraph-image", width: 1200, height: 630, alt: OG_AL
 
 type MetaInput = { title: string; description: string; path: string; type?: "website" | "article" };
 
+const BRAND_SUFFIX = " | Ramjan Ali Akash";
+
+/** Keeps titles inside the ~60 characters Google shows by dropping the brand suffix when needed. */
+export const fitTitle = (title: string) =>
+  title.length > 60 && title.endsWith(BRAND_SUFFIX) ? title.slice(0, -BRAND_SUFFIX.length) : title;
+
 /** Title, description, canonical, Open Graph and Twitter tags for one page. */
-export function pageMeta({ title, description, path, type = "website" }: MetaInput): Metadata {
+export function pageMeta({ title: rawTitle, description, path, type = "website" }: MetaInput): Metadata {
+  const title = fitTitle(rawTitle);
   const url = path === "/" ? `${SITE_URL}/` : `${SITE_URL}${path}`;
   return {
     title: { absolute: title },

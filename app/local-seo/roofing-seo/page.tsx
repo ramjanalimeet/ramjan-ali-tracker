@@ -3,6 +3,7 @@ import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { HowItWorks } from "@/components/HowItWorks";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
 
@@ -71,8 +72,8 @@ const SCHEMA = {
         {
           "@type": "ListItem",
           position: 2,
-          name: "Local SEO",
-          item: "https://ramjan-akash.vercel.app/local-seo",
+          name: "Industries",
+          item: "https://ramjan-akash.vercel.app/industries",
         },
         {
           "@type": "ListItem",
@@ -110,7 +111,7 @@ export default function RoofingSeoPage() {
                 <Link href="/">Home</Link>
               </li>
               <li>
-                <Link href="/local-seo">Local SEO</Link>
+                <Link href="/industries">Industries</Link>
               </li>
               <li aria-current="page">Roofing SEO</li>
             </ol>
@@ -327,6 +328,11 @@ export default function RoofingSeoPage() {
           </div>
         </div>
       </section>
+      <RelatedLinks
+        page="/local-seo/roofing-seo"
+        topics={["local-seo", "google-maps"]}
+        industriesTitle="More industries"
+      />
       <CtaBand title="Be the roofer they call after the next storm." />
     </>
   );

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
+import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { MapMock } from "@/components/Mocks";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -51,7 +52,7 @@ function fit(text: string, limit = 160) {
 function seo(c: City) {
   const L = LOCALES[c.locale];
   const base = `${c.place} Local SEO for ${titleCase(L.noun)}`;
-  const title = `${base} | Ramjan Ali Akash`.length <= 70 ? `${base} | Ramjan Ali Akash` : base;
+  const title = `${base} | Ramjan Ali Akash`.length <= 60 ? `${base} | Ramjan Ali Akash` : base;
   const description = fit(
     `Local SEO for ${c.place} ${L.tradesDesc}. Rank in the map pack across ${c.areas[0]}, ${c.areas[1]} and ${c.areas[2]}. Book a free call.`,
   );
@@ -99,7 +100,9 @@ export default async function CityPage({ params }: Props) {
     ...new Set([...trades.flatMap((t) => L.queries[t].map((q) => q.replace("{c}", c.queryName))), ...c.queries]),
   ].slice(0, 14);
 
-  const siblings = citiesIn(c.group).filter((x) => x.slug !== c.slug);
+  const groupCities = citiesIn(c.group);
+  const at = groupCities.findIndex((x) => x.slug === c.slug);
+  const siblings = [...groupCities.slice(at + 1), ...groupCities.slice(0, at)];
   const siblingByName = new Map(siblings.map((x) => [x.name, x]));
 
   const schema = {
@@ -339,6 +342,12 @@ export default async function CityPage({ params }: Props) {
         </div>
       </section>
 
+      <RelatedLinks
+        page={`/locations/${c.slug}`}
+        topics={["local-seo", "google-maps"]}
+        posts={2}
+        industriesTitle="Industries I work with"
+      />
       <CtaBand title={`Want more calls from ${c.name} searches?`} />
     </>
   );

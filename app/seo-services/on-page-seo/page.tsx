@@ -4,6 +4,7 @@ import { Faq } from "@/components/Faq";
 import { HowItWorks } from "@/components/HowItWorks";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ServiceChips } from "@/components/ServiceChips";
+import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
 
@@ -247,6 +248,7 @@ export default function OnPageSeoPage() {
       <HowItWorks />
       <Faq items={FAQ} />
       <ServiceChips exclude="/seo-services/on-page-seo" />
+      <RelatedLinks page="/seo-services/on-page-seo" topics={["content"]} />
       <CtaBand title="Find out what is holding your rankings back." />
     </>
   );

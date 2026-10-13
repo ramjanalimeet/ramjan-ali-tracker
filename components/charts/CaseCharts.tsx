@@ -162,7 +162,7 @@ export function Sparkline({ values }: { values: number[] }) {
   const max = Math.max(...values);
   const pts = values.map((v, i) => `${(i / (values.length - 1)) * w},${h - 3 - (v / max) * (h - 6)}`).join(" ");
   return (
-    <svg viewBox={`0 0 ${w} ${h}`} className="spark" aria-hidden="true">
+    <svg viewBox={`0 0 ${w} ${h}`} className="sparkline" aria-hidden="true">
       <polyline
         points={pts}
         fill="none"

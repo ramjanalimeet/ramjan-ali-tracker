@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { JsonLd } from "@/components/JsonLd";
@@ -102,7 +103,14 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="about-photo">
-              <img src="/assets/akash.webp" alt="Portrait of Ramjan Ali Akash" width={400} height={432} />
+              <Image
+                src="/assets/akash.webp"
+                alt="Portrait of Ramjan Ali Akash"
+                width={400}
+                height={432}
+                sizes="(max-width: 960px) 300px, 380px"
+                priority
+              />
             </div>
           </div>
         </div>

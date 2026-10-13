@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
@@ -11,9 +12,9 @@ import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta({
-  title: "Local SEO & AI Search Visibility for Home Service Businesses | Ramjan Ali Akash",
+  title: "Local SEO & AI Search Visibility for Home Services",
   description:
-    "Local SEO and AI search visibility for home service businesses, wherever you work. Rank in the Google map pack and get recommended by ChatGPT, Gemini and AI Overviews. Free audit.",
+    "Local SEO and AI search visibility for home service businesses. Rank in the Google map pack and get recommended by ChatGPT, Gemini and AI Overviews.",
   path: "/",
 });
 
@@ -52,78 +53,12 @@ const SCHEMA = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "ProfessionalService",
-      "@id": "https://ramjan-akash.vercel.app/#business",
-      name: "Ramjan Ali Akash, Local SEO & AI Search Visibility",
-      url: "https://ramjan-akash.vercel.app/",
-      image: "https://ramjan-akash.vercel.app/assets/akash.webp",
-      email: "mailto:raakash.meet@gmail.com",
-      description: "Local SEO and AI search visibility for home service businesses worldwide.",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Dhaka",
-        addressCountry: "BD",
-      },
-      areaServed: "Worldwide",
-      founder: {
-        "@id": "https://ramjan-akash.vercel.app/#person",
-      },
-      potentialAction: {
-        "@type": "ReserveAction",
-        name: "Book a call",
-        target: "https://cal.com/ramjanalimeet/book-a-call",
-      },
-      knowsAbout: [
-        "Local SEO",
-        "Google Business Profile",
-        "Google Maps SEO",
-        "AI search visibility",
-        "Generative engine optimization",
-        "Google AI Overviews",
-        "Home service marketing",
-      ],
-      sameAs: [
-        "https://www.youtube.com/@Ramjanali-Akash",
-        "https://www.linkedin.com/in/ramjanalimeet/",
-        "https://www.facebook.com/RamjanaliMeet",
-        "https://www.instagram.com/ramjanali_akash/",
-        "https://www.tiktok.com/@ramjanali_akash",
-        "https://x.com/RamjanaliMeet",
-      ],
-    },
-    {
-      "@type": "Person",
-      "@id": "https://ramjan-akash.vercel.app/#person",
-      name: "Ramjan Ali Akash",
-      jobTitle: "Local SEO & AI Search Visibility Specialist",
-      image: "https://ramjan-akash.vercel.app/assets/akash.webp",
-      url: "https://ramjan-akash.vercel.app/",
-      sameAs: [
-        "https://www.youtube.com/@Ramjanali-Akash",
-        "https://www.linkedin.com/in/ramjanalimeet/",
-        "https://www.facebook.com/RamjanaliMeet",
-        "https://www.instagram.com/ramjanali_akash/",
-        "https://www.tiktok.com/@ramjanali_akash",
-        "https://x.com/RamjanaliMeet",
-      ],
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://ramjan-akash.vercel.app/#website",
-      url: "https://ramjan-akash.vercel.app/",
-      name: "Ramjan Ali Akash",
-      inLanguage: "en",
-      publisher: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
-      },
-    },
-    {
       "@type": "WebPage",
       "@id": "https://ramjan-akash.vercel.app/#webpage",
       url: "https://ramjan-akash.vercel.app/",
       name: "Local SEO & AI Search Visibility for Home Service Businesses | Ramjan Ali Akash",
       description:
-        "Local SEO and AI search visibility for home service businesses, wherever you work. Rank in the Google map pack and get recommended by ChatGPT, Gemini and AI Overviews. Free audit.",
+        "Local SEO and AI search visibility for home service businesses. Rank in the Google map pack and get recommended by ChatGPT, Gemini and AI Overviews.",
       isPartOf: {
         "@id": "https://ramjan-akash.vercel.app/#website",
       },
@@ -175,12 +110,13 @@ export default function HomePage() {
           </div>
           <div className="portrait">
             <div className="frame">
-              <img
+              <Image
                 src="/assets/akash.webp"
                 alt="Portrait of Ramjan Ali Akash"
-                width="400"
-                height="432"
-                fetchPriority="high"
+                width={400}
+                height={432}
+                sizes="(max-width: 960px) 340px, 400px"
+                priority
               />
             </div>
             <div className="badge b1">

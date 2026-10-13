@@ -7,9 +7,9 @@ import { CITIES, CITY_GROUPS, citiesIn } from "@/lib/cities";
 import { REGIONS } from "@/lib/locations";
 import { type FaqItem, SITE_URL, faqSchema, pageMeta } from "@/lib/site";
 
-const TITLE = "Locations | Local SEO & AI Search for Home Services Anywhere | Ramjan Ali Akash";
+const TITLE = "Locations | Local SEO & AI Search for Home Services";
 const DESCRIPTION =
-  "Local SEO and AI search visibility for home service businesses in any city or country: the US, Canada, the UK, Ireland, Australia, New Zealand, Europe and beyond.";
+  "Local SEO and AI search visibility for home service businesses in any city or country: the US, Canada, the UK, Ireland, Australia, Europe and beyond.";
 
 export const metadata = pageMeta({ title: TITLE, description: DESCRIPTION, path: "/locations" });
 
