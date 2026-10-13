@@ -14,6 +14,20 @@ CSS, JS, and image assets. It deploys as-is on Vercel (no build step).
 - `favicon.svg`, `robots.txt`, `sitemap.xml`
 - `vercel.json` — enables clean URLs (`/blog` serves `blog.html`)
 
+## Location pages
+
+City pages (`locations/<state-or-region>/<city>.html`) and the international
+region hubs (`locations/united-kingdom.html`, `europe`, `canada`, `australia`,
+`middle-east`) are generated:
+
+```
+python3 scripts/build_locations.py
+```
+
+City content lives in `scripts/city_data/`. The script also updates the city
+blocks in the state pages, `locations.html` and `sitemap.xml`, and writes
+`docs/location-research.md` (why each city was picked and what it targets).
+
 ## Deploy
 
 Import this repo into Vercel (or run `vercel`). No framework or build command is

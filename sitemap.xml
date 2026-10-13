@@ -6,7 +6,7 @@
   <url><loc>https://ramjan-akash.vercel.app/case-studies</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/free-seo-audit</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/local-seo</loc><lastmod>2026-10-04</lastmod></url>
-  <url><loc>https://ramjan-akash.vercel.app/locations</loc><lastmod>2026-10-04</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations</loc><lastmod>2026-10-13</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/seo-services</loc><lastmod>2026-10-04</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/blog/content-seo</loc><lastmod>2026-10-04</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/blog/google-maps</loc><lastmod>2026-10-04</lastmod></url>
@@ -23,12 +23,76 @@
   <url><loc>https://ramjan-akash.vercel.app/local-seo/plumbing-seo</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/local-seo/roofing-seo</loc><lastmod>2026-10-04</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/local-seo/septic-seo</loc><lastmod>2026-10-01</lastmod></url>
-  <url><loc>https://ramjan-akash.vercel.app/locations/arizona</loc><lastmod>2026-10-01</lastmod></url>
-  <url><loc>https://ramjan-akash.vercel.app/locations/florida</loc><lastmod>2026-10-01</lastmod></url>
-  <url><loc>https://ramjan-akash.vercel.app/locations/georgia</loc><lastmod>2026-10-01</lastmod></url>
-  <url><loc>https://ramjan-akash.vercel.app/locations/north-carolina</loc><lastmod>2026-10-01</lastmod></url>
-  <url><loc>https://ramjan-akash.vercel.app/locations/texas</loc><lastmod>2026-10-01</lastmod></url>
-  <url><loc>https://ramjan-akash.vercel.app/seo-services/content-seo</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/arizona</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/florida</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/georgia</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/north-carolina</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/texas</loc><lastmod>2026-10-13</lastmod></url>
+  <!--cities:start-->
+  <url><loc>https://ramjan-akash.vercel.app/locations/united-kingdom</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/europe</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/canada</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/australia</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/middle-east</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/texas/mckinney</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/texas/lubbock</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/texas/tyler</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/texas/new-braunfels</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/texas/conroe</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/florida/cape-coral</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/florida/port-st-lucie</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/florida/ocala</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/florida/lakeland</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/georgia/savannah</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/georgia/augusta</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/arizona/gilbert</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/arizona/prescott</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/north-carolina/wilmington</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/north-carolina/asheville</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/united-kingdom/milton-keynes</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/united-kingdom/peterborough</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/united-kingdom/swindon</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/united-kingdom/norwich</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/united-kingdom/exeter</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/united-kingdom/plymouth</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/united-kingdom/derby</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/united-kingdom/colchester</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/united-kingdom/york</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/united-kingdom/northampton</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/europe/cork</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/europe/galway</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/europe/limerick</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/europe/waterford</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/europe/kilkenny</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/europe/limassol</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/europe/paphos</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/canada/hamilton</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/canada/london</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/canada/kitchener</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/canada/barrie</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/canada/kelowna</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/canada/halifax</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/canada/saskatoon</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/canada/regina</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/canada/red-deer</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/australia/sunshine-coast</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/australia/newcastle</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/australia/geelong</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/australia/wollongong</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/australia/townsville</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/australia/cairns</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/australia/toowoomba</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/australia/ballarat</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/australia/bendigo</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/middle-east/sharjah</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/middle-east/ajman</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/middle-east/ras-al-khaimah</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/middle-east/al-ain</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/middle-east/abu-dhabi</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/middle-east/doha</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/middle-east/muscat</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/locations/middle-east/manama</loc><lastmod>2026-10-13</lastmod></url>
+  <!--cities:end--><url><loc>https://ramjan-akash.vercel.app/seo-services/content-seo</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/seo-services/link-building</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/seo-services/on-page-seo</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/seo-services/seo-audits</loc><lastmod>2026-10-01</lastmod></url>
