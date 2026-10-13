@@ -9,7 +9,7 @@ const post = getPost("local-seo-checklist-for-contractors")!;
 export const metadata = pageMeta({
   title: "Local SEO Checklist for Contractors (2026): Step by Step",
   description:
-    "A complete local SEO checklist for roofers, plumbers, HVAC and home service contractors: Google Business Profile, website, citations, reviews, links and AI search.",
+    "A complete local SEO checklist for roofers, plumbers, HVAC and other contractors: Google Business Profile, website, citations, reviews, links and AI search.",
   path: `/blog/${post.slug}`,
   type: "article",
 });

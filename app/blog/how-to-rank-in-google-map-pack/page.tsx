@@ -9,7 +9,7 @@ const post = getPost("how-to-rank-in-google-map-pack")!;
 export const metadata = pageMeta({
   title: "How to Rank in the Google Map Pack (Local 3-Pack Guide)",
   description:
-    "What decides which three businesses show in the Google map pack, why your business may not appear, and the practical steps contractors take to get into the top three.",
+    "What decides the three businesses in the Google map pack, why yours may not show, and the practical steps contractors take to reach the top three.",
   path: `/blog/${post.slug}`,
   type: "article",
 });

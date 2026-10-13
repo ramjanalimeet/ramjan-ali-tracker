@@ -9,7 +9,7 @@ const post = getPost("technical-seo-for-service-business-websites")!;
 export const metadata = pageMeta({
   title: "Technical SEO for Service Business Websites: Fixes That Matter",
   description:
-    "The technical SEO problems most common on contractor and home service websites: indexing, speed, Core Web Vitals, mobile, schema and site structure, and how to fix them.",
+    "The technical SEO problems most common on contractor websites: indexing, speed, Core Web Vitals, mobile, schema and structure, and how to fix each one.",
   path: `/blog/${post.slug}`,
   type: "article",
 });

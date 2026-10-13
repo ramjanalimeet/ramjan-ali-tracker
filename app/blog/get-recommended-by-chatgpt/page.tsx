@@ -9,7 +9,7 @@ const post = getPost("get-recommended-by-chatgpt")!;
 export const metadata = pageMeta({
   title: "How to Get Recommended by ChatGPT: Home Service Guide",
   description:
-    "Where ChatGPT, Gemini, Perplexity and Google's AI Overviews get local recommendations, and the steps that make your home service business one of the names they give.",
+    "Where ChatGPT, Gemini, Perplexity and Google AI Overviews get local recommendations, and how to make your home service business one of the names they give.",
   path: `/blog/${post.slug}`,
   type: "article",
 });

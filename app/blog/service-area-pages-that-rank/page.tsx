@@ -9,7 +9,7 @@ const post = getPost("service-area-pages-that-rank")!;
 export const metadata = pageMeta({
   title: "Service Area Pages That Rank (Without Doorway Spam)",
   description:
-    "How home service businesses can build location pages for the towns they serve that rank, convert and stay clear of Google's doorway rules, with a page template and examples.",
+    "How home service businesses can build location pages for the towns they serve that rank and convert without breaking Google's doorway rules, with a template.",
   path: `/blog/${post.slug}`,
   type: "article",
 });
