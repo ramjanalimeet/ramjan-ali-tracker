@@ -77,7 +77,7 @@ CITIES = [
         "why": "Older housing, Toronto overflow; far lighter competition than Toronto.",
     },
     {
-        **CA, "slug": "london", "name": "London", "place": "London, ON", "admin": ("Province", "Ontario"), "admin_name": "Ontario",
+        **CA, "slug": "london-ontario", "name": "London", "place": "London, ON", "admin": ("Province", "Ontario"), "admin_name": "Ontario",
         "query_name": "london ontario",
         "metro": "London and Middlesex",
         "areas": ["Byron", "Masonville", "Old North", "Lambeth", "Komoka", "St. Thomas", "Strathroy"],

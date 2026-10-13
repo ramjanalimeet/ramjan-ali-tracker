@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
-"""Generate city location pages and international region hubs.
+"""Generate city location pages, all directly under /locations/<city>.
 
-Data lives in scripts/city_data/:
-  usa.py            US cities, each nested under an existing state page
-                    (/locations/<state>/<city>)
-  <region>.py       REGION hub + CITIES for UK, Europe, Canada, Australia and
-                    the Middle East (/locations/<region> and
-                    /locations/<region>/<city>)
+Data lives in scripts/city_data/: usa.py (US cities, each with its state)
+and one file per region (UK, Europe, Canada, Australia, Middle East) with a
+REGION summary and its CITIES. Every city page is served at
+/locations/<city-slug>, and locations.html lists them all, grouped by region.
 
 The site header/footer are copied from an existing state page so generated
 pages always match the live design.
@@ -166,22 +164,24 @@ def load():
     for c in importlib.import_module("city_data.usa").CITIES:
         c = dict(c)
         sname, abbr = US_STATES[c["state"]]
-        c.update(locale="us", parent=c["state"], parent_name=sname, place=f"{c['name']}, {abbr}",
+        c.update(locale="us", parent="united-states", parent_name="United States", place=f"{c['name']}, {abbr}",
                  country="United States", admin_type="State", admin_name=sname, geo_region=f"US-{abbr}",
-                 path=f"/locations/{c['state']}/{c['slug']}")
+                 path=f"/locations/{c['slug']}")
         cities.append(c)
     for mod_name in REGIONS:
         mod = importlib.import_module(f"city_data.{mod_name}")
         r = dict(mod.REGION)
-        r["path"] = f"/locations/{r['slug']}"
         r["cities"] = []
         for c in mod.CITIES:
             c = dict(c)
             c.setdefault("locale", r["locale"])
-            c.update(parent=r["slug"], parent_name=r["name"], path=f"/locations/{r['slug']}/{c['slug']}")
+            c.update(parent=r["slug"], parent_name=r["name"], path=f"/locations/{c['slug']}")
             cities.append(c)
             r["cities"].append(c)
         hubs.append(r)
+    slugs = [c["slug"] for c in cities]
+    dupes = {s for s in slugs if slugs.count(s) > 1}
+    assert not dupes, f"duplicate city slugs: {dupes}"
     for c in cities:
         c["url"] = SITE + c["path"]
     return cities, hubs
@@ -364,7 +364,7 @@ def city_page(c, cities, header, footer):
                f"{areas[1]} and {areas[2]}. Free audit.")
     faqs = city_faqs(c, L)
     trades = [t for t in c["focus"] if t in c["trades"]] + [t for t in TRADE_LINKS if t in c["trades"] and t not in c["focus"]]
-    crumbs = [("Home", "/"), ("Locations", "/locations"), (c["parent_name"], f"/locations/{c['parent']}"), (n, c["path"])]
+    crumbs = [("Home", "/"), ("Locations", "/locations"), (n, c["path"])]
 
     graph = [
         crumbs_schema(crumbs),
@@ -441,8 +441,8 @@ def city_page(c, cities, header, footer):
         f'<div class="faq rv">{faq_html(faqs)}</div></div></section>'
 
         f'<section class="sec tight"><div class="wrap rv"><span class="eyebrow">More {e(c["parent_name"])} cities</span>'
-        f'<div class="chips" style="margin-top:6px">{near_chips}<a class="chip" href="/locations/{c["parent"]}">'
-        f'All of {e(c["parent_name"])} →</a></div></div></section>'
+        f'<div class="chips" style="margin-top:6px">{near_chips}<a class="chip" href="/locations#{c["parent"]}">'
+        f'All locations →</a></div></div></section>'
         + cta_band(f"Want more calls from {n} searches?",
                    f"A free Local SEO audit of your Google Business Profile, website and top {n} competitors. You get "
                    "the findings and the order I would fix them in, whether you hire me or not.")
@@ -450,51 +450,6 @@ def city_page(c, cities, header, footer):
     )
     geo = (c.get("geo_region"), n)
     return head(c["url"], title, desc, graph, geo) + header + body + footer
-
-
-def hub_page(r, header, footer):
-    L = LOCALES[r["locale"]]
-    url = SITE + r["path"]
-    crumbs = [("Home", "/"), ("Locations", "/locations"), (r["name"], r["path"])]
-    faqs = list(r["faqs"]) + [(
-        f"You are based in Bangladesh. How does working together across time zones work?",
-        "Everything that moves local rankings, your profile, website, citations, reviews and links, is managed "
-        "online. " + L["hours"])]
-    graph = [crumbs_schema(crumbs),
-             {"@type": "Service", "name": f"Local SEO in {r['name']}", "description": r["desc"], "url": url,
-              "provider": {"@id": f"{SITE}/#business"}, "serviceType": f"Local SEO for {L['noun']}",
-              "areaServed": [{"@type": "Country", "name": x} for x in r["countries"]]},
-             faq_schema(faqs)]
-    facts = "".join(f"<li><b>{k}</b><span>{e(v)}</span></li>" for k, v in r["facts"] + [
-        ("Contract", "Month to month. Pause or cancel with a week of notice.")])
-    cards = "".join(
-        f'<a class="card rv" href="{c["path"]}"><span class="tag">{e(c["admin"][1])}</span>'
-        f'<h3>Local SEO in {e(c["name"])}</h3><p>{e(c["card"])}</p><span class="go">See {e(c["name"])} <span>→</span></span></a>'
-        for c in r["cities"])
-    intro = "".join(f"<p>{e(p)}</p>" for p in r["intro"])
-    points = "".join(f"<li>{e(p)}</li>" for p in r["points"])
-    body = (
-        f'<main id="main"><section class="phero"><div class="wrap">{crumbs_html(crumbs)}<div class="phero-grid"><div>'
-        f'<span class="eyebrow">Local SEO · {e(r["name"])}</span><h1>Local SEO for <span class="hl">{e(r["h1"])}</span> {e(L["noun"])}.</h1>'
-        f'<p class="lead">{e(r["lead"])}</p><div class="cta-row">{wa_btn()}<a class="btn btn-ghost" href="/book-a-call">Book a call</a></div></div>'
-        f'<aside class="facts"><h2>At a glance</h2><ul>{facts}</ul></aside></div></div></section>'
-        f'<section class="sec"><div class="wrap split"><div class="body rv"><span class="eyebrow">The {e(r["name"])} market</span>'
-        f'<h2>{e(r["headline"])}</h2>{intro}</div><div class="panel rv"><h3>What wins here</h3><ul class="ticks">{points}</ul></div></div></section>'
-        f'<section class="sec alt"><div class="wrap"><div class="sec-head rv"><div><span class="eyebrow">City guides</span>'
-        f'<h2>{e(r["name"])} cities I focus on.</h2></div><p>Each page covers what drives local search demand in that city, '
-        f'the searches worth ranking for, and the nearby areas that belong in your service area.</p></div>'
-        f'<div class="grid g3">{cards}</div></div></section>'
-        + STEPS.replace("{place}", e(r["name"])) +
-        f'<section class="sec"><div class="wrap"><div class="sec-head rv"><div><span class="eyebrow">Questions</span>'
-        f'<h2>Things people ask first.</h2></div><p>Anything else, ask on the call or '
-        f'<a href="mailto:raakash.meet@gmail.com">email me</a>. I reply to every message personally.</p></div>'
-        f'<div class="faq rv">{faq_html(faqs)}</div></div></section>'
-        + cta_band(f"Want more calls from {r['name']} searches?",
-                   "A free Local SEO audit of your Google Business Profile, website and top competitors. You get the "
-                   "findings and the order I would fix them in, whether you hire me or not.")
-        + '</main>'
-    )
-    return head(url, r["title"], r["desc"], graph) + header + body + footer
 
 
 def replace_block(text, start, end, block, anchor_before):
@@ -524,25 +479,31 @@ def update_state_pages(cities):
         p.write_text(t)
 
 
+US_GROUP = {
+    "slug": "united-states", "name": "United States",
+    "lead": "Mid-size, fast-growing US cities where hail, hurricanes, heat and septic keep trades busy, and where "
+            "the map pack is still winnable.",
+}
+
+
 def update_hub(cities, hubs):
+    """List every city page on /locations, grouped by country or region."""
     p = ROOT / "locations.html"
     t = p.read_text()
-    region_cards = "".join(
-        f'<a class="card rv" href="{r["path"]}"><span class="ic" aria-hidden="true">{i:02d}</span><h3>{e(r["name"])}</h3>'
-        f'<p>{e(r["card"])}</p><span class="go">Learn more <span>→</span></span></a>' for i, r in enumerate(hubs, 6))
-    groups = [("United States", "/locations", [c for c in cities if c["locale"] == "us"])] + \
-             [(r["name"], r["path"], r["cities"]) for r in hubs]
-    lists = "".join(
-        f'<div class="rv" style="margin-top:22px"><h3 style="margin-bottom:10px"><a href="{path}">{e(name)}</a></h3><div class="chips">'
-        + "".join(f'<a class="chip" href="{c["path"]}">{e(c["place"])}</a>' for c in cs) + "</div></div>"
-        for name, path, cs in groups)
-    block = (
-        f'<section class="sec alt"><div class="wrap"><div class="sec-head rv"><div><span class="eyebrow">International</span>'
-        f'<h2>Beyond the United States.</h2></div><p>The same local playbook works anywhere Google Maps decides who gets the call. '
-        f'These are the markets I focus on outside the US.</p></div><div class="grid g3">{region_cards}</div></div></section>'
-        f'<section class="sec"><div class="wrap"><div class="sec-head rv"><div><span class="eyebrow">Cities</span>'
-        f'<h2>Local SEO by city.</h2></div><p>{len(cities)} city guides for growing markets where local trade businesses can '
-        f'still win the map pack with the right local work.</p></div>{lists}</div></section>')
+    groups = [(US_GROUP, [c for c in cities if c["locale"] == "us"])] + [(r, r["cities"]) for r in hubs]
+    sections = ""
+    for i, (g, cs) in enumerate(groups):
+        cards = "".join(
+            f'<a class="card rv" href="{c["path"]}"><span class="tag">{e(c["place"])}</span>'
+            f'<h3>Local SEO in {e(c["name"])}</h3><p>{e(c["card"])}</p><span class="go">See {e(c["name"])} <span>→</span></span></a>'
+            for c in cs)
+        sections += (
+            f'<section class="sec{" alt" if i % 2 else ""}" id="{g["slug"]}"><div class="wrap"><div class="sec-head rv"><div>'
+            f'<span class="eyebrow">{e(g["name"])} · {len(cs)} cities</span><h2>Local SEO in {"the " if g["name"] in ("United States", "United Kingdom", "Middle East") else ""}{e(g["name"])}.</h2></div>'
+            f'<p>{e(g["lead"])}</p></div><div class="grid g3">{cards}</div></div></section>')
+    jump = "".join(f'<a class="chip" href="#{g["slug"]}">{e(g["name"])} ({len(cs)})</a>' for g, cs in groups)
+    block = (f'<section class="sec tight"><div class="wrap rv"><span class="eyebrow">{len(cities)} city pages</span>'
+             f'<div class="chips" style="margin-top:6px">{jump}</div></div></section>{sections}')
     anchor = '<section class="sec alt"><div class="wrap split"><div class="body rv"><span class="eyebrow">How I work remotely</span>'
     p.write_text(replace_block(t, "<!--city-hub:start-->", "<!--city-hub:end-->", block, anchor))
 
@@ -553,7 +514,7 @@ def update_sitemap(cities, hubs):
     for slug in US_STATES:
         t = re.sub(rf"(<loc>{re.escape(SITE)}/locations/{slug}</loc><lastmod>)[^<]+", rf"\g<1>{TODAY}", t)
     t = re.sub(rf"(<loc>{re.escape(SITE)}/locations</loc><lastmod>)[^<]+", rf"\g<1>{TODAY}", t)
-    urls = [SITE + r["path"] for r in hubs] + [c["url"] for c in cities]
+    urls = [c["url"] for c in cities]
     block = "\n" + "".join(f"  <url><loc>{u}</loc><lastmod>{TODAY}</lastmod></url>\n" for u in urls) + "  "
     p.write_text(replace_block(t, "<!--cities:start-->", "<!--cities:end-->", block,
                                f"<url><loc>{SITE}/seo-services/content-seo"))
@@ -582,7 +543,7 @@ def write_research(cities, hubs):
         lead = ", ".join(labels[t].replace(" SEO", "") for t in c["focus"])
         qs = "; ".join(f"`{q}`" for q in ([c["query"]] + c.get("queries", []))[:3])
         L.append(f"| {region} | [{c['place']}]({c['path']}) | {c['demand']} | {c['competition']} | {lead} | {qs} | {c['why']} |")
-    L += ["", f"Total: {len(cities)} city pages and {len(hubs)} region hubs.", ""]
+    L += ["", f"Total: {len(cities)} city pages, all under /locations.", ""]
     out = ROOT / "docs" / "location-research.md"
     out.parent.mkdir(exist_ok=True)
     out.write_text("\n".join(L))
@@ -595,13 +556,11 @@ def main():
         out = ROOT / (c["path"].lstrip("/") + ".html")
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(city_page(c, cities, header, footer))
-    for r in hubs:
-        (ROOT / (r["path"].lstrip("/") + ".html")).write_text(hub_page(r, header, footer))
     update_state_pages(cities)
     update_hub(cities, hubs)
     update_sitemap(cities, hubs)
     write_research(cities, hubs)
-    print(f"Built {len(cities)} city pages and {len(hubs)} region hubs.")
+    print(f"Built {len(cities)} city pages under /locations.")
 
 
 if __name__ == "__main__":
