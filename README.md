@@ -14,6 +14,19 @@ CSS, JS, and image assets. It deploys as-is on Vercel (no build step).
 - `favicon.svg`, `robots.txt`, `sitemap.xml`
 - `vercel.json` — enables clean URLs (`/blog` serves `blog.html`)
 
+## Location pages
+
+City pages (`locations/<city>.html`, served at `/locations/<city>`) are generated,
+and all of them are listed on the main Locations page:
+
+```
+python3 scripts/build_locations.py
+```
+
+City content lives in `scripts/city_data/`. The script also adds the city list
+to `locations.html` and the sitemap (no other existing page is changed), and writes
+`docs/location-research.md` (why each city was picked and what it targets).
+
 ## Deploy
 
 Import this repo into Vercel (or run `vercel`). No framework or build command is
