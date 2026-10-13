@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { EMAIL, SOCIAL, TRADES } from "@/lib/site";
+import { ALL_INDUSTRIES } from "@/lib/industries";
+import { EMAIL, SOCIAL } from "@/lib/site";
 import { ALL_SERVICES } from "@/lib/services";
 import { SocialIcon } from "./SocialIcon";
 
@@ -45,11 +46,14 @@ export function Footer() {
           <div>
             <h4>Industries</h4>
             <ul>
-              {TRADES.map((t) => (
+              {ALL_INDUSTRIES.slice(0, 6).map((t) => (
                 <li key={t.slug}>
                   <Link href={`/local-seo/${t.slug}`}>{t.name}</Link>
                 </li>
               ))}
+              <li>
+                <Link href="/industries">All industries →</Link>
+              </li>
             </ul>
           </div>
           <div>

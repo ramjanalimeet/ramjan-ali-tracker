@@ -7,14 +7,6 @@ export const WHATSAPP_URL = "https://wa.me/8801839295114";
 export const BOOKING_URL = "https://cal.com/ramjanalimeet/book-a-call";
 export const OG_ALT = "Ramjan Ali - Local SEO and AI search visibility for home service businesses";
 
-export const TRADES = [
-  { slug: "roofing-seo", name: "Roofing SEO", blurb: "Rank for roof repair, replacement and storm work" },
-  { slug: "plumbing-seo", name: "Plumbing SEO", blurb: "Win emergency and high-value plumbing calls" },
-  { slug: "septic-seo", name: "Septic SEO", blurb: "Own pumping, inspection and install searches" },
-  { slug: "hvac-seo", name: "HVAC SEO", blurb: "Rank for AC, heating and install searches" },
-  { slug: "home-services-seo", name: "Home Services SEO", blurb: "Electricians, garage doors, pest control and more" },
-] as const;
-
 export const SOCIAL = [
   { label: "YouTube", href: "https://www.youtube.com/@Ramjanali-Akash" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/ramjanalimeet/" },

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ALL_SERVICES, SERVICE_GROUPS } from "@/lib/services";
-import { TRADES } from "@/lib/site";
 
 const LINKS = [
   { href: "/locations", label: "Locations" },
@@ -40,7 +39,7 @@ export function Header() {
   const page = (on: boolean) => (on ? ("page" as const) : undefined);
   const isCurrent = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
   const onServices = pathname === "/seo-services" || ALL_SERVICES.some((s) => pathname === s.href);
-  const onIndustries = pathname.startsWith("/local-seo/");
+  const onIndustries = pathname === "/industries" || pathname.startsWith("/local-seo/");
 
   return (
     <>
@@ -87,25 +86,9 @@ export function Header() {
                 </div>
               </li>
               <li>
-                <Link href="/local-seo#trades" aria-current={page(onIndustries)} aria-haspopup="true">
+                <Link href="/industries" aria-current={page(onIndustries)}>
                   Industries
-                  <Caret />
                 </Link>
-                <div className="dd">
-                  <ul>
-                    {TRADES.map((t) => (
-                      <li key={t.slug}>
-                        <Link href={`/local-seo/${t.slug}`}>
-                          {t.name}
-                          <small>{t.blurb}</small>
-                        </Link>
-                      </li>
-                    ))}
-                    <li className="all">
-                      <Link href="/local-seo#trades">All industries →</Link>
-                    </li>
-                  </ul>
-                </div>
               </li>
               {LINKS.map((l) => (
                 <li key={l.href}>
@@ -153,16 +136,7 @@ export function Header() {
             </li>
           </ul>
         </details>
-        <details>
-          <summary>Industries</summary>
-          <ul>
-            {TRADES.map((t) => (
-              <li key={t.slug}>
-                <Link href={`/local-seo/${t.slug}`}>{t.name}</Link>
-              </li>
-            ))}
-          </ul>
-        </details>
+        <Link href="/industries">Industries</Link>
         {LINKS.map((l) => (
           <Link key={l.href} href={l.href}>
             {l.label}

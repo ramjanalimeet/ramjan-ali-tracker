@@ -5,6 +5,7 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { fromPrice, usd } from "@/lib/pricing";
 import { PricingSection } from "@/components/PricingPlans";
+import { ALL_INDUSTRIES } from "@/lib/industries";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
 
@@ -230,6 +231,11 @@ export default function LocalSeoPage() {
               <span className="go">
                 Learn more <span>→</span>
               </span>
+            </Link>
+          </div>
+          <div className="cta-row rv">
+            <Link className="btn btn-ghost" href="/industries">
+              See all {ALL_INDUSTRIES.length} industries <span className="arr">→</span>
             </Link>
           </div>
         </div>

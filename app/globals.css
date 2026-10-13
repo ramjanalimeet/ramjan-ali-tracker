@@ -1695,3 +1695,79 @@ a.card:hover .go span {
 .dd.mega .all {
   margin-top: 8px;
 }
+
+/* Industries hub */
+.ind-jump {
+  margin-top: 34px;
+}
+.ind-jump .chip,
+.ind-card {
+  scroll-margin-top: 90px;
+}
+section[id] {
+  scroll-margin-top: 80px;
+}
+.ind-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+.ind-head h2 {
+  font-size: clamp(28px, 3.4vw, 40px);
+}
+.ind-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.ind-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 18px 46px 18px 20px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  text-decoration: none;
+  color: var(--ink);
+  transition:
+    border-color 0.2s,
+    transform 0.25s var(--ease),
+    box-shadow 0.25s;
+}
+.ind-card b {
+  font-size: 17px;
+  font-weight: 600;
+}
+.ind-card small {
+  color: var(--mute);
+  font-size: 14px;
+  line-height: 1.4;
+}
+.ind-card .arr {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.25s var(--ease);
+}
+.ind-card:hover {
+  border-color: var(--ink);
+  box-shadow: 0 16px 30px -22px rgba(17, 18, 16, 0.5);
+}
+.ind-card:hover .arr {
+  transform: translate(4px, -50%);
+}
+@media (max-width: 960px) {
+  .ind-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .ind-grid {
+    grid-template-columns: 1fr;
+  }
+}

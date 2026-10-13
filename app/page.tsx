@@ -6,6 +6,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { PostCards } from "@/components/PostCards";
 import { AI_PLAN, fromPrice, usd } from "@/lib/pricing";
 import { REGIONS } from "@/lib/locations";
+import { ALL_INDUSTRIES } from "@/lib/industries";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
 
@@ -167,8 +168,8 @@ export default function HomePage() {
               <Link className="chip" href="/ai-search">
                 AI Search Visibility
               </Link>
-              <Link className="chip" href="/local-seo#trades">
-                Roofing, plumbing, HVAC, septic &amp; more
+              <Link className="chip" href="/industries">
+                60+ home service industries
               </Link>
             </div>
           </div>
@@ -431,6 +432,11 @@ export default function HomePage() {
               <span className="go">
                 Learn more <span>→</span>
               </span>
+            </Link>
+          </div>
+          <div className="cta-row rv">
+            <Link className="btn btn-ghost" href="/industries">
+              See all {ALL_INDUSTRIES.length} industries <span className="arr">→</span>
             </Link>
           </div>
         </div>

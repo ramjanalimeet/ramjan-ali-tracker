@@ -4,7 +4,7 @@ import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { REGIONS } from "@/lib/locations";
-import { type FaqItem, SITE_URL, TRADES, faqSchema, pageMeta } from "@/lib/site";
+import { type FaqItem, SITE_URL, faqSchema, pageMeta } from "@/lib/site";
 
 const TITLE = "Locations | Local SEO & AI Search for Home Services Anywhere | Ramjan Ali Akash";
 const DESCRIPTION =
@@ -190,11 +190,9 @@ export default function LocationsPage() {
             <Link className="chip" href="/ai-search">
               AI Search Visibility →
             </Link>
-            {TRADES.map((t) => (
-              <Link className="chip" href={`/local-seo/${t.slug}`} key={t.slug}>
-                {t.name} →
-              </Link>
-            ))}
+            <Link className="chip" href="/industries">
+              All industries →
+            </Link>
           </div>
         </div>
       </section>

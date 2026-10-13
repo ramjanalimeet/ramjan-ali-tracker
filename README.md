@@ -21,6 +21,9 @@ npm run typecheck
   `PricingPlans`, `LeadForm`, `PostCards`, `WhatsAppButton`
 - `lib/site.ts` — site URL, contact links, industries, page metadata helper
 - `lib/pricing.ts` — **every price on the site**; edit plans and prices here
+- `lib/industries/` — the 56 generated industry pages (one file per category);
+  rendered by `app/local-seo/[slug]/page.tsx` and listed on `/industries`
+- `lib/services.ts` — the Services menu and service pages list
 - `lib/posts.ts` — blog article list (each article lives in `app/blog/<slug>/page.tsx`)
 - `public/` — images and favicon
 - `next.config.ts` — 301 redirects for retired `/seo-services/*`, `/locations/*`
