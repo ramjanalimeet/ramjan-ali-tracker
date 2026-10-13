@@ -11,8 +11,9 @@ pages always match the live design.
 
 Run from the repo root:  python3 scripts/build_locations.py
 
-Re-running is safe: generated pages are overwritten, and the blocks injected
-into the state pages, locations.html and sitemap.xml sit between markers.
+Existing pages are left as they are. The only changes outside the city pages
+are one block on locations.html and the sitemap entries, both between marker
+comments, so re-running is safe.
 """
 import html
 import importlib
@@ -459,26 +460,6 @@ def replace_block(text, start, end, block, anchor_before):
     return text[:i] + start + block + end + text[i:]
 
 
-def update_state_pages(cities):
-    anchor = '<section class="sec"><div class="wrap"><div class="sec-head rv"><div><span class="eyebrow">By trade</span>'
-    for slug, (name, _) in US_STATES.items():
-        mine = [c for c in cities if c["locale"] == "us" and c["state"] == slug]
-        p = ROOT / "locations" / f"{slug}.html"
-        t = p.read_text()
-        cards = "".join(
-            f'<a class="card rv" href="{c["path"]}"><span class="tag">{e(c["admin"][1])}</span>'
-            f'<h3>Local SEO in {e(c["name"])}</h3><p>{e(c["card"])}</p><span class="go">See {e(c["name"])} <span>→</span></span></a>'
-            for c in mine)
-        block = (f'<section class="sec"><div class="wrap"><div class="sec-head rv"><div><span class="eyebrow">City guides</span>'
-                 f'<h2>{e(name)} cities I focus on.</h2></div><p>Each page covers what drives local search demand in that city, '
-                 f'the searches worth ranking for, and the nearby towns that belong in your service area.</p></div>'
-                 f'<div class="grid g3">{cards}</div></div></section>')
-        t = replace_block(t, "<!--city-guides:start-->", "<!--city-guides:end-->", block, anchor)
-        for c in mine:
-            t = t.replace(f'<span class="chip">{c["name"]}</span>', f'<a class="chip" href="{c["path"]}">{c["name"]} →</a>')
-        p.write_text(t)
-
-
 US_GROUP = {
     "slug": "united-states", "name": "United States",
     "lead": "Mid-size, fast-growing US cities where hail, hurricanes, heat and septic keep trades busy, and where "
@@ -556,7 +537,6 @@ def main():
         out = ROOT / (c["path"].lstrip("/") + ".html")
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(city_page(c, cities, header, footer))
-    update_state_pages(cities)
     update_hub(cities, hubs)
     update_sitemap(cities, hubs)
     write_research(cities, hubs)

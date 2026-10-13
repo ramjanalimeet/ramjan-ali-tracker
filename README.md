@@ -23,8 +23,8 @@ and all of them are listed on the main Locations page:
 python3 scripts/build_locations.py
 ```
 
-City content lives in `scripts/city_data/`. The script also updates the city
-blocks in the state pages, `locations.html` and `sitemap.xml`, and writes
+City content lives in `scripts/city_data/`. The script also adds the city list
+to `locations.html` and the sitemap (no other existing page is changed), and writes
 `docs/location-research.md` (why each city was picked and what it targets).
 
 ## Deploy
