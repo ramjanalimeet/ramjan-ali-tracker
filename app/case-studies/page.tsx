@@ -4,7 +4,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { PlaybookExplorer } from "@/components/PlaybookExplorer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Sparkline } from "@/components/charts/CaseCharts";
-import { CASE_STUDIES, SAMPLE_CASE, monthLabel } from "@/lib/case-studies";
+import { CASE_STUDIES, monthLabel } from "@/lib/case-studies";
 import { ALL_INDUSTRIES } from "@/lib/industries";
 import { PLAYBOOKS, PLAYBOOK_SERVICES } from "@/lib/playbooks";
 import { SITE_URL, pageMeta } from "@/lib/site";
@@ -127,49 +127,52 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      <section className="sec" id="results">
-        <div className="wrap">
-          <div className="sec-head rv">
-            <div>
-              <span className="eyebrow">Client results</span>
-              <h2>{CASE_STUDIES.length ? "Real results, real data." : "What every case study shows."}</h2>
+      {/* Shown once real, approved client case studies are added to lib/case-studies.ts. */}
+      {CASE_STUDIES.length > 0 && (
+        <section className="sec" id="results">
+          <div className="wrap">
+            <div className="sec-head rv">
+              <div>
+                <span className="eyebrow">Client results</span>
+                <h2>Real results, real data.</h2>
+              </div>
+              <p>
+                {
+                  "Published with each client's permission, with numbers from their own Search Console, map rank scans and AI visibility checks."
+                }
+              </p>
             </div>
-            <p>
-              {CASE_STUDIES.length
-                ? "Published with each client's permission, with numbers from their own Search Console, map rank scans and AI visibility checks."
-                : "Client case studies are on the way. Each one shows Search Console clicks and impressions, before-and-after map rank grids and AI visibility, with the client's permission. Here is the format."}
-            </p>
+            <div className="grid g3">
+              {CASE_STUDIES.map((c) => (
+                <Link className="card case-card rv" href={`/case-studies/${c.slug}`} key={c.slug}>
+                  <span className="tag">
+                    {c.sample ? "Sample format · not a real client" : `${c.trade} · ${c.location}`}
+                  </span>
+                  <h3>{c.title}</h3>
+                  {c.searchConsole && (
+                    <div className="case-spark">
+                      <Sparkline values={c.searchConsole.clicks.map((p) => p.value)} />
+                      <span>
+                        Clicks {monthLabel(c.period.start)} to {monthLabel(c.period.end)}
+                      </span>
+                    </div>
+                  )}
+                  <ul className="case-hl">
+                    {c.highlights.slice(0, 2).map((h) => (
+                      <li key={h.label}>
+                        <b>{h.after}</b> {h.label.toLowerCase()} <span>(from {h.before})</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <span className="go">
+                    {c.sample ? "See the sample" : "Read the case study"} <span>→</span>
+                  </span>
+                </Link>
+              ))}
+            </div>
           </div>
-          <div className="grid g3">
-            {[...CASE_STUDIES, ...(CASE_STUDIES.length ? [] : [SAMPLE_CASE])].map((c) => (
-              <Link className="card case-card rv" href={`/case-studies/${c.slug}`} key={c.slug}>
-                <span className="tag">
-                  {c.sample ? "Sample format · not a real client" : `${c.trade} · ${c.location}`}
-                </span>
-                <h3>{c.title}</h3>
-                {c.searchConsole && (
-                  <div className="case-spark">
-                    <Sparkline values={c.searchConsole.clicks.map((p) => p.value)} />
-                    <span>
-                      Clicks {monthLabel(c.period.start)} to {monthLabel(c.period.end)}
-                    </span>
-                  </div>
-                )}
-                <ul className="case-hl">
-                  {c.highlights.slice(0, 2).map((h) => (
-                    <li key={h.label}>
-                      <b>{h.after}</b> {h.label.toLowerCase()} <span>(from {h.before})</span>
-                    </li>
-                  ))}
-                </ul>
-                <span className="go">
-                  {c.sample ? "See the sample" : "Read the case study"} <span>→</span>
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
       <section className="sec alt" id="playbooks">
         <div className="wrap">
           <div className="sec-head rv">

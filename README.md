@@ -57,5 +57,7 @@ clients or figures.
    client wrote and approved it, then build.
 
 The page at `/case-studies/<slug>` and its charts, the listing on
-`/case-studies` and the sitemap entry are generated automatically. Once at least
-one real case study exists, the labelled sample stops being listed.
+`/case-studies` and the sitemap entry are generated automatically. The "Client
+results" section on `/case-studies` appears once at least one real case study
+exists. The labelled sample stays at `/case-studies/sample-roofing-local-seo`
+(noindexed, not linked) as a format reference.

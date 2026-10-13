@@ -143,7 +143,7 @@ export default function HomePage() {
         <div className="wrap hero-grid">
           <div>
             <span className="pill">
-              <span className="dot"></span>Local SEO &amp; AI Search Visibility for Home Service Businesses
+              <span className="dot"></span>Local SEO &amp; AI Search Visibility
             </span>
             <h1>
               Get found on Google, <span className="hl">Google Maps</span> and in AI search.
