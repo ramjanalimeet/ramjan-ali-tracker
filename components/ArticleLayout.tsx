@@ -5,10 +5,22 @@ import { PostCards } from "./PostCards";
 import { RelatedLinks } from "./RelatedLinks";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { type Post, formatDate, topicOf } from "@/lib/posts";
-import { SITE_URL } from "@/lib/site";
+import { type FaqItem, SITE_URL, faqSchema } from "@/lib/site";
 
 /** Page frame for a blog article: header, body, sidebar, related posts and CTA. */
-export function ArticleLayout({ post, lead, children }: { post: Post; lead: string; children: React.ReactNode }) {
+export function ArticleLayout({
+  post,
+  lead,
+  faq = [],
+  children,
+}: {
+  post: Post;
+  lead: string;
+  /** Rendered at the end of the article and added as FAQPage structured data. */
+  faq?: FaqItem[];
+  children: React.ReactNode;
+}) {
+  const updated = post.updated ?? post.date;
   const url = `${SITE_URL}/blog/${post.slug}`;
   const topic = topicOf(post.topic);
   const schema = {
@@ -29,12 +41,13 @@ export function ArticleLayout({ post, lead, children }: { post: Post; lead: stri
         url,
         mainEntityOfPage: url,
         datePublished: post.date,
-        dateModified: post.date,
+        dateModified: updated,
         articleSection: topic.name,
         author: { "@id": `${SITE_URL}/#person` },
         publisher: { "@id": `${SITE_URL}/#business` },
         image: `${SITE_URL}/opengraph-image`,
       },
+      ...(faq.length ? [faqSchema(faq)] : []),
     ],
   };
 
@@ -63,14 +76,27 @@ export function ArticleLayout({ post, lead, children }: { post: Post; lead: stri
             <span>By Ramjan Ali Akash</span>
             <span>{post.minutes} min read</span>
             <span>
-              Updated <time dateTime={post.date}>{formatDate(post.date)}</time>
+              Updated <time dateTime={updated}>{formatDate(updated)}</time>
             </span>
           </div>
         </div>
       </section>
       <section className="sec tight" style={{ paddingTop: 20 }}>
         <div className="wrap art-grid">
-          <article className="prose">{children}</article>
+          <article className="prose">
+            {children}
+            {faq.length > 0 && (
+              <>
+                <h2 id="faq">Frequently asked questions</h2>
+                {faq.map((f) => (
+                  <div className="qa" key={f.q}>
+                    <h3>{f.q}</h3>
+                    <p>{f.a}</p>
+                  </div>
+                ))}
+              </>
+            )}
+          </article>
           <aside className="aside">
             <div className="panel">
               <h3>Free strategy call</h3>

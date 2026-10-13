@@ -54,8 +54,10 @@ export type Post = {
   title: string;
   topic: TopicId;
   minutes: number;
-  /** ISO date, YYYY-MM-DD. */
+  /** First published, YYYY-MM-DD. */
   date: string;
+  /** Last substantial update, YYYY-MM-DD. */
+  updated?: string;
   excerpt: string;
   /** Shown large at the top of the blog page. */
   featured?: boolean;
@@ -67,7 +69,7 @@ export const POSTS: Post[] = [
     slug: "get-recommended-by-chatgpt",
     title: "How to get your home service business recommended by ChatGPT and AI search",
     topic: "ai-search",
-    minutes: 8,
+    minutes: 10,
     date: "2026-10-13",
     featured: true,
     excerpt:
@@ -77,7 +79,7 @@ export const POSTS: Post[] = [
     slug: "geo-vs-seo-home-services",
     title: "GEO vs SEO: what home service businesses actually need to know",
     topic: "ai-search",
-    minutes: 6,
+    minutes: 10,
     date: "2026-10-13",
     excerpt:
       "Generative engine optimization is the new buzzword. What it really means for a roofer, plumber or HVAC company, and how it fits with the local SEO you already need.",
@@ -86,8 +88,9 @@ export const POSTS: Post[] = [
     slug: "local-seo-checklist-for-contractors",
     title: "Local SEO checklist for contractors",
     topic: "local-seo",
-    minutes: 8,
+    minutes: 10,
     date: "2026-10-01",
+    updated: "2026-10-13",
     excerpt:
       "A practical, step-by-step local SEO checklist for roofers, plumbers, HVAC and septic companies. Check each item yourself, in order.",
   },
@@ -95,8 +98,9 @@ export const POSTS: Post[] = [
     slug: "how-to-rank-in-google-map-pack",
     title: "How to rank in the Google map pack",
     topic: "google-maps",
-    minutes: 7,
+    minutes: 10,
     date: "2026-10-01",
+    updated: "2026-10-13",
     excerpt:
       "What decides which three businesses show in the Google map pack, and the practical steps contractors can take to get into it.",
   },
@@ -104,8 +108,9 @@ export const POSTS: Post[] = [
     slug: "technical-seo-for-service-business-websites",
     title: "Technical SEO for service business websites: the fixes that matter",
     topic: "technical",
-    minutes: 7,
+    minutes: 10,
     date: "2026-10-01",
+    updated: "2026-10-13",
     excerpt:
       "The technical SEO problems most common on contractor websites, and how to find and fix them without a developer degree.",
   },
@@ -113,8 +118,9 @@ export const POSTS: Post[] = [
     slug: "service-area-pages-that-rank",
     title: "How to write service area pages that rank (without doorway spam)",
     topic: "content",
-    minutes: 7,
+    minutes: 10,
     date: "2026-10-01",
+    updated: "2026-10-13",
     excerpt:
       "How home-service businesses can create location pages for the towns they serve that are genuinely useful, rank well and stay clear of Google's doorway rules.",
   },
@@ -122,8 +128,9 @@ export const POSTS: Post[] = [
     slug: "how-long-does-local-seo-take",
     title: "How long does local SEO take? A realistic timeline",
     topic: "strategy",
-    minutes: 6,
+    minutes: 10,
     date: "2026-10-01",
+    updated: "2026-10-13",
     excerpt:
       "A realistic month-by-month timeline for local SEO results for home-service businesses, and what changes how fast you see them.",
   },

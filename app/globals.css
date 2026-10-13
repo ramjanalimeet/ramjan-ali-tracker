@@ -2633,3 +2633,120 @@ dialog.booking::backdrop {
     overflow-wrap: anywhere;
   }
 }
+
+/* Article tables, quotes and FAQ */
+.prose .table-wrap {
+  overflow-x: auto;
+  margin: 26px 0;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--card);
+}
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15.5px;
+  min-width: 520px;
+}
+.prose th {
+  background: var(--ink);
+  color: var(--bg);
+  text-align: left;
+  font-weight: 600;
+  padding: 12px 14px;
+}
+.prose td {
+  padding: 12px 14px;
+  border-top: 1px solid var(--line);
+  vertical-align: top;
+}
+.prose tr:nth-child(even) td {
+  background: #fafbf8;
+}
+.prose blockquote {
+  margin: 30px 0;
+  padding: 22px 24px;
+  border-left: 4px solid var(--accent);
+  background: var(--card);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+}
+.prose blockquote p {
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.4vw, 27px);
+  line-height: 1.3;
+  margin: 0;
+  color: var(--ink);
+}
+.prose blockquote cite {
+  display: block;
+  margin-top: 12px;
+  font-style: normal;
+  font-size: 14px;
+  color: var(--mute);
+}
+.prose .ext {
+  font-size: 0.8em;
+  margin-left: 2px;
+}
+.prose .qa h3 {
+  font-size: 20px;
+}
+.prose .toc {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 18px 22px;
+  margin: 24px 0 8px;
+}
+.prose .toc b {
+  display: block;
+  margin-bottom: 6px;
+}
+.prose .toc ol {
+  margin: 0;
+}
+.prose .toc li {
+  margin: 4px 0;
+}
+@media (max-width: 640px) {
+  .prose blockquote {
+    padding: 18px;
+  }
+  .prose table {
+    font-size: 14.5px;
+  }
+}
+.prose .takeaways ul {
+  margin: 8px 0 0;
+}
+.prose .takeaways li {
+  font-size: 16px;
+}
+
+/* Let grid columns shrink below their content's natural width, so wide tables and
+   long words scroll inside their own box instead of widening the page on phones. */
+.art-grid > *,
+.split > *,
+.phero-grid > *,
+.hero-grid > *,
+.sec-head > *,
+.grid > *,
+.related-grid > *,
+.chart-pair > *,
+.bundle > * {
+  min-width: 0;
+}
+.prose {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+@media (max-width: 640px) {
+  .prose table {
+    min-width: 0;
+    font-size: 14px;
+  }
+  .prose th,
+  .prose td {
+    padding: 10px 9px;
+  }
+}
