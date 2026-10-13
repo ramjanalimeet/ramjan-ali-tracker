@@ -1382,7 +1382,10 @@ a.card:hover .go span {
   flex: 1;
   min-width: 0;
   justify-content: center;
-  padding: 14px 16px;
+  gap: 8px;
+  padding: 14px 10px;
+  font-size: 15px;
+  white-space: nowrap;
   box-shadow: 0 14px 30px -10px rgba(17, 18, 16, 0.5);
 }
 .mcta .btn.btn-wa {
@@ -1640,7 +1643,7 @@ a.card:hover .go span {
   flex: none;
   background: var(--accent);
   color: var(--accent-ink);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -1874,5 +1877,58 @@ dialog.booking::backdrop {
 @media (prefers-reduced-motion: reduce) {
   dialog.booking[open] {
     animation: none;
+  }
+}
+
+/* About */
+.about-grid {
+  align-items: center;
+}
+.about-photo {
+  justify-self: end;
+  width: 100%;
+  max-width: 380px;
+}
+.about-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--r);
+  box-shadow: 0 30px 60px -30px rgba(17, 18, 16, 0.45);
+}
+@media (max-width: 960px) {
+  .about-photo {
+    justify-self: start;
+    max-width: 300px;
+  }
+}
+
+/* Black Book a Call button on the dark CTA band */
+.band .btn-dark {
+  border-color: #3a3c37;
+}
+
+/* Narrow phones: keep the sticky CTA bar on one line */
+@media (max-width: 374px) {
+  .mcta {
+    left: 8px;
+    right: 8px;
+    gap: 8px;
+  }
+  .mcta .btn {
+    font-size: 14px;
+    padding: 13px 6px;
+  }
+  .mcta .btn .wa {
+    width: 18px;
+    height: 18px;
+  }
+}
+/* Stack hero CTAs full-width on small phones so they are easy to tap */
+@media (max-width: 480px) {
+  .cta-row .btn-wa,
+  .cta-row .btn-dark {
+    flex: 1 1 100%;
+    justify-content: center;
   }
 }

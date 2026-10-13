@@ -250,8 +250,8 @@ export default function LocalSeoChecklistForContractorsPage() {
               that hold the top spots are the ones that keep doing the basics every month.
             </p>
             <p>
-              If you want a second pair of eyes, my <Link href="/free-seo-audit">free Local SEO audit</Link> goes
-              through this checklist for your business and your top three competitors.
+              If you want a second pair of eyes, my <Link href="/book-a-call">free Local SEO audit</Link> goes through
+              this checklist for your business and your top three competitors.
             </p>
           </article>
           <aside className="aside">

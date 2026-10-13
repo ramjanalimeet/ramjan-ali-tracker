@@ -216,7 +216,7 @@ export default function HowToRankInGoogleMapPackPage() {
               and less crowded trades it can be much faster.
             </p>
             <p>
-              Want to know where you stand? My <Link href="/free-seo-audit">free audit</Link> compares your profile with
+              Want to know where you stand? My <Link href="/book-a-call">free audit</Link> compares your profile with
               the three businesses beating you in the map.
             </p>
           </article>

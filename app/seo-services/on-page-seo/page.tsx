@@ -128,8 +128,8 @@ export default function OnPageSeoPage() {
               </p>
               <div className="cta-row">
                 <WhatsAppButton />
-                <Link className="btn btn-ghost" href="/book-a-call">
-                  Book a call
+                <Link className="btn btn-dark" href="/book-a-call">
+                  Book a Call
                 </Link>
               </div>
             </div>

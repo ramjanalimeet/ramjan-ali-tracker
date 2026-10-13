@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   // Retired pages from before the Local SEO & AI search repositioning.
   async redirects() {
     return [
+      { source: "/free-seo-audit", destination: "/book-a-call", permanent: true },
       { source: "/seo-services/content-seo", destination: "/local-seo", permanent: true },
       { source: "/locations/texas", destination: "/locations", permanent: true },
       { source: "/locations/florida", destination: "/locations", permanent: true },

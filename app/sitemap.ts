@@ -6,13 +6,13 @@ import { ALL_SERVICES } from "@/lib/services";
 
 const PAGES = [
   "",
-  "/local-seo",
-  "/ai-search",
+  "/seo-services",
+  "/industries",
   "/locations",
   "/pricing",
   "/case-studies",
   "/blog",
-  "/free-seo-audit",
+  "/about",
   "/book-a-call",
 ];
 

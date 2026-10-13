@@ -202,8 +202,8 @@ export default function HowLongDoesLocalSeoTakePage() {
             </p>
             <p>
               The fastest way to estimate your own timeline is to look at your market. My{" "}
-              <Link href="/free-seo-audit">free audit</Link> compares you with the businesses currently winning and
-              gives you a realistic picture.
+              <Link href="/book-a-call">free audit</Link> compares you with the businesses currently winning and gives
+              you a realistic picture.
             </p>
           </article>
           <aside className="aside">
@@ -218,8 +218,8 @@ export default function HowLongDoesLocalSeoTakePage() {
             <div className="panel">
               <h3>Related service</h3>
               <p>An audit tells you exactly what to do first in your market.</p>
-              <Link className="btn btn-ghost btn-sm" href="/free-seo-audit">
-                Free audit →
+              <Link className="btn btn-dark btn-sm" href="/book-a-call">
+                Book a Call →
               </Link>
             </div>
           </aside>

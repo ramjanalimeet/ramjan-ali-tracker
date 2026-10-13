@@ -228,7 +228,7 @@ export default function TechnicalSeoForServiceBusinessWebsitesPage() {
             <p>
               If you would rather have someone check all of this for you, my{" "}
               <Link href="/local-seo">Local SEO service</Link> covers it, and the{" "}
-              <Link href="/free-seo-audit">free audit</Link> flags the biggest problems.
+              <Link href="/book-a-call">free audit</Link> flags the biggest problems.
             </p>
           </article>
           <aside className="aside">

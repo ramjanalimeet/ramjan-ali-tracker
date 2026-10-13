@@ -6,7 +6,7 @@ export function MobileCta() {
     <div className="mcta">
       <WhatsAppButton />
       <Link className="btn btn-dark" href="/book-a-call">
-        Book Now <span className="arr">→</span>
+        Book a Call <span className="arr">→</span>
       </Link>
     </div>
   );

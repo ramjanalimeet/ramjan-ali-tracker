@@ -156,8 +156,8 @@ export default function HomePage() {
             </p>
             <div className="cta-row">
               <WhatsAppButton />
-              <Link className="btn btn-ghost" href="/book-a-call">
-                Book a call
+              <Link className="btn btn-dark" href="/book-a-call">
+                Book a Call
               </Link>
             </div>
             <p className="fine">Free, no pitch, and you keep the action plan either way.</p>
@@ -420,17 +420,17 @@ export default function HomePage() {
                 Learn more <span>→</span>
               </span>
             </Link>
-            <Link className="card rv" href="/free-seo-audit">
+            <Link className="card rv" href="/book-a-call">
               <span className="ic" aria-hidden="true">
                 06
               </span>
               <h3>Not sure where to start?</h3>
               <p>
-                Get a free audit of your Google Business Profile, website, AI search presence and top three map
-                competitors, with the fixes in priority order.
+                Book a free strategy call. I will review your Google Business Profile, website, AI search presence and
+                top three map competitors, and show you the fixes in priority order.
               </p>
               <span className="go">
-                Learn more <span>→</span>
+                Book a Call <span>→</span>
               </span>
             </Link>
           </div>

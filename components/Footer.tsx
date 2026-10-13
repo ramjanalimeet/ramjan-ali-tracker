@@ -38,9 +38,6 @@ export function Footer() {
               <li>
                 <Link href="/locations">Locations</Link>
               </li>
-              <li>
-                <Link href="/free-seo-audit">Free Audit</Link>
-              </li>
             </ul>
           </div>
           <div>
@@ -64,6 +61,9 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/case-studies">Case Studies</Link>
+              </li>
+              <li>
+                <Link href="/about">About</Link>
               </li>
               <li>
                 <Link href="/blog">Blog</Link>

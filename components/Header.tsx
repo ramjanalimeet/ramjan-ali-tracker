@@ -10,7 +10,7 @@ const LINKS = [
   { href: "/pricing", label: "Pricing" },
   { href: "/case-studies", label: "Case Studies" },
   { href: "/blog", label: "Blog" },
-  { href: "/free-seo-audit", label: "Free Audit" },
+  { href: "/about", label: "About" },
 ];
 
 function Caret() {
@@ -101,7 +101,7 @@ export function Header() {
           </nav>
           <div className="nav-cta">
             <Link className="btn btn-dark btn-sm" href="/book-a-call">
-              Book a call <span className="arr">→</span>
+              Book a Call <span className="arr">→</span>
             </Link>
             <button
               className="menu-btn"
@@ -143,7 +143,7 @@ export function Header() {
           </Link>
         ))}
         <Link className="btn btn-dark" href="/book-a-call">
-          Book a call →
+          Book a Call →
         </Link>
       </nav>
     </>
