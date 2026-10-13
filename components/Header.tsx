@@ -8,6 +8,7 @@ import { TRADES } from "@/lib/site";
 const LINKS = [
   { href: "/local-seo", label: "Local SEO", mobile: "Local SEO" },
   { href: "/ai-search", label: "AI Search", mobile: "AI Search Visibility" },
+  { href: "/locations", label: "Locations", mobile: "Locations" },
   { href: "/pricing", label: "Pricing", mobile: "Pricing" },
   { href: "/case-studies", label: "Case Studies", mobile: "Case Studies" },
   { href: "/blog", label: "Blog", mobile: "Blog" },

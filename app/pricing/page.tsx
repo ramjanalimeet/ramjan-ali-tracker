@@ -63,7 +63,7 @@ const SCHEMA = {
       name: s.service,
       url: `${SITE_URL}${s.href}`,
       provider: { "@id": `${SITE_URL}/#business` },
-      areaServed: { "@type": "Country", name: "United States" },
+      areaServed: "Worldwide",
       offers: s.plans.map((p) => ({
         "@type": "Offer",
         name: `${s.service} ${p.name}`,

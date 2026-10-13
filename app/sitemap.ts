@@ -2,7 +2,17 @@ import type { MetadataRoute } from "next";
 import { SITE_URL, TRADES } from "@/lib/site";
 import { POSTS } from "@/lib/posts";
 
-const PAGES = ["", "/local-seo", "/ai-search", "/pricing", "/case-studies", "/blog", "/free-seo-audit", "/book-a-call"];
+const PAGES = [
+  "",
+  "/local-seo",
+  "/ai-search",
+  "/locations",
+  "/pricing",
+  "/case-studies",
+  "/blog",
+  "/free-seo-audit",
+  "/book-a-call",
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date("2026-10-13");

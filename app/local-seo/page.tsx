@@ -88,10 +88,7 @@ const SCHEMA = {
         "@id": "https://ramjan-akash.vercel.app/#business",
       },
       serviceType: "Local SEO",
-      areaServed: {
-        "@type": "Country",
-        name: "United States",
-      },
+      areaServed: "Worldwide",
     },
     faqSchema(FAQ),
   ],
@@ -134,7 +131,7 @@ export default function LocalSeoPage() {
               <ul>
                 <li>
                   <b>Who it is for</b>
-                  <span>Roofing, plumbing, septic, HVAC and home-service businesses in the US</span>
+                  <span>Roofing, plumbing, septic, HVAC and home-service businesses, in any country</span>
                 </li>
                 <li>
                   <b>Goal</b>

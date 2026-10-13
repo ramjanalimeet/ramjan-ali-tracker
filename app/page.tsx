@@ -5,13 +5,14 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { PostCards } from "@/components/PostCards";
 import { AI_SEARCH, BUNDLE, LOCAL_SEO, fromPrice, usd } from "@/lib/pricing";
+import { REGIONS } from "@/lib/locations";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta({
   title: "Local SEO & AI Search Visibility for Home Service Businesses | Ramjan Ali Akash",
   description:
-    "Local SEO and AI search visibility for US home service businesses. Rank in the Google map pack and get recommended by ChatGPT, Gemini and AI Overviews. Free audit.",
+    "Local SEO and AI search visibility for home service businesses, wherever you work. Rank in the Google map pack and get recommended by ChatGPT, Gemini and AI Overviews. Free audit.",
   path: "/",
 });
 
@@ -56,18 +57,13 @@ const SCHEMA = {
       url: "https://ramjan-akash.vercel.app/",
       image: "https://ramjan-akash.vercel.app/assets/akash.webp",
       email: "mailto:raakash.meet@gmail.com",
-      description: "Local SEO and AI search visibility for home service businesses in the United States.",
+      description: "Local SEO and AI search visibility for home service businesses worldwide.",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Dhaka",
         addressCountry: "BD",
       },
-      areaServed: [
-        {
-          "@type": "Country",
-          name: "United States",
-        },
-      ],
+      areaServed: "Worldwide",
       founder: {
         "@id": "https://ramjan-akash.vercel.app/#person",
       },
@@ -126,7 +122,7 @@ const SCHEMA = {
       url: "https://ramjan-akash.vercel.app/",
       name: "Local SEO & AI Search Visibility for Home Service Businesses | Ramjan Ali Akash",
       description:
-        "Local SEO and AI search visibility for US home service businesses. Rank in the Google map pack and get recommended by ChatGPT, Gemini and AI Overviews. Free audit.",
+        "Local SEO and AI search visibility for home service businesses, wherever you work. Rank in the Google map pack and get recommended by ChatGPT, Gemini and AI Overviews. Free audit.",
       isPartOf: {
         "@id": "https://ramjan-akash.vercel.app/#website",
       },
@@ -149,7 +145,7 @@ export default function HomePage() {
               <span className="dot"></span>Local SEO &amp; AI Search Visibility for Home Service Businesses
             </span>
             <h1>
-              Get found on <span className="hl">Google Maps</span> and in AI search.
+              Get found on Google, <span className="hl">Google Maps</span> and in AI search.
             </h1>
             <p className="lead">
               I'm <strong>Ramjan Ali Akash</strong>. I help home service businesses, roofers, plumbers, HVAC, septic and
@@ -439,7 +435,31 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <HowItWorks alt />
+      <section className="sec alt">
+        <div className="wrap split">
+          <div className="rv">
+            <span className="eyebrow">Locations</span>
+            <h2>Helping home service businesses wherever they work.</h2>
+          </div>
+          <div className="body rv">
+            <p>
+              From Texas to Toronto, Manchester to Melbourne. Every plan is built around the towns and suburbs you
+              actually serve, with area pages, local listings and map rankings tracked town by town.
+            </p>
+            <div className="chips">
+              {REGIONS.map((r) => (
+                <Link className="chip" href={`/locations#${r.id}`} key={r.id}>
+                  {r.name}
+                </Link>
+              ))}
+              <Link className="chip" href="/locations">
+                All locations →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+      <HowItWorks />
       <section className="sec">
         <div className="wrap">
           <div className="sec-head rv">

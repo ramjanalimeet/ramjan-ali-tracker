@@ -129,7 +129,7 @@ export function LeadForm() {
             </div>
             <div>
               <label htmlFor="f-area">Main service area</label>
-              <input id="f-area" name="area" placeholder="e.g. Houston, TX" />
+              <input id="f-area" name="area" placeholder="e.g. Houston, TX or Manchester, UK" />
             </div>
           </div>
           <div>

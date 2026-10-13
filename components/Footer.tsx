@@ -12,8 +12,8 @@ export function Footer() {
               Ramjan Ali<b>.</b>
             </Link>
             <p>
-              Local SEO &amp; AI search visibility for home service businesses across the US. Based in Dhaka, working
-              with US businesses.
+              Local SEO &amp; AI search visibility for home service businesses, wherever they work. Based in Dhaka,
+              working with clients worldwide.
             </p>
             <ul className="social">
               {SOCIAL.map((s) => (
@@ -33,6 +33,9 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/ai-search">AI Search Visibility</Link>
+              </li>
+              <li>
+                <Link href="/locations">Locations</Link>
               </li>
               <li>
                 <Link href="/pricing">Pricing</Link>

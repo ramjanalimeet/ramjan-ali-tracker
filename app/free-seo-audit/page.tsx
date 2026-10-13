@@ -26,7 +26,7 @@ const FAQ: FaqItem[] = [
   },
   {
     q: "Do you only work with certain trades?",
-    a: "Yes. I only work with home service businesses in the US: roofing, plumbing, septic, HVAC and other trades.",
+    a: "Yes. I only work with home service businesses: roofing, plumbing, septic, HVAC and other trades, in any country.",
   },
 ];
 
@@ -84,10 +84,7 @@ const SCHEMA = {
         "@id": "https://ramjan-akash.vercel.app/#business",
       },
       serviceType: "Free Local SEO Audit",
-      areaServed: {
-        "@type": "Country",
-        name: "United States",
-      },
+      areaServed: "Worldwide",
     },
     faqSchema(FAQ),
   ],
