@@ -20,6 +20,14 @@ const FAQ: FaqItem[] = [
     a: "Most home service businesses see early movement in four to eight weeks, clearer gains in three to six months, and stable top positions for competitive searches in six to twelve months. Smaller towns and less crowded trades are often faster.",
   },
   {
+    q: "Is local SEO worth it?",
+    a: "For most home service businesses, yes. Local searches come from people ready to book, and unlike ads, rankings keep bringing in calls after the work slows down. It works best when you can answer the calls it brings.",
+  },
+  {
+    q: "How much does local SEO cost per month?",
+    a: "Agency retainers commonly range from a few hundred to a few thousand dollars a month, depending on market, competition and how many services and locations are covered. Compare what each quote actually includes.",
+  },
+  {
     q: "Why does local SEO take so long?",
     a: "Google needs time to crawl and trust changes, reviews and links build up gradually, and you are competing with businesses that may have years of head start. The work compounds, which is why results tend to accelerate over time.",
   },
@@ -98,6 +106,9 @@ export default function HowLongLocalSeoPage() {
           </li>
           <li>
             <a href="#redflags">Red flags</a>
+          </li>
+          <li>
+            <a href="#faq">People also ask</a>
           </li>
         </ol>
       </nav>

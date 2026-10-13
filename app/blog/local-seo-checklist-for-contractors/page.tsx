@@ -16,6 +16,22 @@ export const metadata = pageMeta({
 
 const FAQ: FaqItem[] = [
   {
+    q: "What is local SEO?",
+    a: "Local SEO is the work of making a business show up when nearby customers search for its services, in the Google map pack, the organic results below it and the answers AI tools give. It covers your Google Business Profile, website, reviews, citations and local links.",
+  },
+  {
+    q: "How much does local SEO cost?",
+    a: "Agency retainers commonly range from a few hundred to a few thousand dollars a month depending on market, competition and scope. My plans are fixed monthly prices with no setup fees, shown on the pricing page.",
+  },
+  {
+    q: "Is local SEO worth it for small businesses?",
+    a: "For most home service businesses, yes, because local searches come from people ready to book. Unlike ads, rankings keep bringing in calls after the work slows down, and the same work also helps you appear in AI recommendations.",
+  },
+  {
+    q: "What is the difference between local SEO and regular SEO?",
+    a: "Regular SEO aims to rank pages nationally or globally. Local SEO focuses on searches with local intent, such as 'plumber near me', and adds the Google Business Profile, map pack rankings, reviews and local citations, where distance from the searcher matters.",
+  },
+  {
     q: "Can I do local SEO myself?",
     a: "Yes. Most of this checklist needs time and consistency more than technical skill. Owners who do it themselves usually manage the Google Business Profile and reviews well, and struggle most with website fixes, content and links. Many start themselves and hand over once the business grows.",
   },
@@ -34,6 +50,18 @@ const FAQ: FaqItem[] = [
   {
     q: "How long does it take to see results?",
     a: "Profile and technical fixes often show movement within weeks. Competitive searches in larger cities usually take several months of consistent work.",
+  },
+  {
+    q: "Should I show my home address on my Google Business Profile?",
+    a: "If customers do not visit you, set the profile up as a service-area business and hide the address. You still need a real address to verify the profile, but it does not have to be shown publicly.",
+  },
+  {
+    q: "What are citations in local SEO?",
+    a: "Citations are listings of your business name, address and phone number on other websites, such as directories, Bing Places, Apple Business Connect and industry sites. Consistent citations help confirm your business is real and where it says it is.",
+  },
+  {
+    q: "How many Google reviews do I need?",
+    a: "There is no magic number. Look at the businesses currently in the top three for your main searches and aim to match or beat their review count, rating and how recently they received reviews.",
   },
 ];
 
@@ -94,6 +122,9 @@ export default function LocalSeoChecklistPage() {
           </li>
           <li>
             <a href="#routine">Your ongoing routine</a>
+          </li>
+          <li>
+            <a href="#faq">People also ask</a>
           </li>
         </ol>
       </nav>

@@ -20,6 +20,14 @@ const FAQ: FaqItem[] = [
     a: "GEO stands for generative engine optimization: making your business easy for AI tools such as ChatGPT, Gemini, Perplexity, Copilot and Google's AI Overviews to find, understand, trust and mention in their answers.",
   },
   {
+    q: "What is the difference between GEO and SEO?",
+    a: "SEO aims to rank your pages in a list of search results. GEO aims to get your business named inside AI-generated answers. For local businesses they rely on many of the same signals, so GEO is best treated as an extra layer on top of SEO.",
+  },
+  {
+    q: "Is SEO dead because of AI?",
+    a: "No. AI tools rely on search indexes and the same profiles, reviews and pages that SEO builds, and Google Search and Maps still drive most local calls.",
+  },
+  {
     q: "Is GEO replacing SEO?",
     a: "No. For local businesses, Google Search and Maps still drive most calls, and AI tools rely heavily on the same signals SEO builds. GEO is an extra layer on top of SEO, not a replacement.",
   },
@@ -54,6 +62,10 @@ const FAQ: FaqItem[] = [
   {
     q: "Will AI search reduce my phone calls from Google?",
     a: "It changes where the decision happens. If you are named in the AI answer, the call still comes to you. If you are not, you lose it, which is why being part of those answers matters.",
+  },
+  {
+    q: "Does keyword stuffing help in AI answers?",
+    a: "No. AI tools favor clear, specific, trustworthy information. Repeating keywords makes pages harder to read and quote, and can hurt in classic search too.",
   },
 ];
 
@@ -102,6 +114,9 @@ export default function GeoVsSeoPage() {
           </li>
           <li>
             <a href="#trades">What GEO looks like by trade</a>
+          </li>
+          <li>
+            <a href="#faq">People also ask</a>
           </li>
         </ol>
       </nav>

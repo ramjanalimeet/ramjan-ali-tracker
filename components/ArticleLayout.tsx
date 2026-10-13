@@ -86,15 +86,20 @@ export function ArticleLayout({
           <article className="prose">
             {children}
             {faq.length > 0 && (
-              <>
-                <h2 id="faq">Frequently asked questions</h2>
-                {faq.map((f) => (
-                  <div className="qa" key={f.q}>
-                    <h3>{f.q}</h3>
-                    <p>{f.a}</p>
-                  </div>
-                ))}
-              </>
+              <section className="paa" aria-labelledby="faq">
+                <h2 id="faq">People also ask</h2>
+                <p>Real questions people search about {topic.name}, answered plainly.</p>
+                <div className="faq">
+                  {faq.map((f, i) => (
+                    <details name="post-faq" key={f.q} open={i === 0}>
+                      <summary>
+                        <h3>{f.q}</h3>
+                      </summary>
+                      <p>{f.a}</p>
+                    </details>
+                  ))}
+                </div>
+              </section>
             )}
           </article>
           <aside className="aside">

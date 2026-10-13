@@ -16,6 +16,18 @@ export const metadata = pageMeta({
 
 const FAQ: FaqItem[] = [
   {
+    q: "Do location pages help SEO?",
+    a: "Yes, when each page has genuinely local, useful content. They help you rank organically in towns where the map pack does not reach because of distance, and they give AI tools clear facts about where you work.",
+  },
+  {
+    q: "Is duplicate content on location pages bad for SEO?",
+    a: "Near-identical pages with only the town name changed rarely rank well, because Google picks one and ignores the rest, and at scale they can be treated as doorway pages. Unique content for each page is what makes them work.",
+  },
+  {
+    q: "What should a location page include?",
+    a: "A clear heading with the service and town, local context, the services you offer there, recent jobs with photos, reviews from local customers, the neighborhoods you cover, local FAQs and a clear call to action.",
+  },
+  {
     q: "What is a service area page?",
     a: "A page on your website about the work you do in one specific town or area, such as 'Roof repair in Katy, TX'. It helps you rank organically in places where the map pack does not reach because of distance.",
   },
@@ -94,6 +106,9 @@ export default function ServiceAreaPagesPost() {
           </li>
           <li>
             <a href="#measure">Measuring success</a>
+          </li>
+          <li>
+            <a href="#faq">People also ask</a>
           </li>
         </ol>
       </nav>

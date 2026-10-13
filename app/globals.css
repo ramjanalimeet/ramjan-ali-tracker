@@ -2750,3 +2750,21 @@ dialog.booking::backdrop {
     padding: 10px 9px;
   }
 }
+
+/* "People also ask" accordion at the end of articles */
+.prose .paa {
+  margin-top: 40px;
+}
+.prose .paa .faq {
+  margin-top: 16px;
+}
+.prose .paa summary h3 {
+  display: inline;
+  font-size: 18px;
+  line-height: 1.35;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.prose .paa details p {
+  margin: 0 0 18px;
+}

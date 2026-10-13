@@ -16,6 +16,22 @@ export const metadata = pageMeta({
 
 const FAQ: FaqItem[] = [
   {
+    q: "How do I get my business on Google Maps?",
+    a: "Create and verify a Google Business Profile with your real business name, category, address or service area, phone and hours. Once verified, your business can appear on Google Maps and in local results.",
+  },
+  {
+    q: "How do I get to the top of Google Maps?",
+    a: "Choose the most accurate primary category, complete every profile field, earn a steady flow of genuine reviews, build strong service pages on your website and earn local links and mentions. Rankings also depend on how close you are to the searcher.",
+  },
+  {
+    q: "Why is my business not showing on Google Maps?",
+    a: "The most common reasons are an unverified or suspended profile, the wrong primary category, searching from too far away, very few reviews, duplicate listings, or spam competitors taking the top spots.",
+  },
+  {
+    q: "What are the ranking factors for Google Maps?",
+    a: "Google says local results are based primarily on relevance, distance and prominence. In practice that means categories, services and website content, your location relative to the searcher, and reviews, links and overall reputation.",
+  },
+  {
     q: "What is the Google map pack?",
     a: "It is the box of three local businesses with a map that Google shows for searches with local intent, such as 'plumber near me' or 'roof repair in Tampa'. It is also called the local pack or 3-pack.",
   },
@@ -89,6 +105,9 @@ export default function MapPackPage() {
           </li>
           <li>
             <a href="#plan">A 90-day plan</a>
+          </li>
+          <li>
+            <a href="#faq">People also ask</a>
           </li>
         </ol>
       </nav>

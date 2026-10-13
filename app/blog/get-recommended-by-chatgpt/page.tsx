@@ -16,8 +16,16 @@ export const metadata = pageMeta({
 
 const FAQ: FaqItem[] = [
   {
+    q: "How do I get my business recommended by ChatGPT?",
+    a: "Make your business details identical everywhere, earn detailed reviews, write service pages that answer questions directly, allow ChatGPT's search crawler on your site, and get mentioned on other trusted local websites.",
+  },
+  {
     q: "How does ChatGPT decide which local businesses to recommend?",
     a: "When ChatGPT searches the web for an answer, it reads pages, listings and reviews it finds and summarizes the businesses that are consistently described as relevant and well reviewed. There is no paid placement and no way to submit your business directly.",
+  },
+  {
+    q: "Can I see where ChatGPT got its recommendation?",
+    a: "When ChatGPT searches the web, it usually shows the sources it used. Checking those citations tells you which listings and websites to improve for your business.",
   },
   {
     q: "Can I pay to be recommended by ChatGPT or Google's AI Overviews?",
@@ -42,6 +50,10 @@ const FAQ: FaqItem[] = [
   {
     q: "Do reviews on Yelp or Facebook help with AI recommendations?",
     a: "They can. AI tools read reviews on many platforms, not just Google, so reviews where your customers already leave them are worth encouraging.",
+  },
+  {
+    q: "Do AI tools recommend businesses with few reviews?",
+    a: "They can, but businesses with more detailed, recent reviews and consistent information across the web are easier for AI tools to recommend with confidence.",
   },
 ];
 
@@ -88,6 +100,9 @@ export default function GetRecommendedByChatGptPage() {
           </li>
           <li>
             <a href="#avoid">What not to do</a>
+          </li>
+          <li>
+            <a href="#faq">People also ask</a>
           </li>
         </ol>
       </nav>

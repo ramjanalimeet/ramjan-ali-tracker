@@ -16,6 +16,18 @@ export const metadata = pageMeta({
 
 const FAQ: FaqItem[] = [
   {
+    q: "What does technical SEO include?",
+    a: "Technical SEO covers crawling and indexing, site speed and Core Web Vitals, mobile usability, HTTPS, site structure and internal links, redirects, duplicate content, XML sitemaps, robots.txt and structured data.",
+  },
+  {
+    q: "How do I check if my website is indexed by Google?",
+    a: "Open the Pages report in Google Search Console to see which pages are indexed and why others are not. For a quick check, use the URL Inspection tool on a specific page.",
+  },
+  {
+    q: "What is a good page speed for SEO?",
+    a: "Aim for Google's 'good' Core Web Vitals thresholds: Largest Contentful Paint of 2.5 seconds or less, Interaction to Next Paint of 200 milliseconds or less and Cumulative Layout Shift of 0.1 or less.",
+  },
+  {
     q: "What is technical SEO?",
     a: "Technical SEO is the work that makes sure search engines can find, crawl, understand and index your website, and that it loads quickly and works well on phones. It is the foundation that content and links build on.",
   },
@@ -42,6 +54,10 @@ const FAQ: FaqItem[] = [
   {
     q: "Will switching website platforms hurt my rankings?",
     a: "It can if old URLs are not redirected to their new equivalents. Map every old URL to a new page and set up permanent redirects before launch, and rankings usually carry over.",
+  },
+  {
+    q: "Do I need an XML sitemap?",
+    a: "A sitemap is not required, but it helps Google discover all your important pages, especially on newer sites or sites with few internal links. Most website platforms generate one automatically; submit it in Search Console.",
   },
 ];
 
@@ -96,6 +112,9 @@ export default function TechnicalSeoPostPage() {
           </li>
           <li>
             <a href="#checklist">Audit checklist</a>
+          </li>
+          <li>
+            <a href="#faq">People also ask</a>
           </li>
         </ol>
       </nav>
