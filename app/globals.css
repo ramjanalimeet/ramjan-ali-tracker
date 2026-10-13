@@ -1771,3 +1771,108 @@ section[id] {
     grid-template-columns: 1fr;
   }
 }
+
+/* Booking popup */
+.booking-open {
+  overflow: hidden;
+}
+dialog.booking {
+  width: min(960px, calc(100vw - 32px));
+  height: min(820px, calc(100dvh - 32px));
+  max-width: none;
+  max-height: none;
+  padding: 0;
+  border: 0;
+  border-radius: 22px;
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: 0 40px 80px -30px rgba(17, 18, 16, 0.55);
+  overflow: hidden;
+}
+dialog.booking[open] {
+  animation: booking-in 0.3s var(--ease);
+}
+dialog.booking::backdrop {
+  background: rgba(17, 18, 16, 0.55);
+  backdrop-filter: blur(3px);
+}
+@keyframes booking-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+}
+.booking-box {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.booking-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px 12px 22px;
+  border-bottom: 1px solid var(--line);
+}
+.booking-bar b {
+  font-size: 16px;
+}
+.booking-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.booking-actions a {
+  font-size: 14px;
+  color: var(--mute);
+}
+.booking-close {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--ink);
+}
+.booking-close:hover {
+  background: var(--bg-2);
+}
+.booking-body {
+  position: relative;
+  flex: 1;
+  background: #fff;
+}
+.booking-body iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.booking-loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--mute);
+  font-size: 15px;
+}
+@media (max-width: 640px) {
+  dialog.booking {
+    width: 100vw;
+    height: 100dvh;
+    border-radius: 0;
+  }
+  .booking-actions a {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  dialog.booking[open] {
+    animation: none;
+  }
+}

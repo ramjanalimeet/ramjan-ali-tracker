@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, Inter_Tight } from "next/font/google";
+import { BookingPopup } from "@/components/BookingPopup";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { MobileCta } from "@/components/MobileCta";
@@ -43,6 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <MobileCta />
         <SiteEffects />
+        <BookingPopup />
       </body>
     </html>
   );
