@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { JsonLd } from "@/components/JsonLd";
+import { ServedGlobe } from "@/components/ServedGlobe";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ALL_INDUSTRIES, CATEGORIES } from "@/lib/industries";
 import { SITE_URL, pageMeta } from "@/lib/site";
@@ -55,7 +56,7 @@ export default function IndustriesPage() {
               <li aria-current="page">Industries</li>
             </ol>
           </nav>
-          <div className="phero-grid">
+          <div className="phero-grid globe-grid">
             <div>
               <span className="eyebrow">Industries</span>
               <h1>
@@ -72,6 +73,7 @@ export default function IndustriesPage() {
                 </Link>
               </div>
             </div>
+            <ServedGlobe />
           </div>
           <nav className="chips ind-jump" aria-label="Industry categories">
             {CATEGORIES.map((c) => (

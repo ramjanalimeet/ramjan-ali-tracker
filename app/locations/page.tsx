@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
+import { ServedGlobe } from "@/components/ServedGlobe";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { CITIES, CITY_GROUPS, citiesIn } from "@/lib/cities";
 import { REGIONS } from "@/lib/locations";
@@ -80,7 +81,7 @@ export default function LocationsPage() {
               <li aria-current="page">Locations</li>
             </ol>
           </nav>
-          <div className="phero-grid">
+          <div className="phero-grid globe-grid">
             <div>
               <span className="eyebrow">Locations</span>
               <h1>
@@ -98,28 +99,33 @@ export default function LocationsPage() {
                 </Link>
               </div>
             </div>
-            <aside className="facts">
-              <h2>At a glance</h2>
-              <ul>
-                <li>
-                  <b>Where</b>
-                  <span>Any city or country where customers search Google and ask AI tools</span>
-                </li>
-                <li>
-                  <b>Who</b>
-                  <span>Roofing, plumbing, septic, HVAC and other home service businesses</span>
-                </li>
-                <li>
-                  <b>Targeting</b>
-                  <span>Built around the towns and suburbs you actually serve</span>
-                </li>
-                <li>
-                  <b>Time zone</b>
-                  <span>Replies within 24 hours, calls booked in your time zone</span>
-                </li>
-              </ul>
-            </aside>
+            <ServedGlobe />
           </div>
+        </div>
+      </section>
+      <section className="sec tight">
+        <div className="wrap">
+          <aside className="facts facts-row rv">
+            <h2>At a glance</h2>
+            <ul>
+              <li>
+                <b>Where</b>
+                <span>Any city or country where customers search Google and ask AI tools</span>
+              </li>
+              <li>
+                <b>Who</b>
+                <span>Roofing, plumbing, septic, HVAC and other home service businesses</span>
+              </li>
+              <li>
+                <b>Targeting</b>
+                <span>Built around the towns and suburbs you actually serve</span>
+              </li>
+              <li>
+                <b>Time zone</b>
+                <span>Replies within 24 hours, calls booked in your time zone</span>
+              </li>
+            </ul>
+          </aside>
         </div>
       </section>
       <section className="sec">
