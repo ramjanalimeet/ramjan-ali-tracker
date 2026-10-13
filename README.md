@@ -16,9 +16,8 @@ CSS, JS, and image assets. It deploys as-is on Vercel (no build step).
 
 ## Location pages
 
-City pages (`locations/<state-or-region>/<city>.html`) and the international
-region hubs (`locations/united-kingdom.html`, `europe`, `canada`, `australia`,
-`middle-east`) are generated:
+City pages (`locations/<city>.html`, served at `/locations/<city>`) are generated,
+and all of them are listed on the main Locations page:
 
 ```
 python3 scripts/build_locations.py
