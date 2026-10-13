@@ -1932,3 +1932,132 @@ dialog.booking::backdrop {
     justify-content: center;
   }
 }
+
+/* Blog */
+.post-card h3 {
+  font-size: 20px;
+  line-height: 1.25;
+}
+.post-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: 14px;
+  color: var(--mute);
+}
+.post-foot .go {
+  margin: 0;
+}
+.feature {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 28px;
+  align-items: stretch;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 14px;
+  text-decoration: none;
+  color: var(--ink);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.25s;
+}
+.feature:hover {
+  border-color: var(--ink);
+  box-shadow: 0 24px 44px -30px rgba(17, 18, 16, 0.45);
+}
+.feature-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 26px 14px 18px 22px;
+}
+.feature-body h2 {
+  font-size: clamp(28px, 3.4vw, 42px);
+  line-height: 1.08;
+}
+.feature-body p {
+  color: var(--ink-2);
+}
+.feature .mock {
+  min-height: 300px;
+}
+.blog-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.blog-filter .chip {
+  color: var(--ink);
+  font: inherit;
+  font-size: 14.5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+}
+.blog-filter .chip .n {
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--bg-2);
+  border-radius: 999px;
+  padding: 1px 8px;
+}
+.blog-filter .chip.on {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+.blog-filter .chip.on .n {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.blog-topic-note {
+  color: var(--ink-2);
+  margin: 0 0 18px;
+  font-size: 15px;
+}
+.topic-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: auto;
+  font-size: 14.5px;
+  font-weight: 600;
+}
+.topic-links a {
+  color: var(--ink);
+}
+@media (max-width: 960px) {
+  .feature {
+    grid-template-columns: 1fr;
+  }
+  .feature-body {
+    padding: 14px 8px 4px;
+  }
+  .feature .mock {
+    min-height: 0;
+  }
+}
+@media (max-width: 640px) {
+  .blog-filter {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin: 0 -16px 18px;
+    padding: 0 16px 4px;
+    scrollbar-width: none;
+  }
+  .blog-filter::-webkit-scrollbar {
+    display: none;
+  }
+  .blog-filter .chip {
+    flex: none;
+  }
+}
