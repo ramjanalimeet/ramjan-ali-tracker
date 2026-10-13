@@ -35,3 +35,27 @@ npm run typecheck
 ## Deploy
 
 Vercel detects Next.js automatically; no extra configuration is needed.
+
+## Adding a case study
+
+Case studies live in `lib/case-studies.ts`. Only publish a client's results with
+their written permission, using numbers from their own tools. Never invent
+clients or figures.
+
+1. Copy `SAMPLE_CASE` into the `CASE_STUDIES` array, give it a new `slug`, and
+   remove `sample: true`.
+2. Fill in the client (or an anonymous description such as "Roofing company,
+   Tampa"), trade, services, plan, location, period and the story fields.
+3. **Search Console:** Performance > Search results, set the date range, export
+   and copy the monthly totals into `searchConsole.clicks` and `impressions`.
+4. **Map rankings:** run the same grid scan (e.g. Local Falcon or BrightLocal)
+   for one keyword at the start and end of the period, and copy each grid's
+   ranks into `mapGrid` (use 0 for "not in top 20").
+5. **AI visibility:** ask the same fixed question set in each AI tool every
+   month, and record how many answers named the business in `ai`.
+6. Make sure `highlights` match the data exactly, add a `quote` only if the
+   client wrote and approved it, then build.
+
+The page at `/case-studies/<slug>` and its charts, the listing on
+`/case-studies` and the sitemap entry are generated automatically. Once at least
+one real case study exists, the labelled sample stops being listed.

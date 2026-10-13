@@ -2237,3 +2237,261 @@ dialog.booking::backdrop {
     padding: 22px 18px;
   }
 }
+
+/* Case study pages and charts */
+.sample-banner {
+  background: #fff4cc;
+  border-bottom: 1px solid #ecd889;
+  color: #3d3200;
+  font-size: 15px;
+  padding: 12px 0;
+  margin-top: 72px;
+}
+.sample-note {
+  display: inline-block;
+  background: #fff4cc;
+  border: 1px solid #ecd889;
+  color: #3d3200;
+  font-size: 13.5px;
+  border-radius: 10px;
+  padding: 6px 12px;
+  margin: 0 0 14px;
+}
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.stat {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.stat-label {
+  font-size: 14px;
+  color: var(--mute);
+}
+.stat-val {
+  font-size: clamp(34px, 4vw, 48px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+.stat-from {
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.chart-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.chart-card {
+  margin: 0;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 20px 20px 12px;
+}
+.chart-card figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 10px;
+}
+.chart-card figcaption b {
+  font-size: 16px;
+}
+.chart-card figcaption span {
+  font-size: 13.5px;
+  color: var(--mute);
+}
+.tchart {
+  position: relative;
+}
+.tchart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.tchart .grid {
+  stroke: #e7e9e3;
+  stroke-width: 1;
+}
+.tchart .cross {
+  stroke: #b9bcb4;
+  stroke-width: 1;
+}
+.tchart .axis {
+  fill: var(--mute);
+  font-size: 12px;
+}
+.tchart .end {
+  fill: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+}
+.ttip {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.ttip span {
+  display: block;
+  color: #b9bcb4;
+  font-size: 12px;
+}
+.ctable {
+  grid-column: 1 / -1;
+  font-size: 14px;
+}
+.ctable summary {
+  cursor: pointer;
+  font-weight: 600;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+}
+.ctable-scroll {
+  overflow-x: auto;
+}
+.ctable table {
+  border-collapse: collapse;
+  min-width: 320px;
+  margin-top: 6px;
+}
+.ctable th,
+.ctable td {
+  text-align: left;
+  padding: 6px 14px 6px 0;
+  border-bottom: 1px solid var(--line);
+}
+.ctable th {
+  color: var(--mute);
+  font-weight: 600;
+}
+.grid-card .rgrid {
+  max-width: 340px;
+}
+.rgrid .none,
+.report-key .none {
+  background: #9a9d95;
+}
+.rgrid span {
+  font-size: 13px;
+}
+.hbars {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+.hbars li {
+  display: grid;
+  grid-template-columns: minmax(110px, 0.9fr) 2fr auto;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+.hb-track {
+  height: 14px;
+  border-radius: 4px;
+  background: #eef0ea;
+  overflow: hidden;
+}
+.hb-fill {
+  display: block;
+  height: 100%;
+  background: #3f6b0a;
+  border-radius: 0 4px 4px 0;
+}
+.hb-val {
+  font-weight: 700;
+}
+.case-card h3 {
+  font-size: 20px;
+  line-height: 1.25;
+}
+.case-spark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--mute);
+}
+.spark {
+  width: 120px;
+  height: 36px;
+}
+.case-hl {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 4px;
+  font-size: 14.5px;
+}
+.case-hl span {
+  color: var(--mute);
+}
+.quote {
+  margin: 0;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 32px;
+}
+.quote p {
+  font-family: var(--serif);
+  font-size: clamp(24px, 2.8vw, 34px);
+  line-height: 1.25;
+}
+.quote cite {
+  display: block;
+  margin-top: 14px;
+  font-style: normal;
+  color: var(--mute);
+}
+@media (max-width: 960px) {
+  .chart-pair,
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .sample-banner {
+    margin-top: 64px;
+  }
+  .hbars li {
+    grid-template-columns: 1fr auto;
+  }
+  .hb-track {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
+/* Dark numbers on amber cells for contrast */
+.rgrid .mid {
+  color: #2a2100;
+}
+@media (max-width: 640px) {
+  .tchart .axis {
+    font-size: 20px;
+  }
+  .tchart .end {
+    font-size: 21px;
+  }
+}
