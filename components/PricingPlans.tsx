@@ -7,9 +7,11 @@ export function PricingPlans({ service }: { service: ServicePricing }) {
     <div className={`plans plans-${service.plans.length}`}>
       {service.plans.map((p) => (
         <div className={p.popular ? "plan pop rv" : "plan rv"} key={p.name}>
-          {p.popular && <span className="plan-badge">Most popular</span>}
-          <h3>{p.name}</h3>
-          <p className="muted">{p.tagline}</p>
+          <div className="plan-head">
+            <h3>{p.name}</h3>
+            {p.popular && <span className="plan-badge">Most popular</span>}
+          </div>
+          <p className="tagline">{p.tagline}</p>
           <p className="price">
             {usd(p.price)}
             <small>/month</small>
@@ -19,8 +21,8 @@ export function PricingPlans({ service }: { service: ServicePricing }) {
               <li key={f}>{f}</li>
             ))}
           </ul>
-          <Link className={p.popular ? "btn btn-dark" : "btn btn-ghost"} href="/free-seo-audit">
-            Start with a free audit <span className="arr">→</span>
+          <Link className={p.popular ? "btn btn-accent" : "btn btn-ghost"} href="/book-a-call">
+            Get started <span className="arr">→</span>
           </Link>
         </div>
       ))}
