@@ -3,7 +3,7 @@ import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { HowItWorks } from "@/components/HowItWorks";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { LOCAL_SEO, fromPrice, usd } from "@/lib/pricing";
+import { fromPrice, usd } from "@/lib/pricing";
 import { PricingSection } from "@/components/PricingPlans";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
@@ -26,7 +26,7 @@ const FAQ: FaqItem[] = [
   },
   {
     q: "How much does local SEO cost?",
-    a: `Plans start at ${usd(fromPrice(LOCAL_SEO))}/month, with no setup fees and no long-term contract. See the plans above, or the pricing page for the Local SEO + AI search bundle.`,
+    a: `Plans start at ${usd(fromPrice())}/month, with no setup fees and no long-term contract. See the plans above. Growth and Pro also include GEO & AI Visibility.`,
   },
   {
     q: "Will you post fake reviews or create extra listings?",
@@ -144,7 +144,7 @@ export default function LocalSeoPage() {
                 <li>
                   <b>Price</b>
                   <span>
-                    From {usd(fromPrice(LOCAL_SEO))}/month. <Link href="#pricing">See plans</Link>
+                    From {usd(fromPrice())}/month. <Link href="#pricing">See plans</Link>
                   </span>
                 </li>
                 <li>
@@ -352,7 +352,7 @@ export default function LocalSeoPage() {
         </div>
       </section>
       <HowItWorks />
-      <PricingSection service={LOCAL_SEO} id="pricing" alt showAllLink />
+      <PricingSection id="pricing" alt showAllLink />
       <section className="sec tight">
         <div className="wrap split">
           <div className="body rv">

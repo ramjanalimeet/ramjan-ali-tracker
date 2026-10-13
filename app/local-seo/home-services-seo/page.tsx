@@ -3,7 +3,7 @@ import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { HowItWorks } from "@/components/HowItWorks";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { LOCAL_SEO, fromPrice, usd } from "@/lib/pricing";
+import { fromPrice, usd } from "@/lib/pricing";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
 
@@ -29,7 +29,7 @@ const FAQ: FaqItem[] = [
   },
   {
     q: "Do I need a big budget?",
-    a: `No. Plans are a fixed monthly price, starting at ${usd(fromPrice(LOCAL_SEO))}/month. You do not need to spend on ads for local SEO to work.`,
+    a: `No. Plans are a fixed monthly price, starting at ${usd(fromPrice())}/month. You do not need to spend on ads for local SEO to work.`,
   },
 ];
 

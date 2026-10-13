@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { usd, type ServicePricing } from "@/lib/pricing";
+import { PLANS, usd } from "@/lib/pricing";
 
-/** Plan cards for one service. */
-export function PricingPlans({ service }: { service: ServicePricing }) {
+/** The plan cards. */
+export function PricingPlans() {
   return (
-    <div className={`plans plans-${service.plans.length}`}>
-      {service.plans.map((p) => (
+    <div className={`plans plans-${PLANS.length}`}>
+      {PLANS.map((p) => (
         <div className={p.popular ? "plan pop rv" : "plan rv"} key={p.name}>
           <div className="plan-head">
             <h3>{p.name}</h3>
@@ -30,14 +30,12 @@ export function PricingPlans({ service }: { service: ServicePricing }) {
   );
 }
 
-/** A full pricing section for one service, used on the pricing page and the service pages. */
+/** The pricing section, used on the pricing page and the service pages. */
 export function PricingSection({
-  service,
   alt = false,
   id,
   showAllLink = false,
 }: {
-  service: ServicePricing;
   alt?: boolean;
   id?: string;
   showAllLink?: boolean;
@@ -47,16 +45,19 @@ export function PricingSection({
       <div className="wrap">
         <div className="sec-head rv">
           <div>
-            <span className="eyebrow">Pricing · {service.service}</span>
-            <h2>{service.service} plans.</h2>
+            <span className="eyebrow">Pricing</span>
+            <h2>One plan. Everything included.</h2>
           </div>
-          <p>{service.intro} Month to month, no setup fees, cancel with a week of notice.</p>
+          <p>
+            Local SEO in every plan, with GEO &amp; AI Visibility from Growth up. Month to month, no setup fees, cancel
+            with a week of notice.
+          </p>
         </div>
-        <PricingPlans service={service} />
+        <PricingPlans />
         {showAllLink && (
           <div className="cta-row rv">
             <Link className="btn btn-ghost" href="/pricing">
-              All pricing and the bundle <span className="arr">→</span>
+              Full pricing details <span className="arr">→</span>
             </Link>
           </div>
         )}

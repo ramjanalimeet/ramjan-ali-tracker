@@ -4,7 +4,7 @@ import { Faq } from "@/components/Faq";
 import { HowItWorks } from "@/components/HowItWorks";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { PostCards } from "@/components/PostCards";
-import { AI_SEARCH, BUNDLE, LOCAL_SEO, fromPrice, usd } from "@/lib/pricing";
+import { AI_PLAN, fromPrice, usd } from "@/lib/pricing";
 import { REGIONS } from "@/lib/locations";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
@@ -35,7 +35,7 @@ const FAQ: FaqItem[] = [
   },
   {
     q: "What does it cost?",
-    a: `Local SEO starts at ${usd(fromPrice(LOCAL_SEO))}/month and AI Search Visibility at ${usd(fromPrice(AI_SEARCH))}/month, or ${usd(BUNDLE.price)}/month for both. No setup fees. I confirm the right plan in writing after the free audit, before anything starts.`,
+    a: `Plans start at ${usd(fromPrice())}/month for Local SEO, and ${usd(AI_PLAN.price)}/month for Local SEO with GEO & AI Visibility included. No setup fees. I confirm the right plan in writing after the free audit, before anything starts.`,
   },
   {
     q: "Can you guarantee #1 on Google or in ChatGPT?",
@@ -314,7 +314,7 @@ export default function HomePage() {
                 Google Business Profile, map pack rankings, service and area pages, reviews, citations and local links,
                 so you show up for the jobs you want in the towns you serve.
               </p>
-              <p className="price-from">From {usd(fromPrice(LOCAL_SEO))}/month</p>
+              <p className="price-from">From {usd(fromPrice())}/month</p>
               <span className="go">
                 Learn more <span>→</span>
               </span>
@@ -328,7 +328,7 @@ export default function HomePage() {
                 Get named in ChatGPT, Gemini, Perplexity and Google's AI Overviews when homeowners ask who to call, with
                 the right services, towns and reviews attached.
               </p>
-              <p className="price-from">From {usd(fromPrice(AI_SEARCH))}/month</p>
+              <p className="price-from">Included from {usd(AI_PLAN.price)}/month</p>
               <span className="go">
                 Learn more <span>→</span>
               </span>

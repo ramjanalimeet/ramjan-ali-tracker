@@ -3,7 +3,7 @@ import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { HowItWorks } from "@/components/HowItWorks";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { AI_SEARCH, fromPrice, usd } from "@/lib/pricing";
+import { AI_PLAN, usd } from "@/lib/pricing";
 import { PricingSection } from "@/components/PricingPlans";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
@@ -143,7 +143,7 @@ export default function AiSearchPage() {
                 <li>
                   <b>Price</b>
                   <span>
-                    From {usd(fromPrice(AI_SEARCH))}/month. <Link href="#pricing">See plans</Link>
+                    Included from {usd(AI_PLAN.price)}/month. <Link href="#pricing">See plans</Link>
                   </span>
                 </li>
                 <li>
@@ -332,7 +332,7 @@ export default function AiSearchPage() {
         </div>
       </section>
       <HowItWorks alt />
-      <PricingSection service={AI_SEARCH} id="pricing" showAllLink />
+      <PricingSection id="pricing" showAllLink />
       <Faq items={FAQ} />
       <section className="sec tight">
         <div className="wrap rv">

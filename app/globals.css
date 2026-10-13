@@ -1648,34 +1648,9 @@ a.card:hover .go span {
   border-radius: 999px;
   white-space: nowrap;
 }
-.bundle {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 30px;
-  align-items: center;
-}
-.bundle .price {
-  font-family: var(--serif);
-  font-size: 64px;
-  line-height: 1;
-  color: var(--bg);
-}
-.bundle .price small {
-  font-family: var(--sans);
-  font-size: 16px;
-  color: #8d9088;
-  margin-left: 4px;
-}
-.bundle s {
-  color: #8d9088;
-  font-size: 16px;
-}
 @media (max-width: 960px) {
   .plans-3,
   .plans-2 {
-    grid-template-columns: 1fr;
-  }
-  .bundle {
     grid-template-columns: 1fr;
   }
 }
