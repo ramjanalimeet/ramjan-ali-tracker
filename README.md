@@ -1,29 +1,31 @@
 # ramjan-ali-tracker
 
-Static site for **ramjan-akash.vercel.app** — Local SEO & AI Search Visibility for Home Service Businesses (Ramjan Ali Akash).
+Website for **ramjan-akash.vercel.app** — Local SEO & AI Search Visibility for Home
+Service Businesses (Ramjan Ali Akash). Built with Next.js (App Router, TypeScript).
 
-This repository is a static snapshot of the live site: pre-rendered HTML pages plus
-CSS, JS, and image assets. It deploys as-is on Vercel (no build step).
+## Develop
+
+```bash
+npm install
+npm run dev        # http://localhost:3000
+npm run build      # production build
+npm run typecheck
+```
 
 ## Structure
 
-- `index.html` and the `*.html` files — the site's pages
-- `local-seo.html`, `ai-search.html` — the two core service pages
-- `local-seo/` — industry pages (roofing, plumbing, septic, HVAC, home services)
-- `blog/` — articles
-- `style.css`, `app.js` — styles and client script
-- `assets/` — images (e.g. `akash.webp`)
-- `favicon.svg`, `robots.txt`, `sitemap.xml`
-- `vercel.json` — enables clean URLs (`/blog` serves `blog.html`) and 301-redirects
-  the retired `/seo-services/*`, `/locations/*` and blog category URLs
+- `app/` — one folder per page (`app/pricing/page.tsx` serves `/pricing`), plus
+  `layout.tsx` (header, footer, fonts), `globals.css`, `sitemap.ts`, `robots.ts`,
+  `opengraph-image.tsx` and `api/lead` (free audit form endpoint)
+- `components/` — shared pieces: `Header`, `Footer`, `CtaBand`, `Faq`, `HowItWorks`,
+  `PricingPlans`, `LeadForm`, `PostCards`, `WhatsAppButton`
+- `lib/site.ts` — site URL, contact links, industries, page metadata helper
+- `lib/pricing.ts` — **every price on the site**; edit plans and prices here
+- `lib/posts.ts` — blog article list (each article lives in `app/blog/<slug>/page.tsx`)
+- `public/` — images and favicon
+- `next.config.ts` — 301 redirects for retired `/seo-services/*`, `/locations/*`
+  and blog category URLs
 
 ## Deploy
 
-Import this repo into Vercel (or run `vercel`). No framework or build command is
-required — it is served as static files with `cleanUrls` enabled.
-
-## Note
-
-This snapshot was reconstructed from the deployed/rendered site. If you still have
-the original project sources (the Python build scripts: `build.py`, `seo.py`,
-`og.py`, etc.), prefer committing those for future edits.
+Vercel detects Next.js automatically; no extra configuration is needed.
