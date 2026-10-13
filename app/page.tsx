@@ -81,7 +81,7 @@ export default function HomePage() {
               <span className="dot"></span>Local SEO &amp; AI Search Visibility
             </span>
             <h1>
-              Get found first on <span className="hl">Google Maps</span> and in AI search.
+              Get found first on <span className="hl">Google + Maps</span> and in AI search.
             </h1>
             <p className="lead">
               I&apos;m <strong>Ramjan Ali Akash</strong>, a local SEO specialist for home service businesses. I help
