@@ -110,6 +110,10 @@ export default function BookACallPage() {
                 Open the booking page in a new tab →
               </a>
             </p>
+            <p className="fine">
+              Bookings are handled by Cal.com. See how your details are used in the{" "}
+              <Link href="/privacy-policy">Privacy Policy</Link>.
+            </p>
           </div>
           <aside className="aside">
             <div className="panel">

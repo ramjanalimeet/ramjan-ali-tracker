@@ -2768,3 +2768,19 @@ dialog.booking::backdrop {
 .prose .paa details p {
   margin: 0 0 18px;
 }
+
+/* Legal pages */
+.legal-links {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  font-size: 15px;
+}
+.legal-links a {
+  color: var(--ink-2);
+}
+.prose.legal h2 {
+  scroll-margin-top: 90px;
+}

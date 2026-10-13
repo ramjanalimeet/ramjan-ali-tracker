@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ALL_INDUSTRIES } from "@/lib/industries";
+import { LEGAL_PAGES } from "@/lib/legal";
 import { EMAIL, SOCIAL } from "@/lib/site";
 import { ALL_SERVICES } from "@/lib/services";
 import { SocialIcon } from "./SocialIcon";
@@ -76,10 +77,23 @@ export function Footer() {
               </li>
             </ul>
           </div>
+          <div>
+            <h4>Legal</h4>
+            <ul>
+              {LEGAL_PAGES.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href}>{l.name}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
         <div className="fbot">
           <span>© {new Date().getFullYear()} Ramjan Ali Akash · Local SEO &amp; AI Search Visibility</span>
-          <span>Dhaka, Bangladesh · GMT+6 · replies within 24h</span>
+          <span>
+            <Link href="/privacy-policy">Privacy</Link> · <Link href="/terms">Terms</Link> · Dhaka, Bangladesh · GMT+6 ·
+            replies within 24h
+          </span>
         </div>
       </div>
     </footer>

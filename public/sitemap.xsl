@@ -14,13 +14,10 @@
         <meta name="robots" content="noindex, follow"/>
         <title>XML Sitemap | Ramjan Ali</title>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
-        <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
         <style>
           :root{--bg:#F2F3F0;--card:#fff;--ink:#111210;--ink-2:#3C3E39;--mute:#6E716A;--line:#D9DCD4;--accent:#C6F432;--accent-ink:#1A2400}
           *{box-sizing:border-box}
-          body{margin:0;background:var(--bg);color:var(--ink);font-family:"Inter Tight",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+          body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
           a{color:inherit}
           .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
           header{background:var(--ink);color:var(--bg);padding:28px 0 44px;position:relative;overflow:hidden}

@@ -24,6 +24,13 @@ const SITEMAPS: Record<SitemapName, () => Entry[]> = {
       { path: "/case-studies" },
       { path: "/blog" },
       { path: "/book-a-call" },
+      { path: "/privacy-policy" },
+      { path: "/terms" },
+      { path: "/cookie-policy" },
+      { path: "/refund-policy" },
+      { path: "/disclaimer" },
+      { path: "/editorial-policy" },
+      { path: "/accessibility" },
     ].map((e) => ({ ...e, lastmod: SITE_UPDATED })),
   service: () => [
     { path: "/seo-services", lastmod: SITE_UPDATED },
