@@ -27,6 +27,18 @@ City content lives in `scripts/city_data/`. The script also adds the city list
 to `locations.html` and the sitemap (no other existing page is changed), and writes
 `docs/location-research.md` (why each city was picked and what it targets).
 
+## Blog posts
+
+New blog posts are generated from `scripts/blog_data/posts.py`:
+
+```
+python3 scripts/build_blog_posts.py
+```
+
+Each post gets the site header/footer, a table of contents, FAQ section and
+BlogPosting + FAQPage schema. The script also lists the posts on `blog.html`,
+their topic page and the sitemap (between marker comments, so re-running is safe).
+
 ## Deploy
 
 Import this repo into Vercel (or run `vercel`). No framework or build command is
