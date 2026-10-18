@@ -56,7 +56,7 @@ const SCHEMA = {
       "@id": `${SITE_URL}/#person`,
       name: "Ramjan Ali Akash",
       jobTitle: "Local SEO & AI Search Visibility Specialist",
-      image: `${SITE_URL}/assets/ramjan-ali-akash.webp`,
+      image: `${SITE_URL}/assets/ramjan-ali-akash-portrait.webp`,
       url: `${SITE_URL}/about`,
       homeLocation: { "@type": "Place", name: "Dhaka, Bangladesh" },
       knowsAbout: ["Local SEO", "Google Business Profile", "Generative engine optimization", "AI search visibility"],
@@ -105,7 +105,7 @@ export default function AboutPage() {
             </div>
             <div className="about-photo">
               <Image
-                src="/assets/ramjan-ali-akash.webp"
+                src="/assets/ramjan-ali-akash-portrait.webp"
                 alt="Portrait of Ramjan Ali Akash"
                 width={400}
                 height={432}

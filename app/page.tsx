@@ -110,7 +110,7 @@ export default function HomePage() {
           <div className="portrait">
             <div className="frame">
               <Image
-                src="/assets/ramjan-ali-akash.webp"
+                src="/assets/ramjan-ali-akash-portrait.webp"
                 alt="Portrait of Ramjan Ali Akash"
                 width={400}
                 height={432}

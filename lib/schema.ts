@@ -7,7 +7,7 @@ export const SITE_SCHEMA = {
       "@id": "https://ramjan-akash.vercel.app/#business",
       name: "Ramjan Ali Akash, Local SEO & AI Search Visibility",
       url: "https://ramjan-akash.vercel.app/",
-      image: "https://ramjan-akash.vercel.app/assets/ramjan-ali-akash.webp",
+      image: "https://ramjan-akash.vercel.app/assets/ramjan-ali-akash-portrait.webp",
       email: "mailto:raakash.meet@gmail.com",
       description: "Local SEO and AI search visibility for home service businesses worldwide.",
       address: {
@@ -48,7 +48,7 @@ export const SITE_SCHEMA = {
       "@id": "https://ramjan-akash.vercel.app/#person",
       name: "Ramjan Ali Akash",
       jobTitle: "Local SEO & AI Search Visibility Specialist",
-      image: "https://ramjan-akash.vercel.app/assets/ramjan-ali-akash.webp",
+      image: "https://ramjan-akash.vercel.app/assets/ramjan-ali-akash-portrait.webp",
       url: "https://ramjan-akash.vercel.app/",
       sameAs: [
         "https://www.youtube.com/@Ramjanali-Akash",
