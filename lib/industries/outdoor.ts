@@ -1,0 +1,388 @@
+import type { Industry } from "./types";
+
+export const OUTDOOR: Industry[] = [
+  {
+    slug: "landscaping-seo",
+    name: "Landscapers",
+    short: "Landscaping",
+    category: "outdoor",
+    blurb: "Landscape design, installs and maintenance",
+    title: "Landscaping SEO: Rank on Google Maps & AI Search",
+    description:
+      "Local SEO and AI visibility for landscaping companies. Rank for landscapers near me, landscape design and yard makeovers in Google Maps and AI answers.",
+    h1: ["Landscaping SEO that ", "grows", " with you."],
+    lead: "From design-build projects to weekly maintenance, I help your landscaping company rank for the work that grows your business.",
+    problemTitle: "Mowing crews and design firms share one search.",
+    problem: [
+      "Landscaping covers everything from weekly mowing to full yard redesigns. If your site does not separate them, you get the cheap calls and miss the big projects.",
+      "I build pages for design, installation, maintenance and seasonal services, and fill your profile with project photos that attract the jobs you want.",
+    ],
+    searches: [
+      "landscapers near me",
+      "landscape design [city]",
+      "backyard landscaping ideas",
+      "landscape installation",
+      "yard cleanup service",
+      "commercial landscaping [city]",
+      "xeriscaping near me",
+      "landscaping cost",
+    ],
+    ai: [
+      "Best landscaping company in [city]",
+      "How much does backyard landscaping cost?",
+      "Who does landscape design near me?",
+    ],
+    focus: [
+      { t: "Design-build pages", d: "Projects with photos, plans and price ranges." },
+      { t: "Maintenance pages", d: "Recurring service pages for steady income." },
+      { t: "Seasonal content", d: "Spring cleanups and fall work published ahead of demand." },
+    ],
+    faq: [
+      {
+        q: "Should maintenance and design be separate?",
+        a: "Yes. They are different customers and searches. Separate pages help you win both.",
+      },
+      {
+        q: "Can SEO help with commercial contracts?",
+        a: "Yes. Property managers and HOAs search online too. A commercial page with proof helps win them.",
+      },
+    ],
+    cta: "Be the landscaper the whole street notices.",
+  },
+  {
+    slug: "lawn-care-seo",
+    name: "Lawn Care Companies",
+    short: "Lawn Care",
+    category: "outdoor",
+    blurb: "Mowing, fertilization and weed control",
+    title: "Lawn Care SEO: Get More Customers from Google Maps & AI",
+    description:
+      "Local SEO and AI visibility for lawn care companies. Rank for lawn care near me, lawn mowing, fertilization and weed control in Google and AI answers.",
+    h1: ["Lawn care SEO that keeps your ", "routes full", "."],
+    lead: "Lawn care customers sign up for the season and stay for years. I help you win them and build dense, profitable routes.",
+    problemTitle: "Spring sign-ups decide your year.",
+    problem: [
+      "Most lawn care customers sign up in early spring. If you are not ranking by then, you spend the year with half-full routes.",
+      "I build pages for mowing, fertilization, weed control, aeration and seeding, target your best neighborhoods and get your profile ready before the spring rush.",
+    ],
+    searches: [
+      "lawn care near me",
+      "lawn mowing service [city]",
+      "lawn fertilization program",
+      "weed control service",
+      "lawn aeration and overseeding",
+      "grub control near me",
+      "lawn care prices",
+      "organic lawn care [city]",
+    ],
+    ai: [
+      "Best lawn care company in [city]",
+      "How much does weekly mowing cost near me?",
+      "When should I aerate my lawn in [city]?",
+    ],
+    focus: [
+      { t: "Program pages", d: "Mowing, treatment programs, aeration and seeding." },
+      { t: "Route targeting", d: "Neighborhood-level pages and reviews that build route density." },
+      { t: "Spring timing", d: "Rankings in place before the sign-up rush." },
+    ],
+    faq: [
+      {
+        q: "Can SEO help me grow in specific neighborhoods?",
+        a: "Yes. Neighborhood pages and reviews from those areas help you win customers close to your existing routes.",
+      },
+      {
+        q: "Should I publish seasonal lawn tips?",
+        a: "Yes. They rank, get quoted by AI tools and keep you in front of customers all year.",
+      },
+    ],
+    cta: "Be the lawn care company with the full routes.",
+  },
+  {
+    slug: "tree-service-seo",
+    name: "Tree Services",
+    short: "Tree Service",
+    category: "outdoor",
+    blurb: "Tree removal, trimming and stump grinding",
+    title: "Tree Service SEO: Rank for Tree Removal Near Me & AI",
+    description:
+      "Local SEO and AI visibility for tree service companies. Rank for tree removal near me, tree trimming, stump grinding and emergency tree service.",
+    h1: ["Tree service SEO that ", "branches out", "."],
+    lead: "Tree work ranges from emergency storm removals to planned trimming. I help your company win both, with the trust signals homeowners look for.",
+    problemTitle: "Storms bring a flood of competitors.",
+    problem: [
+      "After a storm, every truck with a chainsaw shows up. Homeowners look for insured, certified companies with real reviews.",
+      "I build pages for removal, trimming, stump grinding, emergency work and arborist services, and make your insurance and certifications easy to see.",
+    ],
+    searches: [
+      "tree removal near me",
+      "tree trimming service [city]",
+      "emergency tree removal",
+      "stump grinding near me",
+      "certified arborist [city]",
+      "tree removal cost",
+      "storm damage tree service",
+      "land clearing near me",
+    ],
+    ai: [
+      "Who removes fallen trees near me today?",
+      "How much does tree removal cost in [city]?",
+      "Best tree service company near me",
+    ],
+    focus: [
+      { t: "Service pages", d: "Removal, trimming, stumps, land clearing and arborist care." },
+      { t: "Emergency setup", d: "24/7 storm response details and call tracking." },
+      { t: "Trust signals", d: "Insurance, certifications and safety shown clearly." },
+    ],
+    faq: [
+      {
+        q: "Should I separate emergency and planned work?",
+        a: "Yes. Emergency searches are urgent and need clear availability. Planned work needs photos and pricing.",
+      },
+      {
+        q: "Do arborist certifications help?",
+        a: "They help trust and give you specific searches to rank for.",
+      },
+    ],
+    cta: "Be the tree company homeowners trust after the storm.",
+  },
+  {
+    slug: "irrigation-seo",
+    name: "Irrigation & Sprinklers",
+    short: "Irrigation",
+    category: "outdoor",
+    blurb: "Sprinkler install, repair and winterization",
+    title: "Irrigation & Sprinkler SEO: Rank on Google Maps & AI",
+    description:
+      "Local SEO and AI visibility for irrigation companies. Rank for sprinkler repair near me, sprinkler installation, winterization and drip irrigation.",
+    h1: ["Irrigation SEO that ", "keeps you flowing", " all season."],
+    lead: "Sprinkler searches follow the seasons: startups in spring, repairs in summer, winterization in fall. I help you rank for each one on time.",
+    problemTitle: "Three seasons, three different searches.",
+    problem: [
+      "Irrigation demand moves through the year, from spring startups to fall blowouts. Companies that rank for each seasonal service keep crews busy all year.",
+      "I build pages for installation, repair, startups, winterization and smart controllers, timed so each ranks before its season.",
+    ],
+    searches: [
+      "sprinkler repair near me",
+      "sprinkler installation [city]",
+      "sprinkler winterization",
+      "sprinkler blowout service",
+      "drip irrigation installer",
+      "smart sprinkler controller install",
+      "irrigation repair [city]",
+      "backflow testing near me",
+    ],
+    ai: [
+      "Who fixes broken sprinklers near me?",
+      "When should I winterize my sprinklers in [city]?",
+      "How much does a sprinkler system cost?",
+    ],
+    focus: [
+      { t: "Seasonal pages", d: "Startups, repairs and winterization, each published on time." },
+      { t: "Install pages", d: "New systems, drip irrigation and smart controllers." },
+      { t: "Backflow testing", d: "Required testing pages that bring in steady, repeat work." },
+    ],
+    faq: [
+      {
+        q: "Is backflow testing worth a page?",
+        a: "Where it is required, yes. It is recurring and specific, and few companies target it well.",
+      },
+      {
+        q: "When should irrigation SEO start?",
+        a: "Before spring, so startup and repair pages are ranking when the season opens.",
+      },
+    ],
+    cta: "Be the sprinkler company every yard depends on.",
+  },
+  {
+    slug: "pool-builder-seo",
+    name: "Pool Builders",
+    short: "Pool Builder",
+    category: "outdoor",
+    blurb: "Inground pools, spas and outdoor living",
+    title: "Pool Builder SEO: Rank for Pool Builders Near Me & AI",
+    description:
+      "Local SEO and AI visibility for pool builders. Rank for inground pool builders near me, pool installation cost and custom pools in Google and AI.",
+    h1: ["Pool builder SEO for ", "big", " backyard projects."],
+    lead: "A new pool is a major investment that families plan for a long time. I help them find your company early, and pick you in the end.",
+    problemTitle: "Big tickets, long decisions, a crowded market.",
+    problem: [
+      "Pool buyers research designs, costs and builders for months. They want to see your work and understand your process before they meet you.",
+      "I build pages for pool types, spas, outdoor living and costs in your area, with a gallery of finished projects that sells the dream.",
+    ],
+    searches: [
+      "pool builders near me",
+      "inground pool installation [city]",
+      "pool installation cost",
+      "fiberglass pool installer",
+      "custom pool design",
+      "pool and spa builder",
+      "small backyard pool ideas",
+      "pool remodeling near me",
+    ],
+    ai: [
+      "Best pool builder in [city]",
+      "How much does an inground pool cost in [city]?",
+      "Fiberglass or concrete pool, which is better?",
+    ],
+    focus: [
+      { t: "Pool type pages", d: "Concrete, fiberglass, vinyl, spas and plunge pools." },
+      { t: "Cost guides", d: "Honest local price ranges that pre-qualify buyers." },
+      { t: "Project gallery", d: "Finished backyards that show your design and quality." },
+    ],
+    faq: [
+      {
+        q: "When do pool buyers start researching?",
+        a: "Often in autumn and winter for the following summer. Content needs to be ranking by then.",
+      },
+      {
+        q: "Should I target pool remodeling too?",
+        a: "Yes. It is a strong source of work in established neighborhoods.",
+      },
+    ],
+    cta: "Be the pool builder families dream with.",
+  },
+  {
+    slug: "pool-service-seo",
+    name: "Pool Service & Repair",
+    short: "Pool Service",
+    category: "outdoor",
+    blurb: "Weekly pool cleaning and repair",
+    title: "Pool Service SEO: Rank for Pool Cleaning Near Me & AI",
+    description:
+      "Local SEO and AI visibility for pool service companies. Rank for pool cleaning near me, pool repair, green pool cleanup and equipment repair.",
+    h1: ["Pool service SEO that ", "fills your routes", "."],
+    lead: "Weekly pool customers are worth years of steady income. I help you win them, along with the repair work that comes with them.",
+    problemTitle: "Routes, repairs and green pool emergencies.",
+    problem: [
+      "Pool service customers look for reliable weekly care, while repair customers need help fast. Both start with a search.",
+      "I build pages for weekly service, green pool cleanups, equipment repair and openings and closings, targeted to the neighborhoods that build route density.",
+    ],
+    searches: [
+      "pool cleaning service near me",
+      "weekly pool service [city]",
+      "green pool cleanup",
+      "pool pump repair",
+      "pool heater repair near me",
+      "pool opening and closing",
+      "pool leak detection",
+      "pool service prices",
+    ],
+    ai: [
+      "Best pool cleaning company in [city]",
+      "How much does weekly pool service cost?",
+      "Who can fix a green pool near me fast?",
+    ],
+    focus: [
+      { t: "Route pages", d: "Neighborhood targeting that builds dense, efficient routes." },
+      { t: "Repair pages", d: "Pumps, heaters, filters and leak detection for higher-value calls." },
+      { t: "Seasonal services", d: "Openings, closings and green pool cleanups timed to demand." },
+    ],
+    faq: [
+      {
+        q: "Can SEO help me win customers near my current routes?",
+        a: "Yes. Neighborhood-level pages and reviews help you add stops close to where you already work.",
+      },
+      {
+        q: "Should repairs have their own pages?",
+        a: "Yes. Repair searches are urgent and valuable, and often turn into weekly customers.",
+      },
+    ],
+    cta: "Be the pool company every backyard trusts.",
+  },
+  {
+    slug: "hardscaping-seo",
+    name: "Hardscaping Contractors",
+    short: "Hardscaping",
+    category: "outdoor",
+    blurb: "Pavers, patios, walls and outdoor kitchens",
+    title: "Hardscaping SEO: Rank for Patios & Pavers on Google & AI",
+    description:
+      "Local SEO and AI visibility for hardscaping contractors. Rank for paver patios, retaining walls, outdoor kitchens and fire pits near me.",
+    h1: ["Hardscaping SEO for ", "outdoor living", " projects."],
+    lead: "Patios, walls and outdoor kitchens are big, visual projects. I help your company show them off where homeowners are searching.",
+    problemTitle: "Visual projects need visual proof.",
+    problem: [
+      "Hardscape customers decide with their eyes. They want to see finished patios, walls and fire pits before they call.",
+      "I build pages for each project type, fill them with photos and price ranges, and keep your profile updated with your latest work.",
+    ],
+    searches: [
+      "paver patio installation near me",
+      "hardscaping contractors [city]",
+      "retaining wall builder",
+      "outdoor kitchen contractor",
+      "fire pit installation",
+      "paver driveway [city]",
+      "patio cost per square foot",
+      "outdoor living space design",
+    ],
+    ai: [
+      "Best hardscaping company in [city]",
+      "How much does a paver patio cost?",
+      "Who builds outdoor kitchens near me?",
+    ],
+    focus: [
+      { t: "Project pages", d: "Patios, walls, kitchens, fire pits and walkways." },
+      { t: "Cost content", d: "Price ranges that answer the first question and pre-qualify." },
+      { t: "Brand certifications", d: "Paver manufacturer certifications shown and listed." },
+    ],
+    faq: [
+      {
+        q: "Should hardscaping be separate from landscaping?",
+        a: "Yes. Hardscape projects are larger and searched differently. Separate pages and photos win them.",
+      },
+      {
+        q: "Do manufacturer certifications matter?",
+        a: "They build trust and often come with directory listings that help rankings.",
+      },
+    ],
+    cta: "Be the hardscaper behind the best backyards in town.",
+  },
+  {
+    slug: "snow-removal-seo",
+    name: "Snow Removal",
+    short: "Snow Removal",
+    category: "outdoor",
+    blurb: "Snow plowing and ice management",
+    title: "Snow Removal SEO: Rank for Snow Plowing Near Me & AI",
+    description:
+      "Local SEO and AI visibility for snow removal companies. Rank for snow plowing near me, commercial snow removal and residential snow contracts.",
+    h1: ["Snow removal SEO that ", "books contracts", " before the first storm."],
+    lead: "Snow contracts are signed in autumn, and emergency calls come in the storm. I help you rank for both.",
+    problemTitle: "Contracts in autumn, calls in the storm.",
+    problem: [
+      "The most profitable snow work is seasonal contracts signed before winter. The rest is per-push work booked mid-storm. Each needs different pages and timing.",
+      "I build residential and commercial pages, publish them before contract season, and make your profile ready for storm-day searches.",
+    ],
+    searches: [
+      "snow removal near me",
+      "snow plowing service [city]",
+      "commercial snow removal",
+      "residential snow plowing contract",
+      "ice management service",
+      "driveway snow removal",
+      "snow removal prices",
+      "parking lot plowing",
+    ],
+    ai: [
+      "Who plows driveways near me?",
+      "How much does a seasonal snow removal contract cost?",
+      "Best commercial snow removal company in [city]",
+    ],
+    focus: [
+      { t: "Contract pages", d: "Seasonal residential and commercial contract pages, ready by autumn." },
+      { t: "Storm-day setup", d: "Profile details and messaging for urgent searches." },
+      { t: "Off-season pairing", d: "Linking snow work to your landscaping or lawn services for year-round leads." },
+    ],
+    faq: [
+      {
+        q: "When should snow removal SEO start?",
+        a: "Late summer, so pages rank when property managers and homeowners look for contracts.",
+      },
+      {
+        q: "Can snow removal pages help my landscaping business?",
+        a: "Yes. They bring in customers you can serve all year.",
+      },
+    ],
+    cta: "Be the snow company signed up before the first flake.",
+  },
+];

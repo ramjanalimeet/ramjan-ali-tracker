@@ -3,4 +3,7 @@ Thumbs.db
 node_modules/
 .vercel
 *.log
+.next/
+next-env.d.ts
+*.tsbuildinfo
 __pycache__/
