@@ -457,7 +457,8 @@ export default function LocalSeoChecklistPage() {
       <ul>
         <li>
           <strong>Keyword-stuffed business names.</strong> They can work briefly, but competitors report them and Google
-          can suspend the profile, taking your reviews offline with it.
+          can suspend the profile, taking your reviews offline with it (
+          <Link href="/blog/google-business-profile-suspended">what to do if yours is suspended</Link>).
         </li>
         <li>
           <strong>Virtual offices and fake addresses.</strong> Trying to rank in a town where you have no real location

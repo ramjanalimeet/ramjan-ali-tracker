@@ -66,6 +66,33 @@ export type Post = {
 /** Blog articles, newest first. Each has its own page under app/blog/<slug>. */
 export const POSTS: Post[] = [
   {
+    slug: "google-business-profile-suspended",
+    title: "Google Business Profile suspended? A contractor's guide to getting reinstated",
+    topic: "google-maps",
+    minutes: 7,
+    date: "2026-10-18",
+    excerpt:
+      "Why Google suspends contractor profiles, what to fix before you appeal, and the evidence that gets a profile reinstated.",
+  },
+  {
+    slug: "local-services-ads-vs-seo-for-contractors",
+    title: "Local Services Ads vs SEO for contractors: which brings cheaper calls?",
+    topic: "strategy",
+    minutes: 6,
+    date: "2026-10-18",
+    excerpt:
+      "How Local Services Ads, Google Ads and local SEO compare on cost per lead, speed and control, and how to choose.",
+  },
+  {
+    slug: "how-to-get-more-septic-pumping-customers",
+    title: "How to get more septic pumping customers from Google: a 90-day plan",
+    topic: "local-seo",
+    minutes: 6,
+    date: "2026-10-18",
+    excerpt:
+      "A 90-day plan for septic companies to get more pumping, inspection and repair calls from Google across a wide service area.",
+  },
+  {
     slug: "get-recommended-by-chatgpt",
     title: "How to get your home service business recommended by ChatGPT and AI search",
     topic: "ai-search",

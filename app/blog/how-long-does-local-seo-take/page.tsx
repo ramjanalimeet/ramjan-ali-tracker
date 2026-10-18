@@ -332,7 +332,8 @@ export default function HowLongLocalSeoPage() {
       </div>
       <p>
         Many home service businesses run ads during the first few months of SEO, then reduce spend once organic leads
-        are steady. Reviews help both, so the review habit pays off twice.
+        are steady. Reviews help both, so the review habit pays off twice. For a full cost comparison, see{" "}
+        <Link href="/blog/local-services-ads-vs-seo-for-contractors">Local Services Ads vs SEO for contractors</Link>.
       </p>
 
       <h2 id="report">What a realistic first year looks like on paper</h2>

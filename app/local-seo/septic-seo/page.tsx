@@ -323,6 +323,9 @@ export default function SepticSeoPage() {
             <Link className="chip" href="/local-seo/home-services-seo">
               Home Services SEO →
             </Link>
+            <Link className="chip" href="/blog/how-to-get-more-septic-pumping-customers">
+              Guide: 90-day septic SEO plan →
+            </Link>
           </div>
         </div>
       </section>

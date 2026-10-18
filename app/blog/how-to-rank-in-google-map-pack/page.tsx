@@ -431,7 +431,8 @@ export default function MapPackPage() {
         <p>
           <strong>A note on shortcuts:</strong> keyword-stuffed business names, fake addresses and bought reviews can
           work for a few weeks. Then the listing gets suspended or reported by a competitor, and the reviews you worked
-          for disappear with it. It is never worth the risk.
+          for disappear with it. It is never worth the risk. If it has already happened, see{" "}
+          <Link href="/blog/google-business-profile-suspended">how to get a suspended profile reinstated</Link>.
         </p>
       </div>
 
