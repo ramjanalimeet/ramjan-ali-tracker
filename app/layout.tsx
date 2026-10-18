@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, Inter_Tight } from "next/font/google";
+import { preconnect } from "react-dom";
 import { BookingPopup } from "@/components/BookingPopup";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -7,7 +8,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { MobileCta } from "@/components/MobileCta";
 import { SiteEffects } from "@/components/SiteEffects";
 import { SITE_SCHEMA } from "@/lib/schema";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { BOOKING_ORIGIN, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const serif = Instrument_Serif({
@@ -34,6 +35,8 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // Open the connection to the booking calendar early, so it starts faster when opened.
+  preconnect(BOOKING_ORIGIN);
   return (
     <html lang="en" className={`${serif.variable} ${sans.variable}`}>
       <body>

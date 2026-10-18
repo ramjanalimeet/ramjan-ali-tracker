@@ -5,6 +5,7 @@ export const SITE_NAME = "Ramjan Ali Akash";
 export const EMAIL = "raakash.meet@gmail.com";
 export const WHATSAPP_URL = "https://wa.me/8801839295114";
 export const BOOKING_URL = "https://cal.com/ramjanalimeet/book-a-call";
+export const BOOKING_ORIGIN = new URL(BOOKING_URL).origin;
 export const OG_ALT = "Ramjan Ali - Local SEO and AI search visibility for home service businesses";
 
 export const SOCIAL = [

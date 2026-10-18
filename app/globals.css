@@ -1368,11 +1368,28 @@ a.card:hover .go span {
   justify-content: center;
 }
 .cal {
+  display: block;
+  position: relative;
   width: 100%;
   height: 760px;
   border: 1px solid var(--line);
   border-radius: var(--r);
+  background: transparent;
+}
+/* Shown behind the calendar until Cal.com paints over it. */
+.cal-frame {
+  position: relative;
+  border-radius: var(--r);
   background: #fff;
+}
+.cal-frame::before {
+  content: "Loading calendar…";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--mute);
+  font-size: 15px;
 }
 
 /* footer */

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
-import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
+import { BOOKING_URL, type FaqItem, faqSchema, pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta({
   title: "Book a Free Local SEO & AI Search Strategy Call",
@@ -98,15 +98,17 @@ export default function BookACallPage() {
       <section className="sec tight" style={{ paddingTop: 10 }}>
         <div className="wrap art-grid book-grid">
           <div>
-            <iframe
-              className="cal"
-              src="https://cal.com/ramjanalimeet/book-a-call?embed=true"
-              title="Book a call with Ramjan Ali Akash"
-              loading="lazy"
-            ></iframe>
+            <div className="cal-frame">
+              <iframe
+                className="cal"
+                src={`${BOOKING_URL}?embed=true`}
+                title="Book a call with Ramjan Ali Akash"
+                allow="payment"
+              ></iframe>
+            </div>
             <p className="fine">
               Calendar not loading?{" "}
-              <a href="https://cal.com/ramjanalimeet/book-a-call" target="_blank" rel="noopener">
+              <a href={BOOKING_URL} target="_blank" rel="noopener">
                 Open the booking page in a new tab →
               </a>
             </p>
