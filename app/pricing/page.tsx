@@ -138,6 +138,19 @@ export default function PricingPage() {
         </div>
       </section>
       <PricingSection id="plans" />
+      <section className="sec tight">
+        <div className="wrap rv">
+          <span className="eyebrow">Free guides</span>
+          <div className="chips" style={{ marginTop: 6 }}>
+            <Link className="chip" href="/blog/how-much-does-local-seo-cost">
+              How much does local SEO cost? →
+            </Link>
+            <Link className="chip" href="/blog/local-services-ads-vs-seo-for-contractors">
+              Local Services Ads vs SEO →
+            </Link>
+          </div>
+        </div>
+      </section>
       <Faq items={FAQ} title="Pricing questions." />
       <CtaBand title="Not sure which plan fits?" />
     </>

@@ -178,7 +178,9 @@ export default function MapPackPage() {
         Your primary category is one of the strongest signals you control. If you are a plumber who also does water
         heaters, your primary category should be &quot;Plumber&quot;, with secondary categories covering the rest. Check
         what the top three competitors use; a missing secondary category is a common reason one business ranks for a
-        service and another does not.
+        service and another does not. The{" "}
+        <Link href="/blog/google-business-profile-categories-for-contractors">GBP categories guide</Link> has a
+        category table for every major trade.
       </p>
       <h3>Services and description</h3>
       <p>

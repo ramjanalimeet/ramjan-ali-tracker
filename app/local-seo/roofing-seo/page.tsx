@@ -313,6 +313,9 @@ export default function RoofingSeoPage() {
             <Link className="chip" href="/ai-search">
               AI Search Visibility →
             </Link>
+            <Link className="chip" href="/blog/roofing-storm-damage-leads">
+              Guide: storm damage leads →
+            </Link>
             <Link className="chip" href="/local-seo/plumbing-seo">
               Plumbing SEO →
             </Link>

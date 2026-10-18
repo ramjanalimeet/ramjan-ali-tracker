@@ -304,6 +304,9 @@ export default function PlumbingSeoPage() {
             <Link className="chip" href="/ai-search">
               AI Search Visibility →
             </Link>
+            <Link className="chip" href="/blog/high-value-plumbing-keywords">
+              Guide: high-value plumbing keywords →
+            </Link>
             <Link className="chip" href="/local-seo/roofing-seo">
               Roofing SEO →
             </Link>

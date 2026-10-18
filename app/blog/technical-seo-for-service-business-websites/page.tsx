@@ -350,7 +350,9 @@ export default function TechnicalSeoPostPage() {
         <Ext href="https://developers.google.com/search/docs/appearance/structured-data/local-business">
           Google&apos;s LocalBusiness documentation
         </Ext>{" "}
-        for the details.
+        for the details, or the{" "}
+        <Link href="/blog/local-business-schema-for-contractors">local business schema guide</Link> for a copy-ready
+        example.
       </p>
 
       <h2 id="ai">AI crawlers</h2>

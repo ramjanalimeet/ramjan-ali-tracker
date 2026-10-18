@@ -357,6 +357,9 @@ export default function AiSearchPage() {
             <Link className="chip" href="/local-seo/home-services-seo">
               Home Services SEO →
             </Link>
+            <Link className="chip" href="/blog/check-if-ai-recommends-your-business">
+              Guide: check if AI recommends you →
+            </Link>
           </div>
         </div>
       </section>

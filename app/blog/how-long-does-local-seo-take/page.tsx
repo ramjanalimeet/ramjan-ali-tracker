@@ -432,7 +432,8 @@ export default function HowLongLocalSeoPage() {
         shorten the timeline, but only up to a point, because Google still needs time to crawl, test and trust changes,
         and reviews arrive at the pace you complete jobs. Doubling spend rarely halves the time. Consistency matters
         more than intensity: steady monthly work for a year usually beats a big burst followed by nothing. You can see
-        what each level of work includes on my <Link href="/pricing">pricing page</Link>.
+        what each level of work includes on my <Link href="/pricing">pricing page</Link>, and what different budgets buy
+        in <Link href="/blog/how-much-does-local-seo-cost">how much local SEO costs</Link>.
       </p>
 
       <h2 id="redflags">Red flags</h2>

@@ -376,6 +376,10 @@ export default function GetRecommendedByChatGptPage() {
         </table>
       </div>
       <p>
+        For test prompts, a tracking sheet and a problem-to-fix map, see{" "}
+        <Link href="/blog/check-if-ai-recommends-your-business">how to check whether ChatGPT recommends you</Link>.
+      </p>
+      <p>
         Repeat it every month with the same questions. Answers change with wording, location and time, so one check
         means little. A steady record over a few months shows whether you are moving in the right direction, which is
         exactly how I track it in my <Link href="/ai-search">GEO &amp; AI Visibility</Link> work.

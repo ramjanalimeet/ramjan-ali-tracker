@@ -246,6 +246,16 @@ export default function SeoAuditsPage() {
       </section>
       <HowItWorks />
       <Faq items={FAQ} />
+      <section className="sec tight">
+        <div className="wrap rv">
+          <span className="eyebrow">Free guides</span>
+          <div className="chips" style={{ marginTop: 6 }}>
+            <Link className="chip" href="/blog/local-seo-audit">
+              60-minute DIY local SEO audit →
+            </Link>
+          </div>
+        </div>
+      </section>
       <ServiceChips exclude="/seo-services/seo-audits" />
       <RelatedLinks page="/seo-services/seo-audits" topics={["strategy", "technical"]} />
       <CtaBand title="Find out what is holding your rankings back." />

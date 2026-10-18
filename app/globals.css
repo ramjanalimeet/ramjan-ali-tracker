@@ -2835,6 +2835,30 @@ dialog.booking::backdrop {
     font-size: 14.5px;
   }
 }
+.prose code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  background: var(--bg-2);
+  border-radius: 6px;
+  padding: 2px 6px;
+}
+.prose pre {
+  margin: 24px 0;
+  padding: 18px 20px;
+  overflow-x: auto;
+  background: var(--ink);
+  color: #e8eae4;
+  border-radius: var(--r-sm);
+  line-height: 1.55;
+}
+.prose pre code {
+  display: block;
+  padding: 0;
+  background: none;
+  color: inherit;
+  font-size: 14px;
+  white-space: pre;
+}
 .prose .takeaways ul {
   margin: 8px 0 0;
 }

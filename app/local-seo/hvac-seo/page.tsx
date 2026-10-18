@@ -305,6 +305,9 @@ export default function HvacSeoPage() {
             <Link className="chip" href="/ai-search">
               AI Search Visibility →
             </Link>
+            <Link className="chip" href="/blog/hvac-seo-calendar">
+              Guide: HVAC SEO calendar →
+            </Link>
             <Link className="chip" href="/local-seo/roofing-seo">
               Roofing SEO →
             </Link>

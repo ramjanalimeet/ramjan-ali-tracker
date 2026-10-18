@@ -355,7 +355,10 @@ export default function LocalSeoChecklistPage() {
         deciding who to recommend.
       </p>
       <ul>
-        <li>Ask every happy customer, ideally right after the job, with a direct link to your review form.</li>
+        <li>
+          Ask every customer, ideally right after the job, with a direct link to your review form. Word-for-word
+          scripts are in <Link href="/blog/how-to-get-more-google-reviews">how to get more Google reviews</Link>.
+        </li>
         <li>Ask them to mention the service and the town in their own words.</li>
         <li>Reply to every review, positive or negative, within a few days.</li>
         <li>Never buy reviews, review-gate (only asking happy customers through a filter), or write your own.</li>

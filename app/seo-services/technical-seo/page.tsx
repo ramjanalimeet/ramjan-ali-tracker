@@ -253,6 +253,16 @@ export default function TechnicalSeoPage() {
       </section>
       <HowItWorks />
       <Faq items={FAQ} />
+      <section className="sec tight">
+        <div className="wrap rv">
+          <span className="eyebrow">Free guides</span>
+          <div className="chips" style={{ marginTop: 6 }}>
+            <Link className="chip" href="/blog/local-business-schema-for-contractors">
+              Local business schema guide →
+            </Link>
+          </div>
+        </div>
+      </section>
       <ServiceChips exclude="/seo-services/technical-seo" />
       <RelatedLinks page="/seo-services/technical-seo" topics={["technical"]} />
       <CtaBand title="Find out what is holding your rankings back." />

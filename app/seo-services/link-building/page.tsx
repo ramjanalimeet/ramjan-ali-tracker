@@ -247,6 +247,16 @@ export default function LinkBuildingPage() {
       </section>
       <HowItWorks />
       <Faq items={FAQ} />
+      <section className="sec tight">
+        <div className="wrap rv">
+          <span className="eyebrow">Free guides</span>
+          <div className="chips" style={{ marginTop: 6 }}>
+            <Link className="chip" href="/blog/local-link-building-for-contractors">
+              15 local link building ideas →
+            </Link>
+          </div>
+        </div>
+      </section>
       <ServiceChips exclude="/seo-services/link-building" />
       <RelatedLinks page="/seo-services/link-building" topics={["local-seo", "google-maps"]} />
       <CtaBand title="Find out what is holding your rankings back." />
