@@ -23,7 +23,6 @@ const SITEMAPS: Record<SitemapName, () => Entry[]> = {
       { path: "/locations" },
       { path: "/case-studies" },
       { path: "/blog" },
-      { path: "/book-a-call" },
       { path: "/privacy-policy" },
       { path: "/terms" },
       { path: "/cookie-policy" },

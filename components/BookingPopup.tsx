@@ -3,13 +3,17 @@
 import { useEffect, useRef, useState } from "react";
 import { BOOKING_URL } from "@/lib/site";
 
+const BOOKING_PATH = "/book-a-call";
+
 /**
- * Opens the Cal.com booking calendar in a popup whenever someone clicks a link
- * to /book-a-call (Book a call, Book Now, Get started). The links still work as
- * normal pages without JavaScript, and with Ctrl/Cmd-click for a new tab.
+ * The site's booking calendar. Every link to /book-a-call (Book a call, Book Now,
+ * Get started) opens it as a popup; there is no separate booking page. Visiting
+ * /book-a-call directly redirects to /?book, which opens the popup on arrival.
  *
- * The calendar starts loading as soon as someone points at, touches or tabs to
- * one of those links, so it is usually ready by the time the popup opens.
+ * Cal.com is a heavy app, so the calendar is loaded ahead of time: in the
+ * background once the page has finished loading (skipped on data-saver or very
+ * slow connections), or as soon as someone points at, touches or tabs to a
+ * booking link. By the time the popup opens it is usually ready.
  */
 export function BookingPopup() {
   const dialog = useRef<HTMLDialogElement>(null);
@@ -17,31 +21,61 @@ export function BookingPopup() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
+    const open = () => {
+      setOpened(true);
+      if (!dialog.current?.open) dialog.current?.showModal();
+      document.body.classList.add("booking-open");
+    };
     const bookingLink = (target: EventTarget | null) => {
       const link = (target as Element | null)?.closest?.("a");
-      if (!link || link.target === "_blank") return null;
+      if (!link) return null;
       const url = new URL(link.href, location.href);
-      return url.origin === location.origin && url.pathname === "/book-a-call" ? link : null;
+      return url.origin === location.origin && url.pathname === BOOKING_PATH ? link : null;
     };
-    // The booking page has its own calendar, so there is nothing to warm up there.
     const warm = (e: Event) => {
-      if (location.pathname !== "/book-a-call" && bookingLink(e.target)) setOpened(true);
+      if (bookingLink(e.target)) setOpened(true);
     };
     const onClick = (e: MouseEvent) => {
-      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      if (e.defaultPrevented || e.button !== 0) return;
       if (!bookingLink(e.target)) return;
       e.preventDefault();
-      setOpened(true);
-      dialog.current?.showModal();
-      document.body.classList.add("booking-open");
+      open();
     };
     // Capture phase, so this runs before Next.js Link navigates.
     document.addEventListener("click", onClick, true);
     const warmEvents = ["pointerover", "touchstart", "focusin"] as const;
     for (const type of warmEvents) document.addEventListener(type, warm, { passive: true });
+
+    // Arrived from /book-a-call (redirected to /?book): open straight away and tidy the URL.
+    const params = new URLSearchParams(location.search);
+    if (params.has("book")) {
+      open();
+      params.delete("book");
+      const query = params.toString();
+      history.replaceState(history.state, "", `${location.pathname}${query ? `?${query}` : ""}${location.hash}`);
+    }
+
+    // Preload the calendar in the background after the page itself has loaded.
+    const conn = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } })
+      .connection;
+    const lowData = conn?.saveData || /(^|-)2g$/.test(conn?.effectiveType ?? "");
+    let timer: number | undefined;
+    const schedule = () => {
+      timer = window.setTimeout(() => {
+        if ("requestIdleCallback" in window) requestIdleCallback(() => setOpened(true), { timeout: 3000 });
+        else setOpened(true);
+      }, 1500);
+    };
+    if (!lowData) {
+      if (document.readyState === "complete") schedule();
+      else addEventListener("load", schedule, { once: true });
+    }
+
     return () => {
       document.removeEventListener("click", onClick, true);
       for (const type of warmEvents) document.removeEventListener(type, warm);
+      removeEventListener("load", schedule);
+      clearTimeout(timer);
     };
   }, []);
 
