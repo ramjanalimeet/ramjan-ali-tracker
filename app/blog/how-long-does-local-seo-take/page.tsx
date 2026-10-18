@@ -269,11 +269,11 @@ export default function HowLongLocalSeoPage() {
         </li>
         <li>
           <strong>Landscaping, lawn care and pools:</strong> customers sign up in early spring, so rank by late winter.
-          See <Link href="/local-seo/lawn-care-seo">Lawn Care SEO</Link>.
+          See <Link href="/local-seo/landscaping-seo">Landscaping SEO</Link>.
         </li>
         <li>
           <strong>Chimney and snow removal:</strong> booked in late summer and autumn. See{" "}
-          <Link href="/local-seo/chimney-seo">Chimney SEO</Link>.
+          <Link href="/local-seo/home-services-seo">Home Services SEO</Link>.
         </li>
       </ul>
       <p>

@@ -94,7 +94,7 @@ const SCHEMA = {
         "@id": "https://ramjan-akash.vercel.app/#business",
       },
       serviceType: "On-Page SEO",
-      areaServed: "Worldwide",
+      areaServed: { "@type": "Country", name: "United States" },
     },
     faqSchema(FAQ),
   ],

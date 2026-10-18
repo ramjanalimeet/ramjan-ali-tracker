@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Testimonials } from "@/components/Testimonials";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { HowItWorks } from "@/components/HowItWorks";
@@ -7,7 +8,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { PostCards } from "@/components/PostCards";
 import { AI_PLAN, fromPrice, usd } from "@/lib/pricing";
 import { CITIES, CITY_GROUPS } from "@/lib/cities";
-import { ALL_INDUSTRIES } from "@/lib/industries";
+import { TRADE_COUNT } from "@/lib/industries";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
 
@@ -371,7 +372,7 @@ export default function HomePage() {
           </div>
           <div className="cta-row rv">
             <Link className="btn btn-ghost" href="/industries">
-              See all {ALL_INDUSTRIES.length} industries <span className="arr">→</span>
+              See all {TRADE_COUNT} trades <span className="arr">→</span>
             </Link>
           </div>
         </div>
@@ -380,12 +381,12 @@ export default function HomePage() {
         <div className="wrap split">
           <div className="rv">
             <span className="eyebrow">Locations</span>
-            <h2>Helping home service businesses wherever they work.</h2>
+            <h2>Helping US home service businesses win their towns.</h2>
           </div>
           <div className="body rv">
             <p>
-              From Texas to Toronto, Manchester to Melbourne. Every plan is built around the towns and suburbs you
-              actually serve, with area pages, local listings and map rankings tracked town by town.
+              From Texas and Florida to Georgia, Arizona and the Carolinas. Every plan is built around the towns and
+              suburbs you actually serve, with area pages, local listings and map rankings tracked town by town.
             </p>
             <div className="chips">
               {CITY_GROUPS.map((g) => (
@@ -494,6 +495,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <Testimonials />
       <Faq items={FAQ} />
       <CtaBand title="Find out what is keeping you off the map and out of AI answers." />
     </>

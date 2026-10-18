@@ -5,7 +5,7 @@ import { PlaybookExplorer } from "@/components/PlaybookExplorer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Sparkline } from "@/components/charts/CaseCharts";
 import { CASE_STUDIES, monthLabel } from "@/lib/case-studies";
-import { ALL_INDUSTRIES } from "@/lib/industries";
+import { TRADE_COUNT } from "@/lib/industries";
 import { PLAYBOOKS, PLAYBOOK_SERVICES } from "@/lib/playbooks";
 import { SITE_URL, pageMeta } from "@/lib/site";
 
@@ -114,7 +114,7 @@ export default function CaseStudiesPage() {
                 <li>
                   <b>Trades</b>
                   <span>
-                    {trades} shown, <Link href="/industries">{ALL_INDUSTRIES.length} supported</Link>
+                    {trades} shown, <Link href="/industries">{TRADE_COUNT} supported</Link>
                   </span>
                 </li>
                 <li>

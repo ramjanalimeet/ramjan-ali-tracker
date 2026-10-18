@@ -89,7 +89,7 @@ const SCHEMA = {
         "@id": "https://ramjan-akash.vercel.app/#business",
       },
       serviceType: "AI search visibility",
-      areaServed: "Worldwide",
+      areaServed: { "@type": "Country", name: "United States" },
     },
     faqSchema(FAQ),
   ],
@@ -131,7 +131,7 @@ export default function AiSearchPage() {
               <ul>
                 <li>
                   <b>Who it is for</b>
-                  <span>Roofing, plumbing, septic, HVAC and other home service businesses, in any country</span>
+                  <span>Roofing, plumbing, septic, HVAC and other home service businesses across the US</span>
                 </li>
                 <li>
                   <b>Where</b>

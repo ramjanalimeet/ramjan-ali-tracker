@@ -193,10 +193,10 @@ export default function AboutPage() {
         <div className="wrap split">
           <div className="body rv">
             <span className="eyebrow">Where I work</span>
-            <h2>Based in Dhaka, working worldwide.</h2>
+            <h2>Based in Dhaka, working with US businesses.</h2>
             <p>
-              I work from Dhaka, Bangladesh (GMT+6) with home service businesses in the US, Canada, the UK, Australia
-              and beyond. Most of the work happens in the background, and calls are booked in your time zone.
+              I work from Dhaka, Bangladesh (GMT+6) with home service businesses across the US. Most of the work happens
+              in the background, I reply within 24 hours, and calls are booked in your time zone.
             </p>
             <div className="cta-row">
               <Link className="btn btn-ghost" href="/locations">

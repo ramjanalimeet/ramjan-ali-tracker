@@ -93,7 +93,7 @@ const SCHEMA = {
         "@id": "https://ramjan-akash.vercel.app/#business",
       },
       serviceType: "Septic SEO",
-      areaServed: "Worldwide",
+      areaServed: { "@type": "Country", name: "United States" },
     },
     faqSchema(FAQ),
   ],

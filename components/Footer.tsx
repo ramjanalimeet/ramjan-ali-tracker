@@ -15,8 +15,8 @@ export function Footer() {
               Ramjan Ali<b>.</b>
             </Link>
             <p>
-              Local SEO &amp; AI search visibility for home service businesses, wherever they work. Based in Dhaka,
-              working with clients worldwide.
+              Local SEO &amp; AI search visibility for US home service businesses. Based in Dhaka, working in your
+              time zone.
             </p>
             <ul className="social">
               {SOCIAL.map((s) => (

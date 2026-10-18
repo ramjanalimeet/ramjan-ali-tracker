@@ -199,7 +199,7 @@ export default function HvacSeoCalendarPage() {
       </table>
       </div>
       <h2 id="climate">Adjusting for your climate</h2>
-      <p>In hot southern markets such as <Link href="/locations/cape-coral">Cape Coral</Link> or <Link href="/locations/gilbert">Gilbert</Link>, cooling demand runs most of the year, so move cooling work earlier and keep it going. In colder northern and Canadian markets such as <Link href="/locations/saskatoon">Saskatoon</Link> or <Link href="/locations/kitchener">Kitchener</Link>, heating carries more weight and the heating build should start in early summer.</p>
+      <p>In hot southern markets such as <Link href="/locations/cape-coral">Cape Coral</Link> or <Link href="/locations/gilbert">Gilbert</Link>, cooling demand runs most of the year, so move cooling work earlier and keep it going. In markets with real winters, such as <Link href="/locations/asheville">Asheville</Link> in the North Carolina mountains or <Link href="/locations/prescott">Prescott</Link> in Arizona&apos;s high desert, heating carries more weight and the heating build should start in early summer.</p>
       <h2 id="measure">How to measure an HVAC season</h2>
       <ul>
       <li>Calls and booked jobs from Google by month, against the same month last year.</li>

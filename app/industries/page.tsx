@@ -3,11 +3,11 @@ import { CtaBand } from "@/components/CtaBand";
 import { JsonLd } from "@/components/JsonLd";
 import { ServedGlobe } from "@/components/ServedGlobe";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { ALL_INDUSTRIES, CATEGORIES } from "@/lib/industries";
+import { ALL_INDUSTRIES, ALSO_SERVED, CATEGORIES, TRADE_COUNT } from "@/lib/industries";
 import { SITE_URL, pageMeta } from "@/lib/site";
 
-const TITLE = "Industries | Local SEO & AI Search for 60+ Home Service Trades";
-const DESCRIPTION = `Local SEO and GEO & AI visibility for ${ALL_INDUSTRIES.length} home service industries, from roofers, plumbers and HVAC to pest control, pools and cleaning.`;
+const TITLE = "Industries | Local SEO & AI Search for Home Service Trades";
+const DESCRIPTION = `Local SEO and GEO & AI visibility for ${TRADE_COUNT} home service trades, from roofers, plumbers and HVAC to pest control, pools and cleaning.`;
 
 export const metadata = pageMeta({ title: TITLE, description: DESCRIPTION, path: "/industries" });
 
@@ -60,7 +60,7 @@ export default function IndustriesPage() {
             <div>
               <span className="eyebrow">Industries</span>
               <h1>
-                Built for <span className="hl">{ALL_INDUSTRIES.length} home service</span> trades.
+                Built for <span className="hl">{TRADE_COUNT} home service</span> trades.
               </h1>
               <p className="lead">
                 Every trade searches differently. Roofers chase storms, pool companies plan for summer, locksmiths fight
@@ -87,12 +87,13 @@ export default function IndustriesPage() {
 
       {CATEGORIES.map((c, ci) => {
         const items = ALL_INDUSTRIES.filter((i) => i.category === c.id);
+        const also = ALSO_SERVED.filter((i) => i.category === c.id);
         return (
           <section className={ci % 2 ? "sec tight alt" : "sec tight"} id={c.id} key={c.id}>
             <div className="wrap">
               <div className="ind-head rv">
                 <h2>{c.name}</h2>
-                <span className="muted">{items.length} industries</span>
+                <span className="muted">{items.length + also.length} trades</span>
               </div>
               <div className="ind-grid">
                 {items.map((i) => (
@@ -105,6 +106,12 @@ export default function IndustriesPage() {
                   </Link>
                 ))}
               </div>
+              {also.length > 0 && (
+                <p className="muted rv" style={{ marginTop: 18 }}>
+                  Also: {also.map((i) => i.name).join(", ")}.{" "}
+                  <Link href="/local-seo/home-services-seo">How I work with these trades →</Link>
+                </p>
+              )}
             </div>
           </section>
         );

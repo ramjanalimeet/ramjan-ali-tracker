@@ -408,12 +408,11 @@ export default function GeoVsSeoPage() {
         </li>
         <li>
           <strong>Electricians:</strong> &quot;Who installs EV chargers near me?&quot; Specific service pages win. See{" "}
-          <Link href="/local-seo/electrician-seo">Electrician SEO</Link> and{" "}
-          <Link href="/local-seo/ev-charger-installer-seo">EV Charger SEO</Link>.
+          <Link href="/local-seo/electrician-seo">Electrician SEO</Link>.
         </li>
         <li>
           <strong>Solar:</strong> &quot;Is solar worth it in my city?&quot; Local cost and incentive pages matter most.
-          See <Link href="/local-seo/solar-installer-seo">Solar SEO</Link>.
+          See <Link href="/local-seo/home-services-seo">Home Services SEO</Link>.
         </li>
       </ul>
       <p>

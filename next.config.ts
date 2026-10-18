@@ -1,4 +1,6 @@
 import type { NextConfig } from "next";
+import { RETIRED_CITY_SLUGS } from "./lib/cities";
+import { ALSO_SERVED } from "./lib/industries";
 
 const SECURITY_HEADERS = [
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -30,6 +32,10 @@ const nextConfig: NextConfig = {
       { source: "/blog/technical-seo", destination: "/blog", permanent: true },
       { source: "/blog/content-seo", destination: "/blog", permanent: true },
       { source: "/blog/seo-strategy", destination: "/blog", permanent: true },
+      // Trades without a dedicated page are listed on /industries.
+      ...ALSO_SERVED.map((i) => ({ source: `/local-seo/${i.slug}`, destination: "/industries", permanent: true })),
+      // City pages outside the US market.
+      ...RETIRED_CITY_SLUGS.map((slug) => ({ source: `/locations/${slug}`, destination: "/locations", permanent: true })),
     ];
   },
 };

@@ -10,8 +10,10 @@ const PINS: GlobePin[] = CITIES.map((c) => ({
 }));
 
 const COUNTRIES = new Set(CITIES.map((c) => c.country)).size;
+const LABEL =
+  COUNTRIES === 1 ? `${PINS.length} cities across the ${CITIES[0].country}` : `${PINS.length} cities in ${COUNTRIES} countries`;
 
 /** The globe with a pin on every city page. */
 export function ServedGlobe() {
-  return <Globe pins={PINS} label={`${PINS.length} cities in ${COUNTRIES} countries`} />;
+  return <Globe pins={PINS} label={LABEL} />;
 }

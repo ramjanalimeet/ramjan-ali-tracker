@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Testimonials } from "@/components/Testimonials";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
@@ -63,7 +64,7 @@ const SCHEMA = {
       name: "Local SEO & GEO / AI Visibility",
       url: `${SITE_URL}/pricing`,
       provider: { "@id": `${SITE_URL}/#business` },
-      areaServed: "Worldwide",
+      areaServed: { "@type": "Country", name: "United States" },
       offers: PLANS.map((p) => ({
         "@type": "Offer",
         name: p.name,
@@ -138,6 +139,7 @@ export default function PricingPage() {
         </div>
       </section>
       <PricingSection id="plans" />
+      <Testimonials title="Why clients stay." />
       <section className="sec tight">
         <div className="wrap rv">
           <span className="eyebrow">Free guides</span>

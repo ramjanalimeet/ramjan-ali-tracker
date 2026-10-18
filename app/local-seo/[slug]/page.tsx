@@ -3,13 +3,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
-import { HowItWorks } from "@/components/HowItWorks";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { AiMock, MapMock } from "@/components/Mocks";
-import { PricingSection } from "@/components/PricingPlans";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ALL_INDUSTRIES, INDUSTRIES, getIndustry, type Industry } from "@/lib/industries";
+import { getDeep } from "@/lib/industries/deep";
 import { fromPrice, usd } from "@/lib/pricing";
 import { type FaqItem, SITE_URL, faqSchema, pageMeta } from "@/lib/site";
 
@@ -59,7 +58,7 @@ function faqFor(ind: Industry): FaqItem[] {
     },
     {
       q: "How much does it cost?",
-      a: `Plans start at ${usd(fromPrice())}/month, month to month, with no setup fees. GEO & AI Visibility is included from the Growth plan up. See the plans below.`,
+      a: `Plans start at ${usd(fromPrice())}/month, month to month, with no setup fees. GEO & AI Visibility is included from the Growth plan up. See the pricing page for every plan.`,
     },
   ];
 }
@@ -72,6 +71,7 @@ export default async function IndustryPage({ params }: Props) {
   const faq = faqFor(ind);
   const related = ALL_INDUSTRIES.filter((i) => i.category === ind.category && i.slug !== ind.slug);
   const business = `Your ${ind.short} Co.`;
+  const deep = getDeep(ind.slug);
 
   const schema = {
     "@context": "https://schema.org",
@@ -100,7 +100,7 @@ export default async function IndustryPage({ params }: Props) {
         description: ind.description,
         url,
         provider: { "@id": `${SITE_URL}/#business` },
-        areaServed: "Worldwide",
+        areaServed: { "@type": "Country", name: "United States" },
       },
       faqSchema(faq),
     ],
@@ -143,7 +143,7 @@ export default async function IndustryPage({ params }: Props) {
               <ul>
                 <li>
                   <b>For</b>
-                  <span>{ind.name}, in any city or country</span>
+                  <span>{ind.name} across the US</span>
                 </li>
                 <li>
                   <b>Focus</b>
@@ -152,7 +152,7 @@ export default async function IndustryPage({ params }: Props) {
                 <li>
                   <b>Price</b>
                   <span>
-                    From {usd(fromPrice())}/month. <Link href="#pricing">See plans</Link>
+                    From {usd(fromPrice())}/month. <Link href="/pricing">See plans</Link>
                   </span>
                 </li>
                 <li>
@@ -195,6 +195,119 @@ export default async function IndustryPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {deep && (
+        <>
+          <section className="sec">
+            <div className="wrap split">
+              <div className="body rv">
+                <span className="eyebrow">How {lower(ind.name)} get found</span>
+                <h2>How customers search for {lower(ind.short)} services.</h2>
+                <p>{deep.market[0]}</p>
+                <p>{deep.market[1]}</p>
+              </div>
+              <div className="panel rv">
+                <h3>Google Business Profile categories</h3>
+                <p className="muted" style={{ margin: "8px 0 14px" }}>
+                  A starting point. Confirm exact names in your dashboard and check what the top three competitors use.
+                </p>
+                <ul className="ticks">
+                  <li>
+                    <strong>Primary:</strong> {deep.categories.primary}
+                  </li>
+                  {deep.categories.secondary.map((c) => (
+                    <li key={c}>
+                      <strong>Secondary:</strong> {c}
+                    </li>
+                  ))}
+                </ul>
+                <Link className="btn btn-ghost btn-sm" href="/blog/google-business-profile-categories-for-contractors">
+                  How to choose categories <span className="arr">→</span>
+                </Link>
+              </div>
+            </div>
+          </section>
+
+          <section className="sec tight alt">
+            <div className="wrap">
+              <div className="sec-head rv">
+                <div>
+                  <span className="eyebrow">Page plan</span>
+                  <h2>
+                    The pages {/^[aeiou]/i.test(ind.short) ? "an" : "a"} {lower(ind.short)} website needs.
+                  </h2>
+                </div>
+                <p>One strong page per job beats one long services list. These are the pages I build first.</p>
+              </div>
+              <div className="prose rv" style={{ maxWidth: "none" }}>
+                <div className="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Page</th>
+                        <th>Why it matters</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {deep.pages.map((r) => (
+                        <tr key={r.page}>
+                          <td>
+                            <strong>{r.page}</strong>
+                          </td>
+                          <td>{r.why}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="sec">
+            <div className="wrap split">
+              <div className="rv">
+                <span className="eyebrow">Seasonal demand</span>
+                <h2>When {lower(ind.short)} searches rise.</h2>
+                <div className="prose" style={{ maxWidth: "none", marginTop: 20 }}>
+                  <div className="table-wrap">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>When</th>
+                          <th>What to have ready</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {deep.seasons.map((r) => (
+                          <tr key={r.when}>
+                            <td>
+                              <strong>{r.when}</strong>
+                            </td>
+                            <td>{r.what}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div className="panel rv">
+                <h3>Mistakes that cost {lower(ind.name)} calls</h3>
+                <ul className="ticks" style={{ marginTop: 12 }}>
+                  {deep.mistakes.map((m) => (
+                    <li key={m}>{m}</li>
+                  ))}
+                </ul>
+                <p className="muted" style={{ margin: "14px 0" }}>Related guide:</p>
+                <Link className="btn btn-ghost btn-sm" href={deep.guide.href}>
+                  {deep.guide.label} <span className="arr">→</span>
+                </Link>
+              </div>
+            </div>
+          </section>
+        </>
+      )}
 
       <section className="sec">
         <div className="wrap split">
@@ -244,8 +357,28 @@ export default async function IndustryPage({ params }: Props) {
         </div>
       </section>
 
-      <HowItWorks />
-      <PricingSection id="pricing" alt showAllLink />
+      <section className="sec tight alt" id="pricing">
+        <div className="wrap split">
+          <div className="body rv">
+            <span className="eyebrow">Plans</span>
+            <h2>One plan, everything included.</h2>
+            <p>
+              Every plan covers your Google Business Profile, new {lower(ind.short)} service and area pages each month,
+              reviews, listings and a plain-English monthly report. Plans start at {usd(fromPrice())}/month, month to
+              month, with no setup fees.
+            </p>
+          </div>
+          <div className="panel rv">
+            <h3>Compare the three plans</h3>
+            <p className="muted" style={{ margin: "8px 0 16px" }}>
+              Starter, Growth and Pro, with what each includes and who it suits.
+            </p>
+            <Link className="btn btn-dark btn-sm" href="/pricing">
+              See pricing <span className="arr">→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
       <Faq items={faq} />
 
       <section className="sec tight">

@@ -23,11 +23,15 @@ npm run typecheck
   `PricingPlans`, `LeadForm`, `PostCards`, `WhatsAppButton`
 - `lib/site.ts` — site URL, contact links, industries, page metadata helper
 - `lib/pricing.ts` — **every price on the site**; edit plans and prices here
-- `lib/industries/` — the 56 generated industry pages (one file per category);
-  rendered by `app/local-seo/[slug]/page.tsx` and listed on `/industries`
-- `lib/cities/` — the 58 city location pages (US, UK, Europe, Canada, Australia,
-  Middle East); rendered by `app/locations/[city]/page.tsx` and listed on `/locations`.
-  `docs/location-research.md` explains why each city was picked
+- `lib/industries/` — industry pages. Only the trades in `CORE_SLUGS` (index.ts) get a
+  dedicated page under `/local-seo/<slug>`, rendered by `app/local-seo/[slug]/page.tsx` with
+  trade-specific depth from `deep.ts`. Every other trade is listed by name on `/industries`,
+  and its old URL redirects there (see `next.config.ts`)
+- `lib/cities/` — city location pages. Only cities in `ACTIVE_GROUPS` (index.ts, currently
+  the US) are built under `/locations/<city>`; the others stay in `data.ts` and their old
+  URLs redirect to `/locations`. `docs/location-research.md` explains why each city was picked
+- `lib/testimonials.ts` — real client quotes, shown on the home and pricing pages once the
+  list is not empty. `lib/case-studies.ts` — real case studies (the sample is noindexed)
 - `lib/services.ts` — the Services menu and service pages list
 - `lib/posts.ts` — blog article list (each article lives in `app/blog/<slug>/page.tsx`)
 - `public/` — images and favicon

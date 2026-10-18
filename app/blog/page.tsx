@@ -170,7 +170,7 @@ export default function BlogPage() {
             <span className="eyebrow">By industry</span>
             <h2>See how it works for your trade.</h2>
             <p className="muted" style={{ marginTop: 16 }}>
-              Searches, AI questions and the plan for {ALL_INDUSTRIES.length} home service industries.
+              Searches, AI questions and a page-by-page plan for {ALL_INDUSTRIES.length} core home service trades.
             </p>
           </div>
           <div className="chips rv">

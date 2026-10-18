@@ -5,7 +5,7 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { fromPrice, usd } from "@/lib/pricing";
 import { PricingSection } from "@/components/PricingPlans";
-import { ALL_INDUSTRIES } from "@/lib/industries";
+import { TRADE_COUNT } from "@/lib/industries";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
@@ -90,7 +90,7 @@ const SCHEMA = {
         "@id": "https://ramjan-akash.vercel.app/#business",
       },
       serviceType: "Local SEO",
-      areaServed: "Worldwide",
+      areaServed: { "@type": "Country", name: "United States" },
     },
     faqSchema(FAQ),
   ],
@@ -133,7 +133,7 @@ export default function LocalSeoPage() {
               <ul>
                 <li>
                   <b>Who it is for</b>
-                  <span>Roofing, plumbing, septic, HVAC and home-service businesses, in any country</span>
+                  <span>Roofing, plumbing, septic, HVAC and home-service businesses across the US</span>
                 </li>
                 <li>
                   <b>Goal</b>
@@ -236,7 +236,7 @@ export default function LocalSeoPage() {
           </div>
           <div className="cta-row rv">
             <Link className="btn btn-ghost" href="/industries">
-              See all {ALL_INDUSTRIES.length} industries <span className="arr">→</span>
+              See all {TRADE_COUNT} trades <span className="arr">→</span>
             </Link>
           </div>
         </div>

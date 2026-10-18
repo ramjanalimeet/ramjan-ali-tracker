@@ -10,14 +10,14 @@ import { type FaqItem, SITE_URL, faqSchema, pageMeta } from "@/lib/site";
 
 const TITLE = "Locations | Local SEO & AI Search for Home Services";
 const DESCRIPTION =
-  "Local SEO and AI search visibility for home service businesses in any city or country: the US, Canada, the UK, Ireland, Australia, Europe and beyond.";
+  "Local SEO and AI search visibility for US home service businesses, with city pages for fast-growing markets in Texas, Florida, Georgia, Arizona and North Carolina.";
 
 export const metadata = pageMeta({ title: TITLE, description: DESCRIPTION, path: "/locations" });
 
 const FAQ: FaqItem[] = [
   {
     q: "Do you work with businesses outside the US?",
-    a: "Yes. I work with home service businesses in any country. Google Maps, local search and AI answers work the same way everywhere, so the playbook only changes in the details: the directories, review sites and search habits of your market.",
+    a: "My focus is the US, and the city pages, directories and examples on this site are built for US markets. Google Maps and AI answers work the same way in Canada, the UK and Australia, so if you work there, ask on a call and I will tell you honestly whether I am a good fit.",
   },
   {
     q: "Can you help me rank in towns where I do not have an office?",
@@ -61,7 +61,7 @@ const SCHEMA = {
       name: "Local SEO & AI Search Visibility",
       url: `${SITE_URL}/locations`,
       provider: { "@id": `${SITE_URL}/#business` },
-      areaServed: "Worldwide",
+      areaServed: { "@type": "Country", name: "United States" },
     },
     faqSchema(FAQ),
   ],
@@ -133,11 +133,11 @@ export default function LocationsPage() {
           <div className="sec-head rv">
             <div>
               <span className="eyebrow">Where I work</span>
-              <h2>One playbook, tuned to your market.</h2>
+              <h2>Everywhere US homeowners look.</h2>
             </div>
             <p>
-              The fundamentals never change. What changes is which directories, review sites and search habits matter
-              where you are.
+              Google comes first, but homeowners also check Apple Maps, Bing, AI assistants and the directories they
+              trust. Your business needs to look the same, and look good, on all of them.
             </p>
           </div>
           <div className="grid g3">
