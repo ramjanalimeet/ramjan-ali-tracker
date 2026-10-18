@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://ramjan-akash.vercel.app/</loc><lastmod>2026-10-04</lastmod></url>
-  <url><loc>https://ramjan-akash.vercel.app/blog</loc><lastmod>2026-10-04</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/blog</loc><lastmod>2026-10-18</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/book-a-call</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/case-studies</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/free-seo-audit</loc><lastmod>2026-10-01</lastmod></url>
@@ -9,12 +9,12 @@
   <url><loc>https://ramjan-akash.vercel.app/locations</loc><lastmod>2026-10-13</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/seo-services</loc><lastmod>2026-10-04</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/blog/content-seo</loc><lastmod>2026-10-04</lastmod></url>
-  <url><loc>https://ramjan-akash.vercel.app/blog/google-maps</loc><lastmod>2026-10-04</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/blog/google-maps</loc><lastmod>2026-10-18</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/blog/how-long-does-local-seo-take</loc><lastmod>2026-10-04</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/blog/how-to-rank-in-google-map-pack</loc><lastmod>2026-10-04</lastmod></url>
-  <url><loc>https://ramjan-akash.vercel.app/blog/local-seo</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/blog/local-seo</loc><lastmod>2026-10-18</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/blog/local-seo-checklist-for-contractors</loc><lastmod>2026-10-01</lastmod></url>
-  <url><loc>https://ramjan-akash.vercel.app/blog/seo-strategy</loc><lastmod>2026-10-04</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/blog/seo-strategy</loc><lastmod>2026-10-18</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/blog/service-area-pages-that-rank</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/blog/technical-seo</loc><lastmod>2026-10-04</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/blog/technical-seo-for-service-business-websites</loc><lastmod>2026-10-04</lastmod></url>
@@ -92,4 +92,7 @@
   <url><loc>https://ramjan-akash.vercel.app/seo-services/on-page-seo</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/seo-services/seo-audits</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://ramjan-akash.vercel.app/seo-services/technical-seo</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/blog/google-business-profile-categories-for-contractors</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/blog/how-much-does-seo-cost-for-contractors</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://ramjan-akash.vercel.app/blog/septic-seo-keywords-to-target</loc><lastmod>2026-10-18</lastmod></url>
 </urlset>
