@@ -537,11 +537,10 @@ a.chip:hover {
   background: #fff;
   aspect-ratio: 1/1.08;
   box-shadow: 0 30px 60px -30px rgba(17, 18, 16, 0.35);
-  transform: rotate(2deg);
   transition: transform 0.6s var(--ease);
 }
 .portrait:hover .frame {
-  transform: rotate(0) scale(1.01);
+  transform: translateY(-4px);
 }
 .portrait img {
   width: 100%;
@@ -576,7 +575,7 @@ a.chip:hover {
 }
 .badge.b2 {
   right: -18px;
-  top: 28px;
+  top: -22px;
   background: var(--ink);
   color: var(--bg);
   border-color: var(--ink);
