@@ -139,13 +139,9 @@ export default function SeoServicesPage() {
             <div className="sec-head rv">
               <div>
                 <span className="eyebrow">{g.title}</span>
-                <h2>{gi === 0 ? "Get found and get recommended." : "The SEO underneath it all."}</h2>
+                <h2>{g.heading}</h2>
               </div>
-              <p>
-                {gi === 0
-                  ? "The two services every plan is built on: ranking in Google Maps and local results, and being named when people ask AI tools who to call."
-                  : "Focused work on the website itself. Included inside a monthly plan, or booked on its own."}
-              </p>
+              <p>{g.intro}</p>
             </div>
             <div className="grid g2">
               {g.items.map((item, i) => (
