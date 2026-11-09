@@ -3,6 +3,13 @@
   // Must match the Worker name in the Cloudflare dashboard.
   "name": "ramjan-ali-tracker",
   "main": ".open-next/worker.js",
+  // Cloudflare's build step runs `npm run build` (plain `next build`) and then
+  // `npx wrangler deploy`. That alone never creates the Worker bundle above, so
+  // Wrangler runs the OpenNext build first. OpenNext has to run `next build`
+  // itself (it needs standalone output), so the Next.js build runs twice.
+  "build": {
+    "command": "npx opennextjs-cloudflare build"
+  },
   "compatibility_date": "2026-11-01",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
