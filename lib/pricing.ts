@@ -58,6 +58,129 @@ export const PLANS: Plan[] = [
   },
 ];
 
+/** SaaS SEO plans, shown on /seo-services/saas-seo. */
+export const SAAS_PLANS: Plan[] = [
+  {
+    name: "Starter",
+    price: 899,
+    tagline: "Early-stage SaaS finding product-market search fit.",
+    features: [
+      "Technical audit and fixes",
+      "Keyword map by funnel stage",
+      "4 pages or articles a month",
+      "Feature and use-case page optimization",
+      "Monthly report on signups from search",
+    ],
+  },
+  {
+    name: "Growth",
+    price: 1499,
+    tagline: "SaaS with traction, ready to scale.",
+    popular: true,
+    features: [
+      "Everything in Starter",
+      "8 pages or articles a month",
+      "Comparison and alternatives pages",
+      "Integration and template pages",
+      "Relevant links and PR mentions",
+    ],
+  },
+  {
+    name: "Pro",
+    price: 2499,
+    tagline: "Established SaaS in competitive categories.",
+    features: [
+      "Everything in Growth",
+      "14 pages or articles a month",
+      "Programmatic SEO for scalable pages",
+      "AI search visibility tracking",
+      "Monthly strategy call",
+    ],
+  },
+];
+
+/** Ecommerce SEO plans, shown on /seo-services/ecommerce-seo. */
+export const ECOMMERCE_PLANS: Plan[] = [
+  {
+    name: "Starter",
+    price: 799,
+    tagline: "Stores up to 500 products.",
+    features: [
+      "Technical audit and fixes",
+      "5 category pages optimized a month",
+      "Product title and meta templates",
+      "Product and review schema",
+      "Monthly revenue-focused report",
+    ],
+  },
+  {
+    name: "Growth",
+    price: 1399,
+    tagline: "Stores up to 5,000 products.",
+    popular: true,
+    features: [
+      "Everything in Starter",
+      "10 category pages a month",
+      "Faceted navigation and duplicate URL control",
+      "2 buying guides a month",
+      "Relevant links to category pages",
+    ],
+  },
+  {
+    name: "Pro",
+    price: 2299,
+    tagline: "Large catalogs and multi-region stores.",
+    features: [
+      "Everything in Growth",
+      "20 pages a month",
+      "International SEO and hreflang",
+      "Digital PR campaigns",
+      "Monthly strategy call",
+    ],
+  },
+];
+
+/** Shopify SEO plans, shown on /seo-services/shopify-seo. */
+export const SHOPIFY_PLANS: Plan[] = [
+  {
+    name: "Starter",
+    price: 699,
+    tagline: "New and growing Shopify stores.",
+    features: [
+      "Shopify SEO audit",
+      "Theme speed and app bloat fixes",
+      "5 collection pages optimized a month",
+      "Product schema and meta templates",
+      "Monthly report",
+    ],
+  },
+  {
+    name: "Growth",
+    price: 1199,
+    tagline: "Established stores ready to scale.",
+    popular: true,
+    features: [
+      "Everything in Starter",
+      "10 collection pages a month",
+      "Duplicate product URL and tag page cleanup",
+      "2 blog guides a month",
+      "Relevant links to collections",
+    ],
+  },
+  {
+    name: "Pro",
+    price: 1999,
+    tagline: "Shopify Plus and multi-market stores.",
+    features: [
+      "Everything in Growth",
+      "Shopify Markets, hreflang and multi-language",
+      "Custom theme template work",
+      "Digital PR campaigns",
+      "Monthly strategy call",
+    ],
+  },
+];
+
 /** The cheapest plan that includes GEO & AI Visibility. */
 export const AI_PLAN = PLANS[1];
 

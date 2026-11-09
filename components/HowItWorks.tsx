@@ -1,4 +1,6 @@
-const STEPS = [
+export type Step = { title: string; text: string };
+
+const STEPS: Step[] = [
   {
     title: "Audit",
     text: "I review your Google Business Profile, website, citations, reviews, the three competitors beating you in the map pack, and what AI tools like ChatGPT and Google's AI Overviews say when asked for a business like yours. You keep the findings either way.",
@@ -17,7 +19,7 @@ const STEPS = [
   },
 ];
 
-export function HowItWorks({ alt = false }: { alt?: boolean }) {
+export function HowItWorks({ alt = false, steps = STEPS }: { alt?: boolean; steps?: Step[] }) {
   return (
     <section className={alt ? "sec alt" : "sec"}>
       <div className="wrap">
@@ -29,7 +31,7 @@ export function HowItWorks({ alt = false }: { alt?: boolean }) {
           <p>You always know what is being worked on this month, what lands next, and what I need from you.</p>
         </div>
         <ol className="steps">
-          {STEPS.map((s) => (
+          {steps.map((s) => (
             <li className="step rv" key={s.title}>
               <h3>{s.title}</h3>
               <p>{s.text}</p>

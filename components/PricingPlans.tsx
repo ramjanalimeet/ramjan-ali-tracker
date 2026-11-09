@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { PLANS, usd } from "@/lib/pricing";
+import { PLANS, type Plan, usd } from "@/lib/pricing";
 
-/** The plan cards. */
-export function PricingPlans() {
+/** The plan cards. Defaults to the main Local SEO plans. */
+export function PricingPlans({ plans = PLANS }: { plans?: Plan[] }) {
   return (
-    <div className={`plans plans-${PLANS.length}`}>
-      {PLANS.map((p) => (
+    <div className={`plans plans-${plans.length}`}>
+      {plans.map((p) => (
         <div className={p.popular ? "plan pop rv" : "plan rv"} key={p.name}>
           <div className="plan-head">
             <h3>{p.name}</h3>
