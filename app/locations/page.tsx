@@ -1,0 +1,257 @@
+import Link from "next/link";
+import { CtaBand } from "@/components/CtaBand";
+import { Faq } from "@/components/Faq";
+import { JsonLd } from "@/components/JsonLd";
+import { ServedGlobe } from "@/components/ServedGlobe";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { CITIES, CITY_GROUPS, citiesIn } from "@/lib/cities";
+import { REGIONS } from "@/lib/locations";
+import { type FaqItem, SITE_URL, faqSchema, pageMeta } from "@/lib/site";
+
+const TITLE = "Locations | Local SEO & AI Search for Home Services";
+const DESCRIPTION =
+  "Local SEO and AI search visibility for US home service businesses, with city pages for fast-growing markets in Texas, Florida, Georgia, Arizona and North Carolina.";
+
+export const metadata = pageMeta({ title: TITLE, description: DESCRIPTION, path: "/locations" });
+
+const FAQ: FaqItem[] = [
+  {
+    q: "Do you work with businesses outside the US?",
+    a: "My focus is the US, and the city pages, directories and examples on this site are built for US markets. Google Maps and AI answers work the same way in Canada, the UK and Australia, so if you work there, ask on a call and I will tell you honestly whether I am a good fit.",
+  },
+  {
+    q: "Can you help me rank in towns where I do not have an office?",
+    a: "Yes, through service area settings and useful pages for each town you serve. The map pack leans heavily on distance, so towns far from your address are won mainly through organic results and AI answers.",
+  },
+  {
+    q: "Does the time difference matter?",
+    a: "No. Most of the work happens in the background, I reply within 24 hours, and calls are booked in your own time zone.",
+  },
+  {
+    q: "What currency are your prices in?",
+    a: "Plans are priced in US dollars. If you need another currency, ask on the call.",
+  },
+  {
+    q: "Will you create listings at addresses I do not have?",
+    a: "Never. Fake addresses and virtual offices break Google's rules and get listings suspended. I only work with your real business locations.",
+  },
+];
+
+const SCHEMA = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/locations#webpage`,
+      url: `${SITE_URL}/locations`,
+      name: TITLE,
+      description: DESCRIPTION,
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      about: { "@id": `${SITE_URL}/#business` },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+        { "@type": "ListItem", position: 2, name: "Locations", item: `${SITE_URL}/locations` },
+      ],
+    },
+    {
+      "@type": "Service",
+      name: "Local SEO & AI Search Visibility",
+      url: `${SITE_URL}/locations`,
+      provider: { "@id": `${SITE_URL}/#business` },
+      areaServed: { "@type": "Country", name: "United States" },
+    },
+    faqSchema(FAQ),
+  ],
+};
+
+export default function LocationsPage() {
+  return (
+    <>
+      <JsonLd data={SCHEMA} />
+      <section className="phero">
+        <div className="wrap">
+          <nav aria-label="Breadcrumb">
+            <ol className="crumbs">
+              <li>
+                <Link href="/">Home</Link>
+              </li>
+              <li aria-current="page">Locations</li>
+            </ol>
+          </nav>
+          <div className="phero-grid globe-grid">
+            <div>
+              <span className="eyebrow">Locations</span>
+              <h1>
+                Local SEO, <span className="hl">wherever you work</span>.
+              </h1>
+              <p className="lead">
+                A homeowner with a burst pipe searches the same way in Dallas, Toronto, Manchester or Sydney: they check
+                Google, look at the map, maybe ask an AI tool, and call one of the first names they see. I help home
+                service businesses in any city or country become that name.
+              </p>
+              <div className="cta-row">
+                <WhatsAppButton />
+                <Link className="btn btn-dark" href="/book-a-call">
+                  Book a Call
+                </Link>
+              </div>
+            </div>
+            <ServedGlobe />
+          </div>
+        </div>
+      </section>
+      <section className="sec tight">
+        <div className="wrap">
+          <aside className="facts facts-row rv">
+            <h2>At a glance</h2>
+            <ul>
+              <li>
+                <b>Where</b>
+                <span>Any city or country where customers search Google and ask AI tools</span>
+              </li>
+              <li>
+                <b>Who</b>
+                <span>Roofing, plumbing, septic, HVAC and other home service businesses</span>
+              </li>
+              <li>
+                <b>Targeting</b>
+                <span>Built around the towns and suburbs you actually serve</span>
+              </li>
+              <li>
+                <b>Time zone</b>
+                <span>Replies within 24 hours, calls booked in your time zone</span>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+      <section className="sec">
+        <div className="wrap">
+          <div className="sec-head rv">
+            <div>
+              <span className="eyebrow">Where I work</span>
+              <h2>Everywhere US homeowners look.</h2>
+            </div>
+            <p>
+              Google comes first, but homeowners also check Apple Maps, Bing, AI assistants and the directories they
+              trust. Your business needs to look the same, and look good, on all of them.
+            </p>
+          </div>
+          <div className="grid g3">
+            {REGIONS.map((r, i) => (
+              <div className="card rv" key={r.id}>
+                <span className="ic" aria-hidden="true">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3>{r.name}</h3>
+                <p>{r.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="sec tight alt" id="cities">
+        <div className="wrap">
+          <div className="sec-head rv">
+            <div>
+              <span className="eyebrow">{CITIES.length} city pages</span>
+              <h2>Cities I focus on.</h2>
+            </div>
+            <p>
+              Growing, mid-size markets where demand is strong and the map pack is still winnable. Pick a city to see
+              its searches, trades and service areas.
+            </p>
+          </div>
+          <nav className="chips ind-jump" aria-label="City groups" style={{ marginTop: 0 }}>
+            {CITY_GROUPS.map((g) => (
+              <a className="chip" href={`#${g.slug}`} key={g.slug}>
+                {g.name} ({citiesIn(g.slug).length})
+              </a>
+            ))}
+          </nav>
+        </div>
+      </section>
+      {CITY_GROUPS.map((g, gi) => {
+        const list = citiesIn(g.slug);
+        return (
+          <section className={gi % 2 ? "sec tight alt" : "sec tight"} id={g.slug} key={g.slug}>
+            <div className="wrap">
+              <div className="ind-head rv">
+                <h2>{g.name}</h2>
+                <span className="muted">{list.length} cities</span>
+              </div>
+              <p className="muted rv" style={{ margin: "-10px 0 22px", maxWidth: "70ch" }}>
+                {g.lead}
+              </p>
+              <div className="ind-grid">
+                {list.map((c) => (
+                  <Link className="ind-card rv" href={`/locations/${c.slug}`} key={c.slug}>
+                    <b>{c.place}</b>
+                    <small>{c.card}</small>
+                    <span className="arr" aria-hidden="true">
+                      →
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })}
+      <section className="sec alt">
+        <div className="wrap split">
+          <div className="body rv">
+            <span className="eyebrow">How location targeting works</span>
+            <h2>Ranked town by town, not just near your office.</h2>
+            <p>
+              <strong>Service area.</strong> Your Google Business Profile is set to the areas you really cover, so
+              Google knows where to show you.
+            </p>
+            <p>
+              <strong>Area pages.</strong> A genuinely useful page for each main town or suburb, with local jobs, photos
+              and reviews, not copy-paste pages with the town name swapped.
+            </p>
+            <p>
+              <strong>Local listings.</strong> Consistent details on the directories that matter in your country, which
+              both Google and AI tools use to check who you are.
+            </p>
+            <p>
+              <strong>Tracking.</strong> Map rankings checked on a grid across your whole service area, so you see
+              exactly which towns you win and which need work.
+            </p>
+          </div>
+          <div className="panel rv">
+            <h3>Serving more than one location?</h3>
+            <p className="muted" style={{ marginBottom: 16 }}>
+              The Pro plan covers up to 3 Google Business Profiles, each with its own pages, listings and tracking.
+            </p>
+            <Link className="btn btn-dark btn-sm" href="/pricing">
+              See pricing <span className="arr">→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+      <Faq items={FAQ} />
+      <section className="sec tight">
+        <div className="wrap rv">
+          <span className="eyebrow">Related</span>
+          <div className="chips" style={{ marginTop: 6 }}>
+            <Link className="chip" href="/local-seo">
+              Local SEO →
+            </Link>
+            <Link className="chip" href="/ai-search">
+              AI Search Visibility →
+            </Link>
+            <Link className="chip" href="/industries">
+              All industries →
+            </Link>
+          </div>
+        </div>
+      </section>
+      <CtaBand title="Find out where you rank in your towns." />
+    </>
+  );
+}

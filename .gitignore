@@ -3,3 +3,12 @@ Thumbs.db
 node_modules/
 .vercel
 *.log
+.next/
+next-env.d.ts
+*.tsbuildinfo
+__pycache__/
+
+# Cloudflare / OpenNext
+.open-next/
+.wrangler/
+.dev.vars*
