@@ -3699,14 +3699,14 @@ dialog.hire::backdrop {
   border-color: var(--ink-2);
 }
 .hire-send {
-  flex: 1;
-  display: flex;
+  /* Sized to its label + arrow (no empty stretch), aligned to the right. */
+  flex: none;
+  margin-left: auto;
+  display: inline-flex;
   align-items: center;
-  /* Label sits right beside the arrow, which stays at the button's right end. */
-  justify-content: flex-end;
-  gap: 14px;
+  gap: 16px;
   height: 56px;
-  padding: 0 7px 0 22px;
+  padding: 0 7px 0 28px;
   border: 0;
   border-radius: 999px;
   background: linear-gradient(180deg, #d4fb55 0%, var(--accent) 100%);
