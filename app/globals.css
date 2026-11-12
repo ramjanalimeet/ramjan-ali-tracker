@@ -3702,10 +3702,10 @@ dialog.hire::backdrop {
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 12px;
   height: 54px;
-  padding: 0 7px 0 24px;
+  padding: 0 7px 0 22px;
   border: 0;
   border-radius: 999px;
   background: var(--accent);
@@ -3779,9 +3779,4 @@ dialog.hire::backdrop {
 .hire-trust svg {
   flex: none;
   color: var(--accent-deep);
-}
-@media (max-width: 640px) {
-  .hire-foot .hire-send {
-    justify-content: space-between;
-  }
 }
