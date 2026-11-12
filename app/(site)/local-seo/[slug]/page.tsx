@@ -6,11 +6,11 @@ import { Faq } from "@/components/Faq";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { AiMock, MapMock } from "@/components/Mocks";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ALL_INDUSTRIES, INDUSTRIES, getIndustry, type Industry } from "@/lib/industries";
 import { getDeep } from "@/lib/industries/deep";
 import { fromPrice, usd } from "@/lib/pricing";
 import { type FaqItem, SITE_URL, faqSchema, pageMeta } from "@/lib/site";
+import { MainCta } from "@/components/MainCta";
 
 // Only the industries in lib/industries exist; anything else is a 404.
 export const dynamicParams = false;
@@ -132,10 +132,7 @@ export default async function IndustryPage({ params }: Props) {
               </h1>
               <p className="lead">{ind.lead}</p>
               <div className="cta-row">
-                <WhatsAppButton />
-                <Link className="btn btn-dark" href="/book-a-call">
-                  Book a Call
-                </Link>
+                <MainCta />
               </div>
             </div>
             <aside className="facts">

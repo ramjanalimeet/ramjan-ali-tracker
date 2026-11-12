@@ -2,12 +2,12 @@ import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { JsonLd } from "@/components/JsonLd";
 import { PlaybookExplorer } from "@/components/PlaybookExplorer";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Sparkline } from "@/components/charts/CaseCharts";
 import { CASE_STUDIES, monthLabel } from "@/lib/case-studies";
 import { TRADE_COUNT } from "@/lib/industries";
 import { PLAYBOOKS, PLAYBOOK_SERVICES } from "@/lib/playbooks";
 import { SITE_URL, pageMeta } from "@/lib/site";
+import { MainCta } from "@/components/MainCta";
 
 const TITLE = "Case Studies & 90-Day SEO Playbooks | Ramjan Ali Akash";
 const DESCRIPTION =
@@ -94,10 +94,7 @@ export default function CaseStudiesPage() {
                 are measured, so you know what you are buying.
               </p>
               <div className="cta-row">
-                <WhatsAppButton />
-                <Link className="btn btn-dark" href="/book-a-call">
-                  Book a Call
-                </Link>
+                <MainCta />
               </div>
             </div>
             <aside className="facts">

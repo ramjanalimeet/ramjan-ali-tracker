@@ -1996,12 +1996,52 @@ dialog.booking::backdrop {
   border-color: #3a3c37;
 }
 
-/* Stack hero CTAs full-width on small phones so they are easy to tap */
+/* Main CTA pair (components/MainCta): Book Call + Hire Ramjan Ali */
+.btn-call {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+.btn-call .ph {
+  color: var(--accent);
+  flex: none;
+}
+.btn-call:hover {
+  box-shadow: 0 12px 30px -10px rgba(17, 18, 16, 0.55);
+  transform: translateY(-1px);
+}
+.btn-call.on-dark {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.btn-call.on-dark:hover {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+}
+.btn-hire {
+  background: var(--accent);
+  color: var(--accent-ink);
+  box-shadow: 0 10px 26px -12px rgba(125, 163, 0, 0.75);
+}
+.btn-hire:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px -10px rgba(125, 163, 0, 0.8);
+}
+
+/* Small phones: keep the two CTAs side by side, full width */
 @media (max-width: 480px) {
-  .cta-row .btn-wa,
-  .cta-row .btn-dark {
-    flex: 1 1 100%;
+  .cta-row .btn-call,
+  .cta-row .btn-hire {
+    flex: 1 1 0;
+    min-width: 0;
     justify-content: center;
+    padding: 15px 12px;
+    font-size: 15px;
+    gap: 8px;
+    white-space: nowrap;
+  }
+  .cta-row .btn-hire {
+    flex-grow: 1.35;
   }
 }
 
@@ -2935,6 +2975,7 @@ dialog.booking::backdrop {
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+  object-position: 50% 30%;
   background: #2a2c27;
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9);
 }
@@ -3105,7 +3146,7 @@ dialog.booking::backdrop {
 .mcta-short {
   display: none;
 }
-/* Phones: one slim row — avatar, name, call icon, Hire, close. */
+/* Phones: one slim row — avatar, (name), Book Call, Hire Ali, close. */
 @media (max-width: 640px) {
   .mcta {
     width: calc(100vw - 20px);
@@ -3129,21 +3170,16 @@ dialog.booking::backdrop {
     bottom: 0;
   }
   .mcta-who {
-    flex: 1;
     border: 0;
     padding: 0;
   }
   .mcta-who b {
     font-size: 15px;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
   .mcta-who small {
     font-size: 11.5px;
     margin-top: 2px;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
   .mcta-avail,
   .mcta-lbl {
@@ -3152,22 +3188,18 @@ dialog.booking::backdrop {
   .mcta-short {
     display: inline;
   }
-  .mcta-call {
-    flex: none;
-    width: 44px;
+  .mcta-call,
+  .mcta-hire {
+    flex: 1 1 0;
+    min-width: 0;
     height: 44px;
-    padding: 0;
+    padding: 0 10px;
+    font-size: 14.5px;
+    gap: 7px;
   }
   .mcta-call svg {
-    width: 18px;
-    height: 18px;
-  }
-  .mcta-hire {
-    flex: none;
-    height: 44px;
-    padding: 0 16px;
-    font-size: 14.5px;
-    gap: 6px;
+    width: 16px;
+    height: 16px;
   }
   .mcta-x {
     width: 28px;
@@ -3179,9 +3211,9 @@ dialog.booking::backdrop {
     height: 14px;
   }
 }
-/* Too narrow for the title: the name and the online dot carry it. */
-@media (max-width: 374px) {
-  .mcta-who small {
+/* Most phones: the photo and online dot stand in for the name so both buttons fit. */
+@media (max-width: 459px) {
+  .mcta-who {
     display: none;
   }
 }
@@ -3193,17 +3225,16 @@ dialog.booking::backdrop {
     width: 40px;
     height: 40px;
   }
-  .mcta-who b {
-    font-size: 14px;
-  }
-  .mcta-call {
-    width: 40px;
-    height: 40px;
-  }
+  .mcta-call,
   .mcta-hire {
     height: 40px;
-    padding: 0 13px;
-    font-size: 14px;
+    padding: 0 8px;
+    font-size: 13.5px;
+    gap: 5px;
+  }
+  .mcta-call svg {
+    width: 14px;
+    height: 14px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

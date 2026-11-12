@@ -2,11 +2,11 @@ import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { HowItWorks } from "@/components/HowItWorks";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { SERVICE_GROUPS } from "@/lib/services";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
+import { MainCta } from "@/components/MainCta";
 
 export const metadata = pageMeta({
   title: "SEO Services for Home Service Businesses | Ramjan Ali Akash",
@@ -103,10 +103,7 @@ export default function SeoServicesPage() {
                 and link building make sure your website can back that up.
               </p>
               <div className="cta-row">
-                <WhatsAppButton />
-                <Link className="btn btn-dark" href="/book-a-call">
-                  Book a Call
-                </Link>
+                <MainCta />
               </div>
             </div>
             <aside className="facts">

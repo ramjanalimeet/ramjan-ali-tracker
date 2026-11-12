@@ -4,10 +4,10 @@ import { notFound } from "next/navigation";
 import { AiVisibilityCharts, MapGridCompare, SearchConsoleCharts } from "@/components/charts/CaseCharts";
 import { CtaBand } from "@/components/CtaBand";
 import { JsonLd } from "@/components/JsonLd";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ALL_CASES, getCase, monthLabel } from "@/lib/case-studies";
 import { serviceOf } from "@/lib/playbooks";
 import { SITE_URL, pageMeta } from "@/lib/site";
+import { MainCta } from "@/components/MainCta";
 
 export const dynamicParams = false;
 
@@ -102,10 +102,7 @@ export default async function CaseStudyPage({ params }: Props) {
               <h1 style={{ fontSize: "clamp(34px,4.4vw,58px)" }}>{c.title}</h1>
               <p className="lead">{c.summary}</p>
               <div className="cta-row">
-                <WhatsAppButton />
-                <Link className="btn btn-dark" href="/book-a-call">
-                  Book a Call
-                </Link>
+                <MainCta />
               </div>
             </div>
             <aside className="facts">

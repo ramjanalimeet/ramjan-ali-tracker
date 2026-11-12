@@ -4,13 +4,13 @@ import { Testimonials } from "@/components/Testimonials";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { HowItWorks } from "@/components/HowItWorks";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { PostCards } from "@/components/PostCards";
 import { AI_PLAN, fromPrice, usd } from "@/lib/pricing";
 import { CITIES, CITY_GROUPS } from "@/lib/cities";
 import { TRADE_COUNT } from "@/lib/industries";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
+import { MainCta } from "@/components/MainCta";
 
 export const metadata = pageMeta({
   title: "Local SEO & AI Search Visibility for Home Services",
@@ -90,10 +90,7 @@ export default function HomePage() {
               recommended by <strong>ChatGPT, Gemini and AI Overviews</strong>, so more searches turn into calls.
             </p>
             <div className="cta-row">
-              <WhatsAppButton />
-              <Link className="btn btn-dark" href="/book-a-call">
-                Book a Call
-              </Link>
+              <MainCta />
             </div>
             <p className="fine">Free, no pitch, and you keep the action plan either way.</p>
             <div className="chips">

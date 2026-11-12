@@ -6,7 +6,6 @@ import { Faq } from "@/components/Faq";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { MapMock } from "@/components/Mocks";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { CITIES, type City, type TradeKey, citiesIn, getCity, groupOf } from "@/lib/cities";
 import {
   AREA_INTRO,
@@ -20,6 +19,7 @@ import {
 } from "@/lib/cities/locales";
 import { fromPrice, usd } from "@/lib/pricing";
 import { type FaqItem, SITE_URL, faqSchema, pageMeta } from "@/lib/site";
+import { MainCta } from "@/components/MainCta";
 
 // Only the cities in lib/cities exist; anything else is a 404.
 export const dynamicParams = false;
@@ -183,10 +183,7 @@ export default async function CityPage({ params }: Props) {
               </h1>
               <p className="lead">{c.lead}</p>
               <div className="cta-row">
-                <WhatsAppButton />
-                <Link className="btn btn-dark" href="/book-a-call">
-                  Book a Call
-                </Link>
+                <MainCta />
               </div>
             </div>
             <aside className="facts">
