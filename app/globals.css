@@ -3702,13 +3702,14 @@ dialog.hire::backdrop {
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  height: 54px;
+  /* Label sits right beside the arrow, which stays at the button's right end. */
+  justify-content: flex-end;
+  gap: 14px;
+  height: 56px;
   padding: 0 7px 0 22px;
   border: 0;
   border-radius: 999px;
-  background: var(--accent);
+  background: linear-gradient(180deg, #d4fb55 0%, var(--accent) 100%);
   color: var(--accent-ink);
   font: inherit;
   font-size: 16px;
@@ -3741,15 +3742,15 @@ dialog.hire::backdrop {
   display: grid;
   place-items: center;
   flex: none;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: var(--ink);
   color: var(--accent);
   transition: transform 0.35s var(--ease);
 }
 .hire-send:hover:not(:disabled) .hire-send-ic {
-  transform: translateX(2px) rotate(-12deg);
+  transform: translateX(3px);
 }
 .hire-send.busy {
   cursor: progress;

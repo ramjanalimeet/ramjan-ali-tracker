@@ -231,8 +231,8 @@ export function HirePopup({ onClose }: { onClose: () => void }) {
                       {status === "sending" ? (
                         <i className="hire-spin" />
                       ) : (
-                        <svg viewBox="0 0 24 24" width="18" height="18">
-                          <path d="M21 3 10 14M21 3l-7 18-4-7-7-4z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                          <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       )}
                     </span>
