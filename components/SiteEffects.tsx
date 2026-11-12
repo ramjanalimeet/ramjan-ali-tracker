@@ -3,14 +3,13 @@
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
-/** Scroll-driven header, progress bar, mobile CTA, and reveal-on-scroll animations. */
+/** Scroll-driven header, progress bar and reveal-on-scroll animations. */
 export function SiteEffects() {
   const pathname = usePathname();
 
   useEffect(() => {
     const hdr = document.getElementById("hdr");
     const prog = document.querySelector<HTMLElement>(".progress");
-    const mcta = document.querySelector<HTMLElement>(".mcta");
     let last = 0;
     const onScroll = () => {
       const y = scrollY;
@@ -19,7 +18,6 @@ export function SiteEffects() {
       hdr?.classList.toggle("hide", y > last && y > 400 && !document.body.classList.contains("menu-open"));
       last = y;
       if (prog) prog.style.width = `${h > 0 ? (y / h) * 100 : 0}%`;
-      mcta?.classList.toggle("on", y > 500 && y < h - 700);
     };
     addEventListener("scroll", onScroll, { passive: true });
     onScroll();
