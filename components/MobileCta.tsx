@@ -78,7 +78,9 @@ export function MobileCta() {
               </span>
               <span className="mcta-avail">
                 <i aria-hidden="true" />
-                Available<span className="mcta-more"> for new projects</span>
+                <span>
+                  Available<span className="mcta-more"> for new projects</span>
+                </span>
               </span>
               <button type="button" className="mcta-x" onClick={() => toggle(true)} aria-label="Minimize">
                 <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
@@ -97,8 +99,7 @@ export function MobileCta() {
                 <span>Book Call</span>
               </a>
               <button type="button" className="mcta-hire" onClick={() => setHire(true)}>
-                <span className="mcta-lbl">Hire Ramjan Ali</span>
-                <span className="mcta-short">Hire Ali</span>
+                Hire me
                 <span className="arr" aria-hidden="true">
                   →
                 </span>
