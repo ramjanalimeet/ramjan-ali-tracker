@@ -3699,16 +3699,17 @@ dialog.hire::backdrop {
   border-color: var(--ink-2);
 }
 .hire-send {
-  flex: 1;
-  display: flex;
+  /* Sized to its label + arrow (no empty stretch), aligned to the right. */
+  flex: none;
+  margin-left: auto;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  height: 54px;
-  padding: 0 7px 0 22px;
+  gap: 16px;
+  height: 56px;
+  padding: 0 7px 0 28px;
   border: 0;
   border-radius: 999px;
-  background: var(--accent);
+  background: linear-gradient(180deg, #d4fb55 0%, var(--accent) 100%);
   color: var(--accent-ink);
   font: inherit;
   font-size: 16px;
@@ -3741,15 +3742,15 @@ dialog.hire::backdrop {
   display: grid;
   place-items: center;
   flex: none;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: var(--ink);
   color: var(--accent);
   transition: transform 0.35s var(--ease);
 }
 .hire-send:hover:not(:disabled) .hire-send-ic {
-  transform: translateX(2px) rotate(-12deg);
+  transform: translateX(3px);
 }
 .hire-send.busy {
   cursor: progress;
