@@ -2,9 +2,9 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   // Must match the Worker name in the Cloudflare dashboard.
   "name": "ramjan-ali-tracker",
-  // Created by `npm run build` (the OpenNext build). Cloudflare runs that as the
-  // build command, then `npx wrangler deploy` uploads it.
-  "main": ".open-next/worker.js",
+  // worker.ts wraps the OpenNext build output (.open-next/worker.js, created by
+  // `npm run build`) and adds the /admin dashboard backend and its cron.
+  "main": "worker.ts",
   "compatibility_date": "2026-11-01",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
@@ -19,5 +19,12 @@
       "service": "ramjan-ali-tracker"
     }
   ],
+  // The /admin dashboard's database: one SQLite-backed Durable Object.
+  "durable_objects": {
+    "bindings": [{ "name": "ADMIN_STORE", "class_name": "AdminStore" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["AdminStore"] }],
+  // Every 5 minutes: publish due posts, send outreach emails, pull in replies.
+  "triggers": { "crons": ["*/5 * * * *"] },
   "observability": { "enabled": true }
 }
