@@ -2,10 +2,10 @@ import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { HowItWorks } from "@/components/HowItWorks";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
+import { MainCta } from "@/components/MainCta";
 
 export const metadata = pageMeta({
   title: "Roofing SEO for Roofing Contractors | Ramjan Ali Akash",
@@ -127,10 +127,7 @@ export default function RoofingSeoPage() {
                 get your roofing company into that short list for the jobs and towns you actually want.
               </p>
               <div className="cta-row">
-                <WhatsAppButton />
-                <Link className="btn btn-dark" href="/book-a-call">
-                  Book a Call
-                </Link>
+                <MainCta />
               </div>
             </div>
             <aside className="facts">

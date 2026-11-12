@@ -2,13 +2,13 @@ import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { HowItWorks } from "@/components/HowItWorks";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { fromPrice, usd } from "@/lib/pricing";
 import { PricingSection } from "@/components/PricingPlans";
 import { TRADE_COUNT } from "@/lib/industries";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
+import { MainCta } from "@/components/MainCta";
 
 export const metadata = pageMeta({
   title: "Local SEO for Home Service Businesses | Ramjan Ali Akash",
@@ -122,10 +122,7 @@ export default function LocalSeoPage() {
                 reviews, citations and links.
               </p>
               <div className="cta-row">
-                <WhatsAppButton />
-                <Link className="btn btn-dark" href="/book-a-call">
-                  Book a Call
-                </Link>
+                <MainCta />
               </div>
             </div>
             <aside className="facts">

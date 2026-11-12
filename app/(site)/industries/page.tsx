@@ -2,9 +2,9 @@ import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { JsonLd } from "@/components/JsonLd";
 import { ServedGlobe } from "@/components/ServedGlobe";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ALL_INDUSTRIES, ALSO_SERVED, CATEGORIES, TRADE_COUNT } from "@/lib/industries";
 import { SITE_URL, pageMeta } from "@/lib/site";
+import { MainCta } from "@/components/MainCta";
 
 const TITLE = "Industries | Local SEO & AI Search for Home Service Trades";
 const DESCRIPTION = `Local SEO and GEO & AI visibility for ${TRADE_COUNT} home service trades, from roofers, plumbers and HVAC to pest control, pools and cleaning.`;
@@ -67,10 +67,7 @@ export default function IndustriesPage() {
                 fake listings. Pick yours to see how I get it found on Google, Google Maps and in AI search.
               </p>
               <div className="cta-row">
-                <WhatsAppButton />
-                <Link className="btn btn-dark" href="/book-a-call">
-                  Book a Call
-                </Link>
+                <MainCta />
               </div>
             </div>
             <ServedGlobe />

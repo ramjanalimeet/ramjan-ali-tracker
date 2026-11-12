@@ -2,11 +2,11 @@ import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { HowItWorks } from "@/components/HowItWorks";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ServiceChips } from "@/components/ServiceChips";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
+import { MainCta } from "@/components/MainCta";
 
 export const metadata = pageMeta({
   title: "Technical SEO Services for Local Businesses | Ramjan Ali Akash",
@@ -128,10 +128,7 @@ export default function TechnicalSeoPage() {
                 phone. I find and fix the technical problems holding your site back.
               </p>
               <div className="cta-row">
-                <WhatsAppButton />
-                <Link className="btn btn-dark" href="/book-a-call">
-                  Book a Call
-                </Link>
+                <MainCta />
               </div>
             </div>
             <aside className="facts">

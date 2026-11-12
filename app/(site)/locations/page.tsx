@@ -3,10 +3,10 @@ import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 import { ServedGlobe } from "@/components/ServedGlobe";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { CITIES, CITY_GROUPS, citiesIn } from "@/lib/cities";
 import { REGIONS } from "@/lib/locations";
 import { type FaqItem, SITE_URL, faqSchema, pageMeta } from "@/lib/site";
+import { MainCta } from "@/components/MainCta";
 
 const TITLE = "Locations | Local SEO & AI Search for Home Services";
 const DESCRIPTION =
@@ -93,10 +93,7 @@ export default function LocationsPage() {
                 service businesses in any city or country become that name.
               </p>
               <div className="cta-row">
-                <WhatsAppButton />
-                <Link className="btn btn-dark" href="/book-a-call">
-                  Book a Call
-                </Link>
+                <MainCta />
               </div>
             </div>
             <ServedGlobe />

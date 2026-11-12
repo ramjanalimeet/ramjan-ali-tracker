@@ -6,10 +6,10 @@ import { JsonLd } from "@/components/JsonLd";
 import { PricingPlans } from "@/components/PricingPlans";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { ServiceChips } from "@/components/ServiceChips";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { type Plan } from "@/lib/pricing";
 import { type TopicId } from "@/lib/posts";
 import { type FaqItem, SITE_URL, faqSchema } from "@/lib/site";
+import { MainCta } from "./MainCta";
 
 /** Everything one SaaS / ecommerce / Shopify service page needs. */
 export type OnlineService = {
@@ -127,10 +127,7 @@ export function OnlineServicePage({ s }: { s: OnlineService }) {
               </h1>
               <p className="lead">{s.lead}</p>
               <div className="cta-row">
-                <WhatsAppButton />
-                <Link className="btn btn-dark" href="/book-a-call">
-                  Book a Call
-                </Link>
+                <MainCta />
               </div>
             </div>
             <aside className="facts">

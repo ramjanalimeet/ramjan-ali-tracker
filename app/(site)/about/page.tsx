@@ -3,8 +3,8 @@ import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { JsonLd } from "@/components/JsonLd";
 import { SocialIcon } from "@/components/SocialIcon";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { SITE_URL, SOCIAL, pageMeta } from "@/lib/site";
+import { MainCta } from "@/components/MainCta";
 
 const TITLE = "About Ramjan Ali Akash | Local SEO & AI Search Specialist";
 const DESCRIPTION =
@@ -97,10 +97,7 @@ export default function AboutPage() {
                 Google, Google Maps and in AI search, and turn that visibility into calls and booked jobs.
               </p>
               <div className="cta-row">
-                <WhatsAppButton />
-                <Link className="btn btn-dark" href="/book-a-call">
-                  Book a Call
-                </Link>
+                <MainCta />
               </div>
             </div>
             <div className="about-photo">
