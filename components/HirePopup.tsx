@@ -1,13 +1,40 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { PLANS } from "@/lib/pricing";
-import { ALL_SERVICES } from "@/lib/services";
+import { PLANS, usd } from "@/lib/pricing";
+import { SERVICE_GROUPS } from "@/lib/services";
+import { AVATAR } from "@/lib/site";
+
+/** What each plan covers, worded as on the pricing page's "At a glance". */
+const INCLUDES: Record<string, string> = {
+  Starter: "Local SEO",
+  Growth: "Local SEO + GEO & AI Visibility (medium)",
+  Pro: "Local SEO + GEO & AI Visibility (full)",
+};
 
 const PLAN_OPTIONS = [
-  ...PLANS.map((p) => ({ id: p.name, label: p.name, price: `$${p.price.toLocaleString()}/mo`, note: p.tagline, popular: p.popular })),
-  { id: "Custom", label: "Custom / not sure", price: "Let's talk", note: "One-off project, audit, or you want my advice.", popular: false },
+  ...PLANS.map((p) => ({
+    id: p.name,
+    label: p.name,
+    price: usd(p.price),
+    per: "/month",
+    includes: INCLUDES[p.name] ?? p.tagline,
+    ticks: p.features.filter((f) => !/^Everything in/.test(f)).slice(0, 3),
+    popular: !!p.popular,
+  })),
+  {
+    id: "Custom",
+    label: "Custom project",
+    price: "Let’s talk",
+    per: "",
+    includes: "One-off work, more locations, or you’d like my advice first",
+    ticks: [] as string[],
+    popular: false,
+  },
 ];
+
+/** Specialist work that can be added to any plan (the "SEO by specialization" group). */
+const ADD_ONS = SERVICE_GROUPS.find((g) => g.title === "SEO by specialization")?.items ?? [];
 
 type Status = "idle" | "sending" | "done" | "error";
 
@@ -15,11 +42,12 @@ type Status = "idle" | "sending" | "done" | "error";
 export function HirePopup({ onClose }: { onClose: () => void }) {
   const ref = useRef<HTMLDialogElement>(null);
   const [step, setStep] = useState<1 | 2>(1);
-  const [services, setServices] = useState<string[]>([]);
-  const [plan, setPlan] = useState("");
+  const [plan, setPlan] = useState("Growth");
+  const [addOns, setAddOns] = useState<string[]>([]);
   const [f, setF] = useState({ name: "", email: "", phone: "", website: "", message: "", _gotcha: "" });
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
+  const chosen = PLAN_OPTIONS.find((p) => p.id === plan);
 
   useEffect(() => {
     const d = ref.current;
@@ -30,14 +58,14 @@ export function HirePopup({ onClose }: { onClose: () => void }) {
 
   const close = () => ref.current?.close();
   const set = (k: keyof typeof f) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setF({ ...f, [k]: e.target.value });
-  const toggle = (name: string) => setServices((s) => (s.includes(name) ? s.filter((x) => x !== name) : [...s, name]));
+  const toggle = (name: string) => setAddOns((s) => (s.includes(name) ? s.filter((x) => x !== name) : [...s, name]));
+  const planText = chosen ? `${chosen.label}${chosen.per ? ` · ${chosen.price}${chosen.per}` : ""}` : "";
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
     setError("");
     try {
-      const plan_ = PLAN_OPTIONS.find((p) => p.id === plan);
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -47,8 +75,8 @@ export function HirePopup({ onClose }: { onClose: () => void }) {
           email: f.email,
           phone: f.phone,
           website: f.website,
-          services: services.join(", "),
-          plan: plan_ ? `${plan_.label} (${plan_.price})` : "",
+          plan: planText,
+          services: [chosen?.id === "Custom" ? "" : chosen?.includes, ...addOns].filter(Boolean).join(", "),
           message: f.message,
           page: location.pathname,
           _gotcha: f._gotcha,
@@ -67,7 +95,7 @@ export function HirePopup({ onClose }: { onClose: () => void }) {
       <div className="hire-box">
         <header className="hire-head">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/assets/ramjan-ali-akash-portrait.webp" alt="" width={44} height={44} />
+          <img src={AVATAR} alt="" width={44} height={44} />
           <div>
             <b>Hire Ramjan Ali</b>
             <span>
@@ -98,42 +126,56 @@ export function HirePopup({ onClose }: { onClose: () => void }) {
         ) : (
           <form className="hire-body" onSubmit={step === 1 ? (e) => (e.preventDefault(), setStep(2)) : submit}>
             <div className="hire-steps" aria-hidden="true">
-              <span className={step >= 1 ? "on" : ""} />
-              <span className={step >= 2 ? "on" : ""} />
+              <span className="on" />
+              <span className={step === 2 ? "on" : ""} />
             </div>
 
             {step === 1 ? (
               <>
                 <fieldset>
-                  <legend>What do you need help with?</legend>
-                  <div className="hire-chips">
-                    {ALL_SERVICES.map((s) => (
-                      <button type="button" key={s.href} className={`hire-chip${services.includes(s.name) ? " on" : ""}`} aria-pressed={services.includes(s.name)} onClick={() => toggle(s.name)}>
-                        {services.includes(s.name) && <span aria-hidden="true">✓ </span>}
-                        {s.name}
-                      </button>
-                    ))}
-                  </div>
-                </fieldset>
-                <fieldset>
-                  <legend>Which plan fits?</legend>
+                  <legend>Choose a plan</legend>
                   <div className="hire-plans">
                     {PLAN_OPTIONS.map((p) => (
                       <label key={p.id} className={`hire-plan${plan === p.id ? " on" : ""}`}>
                         <input type="radio" name="plan" value={p.id} checked={plan === p.id} onChange={() => setPlan(p.id)} />
-                        <span className="hire-plan-top">
-                          <b>{p.label}</b>
-                          {p.popular && <em>Popular</em>}
-                          <span className="hire-price">{p.price}</span>
+                        <span className="hire-radio" aria-hidden="true" />
+                        <span className="hire-plan-main">
+                          <span className="hire-plan-top">
+                            <b>{p.label}</b>
+                            {p.popular && <em>Most popular</em>}
+                          </span>
+                          <span className="hire-includes">{p.includes}</span>
+                          {plan === p.id && p.ticks.length > 0 && (
+                            <ul className="hire-ticks">
+                              {p.ticks.map((t) => (
+                                <li key={t}>{t}</li>
+                              ))}
+                            </ul>
+                          )}
                         </span>
-                        <small>{p.note}</small>
+                        <span className="hire-price">
+                          {p.price}
+                          {p.per && <small>{p.per}</small>}
+                        </span>
                       </label>
                     ))}
                   </div>
                 </fieldset>
+                <fieldset>
+                  <legend>
+                    Add specialist work <span className="hire-opt">optional</span>
+                  </legend>
+                  <div className="hire-chips">
+                    {ADD_ONS.map((s) => (
+                      <button type="button" key={s.href} className={`hire-chip${addOns.includes(s.name) ? " on" : ""}`} aria-pressed={addOns.includes(s.name)} onClick={() => toggle(s.name)}>
+                        <span aria-hidden="true">{addOns.includes(s.name) ? "✓" : "+"}</span> {s.name}
+                      </button>
+                    ))}
+                  </div>
+                </fieldset>
                 <div className="hire-foot">
-                  <span className="hire-hint">{services.length ? `${services.length} selected` : "Pick at least one service"}</span>
-                  <button className="btn btn-dark" disabled={!services.length || !plan}>
+                  <span className="hire-hint">{planText}</span>
+                  <button className="btn btn-dark" disabled={!plan}>
                     Continue <span className="arr">→</span>
                   </button>
                 </div>
@@ -142,7 +184,8 @@ export function HirePopup({ onClose }: { onClose: () => void }) {
               <>
                 <div className="hire-summary">
                   <span>
-                    {services.join(", ")} · {PLAN_OPTIONS.find((p) => p.id === plan)?.label}
+                    <b>{planText}</b>
+                    {addOns.length > 0 && ` + ${addOns.join(", ")}`}
                   </span>
                   <button type="button" onClick={() => setStep(1)}>
                     Change
