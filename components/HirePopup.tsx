@@ -215,12 +215,27 @@ export function HirePopup({ onClose }: { onClose: () => void }) {
                 </label>
                 <input className="hire-hp" tabIndex={-1} autoComplete="off" aria-hidden="true" value={f._gotcha} onChange={set("_gotcha")} />
                 {status === "error" && <p className="hire-err">{error}</p>}
+                <p className="hire-trust">
+                  <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                    <path d="M12 3 5 6v5c0 4.5 3 8.3 7 9.5 4-1.2 7-5 7-9.5V6z" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+                  </svg>
+                  Your details stay private. I reply personally within 24 hours.
+                </p>
                 <div className="hire-foot">
-                  <button type="button" className="btn btn-ghost" onClick={() => setStep(1)}>
-                    Back
+                  <button type="button" className="hire-back" onClick={() => setStep(1)} aria-label="Back to plans">
+                    <span aria-hidden="true">←</span>
                   </button>
-                  <button className="btn btn-accent" disabled={status === "sending"}>
-                    {status === "sending" ? "Sending…" : "Send project details"} <span className="arr">→</span>
+                  <button className={`hire-send${status === "sending" ? " busy" : ""}`} disabled={status === "sending"}>
+                    <span className="hire-send-txt">{status === "sending" ? "Sending…" : "Send project details"}</span>
+                    <span className="hire-send-ic" aria-hidden="true">
+                      {status === "sending" ? (
+                        <i className="hire-spin" />
+                      ) : (
+                        <svg viewBox="0 0 24 24" width="18" height="18">
+                          <path d="M21 3 10 14M21 3l-7 18-4-7-7-4z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      )}
+                    </span>
                   </button>
                 </div>
               </>
