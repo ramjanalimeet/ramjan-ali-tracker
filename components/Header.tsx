@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ALL_SERVICES, SERVICE_GROUPS } from "@/lib/services";
+import { ALL_SERVICES, MENU_GROUPS, MENU_SERVICES } from "@/lib/services";
 
 const LINKS = [
   { href: "/locations", label: "Locations" },
@@ -63,7 +63,7 @@ export function Header() {
                 <div className="dd mega">
                   <div className="mega-box">
                     <div className="mega-cols">
-                      {SERVICE_GROUPS.map((g) => (
+                      {MENU_GROUPS.map((g) => (
                         <div key={g.title}>
                           <p className="mega-title">{g.title}</p>
                           <ul>
@@ -126,7 +126,7 @@ export function Header() {
         <details>
           <summary>Services</summary>
           <ul>
-            {ALL_SERVICES.map((s) => (
+            {MENU_SERVICES.map((s) => (
               <li key={s.href}>
                 <Link href={s.href}>{s.name}</Link>
               </li>
