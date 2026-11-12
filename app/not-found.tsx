@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { SiteChrome } from "@/components/SiteChrome";
 import { ALL_SERVICES } from "@/lib/services";
 
 export const metadata = { title: { absolute: "Page not found | Ramjan Ali Akash" }, robots: { index: false } };
 
 export default function NotFound() {
   return (
+    <SiteChrome>
     <section className="phero">
       <div className="wrap">
         <span className="eyebrow">404</span>
@@ -38,5 +40,6 @@ export default function NotFound() {
         </div>
       </div>
     </section>
+    </SiteChrome>
   );
 }

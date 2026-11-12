@@ -14,8 +14,8 @@ npm run typecheck
 
 ## Structure
 
-- `app/` — one folder per page (`app/pricing/page.tsx` serves `/pricing`), plus
-  `layout.tsx` (header, footer, fonts), `globals.css`, `robots.ts`, the XML sitemaps
+- `app/(site)/` — one folder per page (`app/(site)/pricing/page.tsx` serves `/pricing`), with
+  `app/(site)/layout.tsx` adding the header and footer; `app/` keeps `layout.tsx` (fonts), `globals.css`, `robots.ts`, the XML sitemaps
   (`sitemap.xml` index plus `page-`, `service-`, `industry-`, `location-`, `post-` and
   `case-study-sitemap.xml`, built in `lib/sitemaps.ts` and styled by `public/sitemap.xsl`),
   `opengraph-image.tsx` and `api/lead` (free audit form endpoint)
@@ -40,7 +40,32 @@ npm run typecheck
 
 ## Deploy
 
-Vercel detects Next.js automatically; no extra configuration is needed.
+Cloudflare Workers: `npm run build` (OpenNext) then `npx wrangler deploy`. `wrangler.jsonc`
+points at `worker.ts`, which wraps the Next.js worker and adds the admin dashboard backend.
+
+## Admin dashboard (`/admin`)
+
+A private, Notion-style workspace at `/admin` for social posting, email outreach and leads.
+
+- **Sign in** with the dashboard password. Change it in Settings → General, or set an
+  `ADMIN_PASSWORD` secret in Cloudflare (that one then wins).
+- **Settings** (bottom of the sidebar) connects X, LinkedIn, Facebook Pages and Medium, and
+  4–5 sending inboxes (Gmail/Workspace or Outlook with an app password, any SMTP+IMAP host, or
+  Resend). Each panel explains where to get the keys.
+- **Social posts / Calendar** — write once, pick accounts and a time; posts publish on their own.
+- **Email** — campaigns with a first email and follow-ups. Sending is spread across the selected
+  inboxes within each inbox's daily limit, only in the campaign's sending hours, and follow-ups
+  reply in the same thread. A reply (found over IMAP) stops the sequence and lands in the Inbox.
+- **Contacts** — CSV import, “Find emails” (reads public emails from business websites), website
+  form leads and Cal.com bookings. Campaigns can auto-enroll new contacts by source.
+- **Inbox** — outreach replies, website form submissions (`POST /api/lead`), Cal.com bookings
+  (webhook URL shown in Settings → Website & bookings) and X mentions / Facebook comments.
+
+Backend: `worker/` — one SQLite Durable Object (`AdminStore`) holds everything; a cron every 5
+minutes (`triggers` in `wrangler.jsonc`) publishes due posts, sends due emails and checks replies.
+The dashboard UI is `app/admin` + `components/admin`. Typecheck the worker with
+`npx tsc -p worker/tsconfig.json`. `npm run dev` serves the UI only; use `npm run preview` (or
+`npx wrangler dev` after `npm run build`) to run it with the backend.
 
 ## Adding a case study
 
