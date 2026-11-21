@@ -74,8 +74,8 @@ export const POSTS: Post[] = [
     slug: "google-business-profile-categories-for-contractors",
     takeaway: "Start with the category that describes the work your business mainly sells. Add secondary categories for services you actually provide, then check that your website gives customers a clear way to book those services.",
     cover: {
-      url: "/assets/blog/google-business-profile-categories-for-contractors-example.webp",
-      thumbnail: "/assets/blog/google-business-profile-categories-for-contractors-example-640.webp",
+      url: "/assets/blog/google-business-profile-categories-for-contractors-story.webp",
+      thumbnail: "/assets/blog/google-business-profile-categories-for-contractors-story-640.webp",
       alt: "Google Business Profile. Example: Roofing contractor.",
     },
     graphic: {
@@ -99,8 +99,8 @@ export const POSTS: Post[] = [
     slug: "how-to-get-more-google-reviews",
     takeaway: "Ask every eligible customer for an honest review once the job is complete. Put the direct review link in the follow-up message and use the same process regardless of how you expect the customer to rate you.",
     cover: {
-      url: "/assets/blog/how-to-get-more-google-reviews-example.webp",
-      thumbnail: "/assets/blog/how-to-get-more-google-reviews-example-640.webp",
+      url: "/assets/blog/how-to-get-more-google-reviews-story.webp",
+      thumbnail: "/assets/blog/how-to-get-more-google-reviews-story-640.webp",
       alt: "Google reviews. Example: After a completed service call.",
     },
     graphic: {
@@ -124,8 +124,8 @@ export const POSTS: Post[] = [
     slug: "roofing-storm-damage-leads",
     takeaway: "Publish one useful storm-damage page before severe weather. Explain the warning signs, where you can respond, and what happens during an inspection. Update availability after a storm and track calls to that page.",
     cover: {
-      url: "/assets/blog/roofing-storm-damage-leads-example.webp",
-      thumbnail: "/assets/blog/roofing-storm-damage-leads-example-640.webp",
+      url: "/assets/blog/roofing-storm-damage-leads-story.webp",
+      thumbnail: "/assets/blog/roofing-storm-damage-leads-story-640.webp",
       alt: "Google Search. Example: emergency roof repair after hail.",
     },
     graphic: {
@@ -149,8 +149,8 @@ export const POSTS: Post[] = [
     slug: "high-value-plumbing-keywords",
     takeaway: "Group plumbing keywords by the job the customer needs, such as drain cleaning or water heater repair. Prioritize services you can deliver profitably and give each distinct job a page with a clear booking option.",
     cover: {
-      url: "/assets/blog/high-value-plumbing-keywords-example.webp",
-      thumbnail: "/assets/blog/high-value-plumbing-keywords-example-640.webp",
+      url: "/assets/blog/high-value-plumbing-keywords-story.webp",
+      thumbnail: "/assets/blog/high-value-plumbing-keywords-story-640.webp",
       alt: "Plumbing keyword tracker. Example: Service and location queries.",
     },
     graphic: {
@@ -174,8 +174,8 @@ export const POSTS: Post[] = [
     slug: "hvac-seo-calendar",
     takeaway: "Update cooling pages before the first hot spell and heating pages before the first cold one. Use the quieter months to refresh maintenance offers, check booking forms and review which pages brought in calls last season.",
     cover: {
-      url: "/assets/blog/hvac-seo-calendar-example.webp",
-      thumbnail: "/assets/blog/hvac-seo-calendar-example-640.webp",
+      url: "/assets/blog/hvac-seo-calendar-story.webp",
+      thumbnail: "/assets/blog/hvac-seo-calendar-story-640.webp",
       alt: "HVAC search calendar. Example: Publish ahead of demand.",
     },
     graphic: {
@@ -199,8 +199,8 @@ export const POSTS: Post[] = [
     slug: "how-much-does-local-seo-cost",
     takeaway: "Compare SEO quotes by the work included each month, the markets covered and how leads are measured. Estimate how many additional booked jobs would cover the fee using gross profit per job.",
     cover: {
-      url: "/assets/blog/how-much-does-local-seo-cost-example.webp",
-      thumbnail: "/assets/blog/how-much-does-local-seo-cost-example-640.webp",
+      url: "/assets/blog/how-much-does-local-seo-cost-story.webp",
+      thumbnail: "/assets/blog/how-much-does-local-seo-cost-story-640.webp",
       alt: "Break-even estimate. Example: Illustrative monthly budget.",
     },
     graphic: {
@@ -224,8 +224,8 @@ export const POSTS: Post[] = [
     slug: "local-link-building-for-contractors",
     takeaway: "Start with suppliers, associations and local partners who can genuinely recommend your work. Give them a useful resource to link to, then check that new links point to the page a referred customer needs.",
     cover: {
-      url: "/assets/blog/local-link-building-for-contractors-example.webp",
-      thumbnail: "/assets/blog/local-link-building-for-contractors-example-640.webp",
+      url: "/assets/blog/local-link-building-for-contractors-story.webp",
+      thumbnail: "/assets/blog/local-link-building-for-contractors-story-640.webp",
       alt: "Find local backlink opportunities. Example: roofing supplier contractor directory.",
     },
     graphic: {
@@ -249,8 +249,8 @@ export const POSTS: Post[] = [
     slug: "local-seo-audit",
     takeaway: "Audit the path a customer takes from search to booking. Check that your listing is accurate, your priority pages can be indexed, and a customer on a phone can reach you without getting stuck.",
     cover: {
-      url: "/assets/blog/local-seo-audit-example.webp",
-      thumbnail: "/assets/blog/local-seo-audit-example-640.webp",
+      url: "/assets/blog/local-seo-audit-story.webp",
+      thumbnail: "/assets/blog/local-seo-audit-story-640.webp",
       alt: "Local SEO audit scorecard. Example: Compare the same items across businesses.",
     },
     graphic: {
@@ -274,8 +274,8 @@ export const POSTS: Post[] = [
     slug: "local-business-schema-for-contractors",
     takeaway: "Mark up facts already visible on your site, such as your business name, phone and services. Keep those details consistent with your listing and validate the JSON-LD after publishing.",
     cover: {
-      url: "/assets/blog/local-business-schema-for-contractors-example.webp",
-      thumbnail: "/assets/blog/local-business-schema-for-contractors-example-640.webp",
+      url: "/assets/blog/local-business-schema-for-contractors-story.webp",
+      thumbnail: "/assets/blog/local-business-schema-for-contractors-story-640.webp",
       alt: "LocalBusiness structured data. Example: Example contractor entity.",
     },
     graphic: {
@@ -299,8 +299,8 @@ export const POSTS: Post[] = [
     slug: "check-if-ai-recommends-your-business",
     takeaway: "Write a short list of service-and-city questions your customers ask. Run the same prompts across the AI tools you want to monitor and record the date, whether you were named, and which sources were cited.",
     cover: {
-      url: "/assets/blog/check-if-ai-recommends-your-business-example.webp",
-      thumbnail: "/assets/blog/check-if-ai-recommends-your-business-example-640.webp",
+      url: "/assets/blog/check-if-ai-recommends-your-business-story.webp",
+      thumbnail: "/assets/blog/check-if-ai-recommends-your-business-story-640.webp",
       alt: "Track AI recommendations. Example: Who repairs water heaters in Tampa?.",
     },
     graphic: {
@@ -324,8 +324,8 @@ export const POSTS: Post[] = [
     slug: "google-business-profile-suspended",
     takeaway: "Check the suspension notice against the profile rules, then collect registration and other evidence that matches the profile. Submit a single appeal with consistent business details and keep the case reference.",
     cover: {
-      url: "/assets/blog/google-business-profile-suspended-example.webp",
-      thumbnail: "/assets/blog/google-business-profile-suspended-example-640.webp",
+      url: "/assets/blog/google-business-profile-suspended-story.webp",
+      thumbnail: "/assets/blog/google-business-profile-suspended-story-640.webp",
       alt: "Google Business Profile appeal. Example: Evidence to compare with your listing.",
     },
     graphic: {
@@ -349,8 +349,8 @@ export const POSTS: Post[] = [
     slug: "local-services-ads-vs-seo-for-contractors",
     takeaway: "Compare Local Services Ads and SEO using booked jobs and revenue by channel. Decide how much immediate demand you need and which services deserve a longer-term investment in organic visibility.",
     cover: {
-      url: "/assets/blog/local-services-ads-vs-seo-for-contractors-example.webp",
-      thumbnail: "/assets/blog/local-services-ads-vs-seo-for-contractors-example-640.webp",
+      url: "/assets/blog/local-services-ads-vs-seo-for-contractors-story.webp",
+      thumbnail: "/assets/blog/local-services-ads-vs-seo-for-contractors-story-640.webp",
       alt: "Where Google leads come from. Example: roof repair near me.",
     },
     graphic: {
@@ -374,8 +374,8 @@ export const POSTS: Post[] = [
     slug: "how-to-get-more-septic-pumping-customers",
     takeaway: "Make your pumping page useful to a homeowner ready to call. List where you work, what affects the quote and how to prepare for a visit. Give emergency and routine jobs distinct contact instructions if your process differs.",
     cover: {
-      url: "/assets/blog/how-to-get-more-septic-pumping-customers-example.webp",
-      thumbnail: "/assets/blog/how-to-get-more-septic-pumping-customers-example-640.webp",
+      url: "/assets/blog/how-to-get-more-septic-pumping-customers-story.webp",
+      thumbnail: "/assets/blog/how-to-get-more-septic-pumping-customers-story-640.webp",
       alt: "Search intent for septic services. Example: septic pumping near me.",
     },
     graphic: {
@@ -399,8 +399,8 @@ export const POSTS: Post[] = [
     slug: "get-recommended-by-chatgpt",
     takeaway: "Make your service and coverage pages specific enough to answer who you help, what you do and where you work. Publish evidence you can verify and track whether AI answers cite those pages over time.",
     cover: {
-      url: "/assets/blog/get-recommended-by-chatgpt-example.webp",
-      thumbnail: "/assets/blog/get-recommended-by-chatgpt-example-640.webp",
+      url: "/assets/blog/get-recommended-by-chatgpt-story.webp",
+      thumbnail: "/assets/blog/get-recommended-by-chatgpt-story-640.webp",
       alt: "An answer-first service page. Example: Who repairs leaking roofs in Tampa?.",
     },
     graphic: {
@@ -425,8 +425,8 @@ export const POSTS: Post[] = [
     slug: "geo-vs-seo-home-services",
     takeaway: "Use local SEO to improve visibility in search results and Maps. Test AI visibility separately with a repeatable set of customer questions and record the sources each answer cites.",
     cover: {
-      url: "/assets/blog/geo-vs-seo-home-services-example.webp",
-      thumbnail: "/assets/blog/geo-vs-seo-home-services-example-640.webp",
+      url: "/assets/blog/geo-vs-seo-home-services-story.webp",
+      thumbnail: "/assets/blog/geo-vs-seo-home-services-story-640.webp",
       alt: "Compare SEO and GEO signals. Example: Two ways people find your business.",
     },
     graphic: {
@@ -450,8 +450,8 @@ export const POSTS: Post[] = [
     slug: "local-seo-checklist-for-contractors",
     takeaway: "Start with the work that removes friction for customers. Verify your listing, test the phone and form on mobile, and improve the pages for your highest-priority jobs before expanding to new towns.",
     cover: {
-      url: "/assets/blog/local-seo-checklist-for-contractors-example.webp",
-      thumbnail: "/assets/blog/local-seo-checklist-for-contractors-example-640.webp",
+      url: "/assets/blog/local-seo-checklist-for-contractors-story.webp",
+      thumbnail: "/assets/blog/local-seo-checklist-for-contractors-story-640.webp",
       alt: "Google Business Profile checklist. Example: What a customer sees before calling.",
     },
     graphic: {
@@ -475,8 +475,8 @@ export const POSTS: Post[] = [
     slug: "how-to-rank-in-google-map-pack",
     takeaway: "Compare map rankings from several points across your service area. Improve category and service relevance, keep your profile accurate and track calls alongside changes in geographic coverage.",
     cover: {
-      url: "/assets/blog/how-to-rank-in-google-map-pack-example.webp",
-      thumbnail: "/assets/blog/how-to-rank-in-google-map-pack-example-640.webp",
+      url: "/assets/blog/how-to-rank-in-google-map-pack-story.webp",
+      thumbnail: "/assets/blog/how-to-rank-in-google-map-pack-story-640.webp",
       alt: "Google Maps rank grid. Example: emergency plumber near me.",
     },
     graphic: {
@@ -500,8 +500,8 @@ export const POSTS: Post[] = [
     slug: "technical-seo-for-service-business-websites",
     takeaway: "Check that your most important service pages return a successful status, can be indexed and have working mobile contact controls. Fix those issues before spending time on minor performance scores.",
     cover: {
-      url: "/assets/blog/technical-seo-for-service-business-websites-example.webp",
-      thumbnail: "/assets/blog/technical-seo-for-service-business-websites-example-640.webp",
+      url: "/assets/blog/technical-seo-for-service-business-websites-story.webp",
+      thumbnail: "/assets/blog/technical-seo-for-service-business-websites-story-640.webp",
       alt: "Search Console URL Inspection. Example: /services/drain-cleaning.",
     },
     graphic: {
@@ -525,8 +525,8 @@ export const POSTS: Post[] = [
     slug: "service-area-pages-that-rank",
     takeaway: "Publish area pages for places you actually serve. Use relevant job examples, travel details or service limitations to explain what a customer in that area can expect.",
     cover: {
-      url: "/assets/blog/service-area-pages-that-rank-example.webp",
-      thumbnail: "/assets/blog/service-area-pages-that-rank-example-640.webp",
+      url: "/assets/blog/service-area-pages-that-rank-story.webp",
+      thumbnail: "/assets/blog/service-area-pages-that-rank-story-640.webp",
       alt: "Plan a service area page. Example: Roof repair in your service area.",
     },
     graphic: {
@@ -550,8 +550,8 @@ export const POSTS: Post[] = [
     slug: "how-long-does-local-seo-take",
     takeaway: "Set a baseline for impressions, calls and booked jobs before changing anything. Compare similar seasons and use early visibility changes to decide what to investigate while lead volume catches up.",
     cover: {
-      url: "/assets/blog/how-long-does-local-seo-take-example.webp",
-      thumbnail: "/assets/blog/how-long-does-local-seo-take-example-640.webp",
+      url: "/assets/blog/how-long-does-local-seo-take-story.webp",
+      thumbnail: "/assets/blog/how-long-does-local-seo-take-story-640.webp",
       alt: "Search Console + GBP. Example: Illustrative search visibility trend.",
     },
     graphic: {

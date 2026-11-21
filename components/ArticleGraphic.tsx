@@ -6,7 +6,7 @@ export function ArticleGraphic({ post }: { post: Post }) {
   return (
     <figure className="article-guide">
       <img
-        src={`/assets/blog/${post.slug}-context.webp`}
+        src={`/assets/blog/${post.slug}-diagram.webp`}
         width={1600}
         height={1040}
         alt={`${title}. A text version follows.`}
