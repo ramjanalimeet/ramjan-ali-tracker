@@ -2217,11 +2217,12 @@ dialog.booking::backdrop {
   max-width: 13ch;
 }
 .playbook-head h1 {
-  max-width: 12ch;
+  max-width: none;
   margin-inline: auto;
   font-size: clamp(40px, 5.4vw, 70px);
   line-height: 1;
   letter-spacing: -0.055em;
+  white-space: nowrap;
 }
 .playbook-head .eyebrow {
   justify-content: center;
@@ -2308,11 +2309,24 @@ dialog.booking::backdrop {
   overflow: hidden;
 }
 .pb-actions {
-  display: grid;
-  grid-template-columns: 1fr 1.12fr;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 8px;
   margin-top: auto;
   padding-top: 16px;
+}
+.pb-action-tags {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+.pb-action-tags .pb-pill {
+  padding: 4px 8px;
+  font-size: 11.5px;
+  white-space: nowrap;
 }
 .pb-actions a {
   min-height: 42px;
@@ -2340,6 +2354,9 @@ dialog.booking::backdrop {
   border-color: var(--ink);
 }
 .pb-case {
+  flex: none;
+  padding-inline: 11px !important;
+  font-size: 12.5px !important;
   border: 1px solid var(--ink);
   color: var(--bg);
   background: var(--ink);
@@ -2578,6 +2595,10 @@ dialog.booking::backdrop {
   .playbook-head p {
     margin-top: 12px;
   }
+  .playbook-head h1 {
+    max-width: 12ch;
+    white-space: normal;
+  }
   .case-index-top .blog-filter {
     justify-content: flex-start;
   }
@@ -2591,7 +2612,7 @@ dialog.booking::backdrop {
     padding: 20px 18px;
   }
   .pb-actions {
-    grid-template-columns: 1fr;
+    align-items: center;
   }
   .case-detail-hero {
     padding: 88px 0 46px;

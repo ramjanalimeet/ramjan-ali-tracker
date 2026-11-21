@@ -38,17 +38,16 @@ export function PlaybookExplorer() {
               <div className="pb-content">
               <div className="pb-tags">
                 <span className="tag">{p.trade} case study</span>
-                <span className="pb-pill">{svc.name}</span>
-                <span className="pb-pill plan">{p.plan}</span>
               </div>
               <h3>{p.title}</h3>
               <p className="pb-sum">{p.summary}</p>
               <div className="pb-actions">
-                <Link className="pb-site" href={p.website ?? `/local-seo/${p.tradeSlug}`} target={p.website ? "_blank" : undefined} rel={p.website ? "noopener" : undefined}>
-                  {p.website ? "Client website" : "SEO service"} <span aria-hidden="true">→</span>
-                </Link>
+                <div className="pb-action-tags" aria-label={`${svc.name}, ${p.plan} plan`}>
+                  <span className="pb-pill">{svc.name}</span>
+                  <span className="pb-pill plan">{p.plan}</span>
+                </div>
                 <Link className="pb-case" href={`/case-studies/${p.id}`}>
-                  Read case study <span aria-hidden="true">→</span>
+                  View case study <span aria-hidden="true">→</span>
                 </Link>
               </div>
               </div>
