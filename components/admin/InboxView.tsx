@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { AppCtx } from "./AdminApp";
 import type { Message } from "./types";
 import { api, Brand, Empty, fmtDateTime, Icon, timeAgo } from "./ui";
@@ -18,14 +18,28 @@ export function InboxView({ ctx }: { ctx: AppCtx }) {
   const [filter, setFilter] = useState("");
   const [sel, setSel] = useState<string | null>(null);
 
-  const load = () =>
-    api<Message[]>("inbox")
-      .then(setItems)
-      .catch((e) => ctx.toast(e.message, "error"));
+  const { toast } = ctx;
+  const load = useCallback(
+    (showError = true) =>
+      api<Message[]>("inbox")
+        .then(setItems)
+        .catch((e) => {
+          if (showError) toast(e.message, "error");
+        }),
+    [toast],
+  );
   useEffect(() => {
-    load();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    void load();
+    const refresh = () => {
+      if (document.visibilityState === "visible") void load(false);
+    };
+    const timer = window.setInterval(refresh, 30_000);
+    document.addEventListener("visibilitychange", refresh);
+    return () => {
+      window.clearInterval(timer);
+      document.removeEventListener("visibilitychange", refresh);
+    };
+  }, [load]);
 
   const shown = useMemo(
     () =>
@@ -50,6 +64,9 @@ export function InboxView({ ctx }: { ctx: AppCtx }) {
       <div className="adm-inbox-list">
         <div className="adm-inbox-top">
           <h1>Inbox</h1>
+          <button className="adm-link" type="button" onClick={() => void load()}>
+            Refresh
+          </button>
           <button
             className="adm-link"
             onClick={async () => {
