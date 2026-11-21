@@ -1,17 +1,15 @@
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
-import { getPost } from "@/lib/posts";
-import { type FaqItem, pageMeta } from "@/lib/site";
+import { getPost, postMeta } from "@/lib/posts";
+import { type FaqItem } from "@/lib/site";
 
 const post = getPost("how-to-get-more-septic-pumping-customers")!;
 
-export const metadata = pageMeta({
+export const metadata = postMeta(post, {
   title: "How to Get More Septic Pumping Customers: A 90-Day Google Plan",
   description:
     "A practical 90-day plan for septic companies to get more pumping, inspection and repair calls from Google Maps and search across a wide rural service area.",
-  path: `/blog/${post.slug}`,
-  type: "article",
 });
 
 const FAQ: FaqItem[] = [

@@ -1,17 +1,15 @@
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
-import { getPost } from "@/lib/posts";
-import { type FaqItem, pageMeta } from "@/lib/site";
+import { getPost, postMeta } from "@/lib/posts";
+import { type FaqItem } from "@/lib/site";
 
 const post = getPost("local-seo-checklist-for-contractors")!;
 
-export const metadata = pageMeta({
+export const metadata = postMeta(post, {
   title: "Local SEO Checklist for Contractors (2026): Step by Step",
   description:
     "A complete local SEO checklist for roofers, plumbers, HVAC and other contractors: Google Business Profile, website, citations, reviews, links and AI search.",
-  path: `/blog/${post.slug}`,
-  type: "article",
 });
 
 const FAQ: FaqItem[] = [

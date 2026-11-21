@@ -3,7 +3,7 @@ import { CtaBand } from "./CtaBand";
 import { JsonLd } from "./JsonLd";
 import { PostCards } from "./PostCards";
 import { RelatedLinks } from "./RelatedLinks";
-import { WhatsAppButton } from "./WhatsAppButton";
+import { MainCta } from "./MainCta";
 import { type Post, formatDate, topicOf } from "@/lib/posts";
 import { type FaqItem, SITE_URL, faqSchema } from "@/lib/site";
 
@@ -45,7 +45,7 @@ export function ArticleLayout({
         articleSection: topic.name,
         author: { "@id": `${SITE_URL}/#person` },
         publisher: { "@id": `${SITE_URL}/#business` },
-        image: `${SITE_URL}/opengraph-image`,
+        image: `${SITE_URL}${post.cover.url}`,
       },
       ...(faq.length ? [faqSchema(faq)] : []),
     ],
@@ -84,6 +84,23 @@ export function ArticleLayout({
       <section className="sec tight" style={{ paddingTop: 20 }}>
         <div className="wrap art-grid">
           <article className="prose">
+            <figure className="article-cover">
+              <img
+                src={post.cover.url}
+                srcSet={`${post.cover.thumbnail} 480w, ${post.cover.url} 1200w`}
+                sizes="(max-width: 760px) 100vw, 760px"
+                width={1200}
+                height={675}
+                alt={post.cover.alt}
+                fetchPriority="high"
+                decoding="async"
+              />
+              <figcaption>AI-generated editorial illustration</figcaption>
+            </figure>
+            <section aria-labelledby="article-takeaway">
+              <h2 id="article-takeaway">What to do first</h2>
+              <p>{post.takeaway}</p>
+            </section>
             {children}
             {faq.length > 0 && (
               <section className="paa" aria-labelledby="faq">
@@ -109,9 +126,9 @@ export function ArticleLayout({
                 I&apos;ll review your Google Business Profile, website, AI search presence and top competitors, and show
                 you what to fix first.
               </p>
-              <Link className="btn btn-dark btn-sm" href="/book-a-call">
-                Book a Call →
-              </Link>
+              <div className="article-cta">
+                <MainCta />
+              </div>
             </div>
             <div className="panel">
               <h3>Related service</h3>
@@ -119,11 +136,6 @@ export function ArticleLayout({
               <Link className="btn btn-ghost btn-sm" href={topic.service.href}>
                 {topic.service.name} →
               </Link>
-            </div>
-            <div className="panel">
-              <h3>Questions?</h3>
-              <p>Message me directly. I reply to every message personally.</p>
-              <WhatsAppButton className="btn-sm" />
             </div>
           </aside>
         </div>

@@ -39,15 +39,15 @@ export default function PrivacyPolicyPage() {
       intro={INTRO}
       sections={SECTIONS}
       summary={[
-        "This website does not use analytics, advertising trackers or its own cookies, and has no contact forms.",
-        "I only receive personal information you choose to send: when you book a call, message me on WhatsApp, email me, or become a client.",
+        "This website does not use analytics, advertising trackers or its own cookies, and collects the details you submit in the project inquiry form.",
+        "I only receive personal information you choose to send: when you book a call, submit a project inquiry, email me, or become a client.",
         "I use it to reply to you, run calls and deliver the work you hire me for. I never sell it or use it for advertising.",
         "You can ask to see, correct or delete your information at any time by emailing me.",
       ]}
     >
       <h2 id="who">Who I am</h2>
       <p>
-        This website, ramjan-akash.vercel.app, is run by {OWNER.name}, an independent local SEO and AI search visibility
+        This website is run by {OWNER.name}, an independent local SEO and AI search visibility
         consultant trading as {OWNER.trading}, based in {OWNER.location}. In this policy, &quot;I&quot;, &quot;me&quot;
         and &quot;my&quot; refer to {OWNER.name}, and &quot;you&quot; refers to anyone who visits the site, contacts me
         or works with me.
@@ -72,10 +72,10 @@ export default function PrivacyPolicyPage() {
         for, typically your name, email address, the time you choose and any notes you add, such as your business name,
         website or service area. Cal.com shares the booking details with me so I can hold the call.
       </p>
-      <h3>When you message or email me</h3>
+      <h3>When you send a project inquiry or email me</h3>
       <p>
-        If you contact me on WhatsApp, I receive your phone number, profile name and the messages you send. If you email
-        me, I receive your email address and whatever you include in the message.
+        The project inquiry form sends me your contact details and the project information you choose to provide. If you
+        email me, I receive your email address and whatever you include in the message.
       </p>
       <h3>When you become a client</h3>
       <p>To deliver the work, I may also process:</p>
@@ -179,13 +179,6 @@ export default function PrivacyPolicyPage() {
               <td>Booking calls</td>
               <td>
                 <Ext href="https://cal.com/privacy">Cal.com privacy policy</Ext>
-              </td>
-            </tr>
-            <tr>
-              <td>WhatsApp (Meta)</td>
-              <td>Messaging, if you choose to contact me there</td>
-              <td>
-                <Ext href="https://www.whatsapp.com/legal/privacy-policy">WhatsApp privacy policy</Ext>
               </td>
             </tr>
             <tr>

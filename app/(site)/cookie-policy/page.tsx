@@ -67,11 +67,6 @@ export default function CookiePolicyPage() {
               </td>
             </tr>
             <tr>
-              <td>WhatsApp</td>
-              <td>Only when you click a WhatsApp button</td>
-              <td>You leave this site for WhatsApp, which applies its own cookie policy.</td>
-            </tr>
-            <tr>
               <td>Social media and external links</td>
               <td>Only when you click them</td>
               <td>The site you visit applies its own cookies and policies.</td>

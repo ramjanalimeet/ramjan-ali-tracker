@@ -1,17 +1,15 @@
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
-import { getPost } from "@/lib/posts";
-import { type FaqItem, pageMeta } from "@/lib/site";
+import { getPost, postMeta } from "@/lib/posts";
+import { type FaqItem } from "@/lib/site";
 
 const post = getPost("local-link-building-for-contractors")!;
 
-export const metadata = pageMeta({
+export const metadata = postMeta(post, {
   title: "Local Link Building for Contractors: 15 Ideas That Work",
   description:
     "15 safe, practical local link building ideas for roofers, plumbers, HVAC and home service companies, ranked by effort and value, plus the link tactics to avoid.",
-  path: `/blog/${post.slug}`,
-  type: "article",
 });
 
 const FAQ: FaqItem[] = [

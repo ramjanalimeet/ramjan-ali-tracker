@@ -65,7 +65,7 @@ export default function DisclaimerPage() {
       <h2 id="trademarks">Trademarks</h2>
       <p>
         Google, Google Maps, Google Business Profile, Gemini, ChatGPT, OpenAI, Microsoft, Bing, Copilot, Perplexity,
-        Apple, WhatsApp, Cal.com and other names mentioned are trademarks of their respective owners. They are used only
+        Apple, Cal.com and other names mentioned are trademarks of their respective owners. They are used only
         to describe the platforms the work involves. I am not affiliated with, endorsed by or sponsored by any of them.
       </p>
 

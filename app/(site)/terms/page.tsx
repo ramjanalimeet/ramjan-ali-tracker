@@ -83,7 +83,7 @@ export default function TermsPage() {
       <h2 id="term">Term, pausing and cancellation</h2>
       <p>
         Plans run month to month. You can pause, change plans or cancel at any time by giving one week&apos;s notice by
-        email or WhatsApp before your next billing date. I can also end an engagement with the same notice. How fees are
+        email before your next billing date. I can also end an engagement with the same notice. How fees are
         handled when you cancel is set out in the <Link href="/refund-policy">Cancellation &amp; Refund Policy</Link>.
       </p>
       <p>

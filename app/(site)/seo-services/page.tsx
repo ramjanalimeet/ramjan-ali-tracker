@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
@@ -35,26 +36,26 @@ const SCHEMA = {
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://ramjan-akash.vercel.app/#website",
-      url: "https://ramjan-akash.vercel.app/",
+      "@id": `${SITE_URL}/#website`,
+      url: `${SITE_URL}/`,
       name: "Ramjan Ali Akash",
       inLanguage: "en",
       publisher: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
+        "@id": `${SITE_URL}/#business`,
       },
     },
     {
       "@type": "WebPage",
-      "@id": "https://ramjan-akash.vercel.app/seo-services#webpage",
-      url: "https://ramjan-akash.vercel.app/seo-services",
+      "@id": `${SITE_URL}/seo-services#webpage`,
+      url: `${SITE_URL}/seo-services`,
       name: "SEO Services: Technical, On-Page, Content, Links & Audits | Ramjan Ali Akash",
       description:
         "Technical SEO, on-page SEO, content SEO, link building and SEO audits for local service businesses. The foundations behind strong local rankings.",
       isPartOf: {
-        "@id": "https://ramjan-akash.vercel.app/#website",
+        "@id": `${SITE_URL}/#website`,
       },
       about: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
+        "@id": `${SITE_URL}/#business`,
       },
     },
     {
@@ -64,13 +65,13 @@ const SCHEMA = {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://ramjan-akash.vercel.app/",
+          item: `${SITE_URL}/`,
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "SEO Services",
-          item: "https://ramjan-akash.vercel.app/seo-services",
+          item: `${SITE_URL}/seo-services`,
         },
       ],
     },

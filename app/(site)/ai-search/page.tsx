@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
@@ -40,26 +41,26 @@ const SCHEMA = {
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://ramjan-akash.vercel.app/#website",
-      url: "https://ramjan-akash.vercel.app/",
+      "@id": `${SITE_URL}/#website`,
+      url: `${SITE_URL}/`,
       name: "Ramjan Ali Akash",
       inLanguage: "en",
       publisher: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
+        "@id": `${SITE_URL}/#business`,
       },
     },
     {
       "@type": "WebPage",
-      "@id": "https://ramjan-akash.vercel.app/ai-search#webpage",
-      url: "https://ramjan-akash.vercel.app/ai-search",
+      "@id": `${SITE_URL}/ai-search#webpage`,
+      url: `${SITE_URL}/ai-search`,
       name: "AI Search Visibility for Home Service Businesses | Ramjan Ali Akash",
       description:
         "Get your home service business recommended by ChatGPT, Gemini, Perplexity and Google AI Overviews. AI search visibility built on solid local SEO.",
       isPartOf: {
-        "@id": "https://ramjan-akash.vercel.app/#website",
+        "@id": `${SITE_URL}/#website`,
       },
       about: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
+        "@id": `${SITE_URL}/#business`,
       },
     },
     {
@@ -69,13 +70,13 @@ const SCHEMA = {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://ramjan-akash.vercel.app/",
+          item: `${SITE_URL}/`,
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "AI Search Visibility",
-          item: "https://ramjan-akash.vercel.app/ai-search",
+          item: `${SITE_URL}/ai-search`,
         },
       ],
     },
@@ -84,9 +85,9 @@ const SCHEMA = {
       name: "AI Search Visibility",
       description:
         "Get your home service business recommended by ChatGPT, Gemini, Perplexity and Google AI Overviews. AI search visibility built on solid local SEO.",
-      url: "https://ramjan-akash.vercel.app/ai-search",
+      url: `${SITE_URL}/ai-search`,
       provider: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
+        "@id": `${SITE_URL}/#business`,
       },
       serviceType: "AI search visibility",
       areaServed: { "@type": "Country", name: "United States" },

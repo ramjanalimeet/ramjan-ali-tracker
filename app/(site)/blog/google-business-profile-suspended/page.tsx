@@ -1,17 +1,15 @@
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
-import { getPost } from "@/lib/posts";
-import { type FaqItem, pageMeta } from "@/lib/site";
+import { getPost, postMeta } from "@/lib/posts";
+import { type FaqItem } from "@/lib/site";
 
 const post = getPost("google-business-profile-suspended")!;
 
-export const metadata = pageMeta({
+export const metadata = postMeta(post, {
   title: "Google Business Profile Suspended? How Contractors Get Reinstated",
   description:
     "Why Google suspends contractor and service-area business profiles, what to fix before you appeal, and the evidence that gets a suspended profile reinstated.",
-  path: `/blog/${post.slug}`,
-  type: "article",
 });
 
 const FAQ: FaqItem[] = [

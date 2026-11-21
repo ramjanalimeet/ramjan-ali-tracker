@@ -1,18 +1,16 @@
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
-import { getPost } from "@/lib/posts";
+import { getPost, postMeta } from "@/lib/posts";
 import { AI_PLAN } from "@/lib/pricing";
-import { type FaqItem, pageMeta } from "@/lib/site";
+import { type FaqItem } from "@/lib/site";
 
 const post = getPost("check-if-ai-recommends-your-business")!;
 
-export const metadata = pageMeta({
+export const metadata = postMeta(post, {
   title: "Does ChatGPT Recommend Your Business? How to Check & Fix It",
   description:
     "A step-by-step way to check whether ChatGPT, Gemini, Perplexity and Google AI Overviews recommend your home service business, with test prompts and a fix map.",
-  path: `/blog/${post.slug}`,
-  type: "article",
 });
 
 const FAQ: FaqItem[] = [

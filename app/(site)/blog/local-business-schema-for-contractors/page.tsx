@@ -1,17 +1,15 @@
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
-import { getPost } from "@/lib/posts";
-import { type FaqItem, pageMeta } from "@/lib/site";
+import { getPost, postMeta } from "@/lib/posts";
+import { type FaqItem } from "@/lib/site";
 
 const post = getPost("local-business-schema-for-contractors")!;
 
-export const metadata = pageMeta({
+export const metadata = postMeta(post, {
   title: "Local Business Schema for Contractors (With JSON-LD Example)",
   description:
     "How roofers, plumbers, HVAC and home service businesses should use LocalBusiness schema: which type to pick, a copy-ready JSON-LD example and mistakes to avoid.",
-  path: `/blog/${post.slug}`,
-  type: "article",
 });
 
 const FAQ: FaqItem[] = [

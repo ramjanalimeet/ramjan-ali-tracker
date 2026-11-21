@@ -1,17 +1,15 @@
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
-import { getPost } from "@/lib/posts";
-import { type FaqItem, pageMeta } from "@/lib/site";
+import { getPost, postMeta } from "@/lib/posts";
+import { type FaqItem } from "@/lib/site";
 
 const post = getPost("google-business-profile-categories-for-contractors")!;
 
-export const metadata = pageMeta({
+export const metadata = postMeta(post, {
   title: "Best Google Business Profile Categories for Contractors",
   description:
     "How to choose primary and secondary Google Business Profile categories for roofers, plumbers, HVAC, septic and other trades, with a category table by trade.",
-  path: `/blog/${post.slug}`,
-  type: "article",
 });
 
 const FAQ: FaqItem[] = [

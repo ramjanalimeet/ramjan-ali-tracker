@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
@@ -38,26 +39,26 @@ const SCHEMA = {
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://ramjan-akash.vercel.app/#website",
-      url: "https://ramjan-akash.vercel.app/",
+      "@id": `${SITE_URL}/#website`,
+      url: `${SITE_URL}/`,
       name: "Ramjan Ali Akash",
       inLanguage: "en",
       publisher: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
+        "@id": `${SITE_URL}/#business`,
       },
     },
     {
       "@type": "WebPage",
-      "@id": "https://ramjan-akash.vercel.app/local-seo/roofing-seo#webpage",
-      url: "https://ramjan-akash.vercel.app/local-seo/roofing-seo",
+      "@id": `${SITE_URL}/local-seo/roofing-seo#webpage`,
+      url: `${SITE_URL}/local-seo/roofing-seo`,
       name: "Roofing SEO | Local SEO for Roofing Contractors | Ramjan Ali Akash",
       description:
         "Local SEO for roofing companies: rank in the Google map pack for roof repair, roof replacement and storm damage searches in your service area. Free audit.",
       isPartOf: {
-        "@id": "https://ramjan-akash.vercel.app/#website",
+        "@id": `${SITE_URL}/#website`,
       },
       about: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
+        "@id": `${SITE_URL}/#business`,
       },
     },
     {
@@ -67,19 +68,19 @@ const SCHEMA = {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://ramjan-akash.vercel.app/",
+          item: `${SITE_URL}/`,
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Industries",
-          item: "https://ramjan-akash.vercel.app/industries",
+          item: `${SITE_URL}/industries`,
         },
         {
           "@type": "ListItem",
           position: 3,
           name: "Roofing SEO",
-          item: "https://ramjan-akash.vercel.app/local-seo/roofing-seo",
+          item: `${SITE_URL}/local-seo/roofing-seo`,
         },
       ],
     },
@@ -88,9 +89,9 @@ const SCHEMA = {
       name: "Roofing SEO",
       description:
         "Local SEO for roofing companies: rank in the Google map pack for roof repair, roof replacement and storm damage searches in your service area. Free audit.",
-      url: "https://ramjan-akash.vercel.app/local-seo/roofing-seo",
+      url: `${SITE_URL}/local-seo/roofing-seo`,
       provider: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
+        "@id": `${SITE_URL}/#business`,
       },
       serviceType: "Roofing SEO",
       areaServed: { "@type": "Country", name: "United States" },

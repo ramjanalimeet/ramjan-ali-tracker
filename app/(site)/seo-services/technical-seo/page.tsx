@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
@@ -39,26 +40,26 @@ const SCHEMA = {
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://ramjan-akash.vercel.app/#website",
-      url: "https://ramjan-akash.vercel.app/",
+      "@id": `${SITE_URL}/#website`,
+      url: `${SITE_URL}/`,
       name: "Ramjan Ali Akash",
       inLanguage: "en",
       publisher: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
+        "@id": `${SITE_URL}/#business`,
       },
     },
     {
       "@type": "WebPage",
-      "@id": "https://ramjan-akash.vercel.app/seo-services/technical-seo#webpage",
-      url: "https://ramjan-akash.vercel.app/seo-services/technical-seo",
+      "@id": `${SITE_URL}/seo-services/technical-seo#webpage`,
+      url: `${SITE_URL}/seo-services/technical-seo`,
       name: "Technical SEO Services for Local Businesses | Ramjan Ali Akash",
       description:
         "Technical SEO for local service businesses: site speed, Core Web Vitals, indexing, site structure and local business schema. Fixes that help rankings.",
       isPartOf: {
-        "@id": "https://ramjan-akash.vercel.app/#website",
+        "@id": `${SITE_URL}/#website`,
       },
       about: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
+        "@id": `${SITE_URL}/#business`,
       },
     },
     {
@@ -68,19 +69,19 @@ const SCHEMA = {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://ramjan-akash.vercel.app/",
+          item: `${SITE_URL}/`,
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "SEO Services",
-          item: "https://ramjan-akash.vercel.app/seo-services",
+          item: `${SITE_URL}/seo-services`,
         },
         {
           "@type": "ListItem",
           position: 3,
           name: "Technical SEO",
-          item: "https://ramjan-akash.vercel.app/seo-services/technical-seo",
+          item: `${SITE_URL}/seo-services/technical-seo`,
         },
       ],
     },
@@ -89,9 +90,9 @@ const SCHEMA = {
       name: "Technical SEO",
       description:
         "Technical SEO for local service businesses: site speed, Core Web Vitals, indexing, site structure and local business schema. Fixes that help rankings.",
-      url: "https://ramjan-akash.vercel.app/seo-services/technical-seo",
+      url: `${SITE_URL}/seo-services/technical-seo`,
       provider: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
+        "@id": `${SITE_URL}/#business`,
       },
       serviceType: "Technical SEO",
       areaServed: { "@type": "Country", name: "United States" },

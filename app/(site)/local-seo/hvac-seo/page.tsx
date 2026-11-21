@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
@@ -38,26 +39,26 @@ const SCHEMA = {
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://ramjan-akash.vercel.app/#website",
-      url: "https://ramjan-akash.vercel.app/",
+      "@id": `${SITE_URL}/#website`,
+      url: `${SITE_URL}/`,
       name: "Ramjan Ali Akash",
       inLanguage: "en",
       publisher: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
+        "@id": `${SITE_URL}/#business`,
       },
     },
     {
       "@type": "WebPage",
-      "@id": "https://ramjan-akash.vercel.app/local-seo/hvac-seo#webpage",
-      url: "https://ramjan-akash.vercel.app/local-seo/hvac-seo",
+      "@id": `${SITE_URL}/local-seo/hvac-seo#webpage`,
+      url: `${SITE_URL}/local-seo/hvac-seo`,
       name: "HVAC SEO | Local SEO for HVAC Companies | Ramjan Ali Akash",
       description:
         "Local SEO for HVAC contractors: rank in Google Maps for AC repair, furnace repair, heat pump and system replacement searches in your area. Free audit.",
       isPartOf: {
-        "@id": "https://ramjan-akash.vercel.app/#website",
+        "@id": `${SITE_URL}/#website`,
       },
       about: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
+        "@id": `${SITE_URL}/#business`,
       },
     },
     {
@@ -67,19 +68,19 @@ const SCHEMA = {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://ramjan-akash.vercel.app/",
+          item: `${SITE_URL}/`,
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Industries",
-          item: "https://ramjan-akash.vercel.app/industries",
+          item: `${SITE_URL}/industries`,
         },
         {
           "@type": "ListItem",
           position: 3,
           name: "HVAC SEO",
-          item: "https://ramjan-akash.vercel.app/local-seo/hvac-seo",
+          item: `${SITE_URL}/local-seo/hvac-seo`,
         },
       ],
     },
@@ -88,9 +89,9 @@ const SCHEMA = {
       name: "HVAC SEO",
       description:
         "Local SEO for HVAC contractors: rank in Google Maps for AC repair, furnace repair, heat pump and system replacement searches in your area. Free audit.",
-      url: "https://ramjan-akash.vercel.app/local-seo/hvac-seo",
+      url: `${SITE_URL}/local-seo/hvac-seo`,
       provider: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
+        "@id": `${SITE_URL}/#business`,
       },
       serviceType: "HVAC SEO",
       areaServed: { "@type": "Country", name: "United States" },

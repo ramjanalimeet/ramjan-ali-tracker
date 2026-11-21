@@ -1,17 +1,15 @@
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
-import { getPost } from "@/lib/posts";
-import { type FaqItem, pageMeta } from "@/lib/site";
+import { getPost, postMeta } from "@/lib/posts";
+import { type FaqItem } from "@/lib/site";
 
 const post = getPost("high-value-plumbing-keywords")!;
 
-export const metadata = pageMeta({
+export const metadata = postMeta(post, {
   title: "Plumbing SEO Keywords That Bring High-Value Jobs",
   description:
     "The plumbing keywords that lead to water heater, repipe, sewer and slab leak jobs, grouped by intent, with the page each one needs and how to prioritize them.",
-  path: `/blog/${post.slug}`,
-  type: "article",
 });
 
 const FAQ: FaqItem[] = [

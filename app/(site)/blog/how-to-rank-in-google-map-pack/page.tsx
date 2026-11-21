@@ -1,17 +1,15 @@
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
-import { getPost } from "@/lib/posts";
-import { type FaqItem, pageMeta } from "@/lib/site";
+import { getPost, postMeta } from "@/lib/posts";
+import { type FaqItem } from "@/lib/site";
 
 const post = getPost("how-to-rank-in-google-map-pack")!;
 
-export const metadata = pageMeta({
+export const metadata = postMeta(post, {
   title: "How to Rank in the Google Map Pack (Local 3-Pack Guide)",
   description:
     "What decides the three businesses in the Google map pack, why yours may not show, and the practical steps contractors take to reach the top three.",
-  path: `/blog/${post.slug}`,
-  type: "article",
 });
 
 const FAQ: FaqItem[] = [
