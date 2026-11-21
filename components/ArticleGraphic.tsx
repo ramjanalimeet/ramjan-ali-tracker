@@ -5,14 +5,22 @@ export function ArticleGraphic({ post }: { post: Post }) {
   const { title, caption, steps } = post.graphic;
   return (
     <figure className="article-guide">
-      <img
-        src={`/assets/blog/${post.slug}-diagram.webp`}
-        width={1600}
-        height={1040}
-        alt={`${title}. A text version follows.`}
-        loading="lazy"
-        decoding="async"
-      />
+      <picture>
+        <source
+          media="(max-width: 600px)"
+          srcSet={`/assets/blog/${post.slug}-diagram-mobile.webp`}
+          width={700}
+          height={post.graphic.mobileHeight}
+        />
+        <img
+          src={`/assets/blog/${post.slug}-diagram.webp`}
+          width={1360}
+          height={post.graphic.height}
+          alt={`${title}. A text version follows.`}
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
       <figcaption>
         <p>{caption}</p>
         <details>

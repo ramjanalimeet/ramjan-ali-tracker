@@ -63,7 +63,7 @@ export type Post = {
   excerpt: string;
   takeaway: string;
   cover: { url: string; thumbnail: string; alt: string };
-  graphic: { title: string; caption: string; steps: string[] };
+  graphic: { height: number; mobileHeight: number; title: string; caption: string; steps: string[] };
   /** Shown large at the top of the blog page. */
   featured?: boolean;
 };
@@ -79,6 +79,8 @@ export const POSTS: Post[] = [
       alt: "Google Business Profile. Example: Roofing contractor.",
     },
     graphic: {
+      height: 602,
+      mobileHeight: 650,
       title: "Google Business Profile",
       caption: "A roofing contractor can list a secondary category when it describes a service the company actually offers.",
       steps: [
@@ -104,6 +106,8 @@ export const POSTS: Post[] = [
       alt: "Google reviews. Example: After a completed service call.",
     },
     graphic: {
+      height: 656,
+      mobileHeight: 654,
       title: "Google reviews",
       caption: "A direct link makes it easier for customers to leave an honest review.",
       steps: [
@@ -129,6 +133,8 @@ export const POSTS: Post[] = [
       alt: "Google Search. Example: emergency roof repair after hail.",
     },
     graphic: {
+      height: 602,
+      mobileHeight: 608,
       title: "Google Search",
       caption: "Storm-related searches can signal different needs, from urgent repairs to insurance research.",
       steps: [
@@ -154,6 +160,8 @@ export const POSTS: Post[] = [
       alt: "Plumbing keyword tracker. Example: Service and location queries.",
     },
     graphic: {
+      height: 718,
+      mobileHeight: 636,
       title: "Plumbing keyword tracker",
       caption: "Example positions show how to track distinct plumbing jobs separately. These are sample rankings.",
       steps: [
@@ -179,6 +187,8 @@ export const POSTS: Post[] = [
       alt: "HVAC search calendar. Example: Publish ahead of demand.",
     },
     graphic: {
+      height: 454,
+      mobileHeight: 598,
       title: "HVAC search calendar",
       caption: "Publish cooling and heating content before seasonal demand peaks.",
       steps: [
@@ -204,6 +214,8 @@ export const POSTS: Post[] = [
       alt: "Break-even estimate. Example: Illustrative monthly budget.",
     },
     graphic: {
+      height: 490,
+      mobileHeight: 438,
       title: "Break-even estimate",
       caption: "At $900 a month and $300 gross profit per additional booked job, three jobs cover the SEO fee in this example.",
       steps: [
@@ -229,6 +241,8 @@ export const POSTS: Post[] = [
       alt: "Find local backlink opportunities. Example: roofing supplier contractor directory.",
     },
     graphic: {
+      height: 950,
+      mobileHeight: 990,
       title: "Find local backlink opportunities",
       caption: "Start with real relationships that can send people to your service pages.",
       steps: [
@@ -254,6 +268,8 @@ export const POSTS: Post[] = [
       alt: "Local SEO audit scorecard. Example: Compare the same items across businesses.",
     },
     graphic: {
+      height: 650,
+      mobileHeight: 582,
       title: "Local SEO audit scorecard",
       caption: "Compare the same listing, website and lead-tracking checks across competitors.",
       steps: [
@@ -279,6 +295,8 @@ export const POSTS: Post[] = [
       alt: "LocalBusiness structured data. Example: Example contractor entity.",
     },
     graphic: {
+      height: 670,
+      mobileHeight: 562,
       title: "LocalBusiness structured data",
       caption: "Keep the business details in structured data consistent with what visitors can read on the page.",
       steps: [
@@ -304,6 +322,8 @@ export const POSTS: Post[] = [
       alt: "Track AI recommendations. Example: Who repairs water heaters in Tampa?.",
     },
     graphic: {
+      height: 672,
+      mobileHeight: 744,
       title: "Track AI recommendations",
       caption: "Record the service, location, date and cited source each time you test an AI recommendation.",
       steps: [
@@ -329,6 +349,8 @@ export const POSTS: Post[] = [
       alt: "Google Business Profile appeal. Example: Evidence to compare with your listing.",
     },
     graphic: {
+      height: 602,
+      mobileHeight: 650,
       title: "Google Business Profile appeal",
       caption: "Review the appeal evidence for consistency with your profile before submitting it.",
       steps: [
@@ -354,6 +376,8 @@ export const POSTS: Post[] = [
       alt: "Where Google leads come from. Example: roof repair near me.",
     },
     graphic: {
+      height: 602,
+      mobileHeight: 608,
       title: "Where Google leads come from",
       caption: "Identify the search surface where a lead first found you before comparing channel performance.",
       steps: [
@@ -379,6 +403,8 @@ export const POSTS: Post[] = [
       alt: "Search intent for septic services. Example: septic pumping near me.",
     },
     graphic: {
+      height: 602,
+      mobileHeight: 646,
       title: "Search intent for septic services",
       caption: "Separate routine pumping searches from urgent calls and pricing research.",
       steps: [
@@ -404,6 +430,8 @@ export const POSTS: Post[] = [
       alt: "An answer-first service page. Example: Who repairs leaking roofs in Tampa?.",
     },
     graphic: {
+      height: 716,
+      mobileHeight: 782,
       title: "An answer-first service page",
       caption: "State the service and location early, then give readers verifiable evidence for the claim.",
       steps: [
@@ -430,6 +458,8 @@ export const POSTS: Post[] = [
       alt: "Compare SEO and GEO signals. Example: Two ways people find your business.",
     },
     graphic: {
+      height: 650,
+      mobileHeight: 582,
       title: "Compare SEO and GEO signals",
       caption: "Measure search clicks, Business Profile call clicks and AI citations as distinct signals.",
       steps: [
@@ -455,6 +485,8 @@ export const POSTS: Post[] = [
       alt: "Google Business Profile checklist. Example: What a customer sees before calling.",
     },
     graphic: {
+      height: 602,
+      mobileHeight: 650,
       title: "Google Business Profile checklist",
       caption: "Check the profile details that help customers decide if they can reach you.",
       steps: [
@@ -480,6 +512,8 @@ export const POSTS: Post[] = [
       alt: "Google Maps rank grid. Example: emergency plumber near me.",
     },
     graphic: {
+      height: 712,
+      mobileHeight: 658,
       title: "Google Maps rank grid",
       caption: "This illustrative grid shows how the same query can return different rankings at different locations.",
       steps: [
@@ -505,6 +539,8 @@ export const POSTS: Post[] = [
       alt: "Search Console URL Inspection. Example: /services/drain-cleaning.",
     },
     graphic: {
+      height: 704,
+      mobileHeight: 696,
       title: "Search Console URL Inspection",
       caption: "Compare the indexed URL, declared canonical and live fetch when investigating an indexing issue.",
       steps: [
@@ -530,6 +566,8 @@ export const POSTS: Post[] = [
       alt: "Plan a service area page. Example: Roof repair in your service area.",
     },
     graphic: {
+      height: 852,
+      mobileHeight: 896,
       title: "Plan a service area page",
       caption: "A service area page should tell a visitor what you do locally and how to book it.",
       steps: [
@@ -555,6 +593,8 @@ export const POSTS: Post[] = [
       alt: "Search Console + GBP. Example: Illustrative search visibility trend.",
     },
     graphic: {
+      height: 860,
+      mobileHeight: 852,
       title: "Search Console + GBP",
       caption: "Read impressions, call clicks and verified bookings together. The example trend is illustrative.",
       steps: [
