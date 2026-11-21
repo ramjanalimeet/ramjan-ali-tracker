@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { ALL_SERVICES, SERVICE_GROUPS } from "@/lib/services";
 
 const LINKS = [
-  { href: "/locations", label: "Locations" },
   { href: "/pricing", label: "Pricing" },
   { href: "/case-studies", label: "Case Studies" },
   { href: "/blog", label: "Blog" },
@@ -39,7 +38,6 @@ export function Header() {
   const page = (on: boolean) => (on ? ("page" as const) : undefined);
   const isCurrent = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
   const onServices = pathname === "/seo-services" || ALL_SERVICES.some((s) => pathname === s.href);
-  const onIndustries = pathname === "/industries" || pathname.startsWith("/local-seo/");
 
   return (
     <>
@@ -84,11 +82,6 @@ export function Header() {
                     </div>
                   </div>
                 </div>
-              </li>
-              <li>
-                <Link href="/industries" aria-current={page(onIndustries)}>
-                  Industries
-                </Link>
               </li>
               {LINKS.map((l) => (
                 <li key={l.href}>
@@ -136,7 +129,6 @@ export function Header() {
             </li>
           </ul>
         </details>
-        <Link href="/industries">Industries</Link>
         {LINKS.map((l) => (
           <Link key={l.href} href={l.href}>
             {l.label}
