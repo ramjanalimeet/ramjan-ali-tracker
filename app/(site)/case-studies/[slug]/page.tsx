@@ -5,20 +5,31 @@ import { AiVisibilityCharts, MapGridCompare, SearchConsoleCharts } from "@/compo
 import { CtaBand } from "@/components/CtaBand";
 import { JsonLd } from "@/components/JsonLd";
 import { ALL_CASES, getCase, monthLabel } from "@/lib/case-studies";
-import { serviceOf } from "@/lib/playbooks";
+import { PLAYBOOKS, type Playbook, serviceOf } from "@/lib/playbooks";
 import { SITE_URL, pageMeta } from "@/lib/site";
 import { MainCta } from "@/components/MainCta";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return ALL_CASES.map((c) => ({ slug: c.slug }));
+  return [...ALL_CASES.map((c) => c.slug), ...PLAYBOOKS.map((p) => p.id)].map((slug) => ({ slug }));
 }
 
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const c = getCase((await params).slug);
+  const slug = (await params).slug;
+  const p = PLAYBOOKS.find((item) => item.id === slug);
+  if (p) {
+    return pageMeta({
+      title: `${p.trade} SEO Case Study: 90-Day Plan | Ramjan Ali Akash`,
+      description: `${p.summary} See the starting point, 90-day SEO plan and performance measures for this ${p.trade.toLowerCase()} business.`,
+      path: `/case-studies/${p.id}`,
+      type: "article",
+      image: { url: p.image, width: 640, height: 360, alt: p.imageAlt },
+    });
+  }
+  const c = getCase(slug);
   if (!c) return {};
   const meta = pageMeta({
     title: c.sample ? "Sample Case Study Format | Ramjan Ali Akash" : `${c.title} | Case Study`,
@@ -27,6 +38,113 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
   // The sample is a format example, so keep it out of search results.
   return c.sample ? { ...meta, robots: { index: false, follow: true } } : meta;
+}
+
+function PlaybookCaseStudyPage({ p }: { p: Playbook }) {
+  const service = serviceOf(p.service);
+  const url = `${SITE_URL}/case-studies/${p.id}`;
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+          { "@type": "ListItem", position: 2, name: "Case Studies", item: `${SITE_URL}/case-studies` },
+          { "@type": "ListItem", position: 3, name: `${p.trade} SEO case study`, item: url },
+        ],
+      },
+      {
+        "@type": "Article",
+        headline: `${p.trade} SEO Case Study: 90-Day Plan`,
+        description: p.summary,
+        image: `${SITE_URL}${p.image}`,
+        url,
+        datePublished: "2026-11-21",
+        dateModified: "2026-11-21",
+        author: { "@id": `${SITE_URL}/#person` },
+        publisher: { "@id": `${SITE_URL}/#business` },
+        about: [p.trade, service.name, "Home service SEO"],
+      },
+    ],
+  };
+
+  return (
+    <>
+      <JsonLd data={schema} />
+      <section className="case-detail-hero">
+        <div className="wrap">
+          <nav aria-label="Breadcrumb">
+            <ol className="crumbs">
+              <li><Link href="/">Home</Link></li>
+              <li><Link href="/case-studies">Case Studies</Link></li>
+              <li aria-current="page">{p.trade}</li>
+            </ol>
+          </nav>
+          <div className="case-detail-grid">
+            <div>
+              <span className="eyebrow">{p.trade} SEO case study · {service.name}</span>
+              <h1>{p.title}</h1>
+              <p className="lead">{p.summary}</p>
+              <div className="case-detail-actions">
+                <Link className="btn btn-dark" href={p.website ?? `/local-seo/${p.tradeSlug}`} target={p.website ? "_blank" : undefined} rel={p.website ? "noopener" : undefined}>
+                  {p.website ? "View live website" : `See ${p.trade} SEO service`} <span className="arr">→</span>
+                </Link>
+                <Link className="btn btn-accent" href="/pricing">See {p.plan} plan <span className="arr">→</span></Link>
+              </div>
+            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="case-detail-cover" src={p.image} alt={p.imageAlt} width={640} height={360} />
+          </div>
+        </div>
+      </section>
+
+      <section className="sec tight">
+        <div className="wrap">
+          <p className="case-context"><b>About this case study.</b> This is a practical 90-day playbook based on a common {p.trade.toLowerCase()} business starting point. It does not claim results for a named client.</p>
+          <div className="case-plan-grid">
+            <article className="case-plan-card">
+              <span className="ic" aria-hidden="true">01</span>
+              <h2>The starting point</h2>
+              <ul className="ticks">{p.start.map((item) => <li key={item}>{item}</li>)}</ul>
+            </article>
+            <article className="case-plan-card featured">
+              <span className="ic" aria-hidden="true">02</span>
+              <h2>The first 90 days</h2>
+              <ul className="ticks">{p.first90.map((item) => <li key={item}>{item}</li>)}</ul>
+            </article>
+            <article className="case-plan-card">
+              <span className="ic" aria-hidden="true">03</span>
+              <h2>What gets measured</h2>
+              <ul className="ticks">{p.measured.map((item) => <li key={item}>{item}</li>)}</ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="sec alt">
+        <div className="wrap split">
+          <div className="body rv">
+            <span className="eyebrow">Why this plan</span>
+            <h2>A focused roadmap for a {p.trade.toLowerCase()} business.</h2>
+            <p>The sequence starts with the issues most likely to block visibility, then builds the pages, profile signals and proof customers need before they contact the business.</p>
+            <p>Progress is reviewed using the same measures throughout the 90 days, so rankings can be connected to calls, forms and the services the business wants to sell.</p>
+          </div>
+          <aside className="panel rv">
+            <h3>Explore the related pages</h3>
+            <div className="case-related-links">
+              <Link href={`/local-seo/${p.tradeSlug}`}>{p.trade} SEO services →</Link>
+              <Link href={service.href}>{service.name} →</Link>
+              <Link href="/pricing">{p.plan} plan pricing →</Link>
+              <Link href="/case-studies">All case studies →</Link>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <CtaBand title={`Want this ${p.trade.toLowerCase()} SEO playbook for your business?`} />
+    </>
+  );
 }
 
 function SampleNote() {
@@ -38,7 +156,10 @@ function SampleNote() {
 }
 
 export default async function CaseStudyPage({ params }: Props) {
-  const c = getCase((await params).slug);
+  const slug = (await params).slug;
+  const playbook = PLAYBOOKS.find((item) => item.id === slug);
+  if (playbook) return <PlaybookCaseStudyPage p={playbook} />;
+  const c = getCase(slug);
   if (!c) notFound();
   const url = `${SITE_URL}/case-studies/${c.slug}`;
   const period = `${monthLabel(c.period.start, true)} to ${monthLabel(c.period.end, true)}`;

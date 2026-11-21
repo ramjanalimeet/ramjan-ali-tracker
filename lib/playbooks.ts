@@ -21,6 +21,10 @@ export type Playbook = {
   tradeSlug: string;
   service: ServiceKey;
   plan: "Starter" | "Growth" | "Pro";
+  image: string;
+  imageAlt: string;
+  /** Add an approved client's public URL here when one is available. */
+  website?: string;
   title: string;
   summary: string;
   start: string[];
@@ -35,6 +39,8 @@ export const PLAYBOOKS: Playbook[] = [
     tradeSlug: "roofing-seo",
     service: "local-seo",
     plan: "Growth",
+    image: "/assets/blog/roofing-storm-damage-leads-story-640.webp",
+    imageAlt: "Roof under hail, representing a roofing SEO case study",
     title: "A roofer losing storm work to out-of-town crews.",
     summary:
       "A profile with few photos and reviews, one generic services page, and storm chasers outranking them after every hail event.",
@@ -63,6 +69,8 @@ export const PLAYBOOKS: Playbook[] = [
     tradeSlug: "electrician-seo",
     service: "ai-search",
     plan: "Growth",
+    image: "/assets/blog/check-if-ai-recommends-your-business-story-640.webp",
+    imageAlt: "AI recommendation speech bubbles for an electrical contractor case study",
     title: "An electrician missing from ChatGPT and AI Overview answers.",
     summary:
       "Solid map rankings, but when homeowners ask AI tools for an electrician, competitors are named and this company never is.",
@@ -91,6 +99,8 @@ export const PLAYBOOKS: Playbook[] = [
     tradeSlug: "plumbing-seo",
     service: "on-page",
     plan: "Growth",
+    image: "/assets/blog/high-value-plumbing-keywords-story-640.webp",
+    imageAlt: "Pipe wrench and fitting for a plumbing SEO case study",
     title: "A plumber getting small calls, wanting bigger jobs.",
     summary:
       "Decent rankings for 'plumber' but almost nothing for water heaters, repipes or sewer lines, the jobs that pay best.",
@@ -119,6 +129,8 @@ export const PLAYBOOKS: Playbook[] = [
     tradeSlug: "pest-control-seo",
     service: "technical",
     plan: "Starter",
+    image: "/assets/blog/technical-seo-for-service-business-websites-story-640.webp",
+    imageAlt: "Website inspection graphic for a pest control technical SEO case study",
     title: "A pest control site Google could barely read.",
     summary:
       "Plenty of pages for every pest, but half of them were missing from Google's index and the site took ages to load on phones.",
@@ -147,6 +159,8 @@ export const PLAYBOOKS: Playbook[] = [
     tradeSlug: "hvac-seo",
     service: "local-seo",
     plan: "Growth",
+    image: "/assets/blog/hvac-seo-calendar-story-640.webp",
+    imageAlt: "Seasonal calendar for an HVAC SEO case study",
     title: "An HVAC company invisible until summer is over.",
     summary: "SEO started in June, rankings arrived in September, after the rush.",
     start: ["No seasonal plan", "Thin pages for AC and heating", "No maintenance plan page", "Few recent reviews"],
@@ -169,6 +183,8 @@ export const PLAYBOOKS: Playbook[] = [
     tradeSlug: "landscaping-seo",
     service: "links",
     plan: "Pro",
+    image: "/assets/blog/local-link-building-for-contractors-story-640.webp",
+    imageAlt: "Interlocking links for a landscaping link-building case study",
     title: "A landscaper with great work and no local authority.",
     summary:
       "Beautiful projects and good reviews, but a site with almost no links, losing competitive design-build searches to older firms.",
@@ -197,6 +213,8 @@ export const PLAYBOOKS: Playbook[] = [
     tradeSlug: "septic-seo",
     service: "local-seo",
     plan: "Pro",
+    image: "/assets/blog/how-to-get-more-septic-pumping-customers-story-640.webp",
+    imageAlt: "Septic service truck for a local SEO case study",
     title: "A septic company with a 40-mile service area.",
     summary: "Ranking well near the yard, invisible in the towns 30 or 40 minutes away where many customers live.",
     start: [
@@ -219,6 +237,8 @@ export const PLAYBOOKS: Playbook[] = [
     tradeSlug: "water-damage-restoration-seo",
     service: "audit",
     plan: "Starter",
+    image: "/assets/blog/local-seo-audit-story-640.webp",
+    imageAlt: "SEO audit checklist for a restoration company case study",
     title: "A restoration company paying too much for leads.",
     summary:
       "Most jobs came from lead sellers and ads. They wanted to know why their own site and profile brought in so few emergency calls.",

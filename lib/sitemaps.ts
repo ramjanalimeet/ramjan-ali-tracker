@@ -2,6 +2,7 @@ import { CASE_STUDIES } from "./case-studies";
 import { CITIES } from "./cities";
 import { ALL_INDUSTRIES } from "./industries";
 import { POSTS } from "./posts";
+import { PLAYBOOKS } from "./playbooks";
 import { ALL_SERVICES } from "./services";
 import { SITE_URL } from "./site";
 
@@ -43,7 +44,14 @@ const SITEMAPS: Record<SitemapName, () => Entry[]> = {
       lastmod: p.updated ?? p.date,
       images: [SITE_URL + p.cover.url, `${SITE_URL}/assets/blog/${p.slug}-diagram.webp`],
     })),
-  "case-study": () => CASE_STUDIES.map((c) => ({ path: `/case-studies/${c.slug}`, lastmod: c.published })),
+  "case-study": () => [
+    ...CASE_STUDIES.map((c) => ({ path: `/case-studies/${c.slug}`, lastmod: c.published })),
+    ...PLAYBOOKS.map((p) => ({
+      path: `/case-studies/${p.id}`,
+      lastmod: "2026-11-21",
+      images: [`${SITE_URL}${p.image}`],
+    })),
+  ],
 };
 
 const ORDER: SitemapName[] = ["page", "service", "industry", "location", "case-study", "post"];

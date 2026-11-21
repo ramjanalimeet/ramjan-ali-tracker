@@ -4,10 +4,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { PlaybookExplorer } from "@/components/PlaybookExplorer";
 import { Sparkline } from "@/components/charts/CaseCharts";
 import { CASE_STUDIES, monthLabel } from "@/lib/case-studies";
-import { TRADE_COUNT } from "@/lib/industries";
-import { PLAYBOOKS, PLAYBOOK_SERVICES } from "@/lib/playbooks";
 import { SITE_URL, pageMeta } from "@/lib/site";
-import { MainCta } from "@/components/MainCta";
 
 const TITLE = "Case Studies & 90-Day SEO Playbooks | Ramjan Ali Akash";
 const DESCRIPTION =
@@ -68,62 +65,9 @@ const SCHEMA = {
 };
 
 export default function CaseStudiesPage() {
-  const trades = new Set(PLAYBOOKS.map((p) => p.trade)).size;
   return (
     <>
       <JsonLd data={SCHEMA} />
-      <section className="phero">
-        <div className="wrap">
-          <nav aria-label="Breadcrumb">
-            <ol className="crumbs">
-              <li>
-                <Link href="/">Home</Link>
-              </li>
-              <li aria-current="page">Case Studies</li>
-            </ol>
-          </nav>
-          <div className="phero-grid">
-            <div>
-              <span className="eyebrow">Case Studies</span>
-              <h1>
-                How the work <span className="hl">actually runs</span>.
-              </h1>
-              <p className="lead">
-                Client case studies are published here only with permission and real numbers. Until then, these
-                playbooks show exactly how each service runs in the first 90 days, what gets fixed first and how results
-                are measured, so you know what you are buying.
-              </p>
-              <div className="cta-row">
-                <MainCta />
-              </div>
-            </div>
-            <aside className="facts">
-              <h2>At a glance</h2>
-              <ul>
-                <li>
-                  <b>Playbooks</b>
-                  <span>{PLAYBOOKS.length} real-world starting points</span>
-                </li>
-                <li>
-                  <b>Services</b>
-                  <span>{PLAYBOOK_SERVICES.map((s) => s.name).join(", ")}</span>
-                </li>
-                <li>
-                  <b>Trades</b>
-                  <span>
-                    {trades} shown, <Link href="/industries">{TRADE_COUNT} supported</Link>
-                  </span>
-                </li>
-                <li>
-                  <b>Reporting</b>
-                  <span>Monthly, in plain English</span>
-                </li>
-              </ul>
-            </aside>
-          </div>
-        </div>
-      </section>
-
       {/* Shown once real, approved client case studies are added to lib/case-studies.ts. */}
       {CASE_STUDIES.length > 0 && (
         <section className="sec" id="results">
@@ -170,16 +114,26 @@ export default function CaseStudiesPage() {
           </div>
         </section>
       )}
-      <section className="sec alt" id="playbooks">
+      <section className="sec alt case-index-top" id="playbooks">
         <div className="wrap">
+          <nav aria-label="Breadcrumb">
+            <ol className="crumbs">
+              <li>
+                <Link href="/">Home</Link>
+              </li>
+              <li aria-current="page">Case Studies</li>
+            </ol>
+          </nav>
           <div className="sec-head playbook-head rv">
             <div>
-              <span className="eyebrow">90-day playbooks</span>
-              <h2>Pick a service. See the plan.</h2>
+              <span className="eyebrow">90-day case studies</span>
+              <h1>
+                See our <span className="hl">case studies</span>.
+              </h1>
             </div>
             <p>
-              Each playbook is a common starting point I see in home service businesses, and the work that follows.
-              Filter by the service you are interested in.
+              Explore practical home-service SEO case studies by trade and service. Each page covers the starting
+              problem, the first 90 days of work and the results that should be measured.
             </p>
           </div>
           <PlaybookExplorer />

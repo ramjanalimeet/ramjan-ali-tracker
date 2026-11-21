@@ -33,6 +33,9 @@ export function PlaybookExplorer() {
           const svc = serviceOf(p.service);
           return (
             <article className="pb" key={p.id}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="pb-cover" src={p.image} alt={p.imageAlt} width={640} height={360} loading="lazy" />
+              <div className="pb-content">
               <div className="pb-tags">
                 <span className="tag">Playbook · {p.trade}</span>
                 <span className="pb-pill">{svc.name}</span>
@@ -40,30 +43,15 @@ export function PlaybookExplorer() {
               </div>
               <h3>{p.title}</h3>
               <p className="pb-sum">{p.summary}</p>
-              <details className="pb-more">
-                <summary>See the 90-day playbook</summary>
-                <div className="pb-cols">
-                  {[
-                    { h: "Starting point", items: p.start },
-                    { h: "First 90 days", items: p.first90 },
-                    { h: "What gets measured", items: p.measured },
-                  ].map((col) => (
-                    <div key={col.h}>
-                      <h4>{col.h}</h4>
-                      <ul className="ticks">
-                        {col.items.map((x) => (
-                          <li key={x}>{x}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-                <div className="pb-links">
-                  <Link href={svc.href}>{svc.name} service →</Link>
-                  <Link href={`/local-seo/${p.tradeSlug}`}>{p.trade} SEO →</Link>
-                  <Link href="/pricing">{p.plan} plan pricing →</Link>
-                </div>
-              </details>
+              <div className="pb-actions">
+                <Link className="pb-site" href={p.website ?? `/local-seo/${p.tradeSlug}`} target={p.website ? "_blank" : undefined} rel={p.website ? "noopener" : undefined}>
+                  {p.website ? "View live website" : "View service page"} <span aria-hidden="true">→</span>
+                </Link>
+                <Link className="pb-case" href={`/case-studies/${p.id}`}>
+                  See full case study <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+              </div>
             </article>
           );
         })}
