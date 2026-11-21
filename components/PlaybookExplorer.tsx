@@ -29,7 +29,7 @@ export function PlaybookExplorer() {
         ))}
       </div>
       <div className="pb-list" aria-live="polite">
-        {shown.map((p, i) => {
+        {shown.map((p) => {
           const svc = serviceOf(p.service);
           return (
             <article className="pb" key={p.id}>
@@ -40,7 +40,7 @@ export function PlaybookExplorer() {
               </div>
               <h3>{p.title}</h3>
               <p className="pb-sum">{p.summary}</p>
-              <details className="pb-more" open={i === 0}>
+              <details className="pb-more">
                 <summary>See the 90-day playbook</summary>
                 <div className="pb-cols">
                   {[

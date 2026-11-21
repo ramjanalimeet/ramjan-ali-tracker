@@ -172,7 +172,7 @@ export default function CaseStudiesPage() {
       )}
       <section className="sec alt" id="playbooks">
         <div className="wrap">
-          <div className="sec-head rv">
+          <div className="sec-head playbook-head rv">
             <div>
               <span className="eyebrow">90-day playbooks</span>
               <h2>Pick a service. See the plan.</h2>

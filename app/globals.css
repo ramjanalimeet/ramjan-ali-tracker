@@ -2201,15 +2201,38 @@ dialog.booking::backdrop {
 }
 
 /* Case studies */
+.playbook-head {
+  display: block;
+  max-width: 860px;
+  margin-bottom: 34px;
+}
+.playbook-head h2 {
+  max-width: 13ch;
+}
+.playbook-head p {
+  max-width: 68ch;
+  margin-top: 18px;
+  justify-self: start;
+}
 .pb-list {
   display: grid;
-  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
 }
 .pb {
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--r);
-  padding: 26px 28px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  transition: border-color 0.2s, box-shadow 0.25s, transform 0.25s;
+}
+.pb:hover {
+  border-color: var(--ink);
+  box-shadow: 0 22px 42px -34px rgba(17, 18, 16, 0.5);
+  transform: translateY(-2px);
 }
 .pb-tags {
   display: flex;
@@ -2230,17 +2253,18 @@ dialog.booking::backdrop {
   color: var(--accent-ink);
 }
 .pb h3 {
-  font-size: clamp(22px, 2.4vw, 28px);
-  line-height: 1.2;
+  font-size: clamp(20px, 1.8vw, 25px);
+  line-height: 1.18;
   margin-top: 12px;
 }
 .pb-sum {
   color: var(--ink-2);
   margin-top: 8px;
-  max-width: 75ch;
+  font-size: 15.5px;
 }
 .pb-more {
-  margin-top: 14px;
+  margin-top: auto;
+  padding-top: 14px;
 }
 .pb-more summary {
   cursor: pointer;
@@ -2265,8 +2289,8 @@ dialog.booking::backdrop {
 }
 .pb-cols {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: 16px;
   margin-top: 10px;
   padding-top: 18px;
   border-top: 1px solid var(--line);
@@ -2362,15 +2386,23 @@ dialog.booking::backdrop {
   width: 12px;
 }
 @media (max-width: 960px) {
-  .pb-cols {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  .pb-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .report {
     justify-self: start;
   }
 }
 @media (max-width: 640px) {
+  .playbook-head {
+    margin-bottom: 26px;
+  }
+  .playbook-head p {
+    margin-top: 12px;
+  }
+  .pb-list {
+    grid-template-columns: 1fr;
+  }
   .pb {
     padding: 22px 18px;
   }
