@@ -7,7 +7,7 @@ export const SYSTEMS: Industry[] = [
     short: "Water Heater",
     category: "mechanical",
     blurb: "Water heater repair and replacement calls",
-    title: "Water Heater SEO: Win Repair & Install Calls on Google & AI",
+    title: "Water Heater SEO: Repair & Install Leads from Google & AI",
     description:
       "Local SEO and AI visibility for water heater installers. Rank for water heater replacement, tankless installs and same-day repair near me searches.",
     h1: ["Water heater SEO for ", "same-day", " calls."],

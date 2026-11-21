@@ -312,7 +312,7 @@ export default async function IndustryPage({ params }: Props) {
             <span className="eyebrow">GEO &amp; AI visibility</span>
             <h2>What customers ask AI before they call.</h2>
             <p>
-              More homeowners now ask ChatGPT, Gemini or Google&apos;s AI Overviews for a recommendation first. These
+              More customers now ask ChatGPT, Gemini or Google&apos;s AI Overviews for a recommendation first. These
               answers come from your profile, reviews, listings and website, so I make sure all of them tell the same
               clear story.
             </p>

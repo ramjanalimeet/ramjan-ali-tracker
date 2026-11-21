@@ -1,4 +1,16 @@
-export type CategoryId = "exterior" | "mechanical" | "electrical" | "interior" | "cleaning" | "outdoor" | "specialty";
+export type CategoryId =
+  | "exterior"
+  | "mechanical"
+  | "electrical"
+  | "interior"
+  | "cleaning"
+  | "outdoor"
+  | "specialty"
+  | "medical"
+  | "professional"
+  | "automotive"
+  | "hospitality"
+  | "personal";
 
 export type IndustryFaq = { q: string; a: string };
 

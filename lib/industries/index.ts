@@ -1,6 +1,8 @@
 import { CLEANING } from "./cleaning";
 import { EXTERIOR } from "./exterior";
+import { EXPANDED_INDUSTRIES } from "./expansion";
 import { INTERIOR } from "./interior";
+import { LOCAL_BUSINESS_INDUSTRIES } from "./local-businesses";
 import { OUTDOOR } from "./outdoor";
 import { SPECIALTY } from "./specialty";
 import { SYSTEMS } from "./systems";
@@ -16,9 +18,23 @@ export const CATEGORIES: { id: CategoryId; name: string }[] = [
   { id: "cleaning", name: "Cleaning & restoration" },
   { id: "outdoor", name: "Lawn, landscape & pool" },
   { id: "specialty", name: "Specialty services" },
+  { id: "medical", name: "Medical & dental" },
+  { id: "professional", name: "Legal & professional" },
+  { id: "automotive", name: "Automotive services" },
+  { id: "hospitality", name: "Food, events & hospitality" },
+  { id: "personal", name: "Personal, fitness & pet care" },
 ];
 
-const ALL_TRADES: Industry[] = [...EXTERIOR, ...SYSTEMS, ...INTERIOR, ...CLEANING, ...OUTDOOR, ...SPECIALTY];
+const ALL_TRADES: Industry[] = [
+  ...EXTERIOR,
+  ...SYSTEMS,
+  ...INTERIOR,
+  ...CLEANING,
+  ...OUTDOOR,
+  ...SPECIALTY,
+  ...EXPANDED_INDUSTRIES,
+  ...LOCAL_BUSINESS_INDUSTRIES,
+];
 
 /**
  * Every trade has its own useful search intent and therefore its own page.

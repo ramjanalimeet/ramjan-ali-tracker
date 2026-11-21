@@ -6,8 +6,8 @@ import { ALL_INDUSTRIES, ALSO_SERVED, CATEGORIES, TRADE_COUNT } from "@/lib/indu
 import { SITE_URL, pageMeta } from "@/lib/site";
 import { MainCta } from "@/components/MainCta";
 
-const TITLE = "Industries | Local SEO & AI Search for Home Service Trades";
-const DESCRIPTION = `Local SEO and GEO & AI visibility for ${TRADE_COUNT} home service trades, from roofers, plumbers and HVAC to pest control, pools and cleaning.`;
+const TITLE = "Industries | Local SEO & AI Search for Local Businesses";
+const DESCRIPTION = `Local SEO and AI visibility for ${TRADE_COUNT} local business niches, from home services to dental, legal, automotive, hospitality and personal care.`;
 
 export const metadata = pageMeta({ title: TITLE, description: DESCRIPTION, path: "/industries" });
 
@@ -60,11 +60,12 @@ export default function IndustriesPage() {
             <div>
               <span className="eyebrow">Industries</span>
               <h1>
-                Built for <span className="hl">{TRADE_COUNT} home service</span> trades.
+                Built for <span className="hl">{TRADE_COUNT} local business</span> niches.
               </h1>
               <p className="lead">
-                Every trade searches differently. Roofers chase storms, pool companies plan for summer, locksmiths fight
-                fake listings. Pick yours to see how I get it found on Google, Google Maps and in AI search.
+                Every local business is chosen differently. Roofers chase storms, dentists build patient trust and
+                restaurants win on menus, reviews and convenience. Pick your niche to see how I get it found on Google,
+                Google Maps and in AI search.
               </p>
               <div className="cta-row">
                 <MainCta />
@@ -90,7 +91,7 @@ export default function IndustriesPage() {
             <div className="wrap">
               <div className="ind-head rv">
                 <h2>{c.name}</h2>
-                <span className="muted">{items.length + also.length} trades</span>
+                <span className="muted">{items.length + also.length} niches</span>
               </div>
               <div className="ind-grid">
                 {items.map((i) => (
@@ -115,8 +116,8 @@ export default function IndustriesPage() {
       })}
 
       <CtaBand
-        title="Don't see your trade?"
-        text="The same playbook works for any home service business. Book a free audit and I will show you exactly how customers search for your trade, and where you stand."
+        title="Don't see your niche?"
+        text="The same framework works for any location-based business. Book a free audit and I will show you how customers search for your niche, and where you stand."
       />
     </>
   );
