@@ -82,7 +82,8 @@ export function HirePopup({ onClose }: { onClose: () => void }) {
           _gotcha: f._gotcha,
         }),
       });
-      if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || "Something went wrong");
+      const result = await res.json().catch(() => null);
+      if (!res.ok || result?.ok !== true) throw new Error(result?.error || "Your request could not be confirmed");
       setStatus("done");
     } catch (err) {
       setStatus("error");
