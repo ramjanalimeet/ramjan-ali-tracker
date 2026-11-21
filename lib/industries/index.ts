@@ -21,40 +21,15 @@ export const CATEGORIES: { id: CategoryId; name: string }[] = [
 const ALL_TRADES: Industry[] = [...EXTERIOR, ...SYSTEMS, ...INTERIOR, ...CLEANING, ...OUTDOOR, ...SPECIALTY];
 
 /**
- * The trades that keep a dedicated page. Each one has trade-specific depth in
- * deep.ts. Every other trade is still served (listed on /industries) but its old
- * page redirects to /industries, so the site has fewer, stronger industry pages.
+ * Every trade has its own useful search intent and therefore its own page.
+ * The data files supply a unique title, description, problem, target searches,
+ * AI questions, work plan and FAQs for each trade. We deliberately do not
+ * generate city × trade combinations or keyword-variant pages.
  */
-export const CORE_SLUGS = [
-  "electrician-seo",
-  "garage-door-seo",
-  "pest-control-seo",
-  "landscaping-seo",
-  "water-damage-restoration-seo",
-  "painting-seo",
-  "kitchen-remodeling-seo",
-  "gutter-seo",
-  "siding-seo",
-  "window-door-seo",
-  "water-heater-seo",
-  "drain-cleaning-seo",
-  "water-treatment-seo",
-  "well-pump-seo",
-  "air-duct-cleaning-seo",
-  "generator-installer-seo",
-  "insulation-seo",
-  "home-inspection-seo",
-];
+export const INDUSTRIES: Industry[] = ALL_TRADES;
 
-/** Industry pages generated from data by app/local-seo/[slug]. */
-export const INDUSTRIES: Industry[] = ALL_TRADES.filter((i) => CORE_SLUGS.includes(i.slug));
-
-/** Trades served without a dedicated page: shown by name on /industries, linking to Home Services SEO. */
-export const ALSO_SERVED = ALL_TRADES.filter((i) => !CORE_SLUGS.includes(i.slug)).map(({ slug, name, category }) => ({
-  slug,
-  name,
-  category,
-}));
+/** Kept for the hub API; all researched trades now have a dedicated page. */
+export const ALSO_SERVED: { slug: string; name: string; category: CategoryId }[] = [];
 
 /** Hand-written industry pages that live in their own folders under app/local-seo. */
 const CUSTOM: IndustryLink[] = [
