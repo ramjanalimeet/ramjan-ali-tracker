@@ -1286,16 +1286,26 @@ a.card:hover .go span {
   margin: 28px 0;
 }
 .article-guide figcaption {
-  margin-top: 8px;
+  margin: 10px 0 0;
+  color: var(--mute);
   font-size: 0.875rem;
+}
+.article-guide figcaption p {
+  margin: 0 0 4px;
+}
+.article-guide figcaption details {
+  margin-top: 4px;
 }
 .article-guide summary {
   cursor: pointer;
 }
 .article-cta {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 8px;
+}
+.article-cta .btn {
+  justify-content: center;
+  width: 100%;
 }
 .art-grid {
   display: grid;

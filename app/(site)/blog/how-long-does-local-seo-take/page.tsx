@@ -1,3 +1,4 @@
+import { ArticleGraphic } from "@/components/ArticleGraphic";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
@@ -376,6 +377,8 @@ export default function HowLongLocalSeoPage() {
         Calls are the goal, but they are a lagging indicator. Watch the leading indicators month by month so you know
         early whether things are moving:
       </p>
+      <ArticleGraphic post={post} />
+
       <ol>
         <li>
           <strong>Impressions in Search Console</strong> rising for your service and town searches.

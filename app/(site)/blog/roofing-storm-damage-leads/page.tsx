@@ -1,3 +1,4 @@
+import { ArticleGraphic } from "@/components/ArticleGraphic";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
@@ -70,6 +71,8 @@ export default function RoofingStormDamageLeadsPage() {
       </nav>
       <h2 id="searches">How storm searches work</h2>
       <p>After a storm, searches shift from generic (&quot;roofer near me&quot;) to specific and urgent. Each type of search needs a different page to rank for it.</p>
+      <ArticleGraphic post={post} />
+
       <div className="table-wrap">
       <table>
       <thead>

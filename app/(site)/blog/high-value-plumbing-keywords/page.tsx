@@ -1,3 +1,4 @@
+import { ArticleGraphic } from "@/components/ArticleGraphic";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
@@ -86,6 +87,8 @@ export default function HighValuePlumbingKeywordsPage() {
       </div>
       <h2 id="clusters">High-value keyword clusters</h2>
       <p>These are typical clusters for residential plumbing companies. Your own list should come from keyword data for your service area, but these are the groups worth checking first. Ticket size is relative and varies by market.</p>
+      <ArticleGraphic post={post} />
+
       <div className="table-wrap">
       <table>
       <thead>

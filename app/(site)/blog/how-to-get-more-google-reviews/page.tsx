@@ -1,3 +1,4 @@
+import { ArticleGraphic } from "@/components/ArticleGraphic";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
@@ -108,6 +109,8 @@ export default function HowToGetMoreGoogleReviewsPage() {
       <p>&quot;Thanks for having us out today. We&apos;re a local business and reviews really help other homeowners find us. I&apos;m going to text you a link. If you have 30 seconds, it&apos;d mean a lot if you shared how the job went.&quot;</p>
       <h3>Text message (same day)</h3>
       <p>&quot;Hi Sarah, it&apos;s Mike from Lone Star Plumbing. Thanks for choosing us for your water heater today. If you have a moment, would you share a quick Google review? Mentioning what we did and your town helps neighbors find us: [link]&quot;</p>
+      <ArticleGraphic post={post} />
+
       <h3>Email (for customers who prefer it)</h3>
       <p>Subject: &quot;How did we do on your roof repair?&quot;</p>
       <p>&quot;Hi David, thank you for trusting us with your roof repair in Allen. If you were happy with the work, a short Google review would help other homeowners in the area find a roofer they can trust. It takes about 30 seconds: [link]. If anything wasn&apos;t right, reply to this email and I&apos;ll fix it personally. Jake, Owner&quot;</p>

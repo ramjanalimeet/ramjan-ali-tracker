@@ -100,24 +100,6 @@ export function ArticleLayout({
               <h2 id="article-takeaway">What to do first</h2>
               <p>{post.takeaway}</p>
             </section>
-            <figure className="article-guide">
-              <img
-                src={`/assets/blog/${post.slug}-field-guide.webp`}
-                width={1600}
-                height={1040}
-                alt={`${post.graphic.title}. A text version follows.`}
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>
-                <details>
-                  <summary>Read the graphic as text</summary>
-                  <ol>
-                    {post.graphic.steps.map((step) => <li key={step}>{step}</li>)}
-                  </ol>
-                </details>
-              </figcaption>
-            </figure>
             {children}
             {faq.length > 0 && (
               <section className="paa" aria-labelledby="faq">

@@ -1,3 +1,4 @@
+import { ArticleGraphic } from "@/components/ArticleGraphic";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
@@ -113,6 +114,8 @@ export default function CheckIfAiRecommendsYourBusinessPage() {
       </ol>
       <h2 id="record">Step 3: Record the results</h2>
       <p>Keep a simple tracking sheet. Each month, fill in one row per question per tool:</p>
+      <ArticleGraphic post={post} />
+
       <div className="table-wrap">
       <table>
       <thead>

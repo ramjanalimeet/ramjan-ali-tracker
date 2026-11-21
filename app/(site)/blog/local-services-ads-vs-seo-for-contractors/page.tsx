@@ -1,3 +1,4 @@
+import { ArticleGraphic } from "@/components/ArticleGraphic";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
@@ -74,6 +75,8 @@ export default function LocalServicesAdsVsSeoForContractorsPage() {
       </tbody>
       </table>
       </div>
+      <ArticleGraphic post={post} />
+
       <h2 id="lsa">How Local Services Ads work</h2>
       <p>Local Services Ads are Google&apos;s pay-per-lead ads for service businesses. To run them, your business goes through Google&apos;s screening, which for most trades includes background checks and license and insurance verification. Once approved, you appear with a badge at the very top of many service searches, and customers can call or message you directly.</p>
       <p>You do not choose keywords. You choose your job types, service area, hours and weekly budget. Where you appear depends on things like your proximity to the customer, your reviews, how quickly you answer, your hours and your budget.</p>

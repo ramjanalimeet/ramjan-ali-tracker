@@ -1,3 +1,4 @@
+import { ArticleGraphic } from "@/components/ArticleGraphic";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
@@ -220,6 +221,8 @@ export default function LocalSeoChecklistPage() {
         Your Google Business Profile (GBP) is the single biggest lever for the map pack. Work through every field. A
         surprising number of contractors leave half of it empty.
       </p>
+      <ArticleGraphic post={post} />
+
       <div className="table-wrap">
         <table>
           <thead>

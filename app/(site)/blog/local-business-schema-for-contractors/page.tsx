@@ -1,3 +1,4 @@
+import { ArticleGraphic } from "@/components/ArticleGraphic";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
@@ -123,6 +124,8 @@ export default function LocalBusinessSchemaForContractorsPage() {
       </div>
       <h2 id="example">A copy-ready example</h2>
       <p>Here is an example for a fictional plumbing company that serves customers at their homes. Replace every detail with your own, exactly as it appears on your Google Business Profile, and place it in the <code>head</code> of your homepage or contact page.</p>
+      <ArticleGraphic post={post} />
+
       <pre>
       <code>{`<script type="application/ld+json">
 {

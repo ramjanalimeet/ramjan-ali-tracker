@@ -1,3 +1,4 @@
+import { ArticleGraphic } from "@/components/ArticleGraphic";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
@@ -337,6 +338,8 @@ export default function MapPackPage() {
         rank in the top three spreads outward. It is the clearest way to see progress, and it is how I report map
         rankings to clients every month.
       </p>
+      <ArticleGraphic post={post} />
+
 
       <h2 id="missing">Why your business is not showing on Google Maps</h2>
       <p>

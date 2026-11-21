@@ -1,3 +1,4 @@
+import { ArticleGraphic } from "@/components/ArticleGraphic";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
@@ -69,6 +70,8 @@ export default function HowToGetMoreSepticPumpingCustomersPage() {
       <p>That cycle matters for marketing. Every pumping job is a customer you can remind in three years, and every new homeowner in your area is a future customer who will probably start with a Google search.</p>
       <h2 id="searches">The searches worth winning</h2>
       <p>Not every search is worth the same. Map each one to the page that should rank for it.</p>
+      <ArticleGraphic post={post} />
+
       <div className="table-wrap">
       <table>
       <thead>

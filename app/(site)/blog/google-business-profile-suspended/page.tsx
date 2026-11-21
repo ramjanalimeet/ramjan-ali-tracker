@@ -1,3 +1,4 @@
+import { ArticleGraphic } from "@/components/ArticleGraphic";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
@@ -107,6 +108,8 @@ export default function GoogleBusinessProfileSuspendedPage() {
       </ol>
       <h2 id="evidence">The evidence that gets profiles reinstated</h2>
       <p>An appeal is a request for Google to check that you are a real business operating as described. The more clearly you show that, the better. Prepare these before you submit:</p>
+      <ArticleGraphic post={post} />
+
       <div className="table-wrap">
       <table>
       <thead>

@@ -1,3 +1,4 @@
+import { ArticleGraphic } from "@/components/ArticleGraphic";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
@@ -86,6 +87,8 @@ export default function LocalLinkBuildingForContractorsPage() {
       </table>
       </div>
       <h2 id="ideas">15 local link ideas, ranked</h2>
+      <ArticleGraphic post={post} />
+
       <div className="table-wrap">
       <table>
       <thead>

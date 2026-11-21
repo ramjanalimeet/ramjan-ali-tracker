@@ -1,3 +1,4 @@
+import { ArticleGraphic } from "@/components/ArticleGraphic";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
@@ -293,6 +294,8 @@ export default function GetRecommendedByChatGptPage() {
         Most service pages open with a slogan and bury the useful facts. Here is the same information written two ways.
         The second is easier for a homeowner to scan and far easier for an AI tool to quote.
       </p>
+      <ArticleGraphic post={post} />
+
       <div className="table-wrap">
         <table>
           <thead>

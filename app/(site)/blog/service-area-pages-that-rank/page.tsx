@@ -1,3 +1,4 @@
+import { ArticleGraphic } from "@/components/ArticleGraphic";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
@@ -269,6 +270,8 @@ export default function ServiceAreaPagesPost() {
         Here is a condensed example for a fictional plumbing company, to show the level of local detail that separates a
         useful page from a doorway page. The structure is the template above; every sentence is specific to the town.
       </p>
+      <ArticleGraphic post={post} />
+
       <div className="note">
         <p>
           <strong>Plumbing in Cypress, TX.</strong> We have been fixing pipes, water heaters and drains across Cypress

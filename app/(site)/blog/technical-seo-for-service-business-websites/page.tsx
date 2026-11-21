@@ -1,3 +1,4 @@
+import { ArticleGraphic } from "@/components/ArticleGraphic";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
@@ -191,6 +192,8 @@ export default function TechnicalSeoPostPage() {
         Open the Pages report in Search Console. It lists every URL Google knows about and whether it is indexed. For a
         small contractor site, every important page should be in the index. Common reasons pages are left out:
       </p>
+      <ArticleGraphic post={post} />
+
       <ul>
         <li>
           <strong>Noindex tags left on</strong> from when the site was built. Many website builders have a

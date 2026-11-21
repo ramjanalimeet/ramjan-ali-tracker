@@ -1,3 +1,4 @@
+import { ArticleGraphic } from "@/components/ArticleGraphic";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
@@ -143,6 +144,8 @@ export default function LocalSeoAuditPage() {
       <p>Ask ChatGPT, Gemini or Google&apos;s AI Mode: &quot;Who are the best [service] companies in [town]?&quot; Are you named? Are your competitors? AI answers increasingly influence who homeowners call. The <Link href="/blog/check-if-ai-recommends-your-business">AI visibility check</Link> explains how to test this properly.</p>
       <h2 id="scorecard">The competitor scorecard</h2>
       <p>Score yourself and each competitor from 1 (weak) to 5 (strong) on each area. Copy this table into a spreadsheet.</p>
+      <ArticleGraphic post={post} />
+
       <div className="table-wrap">
       <table>
       <thead>

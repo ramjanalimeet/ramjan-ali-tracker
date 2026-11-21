@@ -1,3 +1,4 @@
+import { ArticleGraphic } from "@/components/ArticleGraphic";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
@@ -82,6 +83,8 @@ export default function GoogleBusinessProfileCategoriesForContractorsPage() {
       <p>In practice, that means a few well-chosen categories beat a long list. A plumber who adds &quot;Bathroom remodeler&quot;, &quot;Kitchen remodeler&quot;, &quot;Water heater store&quot; and &quot;Hardware store&quot; is telling Google the business is several different things, and none of them very strongly.</p>
       <h2 id="primary">How to choose your primary category</h2>
       <p>Your primary category carries the most weight. Use these four questions, in order:</p>
+      <ArticleGraphic post={post} />
+
       <ol>
       <li><strong>What do most of your best jobs come from?</strong> Not your most frequent job, your most valuable one. A company that does roofing and gutters but makes 80% of its money on roof replacements is a &quot;Roofing contractor&quot;.</li>
       <li><strong>What do customers type?</strong> People search &quot;roofer&quot; and &quot;roof repair&quot;, not &quot;exterior renovation specialist&quot;. Pick the category that matches the words customers use.</li>

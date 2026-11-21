@@ -1,3 +1,4 @@
+import { ArticleGraphic } from "@/components/ArticleGraphic";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
@@ -142,6 +143,8 @@ export default function GeoVsSeoPage() {
       </p>
 
       <h2 id="compare">GEO vs SEO at a glance</h2>
+      <ArticleGraphic post={post} />
+
       <div className="table-wrap">
         <table>
           <thead>

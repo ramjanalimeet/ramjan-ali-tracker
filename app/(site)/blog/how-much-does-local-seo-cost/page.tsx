@@ -1,3 +1,4 @@
+import { ArticleGraphic } from "@/components/ArticleGraphic";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
@@ -132,6 +133,8 @@ export default function HowMuchDoesLocalSeoCostPage() {
       <p>The full list of what is included is on the <Link href="/pricing">pricing page</Link>.</p>
       <h2 id="roi">Will it pay for itself? A simple check</h2>
       <p>You do not need a complicated model. Work out three numbers:</p>
+      <ArticleGraphic post={post} />
+
       <ol>
       <li><strong>Average job value</strong> for the services you want more of.</li>
       <li><strong>Close rate</strong> on calls from Google (how many calls become booked jobs).</li>
