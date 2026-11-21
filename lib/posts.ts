@@ -76,11 +76,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/google-business-profile-categories-for-contractors-story.webp",
       thumbnail: "/assets/blog/google-business-profile-categories-for-contractors-story-640.webp",
-      alt: "Google Business Profile. Example: Roofing contractor.",
+      alt: "Roofing contractor as the primary Google Business Profile category, with gutter cleaning as a secondary service.",
     },
     graphic: {
-      height: 602,
-      mobileHeight: 650,
+      height: 738,
+      mobileHeight: 666,
       title: "Google Business Profile",
       caption: "A roofing contractor can list a secondary category when it describes a service the company actually offers.",
       steps: [
@@ -103,11 +103,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/how-to-get-more-google-reviews-story.webp",
       thumbnail: "/assets/blog/how-to-get-more-google-reviews-story-640.webp",
-      alt: "Google reviews. Example: After a completed service call.",
+      alt: "Three steps after a service call, from asking for an honest Google review to replying to the customer.",
     },
     graphic: {
-      height: 656,
-      mobileHeight: 654,
+      height: 826,
+      mobileHeight: 736,
       title: "Google reviews",
       caption: "A direct link makes it easier for customers to leave an honest review.",
       steps: [
@@ -130,11 +130,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/roofing-storm-damage-leads-story.webp",
       thumbnail: "/assets/blog/roofing-storm-damage-leads-story-640.webp",
-      alt: "Google Search. Example: emergency roof repair after hail.",
+      alt: "Searches for emergency roof repair, hail inspections and insurance documentation after a storm.",
     },
     graphic: {
-      height: 602,
-      mobileHeight: 608,
+      height: 738,
+      mobileHeight: 666,
       title: "Google Search",
       caption: "Storm-related searches can signal different needs, from urgent repairs to insurance research.",
       steps: [
@@ -157,11 +157,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/high-value-plumbing-keywords-story.webp",
       thumbnail: "/assets/blog/high-value-plumbing-keywords-story-640.webp",
-      alt: "Plumbing keyword tracker. Example: Service and location queries.",
+      alt: "Sample local positions for drain cleaning, water heater repair and emergency plumbing queries.",
     },
     graphic: {
-      height: 718,
-      mobileHeight: 636,
+      height: 738,
+      mobileHeight: 666,
       title: "Plumbing keyword tracker",
       caption: "Example positions show how to track distinct plumbing jobs separately. These are sample rankings.",
       steps: [
@@ -184,11 +184,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/hvac-seo-calendar-story.webp",
       thumbnail: "/assets/blog/hvac-seo-calendar-story-640.webp",
-      alt: "HVAC search calendar. Example: Publish ahead of demand.",
+      alt: "Seasonal HVAC publishing priorities for spring, summer and fall.",
     },
     graphic: {
-      height: 454,
-      mobileHeight: 598,
+      height: 654,
+      mobileHeight: 720,
       title: "HVAC search calendar",
       caption: "Publish cooling and heating content before seasonal demand peaks.",
       steps: [
@@ -211,11 +211,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/how-much-does-local-seo-cost-story.webp",
       thumbnail: "/assets/blog/how-much-does-local-seo-cost-story-640.webp",
-      alt: "Break-even estimate. Example: Illustrative monthly budget.",
+      alt: "A $900 monthly SEO fee divided by $300 gross profit per job gives a break-even point of three jobs.",
     },
     graphic: {
-      height: 490,
-      mobileHeight: 438,
+      height: 584,
+      mobileHeight: 510,
       title: "Break-even estimate",
       caption: "At $900 a month and $300 gross profit per additional booked job, three jobs cover the SEO fee in this example.",
       steps: [
@@ -238,11 +238,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/local-link-building-for-contractors-story.webp",
       thumbnail: "/assets/blog/local-link-building-for-contractors-story-640.webp",
-      alt: "Find local backlink opportunities. Example: roofing supplier contractor directory.",
+      alt: "A supplier directory, trade association and community partner linking to a contractor’s service page.",
     },
     graphic: {
-      height: 950,
-      mobileHeight: 990,
+      height: 1018,
+      mobileHeight: 1090,
       title: "Find local backlink opportunities",
       caption: "Start with real relationships that can send people to your service pages.",
       steps: [
@@ -265,11 +265,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/local-seo-audit-story.webp",
       thumbnail: "/assets/blog/local-seo-audit-story-640.webp",
-      alt: "Local SEO audit scorecard. Example: Compare the same items across businesses.",
+      alt: "A local SEO audit covering the GBP category, indexed service pages and lead tracking.",
     },
     graphic: {
-      height: 650,
-      mobileHeight: 582,
+      height: 738,
+      mobileHeight: 666,
       title: "Local SEO audit scorecard",
       caption: "Compare the same listing, website and lead-tracking checks across competitors.",
       steps: [
@@ -292,11 +292,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/local-business-schema-for-contractors-story.webp",
       thumbnail: "/assets/blog/local-business-schema-for-contractors-story-640.webp",
-      alt: "LocalBusiness structured data. Example: Example contractor entity.",
+      alt: "Example Roofing’s business type, name and Tampa service area in LocalBusiness schema.",
     },
     graphic: {
-      height: 670,
-      mobileHeight: 562,
+      height: 826,
+      mobileHeight: 724,
       title: "LocalBusiness structured data",
       caption: "Keep the business details in structured data consistent with what visitors can read on the page.",
       steps: [
@@ -319,11 +319,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/check-if-ai-recommends-your-business-story.webp",
       thumbnail: "/assets/blog/check-if-ai-recommends-your-business-story-640.webp",
-      alt: "Track AI recommendations. Example: Who repairs water heaters in Tampa?.",
+      alt: "An illustrative answer listing three plumbers for a water heater repair query in Tampa.",
     },
     graphic: {
-      height: 672,
-      mobileHeight: 744,
+      height: 738,
+      mobileHeight: 642,
       title: "Track AI recommendations",
       caption: "Record the service, location, date and cited source each time you test an AI recommendation.",
       steps: [
@@ -346,11 +346,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/google-business-profile-suspended-story.webp",
       thumbnail: "/assets/blog/google-business-profile-suspended-story-640.webp",
-      alt: "Google Business Profile appeal. Example: Evidence to compare with your listing.",
+      alt: "Business name, address and service area evidence to check before a GBP appeal.",
     },
     graphic: {
-      height: 602,
-      mobileHeight: 650,
+      height: 738,
+      mobileHeight: 666,
       title: "Google Business Profile appeal",
       caption: "Review the appeal evidence for consistency with your profile before submitting it.",
       steps: [
@@ -373,11 +373,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/local-services-ads-vs-seo-for-contractors-story.webp",
       thumbnail: "/assets/blog/local-services-ads-vs-seo-for-contractors-story-640.webp",
-      alt: "Where Google leads come from. Example: roof repair near me.",
+      alt: "Local Services Ads, Google Maps listings and organic pages as sources of roofing leads.",
     },
     graphic: {
-      height: 602,
-      mobileHeight: 608,
+      height: 738,
+      mobileHeight: 666,
       title: "Where Google leads come from",
       caption: "Identify the search surface where a lead first found you before comparing channel performance.",
       steps: [
@@ -400,11 +400,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/how-to-get-more-septic-pumping-customers-story.webp",
       thumbnail: "/assets/blog/how-to-get-more-septic-pumping-customers-story-640.webp",
-      alt: "Search intent for septic services. Example: septic pumping near me.",
+      alt: "Septic searches grouped by routine maintenance, urgent help and pricing research.",
     },
     graphic: {
-      height: 602,
-      mobileHeight: 646,
+      height: 738,
+      mobileHeight: 666,
       title: "Search intent for septic services",
       caption: "Separate routine pumping searches from urgent calls and pricing research.",
       steps: [
@@ -427,11 +427,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/get-recommended-by-chatgpt-story.webp",
       thumbnail: "/assets/blog/get-recommended-by-chatgpt-story-640.webp",
-      alt: "An answer-first service page. Example: Who repairs leaking roofs in Tampa?.",
+      alt: "Service, location and evidence to include on a roofing page that an AI answer can cite.",
     },
     graphic: {
-      height: 716,
-      mobileHeight: 782,
+      height: 738,
+      mobileHeight: 642,
       title: "An answer-first service page",
       caption: "State the service and location early, then give readers verifiable evidence for the claim.",
       steps: [
@@ -455,11 +455,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/geo-vs-seo-home-services-story.webp",
       thumbnail: "/assets/blog/geo-vs-seo-home-services-story-640.webp",
-      alt: "Compare SEO and GEO signals. Example: Two ways people find your business.",
+      alt: "Google Search clicks, Google Maps call clicks and AI citations shown as separate signals.",
     },
     graphic: {
-      height: 650,
-      mobileHeight: 582,
+      height: 738,
+      mobileHeight: 666,
       title: "Compare SEO and GEO signals",
       caption: "Measure search clicks, Business Profile call clicks and AI citations as distinct signals.",
       steps: [
@@ -482,11 +482,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/local-seo-checklist-for-contractors-story.webp",
       thumbnail: "/assets/blog/local-seo-checklist-for-contractors-story-640.webp",
-      alt: "Google Business Profile checklist. Example: What a customer sees before calling.",
+      alt: "Google Business Profile category, opening hours and contact links to check before customers call.",
     },
     graphic: {
-      height: 602,
-      mobileHeight: 650,
+      height: 738,
+      mobileHeight: 666,
       title: "Google Business Profile checklist",
       caption: "Check the profile details that help customers decide if they can reach you.",
       steps: [
@@ -509,11 +509,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/how-to-rank-in-google-map-pack-story.webp",
       thumbnail: "/assets/blog/how-to-rank-in-google-map-pack-story-640.webp",
-      alt: "Google Maps rank grid. Example: emergency plumber near me.",
+      alt: "An illustrative map showing the same plumbing query ranking second, fifth and ninth across town.",
     },
     graphic: {
-      height: 712,
-      mobileHeight: 658,
+      height: 692,
+      mobileHeight: 628,
       title: "Google Maps rank grid",
       caption: "This illustrative grid shows how the same query can return different rankings at different locations.",
       steps: [
@@ -536,11 +536,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/technical-seo-for-service-business-websites-story.webp",
       thumbnail: "/assets/blog/technical-seo-for-service-business-websites-story-640.webp",
-      alt: "Search Console URL Inspection. Example: /services/drain-cleaning.",
+      alt: "Indexing status, declared canonical URL and live fetch checks for a drain cleaning page.",
     },
     graphic: {
-      height: 704,
-      mobileHeight: 696,
+      height: 748,
+      mobileHeight: 698,
       title: "Search Console URL Inspection",
       caption: "Compare the indexed URL, declared canonical and live fetch when investigating an indexing issue.",
       steps: [
@@ -563,11 +563,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/service-area-pages-that-rank-story.webp",
       thumbnail: "/assets/blog/service-area-pages-that-rank-story-640.webp",
-      alt: "Plan a service area page. Example: Roof repair in your service area.",
+      alt: "Coverage, nearby project evidence and booking information for a local service area page.",
     },
     graphic: {
-      height: 852,
-      mobileHeight: 896,
+      height: 896,
+      mobileHeight: 918,
       title: "Plan a service area page",
       caption: "A service area page should tell a visitor what you do locally and how to book it.",
       steps: [
@@ -590,11 +590,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/how-long-does-local-seo-take-story.webp",
       thumbnail: "/assets/blog/how-long-does-local-seo-take-story-640.webp",
-      alt: "Search Console + GBP. Example: Illustrative search visibility trend.",
+      alt: "An illustrative trend in search impressions to compare with GBP call clicks and verified bookings.",
     },
     graphic: {
-      height: 860,
-      mobileHeight: 852,
+      height: 836,
+      mobileHeight: 800,
       title: "Search Console + GBP",
       caption: "Read impressions, call clicks and verified bookings together. The example trend is illustrative.",
       steps: [
