@@ -41,7 +41,7 @@ const SITEMAPS: Record<SitemapName, () => Entry[]> = {
     POSTS.map((p) => ({
       path: `/blog/${p.slug}`,
       lastmod: p.updated ?? p.date,
-      images: [SITE_URL + p.cover.url, `${SITE_URL}/assets/blog/${p.slug}-guide.webp`],
+      images: [SITE_URL + p.cover.url, `${SITE_URL}/assets/blog/${p.slug}-field-guide.webp`],
     })),
   "case-study": () => CASE_STUDIES.map((c) => ({ path: `/case-studies/${c.slug}`, lastmod: c.published })),
 };

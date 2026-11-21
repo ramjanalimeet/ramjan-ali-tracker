@@ -116,10 +116,10 @@ export default function BlogPage() {
             <img
               className="feature-cover"
               src={featured.cover.url}
-              srcSet={`${featured.cover.thumbnail} 480w, ${featured.cover.url} 1200w`}
+              srcSet={`${featured.cover.thumbnail} 640w, ${featured.cover.url} 1600w`}
               sizes="(max-width: 760px) 100vw, 50vw"
-              width={1200}
-              height={675}
+              width={1600}
+              height={900}
               alt=""
               loading="lazy"
               decoding="async"

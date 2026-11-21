@@ -9,8 +9,8 @@ export function PostCard({ post, reveal = true }: { post: Post; reveal?: boolean
       <img
         className="post-cover"
         src={post.cover.thumbnail}
-        width={480}
-        height={270}
+        width={640}
+        height={360}
         alt=""
         loading="lazy"
         decoding="async"

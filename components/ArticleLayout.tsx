@@ -87,10 +87,10 @@ export function ArticleLayout({
             <figure className="article-cover">
               <img
                 src={post.cover.url}
-                srcSet={`${post.cover.thumbnail} 480w, ${post.cover.url} 1200w`}
+                srcSet={`${post.cover.thumbnail} 640w, ${post.cover.url} 1600w`}
                 sizes="(max-width: 760px) 100vw, 760px"
-                width={1200}
-                height={675}
+                width={1600}
+                height={900}
                 alt={post.cover.alt}
                 fetchPriority="high"
                 decoding="async"
@@ -102,9 +102,9 @@ export function ArticleLayout({
             </section>
             <figure className="article-guide">
               <img
-                src={`/assets/blog/${post.slug}-guide.webp`}
-                width={1200}
-                height={780}
+                src={`/assets/blog/${post.slug}-field-guide.webp`}
+                width={1600}
+                height={1040}
                 alt={`${post.graphic.title}. A text version follows.`}
                 loading="lazy"
                 decoding="async"
