@@ -11,16 +11,16 @@ import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
 import { MainCta } from "@/components/MainCta";
 
 export const metadata = pageMeta({
-  title: "AI Search Visibility for Home Service Businesses | Ramjan Ali Akash",
+  title: "AI Search Visibility for Local Businesses | Ramjan Ali Akash",
   description:
-    "Get your home service business recommended by ChatGPT, Gemini, Perplexity and Google AI Overviews. AI search visibility built on solid local SEO.",
+    "Get your local business recommended by ChatGPT, Gemini, Perplexity and Google AI Overviews. AI visibility built on solid local SEO.",
   path: "/ai-search",
 });
 
 const FAQ: FaqItem[] = [
   {
     q: "Is AI search replacing Google?",
-    a: "Not for local services. Google Maps and search still send most calls to home service businesses. But a growing share of homeowners check an AI answer first, and those answers draw on the same signals, so I work on both together.",
+    a: "Not for local businesses. Google Maps and search still drive most direct enquiries. But more customers check an AI answer first, and those answers draw on the same signals, so I work on both together.",
   },
   {
     q: "Can you guarantee ChatGPT will recommend me?",
@@ -53,9 +53,9 @@ const SCHEMA = {
       "@type": "WebPage",
       "@id": `${SITE_URL}/ai-search#webpage`,
       url: `${SITE_URL}/ai-search`,
-      name: "AI Search Visibility for Home Service Businesses | Ramjan Ali Akash",
+      name: "AI Search Visibility for Local Businesses | Ramjan Ali Akash",
       description:
-        "Get your home service business recommended by ChatGPT, Gemini, Perplexity and Google AI Overviews. AI search visibility built on solid local SEO.",
+        "Get your local business recommended by ChatGPT, Gemini, Perplexity and Google AI Overviews. AI visibility built on solid local SEO.",
       isPartOf: {
         "@id": `${SITE_URL}/#website`,
       },
@@ -84,13 +84,12 @@ const SCHEMA = {
       "@type": "Service",
       name: "AI Search Visibility",
       description:
-        "Get your home service business recommended by ChatGPT, Gemini, Perplexity and Google AI Overviews. AI search visibility built on solid local SEO.",
+        "Get your local business recommended by ChatGPT, Gemini, Perplexity and Google AI Overviews. AI visibility built on solid local SEO.",
       url: `${SITE_URL}/ai-search`,
       provider: {
         "@id": `${SITE_URL}/#business`,
       },
       serviceType: "AI search visibility",
-      areaServed: { "@type": "Country", name: "United States" },
     },
     faqSchema(FAQ),
   ],
@@ -129,7 +128,7 @@ export default function AiSearchPage() {
               <ul>
                 <li>
                   <b>Who it is for</b>
-                  <span>Roofing, plumbing, septic, HVAC and other home service businesses across the US</span>
+                  <span>Local service companies, clinics, law firms, restaurants and other businesses</span>
                 </li>
                 <li>
                   <b>Where</b>

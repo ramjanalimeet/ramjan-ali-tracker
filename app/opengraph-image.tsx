@@ -24,9 +24,9 @@ export default function OpengraphImage() {
       </div>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div style={{ fontSize: 76, fontWeight: 700, lineHeight: 1.05, letterSpacing: -2 }}>
-          Local SEO &amp; AI Search Visibility
+          Local SEO &amp; AI Visibility
         </div>
-        <div style={{ fontSize: 38, color: "#C6F432", marginTop: 20 }}>for Home Service Businesses</div>
+        <div style={{ fontSize: 38, color: "#C6F432", marginTop: 20 }}>for Local Businesses</div>
       </div>
       <div style={{ display: "flex", fontSize: 26, color: "#8d9088" }}>
         Google Maps · ChatGPT · Gemini · AI Overviews

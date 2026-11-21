@@ -8,7 +8,7 @@ import { MainCta } from "@/components/MainCta";
 
 const TITLE = "About Ramjan Ali Akash | Local SEO & AI Search Specialist";
 const DESCRIPTION =
-  "Meet Ramjan Ali Akash, a Local SEO and GEO & AI visibility specialist who helps home service businesses get found on Google, Google Maps and in AI search.";
+  "Meet Ramjan Ali Akash, a Local SEO and AI visibility specialist who helps local businesses get found on Google, Google Maps and in AI search.";
 
 export const metadata = pageMeta({ title: TITLE, description: DESCRIPTION, path: "/about" });
 
@@ -93,8 +93,8 @@ export default function AboutPage() {
                 Hi, I&apos;m <span className="hl">Ramjan Ali Akash</span>.
               </h1>
               <p className="lead">
-                I&apos;m a Local SEO and GEO &amp; AI visibility specialist. I help home service businesses get found on
-                Google, Google Maps and in AI search, and turn that visibility into calls and booked jobs.
+                I&apos;m a Local SEO and GEO &amp; AI visibility specialist. I help local businesses get found on
+                Google, Google Maps and in AI search, and turn that visibility into qualified enquiries.
               </p>
               <div className="cta-row">
                 <MainCta />
@@ -129,16 +129,15 @@ export default function AboutPage() {
       <section className="sec">
         <div className="wrap split">
           <div className="body rv">
-            <span className="eyebrow">Why home services</span>
-            <h2>One kind of business, done properly.</h2>
+            <span className="eyebrow">Why local businesses</span>
+            <h2>One growth problem, solved properly.</h2>
             <p>
-              I only work with home service businesses: roofers, plumbers, HVAC, cleaning, landscaping and the other
-              trades homeowners call when something needs doing.
+              I work with businesses whose customers choose locally: home-service companies, clinics, law firms,
+              automotive shops, restaurants, hospitality brands and personal-care businesses.
             </p>
             <p>
-              Focusing on one kind of business means I already know how your customers search, what they ask AI tools,
-              which directories matter and what Google rewards in the map pack. You do not pay for me to learn your
-              industry.
+              The common problem is the same: earn a place in the map pack, build trust before the click and make your
+              services understandable to both people and AI systems. The execution is then tailored to your niche.
             </p>
             <p>
               And because the work is local, every plan is built around the towns and suburbs you actually serve, not
@@ -190,9 +189,9 @@ export default function AboutPage() {
         <div className="wrap split">
           <div className="body rv">
             <span className="eyebrow">Where I work</span>
-            <h2>Based in Dhaka, working with US businesses.</h2>
+            <h2>Based in Dhaka, working in your time zone.</h2>
             <p>
-              I work from Dhaka, Bangladesh (GMT+6) with home service businesses across the US. Most of the work happens
+              I work from Dhaka, Bangladesh (GMT+6) with local businesses in different markets. Most of the work happens
               in the background, I reply within 24 hours, and calls are booked in your time zone.
             </p>
             <div className="cta-row">
@@ -203,7 +202,7 @@ export default function AboutPage() {
           </div>
           <div className="panel rv">
             <h3>Follow along</h3>
-            <p className="muted">Tips on local SEO and AI search for home service businesses.</p>
+            <p className="muted">Tips on local SEO and AI search for location-based businesses.</p>
             <div className="chips" style={{ marginTop: 14 }}>
               {SOCIAL.map((s) => (
                 <a className="chip" href={s.href} target="_blank" rel="me noopener" key={s.label}>

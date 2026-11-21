@@ -31,7 +31,7 @@ export default function AccessibilityPage() {
     >
       <h2 id="commitment">Commitment</h2>
       <p>
-        I want every home service business owner to be able to read this website and contact me, whatever device or
+        I want every local business owner to be able to read this website and contact me, whatever device or
         assistive technology they use. The site aims to conform to the Web Content Accessibility Guidelines (WCAG) 2.2
         at level AA.
       </p>

@@ -10,9 +10,9 @@ import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
 import { MainCta } from "@/components/MainCta";
 
 export const metadata = pageMeta({
-  title: "Local Link Building for Home Service Businesses | Ramjan Ali Akash",
+  title: "Local Link Building for Local Businesses | Ramjan Ali Akash",
   description:
-    "Local link building for home service businesses: links from suppliers, associations, local sponsorships, press and citations. No spam, no private blog networks.",
+    "Local link building for local businesses: relevant links from associations, sponsorships, press, partners and citations. No spam or private blog networks.",
   path: "/seo-services/link-building",
 });
 
@@ -52,9 +52,9 @@ const SCHEMA = {
       "@type": "WebPage",
       "@id": `${SITE_URL}/seo-services/link-building#webpage`,
       url: `${SITE_URL}/seo-services/link-building`,
-      name: "Local Link Building for Home Service Businesses | Ramjan Ali Akash",
+      name: "Local Link Building for Local Businesses | Ramjan Ali Akash",
       description:
-        "Local link building for home service businesses: links from suppliers, associations, local sponsorships, press and citations. No spam, no private blog networks.",
+        "Local link building for local businesses: relevant links from associations, sponsorships, press, partners and citations. No spam or private blog networks.",
       isPartOf: {
         "@id": `${SITE_URL}/#website`,
       },
@@ -89,13 +89,12 @@ const SCHEMA = {
       "@type": "Service",
       name: "Link Building",
       description:
-        "Local link building for home service businesses: links from suppliers, associations, local sponsorships, press and citations. No spam, no private blog networks.",
+        "Local link building for local businesses: relevant links from associations, sponsorships, press, partners and citations. No spam or private blog networks.",
       url: `${SITE_URL}/seo-services/link-building`,
       provider: {
         "@id": `${SITE_URL}/#business`,
       },
       serviceType: "Link Building",
-      areaServed: { "@type": "Country", name: "United States" },
     },
     faqSchema(FAQ),
   ],

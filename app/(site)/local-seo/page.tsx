@@ -12,9 +12,9 @@ import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
 import { MainCta } from "@/components/MainCta";
 
 export const metadata = pageMeta({
-  title: "Local SEO for Home Service Businesses | Ramjan Ali Akash",
+  title: "Local SEO for Local Businesses | Ramjan Ali Akash",
   description:
-    "Local SEO for home service businesses: Google Business Profile, map pack rankings, reviews, citations and local pages that also feed AI search answers.",
+    "Local SEO for local businesses: Google Business Profile, map rankings, reviews, citations and pages that also support AI search answers.",
   path: "/local-seo",
 });
 
@@ -54,9 +54,9 @@ const SCHEMA = {
       "@type": "WebPage",
       "@id": `${SITE_URL}/local-seo#webpage`,
       url: `${SITE_URL}/local-seo`,
-      name: "Local SEO Services for Home Service Businesses | Ramjan Ali Akash",
+      name: "Local SEO Services for Local Businesses | Ramjan Ali Akash",
       description:
-        "Local SEO for home service businesses: Google Business Profile, map pack rankings, reviews, citations and local pages that also feed AI search answers.",
+        "Local SEO for local businesses: Google Business Profile, map rankings, reviews, citations and pages that also support AI search answers.",
       isPartOf: {
         "@id": `${SITE_URL}/#website`,
       },
@@ -85,13 +85,12 @@ const SCHEMA = {
       "@type": "Service",
       name: "Local SEO",
       description:
-        "Local SEO for home service businesses: Google Business Profile, map pack rankings, reviews, citations and local pages that also feed AI search answers.",
+        "Local SEO for local businesses: Google Business Profile, map rankings, reviews, citations and pages that also support AI search answers.",
       url: `${SITE_URL}/local-seo`,
       provider: {
         "@id": `${SITE_URL}/#business`,
       },
       serviceType: "Local SEO",
-      areaServed: { "@type": "Country", name: "United States" },
     },
     faqSchema(FAQ),
   ],
@@ -115,7 +114,7 @@ export default function LocalSeoPage() {
             <div>
               <span className="eyebrow">Local SEO</span>
               <h1>
-                Local SEO for <span className="hl">home service</span> companies.
+                Local SEO for <span className="hl">local businesses</span>.
               </h1>
               <p className="lead">
                 Rank in the Google map pack and local results for the services you sell, in the towns you serve, and
@@ -131,7 +130,7 @@ export default function LocalSeoPage() {
               <ul>
                 <li>
                   <b>Who it is for</b>
-                  <span>Roofing, plumbing, septic, HVAC and home-service businesses across the US</span>
+                  <span>Service companies, clinics, law firms, restaurants and local brands</span>
                 </li>
                 <li>
                   <b>Goal</b>
@@ -234,7 +233,7 @@ export default function LocalSeoPage() {
           </div>
           <div className="cta-row rv">
             <Link className="btn btn-ghost" href="/industries">
-              See all {TRADE_COUNT} trades <span className="arr">→</span>
+              See all {TRADE_COUNT} niches <span className="arr">→</span>
             </Link>
           </div>
         </div>
@@ -371,7 +370,7 @@ export default function LocalSeoPage() {
           <div className="panel rv">
             <h3>AI Search Visibility</h3>
             <p className="muted" style={{ marginBottom: 16 }}>
-              How I get home service businesses named when homeowners ask AI who to call.
+              How I get local businesses named when customers ask AI who to choose.
             </p>
             <Link className="btn btn-dark btn-sm" href="/ai-search">
               AI search visibility <span className="arr">→</span>

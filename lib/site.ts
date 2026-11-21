@@ -7,7 +7,7 @@ export const BOOKING_URL = "https://cal.com/ramjanalimeet/book-a-call";
 export const BOOKING_ORIGIN = new URL(BOOKING_URL).origin;
 /** Square headshot used in the contact bar and the Hire popup. */
 export const AVATAR = "/assets/ramjan-ali-avatar.webp";
-export const OG_ALT = "Ramjan Ali - Local SEO and AI search visibility for home service businesses";
+export const OG_ALT = "Ramjan Ali - Local SEO and AI visibility for local businesses";
 
 export const SOCIAL = [
   { label: "YouTube", href: "https://www.youtube.com/@Ramjanali-Akash" },

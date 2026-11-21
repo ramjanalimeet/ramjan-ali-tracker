@@ -6,17 +6,16 @@ export const SITE_SCHEMA = {
     {
       "@type": "ProfessionalService",
       "@id": `${SITE_URL}/#business`,
-      name: "Ramjan Ali Akash, Local SEO & AI Search Visibility",
+      name: "Ramjan Ali Akash, Local SEO & AI Visibility for Local Businesses",
       url: `${SITE_URL}/`,
       image: `${SITE_URL}/assets/ramjan-ali-akash-portrait.webp`,
       email: "mailto:raakash.meet@gmail.com",
-      description: "Local SEO and AI search visibility for home service businesses worldwide.",
+      description: "Local SEO and AI visibility for local businesses.",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Dhaka",
         addressCountry: "BD",
       },
-      areaServed: "Worldwide",
       priceRange: "$349 - $1,250 per month",
       founder: {
         "@id": `${SITE_URL}/#person`,
@@ -33,7 +32,7 @@ export const SITE_SCHEMA = {
         "AI search visibility",
         "Generative engine optimization",
         "Google AI Overviews",
-        "Home service marketing",
+        "Local business marketing",
       ],
       sameAs: [
         "https://www.youtube.com/@Ramjanali-Akash",
@@ -48,7 +47,7 @@ export const SITE_SCHEMA = {
       "@type": "Person",
       "@id": `${SITE_URL}/#person`,
       name: "Ramjan Ali Akash",
-      jobTitle: "Local SEO & AI Search Visibility Specialist",
+      jobTitle: "Local SEO & AI Visibility Specialist",
       image: `${SITE_URL}/assets/ramjan-ali-akash-portrait.webp`,
       url: `${SITE_URL}/`,
       sameAs: [

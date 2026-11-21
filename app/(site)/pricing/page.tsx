@@ -9,7 +9,7 @@ import { type FaqItem, SITE_URL, faqSchema, pageMeta } from "@/lib/site";
 import { MainCta } from "@/components/MainCta";
 
 const TITLE = "Pricing | Local SEO & AI Search Visibility | Ramjan Ali Akash";
-const DESCRIPTION = `All-in-one monthly pricing for home service businesses. Local SEO from ${usd(fromPrice())}/month, with GEO & AI Visibility included from ${usd(AI_PLAN.price)}/month.`;
+const DESCRIPTION = `All-in-one monthly pricing for local businesses. Local SEO from ${usd(fromPrice())}/month, with GEO & AI Visibility included from ${usd(AI_PLAN.price)}/month.`;
 
 export const metadata = pageMeta({ title: TITLE, description: DESCRIPTION, path: "/pricing" });
 
@@ -64,7 +64,6 @@ const SCHEMA = {
       name: "Local SEO & GEO / AI Visibility",
       url: `${SITE_URL}/pricing`,
       provider: { "@id": `${SITE_URL}/#business` },
-      areaServed: { "@type": "Country", name: "United States" },
       offers: PLANS.map((p) => ({
         "@type": "Offer",
         name: p.name,

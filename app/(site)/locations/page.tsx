@@ -8,16 +8,16 @@ import { REGIONS } from "@/lib/locations";
 import { type FaqItem, SITE_URL, faqSchema, pageMeta } from "@/lib/site";
 import { MainCta } from "@/components/MainCta";
 
-const TITLE = "Locations | Local SEO & AI Search for Home Services";
+const TITLE = "Locations | Local SEO & AI Search for Local Businesses";
 const DESCRIPTION =
-  "Local SEO and AI search visibility for US home service businesses, with city pages for fast-growing markets in Texas, Florida, Georgia, Arizona and North Carolina.";
+  "Local SEO and AI visibility for local businesses, with market-specific strategies tailored to each business, city and customer base.";
 
 export const metadata = pageMeta({ title: TITLE, description: DESCRIPTION, path: "/locations" });
 
 const FAQ: FaqItem[] = [
   {
-    q: "Do you work with businesses outside the US?",
-    a: "My focus is the US, and the city pages, directories and examples on this site are built for US markets. Google Maps and AI answers work the same way in Canada, the UK and Australia, so if you work there, ask on a call and I will tell you honestly whether I am a good fit.",
+    q: "Which markets do you work in?",
+    a: "I work with local businesses in different markets. The strategy is adapted to the search behavior, language, directories and competition around the customers you want to reach.",
   },
   {
     q: "Can you help me rank in towns where I do not have an office?",
@@ -61,7 +61,6 @@ const SCHEMA = {
       name: "Local SEO & AI Search Visibility",
       url: `${SITE_URL}/locations`,
       provider: { "@id": `${SITE_URL}/#business` },
-      areaServed: { "@type": "Country", name: "United States" },
     },
     faqSchema(FAQ),
   ],
@@ -90,7 +89,7 @@ export default function LocationsPage() {
               <p className="lead">
                 A homeowner with a burst pipe searches the same way in Dallas, Toronto, Manchester or Sydney: they check
                 Google, look at the map, maybe ask an AI tool, and call one of the first names they see. I help home
-                service businesses in any city or country become that name.
+                local businesses become that name in the markets they serve.
               </p>
               <div className="cta-row">
                 <MainCta />
@@ -111,7 +110,7 @@ export default function LocationsPage() {
               </li>
               <li>
                 <b>Who</b>
-                <span>Roofing, plumbing, septic, HVAC and other home service businesses</span>
+                <span>Local service companies and location-based businesses</span>
               </li>
               <li>
                 <b>Targeting</b>
@@ -130,7 +129,7 @@ export default function LocationsPage() {
           <div className="sec-head rv">
             <div>
               <span className="eyebrow">Where I work</span>
-              <h2>Everywhere US homeowners look.</h2>
+              <h2>Everywhere local customers look.</h2>
             </div>
             <p>
               Google comes first, but homeowners also check Apple Maps, Bing, AI assistants and the directories they

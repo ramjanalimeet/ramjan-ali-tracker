@@ -15,7 +15,7 @@ export function Footer() {
               Ramjan Ali<b>.</b>
             </Link>
             <p>
-              Local SEO &amp; AI search visibility for US local businesses. Based in Dhaka, working in your time zone.
+              Local SEO &amp; AI visibility for local businesses. Based in Dhaka, working in your time zone.
             </p>
             <ul className="social">
               {SOCIAL.map((s) => (
@@ -88,7 +88,7 @@ export function Footer() {
           </div>
         </div>
         <div className="fbot">
-          <span>© {new Date().getFullYear()} Ramjan Ali Akash · Local SEO &amp; AI Search Visibility</span>
+          <span>© {new Date().getFullYear()} Ramjan Ali Akash · Local SEO &amp; AI Visibility for Local Businesses</span>
           <span>
             <Link href="/privacy-policy">Privacy</Link> · <Link href="/terms">Terms</Link> · Dhaka, Bangladesh · GMT+6 ·
             replies within 24h

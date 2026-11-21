@@ -95,7 +95,6 @@ const SCHEMA = {
         "@id": `${SITE_URL}/#business`,
       },
       serviceType: "Technical SEO",
-      areaServed: { "@type": "Country", name: "United States" },
     },
     faqSchema(FAQ),
   ],

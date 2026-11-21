@@ -12,7 +12,7 @@ import { MainCta } from "@/components/MainCta";
 export const metadata = pageMeta({
   title: "Local SEO Audits for Service Businesses | Ramjan Ali Akash",
   description:
-    "SEO and AI visibility audits for home service businesses: Google Business Profile, website, citations, reviews and competitor gaps, with a prioritized fix list.",
+    "SEO and AI visibility audits for local businesses: Google Business Profile, website, citations, reviews and competitor gaps, with a prioritized fix list.",
   path: "/seo-services/seo-audits",
 });
 
@@ -54,7 +54,7 @@ const SCHEMA = {
       url: `${SITE_URL}/seo-services/seo-audits`,
       name: "Local SEO Audits for Service Businesses | Ramjan Ali Akash",
       description:
-        "SEO and AI visibility audits for home service businesses: Google Business Profile, website, citations, reviews and competitor gaps, with a prioritized fix list.",
+        "SEO and AI visibility audits for local businesses: Google Business Profile, website, citations, reviews and competitor gaps, with a prioritized fix list.",
       isPartOf: {
         "@id": `${SITE_URL}/#website`,
       },
@@ -89,13 +89,12 @@ const SCHEMA = {
       "@type": "Service",
       name: "SEO Audits",
       description:
-        "SEO and AI visibility audits for home service businesses: Google Business Profile, website, citations, reviews and competitor gaps, with a prioritized fix list.",
+        "SEO and AI visibility audits for local businesses: Google Business Profile, website, citations, reviews and competitor gaps, with a prioritized fix list.",
       url: `${SITE_URL}/seo-services/seo-audits`,
       provider: {
         "@id": `${SITE_URL}/#business`,
       },
       serviceType: "SEO Audits",
-      areaServed: { "@type": "Country", name: "United States" },
     },
     faqSchema(FAQ),
   ],

@@ -27,7 +27,7 @@ export default function EditorialPolicyPage() {
       intro="The standards behind every article and guide on this website, so you know how much to trust what you read."
       sections={SECTIONS}
       summary={[
-        "Articles are written for home service business owners and focus on what actually helps them get calls.",
+        "Articles are written for local business owners and focus on what actually helps them earn enquiries.",
         "Claims about Google and AI tools are checked against official documentation, which is linked.",
         "No paid placements, sponsored posts or affiliate links.",
         "Mistakes are corrected promptly, and articles show when they were last updated.",
@@ -36,7 +36,7 @@ export default function EditorialPolicyPage() {
       <h2 id="who">Who writes the content</h2>
       <p>
         Content on this website is published by <Link href="/about">{OWNER.name}</Link>, a local SEO and AI search
-        visibility consultant who works with home service businesses. Each article shows its author and the date it was
+        visibility consultant who works with local businesses. Each article shows its author and the date it was
         last updated.
       </p>
 

@@ -14,9 +14,9 @@ import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
 import { MainCta } from "@/components/MainCta";
 
 export const metadata = pageMeta({
-  title: "Local SEO & AI Search Visibility for Home Services",
+  title: "Local SEO & AI Visibility for Local Businesses",
   description:
-    "Local SEO and AI search visibility for home service businesses. Rank in the Google map pack and get recommended by ChatGPT, Gemini and AI Overviews.",
+    "Local SEO and AI visibility for local businesses. Rank in Google Maps and get recommended by ChatGPT, Gemini and AI Overviews.",
   path: "/",
 });
 
@@ -58,9 +58,9 @@ const SCHEMA = {
       "@type": "WebPage",
       "@id": `${SITE_URL}/#webpage`,
       url: `${SITE_URL}/`,
-      name: "Local SEO & AI Search Visibility for Home Service Businesses | Ramjan Ali Akash",
+      name: "Local SEO & AI Visibility for Local Businesses | Ramjan Ali Akash",
       description:
-        "Local SEO and AI search visibility for home service businesses. Rank in the Google map pack and get recommended by ChatGPT, Gemini and AI Overviews.",
+        "Local SEO and AI visibility for local businesses. Rank in Google Maps and get recommended by ChatGPT, Gemini and AI Overviews.",
       isPartOf: {
         "@id": `${SITE_URL}/#website`,
       },
@@ -80,15 +80,16 @@ export default function HomePage() {
         <div className="wrap hero-grid">
           <div>
             <span className="pill">
-              <span className="dot"></span>Local SEO &amp; AI Search Visibility
+              <span className="dot"></span>Local SEO &amp; AI Visibility for Local Businesses
             </span>
             <h1>
               Get found first on <span className="hl">Google + Maps</span> and in AI search.
             </h1>
             <p className="lead">
-              I&apos;m <strong>Ramjan Ali Akash</strong>, a local SEO specialist for home service businesses. I help
-              roofers, plumbers, HVAC companies and other trades rank in the <strong>Google map pack</strong> and get
-              recommended by <strong>ChatGPT, Gemini and AI Overviews</strong>, so more searches turn into calls.
+              I&apos;m <strong>Ramjan Ali Akash</strong>, a Local SEO and AI visibility specialist for local businesses. I
+              help service companies, clinics, law firms, restaurants and other location-based brands
+              rank in the <strong>Google map pack</strong> and get recommended by <strong>ChatGPT, Gemini and AI
+              Overviews</strong>, so more local searches become qualified enquiries.
             </p>
             <div className="cta-row">
               <MainCta />
@@ -102,7 +103,7 @@ export default function HomePage() {
                 AI Search Visibility
               </Link>
               <Link className="chip" href="/industries">
-                60+ home service industries
+                {TRADE_COUNT} local business niches
               </Link>
             </div>
           </div>
@@ -125,38 +126,38 @@ export default function HomePage() {
             </div>
             <div className="badge b2">
               <span>
-                Home services only<small>One niche, one focus</small>
+                Local businesses only<small>One market, one measurable goal</small>
               </span>
             </div>
           </div>
         </div>
       </section>
-      <section className="marquee" aria-label="Searches and AI questions I help home service businesses win">
+      <section className="marquee" aria-label="Searches and AI questions I help local businesses win">
         <p>Searches and AI questions I help you win</p>
         <div className="track">
           <ul>
             <li>roofer near me</li>
             <li>emergency plumber</li>
-            <li>best hvac company near me?</li>
-            <li>septic pumping near me</li>
-            <li>who should I call for a roof leak?</li>
-            <li>ac repair near me</li>
-            <li>water heater installation</li>
-            <li>top-rated plumber in my area</li>
-            <li>furnace repair</li>
-            <li>storm damage roof repair</li>
+            <li>best dentist near me?</li>
+            <li>personal injury lawyer near me</li>
+            <li>best local restaurant for dinner?</li>
+            <li>auto repair near me</li>
+            <li>family lawyer consultation</li>
+            <li>top-rated salon in my area</li>
+            <li>veterinarian near me</li>
+            <li>wedding venue near me</li>
           </ul>
           <ul aria-hidden="true">
             <li>roofer near me</li>
             <li>emergency plumber</li>
-            <li>best hvac company near me?</li>
-            <li>septic pumping near me</li>
-            <li>who should I call for a roof leak?</li>
-            <li>ac repair near me</li>
-            <li>water heater installation</li>
-            <li>top-rated plumber in my area</li>
-            <li>furnace repair</li>
-            <li>storm damage roof repair</li>
+            <li>best dentist near me?</li>
+            <li>personal injury lawyer near me</li>
+            <li>best local restaurant for dinner?</li>
+            <li>auto repair near me</li>
+            <li>family lawyer consultation</li>
+            <li>top-rated salon in my area</li>
+            <li>veterinarian near me</li>
+            <li>wedding venue near me</li>
           </ul>
         </div>
       </section>
@@ -166,12 +167,12 @@ export default function HomePage() {
             <span className="eyebrow">Why local + AI search</span>
             <h2>The map pack gets the calls. AI answers decide who makes the list.</h2>
             <p>
-              When a homeowner's AC dies or a pipe bursts, they search Google, look at the three businesses on the map,
-              check the stars, and call one of them.
+              When someone needs a nearby service, clinic, professional or place to visit, they search Google, compare
+              the businesses in the map pack, check the reviews and choose one.
             </p>
             <p>
               More and more of them now ask ChatGPT, Gemini or Perplexity first, or read Google's AI Overview before
-              they scroll. "Who is the best-reviewed plumber near me?" gets a short list of names, and everyone else is
+              they scroll. "Who is the best-reviewed option near me?" gets a short list of names, and everyone else is
               invisible.
             </p>
             <p>
@@ -235,8 +236,8 @@ export default function HomePage() {
               <h2>Two services. One goal: more booked jobs.</h2>
             </div>
             <p>
-              Nothing else. No ads, no web design packages, no social media. Just the work that gets a home service
-              business found and called.
+              Nothing else. No ads, no web design packages, no social media. Just the work that gets a local business
+              found, trusted and contacted.
             </p>
           </div>
           <div className="grid g2">
@@ -260,8 +261,8 @@ export default function HomePage() {
               </span>
               <h3>AI Search Visibility</h3>
               <p>
-                Get named in ChatGPT, Gemini, Perplexity and Google's AI Overviews when homeowners ask who to call, with
-                the right services, towns and reviews attached.
+                Get named in ChatGPT, Gemini, Perplexity and Google's AI Overviews when local customers ask who to
+                choose, with the right services, locations and reviews attached.
               </p>
               <p className="price-from">Included from {usd(AI_PLAN.price)}/month</p>
               <span className="go">
@@ -281,11 +282,11 @@ export default function HomePage() {
           <div className="sec-head rv">
             <div>
               <span className="eyebrow">Who I work with</span>
-              <h2>Built for the trades that live on the phone.</h2>
+              <h2>Built for businesses that depend on local customers.</h2>
             </div>
             <p>
-              Every trade searches differently. Roofers chase storms, septic companies cover rural counties, HVAC swings
-              with the seasons. The strategy follows how your customers actually search and ask.
+              Every niche is chosen differently. Roofers chase storms, dentists build patient trust, attorneys prove
+              relevant experience and restaurants win on menus, reviews and convenience.
             </p>
           </div>
           <div className="grid g3">
@@ -315,40 +316,37 @@ export default function HomePage() {
                 Learn more <span>→</span>
               </span>
             </Link>
-            <Link className="card rv" href="/local-seo/septic-seo">
+            <Link className="card rv" href="/local-seo/dentist-seo">
               <span className="ic" aria-hidden="true">
                 03
               </span>
-              <h3>Septic SEO</h3>
+              <h3>Dentist SEO</h3>
               <p>
-                Own the pumping, inspection and installation searches across the rural counties and small towns you
-                cover.
+                Win searches for general, emergency, cosmetic and implant dentistry with strong local trust signals.
               </p>
               <span className="go">
                 Learn more <span>→</span>
               </span>
             </Link>
-            <Link className="card rv" href="/local-seo/hvac-seo">
+            <Link className="card rv" href="/local-seo/personal-injury-lawyer-seo">
               <span className="ic" aria-hidden="true">
                 04
               </span>
-              <h3>HVAC SEO</h3>
+              <h3>Law Firm SEO</h3>
               <p>
-                Rank for AC repair, heating and system replacement searches, and stay visible through the slow seasons
-                too.
+                Build visibility for high-intent legal searches with clear practice-area pages and compliant proof.
               </p>
               <span className="go">
                 Learn more <span>→</span>
               </span>
             </Link>
-            <Link className="card rv" href="/local-seo/home-services-seo">
+            <Link className="card rv" href="/local-seo/restaurant-seo">
               <span className="ic" aria-hidden="true">
                 05
               </span>
-              <h3>Home Services SEO</h3>
+              <h3>Restaurant SEO</h3>
               <p>
-                Electricians, garage doors, pest control, landscaping, pools, cleaning and more. Same local playbook,
-                tuned to your trade.
+                Keep menus, hours, photos, reviews and local discovery signals accurate across Maps, search and AI.
               </p>
               <span className="go">
                 Learn more <span>→</span>
@@ -370,7 +368,7 @@ export default function HomePage() {
           </div>
           <div className="cta-row rv">
             <Link className="btn btn-ghost" href="/industries">
-              See all {TRADE_COUNT} trades <span className="arr">→</span>
+              See all {TRADE_COUNT} niches <span className="arr">→</span>
             </Link>
           </div>
         </div>
@@ -379,7 +377,7 @@ export default function HomePage() {
         <div className="wrap split">
           <div className="rv">
             <span className="eyebrow">Locations</span>
-            <h2>Helping US home service businesses win their towns.</h2>
+            <h2>Helping local businesses win their markets.</h2>
           </div>
           <div className="body rv">
             <p>
@@ -483,7 +481,7 @@ export default function HomePage() {
               <span className="eyebrow">From the blog</span>
               <h2>Local SEO, explained plainly.</h2>
             </div>
-            <p>Practical guides for contractors who want to understand what they are paying for.</p>
+            <p>Practical guides for local business owners who want to understand what they are paying for.</p>
           </div>
           <PostCards limit={3} />
           <div className="cta-row">

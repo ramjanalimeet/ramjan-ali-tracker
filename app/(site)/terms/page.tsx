@@ -58,7 +58,7 @@ export default function TermsPage() {
 
       <h2 id="services">Services and plans</h2>
       <p>
-        I provide local SEO, GEO &amp; AI visibility and related SEO services for home service businesses. The plans and
+        I provide local SEO, GEO &amp; AI visibility and related SEO services for local businesses. The plans and
         their monthly prices are listed on the <Link href="/pricing">pricing page</Link>. Before work starts, we agree
         in writing which plan you are on and what is included, such as the number of pages, links and reports each
         month. Work outside that scope is quoted separately before it starts.

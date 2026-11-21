@@ -1,9 +1,9 @@
-/** "Where I work" cards on /locations: where US homeowners look, plus a note for businesses elsewhere. */
+/** "Where I work" cards on /locations: where local customers look across markets. */
 export const REGIONS = [
   {
     id: "google",
     name: "Google Maps and Search",
-    text: "The map pack and organic results, where most US homeowners start looking for a contractor.",
+    text: "The map pack and organic results, where local customers usually begin comparing nearby businesses.",
   },
   {
     id: "apple-bing",
@@ -12,12 +12,12 @@ export const REGIONS = [
   },
   {
     id: "directories",
-    name: "US directories",
-    text: "Yelp, Angi, BBB, Nextdoor, Houzz and your trade's own directories, with the same details everywhere.",
+    name: "Relevant directories",
+    text: "The trusted general and industry directories customers use in your market, with consistent business details across each one.",
   },
   {
-    id: "outside-us",
-    name: "Outside the US",
-    text: "My focus is US home service businesses. If you work in Canada, the UK or Australia, the same playbook applies with local directories. Ask on a call.",
+    id: "market-fit",
+    name: "Built for your market",
+    text: "The framework stays consistent, while directories, language and search behavior are adapted to your business, customers and location.",
   },
 ] as const;

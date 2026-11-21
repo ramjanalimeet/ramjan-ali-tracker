@@ -100,7 +100,6 @@ export default async function IndustryPage({ params }: Props) {
         description: ind.description,
         url,
         provider: { "@id": `${SITE_URL}/#business` },
-        areaServed: { "@type": "Country", name: "United States" },
       },
       faqSchema(faq),
     ],
@@ -140,7 +139,7 @@ export default async function IndustryPage({ params }: Props) {
               <ul>
                 <li>
                   <b>For</b>
-                  <span>{ind.name} across the US</span>
+                  <span>{ind.name} businesses</span>
                 </li>
                 <li>
                   <b>Focus</b>

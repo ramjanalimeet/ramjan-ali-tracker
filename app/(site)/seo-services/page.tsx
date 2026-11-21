@@ -10,7 +10,7 @@ import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
 import { MainCta } from "@/components/MainCta";
 
 export const metadata = pageMeta({
-  title: "SEO Services for Home Service Businesses | Ramjan Ali Akash",
+  title: "SEO Services for Local Businesses | Ramjan Ali Akash",
   description:
     "Technical SEO, on-page SEO, content SEO, link building and SEO audits for local service businesses. The foundations behind strong local rankings.",
   path: "/seo-services",
@@ -97,7 +97,7 @@ export default function SeoServicesPage() {
             <div>
               <span className="eyebrow">SEO Services</span>
               <h1>
-                SEO services for <span className="hl">home service</span> businesses.
+                SEO services for <span className="hl">local businesses</span>.
               </h1>
               <p className="lead">
                 Local SEO and GEO &amp; AI visibility get you found and recommended. Technical SEO, on-page SEO, audits

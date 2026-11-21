@@ -40,7 +40,7 @@ export default function DisclaimerPage() {
 
       <h2 id="advice">General information, not professional advice</h2>
       <p>
-        The articles and guides on this site are general information to help home service business owners understand SEO
+        The articles and guides on this site are general information to help local business owners understand SEO
         and AI search. They are not legal, financial, tax or accounting advice. Where they mention laws, such as rules
         on fake reviews, check with a qualified professional in your country before relying on them. Information is
         accurate to the best of my knowledge on the date it was published or updated, and platforms change, so details
