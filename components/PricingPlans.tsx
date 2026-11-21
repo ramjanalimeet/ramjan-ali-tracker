@@ -1,32 +1,45 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
+import { HirePopup } from "@/components/HirePopup";
 import { PLANS, type Plan, usd } from "@/lib/pricing";
 
 /** The plan cards. Defaults to the main Local SEO plans. */
 export function PricingPlans({ plans = PLANS }: { plans?: Plan[] }) {
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+
   return (
-    <div className={`plans plans-${plans.length}`}>
-      {plans.map((p) => (
-        <div className={p.popular ? "plan pop rv" : "plan rv"} key={p.name}>
-          <div className="plan-head">
-            <h3>{p.name}</h3>
-            {p.popular && <span className="plan-badge">Most popular</span>}
+    <>
+      <div className={`plans plans-${plans.length}`}>
+        {plans.map((p) => (
+          <div className={p.popular ? "plan pop rv" : "plan rv"} key={p.name}>
+            <div className="plan-head">
+              <h3>{p.name}</h3>
+              {p.popular && <span className="plan-badge">Most popular</span>}
+            </div>
+            <p className="tagline">{p.tagline}</p>
+            <p className="price">
+              {usd(p.price)}
+              <small>/month</small>
+            </p>
+            <ul className="ticks">
+              {p.features.map((f) => (
+                <li key={f}>{f}</li>
+              ))}
+            </ul>
+            <button
+              type="button"
+              className={p.popular ? "btn btn-accent" : "btn btn-ghost"}
+              onClick={() => setSelectedPlan(p.name)}
+            >
+              Get started <span className="arr">→</span>
+            </button>
           </div>
-          <p className="tagline">{p.tagline}</p>
-          <p className="price">
-            {usd(p.price)}
-            <small>/month</small>
-          </p>
-          <ul className="ticks">
-            {p.features.map((f) => (
-              <li key={f}>{f}</li>
-            ))}
-          </ul>
-          <Link className={p.popular ? "btn btn-accent" : "btn btn-ghost"} href="/book-a-call">
-            Get started <span className="arr">→</span>
-          </Link>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+      {selectedPlan && <HirePopup initialPlan={selectedPlan} onClose={() => setSelectedPlan(null)} />}
+    </>
   );
 }
 

@@ -9,7 +9,7 @@ import { HirePopup } from "./HirePopup";
 
 const HIDE_KEY = "mcta-hidden";
 /** Pages where the bar stays out of the way: contact and every legal page. */
-const NO_BAR = new Set(["/contact", ...LEGAL_PAGES.map((p) => p.href)]);
+const NO_BAR = new Set(["/contact", "/pricing", ...LEGAL_PAGES.map((p) => p.href)]);
 
 /**
  * Sticky contact bar on every page (a wide pill on desktop, a slim one-row
