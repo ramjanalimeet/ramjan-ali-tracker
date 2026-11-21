@@ -1275,11 +1275,22 @@ a.card:hover .go span {
 .article-cover {
   margin: 0 0 24px;
 }
-.article-cover img {
+.article-cover img,
+.article-guide img {
   display: block;
   width: 100%;
   height: auto;
   border-radius: 12px;
+}
+.article-guide {
+  margin: 28px 0;
+}
+.article-guide figcaption {
+  margin-top: 8px;
+  font-size: 0.875rem;
+}
+.article-guide summary {
+  cursor: pointer;
 }
 .article-cta {
   display: flex;

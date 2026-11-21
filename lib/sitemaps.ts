@@ -37,7 +37,12 @@ const SITEMAPS: Record<SitemapName, () => Entry[]> = {
   ],
   industry: () => ALL_INDUSTRIES.map((i) => ({ path: `/local-seo/${i.slug}`, lastmod: SITE_UPDATED })),
   location: () => CITIES.map((c) => ({ path: `/locations/${c.slug}`, lastmod: SITE_UPDATED })),
-  post: () => POSTS.map((p) => ({ path: `/blog/${p.slug}`, lastmod: p.updated ?? p.date, images: [SITE_URL + p.cover.url] })),
+  post: () =>
+    POSTS.map((p) => ({
+      path: `/blog/${p.slug}`,
+      lastmod: p.updated ?? p.date,
+      images: [SITE_URL + p.cover.url, `${SITE_URL}/assets/blog/${p.slug}-guide.webp`],
+    })),
   "case-study": () => CASE_STUDIES.map((c) => ({ path: `/case-studies/${c.slug}`, lastmod: c.published })),
 };
 
