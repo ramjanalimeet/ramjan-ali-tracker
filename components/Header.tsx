@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 import { ALL_SERVICES, SERVICE_GROUPS } from "@/lib/services";
 
 const LINKS = [
-  { href: "/pricing", label: "Pricing" },
   { href: "/case-studies", label: "Case Studies" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
 ];
