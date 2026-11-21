@@ -39,9 +39,17 @@ const ADD_ONS = SERVICE_GROUPS.find((g) => g.title === "SEO by specialization")?
 type Status = "idle" | "sending" | "done" | "error";
 
 /** "Hire Ramjan Ali" project form. Submissions go to /api/lead and show up in the /admin Inbox. */
-export function HirePopup({ onClose, initialPlan = "Growth" }: { onClose: () => void; initialPlan?: string }) {
+export function HirePopup({
+  onClose,
+  initialPlan = "Growth",
+  initialStep = 1,
+}: {
+  onClose: () => void;
+  initialPlan?: string;
+  initialStep?: 1 | 2;
+}) {
   const ref = useRef<HTMLDialogElement>(null);
-  const [step, setStep] = useState<1 | 2>(1);
+  const [step, setStep] = useState<1 | 2>(initialStep);
   const [plan, setPlan] = useState(initialPlan);
   const [addOns, setAddOns] = useState<string[]>([]);
   const [f, setF] = useState({ name: "", email: "", phone: "", website: "", message: "", _gotcha: "" });

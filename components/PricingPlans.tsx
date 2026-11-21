@@ -38,7 +38,9 @@ export function PricingPlans({ plans = PLANS }: { plans?: Plan[] }) {
           </div>
         ))}
       </div>
-      {selectedPlan && <HirePopup initialPlan={selectedPlan} onClose={() => setSelectedPlan(null)} />}
+      {selectedPlan && (
+        <HirePopup initialPlan={selectedPlan} initialStep={2} onClose={() => setSelectedPlan(null)} />
+      )}
     </>
   );
 }
