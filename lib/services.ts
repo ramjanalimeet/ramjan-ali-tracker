@@ -5,8 +5,6 @@ export type ServiceGroup = {
   heading: string;
   intro: string;
   items: Service[];
-  /** Kept off the Services menu (the pages still exist and stay in the footer). */
-  hideInMenu?: boolean;
 };
 
 /** Every service on the site, grouped the way the Services menu shows them. */
@@ -32,22 +30,6 @@ export const SERVICE_GROUPS: ServiceGroup[] = [
       { href: "/seo-services/link-building", name: "Link Building", blurb: "Relevant links that build real authority" },
     ],
   },
-  {
-    title: "SEO for online businesses",
-    hideInMenu: true,
-    heading: "SEO for SaaS and online stores.",
-    intro:
-      "The same fix-first approach for businesses that sell online: pages built for buying searches, measured in signups, orders and revenue.",
-    items: [
-      { href: "/seo-services/saas-seo", name: "SaaS SEO", blurb: "Search that turns into trials and demos" },
-      { href: "/seo-services/ecommerce-seo", name: "Ecommerce SEO", blurb: "Category and product pages that sell" },
-      { href: "/seo-services/shopify-seo", name: "Shopify SEO", blurb: "Fix Shopify's quirks and grow sales" },
-    ],
-  },
 ];
 
 export const ALL_SERVICES: Service[] = SERVICE_GROUPS.flatMap((g) => g.items);
-
-/** The groups shown in the header's Services menu. */
-export const MENU_GROUPS = SERVICE_GROUPS.filter((g) => !g.hideInMenu);
-export const MENU_SERVICES: Service[] = MENU_GROUPS.flatMap((g) => g.items);
