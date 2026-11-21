@@ -76,11 +76,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/google-business-profile-categories-for-contractors-story.webp",
       thumbnail: "/assets/blog/google-business-profile-categories-for-contractors-story-640.webp",
-      alt: "A tagged storefront, illustrating the right category.",
+      alt: "A storefront with a location pin, illustrating the right category.",
     },
     graphic: {
-      height: 610,
-      mobileHeight: 588,
+      height: 606,
+      mobileHeight: 586,
       title: "Google Business Profile",
       caption: "A roofing contractor can list a secondary category when it describes a service the company actually offers.",
       steps: [
@@ -103,11 +103,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/how-to-get-more-google-reviews-story.webp",
       thumbnail: "/assets/blog/how-to-get-more-google-reviews-story-640.webp",
-      alt: "An envelope with a star seal, illustrating after the service call.",
+      alt: "Five lime stars inside a glass review bubble, illustrating after the service call.",
     },
     graphic: {
-      height: 562,
-      mobileHeight: 562,
+      height: 574,
+      mobileHeight: 566,
       title: "Google reviews",
       caption: "A direct link makes it easier for customers to leave an honest review.",
       steps: [
@@ -130,11 +130,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/roofing-storm-damage-leads-story.webp",
       thumbnail: "/assets/blog/roofing-storm-damage-leads-story-640.webp",
-      alt: "Hail falling on a roof, illustrating after the hail.",
+      alt: "A roof beneath hailstones, illustrating after the hail.",
     },
     graphic: {
-      height: 446,
-      mobileHeight: 570,
+      height: 460,
+      mobileHeight: 580,
       title: "Google Search",
       caption: "Storm-related searches can signal different needs, from urgent repairs to insurance research.",
       steps: [
@@ -157,11 +157,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/high-value-plumbing-keywords-story.webp",
       thumbnail: "/assets/blog/high-value-plumbing-keywords-story-640.webp",
-      alt: "A pipe wrench and elbow fitting, illustrating plumbing keywords.",
+      alt: "A wrench and pipe fitting, illustrating plumbing keywords.",
     },
     graphic: {
-      height: 552,
-      mobileHeight: 488,
+      height: 556,
+      mobileHeight: 492,
       title: "Plumbing keyword tracker",
       caption: "Example positions show how to track distinct plumbing jobs separately. These are sample rankings.",
       steps: [
@@ -184,11 +184,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/hvac-seo-calendar-story.webp",
       thumbnail: "/assets/blog/hvac-seo-calendar-story-640.webp",
-      alt: "A desk calendar and sun, illustrating before the busy season.",
+      alt: "A seasonal calendar, illustrating before the busy season.",
     },
     graphic: {
-      height: 446,
-      mobileHeight: 570,
+      height: 508,
+      mobileHeight: 580,
       title: "HVAC search calendar",
       caption: "Publish cooling and heating content before seasonal demand peaks.",
       steps: [
@@ -211,11 +211,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/how-much-does-local-seo-cost-story.webp",
       thumbnail: "/assets/blog/how-much-does-local-seo-cost-story-640.webp",
-      alt: "A calculator printing a receipt, illustrating the cost of local seo.",
+      alt: "A calculator, illustrating the cost of local seo.",
     },
     graphic: {
-      height: 406,
-      mobileHeight: 448,
+      height: 412,
+      mobileHeight: 320,
       title: "Break-even estimate",
       caption: "At $900 a month and $300 gross profit per additional booked job, three jobs cover the SEO fee in this example.",
       steps: [
@@ -238,11 +238,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/local-link-building-for-contractors-story.webp",
       thumbnail: "/assets/blog/local-link-building-for-contractors-story-640.webp",
-      alt: "Two interlocking metal links, illustrating local links.",
+      alt: "Interlocking chain links, illustrating local links.",
     },
     graphic: {
-      height: 494,
-      mobileHeight: 412,
+      height: 506,
+      mobileHeight: 474,
       title: "Find local backlink opportunities",
       caption: "Start with real relationships that can send people to your service pages.",
       steps: [
@@ -265,11 +265,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/local-seo-audit-story.webp",
       thumbnail: "/assets/blog/local-seo-audit-story-640.webp",
-      alt: "A pencil and audit checklist, illustrating the one-hour seo audit.",
+      alt: "A series of check marks, illustrating the one-hour seo audit.",
     },
     graphic: {
-      height: 494,
-      mobileHeight: 412,
+      height: 506,
+      mobileHeight: 418,
       title: "Local SEO audit scorecard",
       caption: "Compare the same listing, website and lead-tracking checks across competitors.",
       steps: [
@@ -292,11 +292,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/local-business-schema-for-contractors-story.webp",
       thumbnail: "/assets/blog/local-business-schema-for-contractors-story-640.webp",
-      alt: "A home between code braces, illustrating business schema.",
+      alt: "A house framed by code braces, illustrating business schema.",
     },
     graphic: {
-      height: 570,
-      mobileHeight: 440,
+      height: 574,
+      mobileHeight: 502,
       title: "LocalBusiness structured data",
       caption: "Keep the business details in structured data consistent with what visitors can read on the page.",
       steps: [
@@ -319,11 +319,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/check-if-ai-recommends-your-business-story.webp",
       thumbnail: "/assets/blog/check-if-ai-recommends-your-business-story-640.webp",
-      alt: "Overlapping quotation marks, illustrating who gets mentioned?.",
+      alt: "Two overlapping chat bubbles, illustrating who gets mentioned?.",
     },
     graphic: {
-      height: 786,
-      mobileHeight: 764,
+      height: 784,
+      mobileHeight: 708,
       title: "Track AI recommendations",
       caption: "Record the service, location, date and cited source each time you test an AI recommendation.",
       steps: [
@@ -346,11 +346,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/google-business-profile-suspended-story.webp",
       thumbnail: "/assets/blog/google-business-profile-suspended-story-640.webp",
-      alt: "A folder of appeal evidence, illustrating the appeal file.",
+      alt: "An open evidence folder, illustrating the appeal file.",
     },
     graphic: {
-      height: 696,
-      mobileHeight: 598,
+      height: 716,
+      mobileHeight: 660,
       title: "Google Business Profile appeal",
       caption: "Review the appeal evidence for consistency with your profile before submitting it.",
       steps: [
@@ -373,11 +373,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/local-services-ads-vs-seo-for-contractors-story.webp",
       thumbnail: "/assets/blog/local-services-ads-vs-seo-for-contractors-story-640.webp",
-      alt: "A road branching three ways, illustrating three paths to a lead.",
+      alt: "Three branching arrows, illustrating three paths to a lead.",
     },
     graphic: {
-      height: 610,
-      mobileHeight: 548,
+      height: 606,
+      mobileHeight: 602,
       title: "Where Google leads come from",
       caption: "Identify the search surface where a lead first found you before comparing channel performance.",
       steps: [
@@ -403,8 +403,8 @@ export const POSTS: Post[] = [
       alt: "A septic service truck, illustrating septic service searches.",
     },
     graphic: {
-      height: 644,
-      mobileHeight: 558,
+      height: 634,
+      mobileHeight: 578,
       title: "Search intent for septic services",
       caption: "Separate routine pumping searches from urgent calls and pricing research.",
       steps: [
@@ -427,11 +427,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/get-recommended-by-chatgpt-story.webp",
       thumbnail: "/assets/blog/get-recommended-by-chatgpt-story-640.webp",
-      alt: "A magnifying glass over a book, illustrating an answer worth citing.",
+      alt: "An open book with a citation tab, illustrating an answer worth citing.",
     },
     graphic: {
-      height: 634,
-      mobileHeight: 712,
+      height: 660,
+      mobileHeight: 722,
       title: "An answer-first service page",
       caption: "State the service and location early, then give readers verifiable evidence for the claim.",
       steps: [
@@ -455,11 +455,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/geo-vs-seo-home-services-story.webp",
       thumbnail: "/assets/blog/geo-vs-seo-home-services-story-640.webp",
-      alt: "Two overlapping lenses, illustrating seo & geo.",
+      alt: "Overlapping optical lenses, illustrating seo & geo.",
     },
     graphic: {
-      height: 400,
-      mobileHeight: 570,
+      height: 412,
+      mobileHeight: 638,
       title: "Compare SEO and GEO signals",
       caption: "Measure search clicks, Business Profile call clicks and AI citations as distinct signals.",
       steps: [
@@ -482,11 +482,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/local-seo-checklist-for-contractors-story.webp",
       thumbnail: "/assets/blog/local-seo-checklist-for-contractors-story-640.webp",
-      alt: "An open shop and clock, illustrating before they call.",
+      alt: "A storefront and clock, illustrating before they call.",
     },
     graphic: {
-      height: 738,
-      mobileHeight: 646,
+      height: 730,
+      mobileHeight: 666,
       title: "Google Business Profile checklist",
       caption: "Check the profile details that help customers decide if they can reach you.",
       steps: [
@@ -509,11 +509,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/how-to-rank-in-google-map-pack-story.webp",
       thumbnail: "/assets/blog/how-to-rank-in-google-map-pack-story-640.webp",
-      alt: "A pin on a folded street map, illustrating the map pack.",
+      alt: "A location pin on a folded map, illustrating the map pack.",
     },
     graphic: {
-      height: 624,
-      mobileHeight: 546,
+      height: 630,
+      mobileHeight: 550,
       title: "Google Maps rank grid",
       caption: "This illustrative grid shows how the same query can return different rankings at different locations.",
       steps: [
@@ -536,11 +536,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/technical-seo-for-service-business-websites-story.webp",
       thumbnail: "/assets/blog/technical-seo-for-service-business-websites-story-640.webp",
-      alt: "A loupe over a printed page, illustrating inside url inspection.",
+      alt: "A magnified web page, illustrating inside url inspection.",
     },
     graphic: {
-      height: 588,
-      mobileHeight: 582,
+      height: 602,
+      mobileHeight: 644,
       title: "Search Console URL Inspection",
       caption: "Compare the indexed URL, declared canonical and live fetch when investigating an indexing issue.",
       steps: [
@@ -563,11 +563,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/service-area-pages-that-rank-story.webp",
       thumbnail: "/assets/blog/service-area-pages-that-rank-story-640.webp",
-      alt: "A service van entering town, illustrating where you work.",
+      alt: "A service van beside a town marker, illustrating where you work.",
     },
     graphic: {
-      height: 644,
-      mobileHeight: 884,
+      height: 634,
+      mobileHeight: 846,
       title: "Plan a service area page",
       caption: "A service area page should tell a visitor what you do locally and how to book it.",
       steps: [
@@ -590,11 +590,11 @@ export const POSTS: Post[] = [
     cover: {
       url: "/assets/blog/how-long-does-local-seo-take-story.webp",
       thumbnail: "/assets/blog/how-long-does-local-seo-take-story-640.webp",
-      alt: "A rising line on graph paper, illustrating from search to bookings.",
+      alt: "A rising chart, illustrating from search to bookings.",
     },
     graphic: {
-      height: 772,
-      mobileHeight: 772,
+      height: 784,
+      mobileHeight: 776,
       title: "Search Console + GBP",
       caption: "Read impressions, call clicks and verified bookings together. The example trend is illustrative.",
       steps: [
