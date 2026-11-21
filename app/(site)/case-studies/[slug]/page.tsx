@@ -83,14 +83,14 @@ function PlaybookCaseStudyPage({ p }: { p: Playbook }) {
           </nav>
           <div className="case-detail-grid">
             <div>
-              <span className="eyebrow">{p.trade} SEO case study · {service.name}</span>
+              <span className="eyebrow">90-day {p.trade} SEO case study · {service.name}</span>
               <h1>{p.title}</h1>
               <p className="lead">{p.summary}</p>
               <div className="case-detail-actions">
                 <Link className="btn btn-dark" href={p.website ?? `/local-seo/${p.tradeSlug}`} target={p.website ? "_blank" : undefined} rel={p.website ? "noopener" : undefined}>
-                  {p.website ? "View live website" : `See ${p.trade} SEO service`} <span className="arr">→</span>
+                  {p.website ? "Visit client website" : `Explore ${p.trade} SEO`} <span className="arr">→</span>
                 </Link>
-                <Link className="btn btn-accent" href="/pricing">See {p.plan} plan <span className="arr">→</span></Link>
+                <Link className="btn btn-accent" href="/pricing">View {p.plan} pricing <span className="arr">→</span></Link>
               </div>
             </div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -101,7 +101,7 @@ function PlaybookCaseStudyPage({ p }: { p: Playbook }) {
 
       <section className="sec tight">
         <div className="wrap">
-          <p className="case-context"><b>About this case study.</b> This is a practical 90-day playbook based on a common {p.trade.toLowerCase()} business starting point. It does not claim results for a named client.</p>
+          <p className="case-context"><b>About this case study.</b> This is a practical 90-day playbook based on a common {p.trade.toLowerCase()} business starting point. It shows the strategy and measurement framework without claiming results for a named client.</p>
           <div className="case-plan-grid">
             <article className="case-plan-card">
               <span className="ic" aria-hidden="true">01</span>

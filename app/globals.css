@@ -2202,29 +2202,38 @@ dialog.booking::backdrop {
 
 /* Case studies */
 .case-index-top {
-  padding-top: 104px;
+  padding-top: 92px;
 }
 .case-index-top .crumbs {
-  margin-bottom: 38px;
+  margin-bottom: 30px;
 }
 .playbook-head {
   display: block;
-  max-width: 860px;
-  margin-bottom: 34px;
+  max-width: 900px;
+  margin: 0 auto 30px;
+  text-align: center;
 }
 .playbook-head h2 {
   max-width: 13ch;
 }
 .playbook-head h1 {
-  max-width: 13ch;
-  font-size: clamp(42px, 6vw, 76px);
-  line-height: 0.98;
+  max-width: 12ch;
+  margin-inline: auto;
+  font-size: clamp(40px, 5.4vw, 70px);
+  line-height: 1;
   letter-spacing: -0.055em;
 }
+.playbook-head .eyebrow {
+  justify-content: center;
+}
 .playbook-head p {
-  max-width: 68ch;
-  margin-top: 18px;
+  max-width: 64ch;
+  margin: 16px auto 0;
   justify-self: start;
+}
+.case-index-top .blog-filter {
+  justify-content: center;
+  margin-bottom: 16px;
 }
 .pb-list {
   display: grid;
@@ -2246,7 +2255,7 @@ dialog.booking::backdrop {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 2 / 1;
   object-fit: cover;
   border-bottom: 1px solid var(--line);
 }
@@ -2254,7 +2263,7 @@ dialog.booking::backdrop {
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 22px;
+  padding: 18px 19px 19px;
 }
 .pb:hover {
   border-color: var(--ink);
@@ -2265,7 +2274,7 @@ dialog.booking::backdrop {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px 10px;
+  gap: 6px 8px;
 }
 .pb-pill {
   font-size: 12.5px;
@@ -2280,30 +2289,39 @@ dialog.booking::backdrop {
   color: var(--accent-ink);
 }
 .pb h3 {
-  font-size: clamp(20px, 1.8vw, 25px);
+  font-size: clamp(19px, 1.65vw, 23px);
   line-height: 1.18;
-  margin-top: 12px;
+  margin-top: 10px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 .pb-sum {
   color: var(--ink-2);
-  margin-top: 8px;
-  font-size: 15.5px;
+  margin-top: 7px;
+  font-size: 14.5px;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 .pb-actions {
   display: grid;
   grid-template-columns: 1fr 1.12fr;
   gap: 8px;
   margin-top: auto;
-  padding-top: 20px;
+  padding-top: 16px;
 }
 .pb-actions a {
-  min-height: 44px;
+  min-height: 42px;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 7px;
-  padding: 9px 13px;
+  padding: 8px 12px;
   text-align: center;
   text-decoration: none;
   font-size: 13.5px;
@@ -2330,7 +2348,7 @@ dialog.booking::backdrop {
   background: #2b2d27;
 }
 .case-detail-hero {
-  padding: 108px 0 58px;
+  padding: 96px 0 54px;
   background: var(--bg-2);
 }
 .case-detail-grid {
@@ -2338,7 +2356,7 @@ dialog.booking::backdrop {
   grid-template-columns: minmax(0, 1fr) minmax(360px, 0.82fr);
   gap: 60px;
   align-items: center;
-  margin-top: 44px;
+  margin-top: 36px;
 }
 .case-detail-grid h1 {
   max-width: 15ch;
@@ -2358,10 +2376,10 @@ dialog.booking::backdrop {
   height: auto;
   border-radius: var(--r);
   border: 1px solid var(--line);
-  box-shadow: 0 28px 55px -38px rgba(17, 18, 16, 0.6);
+  box-shadow: 0 24px 52px -38px rgba(17, 18, 16, 0.55);
 }
 .case-context {
-  max-width: 82ch;
+  max-width: none;
   margin: 0 0 24px;
   padding: 15px 18px;
   border-left: 4px solid var(--accent);
@@ -2549,16 +2567,19 @@ dialog.booking::backdrop {
 }
 @media (max-width: 640px) {
   .case-index-top {
-    padding-top: 82px;
+    padding-top: 78px;
   }
   .case-index-top .crumbs {
     margin-bottom: 28px;
   }
   .playbook-head {
-    margin-bottom: 26px;
+    margin-bottom: 24px;
   }
   .playbook-head p {
     margin-top: 12px;
+  }
+  .case-index-top .blog-filter {
+    justify-content: flex-start;
   }
   .pb-list {
     grid-template-columns: 1fr;

@@ -14,7 +14,7 @@ export function PlaybookExplorer() {
 
   return (
     <>
-      <div className="blog-filter" role="toolbar" aria-label="Filter playbooks by service">
+      <div className="blog-filter" role="toolbar" aria-label="Filter case studies by service">
         {(["all", ...PLAYBOOK_SERVICES.map((s) => s.key)] as Filter[]).map((k) => (
           <button
             type="button"
@@ -23,7 +23,7 @@ export function PlaybookExplorer() {
             aria-pressed={filter === k}
             onClick={() => setFilter(k)}
           >
-            {k === "all" ? "All playbooks" : serviceOf(k).name}
+            {k === "all" ? "All case studies" : serviceOf(k).name}
             <span className="n">{count(k)}</span>
           </button>
         ))}
@@ -37,18 +37,18 @@ export function PlaybookExplorer() {
               <img className="pb-cover" src={p.image} alt={p.imageAlt} width={640} height={360} loading="lazy" />
               <div className="pb-content">
               <div className="pb-tags">
-                <span className="tag">Playbook · {p.trade}</span>
+                <span className="tag">{p.trade} case study</span>
                 <span className="pb-pill">{svc.name}</span>
-                <span className="pb-pill plan">{p.plan} plan</span>
+                <span className="pb-pill plan">{p.plan}</span>
               </div>
               <h3>{p.title}</h3>
               <p className="pb-sum">{p.summary}</p>
               <div className="pb-actions">
                 <Link className="pb-site" href={p.website ?? `/local-seo/${p.tradeSlug}`} target={p.website ? "_blank" : undefined} rel={p.website ? "noopener" : undefined}>
-                  {p.website ? "View live website" : "View service page"} <span aria-hidden="true">→</span>
+                  {p.website ? "Client website" : "SEO service"} <span aria-hidden="true">→</span>
                 </Link>
                 <Link className="pb-case" href={`/case-studies/${p.id}`}>
-                  See full case study <span aria-hidden="true">→</span>
+                  Read case study <span aria-hidden="true">→</span>
                 </Link>
               </div>
               </div>
