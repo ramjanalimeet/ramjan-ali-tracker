@@ -1281,10 +1281,6 @@ a.card:hover .go span {
   height: auto;
   border-radius: 12px;
 }
-.article-cover figcaption {
-  margin-top: 6px;
-  font-size: 0.8125rem;
-}
 .article-cta {
   display: flex;
   flex-wrap: wrap;

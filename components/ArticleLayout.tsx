@@ -95,7 +95,6 @@ export function ArticleLayout({
                 fetchPriority="high"
                 decoding="async"
               />
-              <figcaption>AI-generated editorial illustration</figcaption>
             </figure>
             <section aria-labelledby="article-takeaway">
               <h2 id="article-takeaway">What to do first</h2>
