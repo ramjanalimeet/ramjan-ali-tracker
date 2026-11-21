@@ -1,17 +1,15 @@
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
-import { getPost } from "@/lib/posts";
-import { type FaqItem, pageMeta } from "@/lib/site";
+import { getPost, postMeta } from "@/lib/posts";
+import { type FaqItem } from "@/lib/site";
 
 const post = getPost("local-seo-audit")!;
 
-export const metadata = pageMeta({
+export const metadata = postMeta(post, {
   title: "Local SEO Audit: A 60-Minute DIY Guide With Scorecard",
   description:
     "A 60-minute DIY local SEO audit for home service businesses: compare your profile, reviews, website and links with the top 3 map competitors.",
-  path: `/blog/${post.slug}`,
-  type: "article",
 });
 
 const FAQ: FaqItem[] = [

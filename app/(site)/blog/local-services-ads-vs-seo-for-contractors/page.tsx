@@ -1,17 +1,15 @@
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
-import { getPost } from "@/lib/posts";
-import { type FaqItem, pageMeta } from "@/lib/site";
+import { getPost, postMeta } from "@/lib/posts";
+import { type FaqItem } from "@/lib/site";
 
 const post = getPost("local-services-ads-vs-seo-for-contractors")!;
 
-export const metadata = pageMeta({
+export const metadata = postMeta(post, {
   title: "Local Services Ads vs SEO for Contractors: Cost, Leads & Which Wins",
   description:
     "Local Services Ads vs local SEO vs Google Ads for roofers, plumbers, HVAC and septic companies: how each is paid, cost per lead over time and which to choose.",
-  path: `/blog/${post.slug}`,
-  type: "article",
 });
 
 const FAQ: FaqItem[] = [

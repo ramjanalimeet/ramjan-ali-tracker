@@ -1,17 +1,15 @@
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
-import { getPost } from "@/lib/posts";
-import { type FaqItem, pageMeta } from "@/lib/site";
+import { getPost, postMeta } from "@/lib/posts";
+import { type FaqItem } from "@/lib/site";
 
 const post = getPost("hvac-seo-calendar")!;
 
-export const metadata = pageMeta({
+export const metadata = postMeta(post, {
   title: "HVAC SEO Calendar: Month-by-Month Plan for Busy Seasons",
   description:
     "A month-by-month HVAC SEO plan: what to publish, update and fix before summer and winter peaks so your rankings are in place when the calls start.",
-  path: `/blog/${post.slug}`,
-  type: "article",
 });
 
 const FAQ: FaqItem[] = [

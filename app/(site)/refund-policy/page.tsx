@@ -41,7 +41,7 @@ export default function RefundPolicyPage() {
       <h2 id="cancel">How to cancel or pause</h2>
       <ol>
         <li>
-          Email <a href={`mailto:${OWNER.email}`}>{OWNER.email}</a> or send a WhatsApp message saying you want to cancel
+          Email <a href={`mailto:${OWNER.email}`}>{OWNER.email}</a> saying you want to cancel
           or pause.
         </li>
         <li>Give at least one week&apos;s notice before your next billing date.</li>

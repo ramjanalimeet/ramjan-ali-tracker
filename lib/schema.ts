@@ -1,13 +1,14 @@
+import { SITE_URL } from "./site";
 /** Site-wide structured data: the business, the person behind it and the website. Rendered on every page by the layout. */
 export const SITE_SCHEMA = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "ProfessionalService",
-      "@id": "https://ramjan-akash.vercel.app/#business",
+      "@id": `${SITE_URL}/#business`,
       name: "Ramjan Ali Akash, Local SEO & AI Search Visibility",
-      url: "https://ramjan-akash.vercel.app/",
-      image: "https://ramjan-akash.vercel.app/assets/ramjan-ali-akash-portrait.webp",
+      url: `${SITE_URL}/`,
+      image: `${SITE_URL}/assets/ramjan-ali-akash-portrait.webp`,
       email: "mailto:raakash.meet@gmail.com",
       description: "Local SEO and AI search visibility for home service businesses worldwide.",
       address: {
@@ -18,7 +19,7 @@ export const SITE_SCHEMA = {
       areaServed: "Worldwide",
       priceRange: "$349 - $1,250 per month",
       founder: {
-        "@id": "https://ramjan-akash.vercel.app/#person",
+        "@id": `${SITE_URL}/#person`,
       },
       potentialAction: {
         "@type": "ReserveAction",
@@ -45,11 +46,11 @@ export const SITE_SCHEMA = {
     },
     {
       "@type": "Person",
-      "@id": "https://ramjan-akash.vercel.app/#person",
+      "@id": `${SITE_URL}/#person`,
       name: "Ramjan Ali Akash",
       jobTitle: "Local SEO & AI Search Visibility Specialist",
-      image: "https://ramjan-akash.vercel.app/assets/ramjan-ali-akash-portrait.webp",
-      url: "https://ramjan-akash.vercel.app/",
+      image: `${SITE_URL}/assets/ramjan-ali-akash-portrait.webp`,
+      url: `${SITE_URL}/`,
       sameAs: [
         "https://www.youtube.com/@Ramjanali-Akash",
         "https://www.linkedin.com/in/ramjanalimeet/",
@@ -61,12 +62,12 @@ export const SITE_SCHEMA = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://ramjan-akash.vercel.app/#website",
-      url: "https://ramjan-akash.vercel.app/",
+      "@id": `${SITE_URL}/#website`,
+      url: `${SITE_URL}/`,
       name: "Ramjan Ali Akash",
       inLanguage: "en",
       publisher: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
+        "@id": `${SITE_URL}/#business`,
       },
     },
   ],

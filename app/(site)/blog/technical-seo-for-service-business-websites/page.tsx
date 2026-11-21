@@ -1,17 +1,15 @@
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
-import { getPost } from "@/lib/posts";
-import { type FaqItem, pageMeta } from "@/lib/site";
+import { getPost, postMeta } from "@/lib/posts";
+import { type FaqItem } from "@/lib/site";
 
 const post = getPost("technical-seo-for-service-business-websites")!;
 
-export const metadata = pageMeta({
+export const metadata = postMeta(post, {
   title: "Technical SEO for Service Business Websites: Fixes That Matter",
   description:
     "The technical SEO problems most common on contractor websites: indexing, speed, Core Web Vitals, mobile, schema and structure, and how to fix each one.",
-  path: `/blog/${post.slug}`,
-  type: "article",
 });
 
 const FAQ: FaqItem[] = [

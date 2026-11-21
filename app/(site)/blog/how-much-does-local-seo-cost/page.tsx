@@ -1,18 +1,16 @@
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
-import { getPost } from "@/lib/posts";
+import { getPost, postMeta } from "@/lib/posts";
 import { PLANS, fromPrice, usd } from "@/lib/pricing";
-import { type FaqItem, pageMeta } from "@/lib/site";
+import { type FaqItem } from "@/lib/site";
 
 const post = getPost("how-much-does-local-seo-cost")!;
 
-export const metadata = pageMeta({
+export const metadata = postMeta(post, {
   title: "How Much Does Local SEO Cost? Pricing for Home Services",
   description:
     "What local SEO costs for contractors and home service businesses: pricing models, what each budget level gets you, red flags and how to tell if it pays off.",
-  path: `/blog/${post.slug}`,
-  type: "article",
 });
 
 const FAQ: FaqItem[] = [

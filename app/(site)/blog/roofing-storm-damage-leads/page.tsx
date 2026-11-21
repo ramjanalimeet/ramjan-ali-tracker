@@ -1,17 +1,15 @@
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
-import { getPost } from "@/lib/posts";
-import { type FaqItem, pageMeta } from "@/lib/site";
+import { getPost, postMeta } from "@/lib/posts";
+import { type FaqItem } from "@/lib/site";
 
 const post = getPost("roofing-storm-damage-leads")!;
 
-export const metadata = pageMeta({
+export const metadata = postMeta(post, {
   title: "How Roofers Get More Storm Damage Leads From Google",
   description:
     "How roofing companies win hail and wind damage searches after every storm: pages to build before the season, profile moves and what to do in the first 72 hours.",
-  path: `/blog/${post.slug}`,
-  type: "article",
 });
 
 const FAQ: FaqItem[] = [

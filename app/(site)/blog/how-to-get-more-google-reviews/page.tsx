@@ -1,17 +1,15 @@
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
-import { getPost } from "@/lib/posts";
-import { type FaqItem, pageMeta } from "@/lib/site";
+import { getPost, postMeta } from "@/lib/posts";
+import { type FaqItem } from "@/lib/site";
 
 const post = getPost("how-to-get-more-google-reviews")!;
 
-export const metadata = pageMeta({
+export const metadata = postMeta(post, {
   title: "How Contractors Get More Google Reviews (Scripts & Templates)",
   description:
     "A review system for roofers, plumbers, HVAC and home service businesses: when to ask, word-for-word text and email scripts, reply templates and the rules.",
-  path: `/blog/${post.slug}`,
-  type: "article",
 });
 
 const FAQ: FaqItem[] = [

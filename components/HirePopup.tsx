@@ -87,7 +87,7 @@ export function HirePopup({ onClose }: { onClose: () => void }) {
       setStatus("done");
     } catch (err) {
       setStatus("error");
-      setError(`${(err as Error).message}. Please try again, or message me on WhatsApp.`);
+      setError(`${(err as Error).message}. Please try again or use Book Call to schedule a time.`);
     }
   };
 
@@ -202,7 +202,7 @@ export function HirePopup({ onClose }: { onClose: () => void }) {
                     <input required type="email" autoComplete="email" value={f.email} onChange={set("email")} />
                   </label>
                   <label>
-                    Phone / WhatsApp
+                    Phone
                     <input type="tel" autoComplete="tel" value={f.phone} onChange={set("phone")} placeholder="Optional" />
                   </label>
                   <label>

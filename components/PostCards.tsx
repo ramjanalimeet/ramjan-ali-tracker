@@ -6,6 +6,15 @@ import { POSTS, type Post, formatDate, topicOf } from "@/lib/posts";
 export function PostCard({ post, reveal = true }: { post: Post; reveal?: boolean }) {
   return (
     <Link className={reveal ? "card post-card rv" : "card post-card"} href={`/blog/${post.slug}`}>
+      <img
+        className="post-cover"
+        src={post.cover.thumbnail}
+        width={480}
+        height={270}
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
       <span className="tag">
         {topicOf(post.topic).name} · {post.minutes} min read
       </span>

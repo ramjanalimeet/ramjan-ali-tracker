@@ -1,6 +1,6 @@
 # ramjan-ali-tracker
 
-Website for **ramjan-akash.vercel.app** — Local SEO & AI Search Visibility for Home
+Website for **ramjan-ali-tracker.ramjan-ali.workers.dev** — Local SEO & AI Search Visibility for Home
 Service Businesses (Ramjan Ali Akash). Built with Next.js (App Router, TypeScript).
 
 ## Develop
@@ -20,7 +20,7 @@ npm run typecheck
   `case-study-sitemap.xml`, built in `lib/sitemaps.ts` and styled by `public/sitemap.xsl`),
   `opengraph-image.tsx` and `api/lead` (free audit form endpoint)
 - `components/` — shared pieces: `Header`, `Footer`, `CtaBand`, `Faq`, `HowItWorks`,
-  `PricingPlans`, `LeadForm`, `PostCards`, `WhatsAppButton`
+  `PricingPlans`, `HirePopup`, `PostCards`, `MainCta`
 - `lib/site.ts` — site URL, contact links, industries, page metadata helper
 - `lib/pricing.ts` — **every price on the site**; edit plans and prices here
 - `lib/industries/` — industry pages. Only the trades in `CORE_SLUGS` (index.ts) get a

@@ -1,17 +1,15 @@
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
-import { getPost } from "@/lib/posts";
-import { type FaqItem, pageMeta } from "@/lib/site";
+import { getPost, postMeta } from "@/lib/posts";
+import { type FaqItem } from "@/lib/site";
 
 const post = getPost("get-recommended-by-chatgpt")!;
 
-export const metadata = pageMeta({
+export const metadata = postMeta(post, {
   title: "How to Get Recommended by ChatGPT: Home Service Guide",
   description:
     "Where ChatGPT, Gemini, Perplexity and Google AI Overviews get local recommendations, and how to make your home service business one of the names they give.",
-  path: `/blog/${post.slug}`,
-  type: "article",
 });
 
 const FAQ: FaqItem[] = [

@@ -1,17 +1,15 @@
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
-import { getPost } from "@/lib/posts";
-import { type FaqItem, pageMeta } from "@/lib/site";
+import { getPost, postMeta } from "@/lib/posts";
+import { type FaqItem } from "@/lib/site";
 
 const post = getPost("geo-vs-seo-home-services")!;
 
-export const metadata = pageMeta({
+export const metadata = postMeta(post, {
   title: "GEO vs SEO for Home Service Businesses: What Matters",
   description:
     "What generative engine optimization (GEO) really means for roofers, plumbers and HVAC companies, how it differs from local SEO, and where to spend first.",
-  path: `/blog/${post.slug}`,
-  type: "article",
 });
 
 const FAQ: FaqItem[] = [

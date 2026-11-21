@@ -50,7 +50,7 @@ export default function AccessibilityPage() {
       <h2 id="limits">Known limitations</h2>
       <p>
         The booking calendar is provided by Cal.com and its accessibility is controlled by them. If it is difficult to
-        use, you can email or WhatsApp me to arrange a call instead. Some older articles may have tables that scroll
+        use, you can email me to arrange a call instead. Some older articles may have tables that scroll
         sideways on very small screens.
       </p>
 

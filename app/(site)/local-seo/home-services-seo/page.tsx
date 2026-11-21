@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
@@ -39,26 +40,26 @@ const SCHEMA = {
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://ramjan-akash.vercel.app/#website",
-      url: "https://ramjan-akash.vercel.app/",
+      "@id": `${SITE_URL}/#website`,
+      url: `${SITE_URL}/`,
       name: "Ramjan Ali Akash",
       inLanguage: "en",
       publisher: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
+        "@id": `${SITE_URL}/#business`,
       },
     },
     {
       "@type": "WebPage",
-      "@id": "https://ramjan-akash.vercel.app/local-seo/home-services-seo#webpage",
-      url: "https://ramjan-akash.vercel.app/local-seo/home-services-seo",
+      "@id": `${SITE_URL}/local-seo/home-services-seo#webpage`,
+      url: `${SITE_URL}/local-seo/home-services-seo`,
       name: "Home Services SEO | Local SEO for Service Businesses | Ramjan Ali Akash",
       description:
         "Local SEO for home service businesses: electricians, garage door, pest control, landscaping, pool, cleaning and more. Rank in Google Maps. Free audit.",
       isPartOf: {
-        "@id": "https://ramjan-akash.vercel.app/#website",
+        "@id": `${SITE_URL}/#website`,
       },
       about: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
+        "@id": `${SITE_URL}/#business`,
       },
     },
     {
@@ -68,19 +69,19 @@ const SCHEMA = {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://ramjan-akash.vercel.app/",
+          item: `${SITE_URL}/`,
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Industries",
-          item: "https://ramjan-akash.vercel.app/industries",
+          item: `${SITE_URL}/industries`,
         },
         {
           "@type": "ListItem",
           position: 3,
           name: "Home Services SEO",
-          item: "https://ramjan-akash.vercel.app/local-seo/home-services-seo",
+          item: `${SITE_URL}/local-seo/home-services-seo`,
         },
       ],
     },
@@ -89,9 +90,9 @@ const SCHEMA = {
       name: "Home Services SEO",
       description:
         "Local SEO for home service businesses: electricians, garage door, pest control, landscaping, pool, cleaning and more. Rank in Google Maps. Free audit.",
-      url: "https://ramjan-akash.vercel.app/local-seo/home-services-seo",
+      url: `${SITE_URL}/local-seo/home-services-seo`,
       provider: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
+        "@id": `${SITE_URL}/#business`,
       },
       serviceType: "Home Services SEO",
       areaServed: { "@type": "Country", name: "United States" },

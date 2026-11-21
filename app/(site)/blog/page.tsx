@@ -2,7 +2,6 @@ import Link from "next/link";
 import { BlogExplorer } from "@/components/BlogExplorer";
 import { CtaBand } from "@/components/CtaBand";
 import { JsonLd } from "@/components/JsonLd";
-import { AiMock } from "@/components/Mocks";
 import { ALL_INDUSTRIES } from "@/lib/industries";
 import { POSTS, TOPICS, formatDate, topicOf } from "@/lib/posts";
 import { SITE_URL, pageMeta } from "@/lib/site";
@@ -114,7 +113,17 @@ export default function BlogPage() {
                 </span>
               </span>
             </div>
-            <AiMock prompt="Who is the best-reviewed plumber near me?" name="Your Business" />
+            <img
+              className="feature-cover"
+              src={featured.cover.url}
+              srcSet={`${featured.cover.thumbnail} 480w, ${featured.cover.url} 1200w`}
+              sizes="(max-width: 760px) 100vw, 50vw"
+              width={1200}
+              height={675}
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
           </Link>
         </div>
       </section>

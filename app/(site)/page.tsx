@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import Image from "next/image";
 import Link from "next/link";
 import { Testimonials } from "@/components/Testimonials";
@@ -55,16 +56,16 @@ const SCHEMA = {
   "@graph": [
     {
       "@type": "WebPage",
-      "@id": "https://ramjan-akash.vercel.app/#webpage",
-      url: "https://ramjan-akash.vercel.app/",
+      "@id": `${SITE_URL}/#webpage`,
+      url: `${SITE_URL}/`,
       name: "Local SEO & AI Search Visibility for Home Service Businesses | Ramjan Ali Akash",
       description:
         "Local SEO and AI search visibility for home service businesses. Rank in the Google map pack and get recommended by ChatGPT, Gemini and AI Overviews.",
       isPartOf: {
-        "@id": "https://ramjan-akash.vercel.app/#website",
+        "@id": `${SITE_URL}/#website`,
       },
       about: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
+        "@id": `${SITE_URL}/#business`,
       },
     },
     faqSchema(FAQ),

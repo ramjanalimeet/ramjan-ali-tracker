@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
@@ -39,26 +40,26 @@ const SCHEMA = {
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://ramjan-akash.vercel.app/#website",
-      url: "https://ramjan-akash.vercel.app/",
+      "@id": `${SITE_URL}/#website`,
+      url: `${SITE_URL}/`,
       name: "Ramjan Ali Akash",
       inLanguage: "en",
       publisher: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
+        "@id": `${SITE_URL}/#business`,
       },
     },
     {
       "@type": "WebPage",
-      "@id": "https://ramjan-akash.vercel.app/seo-services/seo-audits#webpage",
-      url: "https://ramjan-akash.vercel.app/seo-services/seo-audits",
+      "@id": `${SITE_URL}/seo-services/seo-audits#webpage`,
+      url: `${SITE_URL}/seo-services/seo-audits`,
       name: "Local SEO Audits for Service Businesses | Ramjan Ali Akash",
       description:
         "SEO and AI visibility audits for home service businesses: Google Business Profile, website, citations, reviews and competitor gaps, with a prioritized fix list.",
       isPartOf: {
-        "@id": "https://ramjan-akash.vercel.app/#website",
+        "@id": `${SITE_URL}/#website`,
       },
       about: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
+        "@id": `${SITE_URL}/#business`,
       },
     },
     {
@@ -68,19 +69,19 @@ const SCHEMA = {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://ramjan-akash.vercel.app/",
+          item: `${SITE_URL}/`,
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "SEO Services",
-          item: "https://ramjan-akash.vercel.app/seo-services",
+          item: `${SITE_URL}/seo-services`,
         },
         {
           "@type": "ListItem",
           position: 3,
           name: "SEO Audits",
-          item: "https://ramjan-akash.vercel.app/seo-services/seo-audits",
+          item: `${SITE_URL}/seo-services/seo-audits`,
         },
       ],
     },
@@ -89,9 +90,9 @@ const SCHEMA = {
       name: "SEO Audits",
       description:
         "SEO and AI visibility audits for home service businesses: Google Business Profile, website, citations, reviews and competitor gaps, with a prioritized fix list.",
-      url: "https://ramjan-akash.vercel.app/seo-services/seo-audits",
+      url: `${SITE_URL}/seo-services/seo-audits`,
       provider: {
-        "@id": "https://ramjan-akash.vercel.app/#business",
+        "@id": `${SITE_URL}/#business`,
       },
       serviceType: "SEO Audits",
       areaServed: { "@type": "Country", name: "United States" },

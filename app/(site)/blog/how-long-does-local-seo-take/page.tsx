@@ -1,17 +1,15 @@
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
-import { getPost } from "@/lib/posts";
-import { type FaqItem, pageMeta } from "@/lib/site";
+import { getPost, postMeta } from "@/lib/posts";
+import { type FaqItem } from "@/lib/site";
 
 const post = getPost("how-long-does-local-seo-take")!;
 
-export const metadata = pageMeta({
+export const metadata = postMeta(post, {
   title: "How Long Does Local SEO Take? A Realistic Timeline",
   description:
     "A realistic month-by-month timeline for local SEO results for home service businesses, what speeds it up or slows it down, and how to tell if it is working.",
-  path: `/blog/${post.slug}`,
-  type: "article",
 });
 
 const FAQ: FaqItem[] = [

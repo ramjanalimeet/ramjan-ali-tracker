@@ -1,17 +1,15 @@
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import { Ext } from "@/components/Ext";
-import { getPost } from "@/lib/posts";
-import { type FaqItem, pageMeta } from "@/lib/site";
+import { getPost, postMeta } from "@/lib/posts";
+import { type FaqItem } from "@/lib/site";
 
 const post = getPost("service-area-pages-that-rank")!;
 
-export const metadata = pageMeta({
+export const metadata = postMeta(post, {
   title: "Service Area Pages That Rank (Without Doorway Spam)",
   description:
     "How home service businesses can build location pages for the towns they serve that rank and convert without breaking Google's doorway rules, with a template.",
-  path: `/blog/${post.slug}`,
-  type: "article",
 });
 
 const FAQ: FaqItem[] = [
