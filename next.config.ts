@@ -10,17 +10,27 @@ const SECURITY_HEADERS = [
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
 ];
 
+const PRIVATE_ROBOTS_HEADER = { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" };
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   async headers() {
-    return [{ source: "/:path*", headers: SECURITY_HEADERS }];
+    return [
+      { source: "/:path*", headers: SECURITY_HEADERS },
+      { source: "/admin/:path*", headers: [PRIVATE_ROBOTS_HEADER] },
+      { source: "/api/:path*", headers: [PRIVATE_ROBOTS_HEADER] },
+      {
+        source: "/robots.txt",
+        headers: [{ key: "Cache-Control", value: "public, max-age=3600, s-maxage=86400" }],
+      },
+    ];
   },
   // Retired pages from before the Local SEO & AI search repositioning.
   async redirects() {
     return [
       { source: "/free-seo-audit", destination: "/?book", permanent: true },
       // Booking is a popup on every page now; /book-a-call opens it on the home page.
-      { source: "/book-a-call", destination: "/?book", permanent: false },
+      { source: "/book-a-call", destination: "/?book", permanent: true },
       { source: "/seo-services/content-seo", destination: "/local-seo", permanent: true },
       { source: "/locations/texas", destination: "/locations", permanent: true },
       { source: "/locations/florida", destination: "/locations", permanent: true },

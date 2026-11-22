@@ -100,7 +100,7 @@ export default async function GlobalCityPage({ params }: Props) {
       },
       {
         "@type": "Service",
-        name: `Local SEO in ${city}`,
+        name: `Local SEO in ${city}, ${country.name}`,
         serviceType: "Local SEO and AI visibility",
         description,
         url,
@@ -127,7 +127,7 @@ export default async function GlobalCityPage({ params }: Props) {
           <div className="phero-grid">
             <div>
               <span className="eyebrow">{country.region} · {country.name}</span>
-              <h1>Local SEO in <span className="hl">{city}</span>.</h1>
+              <h1>Local SEO in <span className="hl">{city}, {country.name}</span>.</h1>
               <p className="lead">
                 {titles[index % titles.length]} in {city} with a clearer Google Business Profile, locally relevant
                 pages, trusted reviews and consistent business information across the web.

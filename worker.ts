@@ -23,11 +23,21 @@ function withAssetCache(response: Response, pathname: string, method: string) {
   });
 }
 
+function withPrivateRobots(response: Response) {
+  const headers = new Headers(response.headers);
+  headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
+
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const { pathname } = new URL(request.url);
     if (pathname.startsWith("/api/admin/") || pathname === "/api/lead" || pathname === "/api/hooks/cal") {
-      return store(env).fetch(request);
+      return withPrivateRobots(await store(env).fetch(request));
     }
     const response = await nextHandler.fetch(request, env, ctx);
     return withAssetCache(response, pathname, request.method);
