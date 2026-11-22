@@ -2403,11 +2403,13 @@ dialog.booking::backdrop {
 }
 .case-results-grid {
   display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
 }
 .case-result-card {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(380px, 0.95fr);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
   overflow: hidden;
   background: var(--card);
   border: 1px solid var(--line);
@@ -2415,15 +2417,14 @@ dialog.booking::backdrop {
 }
 .case-result-image {
   display: block;
-  min-height: 100%;
   overflow: hidden;
-  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 .case-result-image img {
   display: block;
   width: 100%;
-  height: 100%;
-  min-height: 440px;
+  height: auto;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   object-position: top center;
   transition: transform 0.45s ease;
@@ -2434,13 +2435,14 @@ dialog.booking::backdrop {
 .case-result-body {
   display: flex;
   flex-direction: column;
-  padding: clamp(26px, 4vw, 48px);
+  flex: 1;
+  padding: 22px;
 }
 .case-result-body h2 {
   margin-top: 15px;
-  font-size: clamp(29px, 3.2vw, 46px);
-  line-height: 1.02;
-  letter-spacing: -0.045em;
+  font-size: clamp(22px, 2vw, 28px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
 }
 .case-result-body > p {
   margin-top: 16px;
@@ -2448,14 +2450,14 @@ dialog.booking::backdrop {
 }
 .case-result-metrics {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 9px;
   list-style: none;
   padding: 0;
   margin: 24px 0 0;
 }
 .case-result-metrics li {
-  padding: 12px;
+  padding: 10px;
   background: var(--bg-2);
   border: 1px solid var(--line);
   border-radius: 12px;
@@ -2465,7 +2467,7 @@ dialog.booking::backdrop {
   display: block;
 }
 .case-result-metrics b {
-  font-size: 19px;
+  font-size: 17px;
 }
 .case-result-metrics span {
   margin-top: 2px;
@@ -2736,18 +2738,12 @@ dialog.booking::backdrop {
   .pb-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .case-results-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .case-detail-grid,
-  .case-plan-grid,
-  .case-result-card {
+  .case-plan-grid {
     grid-template-columns: 1fr;
-  }
-  .case-result-image {
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .case-result-image img {
-    min-height: 0;
-    aspect-ratio: 16 / 9;
   }
   .case-detail-cover {
     max-width: 640px;
@@ -2768,6 +2764,9 @@ dialog.booking::backdrop {
   }
   .case-result-body {
     padding: 24px 20px;
+  }
+  .case-results-grid {
+    grid-template-columns: 1fr;
   }
   .case-result-metrics {
     grid-template-columns: 1fr;
