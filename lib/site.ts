@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-export const SITE_URL = "https://ramjan-ali-tracker.ramjan-ali.workers.dev";
+export const SITE_URL = "https://ramjanaliakash.com";
 export const SITE_NAME = "Ramjan Ali Akash";
 export const EMAIL = "raakash.meet@gmail.com";
 export const BOOKING_URL = "https://cal.com/ramjanalimeet/book-a-call";

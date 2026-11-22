@@ -1,6 +1,6 @@
 # ramjan-ali-tracker
 
-Website for **ramjan-ali-tracker.ramjan-ali.workers.dev** — Local SEO & AI Search Visibility for Home
+Website for **ramjanaliakash.com** — Local SEO & AI Search Visibility for Home
 Service Businesses (Ramjan Ali Akash). Built with Next.js (App Router, TypeScript).
 
 ## Develop

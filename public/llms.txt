@@ -4,22 +4,22 @@
 
 ## Primary pages
 
-- [Home](https://ramjan-ali-tracker.ramjan-ali.workers.dev/): Overview of local SEO and AI visibility services.
-- [Services](https://ramjan-ali-tracker.ramjan-ali.workers.dev/seo-services): All available SEO services.
-- [Local SEO](https://ramjan-ali-tracker.ramjan-ali.workers.dev/local-seo): Local search and Google Maps service.
-- [AI visibility](https://ramjan-ali-tracker.ramjan-ali.workers.dev/ai-search): Visibility in AI-assisted search experiences.
-- [Industries](https://ramjan-ali-tracker.ramjan-ali.workers.dev/industries): Local-business industries served.
-- [Locations](https://ramjan-ali-tracker.ramjan-ali.workers.dev/locations): Country and city service coverage.
-- [Pricing](https://ramjan-ali-tracker.ramjan-ali.workers.dev/pricing): Service plans and pricing.
-- [Case studies](https://ramjan-ali-tracker.ramjan-ali.workers.dev/case-studies): Case-study and playbook library.
-- [Blog](https://ramjan-ali-tracker.ramjan-ali.workers.dev/blog): Local SEO and AI search guides.
-- [About](https://ramjan-ali-tracker.ramjan-ali.workers.dev/about): Information about Ramjan Ali Akash.
-- [Contact](https://ramjan-ali-tracker.ramjan-ali.workers.dev/book-a-call): Project enquiry and call booking.
+- [Home](https://ramjanaliakash.com/): Overview of local SEO and AI visibility services.
+- [Services](https://ramjanaliakash.com/seo-services): All available SEO services.
+- [Local SEO](https://ramjanaliakash.com/local-seo): Local search and Google Maps service.
+- [AI visibility](https://ramjanaliakash.com/ai-search): Visibility in AI-assisted search experiences.
+- [Industries](https://ramjanaliakash.com/industries): Local-business industries served.
+- [Locations](https://ramjanaliakash.com/locations): Country and city service coverage.
+- [Pricing](https://ramjanaliakash.com/pricing): Service plans and pricing.
+- [Case studies](https://ramjanaliakash.com/case-studies): Case-study and playbook library.
+- [Blog](https://ramjanaliakash.com/blog): Local SEO and AI search guides.
+- [About](https://ramjanaliakash.com/about): Information about Ramjan Ali Akash.
+- [Contact](https://ramjanaliakash.com/book-a-call): Project enquiry and call booking.
 
 ## Discovery
 
-- [XML sitemap](https://ramjan-ali-tracker.ramjan-ali.workers.dev/sitemap.xml): Canonical index of published pages.
-- [Robots policy](https://ramjan-ali-tracker.ramjan-ali.workers.dev/robots.txt): Crawler access rules.
+- [XML sitemap](https://ramjanaliakash.com/sitemap.xml): Canonical index of published pages.
+- [Robots policy](https://ramjanaliakash.com/robots.txt): Crawler access rules.
 
 ## Usage notes
 

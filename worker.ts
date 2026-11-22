@@ -8,6 +8,8 @@ import type { Env } from "./worker/store";
 export { AdminStore } from "./worker/store";
 
 const store = (env: Env) => env.ADMIN_STORE.get(env.ADMIN_STORE.idFromName("main"));
+const PRIMARY_HOST = "ramjanaliakash.com";
+const REDIRECT_HOSTS = new Set(["www.ramjanaliakash.com", "ramjan-ali-tracker.ramjan-ali.workers.dev"]);
 
 function withAssetCache(response: Response, pathname: string, method: string) {
   if (method !== "GET" && method !== "HEAD") return response;
@@ -35,7 +37,14 @@ function withPrivateRobots(response: Response) {
 
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-    const { pathname } = new URL(request.url);
+    const url = new URL(request.url);
+    if (REDIRECT_HOSTS.has(url.hostname)) {
+      url.protocol = "https:";
+      url.hostname = PRIMARY_HOST;
+      url.port = "";
+      return Response.redirect(url, 308);
+    }
+    const { pathname } = url;
     if (pathname.startsWith("/api/admin/") || pathname === "/api/lead" || pathname === "/api/hooks/cal") {
       return withPrivateRobots(await store(env).fetch(request));
     }
