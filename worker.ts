@@ -9,13 +9,28 @@ export { AdminStore } from "./worker/store";
 
 const store = (env: Env) => env.ADMIN_STORE.get(env.ADMIN_STORE.idFromName("main"));
 
+function withAssetCache(response: Response, pathname: string, method: string) {
+  if (method !== "GET" && method !== "HEAD") return response;
+  const cacheable =
+    pathname.startsWith("/_next/static/") || pathname === "/_next/image" || pathname.startsWith("/assets/");
+  if (!cacheable || !response.ok) return response;
+  const headers = new Headers(response.headers);
+  headers.set("Cache-Control", "public, max-age=31536000, immutable");
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
+
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const { pathname } = new URL(request.url);
     if (pathname.startsWith("/api/admin/") || pathname === "/api/lead" || pathname === "/api/hooks/cal") {
       return store(env).fetch(request);
     }
-    return nextHandler.fetch(request, env, ctx);
+    const response = await nextHandler.fetch(request, env, ctx);
+    return withAssetCache(response, pathname, request.method);
   },
   async scheduled(_controller: ScheduledController, env: Env, ctx: ExecutionContext): Promise<void> {
     ctx.waitUntil(store(env).tick());

@@ -110,12 +110,13 @@ export default function HomePage() {
           <div className="portrait">
             <div className="frame">
               <Image
-                src="/assets/ramjan-ali-akash-portrait.webp"
+                src="/assets/ramjan-ali-akash-portrait-600.webp"
                 alt="Portrait of Ramjan Ali Akash"
                 width={400}
                 height={432}
                 sizes="(max-width: 960px) 300px, 400px"
                 priority
+                unoptimized
               />
             </div>
             <div className="badge b1">
