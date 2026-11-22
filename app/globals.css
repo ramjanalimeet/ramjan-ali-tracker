@@ -2381,6 +2381,104 @@ dialog.booking::backdrop {
 .pb-case:hover {
   background: #2b2d27;
 }
+.case-index-intro {
+  max-width: 820px;
+  margin: 0 auto 42px;
+  text-align: center;
+}
+.case-index-intro .eyebrow {
+  justify-content: center;
+}
+.case-index-intro h1 {
+  max-width: 12ch;
+  margin-inline: auto;
+  font-size: clamp(46px, 6vw, 78px);
+  line-height: 0.96;
+  letter-spacing: -0.06em;
+}
+.case-index-intro p {
+  max-width: 66ch;
+  margin: 20px auto 0;
+  color: var(--ink-2);
+}
+.case-results-grid {
+  display: grid;
+  gap: 22px;
+}
+.case-result-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(380px, 0.95fr);
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--r) + 4px);
+}
+.case-result-image {
+  display: block;
+  min-height: 100%;
+  overflow: hidden;
+  border-right: 1px solid var(--line);
+}
+.case-result-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 440px;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.45s ease;
+}
+.case-result-image:hover img {
+  transform: scale(1.015);
+}
+.case-result-body {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(26px, 4vw, 48px);
+}
+.case-result-body h2 {
+  margin-top: 15px;
+  font-size: clamp(29px, 3.2vw, 46px);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+.case-result-body > p {
+  margin-top: 16px;
+  color: var(--ink-2);
+}
+.case-result-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+}
+.case-result-metrics li {
+  padding: 12px;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.case-result-metrics b,
+.case-result-metrics span {
+  display: block;
+}
+.case-result-metrics b {
+  font-size: 19px;
+}
+.case-result-metrics span {
+  margin-top: 2px;
+  color: var(--mute);
+  font-size: 12px;
+}
+.case-result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: auto;
+  padding-top: 28px;
+}
 .case-detail-hero {
   padding: 96px 0 54px;
   background: var(--bg-2);
@@ -2411,6 +2509,56 @@ dialog.booking::backdrop {
   border-radius: var(--r);
   border: 1px solid var(--line);
   box-shadow: 0 24px 52px -38px rgba(17, 18, 16, 0.55);
+}
+.case-site-preview {
+  padding-top: 30px;
+}
+.case-site-preview figure {
+  margin: 0;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--r) + 4px);
+  box-shadow: 0 28px 70px -55px rgba(17, 18, 16, 0.65);
+}
+.case-site-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.case-site-preview figcaption {
+  padding: 14px 18px;
+  color: var(--mute);
+  border-top: 1px solid var(--line);
+  font-size: 13.5px;
+}
+.case-impact {
+  background: var(--ink);
+  color: var(--bg);
+}
+.case-impact .sec-head p,
+.case-impact-card p {
+  color: #bdc1b8;
+}
+.case-impact-card {
+  padding: 28px;
+  border: 1px solid #383b35;
+  border-radius: var(--r);
+  background: #191b18;
+}
+.case-impact-card > span {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+}
+.case-impact-card h3 {
+  margin-top: 20px;
+  font-size: clamp(21px, 2.2vw, 28px);
+  line-height: 1.1;
+}
+.case-impact-card p {
+  margin-top: 12px;
 }
 .case-context {
   max-width: none;
@@ -2589,8 +2737,17 @@ dialog.booking::backdrop {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .case-detail-grid,
-  .case-plan-grid {
+  .case-plan-grid,
+  .case-result-card {
     grid-template-columns: 1fr;
+  }
+  .case-result-image {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .case-result-image img {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
   }
   .case-detail-cover {
     max-width: 640px;
@@ -2605,6 +2762,18 @@ dialog.booking::backdrop {
   }
   .case-index-top .crumbs {
     margin-bottom: 28px;
+  }
+  .case-index-intro {
+    margin-bottom: 28px;
+  }
+  .case-result-body {
+    padding: 24px 20px;
+  }
+  .case-result-metrics {
+    grid-template-columns: 1fr;
+  }
+  .case-result-actions {
+    display: grid;
   }
   .playbook-head {
     margin-bottom: 24px;
@@ -2667,7 +2836,7 @@ dialog.booking::backdrop {
 }
 .stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 14px;
 }
 .stat {

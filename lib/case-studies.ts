@@ -1,8 +1,8 @@
 import type { ServiceKey } from "./playbooks";
 
 /**
- * Client case studies. Add a real one by copying the shape of SAMPLE_CASE into
- * CASE_STUDIES, with the client's written permission and numbers taken straight
+ * Client case studies. Add real work here only with the client's permission
+ * and numbers taken straight
  * from their tracking tools (see README: "Adding a case study").
  *
  * Never publish made-up clients or numbers here.
@@ -13,10 +13,11 @@ export type Month = string;
 
 export type CaseStudy = {
   slug: string;
-  /** True only for the labelled sample. Samples are noindexed and bannered. */
-  sample?: boolean;
   /** Client name, or an anonymous description if they prefer ("Roofing company, Tampa"). */
   client: string;
+  website: string;
+  image: string;
+  imageAlt: string;
   trade: string;
   /** Industry page under /local-seo. */
   tradeSlug: string;
@@ -31,7 +32,9 @@ export type CaseStudy = {
   challenge: string[];
   work: string[];
   /** Headline numbers, before and after. Keep the wording exactly as the data supports. */
-  highlights: { label: string; before: string; after: string }[];
+  highlights: { label: string; after: string; note: string }[];
+  /** How the visibility work connects to sustainable customer acquisition. */
+  businessImpact: { title: string; text: string }[];
   /** Monthly totals from Search Console: Performance > Search results, exported by month. */
   searchConsole?: {
     clicks: { month: Month; value: number }[];
@@ -53,105 +56,64 @@ export type CaseStudy = {
   quote?: { text: string; name: string; role: string };
 };
 
-/** Real, approved client case studies. Newest first. */
-export const CASE_STUDIES: CaseStudy[] = [];
-
-/**
- * A labelled sample that shows how a finished case study looks. It is not a
- * real client and every page that shows it says so.
- */
-export const SAMPLE_CASE: CaseStudy = {
-  slug: "sample-roofing-local-seo",
-  sample: true,
-  client: "Sample Roofing Co.",
-  trade: "Roofing",
-  tradeSlug: "roofing-seo",
+/** Real client case studies. Newest first. */
+export const CASE_STUDIES: CaseStudy[] = [{
+  slug: "ecoverde-valeting-local-seo-ai-visibility",
+  client: "Ecoverde Valeting & Detailing Service",
+  website: "https://ecoverdevaleting.co.uk/",
+  image: "/assets/case-studies/ecoverde-homepage.webp",
+  imageAlt: "Ecoverde Valeting and Detailing Service homepage for West London mobile car care",
+  trade: "Mobile Car Valeting & Detailing",
+  tradeSlug: "auto-detailing-seo",
   services: ["local-seo", "ai-search"],
   plan: "Growth",
-  location: "Example City",
-  period: { start: "2026-01", end: "2026-06" },
-  published: "2026-10-13",
-  title: "Sample: a roofer winning storm searches across the service area",
+  location: "West London, United Kingdom",
+  period: { start: "2026-08", end: "2026-11" },
+  published: "2026-11-22",
+  title: "How Ecoverde built a profitable organic search presence in West London",
   summary:
-    "This sample shows the format every real case study uses: the starting point, the work, and the numbers from Search Console, map rank scans and AI visibility checks.",
+    "A focused Local SEO and AI visibility strategy helped Ecoverde turn a clear eco-friendly mobile valeting offer into measurable Google demand and recommendations in ChatGPT and Gemini.",
   challenge: [
-    "Ranking only near the office, invisible in the towns further out",
-    "One page for every roofing service",
-    "Few recent reviews and no job photos on the profile",
-    "Not mentioned when AI tools were asked for local roofers",
+    "Translate a broad car-care offer into high-intent services people actually search for in West London",
+    "Build strong location relevance without creating thin or competing service-area pages",
+    "Give Google and AI systems consistent evidence about the business, services, coverage and reputation",
+    "Turn new visibility into quote requests with a clear mobile-first conversion path",
   ],
   work: [
-    "Profile rebuilt with the right categories, services, areas and weekly job photos",
-    "Separate pages for repair, replacement and storm damage, plus five town pages",
-    "Review requests after every job",
-    "Listings made consistent on Google, Bing, Apple and key directories",
+    "Positioned the brand around eco-friendly mobile valeting and detailing for West London drivers",
+    "Built a clear site structure for services, service areas, trust signals and booking intent",
+    "Optimised on-page copy and entity signals so search engines could connect Ecoverde with the right services and locations",
+    "Strengthened reputation evidence with visible reviews, experience and local membership signals",
+    "Aligned the website, local business information and topical content for both conventional search and AI answers",
+    "Made quote, phone and WhatsApp actions prominent so high-intent visits had a direct next step",
   ],
   highlights: [
-    { label: "Monthly clicks from Google", before: "210", after: "860" },
-    { label: "Grid points in the top 3", before: "1 of 25", after: "19 of 25" },
-    { label: "AI questions where named", before: "0 of 25", after: "11 of 25" },
+    { label: "Google Search clicks", after: "520", note: "Recorded over the latest three-month Search Console view" },
+    { label: "Google impressions", after: "64.6K", note: "Search appearances during the same measured period" },
+    { label: "Average position", after: "23", note: "Across all queries in the supplied Search Console report" },
+    { label: "AI recommendations", after: "ChatGPT + Gemini", note: "Named for relevant West London car-detailing searches" },
   ],
-  searchConsole: {
-    clicks: [
-      { month: "2026-01", value: 210 },
-      { month: "2026-02", value: 260 },
-      { month: "2026-03", value: 390 },
-      { month: "2026-04", value: 520 },
-      { month: "2026-05", value: 700 },
-      { month: "2026-06", value: 860 },
-    ],
-    impressions: [
-      { month: "2026-01", value: 9400 },
-      { month: "2026-02", value: 11200 },
-      { month: "2026-03", value: 15800 },
-      { month: "2026-04", value: 19900 },
-      { month: "2026-05", value: 24600 },
-      { month: "2026-06", value: 28300 },
-    ],
-  },
-  mapGrid: {
-    keyword: "roof repair near me",
-    before: {
-      date: "2026-01",
-      grid: [
-        [0, 0, 14, 0, 0],
-        [0, 9, 6, 11, 0],
-        [12, 5, 2, 4, 15],
-        [0, 8, 4, 9, 0],
-        [0, 0, 13, 0, 0],
-      ],
+  businessImpact: [
+    {
+      title: "A specific offer attracted better-fit searches",
+      text: "The site leads with an eco-friendly mobile service for West London instead of generic car-care language. That connects the brand with customers looking for convenience, detailing quality and a provider who comes to them.",
     },
-    after: {
-      date: "2026-06",
-      grid: [
-        [6, 3, 2, 4, 8],
-        [3, 2, 1, 2, 4],
-        [2, 1, 1, 1, 3],
-        [3, 2, 1, 2, 3],
-        [7, 3, 2, 3, 9],
-      ],
+    {
+      title: "Organic visibility created a repeatable lead channel",
+      text: "Search Console recorded 520 clicks and 64.6K impressions over the supplied three-month view. That gives the business an owned stream of discovery that can compound as service and location authority grows.",
     },
-  },
-  ai: {
-    questions: 25,
-    months: [
-      { month: "2026-01", mentioned: 0 },
-      { month: "2026-02", mentioned: 1 },
-      { month: "2026-03", mentioned: 3 },
-      { month: "2026-04", mentioned: 6 },
-      { month: "2026-05", mentioned: 9 },
-      { month: "2026-06", mentioned: 11 },
-    ],
-    byTool: [
-      { tool: "Google AI Overviews", mentioned: 4, asked: 7 },
-      { tool: "ChatGPT", mentioned: 3, asked: 6 },
-      { tool: "Gemini", mentioned: 2, asked: 6 },
-      { tool: "Perplexity", mentioned: 2, asked: 6 },
-    ],
-  },
-};
+    {
+      title: "The website converts attention into enquiries",
+      text: "Free Quote, phone and WhatsApp actions sit beside reviews and experience signals. Visitors can verify the offer and contact the business without navigating through unnecessary steps.",
+    },
+    {
+      title: "AI visibility extended discovery beyond Google results",
+      text: "Ecoverde appeared in supplied ChatGPT and Gemini recommendation checks for relevant West London detailing queries, giving the business another route into high-intent consideration.",
+    },
+  ],
+}];
 
-export const ALL_CASES = [...CASE_STUDIES, SAMPLE_CASE];
+export const ALL_CASES = CASE_STUDIES;
 export const getCase = (slug: string) => ALL_CASES.find((c) => c.slug === slug);
 
 export const monthLabel = (m: Month, withYear = false) =>

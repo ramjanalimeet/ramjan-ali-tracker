@@ -1,14 +1,12 @@
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { JsonLd } from "@/components/JsonLd";
-import { PlaybookExplorer } from "@/components/PlaybookExplorer";
-import { Sparkline } from "@/components/charts/CaseCharts";
-import { CASE_STUDIES, monthLabel } from "@/lib/case-studies";
+import { CASE_STUDIES } from "@/lib/case-studies";
 import { SITE_URL, pageMeta } from "@/lib/site";
 
-const TITLE = "Case Studies & 90-Day SEO Playbooks | Ramjan Ali Akash";
+const TITLE = "Local SEO & AI Visibility Case Studies | Ramjan Ali Akash";
 const DESCRIPTION =
-  "How local SEO, GEO & AI visibility, technical SEO, on-page, link building and audits run for home service businesses, from starting point to results.";
+  "Real Local SEO and AI visibility case studies showing the strategy, verified search data and business impact behind stronger local customer acquisition.";
 
 export const metadata = pageMeta({ title: TITLE, description: DESCRIPTION, path: "/case-studies" });
 
@@ -68,53 +66,7 @@ export default function CaseStudiesPage() {
   return (
     <>
       <JsonLd data={SCHEMA} />
-      {/* Shown once real, approved client case studies are added to lib/case-studies.ts. */}
-      {CASE_STUDIES.length > 0 && (
-        <section className="sec" id="results">
-          <div className="wrap">
-            <div className="sec-head rv">
-              <div>
-                <span className="eyebrow">Client results</span>
-                <h2>Real results, real data.</h2>
-              </div>
-              <p>
-                {
-                  "Published with each client's permission, with numbers from their own Search Console, map rank scans and AI visibility checks."
-                }
-              </p>
-            </div>
-            <div className="grid g3">
-              {CASE_STUDIES.map((c) => (
-                <Link className="card case-card rv" href={`/case-studies/${c.slug}`} key={c.slug}>
-                  <span className="tag">
-                    {c.sample ? "Sample format · not a real client" : `${c.trade} · ${c.location}`}
-                  </span>
-                  <h3>{c.title}</h3>
-                  {c.searchConsole && (
-                    <div className="case-spark">
-                      <Sparkline values={c.searchConsole.clicks.map((p) => p.value)} />
-                      <span>
-                        Clicks {monthLabel(c.period.start)} to {monthLabel(c.period.end)}
-                      </span>
-                    </div>
-                  )}
-                  <ul className="case-hl">
-                    {c.highlights.slice(0, 2).map((h) => (
-                      <li key={h.label}>
-                        <b>{h.after}</b> {h.label.toLowerCase()} <span>(from {h.before})</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <span className="go">
-                    {c.sample ? "See the sample" : "Read the case study"} <span>→</span>
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-      <section className="sec alt case-index-top" id="playbooks">
+      <section className="sec alt case-index-top" id="results">
         <div className="wrap">
           <nav aria-label="Breadcrumb">
             <ol className="crumbs">
@@ -124,19 +76,46 @@ export default function CaseStudiesPage() {
               <li aria-current="page">Case Studies</li>
             </ol>
           </nav>
-          <div className="sec-head playbook-head rv">
+          <div className="case-index-intro rv">
             <div>
-              <span className="eyebrow">90-day case studies</span>
+              <span className="eyebrow">Verified client work</span>
               <h1>
                 See our <span className="hl">case studies</span>.
               </h1>
             </div>
             <p>
-              Explore practical home-service SEO case studies by trade and service. Each page covers the starting
-              problem, the first 90 days of work and the results that should be measured.
+              Explore the strategy, measurable search visibility and commercial thinking behind real Local SEO and AI
+              visibility work. No demo clients and no invented results.
             </p>
           </div>
-          <PlaybookExplorer />
+          <div className="case-results-grid">
+            {CASE_STUDIES.map((c) => (
+              <article className="case-result-card rv" key={c.slug}>
+                <Link className="case-result-image" href={`/case-studies/${c.slug}`} aria-label={`Read ${c.client} case study`}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={c.image} alt={c.imageAlt} width={1280} height={720} />
+                </Link>
+                <div className="case-result-body">
+                  <span className="tag">{c.trade} · {c.location}</span>
+                  <h2>{c.title}</h2>
+                  <p>{c.summary}</p>
+                  <ul className="case-result-metrics">
+                    {c.highlights.slice(0, 3).map((h) => (
+                      <li key={h.label}><b>{h.after}</b><span>{h.label}</span></li>
+                    ))}
+                  </ul>
+                  <div className="case-result-actions">
+                    <Link className="btn btn-ghost btn-sm" href={c.website} target="_blank" rel="noopener">
+                      Visit website <span className="arr">↗</span>
+                    </Link>
+                    <Link className="btn btn-dark btn-sm" href={`/case-studies/${c.slug}`}>
+                      Read full case study <span className="arr">→</span>
+                    </Link>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 

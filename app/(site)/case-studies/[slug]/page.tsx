@@ -5,39 +5,29 @@ import { AiVisibilityCharts, MapGridCompare, SearchConsoleCharts } from "@/compo
 import { CtaBand } from "@/components/CtaBand";
 import { JsonLd } from "@/components/JsonLd";
 import { ALL_CASES, getCase, monthLabel } from "@/lib/case-studies";
-import { PLAYBOOKS, type Playbook, serviceOf } from "@/lib/playbooks";
+import { type Playbook, serviceOf } from "@/lib/playbooks";
 import { SITE_URL, pageMeta } from "@/lib/site";
 import { MainCta } from "@/components/MainCta";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return [...ALL_CASES.map((c) => c.slug), ...PLAYBOOKS.map((p) => p.id)].map((slug) => ({ slug }));
+  return ALL_CASES.map((c) => ({ slug: c.slug }));
 }
 
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = (await params).slug;
-  const p = PLAYBOOKS.find((item) => item.id === slug);
-  if (p) {
-    return pageMeta({
-      title: `${p.trade} SEO Case Study: 90-Day Plan | Ramjan Ali Akash`,
-      description: `${p.summary} See the starting point, 90-day SEO plan and performance measures for this ${p.trade.toLowerCase()} business.`,
-      path: `/case-studies/${p.id}`,
-      type: "article",
-      image: { url: p.image, width: 640, height: 360, alt: p.imageAlt },
-    });
-  }
   const c = getCase(slug);
   if (!c) return {};
-  const meta = pageMeta({
-    title: c.sample ? "Sample Case Study Format | Ramjan Ali Akash" : `${c.title} | Case Study`,
+  return pageMeta({
+    title: `${c.title} | Local SEO Case Study`,
     description: c.summary.slice(0, 160),
     path: `/case-studies/${c.slug}`,
+    type: "article",
+    image: { url: c.image, width: 1280, height: 720, alt: c.imageAlt },
   });
-  // The sample is a format example, so keep it out of search results.
-  return c.sample ? { ...meta, robots: { index: false, follow: true } } : meta;
 }
 
 function PlaybookCaseStudyPage({ p }: { p: Playbook }) {
@@ -172,18 +162,8 @@ function PlaybookCaseStudyPage({ p }: { p: Playbook }) {
   );
 }
 
-function SampleNote() {
-  return (
-    <p className="sample-note" role="note">
-      <b>Sample data.</b> Illustration of the case study format, not a real client.
-    </p>
-  );
-}
-
 export default async function CaseStudyPage({ params }: Props) {
   const slug = (await params).slug;
-  const playbook = PLAYBOOKS.find((item) => item.id === slug);
-  if (playbook) return <PlaybookCaseStudyPage p={playbook} />;
   const c = getCase(slug);
   if (!c) notFound();
   const url = `${SITE_URL}/case-studies/${c.slug}`;
@@ -201,7 +181,8 @@ export default async function CaseStudyPage({ params }: Props) {
         inLanguage: "en",
         isPartOf: { "@id": `${SITE_URL}/#website` },
         breadcrumb: { "@id": `${url}#breadcrumb` },
-        ...(c.sample ? {} : { mainEntity: { "@id": `${url}#article` } }),
+        primaryImageOfPage: { "@id": `${url}#primaryimage` },
+        mainEntity: { "@id": `${url}#article` },
       },
       {
         "@type": "BreadcrumbList",
@@ -212,38 +193,36 @@ export default async function CaseStudyPage({ params }: Props) {
           { "@type": "ListItem", position: 3, name: c.title, item: url },
         ],
       },
-      ...(c.sample
-        ? []
-        : [
-            {
-              "@type": "Article",
-              "@id": `${url}#article`,
-              headline: c.title,
-              description: c.summary,
-              url,
-              inLanguage: "en",
-              mainEntityOfPage: { "@id": `${url}#webpage` },
-              datePublished: c.published,
-              dateModified: c.published,
-              author: { "@id": `${SITE_URL}/#person` },
-              creator: { "@id": `${SITE_URL}/#person` },
-              publisher: { "@id": `${SITE_URL}/#business` },
-            },
-          ]),
+      {
+        "@type": "Article",
+        "@id": `${url}#article`,
+        headline: c.title,
+        description: c.summary,
+        url,
+        inLanguage: "en",
+        mainEntityOfPage: { "@id": `${url}#webpage` },
+        datePublished: c.published,
+        dateModified: c.published,
+        author: { "@id": `${SITE_URL}/#person` },
+        creator: { "@id": `${SITE_URL}/#person` },
+        publisher: { "@id": `${SITE_URL}/#business` },
+        image: {
+          "@type": "ImageObject",
+          "@id": `${url}#primaryimage`,
+          url: `${SITE_URL}${c.image}`,
+          contentUrl: `${SITE_URL}${c.image}`,
+          width: 1280,
+          height: 720,
+          caption: c.imageAlt,
+        },
+        about: [c.trade, ...c.services.map((service) => serviceOf(service).name), c.location],
+      },
     ],
   };
 
   return (
     <>
       <JsonLd data={schema} />
-      {c.sample && (
-        <div className="sample-banner" role="note">
-          <div className="wrap">
-            <b>This is a sample case study.</b> The business and numbers are illustrations of the format, not a real
-            client. Real case studies are published only with client permission and data from their own tools.
-          </div>
-        </div>
-      )}
       <section className="phero">
         <div className="wrap">
           <nav aria-label="Breadcrumb">
@@ -265,6 +244,9 @@ export default async function CaseStudyPage({ params }: Props) {
               <h1 style={{ fontSize: "clamp(34px,4.4vw,58px)" }}>{c.title}</h1>
               <p className="lead">{c.summary}</p>
               <div className="cta-row">
+                <Link className="btn btn-dark" href={c.website} target="_blank" rel="noopener">
+                  Visit Ecoverde website <span className="arr">↗</span>
+                </Link>
                 <MainCta />
               </div>
             </div>
@@ -301,16 +283,49 @@ export default async function CaseStudyPage({ params }: Props) {
         </div>
       </section>
 
+      <section className="sec tight case-site-preview">
+        <div className="wrap">
+          <figure>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={c.image} alt={c.imageAlt} width={1280} height={720} />
+            <figcaption>Ecoverde&apos;s conversion-focused homepage presents the offer, location, proof and contact actions in one clear view.</figcaption>
+          </figure>
+        </div>
+      </section>
+
       <section className="sec tight">
         <div className="wrap">
-          {c.sample && <SampleNote />}
           <div className="stats">
             {c.highlights.map((h) => (
               <div className="stat rv" key={h.label}>
                 <span className="stat-label">{h.label}</span>
                 <span className="stat-val">{h.after}</span>
-                <span className="stat-from">from {h.before}</span>
+                <span className="stat-from">{h.note}</span>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="sec case-impact">
+        <div className="wrap">
+          <div className="sec-head rv">
+            <div>
+              <span className="eyebrow">Business impact</span>
+              <h2>How visibility became profitable customer acquisition.</h2>
+            </div>
+            <p>
+              Private revenue and margin figures are not published here. The commercial impact is explained using the
+              verified acquisition signals and the conversion path visible on the website.
+            </p>
+          </div>
+          <div className="grid g2">
+            {c.businessImpact.map((item, index) => (
+              <article className="case-impact-card rv" key={item.title}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
             ))}
           </div>
         </div>
@@ -349,7 +364,6 @@ export default async function CaseStudyPage({ params }: Props) {
               </div>
               <p>Monthly totals exported from the client&apos;s Search Console property.</p>
             </div>
-            {c.sample && <SampleNote />}
             <SearchConsoleCharts data={c.searchConsole} />
           </div>
         </section>
@@ -365,7 +379,6 @@ export default async function CaseStudyPage({ params }: Props) {
               </div>
               <p>The same grid of points and the same keyword, scanned before and after. Each number is the rank.</p>
             </div>
-            {c.sample && <SampleNote />}
             <MapGridCompare data={c.mapGrid} />
           </div>
         </section>
@@ -384,7 +397,6 @@ export default async function CaseStudyPage({ params }: Props) {
                 and Perplexity.
               </p>
             </div>
-            {c.sample && <SampleNote />}
             <AiVisibilityCharts data={c.ai} />
           </div>
         </section>
@@ -403,11 +415,7 @@ export default async function CaseStudyPage({ params }: Props) {
         </section>
       )}
 
-      <CtaBand
-        title={
-          c.sample ? "Want a case study like this for your business?" : "Want results like this for your business?"
-        }
-      />
+      <CtaBand title="Want results like this for your business?" />
     </>
   );
 }
