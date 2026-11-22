@@ -38,9 +38,9 @@ function withPrivateRobots(response: Response) {
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
-    if (REDIRECT_HOSTS.has(url.hostname)) {
+    if (url.protocol !== "https:" || REDIRECT_HOSTS.has(url.hostname)) {
       url.protocol = "https:";
-      url.hostname = PRIMARY_HOST;
+      if (REDIRECT_HOSTS.has(url.hostname)) url.hostname = PRIMARY_HOST;
       url.port = "";
       return Response.redirect(url, 308);
     }

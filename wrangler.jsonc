@@ -7,6 +7,9 @@
   "main": "worker.ts",
   "compatibility_date": "2026-11-01",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  // Keep the former hostname available so worker.ts can permanently redirect
+  // every old URL to the matching URL on the new canonical domain.
+  "workers_dev": true,
   // Both hostnames reach this Worker. worker.ts permanently redirects www to
   // the apex so search engines see one canonical production host.
   "routes": [
