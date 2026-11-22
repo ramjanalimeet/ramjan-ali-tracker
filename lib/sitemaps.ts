@@ -1,5 +1,6 @@
 import { CASE_STUDIES } from "./case-studies";
 import { CITIES } from "./cities";
+import { GLOBAL_COUNTRIES, slugifyPlace } from "./global-locations";
 import { ALL_INDUSTRIES } from "./industries";
 import { POSTS } from "./posts";
 import { PLAYBOOKS } from "./playbooks";
@@ -7,7 +8,7 @@ import { ALL_SERVICES } from "./services";
 import { SITE_URL } from "./site";
 
 /** Bump when site-wide page content changes. */
-const SITE_UPDATED = "2026-11-21";
+const SITE_UPDATED = "2026-11-22";
 
 type Entry = { path: string; lastmod: string; images?: string[] };
 export type SitemapName = "page" | "service" | "industry" | "location" | "post" | "case-study";
@@ -37,7 +38,16 @@ const SITEMAPS: Record<SitemapName, () => Entry[]> = {
     ...ALL_SERVICES.map((s) => ({ path: s.href, lastmod: SITE_UPDATED })),
   ],
   industry: () => ALL_INDUSTRIES.map((i) => ({ path: `/local-seo/${i.slug}`, lastmod: SITE_UPDATED })),
-  location: () => CITIES.map((c) => ({ path: `/locations/${c.slug}`, lastmod: SITE_UPDATED })),
+  location: () => [
+    ...CITIES.map((c) => ({ path: `/locations/${c.slug}`, lastmod: SITE_UPDATED })),
+    ...GLOBAL_COUNTRIES.flatMap((country) => [
+      { path: `/locations/countries/${country.slug}`, lastmod: SITE_UPDATED },
+      ...country.cities.map((city) => ({
+        path: `/locations/countries/${country.slug}/${slugifyPlace(city)}`,
+        lastmod: SITE_UPDATED,
+      })),
+    ]),
+  ],
   post: () =>
     POSTS.map((p) => ({
       path: `/blog/${p.slug}`,

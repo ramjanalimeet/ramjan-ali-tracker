@@ -3,10 +3,13 @@ import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 import { ServedGlobe } from "@/components/ServedGlobe";
-import { CITIES, CITY_GROUPS, citiesIn } from "@/lib/cities";
-import { REGIONS } from "@/lib/locations";
+import { CITIES } from "@/lib/cities";
+import { GLOBAL_CITY_COUNT, GLOBAL_COUNTRIES, countriesInRegion } from "@/lib/global-locations";
+import { REGIONS as VISIBILITY_CHANNELS } from "@/lib/locations";
 import { type FaqItem, SITE_URL, faqSchema, pageMeta } from "@/lib/site";
 import { MainCta } from "@/components/MainCta";
+
+const REGIONS = ["North America", "Europe", "Asia", "Oceania", "Africa", "South America"] as const;
 
 const TITLE = "Locations | Local SEO & AI Search for Local Businesses";
 const DESCRIPTION =
@@ -88,8 +91,8 @@ export default function LocationsPage() {
               </h1>
               <p className="lead">
                 A homeowner with a burst pipe searches the same way in Dallas, Toronto, Manchester or Sydney: they check
-                Google, look at the map, maybe ask an AI tool, and call one of the first names they see. I help home
-                local businesses become that name in the markets they serve.
+                Google, look at the map, maybe ask an AI tool, and call one of the first names they see. I help local
+                businesses become that name in the markets they serve.
               </p>
               <div className="cta-row">
                 <MainCta />
@@ -137,7 +140,7 @@ export default function LocationsPage() {
             </p>
           </div>
           <div className="grid g3">
-            {REGIONS.map((r, i) => (
+            {VISIBILITY_CHANNELS.map((r, i) => (
               <div className="card rv" key={r.id}>
                 <span className="ic" aria-hidden="true">
                   {String(i + 1).padStart(2, "0")}
@@ -153,40 +156,40 @@ export default function LocationsPage() {
         <div className="wrap">
           <div className="sec-head rv">
             <div>
-              <span className="eyebrow">{CITIES.length} city pages</span>
-              <h2>Cities I focus on.</h2>
+              <span className="eyebrow">{GLOBAL_CITY_COUNT + CITIES.length} city guides</span>
+              <h2>Choose a country and city.</h2>
             </div>
             <p>
-              Growing, mid-size markets where demand is strong and the map pack is still winnable. Pick a city to see
-              its searches, trades and service areas.
+              Each country hub connects to ten city-specific guides with a distinct URL, primary intent, metadata and
+              related-market links. That keeps location targeting organised without making pages compete with each other.
             </p>
           </div>
-          <nav className="chips ind-jump" aria-label="City groups" style={{ marginTop: 0 }}>
-            {CITY_GROUPS.map((g) => (
-              <a className="chip" href={`#${g.slug}`} key={g.slug}>
-                {g.name} ({citiesIn(g.slug).length})
+          <nav className="chips ind-jump" aria-label="World regions" style={{ marginTop: 0 }}>
+            {REGIONS.map((region) => (
+              <a className="chip" href={`#${region.toLowerCase().replaceAll(" ", "-")}`} key={region}>
+                {region} ({countriesInRegion(region).length})
               </a>
             ))}
           </nav>
         </div>
       </section>
-      {CITY_GROUPS.map((g, gi) => {
-        const list = citiesIn(g.slug);
+      {REGIONS.map((region, gi) => {
+        const list = countriesInRegion(region);
         return (
-          <section className={gi % 2 ? "sec tight alt" : "sec tight"} id={g.slug} key={g.slug}>
+          <section className={gi % 2 ? "sec tight alt" : "sec tight"} id={region.toLowerCase().replaceAll(" ", "-")} key={region}>
             <div className="wrap">
               <div className="ind-head rv">
-                <h2>{g.name}</h2>
-                <span className="muted">{list.length} cities</span>
+                <h2>{region}</h2>
+                <span className="muted">{list.length} countries</span>
               </div>
               <p className="muted rv" style={{ margin: "-10px 0 22px", maxWidth: "70ch" }}>
-                {g.lead}
+                Explore market guidance and ten priority city pages for every country below.
               </p>
               <div className="ind-grid">
-                {list.map((c) => (
-                  <Link className="ind-card rv" href={`/locations/${c.slug}`} key={c.slug}>
-                    <b>{c.place}</b>
-                    <small>{c.card}</small>
+                {list.map((country) => (
+                  <Link className="ind-card rv" href={`/locations/countries/${country.slug}`} key={country.slug}>
+                    <b>{country.name}</b>
+                    <small>{country.cities.length} city guides · {country.sectors.slice(0, 2).join(", ")}</small>
                     <span className="arr" aria-hidden="true">
                       →
                     </span>
