@@ -28,7 +28,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h4>Services</h4>
+            <p className="footer-title">Services</p>
             <ul>
               {ALL_SERVICES.map((sv) => (
                 <li key={sv.href}>
@@ -41,7 +41,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h4>Industries</h4>
+            <p className="footer-title">Industries</p>
             <ul>
               {ALL_INDUSTRIES.slice(0, 6).map((t) => (
                 <li key={t.slug}>
@@ -54,7 +54,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h4>Company</h4>
+            <p className="footer-title">Company</p>
             <ul>
               <li>
                 <Link href="/pricing">Pricing</Link>
@@ -77,7 +77,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h4>Legal</h4>
+            <p className="footer-title">Legal</p>
             <ul>
               {LEGAL_PAGES.map((l) => (
                 <li key={l.href}>

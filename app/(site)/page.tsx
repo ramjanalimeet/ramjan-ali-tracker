@@ -114,7 +114,7 @@ export default function HomePage() {
                 alt="Portrait of Ramjan Ali Akash"
                 width={400}
                 height={432}
-                sizes="(max-width: 960px) 340px, 400px"
+                sizes="(max-width: 960px) 300px, 400px"
                 priority
               />
             </div>

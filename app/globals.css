@@ -4,7 +4,7 @@
   --card: #ffffff;
   --ink: #111210;
   --ink-2: #3c3e39;
-  --mute: #6e716a;
+  --mute: #656861;
   --line: #d9dcd4;
   --accent: #c6f432;
   --accent-ink: #1a2400;
@@ -779,7 +779,7 @@ a.chip:hover {
   font-size: clamp(20px, 2.4vw, 28px);
   font-weight: 600;
   letter-spacing: -0.03em;
-  color: #9a9d95;
+  color: #5f625b;
   white-space: nowrap;
   display: flex;
   align-items: center;
@@ -1401,13 +1401,15 @@ a.card:hover .go span {
   margin-top: 14px;
   max-width: 34ch;
 }
-.ftr h4 {
+.ftr .footer-title {
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: #8d9088;
   font-weight: 600;
+  margin-top: 0;
   margin-bottom: 14px;
+  max-width: none;
 }
 .ftr li {
   margin: 8px 0;
@@ -1460,6 +1462,11 @@ a.card:hover .go span {
   padding-top: 24px;
   font-size: 14px;
   color: #8d9088;
+}
+.fbot a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
 }
 
 /* misc ui */

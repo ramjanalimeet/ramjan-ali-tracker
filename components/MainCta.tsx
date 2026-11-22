@@ -1,5 +1,3 @@
-"use client";
-
 /**
  * The site's main call to action: Book Call (opens the booking popup) and
  * Hire Ramjan Ali (opens the Hire form, rendered by MobileCta). Used in every
@@ -17,9 +15,9 @@ export function MainCta({ onDark = false, short = false }: { onDark?: boolean; s
         </svg>
         Book Call
       </a>
-      <button type="button" className="btn btn-hire" onClick={() => window.dispatchEvent(new Event("open-hire"))}>
+      <a className="btn btn-hire" href="?hire" data-hire>
         {short ? "Hire Ali" : "Hire Ramjan Ali"} <span className="arr">→</span>
-      </button>
+      </a>
     </>
   );
 }

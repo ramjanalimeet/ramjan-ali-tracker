@@ -10,10 +10,8 @@ const BOOKING_PATH = "/book-a-call";
  * Get started) opens it as a popup; there is no separate booking page. Visiting
  * /book-a-call directly redirects to /?book, which opens the popup on arrival.
  *
- * Cal.com is a heavy app, so the calendar is loaded ahead of time: in the
- * background once the page has finished loading (skipped on data-saver or very
- * slow connections), or as soon as someone points at, touches or tabs to a
- * booking link. By the time the popup opens it is usually ready.
+ * Cal.com is loaded only after someone points at, touches, tabs to or clicks a
+ * booking link. This keeps its third-party JavaScript out of the initial page load.
  */
 export function BookingPopup() {
   const dialog = useRef<HTMLDialogElement>(null);
@@ -55,27 +53,9 @@ export function BookingPopup() {
       history.replaceState(history.state, "", `${location.pathname}${query ? `?${query}` : ""}${location.hash}`);
     }
 
-    // Preload the calendar in the background after the page itself has loaded.
-    const conn = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } })
-      .connection;
-    const lowData = conn?.saveData || /(^|-)2g$/.test(conn?.effectiveType ?? "");
-    let timer: number | undefined;
-    const schedule = () => {
-      timer = window.setTimeout(() => {
-        if ("requestIdleCallback" in window) requestIdleCallback(() => setOpened(true), { timeout: 3000 });
-        else setOpened(true);
-      }, 1500);
-    };
-    if (!lowData) {
-      if (document.readyState === "complete") schedule();
-      else addEventListener("load", schedule, { once: true });
-    }
-
     return () => {
       document.removeEventListener("click", onClick, true);
       for (const type of warmEvents) document.removeEventListener(type, warm);
-      removeEventListener("load", schedule);
-      clearTimeout(timer);
     };
   }, []);
 

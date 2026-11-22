@@ -1,11 +1,11 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { LEGAL_PAGES } from "@/lib/legal";
 import { AVATAR } from "@/lib/site";
-import { HirePopup } from "./HirePopup";
-
+const HirePopup = dynamic(() => import("./HirePopup").then((mod) => mod.HirePopup), { ssr: false });
 
 const HIDE_KEY = "mcta-hidden";
 /** Pages where the bar stays out of the way: contact and every legal page. */
@@ -31,16 +31,31 @@ export function MobileCta() {
       /* storage blocked */
     }
     const open = () => setHire(true);
+    const openFromLink = (event: MouseEvent) => {
+      const link = (event.target as Element | null)?.closest?.("[data-hire]");
+      if (!link || event.defaultPrevented || event.button !== 0) return;
+      event.preventDefault();
+      setHire(true);
+    };
+    const params = new URLSearchParams(location.search);
+    if (params.has("hire")) {
+      setHire(true);
+      params.delete("hire");
+      const query = params.toString();
+      history.replaceState(history.state, "", `${location.pathname}${query ? `?${query}` : ""}${location.hash}`);
+    }
     // Show once the visitor scrolls past the hero, and step aside near the footer.
     const onScroll = () => {
       const h = document.documentElement.scrollHeight - innerHeight;
       setOn(scrollY > 500 && scrollY < h - 700);
     };
     window.addEventListener("open-hire", open);
+    document.addEventListener("click", openFromLink, true);
     addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => {
       window.removeEventListener("open-hire", open);
+      document.removeEventListener("click", openFromLink, true);
       removeEventListener("scroll", onScroll);
     };
   }, []);
