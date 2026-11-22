@@ -10,10 +10,11 @@ export type GlobalCountry = {
 
 /**
  * Priority markets requested for international location targeting.
- * Each market has ten distinct city/locality targets. City URLs are nested under
+ * Each market has a researched set of distinct city/locality targets, weighted
+ * toward countries with more major urban centres. City URLs are nested under
  * the country so similarly named places never compete for the same search intent.
  */
-export const GLOBAL_COUNTRIES: GlobalCountry[] = [
+const BASE_COUNTRIES: GlobalCountry[] = [
   {
     slug: "united-states",
     name: "United States",
@@ -312,6 +313,98 @@ export const GLOBAL_COUNTRIES: GlobalCountry[] = [
     cities: ["Bogotá", "Medellín", "Cali", "Barranquilla", "Cartagena", "Bucaramanga", "Pereira", "Santa Marta", "Manizales", "Cúcuta"],
   },
 ];
+
+/**
+ * Additional priority urban markets, weighted toward countries with larger
+ * populations and more distinct commercial centres. Selection was checked
+ * against the US Census city estimates, ONS built-up areas, Statistics Canada
+ * population centres and ABS Significant Urban Areas, then extended to major
+ * regional commercial centres in the other requested markets.
+ */
+const CITY_EXPANSIONS: Partial<Record<string, string[]>> = {
+  "united-states": [
+    "Jacksonville", "Fort Worth", "San Jose", "Columbus", "Charlotte", "Indianapolis", "Seattle", "Denver",
+    "Washington DC", "Nashville", "Oklahoma City", "El Paso", "Boston", "Portland", "Las Vegas", "Detroit",
+    "Memphis", "Louisville", "Baltimore", "Milwaukee", "Albuquerque", "Tucson", "Fresno", "Sacramento", "Mesa",
+    "Kansas City", "Atlanta", "Omaha", "Colorado Springs", "Raleigh", "Long Beach", "Virginia Beach", "Miami",
+    "Oakland", "Minneapolis", "Tulsa", "Bakersfield", "Wichita", "Arlington", "Tampa",
+  ],
+  canada: [
+    "Mississauga", "Brampton", "Surrey", "Laval", "London", "Markham", "Vaughan", "Gatineau", "Saskatoon",
+    "Kitchener", "Longueuil", "Burnaby", "Windsor", "Regina", "Richmond", "Richmond Hill", "Oakville",
+    "Burlington", "Oshawa", "Sherbrooke", "Saguenay", "Lévis", "Barrie", "Kelowna", "Abbotsford",
+  ],
+  "united-kingdom": [
+    "Leicester", "Coventry", "Bradford", "Cardiff", "Belfast", "Newcastle upon Tyne", "Hull", "Stoke-on-Trent",
+    "Southampton", "Plymouth", "Derby", "Wolverhampton", "Swansea", "Aberdeen", "Portsmouth", "York",
+    "Peterborough", "Oxford", "Cambridge", "Reading", "Milton Keynes", "Norwich", "Exeter", "Dundee",
+    "Brighton and Hove",
+  ],
+  ireland: ["Bray", "Navan", "Ennis", "Tralee", "Carlow"],
+  netherlands: [
+    "Haarlem", "Arnhem", "Zaanstad", "Amersfoort", "Apeldoorn", "'s-Hertogenbosch", "Hoofddorp", "Maastricht",
+    "Leiden", "Dordrecht",
+  ],
+  germany: [
+    "Essen", "Dresden", "Hanover", "Nuremberg", "Duisburg", "Bochum", "Wuppertal", "Bielefeld", "Bonn",
+    "Münster", "Karlsruhe", "Mannheim", "Augsburg", "Wiesbaden", "Gelsenkirchen",
+  ],
+  switzerland: ["Thun", "Köniz", "La Chaux-de-Fonds", "Fribourg", "Schaffhausen"],
+  france: [
+    "Rennes", "Reims", "Toulon", "Saint-Étienne", "Le Havre", "Grenoble", "Dijon", "Angers", "Nîmes",
+    "Villeurbanne", "Clermont-Ferrand", "Aix-en-Provence", "Brest", "Tours", "Amiens",
+  ],
+  belgium: ["Aalst", "Hasselt", "Kortrijk", "Ostend", "Sint-Niklaas"],
+  austria: ["Wiener Neustadt", "Steyr", "Feldkirch", "Bregenz", "Leonding"],
+  denmark: ["Herning", "Silkeborg", "Næstved", "Fredericia", "Viborg"],
+  sweden: [
+    "Lund", "Umeå", "Gävle", "Borås", "Södertälje", "Eskilstuna", "Halmstad", "Växjö", "Karlstad", "Sundsvall",
+  ],
+  norway: ["Tønsberg", "Haugesund", "Moss", "Porsgrunn", "Bodø"],
+  finland: ["Kouvola", "Joensuu", "Lappeenranta", "Vaasa", "Hämeenlinna"],
+  spain: [
+    "Córdoba", "Valladolid", "Vigo", "Gijón", "L'Hospitalet de Llobregat", "A Coruña", "Vitoria-Gasteiz",
+    "Granada", "Elche", "Oviedo", "Badalona", "Cartagena", "Terrassa", "Jerez de la Frontera", "Sabadell",
+  ],
+  italy: [
+    "Verona", "Venice", "Messina", "Padua", "Trieste", "Taranto", "Brescia", "Prato", "Parma", "Modena",
+    "Reggio Calabria", "Reggio Emilia", "Perugia", "Ravenna", "Livorno",
+  ],
+  portugal: ["Guimarães", "Viseu", "Vila Nova de Gaia", "Cascais", "Sintra"],
+  "united-arab-emirates": ["Madinat Zayed", "Ruwais", "Dibba Al-Fujairah", "Hatta", "Al Dhaid"],
+  "saudi-arabia": [
+    "Buraidah", "Khamis Mushait", "Hail", "Najran", "Jubail", "Yanbu", "Al Hofuf", "Al Mubarraz", "Jazan", "Sakaka",
+  ],
+  malaysia: [
+    "Subang Jaya", "Iskandar Puteri", "Alor Setar", "Kuala Terengganu", "Miri", "Pasir Gudang", "Seberang Perai",
+    "Taiping", "Kuantan", "Sandakan",
+  ],
+  australia: [
+    "Hobart", "Darwin", "Townsville", "Cairns", "Toowoomba", "Ballarat", "Bendigo", "Albury-Wodonga",
+    "Launceston", "Mackay", "Rockhampton", "Bundaberg", "Coffs Harbour", "Hervey Bay", "Wagga Wagga", "Mildura",
+    "Shepparton", "Port Macquarie", "Gladstone", "Tamworth",
+  ],
+  "new-zealand": ["New Plymouth", "Whangārei", "Invercargill", "Hastings", "Queenstown"],
+  "south-africa": [
+    "Rustenburg", "Pietermaritzburg", "George", "Stellenbosch", "Paarl", "Potchefstroom", "Klerksdorp",
+    "Vereeniging", "Midrand", "Centurion", "Benoni", "Boksburg", "Germiston", "Roodepoort", "Richards Bay",
+  ],
+  chile: ["Chillán", "Iquique", "Osorno", "Coquimbo", "Valdivia"],
+  brazil: [
+    "Goiânia", "Belém", "Guarulhos", "Campinas", "São Luís", "Maceió", "Campo Grande", "São Gonçalo", "Teresina",
+    "João Pessoa", "Nova Iguaçu", "São Bernardo do Campo", "Duque de Caxias", "Natal", "Santo André", "Osasco",
+    "Sorocaba", "Ribeirão Preto", "Uberlândia", "Contagem",
+  ],
+  colombia: [
+    "Ibagué", "Villavicencio", "Valledupar", "Montería", "Pasto", "Neiva", "Armenia", "Sincelejo", "Popayán",
+    "Floridablanca",
+  ],
+};
+
+export const GLOBAL_COUNTRIES: GlobalCountry[] = BASE_COUNTRIES.map((country) => ({
+  ...country,
+  cities: [...country.cities, ...(CITY_EXPANSIONS[country.slug] ?? [])],
+}));
 
 export const slugifyPlace = (value: string) =>
   value

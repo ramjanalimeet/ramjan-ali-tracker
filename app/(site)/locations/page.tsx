@@ -160,7 +160,7 @@ export default function LocationsPage() {
               <h2>Choose a country and city.</h2>
             </div>
             <p>
-              Each country hub connects to ten city-specific guides with a distinct URL, primary intent, metadata and
+              Each country hub connects to city-specific guides with a distinct URL, primary intent, metadata and
               related-market links. That keeps location targeting organised without making pages compete with each other.
             </p>
           </div>
@@ -183,7 +183,7 @@ export default function LocationsPage() {
                 <span className="muted">{list.length} countries</span>
               </div>
               <p className="muted rv" style={{ margin: "-10px 0 22px", maxWidth: "70ch" }}>
-                Explore market guidance and ten priority city pages for every country below.
+                Explore market guidance and priority city pages for every country below.
               </p>
               <div className="ind-grid">
                 {list.map((country) => (
