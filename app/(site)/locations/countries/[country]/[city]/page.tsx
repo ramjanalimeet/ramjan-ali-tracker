@@ -88,6 +88,7 @@ export default async function GlobalCityPage({ params }: Props) {
         description,
         isPartOf: { "@id": `${SITE_URL}/#website` },
         about: { "@id": `${SITE_URL}/#business` },
+        mainEntity: { "@id": `${url}#service` },
       },
       {
         "@type": "BreadcrumbList",
@@ -100,6 +101,7 @@ export default async function GlobalCityPage({ params }: Props) {
       },
       {
         "@type": "Service",
+        "@id": `${url}#service`,
         name: `Local SEO in ${city}, ${country.name}`,
         serviceType: "Local SEO and AI visibility",
         description,

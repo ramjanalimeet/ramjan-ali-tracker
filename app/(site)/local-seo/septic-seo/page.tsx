@@ -86,6 +86,7 @@ const SCHEMA = {
     },
     {
       "@type": "Service",
+      "@id": `${SITE_URL}/local-seo/septic-seo#service`,
       name: "Septic SEO",
       description:
         "Local SEO for septic companies: rank for septic pumping, inspection, repair and installation searches across your rural service area. Free audit.",

@@ -87,6 +87,7 @@ const SCHEMA = {
     },
     {
       "@type": "Service",
+      "@id": `${SITE_URL}/seo-services/on-page-seo#service`,
       name: "On-Page SEO",
       description:
         "On-page SEO for local businesses: page titles, headings, service page copy, internal links and local signals that help each page rank for the right search.",

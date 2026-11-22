@@ -87,6 +87,7 @@ const SCHEMA = {
     },
     {
       "@type": "Service",
+      "@id": `${SITE_URL}/seo-services/seo-audits#service`,
       name: "SEO Audits",
       description:
         "SEO and AI visibility audits for local businesses: Google Business Profile, website, citations, reviews and competitor gaps, with a prioritized fix list.",

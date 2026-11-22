@@ -61,7 +61,9 @@ const SCHEMA = {
     },
     {
       "@type": "Service",
+      "@id": `${SITE_URL}/locations#service`,
       name: "Local SEO & AI Search Visibility",
+      description: DESCRIPTION,
       url: `${SITE_URL}/locations`,
       provider: { "@id": `${SITE_URL}/#business` },
     },

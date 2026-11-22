@@ -86,6 +86,7 @@ const SCHEMA = {
     },
     {
       "@type": "Service",
+      "@id": `${SITE_URL}/local-seo/plumbing-seo#service`,
       name: "Plumbing SEO",
       description:
         "Local SEO for plumbing companies: rank in Google Maps for emergency plumber, water heater, drain and sewer searches in your service area. Free audit.",

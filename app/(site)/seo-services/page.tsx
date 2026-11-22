@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { HowItWorks } from "@/components/HowItWorks";
-import { SERVICE_GROUPS } from "@/lib/services";
+import { ALL_SERVICES, SERVICE_GROUPS } from "@/lib/services";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
@@ -57,6 +57,7 @@ const SCHEMA = {
       about: {
         "@id": `${SITE_URL}/#business`,
       },
+      mainEntity: { "@id": `${SITE_URL}/seo-services#catalog` },
     },
     {
       "@type": "BreadcrumbList",
@@ -74,6 +75,24 @@ const SCHEMA = {
           item: `${SITE_URL}/seo-services`,
         },
       ],
+    },
+    {
+      "@type": "OfferCatalog",
+      "@id": `${SITE_URL}/seo-services#catalog`,
+      name: "SEO services for local businesses",
+      itemListElement: ALL_SERVICES.map((service) => ({
+        "@type": "Offer",
+        url: `${SITE_URL}${service.href}`,
+        seller: { "@id": `${SITE_URL}/#business` },
+        itemOffered: {
+          "@type": "Service",
+          "@id": `${SITE_URL}${service.href}#service`,
+          name: service.name,
+          description: service.blurb,
+          url: `${SITE_URL}${service.href}`,
+          provider: { "@id": `${SITE_URL}/#business` },
+        },
+      })),
     },
     faqSchema(FAQ),
   ],

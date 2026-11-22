@@ -82,6 +82,7 @@ const SCHEMA = {
     },
     {
       "@type": "Service",
+      "@id": `${SITE_URL}/ai-search#service`,
       name: "AI Search Visibility",
       description:
         "Get your local business recommended by ChatGPT, Gemini, Perplexity and Google AI Overviews. AI visibility built on solid local SEO.",

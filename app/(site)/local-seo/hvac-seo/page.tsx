@@ -86,6 +86,7 @@ const SCHEMA = {
     },
     {
       "@type": "Service",
+      "@id": `${SITE_URL}/local-seo/hvac-seo#service`,
       name: "HVAC SEO",
       description:
         "Local SEO for HVAC contractors: rank in Google Maps for AC repair, furnace repair, heat pump and system replacement searches in your area. Free audit.",

@@ -87,6 +87,7 @@ const SCHEMA = {
     },
     {
       "@type": "Service",
+      "@id": `${SITE_URL}/local-seo/home-services-seo#service`,
       name: "Home Services SEO",
       description:
         "Local SEO for home service businesses: electricians, garage door, pest control, landscaping, pool, cleaning and more. Rank in Google Maps. Free audit.",

@@ -84,6 +84,7 @@ export default async function IndustryPage({ params }: Props) {
         description: ind.description,
         isPartOf: { "@id": `${SITE_URL}/#website` },
         about: { "@id": `${SITE_URL}/#business` },
+        mainEntity: { "@id": `${url}#service` },
       },
       {
         "@type": "BreadcrumbList",
@@ -95,6 +96,7 @@ export default async function IndustryPage({ params }: Props) {
       },
       {
         "@type": "Service",
+        "@id": `${url}#service`,
         name: `${ind.short} SEO`,
         serviceType: `Local SEO and AI search visibility for ${ind.name.toLowerCase()}`,
         description: ind.description,

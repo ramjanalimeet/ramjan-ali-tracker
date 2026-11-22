@@ -87,6 +87,7 @@ const SCHEMA = {
     },
     {
       "@type": "Service",
+      "@id": `${SITE_URL}/seo-services/link-building#service`,
       name: "Link Building",
       description:
         "Local link building for local businesses: relevant links from associations, sponsorships, press, partners and citations. No spam or private blog networks.",

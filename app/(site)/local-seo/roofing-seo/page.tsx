@@ -86,6 +86,7 @@ const SCHEMA = {
     },
     {
       "@type": "Service",
+      "@id": `${SITE_URL}/local-seo/roofing-seo#service`,
       name: "Roofing SEO",
       description:
         "Local SEO for roofing companies: rank in the Google map pack for roof repair, roof replacement and storm damage searches in your service area. Free audit.",

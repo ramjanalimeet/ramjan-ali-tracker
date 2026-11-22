@@ -83,6 +83,7 @@ const SCHEMA = {
     },
     {
       "@type": "Service",
+      "@id": `${SITE_URL}/local-seo#service`,
       name: "Local SEO",
       description:
         "Local SEO for local businesses: Google Business Profile, map rankings, reviews, citations and pages that also support AI search answers.",

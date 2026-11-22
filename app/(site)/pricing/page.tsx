@@ -49,8 +49,10 @@ const SCHEMA = {
       url: `${SITE_URL}/pricing`,
       name: TITLE,
       description: DESCRIPTION,
+      inLanguage: "en",
       isPartOf: { "@id": `${SITE_URL}/#website` },
       about: { "@id": `${SITE_URL}/#business` },
+      mainEntity: { "@id": `${SITE_URL}/pricing#service` },
     },
     {
       "@type": "BreadcrumbList",
@@ -61,14 +63,18 @@ const SCHEMA = {
     },
     {
       "@type": "Service",
+      "@id": `${SITE_URL}/pricing#service`,
       name: "Local SEO & GEO / AI Visibility",
+      description: DESCRIPTION,
       url: `${SITE_URL}/pricing`,
       provider: { "@id": `${SITE_URL}/#business` },
       offers: PLANS.map((p) => ({
         "@type": "Offer",
+        url: `${SITE_URL}/pricing`,
         name: p.name,
         price: p.price,
         priceCurrency: "USD",
+        seller: { "@id": `${SITE_URL}/#business` },
         priceSpecification: {
           "@type": "UnitPriceSpecification",
           price: p.price,

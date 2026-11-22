@@ -87,6 +87,7 @@ const SCHEMA = {
     },
     {
       "@type": "Service",
+      "@id": `${SITE_URL}/seo-services/technical-seo#service`,
       name: "Technical SEO",
       description:
         "Technical SEO for local service businesses: site speed, Core Web Vitals, indexing, site structure and local business schema. Fixes that help rankings.",
