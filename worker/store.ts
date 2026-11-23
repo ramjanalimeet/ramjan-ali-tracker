@@ -859,7 +859,10 @@ export class AdminStore extends DurableObject<Env> {
       location?: string;
       rescheduleUid?: string;
     };
-    if (evt.triggerEvent === "PING" || !p) return json({ ok: true });
+    if (evt.triggerEvent === "PING") {
+      this.setSetting("cal_webhook_received", String(now()));
+      return json({ ok: true });
+    }
     const att = p.attendees?.[0] ?? {};
     const trigger = evt.triggerEvent || "BOOKING_CREATED";
     const status = /CANCEL/.test(trigger) ? "cancelled" : /RESCHEDULE/.test(trigger) ? "rescheduled" : "booked";
@@ -907,6 +910,7 @@ export class AdminStore extends DurableObject<Env> {
       extId: `cal:${bUid}:${trigger}:${p.startTime}`,
       url: meeting,
     });
+    this.setSetting("cal_webhook_received", String(now()));
     this.log("info", `Booking ${status}: ${att.name || att.email || ""} (${when})`);
     return json({ ok: true });
   }
@@ -940,6 +944,7 @@ export class AdminStore extends DurableObject<Env> {
       timezone: this.setting("timezone") || "Asia/Dhaka",
       anthropicKeySet: !!this.setting("anthropic_key"),
       calSecretSet: !!this.setting("cal_secret"),
+      calConnected: Boolean(this.setting("cal_webhook_received") || this.one("SELECT 1 FROM bookings LIMIT 1")),
       passwordFromEnv: !!this.env.ADMIN_PASSWORD,
       calWebhookUrl: `${origin}/api/hooks/cal?key=${key}`,
       leadNotifyEmail: leadNotify.email,
