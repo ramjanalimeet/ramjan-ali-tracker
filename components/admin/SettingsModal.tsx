@@ -289,6 +289,7 @@ function WebsiteSettings({ ctx }: { ctx: AppCtx }) {
   const [secret, setSecret] = useState("");
   const [notify, setNotify] = useState({ email: "", account: "" });
   const [savingNotify, setSavingNotify] = useState(false);
+  const [testingNotify, setTestingNotify] = useState(false);
   useEffect(() => {
     if (s) setNotify({ email: s.leadNotifyEmail, account: s.leadNotifyAccount });
   }, [s]);
@@ -360,14 +361,32 @@ function WebsiteSettings({ ctx }: { ctx: AppCtx }) {
           <input type="email" value={notify.email} onChange={(e) => setNotify({ ...notify, email: e.target.value })} />
         </Field>
         <Field label="Send with" hint="Choose a connected email account in Settings → Email accounts.">
-          <select required={Boolean(notify.email)} value={notify.account} onChange={(e) => setNotify({ ...notify, account: e.target.value })}>
-            <option value="">Select an email account</option>
+          <select value={notify.account} onChange={(e) => setNotify({ ...notify, account: e.target.value })}>
+            <option value="">Automatic (use a connected sender)</option>
             {ctx.accounts.filter((account) => account.status === "ok").map((account) => (
               <option key={account.id} value={account.id}>{account.label}</option>
             ))}
           </select>
         </Field>
-        <button className="adm-btn primary" disabled={savingNotify}>{savingNotify ? "Saving…" : "Save notifications"}</button>
+        {s.leadNotifyEmail && (
+          <p className="adm-hint" role="status">
+            {s.leadNotifySender ? `Sending from ${s.leadNotifySender} to ${s.leadNotifyEmail}.` : "Connect an email account to deliver queued notifications."}
+          </p>
+        )}
+        <div className="adm-copy">
+          <button className="adm-btn primary" disabled={savingNotify || testingNotify}>{savingNotify ? "Saving…" : "Save notifications"}</button>
+          <button type="button" className="adm-btn" disabled={!s.leadNotifySender || savingNotify || testingNotify || notify.email !== s.leadNotifyEmail || notify.account !== s.leadNotifyAccount} onClick={async () => {
+            setTestingNotify(true);
+            try {
+              await api("settings/test-lead-notification", { body: {} });
+              ctx.toast(`Test sent to ${s.leadNotifyEmail}`);
+            } catch (error) {
+              ctx.toast((error as Error).message, "error");
+            } finally {
+              setTestingNotify(false);
+            }
+          }}>{testingNotify ? "Sending…" : "Send test email"}</button>
+        </div>
       </form>
       <CopyField value={s.leadEndpoint} />
       <p className="adm-hint">Works with a plain HTML form (below), JavaScript <code>fetch</code> with JSON, or tools like Zapier, Tally and Typeform via webhook.</p>

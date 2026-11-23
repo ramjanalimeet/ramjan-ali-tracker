@@ -335,6 +335,23 @@ export class AdminStore extends DurableObject<Env> {
       });
     }
 
+    if (res === "settings" && id === "test-lead-notification" && m === "POST") {
+      const { email, account } = this.leadNotificationSettings();
+      const sender = this.emailAccounts().find((a) => a.id === account && a.status === "ok");
+      if (!email || !sender) return err("Save a notification recipient and connect a sending account first", 400);
+      try {
+        await sendMail(sender.cfg, {
+          to: email,
+          subject: "Website form notification test",
+          body: "Your website dashboard sent this test to check delivery of new form notifications.",
+        });
+        return json({ ok: true });
+      } catch {
+        this.log("warn", "Test form notification failed. Check the connected sender in Email accounts.");
+        return err("The mail provider rejected the test. Check the sending account in Email accounts.", 502);
+      }
+    }
+
     if (res === "settings") {
       if (m === "GET") return json(this.settingsOut(url));
       if (m === "POST") return json(await this.saveSettings(await this.body(req), url));
@@ -626,7 +643,7 @@ export class AdminStore extends DurableObject<Env> {
     }));
   }
 
-  private async reply(id: string, b: { body?: string; accountId?: string }) {
+  private async reply(id: string, b: { body?: string; subject?: string; accountId?: string }) {
     const m = this.one<{ channel: string; account_id: string; from_addr: string; from_name: string; subject: string; message_id: string; contact_id: string }>(
       "SELECT * FROM messages WHERE id=? AND direction='in' AND channel IN ('email','form','booking')",
       id,
@@ -637,7 +654,8 @@ export class AdminStore extends DurableObject<Env> {
     if (!EMAIL_ADDRESS.test(m.from_addr)) throw new Error("No email address is available for this conversation");
     const acc = this.emailAccounts().find((a) => a.id === (b.accountId || m.account_id)) ?? this.emailAccounts()[0];
     if (!acc) throw new Error("Add an email account in Settings first");
-    const subject = m.subject ? (/^re:/i.test(m.subject) ? m.subject : `Re: ${m.subject}`) : "Re: your message";
+    const enteredSubject = String(b.subject ?? "").replace(/[\r\n]+/g, " ").trim().slice(0, 200);
+    const subject = enteredSubject || (m.subject ? (/^re:/i.test(m.subject) ? m.subject : `Re: ${m.subject}`) : "Re: your message");
     const messageId = await sendMail(acc.cfg, { to: m.from_addr, toName: m.from_name, subject, body: text, inReplyTo: m.message_id || undefined });
     this.recordOut({ accountId: acc.id, contactId: m.contact_id, to: m.from_addr, subject, body: text, messageId, from: acc.cfg.email });
     this.sql.exec("UPDATE messages SET read=1 WHERE id=?", id);
@@ -760,9 +778,9 @@ export class AdminStore extends DurableObject<Env> {
         body,
         meta: { page: req.headers.get("referer") || "", fields: data },
       });
-      if (recipient && sender) {
+      if (recipient) {
         this.sql.exec("INSERT INTO lead_notifications(id,recipient,account_id,reply_to,subject,body,due_at) VALUES(?,?,?,?,?,?,?)",
-          uid("lead_"), recipient, sender, EMAIL_ADDRESS.test(email) ? email : null, "New website form submission",
+          uid("lead_"), recipient, sender ?? "", EMAIL_ADDRESS.test(email) ? email : null, "New website form submission",
           [`Form: ${formName}`, name && `Name: ${name}`, email && `Email: ${email}`, "", body].filter(Boolean).join("\n"),
           now());
       }
@@ -782,8 +800,13 @@ export class AdminStore extends DurableObject<Env> {
         "SELECT * FROM lead_notifications WHERE due_at<=? AND attempts<5 ORDER BY due_at LIMIT 10", now(),
       )) {
         try {
-          const sender = accounts.find((a) => a.id === n.account_id);
-          if (!sender) throw new Error("Notification sending account is unavailable");
+          const preferred = accounts.find((a) => a.id === n.account_id && a.status === "ok");
+          const selectedId = preferred?.id || this.leadNotificationSettings().account;
+          const sender = accounts.find((a) => a.id === selectedId && a.status === "ok");
+          if (!sender) {
+            this.sql.exec("UPDATE lead_notifications SET due_at=? WHERE id=?", now() + 300_000, n.id);
+            continue;
+          }
           await sendMail(sender.cfg, { to: n.recipient, replyTo: n.reply_to ?? undefined, subject: n.subject, body: n.body });
           this.sql.exec("DELETE FROM lead_notifications WHERE id=?", n.id);
         } catch {
@@ -877,7 +900,8 @@ export class AdminStore extends DurableObject<Env> {
   private leadNotificationSettings() {
     const email = this.setting("lead_notify_email") ?? this.env.LEAD_NOTIFY_EMAIL ?? "";
     const explicitAccount = this.setting("lead_notify_account");
-    const account = explicitAccount ?? (email ? this.emailAccounts().find((a) => a.status === "ok" && a.cfg.email.toLowerCase() === email.toLowerCase())?.id : undefined);
+    const connected = email ? this.emailAccounts().filter((a) => a.status === "ok") : [];
+    const account = explicitAccount || connected.find((a) => a.cfg.email.toLowerCase() === email.toLowerCase())?.id || connected[0]?.id;
     return { email, account };
   }
 
@@ -892,7 +916,8 @@ export class AdminStore extends DurableObject<Env> {
       passwordFromEnv: !!this.env.ADMIN_PASSWORD,
       calWebhookUrl: `${origin}/api/hooks/cal?key=${key}`,
       leadNotifyEmail: leadNotify.email,
-      leadNotifyAccount: leadNotify.account || "",
+      leadNotifyAccount: this.setting("lead_notify_account") || "",
+      leadNotifySender: this.emailAccounts().find((a) => a.id === leadNotify.account && a.status === "ok")?.cfg.email || "",
       leadEndpoint: `${origin}/api/lead`,
       unsubscribeLine: this.setting("unsubscribe_line") ?? "If this isn't relevant, just reply \"no thanks\" and I won't email again.",
     };
@@ -902,8 +927,8 @@ export class AdminStore extends DurableObject<Env> {
     if (typeof b.leadNotifyEmail === "string") {
       const email = b.leadNotifyEmail.trim();
       const account = b.leadNotifyAccount || "";
-      if (email && (!EMAIL_ADDRESS.test(email) || !this.emailAccounts().some((a) => a.id === account && a.status === "ok")))
-        throw new Error("Enter a valid recipient and select a connected email account");
+      if (email && (!EMAIL_ADDRESS.test(email) || (account && !this.emailAccounts().some((a) => a.id === account && a.status === "ok"))))
+        throw new Error("Enter a valid recipient and choose a connected sender or Automatic");
       this.setSetting("lead_notify_email", email);
       this.setSetting("lead_notify_account", email ? account : "");
     }
