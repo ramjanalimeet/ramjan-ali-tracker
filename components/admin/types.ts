@@ -98,7 +98,9 @@ export interface Settings {
   passwordFromEnv: boolean;
   calWebhookUrl: string;
   leadEndpoint: string;
+  leadNotifyEmail: string;
+  leadNotifyAccount: string;
   unsubscribeLine: string;
 }
 
-export type View = "overview" | "inbox" | "calendar" | "email" | "contacts";
+export type View = "overview" | "inbox" | "blogs" | "email" | "contacts";

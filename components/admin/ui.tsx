@@ -63,6 +63,9 @@ const P: Record<string, ReactNode> = {
       <path d="M5.5 5h13L21 13v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-6z" />
     </>
   ),
+  book: (
+    <path d="M4 5h7a3 3 0 0 1 3 3v12a4 4 0 0 0-4-3H4zM14 8a3 3 0 0 1 3-3h3v12h-2a4 4 0 0 0-4 3" />
+  ),
   calendar: (
     <>
       <rect x="3.5" y="5" width="17" height="15.5" rx="2" />

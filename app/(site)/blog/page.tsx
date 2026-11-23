@@ -4,6 +4,7 @@ import { CtaBand } from "@/components/CtaBand";
 import { JsonLd } from "@/components/JsonLd";
 import { ALL_INDUSTRIES } from "@/lib/industries";
 import { POSTS, TOPICS, formatDate, topicOf } from "@/lib/posts";
+import { publishedBlogs } from "@/lib/published-blogs";
 import { SITE_URL, pageMeta } from "@/lib/site";
 
 const TITLE = "Local SEO & AI Search Blog for Home Service Businesses";
@@ -53,7 +54,10 @@ const SCHEMA = {
   ],
 };
 
-export default function BlogPage() {
+export const dynamic = "force-dynamic";
+
+export default async function BlogPage() {
+  const published = await publishedBlogs();
   const topic = topicOf(featured.topic);
   return (
     <>
@@ -106,6 +110,21 @@ export default function BlogPage() {
         </div>
       </section>
 
+      {published.length > 0 && (
+        <section className="sec tight">
+          <div className="wrap">
+            <h2>Latest articles</h2>
+            <ul>
+              {published.map((post) => (
+                <li key={post.slug}>
+                  <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                  {post.excerpt && <p>{post.excerpt}</p>}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
       <section className="sec tight">
         <div className="wrap">
           <Link className="feature rv" href={`/blog/${featured.slug}`}>

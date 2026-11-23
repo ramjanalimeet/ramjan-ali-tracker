@@ -72,9 +72,6 @@ export function OverviewView({ ctx }: { ctx: AppCtx }) {
         <section className="adm-card">
           <div className="adm-card-head">
             <h2>Upcoming calls</h2>
-            <button className="adm-link" onClick={() => ctx.go("calendar")}>
-              Calendar
-            </button>
           </div>
           {o.upcomingBookings.length ? (
             <ul className="adm-list">
