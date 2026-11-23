@@ -14,6 +14,7 @@ import { api, Icon } from "./ui";
 const NAV: { id: View; label: string; icon: string }[] = [
   { id: "overview", label: "Overview", icon: "home" },
   { id: "inbox", label: "Inbox", icon: "inbox" },
+  { id: "comments", label: "Comments", icon: "mail" },
   { id: "calendar", label: "Calendar", icon: "calendar" },
   { id: "social", label: "Social posts", icon: "share" },
   { id: "email", label: "Email", icon: "mail" },
@@ -193,7 +194,8 @@ function Shell() {
         </div>
         <div className="adm-page">
           {view === "overview" && <OverviewView ctx={ctx} />}
-          {view === "inbox" && <InboxView ctx={ctx} />}
+          {view === "inbox" && <InboxView key="inbox" ctx={ctx} />}
+          {view === "comments" && <InboxView key="comments" ctx={ctx} comments />}
           {view === "calendar" && <CalendarView ctx={ctx} />}
           {view === "social" && <SocialView ctx={ctx} />}
           {view === "email" && <EmailView ctx={ctx} />}

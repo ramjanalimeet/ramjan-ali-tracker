@@ -42,7 +42,7 @@ export default {
       url.protocol = "https:";
       if (REDIRECT_HOSTS.has(url.hostname)) url.hostname = PRIMARY_HOST;
       url.port = "";
-      return Response.redirect(url, 308);
+      return Response.redirect(url.toString(), 308);
     }
     const { pathname } = url;
     if (pathname.startsWith("/api/admin/") || pathname === "/api/lead" || pathname === "/api/hooks/cal") {

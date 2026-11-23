@@ -11,6 +11,9 @@ export interface SocialConfig {
   accessSecret?: string;
   // LinkedIn / Facebook / Medium
   token?: string;
+  refreshToken?: string;
+  tokenExpiresAt?: number;
+  messenger?: boolean;
   pageId?: string; // Facebook Page id
   authorUrn?: string; // LinkedIn urn:li:person:xxx or urn:li:organization:xxx
   userId?: string; // Medium user id / X user id (filled automatically)
@@ -71,12 +74,12 @@ async function oauth1(c: SocialConfig, method: string, url: string, query: Recor
 }
 
 async function xFetch(c: SocialConfig, method: string, url: string, query: Record<string, string> = {}, body?: unknown) {
-  if (!c.apiKey || !c.apiSecret || !c.accessToken || !c.accessSecret) throw new Error("X keys are incomplete");
+  if (!c.token && (!c.apiKey || !c.apiSecret || !c.accessToken || !c.accessSecret)) throw new Error("X keys are incomplete");
   const qs = new URLSearchParams(query).toString();
   const res = await fetch(url + (qs ? `?${qs}` : ""), {
     method,
     headers: {
-      authorization: await oauth1(c, method, url, query),
+      authorization: c.token ? `Bearer ${c.token}` : await oauth1(c, method, url, query),
       ...(body ? { "content-type": "application/json" } : {}),
     },
     body: body ? JSON.stringify(body) : undefined,
@@ -95,7 +98,104 @@ async function api(url: string, init: RequestInit, label: string) {
   return text ? JSON.parse(text) : {};
 }
 
+export const SOCIAL_OAUTH = {
+  twitter: {
+    authorize: "https://x.com/i/oauth2/authorize",
+    token: "https://api.x.com/2/oauth2/token",
+    scope: "tweet.read tweet.write users.read offline.access",
+  },
+  linkedin: {
+    authorize: "https://www.linkedin.com/oauth/v2/authorization",
+    token: "https://www.linkedin.com/oauth/v2/accessToken",
+    scope: "openid profile w_member_social",
+  },
+};
+
+export type OAuthPlatform = keyof typeof SOCIAL_OAUTH;
+
+export async function exchangeSocialToken(
+  platform: OAuthPlatform, clientId: string, clientSecret: string, params: Record<string, string>,
+): Promise<SocialConfig> {
+  const body = new URLSearchParams(params);
+  const headers: Record<string, string> = {};
+  if (platform === "twitter") headers.Authorization = `Basic ${btoa(`${clientId}:${clientSecret}`)}`;
+  else {
+    body.set("client_id", clientId);
+    body.set("client_secret", clientSecret);
+  }
+  const response = await fetch(SOCIAL_OAUTH[platform].token, { method: "POST", headers, body });
+  if (!response.ok) throw new Error("Authorization expired or was refused. Reconnect the account in Settings.");
+  const token = await response.json<{ access_token?: string; refresh_token?: string; expires_in?: number }>();
+  if (!token.access_token) throw new Error("The provider did not return an access token.");
+  return {
+    token: token.access_token,
+    refreshToken: token.refresh_token,
+    tokenExpiresAt: token.expires_in ? Date.now() + token.expires_in * 1000 : undefined,
+  };
+}
+
 const FB = "https://graph.facebook.com/v23.0";
+
+export interface FacebookPage {
+  id: string;
+  name: string;
+  access_token: string;
+}
+
+export async function facebookPages(appId: string, secret: string, redirectUri: string, code: string): Promise<FacebookPage[]> {
+  const tokens = await api(`${FB}/oauth/access_token`, {
+    method: "POST",
+    body: new URLSearchParams({ client_id: appId, client_secret: secret, redirect_uri: redirectUri, code }),
+  }, "Facebook");
+  const longLived = await api(`${FB}/oauth/access_token`, {
+    method: "POST",
+    body: new URLSearchParams({
+      client_id: appId, client_secret: secret,
+      grant_type: "fb_exchange_token", fb_exchange_token: tokens.access_token,
+    }),
+  }, "Facebook");
+  const pages: FacebookPage[] = [];
+  let after: string | undefined;
+  do {
+    const query = new URLSearchParams({ fields: "id,name,access_token", limit: "100" });
+    if (after) query.set("after", after);
+    const result = await api(`${FB}/me/accounts?${query}`, {
+      headers: { Authorization: `Bearer ${longLived.access_token}` },
+    }, "Facebook");
+    pages.push(...(result.data ?? []).filter((page: FacebookPage) => page.access_token));
+    after = result.paging?.next ? result.paging.cursors?.after : undefined;
+  } while (after && pages.length < 500);
+  return pages;
+}
+
+export async function replyToFacebookComment(c: SocialConfig, commentId: string, message: string): Promise<string> {
+  const result = await api(`${FB}/${encodeURIComponent(commentId)}/comments`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${c.token}` },
+    body: new URLSearchParams({ message }),
+  }, "Facebook");
+  return result.id;
+}
+
+export async function facebookMessages(c: SocialConfig): Promise<SocialReply[]> {
+  const result = await api(`${FB}/${encodeURIComponent(c.pageId!)}/conversations?platform=messenger&limit=25&fields=link,messages.limit(25){id,from,message,created_time}`, {
+    headers: { Authorization: `Bearer ${c.token}` },
+  }, "Facebook Messenger");
+  const replies: SocialReply[] = [];
+  for (const t of result.data ?? []) {
+    const url = typeof t.link === "string" && t.link.startsWith("/")
+      ? `https://www.facebook.com${t.link}` : undefined;
+    for (const m of t.messages?.data ?? []) {
+      if (!m.id || !m.from?.id || m.from.id === c.pageId) continue;
+      replies.push({
+        extId: `fbdm:${m.id}`, from: m.from.id, fromName: m.from.name ?? "",
+        text: m.message || "Attachment or unsupported message", url,
+        date: Date.parse(m.created_time) || Date.now(),
+      });
+    }
+  }
+  return replies;
+}
 
 /** Checks the credentials and fills in ids the publisher needs (user id, author urn, handle). */
 export async function verifySocial(p: Platform, c: SocialConfig): Promise<SocialConfig> {
