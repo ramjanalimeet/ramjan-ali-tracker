@@ -21,7 +21,7 @@ export function OverviewView({ ctx }: { ctx: AppCtx }) {
 
   if (!o) return <div className="adm-skel tall" />;
 
-  const setupDone = o.accounts.some((a) => a.kind === "email") && o.accounts.some((a) => a.kind === "social");
+  const setupDone = o.accounts.some((a) => a.kind === "email");
 
   return (
     <div className="adm-stack lg">
@@ -31,9 +31,6 @@ export function OverviewView({ ctx }: { ctx: AppCtx }) {
           <p>{new Date().toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" })}</p>
         </div>
         <div className="adm-head-actions">
-          <button className="adm-btn" onClick={() => ctx.go("social")}>
-            <Icon name="plus" size={16} /> New post
-          </button>
           <button className="adm-btn primary" onClick={() => ctx.go("email")}>
             <Icon name="send" size={15} /> Outreach
           </button>
@@ -45,9 +42,9 @@ export function OverviewView({ ctx }: { ctx: AppCtx }) {
           <Icon name="sparkle" />
           <div>
             <b>Finish setting up your workspace</b>
-            <p>Connect your social accounts and 4–5 sending inboxes, then link Cal.com so bookings show up here.</p>
+            <p>Connect your sending inboxes and link Cal.com to see bookings here.</p>
           </div>
-          <button className="adm-btn primary" onClick={() => ctx.openSettings(o.accounts.some((a) => a.kind === "social") ? "email" : "social")}>
+          <button className="adm-btn primary" onClick={() => ctx.openSettings("email")}>
             Open settings
           </button>
         </div>
@@ -58,7 +55,6 @@ export function OverviewView({ ctx }: { ctx: AppCtx }) {
         <Stat label="Emails sent today" value={o.sentToday} sub={`${o.sentWeek} this week`} />
         <Stat label="Replies this week" value={o.repliesWeek} sub={o.sentWeek ? `${Math.round((o.repliesWeek / o.sentWeek) * 100)}% reply rate` : undefined} />
         <Stat label="Leads & bookings" value={o.leadsWeek} sub="last 7 days" />
-        <Stat label="Scheduled posts" value={o.scheduledPosts} sub={`${o.publishedWeek} published this week`} onClick={() => ctx.go("social")} />
         <Stat label="In sequences" value={o.activeSequences} sub={`${o.contacts} contacts`} onClick={() => ctx.go("contacts")} />
       </div>
 
@@ -107,7 +103,7 @@ export function OverviewView({ ctx }: { ctx: AppCtx }) {
         </section>
       </div>
 
-      <div className="adm-cols">
+      <div>
         <section className="adm-card">
           <div className="adm-card-head">
             <h2>Latest in inbox</h2>
@@ -135,36 +131,6 @@ export function OverviewView({ ctx }: { ctx: AppCtx }) {
           )}
         </section>
 
-        <section className="adm-card">
-          <div className="adm-card-head">
-            <h2>Next posts</h2>
-            <button className="adm-link" onClick={() => ctx.go("social")}>
-              All posts
-            </button>
-          </div>
-          {o.upcomingPosts.length ? (
-            <ul className="adm-list">
-              {o.upcomingPosts.map((p) => (
-                <li key={p.id}>
-                  <div className="adm-brands">
-                    {p.account_ids.map((id) => {
-                      const a = ctx.accounts.find((x) => x.id === id);
-                      return a ? <Brand key={id} platform={a.platform} size={20} /> : null;
-                    })}
-                  </div>
-                  <div>
-                    <b>{p.title || p.content.slice(0, 60)}</b>
-                    <span>{fmtDateTime(p.scheduled_at)}</span>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <Empty icon="share" title="Nothing scheduled">
-              Plan your LinkedIn, X, Facebook and Medium posts in Social posts.
-            </Empty>
-          )}
-        </section>
       </div>
 
       {o.activity.length > 0 && (

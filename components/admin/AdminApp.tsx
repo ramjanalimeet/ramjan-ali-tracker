@@ -7,16 +7,13 @@ import { EmailView } from "./EmailView";
 import { InboxView } from "./InboxView";
 import { OverviewView } from "./OverviewView";
 import { SettingsModal, type SettingsTab } from "./SettingsModal";
-import { SocialView } from "./SocialView";
 import type { Account, View } from "./types";
 import { api, Icon } from "./ui";
 
 const NAV: { id: View; label: string; icon: string }[] = [
   { id: "overview", label: "Overview", icon: "home" },
   { id: "inbox", label: "Inbox", icon: "inbox" },
-  { id: "comments", label: "Comments", icon: "mail" },
   { id: "calendar", label: "Calendar", icon: "calendar" },
-  { id: "social", label: "Social posts", icon: "share" },
   { id: "email", label: "Email", icon: "mail" },
   { id: "contacts", label: "Contacts", icon: "users" },
 ];
@@ -118,7 +115,7 @@ function Shell() {
     const fromHash = () => {
       const h = location.hash.slice(1) as View;
       if (NAV.some((n) => n.id === h)) setView(h);
-      if (location.hash === "#settings") setSettings("social");
+      if (location.hash === "#settings") setSettings("email");
     };
     fromHash();
     window.addEventListener("hashchange", fromHash);
@@ -137,7 +134,7 @@ function Shell() {
     history.replaceState(null, "", `#${v}`);
   };
 
-  const ctx: AppCtx = { accounts, reloadAccounts, openSettings: (t) => setSettings(t ?? "social"), go, toast, refreshBadge };
+  const ctx: AppCtx = { accounts, reloadAccounts, openSettings: (t) => setSettings(t ?? "email"), go, toast, refreshBadge };
   const current = NAV.find((n) => n.id === view)!;
 
   return (
@@ -175,7 +172,7 @@ function Shell() {
           ))}
         </nav>
         <div className="adm-side-foot">
-          <button className="adm-nav-item" onClick={() => setSettings("social")}>
+          <button className="adm-nav-item" onClick={() => setSettings("email")}>
             <Icon name="settings" />
             <span>Settings</span>
           </button>
@@ -195,9 +192,7 @@ function Shell() {
         <div className="adm-page">
           {view === "overview" && <OverviewView ctx={ctx} />}
           {view === "inbox" && <InboxView key="inbox" ctx={ctx} />}
-          {view === "comments" && <InboxView key="comments" ctx={ctx} comments />}
           {view === "calendar" && <CalendarView ctx={ctx} />}
-          {view === "social" && <SocialView ctx={ctx} />}
           {view === "email" && <EmailView ctx={ctx} />}
           {view === "contacts" && <ContactsView ctx={ctx} />}
         </div>

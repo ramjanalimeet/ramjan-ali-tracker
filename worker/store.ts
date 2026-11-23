@@ -1,12 +1,10 @@
 // The dashboard's backend: one Durable Object with a SQLite database holding
-// accounts, scheduled posts, contacts, outreach campaigns, the inbox, bookings
+// accounts, contacts, outreach campaigns, the inbox, bookings
 // and settings. Every /api/admin request, the public lead/booking webhooks and
 // the 5-minute cron all run here.
 import { DurableObject } from "cloudflare:workers";
 import { aiWrite } from "./ai";
 import { fetchNewMail, sendMail, testEmail, withDefaults, type EmailConfig } from "./mail";
-import { exchangeSocialToken, facebookMessages, facebookPages, fbComments, publish, replyToFacebookComment, type FacebookPage, SOCIAL_OAUTH, type OAuthPlatform, verifySocial, xMentions, type Platform, type SocialConfig } from "./social";
-import { zernioAccount, zernioConnect, zernioPublish } from "./zernio";
 import {
   EMAIL_RE,
   addrOf,
@@ -30,26 +28,12 @@ export interface Env {
   ADMIN_STORE: DurableObjectNamespace<AdminStore>;
   /** Optional: overrides the dashboard password (set as a Worker secret). */
   ADMIN_PASSWORD?: string;
-  META_APP_ID?: string;
-  META_APP_SECRET?: string;
-  ZERNIO_API_KEY?: string;
-  ZERNIO_PROFILE_ID?: string;
-  X_CLIENT_ID?: string;
-  X_CLIENT_SECRET?: string;
-  LINKEDIN_CLIENT_ID?: string;
-  LINKEDIN_CLIENT_SECRET?: string;
 }
 
 // Default password hash (PBKDF2). Change the password from Settings, or set
 // the ADMIN_PASSWORD secret in Cloudflare.
 const DEFAULT_PASSWORD_HASH = "pbkdf2$100000$YWiHgA9TjAMol/TX0crtuQ==$mCWWefDX1fhuhtKnSjXfZO2TZq8ID4mf6J3jeOgg5iM=";
 const COOKIE = "ra_admin";
-const META_CALLBACK = "https://ramjanaliakash.com/api/admin/facebook/callback";
-const FACEBOOK_COMMENTS = "channel='facebook' AND ext_id GLOB 'fb:*'";
-const FACEBOOK_SCOPES = [
-  "pages_show_list", "pages_manage_posts", "pages_read_engagement",
-  "pages_read_user_content", "pages_manage_engagement", "pages_messaging",
-];
 const DAY = 86_400_000;
 const SECRET_KEYS = ["password", "resendKey", "apiKey", "apiSecret", "accessToken", "accessSecret", "token", "refreshToken"];
 const MAX_SENDS_PER_TICK = 12;
@@ -81,9 +65,6 @@ CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value TEXT);
 CREATE TABLE IF NOT EXISTS accounts (
   id TEXT PRIMARY KEY, kind TEXT, platform TEXT, label TEXT, config TEXT,
   status TEXT DEFAULT 'ok', last_error TEXT, created_at INTEGER);
-CREATE TABLE IF NOT EXISTS posts (
-  id TEXT PRIMARY KEY, title TEXT, content TEXT, image_url TEXT, account_ids TEXT,
-  scheduled_at INTEGER, status TEXT, results TEXT, created_at INTEGER);
 CREATE TABLE IF NOT EXISTS contacts (
   id TEXT PRIMARY KEY, email TEXT UNIQUE, name TEXT, company TEXT, website TEXT, phone TEXT,
   source TEXT, status TEXT DEFAULT 'new', notes TEXT, created_at INTEGER, updated_at INTEGER);
@@ -109,7 +90,6 @@ export class AdminStore extends DurableObject<Env> {
   private sql: SqlStorage;
   private fails = { count: 0, until: 0 };
   private leadHits = new Map<string, number[]>();
-  private lastSocialPoll = 0;
   private ticking = false;
 
   constructor(ctx: DurableObjectState, env: Env) {
@@ -198,201 +178,6 @@ export class AdminStore extends DurableObject<Env> {
     return (await req.json().catch(() => ({}))) as T;
   }
 
-  private async facebookAuth(req: Request, action: string, url: URL): Promise<Response> {
-    const appId = this.env.META_APP_ID;
-    const secret = this.env.META_APP_SECRET;
-    if (action === "status") return json({ enabled: Boolean(appId && secret) });
-    if (!appId || !secret) return err("Facebook sign-in is not configured", 503);
-    const session = parseCookies(req.headers.get("cookie"))[COOKIE]!;
-    const sessionKey = hex(await hmac(this.setting("session_secret")!, session));
-    const key = "facebook_oauth";
-    const raw = this.setting(key);
-    const pending = raw ? JSON.parse(raw) as { session: string; expires: number; state?: string; pages?: FacebookPage[] } : undefined;
-    const valid = pending && pending.expires > now() && safeEqual(pending.session, sessionKey) ? pending : undefined;
-    if (action === "start" && req.method === "POST") {
-      const state = uid();
-      this.setSetting(key, JSON.stringify({ session: sessionKey, expires: now() + 600_000, state }));
-      const query = new URLSearchParams({
-        client_id: appId, redirect_uri: META_CALLBACK, state,
-        scope: FACEBOOK_SCOPES.join(","), response_type: "code",
-      });
-      return json({ url: `https://www.facebook.com/v23.0/dialog/oauth?${query}` });
-    }
-    if (action === "callback" && req.method === "GET") {
-      const state = url.searchParams.get("state");
-      const code = url.searchParams.get("code");
-      if (!state || !valid?.state || !safeEqual(valid.state, state))
-        return Response.redirect(url.origin + "/admin?facebook=expired#settings");
-      this.setSetting(key, "");
-      if (!code) return Response.redirect(url.origin + "/admin?facebook=cancelled#settings");
-      try {
-        const pages = await facebookPages(appId, secret, META_CALLBACK, code);
-        if (this.setting(key)) return Response.redirect(url.origin + "/admin?facebook=expired#settings");
-        this.setSetting(key, JSON.stringify({ session: sessionKey, expires: now() + 600_000, pages }));
-        return Response.redirect(url.origin + "/admin?facebook=choose#settings");
-      } catch {
-        return Response.redirect(url.origin + "/admin?facebook=failed#settings");
-      }
-    }
-    if (action === "pages" && req.method === "GET")
-      return json((valid?.pages ?? []).map(({ id, name }) => ({ id, name })));
-    if (action === "pages" && req.method === "POST") {
-      const { pageId } = await this.body<{ pageId?: string }>(req);
-      const current = this.setting(key);
-      if (current !== raw) return err("Start Facebook sign-in again", 409);
-      const page = valid?.pages?.find((p) => p.id === pageId);
-      if (!page) return err("Start Facebook sign-in again", 409);
-      this.setSetting(key, "");
-      const existing = this.one<{ id: string }>(
-        "SELECT id FROM accounts WHERE kind='social' AND platform='facebook' AND json_extract(config,'$.pageId')=?",
-        page.id,
-      );
-      return json(await this.saveAccount({ id: existing?.id, platform: "facebook", label: page.name,
-        config: { pageId: page.id, token: page.access_token, messenger: true } }));
-    }
-    return err("Not found", 404);
-  }
-
-  private zernioConfig() {
-    const key = this.env.ZERNIO_API_KEY;
-    const profileId = this.env.ZERNIO_PROFILE_ID;
-    if (!key || !profileId) return undefined;
-    return { key, profileId };
-  }
-
-  private async hostedSocialAuth(req: Request, platform: OAuthPlatform, action: string, url: URL): Promise<Response> {
-    const config = this.zernioConfig();
-    if (!config) return err("Hosted social sign-in requires Zernio setup", 503);
-    const session = parseCookies(req.headers.get("cookie"))[COOKIE]!;
-    const sessionKey = hex(await hmac(this.setting("session_secret")!, session));
-    const key = `hosted_oauth_${platform}`;
-    const finish = (status: string) => Response.redirect(`${url.origin}/admin?provider=${platform}&connection=${status}#settings`);
-    if (action === "start" && req.method === "POST") {
-      const state = uid();
-      const callback = new URL(`https://ramjanaliakash.com/api/admin/hosted-social/${platform}`);
-      callback.searchParams.set("dashboardState", state);
-      const authUrl = await zernioConnect(config, platform, callback.href);
-      this.setSetting(key, JSON.stringify({ sessionKey, state, expires: now() + 600_000 }));
-      return json({ url: authUrl });
-    }
-    if (action !== "callback" || req.method !== "GET") return err("Not found", 404);
-    const raw = this.setting(key);
-    const pending = raw ? JSON.parse(raw) as { sessionKey: string; state: string; expires: number } : undefined;
-    const state = url.searchParams.get("dashboardState");
-    if (!pending || pending.expires <= now() || !safeEqual(sessionKey, pending.sessionKey) || !state || !safeEqual(state, pending.state)) return finish("expired");
-    this.sql.exec("DELETE FROM settings WHERE key=?", key);
-    const accountId = url.searchParams.get("accountId");
-    if (url.searchParams.get("connected") !== platform || url.searchParams.get("profileId") !== config.profileId || !accountId) return finish("failed");
-    try {
-      const account = await zernioAccount(config, platform, accountId);
-      const label = account.displayName || account.username || platform;
-      const saved = this.one<{ id: string }>(
-        "SELECT id FROM accounts WHERE kind='social' AND platform=? AND json_extract(config,'$.zernioAccountId')=?",
-        platform, account._id,
-      );
-      const credentials = JSON.stringify({ zernioAccountId: account._id });
-      if (saved) this.sql.exec("UPDATE accounts SET label=?, config=?, status='ok', last_error=NULL WHERE id=?", label, credentials, saved.id);
-      else this.sql.exec("INSERT INTO accounts(id,kind,platform,label,config,status,created_at) VALUES(?,'social',?,?,?,'ok',?)",
-        uid("acc_"), platform, label, credentials, now());
-      return finish("connected");
-    } catch {
-      return finish("failed");
-    }
-  }
-
-  private oauthClient(platform: OAuthPlatform) {
-    return platform === "twitter"
-      ? { id: this.env.X_CLIENT_ID, secret: this.env.X_CLIENT_SECRET }
-      : { id: this.env.LINKEDIN_CLIENT_ID, secret: this.env.LINKEDIN_CLIENT_SECRET };
-  }
-
-  private async providerAuth(req: Request, platform: OAuthPlatform, action: string, url: URL): Promise<Response> {
-    const { id, secret } = this.oauthClient(platform);
-    if (action === "status" && req.method === "GET") return json({ enabled: Boolean(this.zernioConfig() || (id && secret)) });
-    if (action === "start" && this.zernioConfig()) return this.hostedSocialAuth(req, platform, action, url);
-    if (!id || !secret) return err("Provider sign-in is not configured", 503);
-    const session = parseCookies(req.headers.get("cookie"))[COOKIE]!;
-    const sessionKey = hex(await hmac(this.setting("session_secret")!, session));
-    const key = `oauth_${platform}`;
-    const redirectUri = `https://ramjanaliakash.com/api/admin/${platform}/callback`;
-    const finish = (status: string) => Response.redirect(`${url.origin}/admin?provider=${platform}&connection=${status}#settings`);
-    if (action === "start" && req.method === "POST") {
-      const state = uid();
-      const verifier = uid() + uid();
-      const query = new URLSearchParams({
-        client_id: id, redirect_uri: redirectUri, response_type: "code", state, scope: SOCIAL_OAUTH[platform].scope,
-      });
-      if (platform === "twitter") {
-        const hash = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(verifier));
-        query.set("code_challenge", btoa(String.fromCharCode(...new Uint8Array(hash))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, ""));
-        query.set("code_challenge_method", "S256");
-      }
-      this.setSetting(key, JSON.stringify({ session: sessionKey, state, verifier, expires: now() + 600_000 }));
-      return json({ url: `${SOCIAL_OAUTH[platform].authorize}?${query}` });
-    }
-    if (action !== "callback" || req.method !== "GET") return err("Not found", 404);
-    const raw = this.setting(key);
-    const pending = raw ? JSON.parse(raw) as { session: string; state: string; verifier: string; expires: number } : null;
-    const state = url.searchParams.get("state");
-    if (!pending || pending.expires <= now() || !safeEqual(sessionKey, pending.session) || !state || !safeEqual(state, pending.state)) return finish("expired");
-    this.sql.exec("DELETE FROM settings WHERE key=?", key);
-    const code = url.searchParams.get("code");
-    if (!code) return finish("cancelled");
-    try {
-      const params: Record<string, string> = { grant_type: "authorization_code", code, redirect_uri: redirectUri };
-      if (platform === "twitter") params.code_verifier = pending.verifier;
-      const cfg = await verifySocial(platform, await exchangeSocialToken(platform, id, secret, params));
-      const identityKey = platform === "twitter" ? "$.userId" : "$.authorUrn";
-      const identity = platform === "twitter" ? cfg.userId : cfg.authorUrn;
-      if (!identity) return finish("failed");
-      const existing = this.one<{ id: string; config: string }>(
-        "SELECT id, config FROM accounts WHERE kind='social' AND platform=? AND json_extract(config,?)=?",
-        platform, identityKey, identity,
-      );
-      if (existing) {
-        const old = JSON.parse(existing.config) as SocialConfig;
-        this.sql.exec("UPDATE accounts SET label=?, config=?, status='ok', last_error=NULL WHERE id=?",
-          cfg.handle || platform, JSON.stringify({ ...cfg, sinceId: old.sinceId }), existing.id);
-      } else {
-        this.sql.exec("INSERT INTO accounts(id,kind,platform,label,config,status,created_at) VALUES(?,'social',?,?,?,'ok',?)",
-          uid("acc_"), platform, cfg.handle || platform, JSON.stringify(cfg), now());
-      }
-      return finish("connected");
-    } catch {
-      return finish("failed");
-    }
-  }
-
-  private readonly socialRefreshes = new Map<string, Promise<SocialConfig>>();
-
-  private async socialCredentials(a: { id: string; platform: string; config: string }): Promise<SocialConfig> {
-    const cfg = JSON.parse(a.config) as SocialConfig;
-    if (!cfg.tokenExpiresAt || cfg.tokenExpiresAt > now() + 60_000) return cfg;
-    if ((a.platform !== "twitter" && a.platform !== "linkedin") || !cfg.refreshToken) {
-      if (cfg.tokenExpiresAt > now()) return cfg;
-      throw new Error("Authorization expired. Reconnect the account in Settings.");
-    }
-    const existing = this.socialRefreshes.get(a.id);
-    if (existing) return existing;
-    const platform = a.platform;
-    const { id, secret } = this.oauthClient(platform);
-    if (!id || !secret) throw new Error("Provider sign-in is not configured");
-    const refresh = (async () => {
-      const tokens = await exchangeSocialToken(platform, id, secret, { grant_type: "refresh_token", refresh_token: cfg.refreshToken! });
-      const fresh = { ...cfg, ...tokens, refreshToken: tokens.refreshToken || cfg.refreshToken };
-      this.sql.exec("UPDATE accounts SET config=? WHERE id=? AND config=?", JSON.stringify(fresh), a.id, a.config);
-      const saved = this.one<{ config: string }>("SELECT config FROM accounts WHERE id=?", a.id);
-      if (!saved) throw new Error("Account was removed");
-      return JSON.parse(saved.config) as SocialConfig;
-    })();
-    this.socialRefreshes.set(a.id, refresh);
-    try {
-      return await refresh;
-    } finally {
-      this.socialRefreshes.delete(a.id);
-    }
-  }
-
   private async admin(req: Request, route: string, url: URL): Promise<Response> {
     const m = req.method;
     const seg = route.split("/").filter(Boolean);
@@ -403,33 +188,17 @@ export class AdminStore extends DurableObject<Env> {
     if (res === "overview") return json(this.overview());
     if (res === "activity") return json(this.q("SELECT * FROM activity ORDER BY id DESC LIMIT 100"));
     if (res === "run" && m === "POST") {
-      await this.tick(true);
+      await this.tick();
       return json({ ok: true, overview: this.overview() });
     }
 
-    if (res === "facebook") return this.facebookAuth(req, id, url);
-    if (res === "hosted-social" && (id === "twitter" || id === "linkedin")) return this.hostedSocialAuth(req, id, "callback", url);
-    if (res === "twitter" || res === "linkedin") return this.providerAuth(req, res, id, url);
 
     if (res === "accounts") {
       if (m === "GET") return json(this.listAccounts());
       if (m === "POST" && !id) return json(await this.saveAccount(await this.body(req)));
       if (m === "POST" && action === "test") return json(await this.testAccount(id));
       if (m === "DELETE" && id) {
-        this.sql.exec("DELETE FROM accounts WHERE id=?", id);
-        return json({ ok: true });
-      }
-    }
-
-    if (res === "posts") {
-      if (m === "GET") return json(this.q("SELECT * FROM posts ORDER BY COALESCE(scheduled_at, created_at) DESC LIMIT 300").map(postOut));
-      if (m === "POST" && !id) return json(this.savePost(await this.body(req)));
-      if (m === "POST" && action === "publish") {
-        await this.publishPost(id);
-        return json(postOut(this.one("SELECT * FROM posts WHERE id=?", id)!));
-      }
-      if (m === "DELETE" && id) {
-        this.sql.exec("DELETE FROM posts WHERE id=?", id);
+        this.sql.exec("DELETE FROM accounts WHERE id=? AND kind='email'", id);
         return json({ ok: true });
       }
     }
@@ -468,14 +237,12 @@ export class AdminStore extends DurableObject<Env> {
 
     if (res === "inbox") {
       if (m === "GET" && id && action === "thread") return json(this.thread(id));
-      const comments = url.searchParams.get("view") === "comments";
-      const section = comments ? `AND (${FACEBOOK_COMMENTS})` : `AND NOT COALESCE((${FACEBOOK_COMMENTS}),0)`;
       if (m === "GET") {
         const ch = url.searchParams.get("channel");
         return json(
           this.q(
             `SELECT m.*, c.name AS contact_name, c.company AS contact_company FROM messages m LEFT JOIN contacts c ON c.id=m.contact_id
-             WHERE m.direction='in' ${section} ${ch ? "AND m.channel=?" : ""} ORDER BY m.created_at DESC LIMIT 300`,
+             WHERE m.direction='in' AND m.channel IN ('email','form','booking') ${ch ? "AND m.channel=?" : ""} ORDER BY m.created_at DESC LIMIT 300`,
             ...(ch ? [ch] : []),
           ),
         );
@@ -485,7 +252,7 @@ export class AdminStore extends DurableObject<Env> {
         return json({ ok: true });
       }
       if (m === "POST" && id === "read-all") {
-        this.sql.exec(`UPDATE messages SET read=1 WHERE direction='in' ${section}`);
+        this.sql.exec(`UPDATE messages SET read=1 WHERE direction='in' AND channel IN ('email','form','booking')`);
         return json({ ok: true });
       }
       if (m === "POST" && action === "reply") return json(await this.reply(id, await this.body(req)));
@@ -496,7 +263,7 @@ export class AdminStore extends DurableObject<Env> {
     }
 
     if (res === "sent" && m === "GET")
-      return json(this.q("SELECT m.*, c.name AS contact_name FROM messages m LEFT JOIN contacts c ON c.id=m.contact_id WHERE direction='out' ORDER BY created_at DESC LIMIT 300"));
+      return json(this.q("SELECT m.*, c.name AS contact_name FROM messages m LEFT JOIN contacts c ON c.id=m.contact_id WHERE direction='out' AND channel='email' ORDER BY created_at DESC LIMIT 300"));
 
     if (res === "compose" && m === "POST") return json(await this.compose(await this.body(req)));
 
@@ -506,7 +273,6 @@ export class AdminStore extends DurableObject<Env> {
       const from = Number(url.searchParams.get("from")) || startOfDay() - 31 * DAY;
       const to = Number(url.searchParams.get("to")) || startOfDay() + 62 * DAY;
       return json({
-        posts: this.q("SELECT * FROM posts WHERE scheduled_at BETWEEN ? AND ? ORDER BY scheduled_at", from, to).map(postOut),
         bookings: this.q("SELECT id,title,start_at,end_at,name,email,status,meeting_url FROM bookings WHERE start_at BETWEEN ? AND ? ORDER BY start_at", from, to),
         sends: this.q(
           `SELECT (next_at / 86400000) * 86400000 AS day, COUNT(*) AS n FROM enrollments WHERE status='active' AND next_at BETWEEN ? AND ? GROUP BY day`,
@@ -524,8 +290,8 @@ export class AdminStore extends DurableObject<Env> {
     if (res === "ai" && m === "POST") {
       const key = this.setting("anthropic_key");
       if (!key) return err("Add an Anthropic API key in Settings → General to use AI writing.");
-      const b = await this.body<{ kind?: "email" | "post" | "reply"; brief?: string }>(req);
-      return json({ text: await aiWrite(key, b.kind ?? "post", String(b.brief ?? "")) });
+      const b = await this.body<{ kind?: "email" | "reply"; brief?: string }>(req);
+      return json({ text: await aiWrite(key, b.kind === "reply" ? "reply" : "email", String(b.brief ?? "")) });
     }
 
     return err("Not found", 404);
@@ -537,18 +303,15 @@ export class AdminStore extends DurableObject<Env> {
     const n = (sql: string, ...a: SqlStorageValue[]) => Number(this.one<{ n: number }>(sql, ...a)?.n ?? 0);
     const today = startOfDay();
     return {
-      unread: n("SELECT COUNT(*) n FROM messages WHERE direction='in' AND read=0"),
+      unread: n("SELECT COUNT(*) n FROM messages WHERE direction='in' AND read=0 AND channel IN ('email','form','booking')"),
       sentToday: n("SELECT COUNT(*) n FROM messages WHERE direction='out' AND channel='email' AND created_at>=?", today),
       sentWeek: n("SELECT COUNT(*) n FROM messages WHERE direction='out' AND channel='email' AND created_at>=?", now() - 7 * DAY),
       repliesWeek: n("SELECT COUNT(*) n FROM messages WHERE direction='in' AND channel='email' AND created_at>=?", now() - 7 * DAY),
-      scheduledPosts: n("SELECT COUNT(*) n FROM posts WHERE status='scheduled'"),
-      publishedWeek: n("SELECT COUNT(*) n FROM posts WHERE status IN ('published','partial') AND scheduled_at>=?", now() - 7 * DAY),
       contacts: n("SELECT COUNT(*) n FROM contacts"),
       activeSequences: n("SELECT COUNT(*) n FROM enrollments WHERE status='active'"),
       leadsWeek: n("SELECT COUNT(*) n FROM messages WHERE direction='in' AND channel IN ('form','booking') AND created_at>=?", now() - 7 * DAY),
       upcomingBookings: this.q("SELECT id,title,start_at,name,email,meeting_url,status FROM bookings WHERE start_at>=? AND status!='cancelled' ORDER BY start_at LIMIT 5", now() - 3600_000),
-      upcomingPosts: this.q("SELECT * FROM posts WHERE status='scheduled' ORDER BY scheduled_at LIMIT 5").map(postOut),
-      recentInbox: this.q("SELECT id,channel,from_addr,from_name,subject,body,read,created_at FROM messages WHERE direction='in' ORDER BY created_at DESC LIMIT 6"),
+      recentInbox: this.q("SELECT id,channel,from_addr,from_name,subject,body,read,created_at FROM messages WHERE direction='in' AND channel IN ('email','form','booking') ORDER BY created_at DESC LIMIT 6"),
       accounts: this.listAccounts().map((a) => ({ id: a.id, kind: a.kind, platform: a.platform, label: a.label, status: a.status })),
       daily: this.q(
         `SELECT (created_at / 86400000) * 86400000 AS day, direction, COUNT(*) AS n FROM messages WHERE channel='email' AND created_at>=? GROUP BY day, direction`,
@@ -562,7 +325,7 @@ export class AdminStore extends DurableObject<Env> {
 
   private listAccounts() {
     return this.q<{ id: string; kind: string; platform: string; label: string; config: string; status: string; last_error: string; created_at: number }>(
-      "SELECT * FROM accounts ORDER BY kind, created_at",
+      "SELECT * FROM accounts WHERE kind='email' ORDER BY created_at",
     ).map((a) => {
       const cfg = JSON.parse(a.config || "{}");
       const set: string[] = [];
@@ -571,42 +334,37 @@ export class AdminStore extends DurableObject<Env> {
           set.push(k);
           cfg[k] = "";
         }
-      const sentToday =
-        a.kind === "email"
-          ? Number(this.one<{ n: number }>("SELECT COUNT(*) n FROM messages WHERE direction='out' AND account_id=? AND created_at>=?", a.id, startOfDay())?.n ?? 0)
-          : 0;
+      const sentToday = Number(this.one<{ n: number }>("SELECT COUNT(*) n FROM messages WHERE direction='out' AND account_id=? AND created_at>=?", a.id, startOfDay())?.n ?? 0);
       return { ...a, config: cfg, secretsSet: set, sentToday };
     });
   }
 
   private async saveAccount(b: { id?: string; kind?: string; platform?: string; label?: string; config?: Record<string, unknown> }) {
-    const kind = b.kind === "email" ? "email" : "social";
-    const existing = b.id ? this.one<{ config: string }>("SELECT config FROM accounts WHERE id=?", b.id) : undefined;
+    if (b.kind !== "email") throw new Error("Only email accounts are supported");
+    const existing = b.id ? this.one<{ config: string }>("SELECT config FROM accounts WHERE id=? AND kind='email'", b.id) : undefined;
+    if (b.id && !existing) throw new Error("Email account not found");
     const old = existing ? JSON.parse(existing.config) : {};
     const cfg: Record<string, unknown> = { ...old };
     for (const [k, v] of Object.entries(b.config ?? {})) {
       if (SECRET_KEYS.includes(k) && (v === "" || v == null)) continue; // keep the saved secret
       cfg[k] = typeof v === "string" ? v.trim() : v;
     }
-    if (kind === "email") {
-      cfg.email = String(cfg.email ?? "").toLowerCase();
-      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(cfg.email))) throw new Error("Enter a valid email address");
-      cfg.provider = cfg.provider === "resend" ? "resend" : "smtp";
-      cfg.dailyLimit = Math.max(1, Math.min(500, Number(cfg.dailyLimit) || 40));
-      if (cfg.smtpPort) cfg.smtpPort = Number(cfg.smtpPort);
-      if (cfg.imapPort) cfg.imapPort = Number(cfg.imapPort);
-    }
+    cfg.email = String(cfg.email ?? "").toLowerCase();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(cfg.email))) throw new Error("Enter a valid email address");
+    cfg.provider = cfg.provider === "resend" ? "resend" : "smtp";
+    cfg.dailyLimit = Math.max(1, Math.min(500, Number(cfg.dailyLimit) || 40));
+    if (cfg.smtpPort) cfg.smtpPort = Number(cfg.smtpPort);
+    if (cfg.imapPort) cfg.imapPort = Number(cfg.imapPort);
     const id = b.id || uid("acc_");
-    const names: Record<string, string> = { twitter: "X (Twitter)", linkedin: "LinkedIn", facebook: "Facebook", medium: "Medium" };
-    const label = String(b.label || cfg.email || cfg.handle || names[String(b.platform)] || "Account");
+    const label = String(b.label || cfg.email || "Email account");
     if (existing)
-      this.sql.exec("UPDATE accounts SET label=?, config=?, platform=? WHERE id=?", label, JSON.stringify(cfg), String(b.platform), id);
+      this.sql.exec("UPDATE accounts SET label=?, config=?, platform=? WHERE id=?", label, JSON.stringify(cfg), "email", id);
     else
       this.sql.exec(
         "INSERT INTO accounts(id,kind,platform,label,config,status,created_at) VALUES(?,?,?,?,?,?,?)",
         id,
-        kind,
-        String(kind === "email" ? "email" : b.platform),
+        "email",
+        "email",
         label,
         JSON.stringify(cfg),
         "unchecked",
@@ -618,85 +376,16 @@ export class AdminStore extends DurableObject<Env> {
   }
 
   private async testAccount(id: string) {
-    const a = this.one<{ kind: string; platform: string; config: string; label: string }>("SELECT * FROM accounts WHERE id=?", id);
+    const a = this.one<{ kind: string; platform: string; config: string; label: string }>("SELECT * FROM accounts WHERE id=? AND kind='email'", id);
     if (!a) throw new Error("Account not found");
     try {
-      const cfg = a.kind === "email" ? JSON.parse(a.config) : await this.socialCredentials({ ...a, id });
-      let note = "";
-      if (a.kind === "email") note = await testEmail(cfg);
-      else {
-        const hosted = this.zernioConfig();
-        const verified = cfg.zernioAccountId && (a.platform === "twitter" || a.platform === "linkedin")
-          ? { ...cfg, handle: hosted ? (await zernioAccount(hosted, a.platform, cfg.zernioAccountId)).displayName : undefined }
-          : await verifySocial(a.platform as Platform, cfg);
-        if (cfg.zernioAccountId && !hosted) throw new Error("Hosted social sign-in requires Zernio setup");
-        this.sql.exec("UPDATE accounts SET config=?, label=? WHERE id=?", JSON.stringify(verified), verified.handle || a.label, id);
-        note = `Connected as ${verified.handle ?? a.platform}`;
-      }
+      const note = await testEmail(JSON.parse(a.config));
       this.sql.exec("UPDATE accounts SET status='ok', last_error=NULL WHERE id=?", id);
       return { ok: true, note };
     } catch (e) {
       this.sql.exec("UPDATE accounts SET status='error', last_error=? WHERE id=?", errMsg(e), id);
       return { ok: false, error: errMsg(e) };
     }
-  }
-
-  // ---------- posts ----------
-
-  private savePost(b: { id?: string; title?: string; content?: string; imageUrl?: string; accountIds?: string[]; scheduledAt?: number; status?: string }) {
-    const content = String(b.content ?? "").trim();
-    if (!content) throw new Error("Write something to post");
-    const ids = (b.accountIds ?? []).filter(Boolean);
-    if (!ids.length) throw new Error("Pick at least one account");
-    const status = b.status === "draft" ? "draft" : "scheduled";
-    const at = Number(b.scheduledAt) || now();
-    const id = b.id || uid("post_");
-    this.sql.exec(
-      `INSERT INTO posts(id,title,content,image_url,account_ids,scheduled_at,status,results,created_at) VALUES(?,?,?,?,?,?,?,?,?)
-       ON CONFLICT(id) DO UPDATE SET title=excluded.title, content=excluded.content, image_url=excluded.image_url,
-       account_ids=excluded.account_ids, scheduled_at=excluded.scheduled_at, status=excluded.status`,
-      id,
-      String(b.title ?? ""),
-      content,
-      String(b.imageUrl ?? ""),
-      JSON.stringify(ids),
-      at,
-      status,
-      "{}",
-      now(),
-    );
-    return postOut(this.one("SELECT * FROM posts WHERE id=?", id)!);
-  }
-
-  private async publishPost(id: string) {
-    const p = this.one<{ title: string; content: string; image_url: string; account_ids: string; results: string }>("SELECT * FROM posts WHERE id=?", id);
-    if (!p) throw new Error("Post not found");
-    const results: Record<string, { ok: boolean; id?: string; url?: string; error?: string; platform?: string }> = JSON.parse(p.results || "{}");
-    for (const accId of JSON.parse(p.account_ids) as string[]) {
-      if (results[accId]?.ok) continue;
-      const a = this.one<{ id: string; platform: string; config: string; label: string }>("SELECT * FROM accounts WHERE id=?", accId);
-      if (!a) {
-        results[accId] = { ok: false, error: "Account removed" };
-        continue;
-      }
-      try {
-        const cfg = await this.socialCredentials(a);
-        const post = { title: p.title, content: p.content, imageUrl: p.image_url || undefined };
-        const hosted = this.zernioConfig();
-        if (cfg.zernioAccountId && !hosted) throw new Error("Hosted social sign-in requires Zernio setup");
-        const r = cfg.zernioAccountId && hosted && (a.platform === "twitter" || a.platform === "linkedin")
-          ? await zernioPublish(hosted, a.platform, cfg.zernioAccountId, post, `${id}:${accId}`)
-          : await publish(a.platform as Platform, cfg, post);
-        results[accId] = { ok: true, id: r.id, url: r.url, platform: a.platform };
-        this.log("info", `Published to ${a.platform} (${a.label})`);
-      } catch (e) {
-        results[accId] = { ok: false, error: errMsg(e), platform: a.platform };
-        this.log("error", `Publishing to ${a.platform} failed: ${errMsg(e)}`);
-      }
-    }
-    const vals = Object.values(results);
-    const status = vals.every((r) => r.ok) ? "published" : vals.some((r) => r.ok) ? "partial" : "failed";
-    this.sql.exec("UPDATE posts SET results=?, status=?, scheduled_at=MIN(scheduled_at, ?) WHERE id=?", JSON.stringify(results), status, now(), id);
   }
 
   // ---------- contacts ----------
@@ -746,7 +435,7 @@ export class AdminStore extends DurableObject<Env> {
     const ids: string[] = [];
     for (const r of rows) {
       const email = (r.email || r["e-mail"] || r["email address"] || Object.values(r).find((v) => /@/.test(v)) || "").trim();
-      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
         skipped++;
         continue;
       }
@@ -870,13 +559,11 @@ export class AdminStore extends DurableObject<Env> {
   // ---------- inbox ----------
 
   private thread(id: string) {
-    const m = this.one<{ contact_id: string; ext_id: string | null }>("SELECT * FROM messages WHERE id=?", id);
+    const m = this.one<{ contact_id: string }>("SELECT * FROM messages WHERE id=? AND channel IN ('email','form','booking')", id);
     if (!m) return [];
-    if (m.ext_id?.startsWith("fb:"))
-      return this.q("SELECT * FROM messages WHERE id=? OR (direction='out' AND channel='facebook' AND in_reply_to=?) ORDER BY created_at", id, id);
     return m.contact_id
-      ? this.q("SELECT * FROM messages WHERE contact_id=? ORDER BY created_at", m.contact_id)
-      : this.q("SELECT * FROM messages WHERE id=?", id);
+      ? this.q("SELECT * FROM messages WHERE contact_id=? AND channel IN ('email','form','booking') ORDER BY created_at", m.contact_id)
+      : this.q("SELECT * FROM messages WHERE id=? AND channel IN ('email','form','booking')", id);
   }
 
   private emailAccounts() {
@@ -886,35 +573,15 @@ export class AdminStore extends DurableObject<Env> {
     }));
   }
 
-  private readonly pendingCommentReplies = new Set<string>();
-
   private async reply(id: string, b: { body?: string; accountId?: string }) {
-    const m = this.one<{ channel: string; account_id: string; from_addr: string; from_name: string; subject: string; message_id: string; contact_id: string; ext_id: string | null }>(
-      "SELECT * FROM messages WHERE id=? AND direction='in'",
+    const m = this.one<{ channel: string; account_id: string; from_addr: string; from_name: string; subject: string; message_id: string; contact_id: string }>(
+      "SELECT * FROM messages WHERE id=? AND direction='in' AND channel IN ('email','form','booking')",
       id,
     );
     if (!m) throw new Error("Message not found");
     const text = String(b.body ?? "").trim();
     if (!text) throw new Error("Write a reply first");
-    if (m.channel === "facebook" && m.ext_id?.startsWith("fb:")) {
-      if (this.pendingCommentReplies.has(id)) throw new Error("A reply is already being sent");
-      const account = this.one<{ config: string }>("SELECT config FROM accounts WHERE id=? AND kind='social' AND platform='facebook'", m.account_id);
-      if (!account) throw new Error("Reconnect the Facebook Page in Settings");
-      this.pendingCommentReplies.add(id);
-      try {
-        const sent = await replyToFacebookComment(JSON.parse(account.config), m.ext_id.slice(3), text);
-        this.sql.exec(
-          "INSERT OR IGNORE INTO messages(id,direction,channel,account_id,body,in_reply_to,ext_id,read,created_at) VALUES(?,'out','facebook',?,?,?,?,1,?)",
-          uid("msg_"), m.account_id, text, id, `fb:${sent}`, now(),
-        );
-        this.sql.exec("UPDATE messages SET read=1 WHERE id=?", id);
-        return { ok: true };
-      } finally {
-        this.pendingCommentReplies.delete(id);
-      }
-    }
-    if (["twitter", "facebook", "linkedin"].includes(m.channel) || !EMAIL_RE.test(m.from_addr))
-      throw new Error("Open the conversation on its platform to reply");
+    if (!EMAIL_RE.test(m.from_addr)) throw new Error("No email address is available for this conversation");
     const acc = this.emailAccounts().find((a) => a.id === (b.accountId || m.account_id)) ?? this.emailAccounts()[0];
     if (!acc) throw new Error("Add an email account in Settings first");
     const subject = m.subject ? (/^re:/i.test(m.subject) ? m.subject : `Re: ${m.subject}`) : "Re: your message";
@@ -1165,25 +832,15 @@ export class AdminStore extends DurableObject<Env> {
     return { hour, weekend: weekday === "Sat" || weekday === "Sun" };
   }
 
-  async tick(manual = false): Promise<void> {
+  async tick(): Promise<void> {
     if (this.ticking) return;
     this.ticking = true;
     try {
-      // 1. Scheduled posts that are due.
-      for (const p of this.q<{ id: string }>("SELECT id FROM posts WHERE status='scheduled' AND scheduled_at<=? ORDER BY scheduled_at LIMIT 5", now()))
-        await this.publishPost(p.id).catch((e) => this.log("error", errMsg(e)));
-
-      // 2. Replies first, so nobody who answered gets a follow-up.
+      // Replies first, so nobody who answered gets a follow-up.
       await this.pollMail();
 
-      // 3. Outreach emails that are due.
+      // Outreach emails that are due.
       await this.runOutreach();
-
-      // 4. Social replies (every 15 minutes).
-      if (manual || now() - this.lastSocialPoll > 15 * 60_000) {
-        this.lastSocialPoll = now();
-        await this.pollSocial();
-      }
     } finally {
       this.ticking = false;
     }
@@ -1352,54 +1009,10 @@ export class AdminStore extends DurableObject<Env> {
     }
   }
 
-  private async pollSocial() {
-    for (const a of this.q<{ id: string; platform: string; config: string; label: string }>("SELECT * FROM accounts WHERE kind='social' AND platform IN ('twitter','facebook')")) {
-      let cfg = JSON.parse(a.config) as SocialConfig;
-      if (cfg.zernioAccountId) continue;
-      try {
-        cfg = await this.socialCredentials(a);
-        if (a.platform === "twitter") {
-          const r = await xMentions(cfg);
-          for (const m of r.replies) this.addInbound({ channel: "twitter", accountId: a.id, from: m.from, fromName: m.fromName, body: m.text, extId: m.extId, url: m.url, at: m.date });
-          if (r.sinceId && r.sinceId !== cfg.sinceId) {
-            cfg.sinceId = r.sinceId;
-            this.sql.exec("UPDATE accounts SET config=json_set(config, '$.sinceId', ?) WHERE id=? AND json_extract(config, '$.userId')=?", cfg.sinceId, a.id, cfg.userId ?? "");
-          }
-        } else {
-          const posts = this.q<{ results: string }>("SELECT results FROM posts WHERE status IN ('published','partial') AND scheduled_at>=?", now() - 14 * DAY);
-          const ids = posts.map((p) => JSON.parse(p.results)[a.id]?.id).filter(Boolean);
-          for (const m of await fbComments(cfg, ids))
-            this.addInbound({ channel: "facebook", accountId: a.id, from: m.from, fromName: m.fromName, body: m.text, extId: m.extId, url: m.url, at: m.date });
-        }
-      } catch (e) {
-        // Surface missing provider permissions in Settings.
-        this.sql.exec("UPDATE accounts SET last_error=? WHERE id=?", `Replies: ${errMsg(e)}`.slice(0, 300), a.id);
-      }
-      if (a.platform === "facebook" && cfg.messenger) {
-        try {
-          for (const m of await facebookMessages(cfg)) {
-            this.addInbound({ channel: "facebook", accountId: a.id, from: m.from, fromName: m.fromName,
-              subject: "Facebook message", body: m.text, extId: m.extId, url: m.url, at: m.date });
-          }
-          this.sql.exec("UPDATE accounts SET last_error=NULL WHERE id=? AND last_error LIKE 'Messenger:%'", a.id);
-        } catch (e) {
-          this.sql.exec("UPDATE accounts SET last_error=? WHERE id=?", `Messenger: ${errMsg(e)}`.slice(0, 300), a.id);
-        }
-      }
-    }
-  }
 }
 
 function defaultsCampaign(): Omit<Campaign, "id" | "createdAt"> {
   return { name: "New campaign", steps: [], accountIds: [], dailyLimit: 50, status: "draft", autoSources: [], startHour: 9, endHour: 18, weekdaysOnly: true };
-}
-
-function postOut(p: Row) {
-  return {
-    ...p,
-    account_ids: JSON.parse(String(p.account_ids || "[]")),
-    results: JSON.parse(String(p.results || "{}")),
-  };
 }
 
 /** Minimal CSV parser (handles quotes). Returns rows keyed by lower-cased header. */

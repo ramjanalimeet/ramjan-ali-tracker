@@ -33,7 +33,12 @@
     "bindings": [{ "name": "ADMIN_STORE", "class_name": "AdminStore" }]
   },
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["AdminStore"] }],
-  // Every 5 minutes: publish due posts, send outreach emails, pull in replies.
+  "previews": {
+    "durable_objects": {
+      "bindings": [{ "name": "ADMIN_STORE", "class_name": "AdminStore" }]
+    }
+  },
+  // Every 5 minutes: send outreach emails and pull in replies.
   "triggers": { "crons": ["*/5 * * * *"] },
   "observability": { "enabled": true }
 }

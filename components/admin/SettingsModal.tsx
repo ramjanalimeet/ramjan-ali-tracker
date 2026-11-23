@@ -5,10 +5,9 @@ import type { AppCtx } from "./AdminApp";
 import type { Account, Settings } from "./types";
 import { api, Brand, CopyField, Field, Icon, Modal, PLATFORM_LABEL, Status, timeAgo } from "./ui";
 
-export type SettingsTab = "social" | "email" | "website" | "general";
+export type SettingsTab = "email" | "website" | "general";
 
 const TABS: { id: SettingsTab; label: string; icon: string }[] = [
-  { id: "social", label: "Social accounts", icon: "share" },
   { id: "email", label: "Email accounts", icon: "mail" },
   { id: "website", label: "Website & bookings", icon: "globe" },
   { id: "general", label: "General", icon: "settings" },
@@ -28,7 +27,6 @@ export function SettingsModal({ ctx, initial, onClose }: { ctx: AppCtx; initial:
           ))}
         </nav>
         <div className="adm-settings-body">
-          {tab === "social" && <SocialAccounts ctx={ctx} />}
           {tab === "email" && <EmailAccounts ctx={ctx} />}
           {tab === "website" && <WebsiteSettings ctx={ctx} />}
           {tab === "general" && <General ctx={ctx} />}
@@ -89,237 +87,6 @@ function AccountRow({ a, ctx, onEdit }: { a: Account; ctx: AppCtx; onEdit?: () =
         </button>
       </div>
     </div>
-  );
-}
-
-// ---------- social ----------
-
-const SOCIAL_FIELDS: Record<string, { key: string; label: string; secret?: boolean; optional?: boolean; placeholder?: string }[]> = {
-  medium: [{ key: "token", label: "Integration token", secret: true }],
-};
-
-const SOCIAL_HELP: Record<string, React.ReactNode> = {
-  medium: (
-    <ol>
-      <li>
-        Go to <a href="https://medium.com/me/settings/security" target="_blank" rel="noopener">Medium settings → Security and apps → Integration tokens</a> and create a token.
-      </li>
-      <li>Medium no longer gives new tokens to every account. If you don’t see the option, Medium can’t be connected automatically.</li>
-    </ol>
-  ),
-};
-
-function FacebookConnect({ ctx }: { ctx: AppCtx }) {
-  const [enabled, setEnabled] = useState<boolean | null>(null);
-  const [pages, setPages] = useState<{ id: string; name: string }[]>([]);
-  const [pageId, setPageId] = useState("");
-  const [busy, setBusy] = useState(false);
-  const [notice, setNotice] = useState("");
-  useEffect(() => {
-    api<{ enabled: boolean }>("facebook/status").then(({ enabled }) => setEnabled(enabled)).catch(() => setNotice("Could not check Facebook sign-in availability."));
-    const status = new URLSearchParams(location.search).get("facebook");
-    if (!status) return;
-    history.replaceState(null, "", location.pathname + location.hash);
-    if (status === "choose") {
-      api<{ id: string; name: string }[]>("facebook/pages").then((list) => {
-        setPages(list);
-        setPageId(list[0]?.id ?? "");
-        if (!list.length) setNotice("No eligible Pages were available. Sign in again and grant access to your Page.");
-      }).catch(() => setNotice("Could not load your Pages. Start Facebook sign-in again."));
-    } else {
-      setNotice(status === "cancelled" ? "Facebook sign-in was cancelled." : "Facebook sign-in could not finish. Try again.");
-    }
-  }, []);
-  return (
-    <div className="adm-stack">
-      {notice && <p role="status">{notice}</p>}
-      {pages.length ? (
-        <form className="adm-stack" onSubmit={async (e) => {
-          e.preventDefault();
-          setBusy(true);
-          try {
-            const connected = await api<Account>("facebook/pages", { body: { pageId } });
-            await ctx.reloadAccounts();
-            setPages([]);
-            if (connected.status === "ok") ctx.toast("Facebook Page connected");
-            else ctx.toast(connected.last_error || "Facebook could not verify the Page connection.", "error");
-          } catch (err) {
-            ctx.toast((err as Error).message, "error");
-          } finally {
-            setBusy(false);
-          }
-        }}>
-          <Field label="Choose your Facebook Page">
-            <select value={pageId} onChange={(e) => setPageId(e.target.value)} disabled={busy}>
-              {pages.map(({ id, name }) => <option key={id} value={id}>{name}</option>)}
-            </select>
-          </Field>
-          <button className="adm-btn primary" disabled={busy || !pageId}>Connect Page</button>
-        </form>
-      ) : (
-        <div>
-          <button className="adm-btn primary" disabled={busy || !enabled} onClick={async () => {
-            setBusy(true);
-            try {
-              const { url } = await api<{ url: string }>("facebook/start", { body: {} });
-              location.assign(url);
-            } catch (err) {
-              ctx.toast((err as Error).message, "error");
-              setBusy(false);
-            }
-          }}>
-            <Brand platform="facebook" size={20} /> Continue with Facebook
-          </button>
-          {enabled === false && <p className="adm-hint">Facebook sign-in will be available after the Meta app is configured.</p>}
-          {enabled && <p className="adm-hint">Sign in on Facebook to connect or reconnect a Page.</p>}
-        </div>
-      )}
-    </div>
-  );
-}
-
-function ProviderConnect({ ctx, platform }: { ctx: AppCtx; platform: "linkedin" | "twitter" }) {
-  const label = platform === "linkedin" ? "LinkedIn" : "X";
-  const [enabled, setEnabled] = useState<boolean | null>(null);
-  const [busy, setBusy] = useState(false);
-  const [notice, setNotice] = useState("");
-
-  useEffect(() => {
-    api<{ enabled: boolean }>(`${platform}/status`)
-      .then(({ enabled }) => setEnabled(enabled))
-      .catch(() => setNotice(`Could not check ${label} sign-in availability.`));
-    const query = new URLSearchParams(location.search);
-    if (query.get("provider") !== platform) return;
-    const result = query.get("connection");
-    query.delete("provider");
-    query.delete("connection");
-    history.replaceState(null, "", location.pathname + (query.size ? `?${query}` : "") + location.hash);
-    if (result === "connected") setNotice(`${label} connected.`);
-    else if (result === "cancelled") setNotice(`${label} sign-in was cancelled.`);
-    else setNotice(`${label} sign-in could not finish. Try again.`);
-  }, [label, platform]);
-
-  return (
-    <div>
-      <button type="button" className="adm-btn primary" disabled={busy || !enabled} onClick={async () => {
-        setBusy(true);
-        try {
-          const { url } = await api<{ url: string }>(`${platform}/start`, { body: {} });
-          location.assign(url);
-        } catch (err) {
-          ctx.toast((err as Error).message, "error");
-          setBusy(false);
-        }
-      }}>
-        <Brand platform={platform} size={20} /> Continue with {label}
-      </button>
-      {notice && <p className="adm-hint" role="status">{notice}</p>}
-      {enabled === false && <p className="adm-hint">Available after social sign-in is configured.</p>}
-      {enabled && platform === "linkedin" && <p className="adm-hint">Sign in on LinkedIn to connect or reconnect your account.</p>}
-    </div>
-  );
-}
-
-function SocialAccounts({ ctx }: { ctx: AppCtx }) {
-  const [editing, setEditing] = useState<{ platform: string; account?: Account } | null>(null);
-  const list = ctx.accounts.filter((a) => a.kind === "social");
-  if (editing) return <SocialForm ctx={ctx} platform={editing.platform} account={editing.account} onDone={() => setEditing(null)} />;
-  return (
-    <div className="adm-stack">
-      <div className="adm-sec-head">
-        <div>
-          <h3>Social accounts</h3>
-          <p>Posts you schedule are published to these automatically.</p>
-        </div>
-      </div>
-      <FacebookConnect ctx={ctx} />
-      <ProviderConnect ctx={ctx} platform="linkedin" />
-      <ProviderConnect ctx={ctx} platform="twitter" />
-      <div className="adm-platforms">
-        {Object.keys(SOCIAL_FIELDS).map((p) => (
-          <button key={p} className="adm-platform" onClick={() => setEditing({ platform: p })}>
-            <Brand platform={p} size={28} />
-            <span>{PLATFORM_LABEL(p)} integration token</span>
-            <Icon name="plus" size={16} />
-          </button>
-        ))}
-      </div>
-      {list.length > 0 && (
-        <div className="adm-acc-list">
-          {list.map((a) => (
-            <AccountRow
-              key={a.id}
-              a={a}
-              ctx={ctx}
-              onEdit={a.platform === "medium" ? () => setEditing({ platform: a.platform, account: a }) : undefined}
-            />
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
-function SocialForm({ ctx, platform, account, onDone }: { ctx: AppCtx; platform: string; account?: Account; onDone: () => void }) {
-  const [cfg, setCfg] = useState<Record<string, string>>(() =>
-    Object.fromEntries(SOCIAL_FIELDS[platform].map((f) => [f.key, String(account?.config[f.key] ?? "")])),
-  );
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState("");
-  return (
-    <form
-      className="adm-stack"
-      onSubmit={async (e) => {
-        e.preventDefault();
-        setBusy(true);
-        setError("");
-        try {
-          const saved = await api<Account>("accounts", { body: { id: account?.id, kind: "social", platform, config: cfg } });
-          await ctx.reloadAccounts();
-          if (saved.status === "ok") {
-            ctx.toast(`${PLATFORM_LABEL(platform)} connected`);
-            onDone();
-          } else setError(saved.last_error || "Could not connect. Check the values and try again.");
-        } catch (err) {
-          setError((err as Error).message);
-        } finally {
-          setBusy(false);
-        }
-      }}
-    >
-      <button type="button" className="adm-back" onClick={onDone}>
-        <Icon name="left" size={16} /> All accounts
-      </button>
-      <div className="adm-sec-head">
-        <Brand platform={platform} size={34} />
-        <div>
-          <h3>{account ? "Edit" : "Connect"} {PLATFORM_LABEL(platform)}</h3>
-          <p>Credentials stay on your server and are never shown again after saving.</p>
-        </div>
-      </div>
-      <div className="adm-help">{SOCIAL_HELP[platform]}</div>
-      {SOCIAL_FIELDS[platform].map((f) => (
-        <Field key={f.key} label={f.label}>
-          <input
-            type={f.secret ? "password" : "text"}
-            autoComplete="off"
-            placeholder={f.secret && account?.secretsSet.includes(f.key) ? "•••••••• saved — leave empty to keep" : f.placeholder}
-            required={!f.optional && !(f.secret && account?.secretsSet.includes(f.key))}
-            value={cfg[f.key]}
-            onChange={(e) => setCfg({ ...cfg, [f.key]: e.target.value })}
-          />
-        </Field>
-      ))}
-      {error && <div className="adm-error">{error}</div>}
-      <div className="adm-row-end">
-        <button type="button" className="adm-btn" onClick={onDone}>
-          Cancel
-        </button>
-        <button className="adm-btn primary" disabled={busy}>
-          {busy ? "Connecting…" : "Save & connect"}
-        </button>
-      </div>
-    </form>
   );
 }
 
@@ -638,7 +405,7 @@ function General({ ctx }: { ctx: AppCtx }) {
       <div className="adm-sec-head">
         <div>
           <h3>Automation</h3>
-          <p>Runs every 5 minutes: publishes due posts, sends due outreach emails and checks inboxes for replies.</p>
+          <p>Runs every 5 minutes: sends due outreach emails and checks inboxes for replies.</p>
         </div>
         <button
           type="button"
