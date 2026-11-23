@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { BlogsView } from "./BlogsView";
 import { ContactsView } from "./ContactsView";
-import { EmailView } from "./EmailView";
 import { InboxView } from "./InboxView";
 import { OverviewView } from "./OverviewView";
 import { SettingsModal, type SettingsTab } from "./SettingsModal";
@@ -14,7 +13,6 @@ const NAV: { id: View; label: string; icon: string }[] = [
   { id: "overview", label: "Overview", icon: "home" },
   { id: "inbox", label: "Inbox", icon: "inbox" },
   { id: "blogs", label: "Blogs", icon: "book" },
-  { id: "email", label: "Email", icon: "mail" },
   { id: "contacts", label: "Contacts", icon: "users" },
 ];
 
@@ -193,7 +191,6 @@ function Shell() {
           {view === "overview" && <OverviewView ctx={ctx} />}
           {view === "inbox" && <InboxView key="inbox" ctx={ctx} />}
           {view === "blogs" && <BlogsView ctx={ctx} />}
-          {view === "email" && <EmailView ctx={ctx} />}
           {view === "contacts" && <ContactsView ctx={ctx} />}
         </div>
       </div>

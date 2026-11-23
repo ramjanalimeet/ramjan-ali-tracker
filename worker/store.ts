@@ -12,7 +12,6 @@ import {
   addrOf,
   err,
   errMsg,
-  fillTemplate,
   hashPassword,
   hex,
   hmac,
@@ -41,7 +40,6 @@ const DEFAULT_PASSWORD_HASH = "pbkdf2$100000$YWiHgA9TjAMol/TX0crtuQ==$mCWWefDX1f
 const COOKIE = "ra_admin";
 const DAY = 86_400_000;
 const SECRET_KEYS = ["password", "resendKey", "apiKey", "apiSecret", "accessToken", "accessSecret", "token", "refreshToken"];
-const MAX_SENDS_PER_TICK = 12;
 
 type Row = Record<string, SqlStorageValue>;
 
@@ -982,25 +980,13 @@ export class AdminStore extends DurableObject<Env> {
 
   // ---------- automation (cron) ----------
 
-  private localTime(t = now()) {
-    const tz = this.setting("timezone") || "Asia/Dhaka";
-    const parts = new Intl.DateTimeFormat("en-US", { timeZone: tz, hour: "numeric", hour12: false, weekday: "short" }).formatToParts(new Date(t));
-    const hour = Number(parts.find((p) => p.type === "hour")?.value ?? 0) % 24;
-    const weekday = parts.find((p) => p.type === "weekday")?.value ?? "Mon";
-    return { hour, weekend: weekday === "Sat" || weekday === "Sun" };
-  }
-
   async tick(): Promise<void> {
     if (this.ticking) return;
     this.ticking = true;
     try {
       await this.sendLeadNotifications();
 
-      // Replies first, so nobody who answered gets a follow-up.
       await this.pollMail();
-
-      // Outreach emails that are due.
-      await this.runOutreach();
     } finally {
       this.ticking = false;
     }
@@ -1052,119 +1038,6 @@ export class AdminStore extends DurableObject<Env> {
       } catch (e) {
         this.sql.exec("UPDATE accounts SET status='error', last_error=? WHERE id=?", `Inbox: ${errMsg(e)}`, acc.id);
         this.log("warn", `Checking ${c.email} failed: ${errMsg(e)}`);
-      }
-    }
-  }
-
-  private async runOutreach() {
-    const campaigns = this.listCampaigns().filter((c) => c.status === "active");
-    if (!campaigns.length) return;
-    const accounts = new Map(this.emailAccounts().map((a) => [a.id, a]));
-    const sentToday = (accId: string) =>
-      Number(this.one<{ n: number }>("SELECT COUNT(*) n FROM messages WHERE direction='out' AND account_id=? AND created_at>=?", accId, startOfDay())?.n ?? 0);
-    const unsubLine = this.setting("unsubscribe_line") ?? "";
-    const { hour, weekend } = this.localTime();
-    let budget = MAX_SENDS_PER_TICK;
-
-    for (const camp of campaigns) {
-      if (budget <= 0) break;
-      if (camp.weekdaysOnly && weekend) continue;
-      if (hour < camp.startHour || hour >= camp.endHour) continue;
-      const campToday = Number(
-        this.one<{ n: number }>("SELECT COUNT(*) n FROM messages WHERE direction='out' AND campaign_id=? AND created_at>=?", camp.id, startOfDay())?.n ?? 0,
-      );
-      let campBudget = Math.min(budget, camp.dailyLimit - campToday);
-      if (campBudget <= 0) continue;
-      const pool = camp.accountIds.filter((id) => accounts.has(id));
-      if (!pool.length) {
-        this.log("warn", `Campaign "${camp.name}" has no email account selected`);
-        continue;
-      }
-      const due = this.q<{ id: string; contact_id: string; step: number; account_id: string; thread_id: string; thread_subject: string; attempts: number }>(
-        "SELECT * FROM enrollments WHERE campaign_id=? AND status='active' AND next_at<=? ORDER BY next_at LIMIT ?",
-        camp.id,
-        now(),
-        campBudget,
-      );
-      for (const en of due) {
-        if (campBudget <= 0) break;
-        const contact = this.one<{ id: string; email: string; name: string; company: string; website: string; status: string }>("SELECT * FROM contacts WHERE id=?", en.contact_id);
-        if (!contact || ["unsubscribed", "bounced", "replied", "booked"].includes(contact.status)) {
-          this.sql.exec("UPDATE enrollments SET status=? WHERE id=?", contact?.status === "replied" || contact?.status === "booked" ? "replied" : "stopped", en.id);
-          continue;
-        }
-        // Keep each contact on the same sender; otherwise pick the least-used account with room left today.
-        let accId = en.account_id && accounts.has(en.account_id) ? en.account_id : "";
-        if (!accId) {
-          accId =
-            pool
-              .map((id) => ({ id, used: sentToday(id), limit: accounts.get(id)!.cfg.dailyLimit ?? 40 }))
-              .filter((a) => a.used < a.limit)
-              .sort((a, b) => a.used / a.limit - b.used / b.limit)[0]?.id ?? "";
-        } else if (sentToday(accId) >= (accounts.get(accId)!.cfg.dailyLimit ?? 40)) continue;
-        if (!accId) break; // every sender is at its daily limit
-        const acc = accounts.get(accId)!;
-        const step = camp.steps[en.step];
-        if (!step) {
-          this.sql.exec("UPDATE enrollments SET status='done' WHERE id=?", en.id);
-          continue;
-        }
-        const first = (contact.name || "").split(/\s+/)[0] || "";
-        const vars = {
-          first_name: first,
-          name: contact.name,
-          company: contact.company,
-          website: contact.website,
-          email: contact.email,
-          sender_name: acc.cfg.fromName || "",
-        };
-        const subject = step.subject?.trim()
-          ? fillTemplate(step.subject, vars)
-          : en.thread_subject
-            ? `Re: ${en.thread_subject.replace(/^re:\s*/i, "")}`
-            : fillTemplate(camp.steps[0].subject, vars);
-        let body = fillTemplate(step.body, vars);
-        if (unsubLine && en.step === 0) body += `\n\n${unsubLine}`;
-        try {
-          const messageId = await sendMail(acc.cfg, {
-            to: contact.email,
-            toName: contact.name,
-            subject,
-            body,
-            inReplyTo: !step.subject?.trim() && en.thread_id ? en.thread_id : undefined,
-          });
-          this.recordOut({ accountId: accId, contactId: contact.id, campaignId: camp.id, to: contact.email, subject, body, messageId, from: acc.cfg.email });
-          const nextStep = en.step + 1;
-          const next = camp.steps[nextStep];
-          this.sql.exec(
-            "UPDATE enrollments SET step=?, next_at=?, status=?, account_id=?, thread_id=COALESCE(thread_id, ?), thread_subject=COALESCE(thread_subject, ?), attempts=0, last_error=NULL WHERE id=?",
-            nextStep,
-            next ? now() + next.delayDays * DAY : now(),
-            next ? "active" : "done",
-            accId,
-            messageId,
-            subject,
-            en.id,
-          );
-          this.sql.exec("UPDATE contacts SET status='contacted', updated_at=? WHERE id=? AND status='new'", now(), contact.id);
-          campBudget--;
-          budget--;
-        } catch (e) {
-          const attempts = en.attempts + 1;
-          this.sql.exec(
-            "UPDATE enrollments SET attempts=?, last_error=?, next_at=?, status=? WHERE id=?",
-            attempts,
-            errMsg(e),
-            now() + 60 * 60_000,
-            attempts >= 3 ? "failed" : "active",
-            en.id,
-          );
-          this.log("error", `Sending to ${contact.email} failed: ${errMsg(e)}`);
-          if (/auth|login|credentials|535/i.test(errMsg(e))) {
-            this.sql.exec("UPDATE accounts SET status='error', last_error=? WHERE id=?", errMsg(e), accId);
-            accounts.delete(accId);
-          }
-        }
       }
     }
   }

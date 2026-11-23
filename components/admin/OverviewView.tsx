@@ -5,8 +5,6 @@ import type { AppCtx } from "./AdminApp";
 import type { Overview } from "./types";
 import { api, Brand, Empty, fmtDateTime, Icon, timeAgo } from "./ui";
 
-const DAY = 86_400_000;
-
 function greeting() {
   const h = new Date().getHours();
   return h < 12 ? "Good morning" : h < 18 ? "Good afternoon" : "Good evening";
@@ -30,11 +28,6 @@ export function OverviewView({ ctx }: { ctx: AppCtx }) {
           <h1>{greeting()}, Ramjan</h1>
           <p>{new Date().toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" })}</p>
         </div>
-        <div className="adm-head-actions">
-          <button className="adm-btn primary" onClick={() => ctx.go("email")}>
-            <Icon name="send" size={15} /> Outreach
-          </button>
-        </div>
       </header>
 
       {!setupDone && (
@@ -52,23 +45,11 @@ export function OverviewView({ ctx }: { ctx: AppCtx }) {
 
       <div className="adm-stats">
         <Stat label="Unread in inbox" value={o.unread} onClick={() => ctx.go("inbox")} />
-        <Stat label="Emails sent today" value={o.sentToday} sub={`${o.sentWeek} this week`} />
-        <Stat label="Replies this week" value={o.repliesWeek} sub={o.sentWeek ? `${Math.round((o.repliesWeek / o.sentWeek) * 100)}% reply rate` : undefined} />
+        <Stat label="Replies this week" value={o.repliesWeek} />
         <Stat label="Leads & bookings" value={o.leadsWeek} sub="last 7 days" />
-        <Stat label="In sequences" value={o.activeSequences} sub={`${o.contacts} contacts`} onClick={() => ctx.go("contacts")} />
       </div>
 
       <div className="adm-cols">
-        <section className="adm-card">
-          <div className="adm-card-head">
-            <h2>Outreach, last 14 days</h2>
-            <span className="adm-legend">
-              <i className="out" /> Sent <i className="in" /> Replies
-            </span>
-          </div>
-          <Bars daily={o.daily} />
-        </section>
-
         <section className="adm-card">
           <div className="adm-card-head">
             <h2>Upcoming calls</h2>
@@ -98,9 +79,6 @@ export function OverviewView({ ctx }: { ctx: AppCtx }) {
             </Empty>
           )}
         </section>
-      </div>
-
-      <div>
         <section className="adm-card">
           <div className="adm-card-head">
             <h2>Latest in inbox</h2>
@@ -157,25 +135,5 @@ function Stat({ label, value, sub, onClick }: { label: string; value: number; su
       <b>{value.toLocaleString()}</b>
       {sub && <small>{sub}</small>}
     </Tag>
-  );
-}
-
-function Bars({ daily }: { daily: Overview["daily"] }) {
-  const today = Math.floor(Date.now() / DAY) * DAY;
-  const days = Array.from({ length: 14 }, (_, i) => today - (13 - i) * DAY);
-  const get = (d: number, dir: "in" | "out") => daily.find((x) => x.day === d && x.direction === dir)?.n ?? 0;
-  const max = Math.max(4, ...days.map((d) => get(d, "out")), ...days.map((d) => get(d, "in")));
-  return (
-    <div className="adm-bars" role="img" aria-label="Emails sent and replies per day">
-      {days.map((d) => (
-        <div key={d} className="adm-bar-col" title={`${new Date(d).toLocaleDateString()}: ${get(d, "out")} sent, ${get(d, "in")} replies`}>
-          <div className="adm-bar-pair">
-            <i className="out" style={{ height: `${(get(d, "out") / max) * 100}%` }} />
-            <i className="in" style={{ height: `${(get(d, "in") / max) * 100}%` }} />
-          </div>
-          <span>{new Date(d).getUTCDate()}</span>
-        </div>
-      ))}
-    </div>
   );
 }

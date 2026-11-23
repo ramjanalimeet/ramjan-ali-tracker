@@ -45,20 +45,17 @@ points at `worker.ts`, which wraps the Next.js worker and adds the admin dashboa
 
 ## Admin dashboard (`/admin`)
 
-A private, Notion-style workspace at `/admin` for email outreach and leads.
+A private, Notion-style workspace at `/admin` for email replies and leads.
 
 - **Sign in** with the dashboard password. Change it in Settings → General, or set an
   `ADMIN_PASSWORD` secret in Cloudflare (that one then wins).
-- **Email** — campaigns with a first email and follow-ups. Sending is spread across the selected
-  inboxes within each inbox's daily limit, only in the campaign's sending hours, and follow-ups
-  reply in the same thread. A reply (found over IMAP) stops the sequence and lands in the Inbox.
 - **Contacts** — CSV import, “Find emails” (reads public emails from business websites), website
-  form leads and Cal.com bookings. Campaigns can auto-enroll new contacts by source.
-- **Inbox** — outreach replies, website form submissions (`POST /api/lead`), and Cal.com bookings
+  form leads and Cal.com bookings.
+- **Inbox** — email replies, website form submissions (`POST /api/lead`), and Cal.com bookings
   (webhook URL shown in Settings → Website & bookings).
 
 Backend: `worker/` — one SQLite Durable Object (`AdminStore`) holds everything; a cron every 5
-minutes (`triggers` in `wrangler.jsonc`) sends due emails and checks replies.
+minutes (`triggers` in `wrangler.jsonc`) retries form notifications and checks replies.
 The dashboard UI is `app/admin` + `components/admin`. Typecheck the worker with
 `npx tsc -p worker/tsconfig.json`. `npm run dev` serves the UI only; use `npm run preview` (or
 `npx wrangler dev` after `npm run build`) to run it with the backend.

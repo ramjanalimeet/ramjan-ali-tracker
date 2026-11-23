@@ -104,7 +104,7 @@ export function InboxView({ ctx }: { ctx: AppCtx }) {
           </ul>
         ) : (
           <Empty icon="inbox" title="Nothing here yet">
-            Outreach replies, website submissions and bookings appear here.
+            Email replies, website submissions and bookings appear here.
           </Empty>
         )}
       </div>
