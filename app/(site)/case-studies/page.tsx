@@ -92,12 +92,16 @@ export default function CaseStudiesPage() {
             {CASE_STUDIES.map((c) => (
               <article className="case-result-card rv" key={c.slug}>
                 <Link className="case-result-image" href={`/case-studies/${c.slug}`} aria-label={`Read ${c.client} case study`}>
+                  <span className="case-browserbar" aria-hidden="true">
+                    <i /><i /><i />
+                    <b>ecoverdevaleting.co.uk</b>
+                  </span>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={c.image} alt={c.imageAlt} width={1280} height={720} />
                 </Link>
                 <div className="case-result-body">
-                  <span className="tag">{c.trade} · {c.location}</span>
-                  <h2>{c.title}</h2>
+                  <span className="tag">West London · Local SEO + AI Visibility</span>
+                  <h2>{c.client}</h2>
                   <p>{c.summary}</p>
                   <ul className="case-result-metrics">
                     {c.highlights.slice(0, 3).map((h) => (
