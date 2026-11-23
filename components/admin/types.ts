@@ -1,6 +1,6 @@
 export interface Account {
   id: string;
-  kind: "email" | "social";
+  kind: "email";
   platform: string;
   label: string;
   config: Record<string, string | number | undefined>;
@@ -8,26 +8,6 @@ export interface Account {
   status: string;
   last_error: string | null;
   sentToday: number;
-}
-
-export interface PostResult {
-  ok: boolean;
-  id?: string;
-  url?: string;
-  error?: string;
-  platform?: string;
-}
-
-export interface Post {
-  id: string;
-  title: string;
-  content: string;
-  image_url: string;
-  account_ids: string[];
-  scheduled_at: number;
-  status: "draft" | "scheduled" | "published" | "partial" | "failed";
-  results: Record<string, PostResult>;
-  created_at: number;
 }
 
 export interface Contact {
@@ -67,7 +47,6 @@ export interface Campaign {
 export interface Message {
   id: string;
   direction: "in" | "out";
-  ext_id?: string;
   channel: string;
   account_id: string;
   contact_id: string;
@@ -102,13 +81,10 @@ export interface Overview {
   sentToday: number;
   sentWeek: number;
   repliesWeek: number;
-  scheduledPosts: number;
-  publishedWeek: number;
   contacts: number;
   activeSequences: number;
   leadsWeek: number;
   upcomingBookings: Booking[];
-  upcomingPosts: Post[];
   recentInbox: Message[];
   accounts: Pick<Account, "id" | "kind" | "platform" | "label" | "status">[];
   daily: { day: number; direction: "in" | "out"; n: number }[];
@@ -125,4 +101,4 @@ export interface Settings {
   unsubscribeLine: string;
 }
 
-export type View = "overview" | "inbox" | "comments" | "calendar" | "social" | "email" | "contacts";
+export type View = "overview" | "inbox" | "calendar" | "email" | "contacts";
