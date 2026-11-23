@@ -40,7 +40,7 @@ export function SettingsModal({ ctx, initial, onClose }: { ctx: AppCtx; initial:
 
 // ---------- accounts list ----------
 
-function AccountRow({ a, ctx, onEdit }: { a: Account; ctx: AppCtx; onEdit: () => void }) {
+function AccountRow({ a, ctx, onEdit }: { a: Account; ctx: AppCtx; onEdit?: () => void }) {
   const [busy, setBusy] = useState(false);
   return (
     <div className="adm-acc">
@@ -71,9 +71,11 @@ function AccountRow({ a, ctx, onEdit }: { a: Account; ctx: AppCtx; onEdit: () =>
         >
           {busy ? "Testing…" : "Test"}
         </button>
-        <button className="adm-btn" onClick={onEdit}>
-          Edit
-        </button>
+        {onEdit && (
+          <button className="adm-btn" onClick={onEdit}>
+            Edit
+          </button>
+        )}
         <button
           className="adm-icon-btn"
           aria-label="Remove"
@@ -103,10 +105,6 @@ const SOCIAL_FIELDS: Record<string, { key: string; label: string; secret?: boole
     { key: "token", label: "Access token", secret: true },
     { key: "authorUrn", label: "Company page URN (optional)", optional: true, placeholder: "urn:li:organization:123456 — leave empty to post as yourself" },
   ],
-  facebook: [
-    { key: "pageId", label: "Page ID", placeholder: "e.g. 102938475610293" },
-    { key: "token", label: "Page access token", secret: true },
-  ],
   medium: [{ key: "token", label: "Integration token", secret: true }],
 };
 
@@ -133,15 +131,6 @@ const SOCIAL_HELP: Record<string, React.ReactNode> = {
       <li>LinkedIn tokens expire after 60 days; paste a new one when the account shows an error.</li>
     </ol>
   ),
-  facebook: (
-    <ol>
-      <li>
-        In <a href="https://developers.facebook.com/tools/explorer/" target="_blank" rel="noopener">Graph API Explorer</a>, pick your app, add <code>pages_manage_posts</code>, <code>pages_read_engagement</code> and <code>pages_show_list</code>, then generate a token.
-      </li>
-      <li>Choose your Page under “User or Page” to get a Page token, and extend it in the Access Token Debugger so it does not expire.</li>
-      <li>The Page ID is in your Page’s About → Page transparency, or in the Explorer’s <code>me/accounts</code> result.</li>
-    </ol>
-  ),
   medium: (
     <ol>
       <li>
@@ -153,13 +142,13 @@ const SOCIAL_HELP: Record<string, React.ReactNode> = {
 };
 
 function FacebookConnect({ ctx }: { ctx: AppCtx }) {
-  const [enabled, setEnabled] = useState(false);
+  const [enabled, setEnabled] = useState<boolean | null>(null);
   const [pages, setPages] = useState<{ id: string; name: string }[]>([]);
   const [pageId, setPageId] = useState("");
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState("");
   useEffect(() => {
-    api<{ enabled: boolean }>("facebook/status").then(({ enabled }) => setEnabled(enabled)).catch(() => {});
+    api<{ enabled: boolean }>("facebook/status").then(({ enabled }) => setEnabled(enabled)).catch(() => setNotice("Could not check Facebook sign-in availability."));
     const status = new URLSearchParams(location.search).get("facebook");
     if (!status) return;
     history.replaceState(null, "", location.pathname + location.hash);
@@ -181,10 +170,11 @@ function FacebookConnect({ ctx }: { ctx: AppCtx }) {
           e.preventDefault();
           setBusy(true);
           try {
-            await api("facebook/pages", { body: { pageId } });
+            const connected = await api<Account>("facebook/pages", { body: { pageId } });
             await ctx.reloadAccounts();
             setPages([]);
-            ctx.toast("Facebook Page connected");
+            if (connected.status === "ok") ctx.toast("Facebook Page connected");
+            else ctx.toast(connected.last_error || "Facebook could not verify the Page connection.", "error");
           } catch (err) {
             ctx.toast((err as Error).message, "error");
           } finally {
@@ -212,7 +202,8 @@ function FacebookConnect({ ctx }: { ctx: AppCtx }) {
           }}>
             <Brand platform="facebook" size={20} /> Continue with Facebook
           </button>
-          {!enabled && <p className="adm-hint">Facebook sign-in requires Meta app setup.</p>}
+          {enabled === false && <p className="adm-hint">Facebook sign-in will be available after the Meta app is configured.</p>}
+          {enabled && <p className="adm-hint">Sign in on Facebook to connect or reconnect a Page.</p>}
         </div>
       )}
     </div>
@@ -236,7 +227,7 @@ function SocialAccounts({ ctx }: { ctx: AppCtx }) {
         {Object.keys(SOCIAL_FIELDS).map((p) => (
           <button key={p} className="adm-platform" onClick={() => setEditing({ platform: p })}>
             <Brand platform={p} size={28} />
-            <span>{p === "facebook" ? "Facebook token setup" : PLATFORM_LABEL(p)}</span>
+            <span>{PLATFORM_LABEL(p)}</span>
             <Icon name="plus" size={16} />
           </button>
         ))}
@@ -244,7 +235,12 @@ function SocialAccounts({ ctx }: { ctx: AppCtx }) {
       {list.length > 0 && (
         <div className="adm-acc-list">
           {list.map((a) => (
-            <AccountRow key={a.id} a={a} ctx={ctx} onEdit={() => setEditing({ platform: a.platform, account: a })} />
+            <AccountRow
+              key={a.id}
+              a={a}
+              ctx={ctx}
+              onEdit={a.platform !== "facebook" ? () => setEditing({ platform: a.platform, account: a }) : undefined}
+            />
           ))}
         </div>
       )}
