@@ -77,6 +77,21 @@ section shows comments from recent Page posts published through the dashboard. F
 AI drafts, add an Anthropic API key in **Settings → General**, then use **Draft with AI**
 and review your reply before posting it publicly.
 
+### LinkedIn and X sign-in
+
+- **LinkedIn:** Enable **Sign In with LinkedIn using OpenID Connect** and **Share on
+  LinkedIn**. Register `https://ramjanaliakash.com/api/admin/linkedin/callback`
+  and set `LINKEDIN_CLIENT_ID` and `LINKEDIN_CLIENT_SECRET` as Worker secrets.
+  This OAuth flow connects member profiles. Existing organization connections can
+  continue using the credentials already saved. Reconnect when authorization
+  expires if LinkedIn didn't issue a refresh token.
+- **X:** Configure an OAuth 2.0 confidential Web App with read and write access.
+  Register `https://ramjanaliakash.com/api/admin/twitter/callback` and set
+  `X_CLIENT_ID` and `X_CLIENT_SECRET` as Worker secrets. The connection requests
+  offline access to refresh automatically. Your X API plan determines whether
+  reading mentions is available.
+- **Medium:** Use an existing integration token if you have one.
+
 Backend: `worker/` — one SQLite Durable Object (`AdminStore`) holds everything; a cron every 5
 minutes (`triggers` in `wrangler.jsonc`) publishes due posts, sends due emails and checks replies.
 The dashboard UI is `app/admin` + `components/admin`. Typecheck the worker with

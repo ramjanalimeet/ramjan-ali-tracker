@@ -5,7 +5,7 @@
 import { DurableObject } from "cloudflare:workers";
 import { aiWrite } from "./ai";
 import { fetchNewMail, sendMail, testEmail, withDefaults, type EmailConfig } from "./mail";
-import { facebookMessages, facebookPages, fbComments, publish, replyToFacebookComment, type FacebookPage, verifySocial, xMentions, type Platform, type SocialConfig } from "./social";
+import { exchangeSocialToken, facebookMessages, facebookPages, fbComments, publish, replyToFacebookComment, type FacebookPage, SOCIAL_OAUTH, type OAuthPlatform, verifySocial, xMentions, type Platform, type SocialConfig } from "./social";
 import {
   EMAIL_RE,
   addrOf,
@@ -31,6 +31,10 @@ export interface Env {
   ADMIN_PASSWORD?: string;
   META_APP_ID?: string;
   META_APP_SECRET?: string;
+  X_CLIENT_ID?: string;
+  X_CLIENT_SECRET?: string;
+  LINKEDIN_CLIENT_ID?: string;
+  LINKEDIN_CLIENT_SECRET?: string;
 }
 
 // Default password hash (PBKDF2). Change the password from Settings, or set
@@ -44,7 +48,7 @@ const FACEBOOK_SCOPES = [
   "pages_read_user_content", "pages_manage_engagement", "pages_messaging",
 ];
 const DAY = 86_400_000;
-const SECRET_KEYS = ["password", "resendKey", "apiKey", "apiSecret", "accessToken", "accessSecret", "token"];
+const SECRET_KEYS = ["password", "resendKey", "apiKey", "apiSecret", "accessToken", "accessSecret", "token", "refreshToken"];
 const MAX_SENDS_PER_TICK = 12;
 
 type Row = Record<string, SqlStorageValue>;
@@ -246,6 +250,98 @@ export class AdminStore extends DurableObject<Env> {
     return err("Not found", 404);
   }
 
+  private oauthClient(platform: OAuthPlatform) {
+    return platform === "twitter"
+      ? { id: this.env.X_CLIENT_ID, secret: this.env.X_CLIENT_SECRET }
+      : { id: this.env.LINKEDIN_CLIENT_ID, secret: this.env.LINKEDIN_CLIENT_SECRET };
+  }
+
+  private async providerAuth(req: Request, platform: OAuthPlatform, action: string, url: URL): Promise<Response> {
+    const { id, secret } = this.oauthClient(platform);
+    if (action === "status" && req.method === "GET") return json({ enabled: Boolean(id && secret) });
+    if (!id || !secret) return err("Provider sign-in is not configured", 503);
+    const session = parseCookies(req.headers.get("cookie"))[COOKIE]!;
+    const sessionKey = hex(await hmac(this.setting("session_secret")!, session));
+    const key = `oauth_${platform}`;
+    const redirectUri = `https://ramjanaliakash.com/api/admin/${platform}/callback`;
+    const finish = (status: string) => Response.redirect(`${url.origin}/admin?provider=${platform}&connection=${status}#settings`);
+    if (action === "start" && req.method === "POST") {
+      const state = uid();
+      const verifier = uid() + uid();
+      const query = new URLSearchParams({
+        client_id: id, redirect_uri: redirectUri, response_type: "code", state, scope: SOCIAL_OAUTH[platform].scope,
+      });
+      if (platform === "twitter") {
+        const hash = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(verifier));
+        query.set("code_challenge", btoa(String.fromCharCode(...new Uint8Array(hash))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, ""));
+        query.set("code_challenge_method", "S256");
+      }
+      this.setSetting(key, JSON.stringify({ session: sessionKey, state, verifier, expires: now() + 600_000 }));
+      return json({ url: `${SOCIAL_OAUTH[platform].authorize}?${query}` });
+    }
+    if (action !== "callback" || req.method !== "GET") return err("Not found", 404);
+    const raw = this.setting(key);
+    const pending = raw ? JSON.parse(raw) as { session: string; state: string; verifier: string; expires: number } : null;
+    const state = url.searchParams.get("state");
+    if (!pending || pending.expires <= now() || !safeEqual(sessionKey, pending.session) || !state || !safeEqual(state, pending.state)) return finish("expired");
+    this.sql.exec("DELETE FROM settings WHERE key=?", key);
+    const code = url.searchParams.get("code");
+    if (!code) return finish("cancelled");
+    try {
+      const params: Record<string, string> = { grant_type: "authorization_code", code, redirect_uri: redirectUri };
+      if (platform === "twitter") params.code_verifier = pending.verifier;
+      const cfg = await verifySocial(platform, await exchangeSocialToken(platform, id, secret, params));
+      const identityKey = platform === "twitter" ? "$.userId" : "$.authorUrn";
+      const identity = platform === "twitter" ? cfg.userId : cfg.authorUrn;
+      if (!identity) return finish("failed");
+      const existing = this.one<{ id: string; config: string }>(
+        "SELECT id, config FROM accounts WHERE kind='social' AND platform=? AND json_extract(config,?)=?",
+        platform, identityKey, identity,
+      );
+      if (existing) {
+        const old = JSON.parse(existing.config) as SocialConfig;
+        this.sql.exec("UPDATE accounts SET label=?, config=?, status='ok', last_error=NULL WHERE id=?",
+          cfg.handle || platform, JSON.stringify({ ...cfg, sinceId: old.sinceId }), existing.id);
+      } else {
+        this.sql.exec("INSERT INTO accounts(id,kind,platform,label,config,status,created_at) VALUES(?,'social',?,?,?,'ok',?)",
+          uid("acc_"), platform, cfg.handle || platform, JSON.stringify(cfg), now());
+      }
+      return finish("connected");
+    } catch {
+      return finish("failed");
+    }
+  }
+
+  private readonly socialRefreshes = new Map<string, Promise<SocialConfig>>();
+
+  private async socialCredentials(a: { id: string; platform: string; config: string }): Promise<SocialConfig> {
+    const cfg = JSON.parse(a.config) as SocialConfig;
+    if (!cfg.tokenExpiresAt || cfg.tokenExpiresAt > now() + 60_000) return cfg;
+    if ((a.platform !== "twitter" && a.platform !== "linkedin") || !cfg.refreshToken) {
+      if (cfg.tokenExpiresAt > now()) return cfg;
+      throw new Error("Authorization expired. Reconnect the account in Settings.");
+    }
+    const existing = this.socialRefreshes.get(a.id);
+    if (existing) return existing;
+    const platform = a.platform;
+    const { id, secret } = this.oauthClient(platform);
+    if (!id || !secret) throw new Error("Provider sign-in is not configured");
+    const refresh = (async () => {
+      const tokens = await exchangeSocialToken(platform, id, secret, { grant_type: "refresh_token", refresh_token: cfg.refreshToken! });
+      const fresh = { ...cfg, ...tokens, refreshToken: tokens.refreshToken || cfg.refreshToken };
+      this.sql.exec("UPDATE accounts SET config=? WHERE id=? AND config=?", JSON.stringify(fresh), a.id, a.config);
+      const saved = this.one<{ config: string }>("SELECT config FROM accounts WHERE id=?", a.id);
+      if (!saved) throw new Error("Account was removed");
+      return JSON.parse(saved.config) as SocialConfig;
+    })();
+    this.socialRefreshes.set(a.id, refresh);
+    try {
+      return await refresh;
+    } finally {
+      this.socialRefreshes.delete(a.id);
+    }
+  }
+
   private async admin(req: Request, route: string, url: URL): Promise<Response> {
     const m = req.method;
     const seg = route.split("/").filter(Boolean);
@@ -261,6 +357,7 @@ export class AdminStore extends DurableObject<Env> {
     }
 
     if (res === "facebook") return this.facebookAuth(req, id, url);
+    if (res === "twitter" || res === "linkedin") return this.providerAuth(req, res, id, url);
 
     if (res === "accounts") {
       if (m === "GET") return json(this.listAccounts());
@@ -471,8 +568,8 @@ export class AdminStore extends DurableObject<Env> {
   private async testAccount(id: string) {
     const a = this.one<{ kind: string; platform: string; config: string; label: string }>("SELECT * FROM accounts WHERE id=?", id);
     if (!a) throw new Error("Account not found");
-    const cfg = JSON.parse(a.config);
     try {
+      const cfg = a.kind === "email" ? JSON.parse(a.config) : await this.socialCredentials({ ...a, id });
       let note = "";
       if (a.kind === "email") note = await testEmail(cfg);
       else {
@@ -521,13 +618,13 @@ export class AdminStore extends DurableObject<Env> {
     const results: Record<string, { ok: boolean; id?: string; url?: string; error?: string; platform?: string }> = JSON.parse(p.results || "{}");
     for (const accId of JSON.parse(p.account_ids) as string[]) {
       if (results[accId]?.ok) continue;
-      const a = this.one<{ platform: string; config: string; label: string }>("SELECT * FROM accounts WHERE id=?", accId);
+      const a = this.one<{ id: string; platform: string; config: string; label: string }>("SELECT * FROM accounts WHERE id=?", accId);
       if (!a) {
         results[accId] = { ok: false, error: "Account removed" };
         continue;
       }
       try {
-        const r = await publish(a.platform as Platform, JSON.parse(a.config), { title: p.title, content: p.content, imageUrl: p.image_url || undefined });
+        const r = await publish(a.platform as Platform, await this.socialCredentials(a), { title: p.title, content: p.content, imageUrl: p.image_url || undefined });
         results[accId] = { ok: true, id: r.id, url: r.url, platform: a.platform };
         this.log("info", `Published to ${a.platform} (${a.label})`);
       } catch (e) {
@@ -1195,14 +1292,15 @@ export class AdminStore extends DurableObject<Env> {
 
   private async pollSocial() {
     for (const a of this.q<{ id: string; platform: string; config: string; label: string }>("SELECT * FROM accounts WHERE kind='social' AND platform IN ('twitter','facebook')")) {
-      const cfg = JSON.parse(a.config) as SocialConfig;
+      let cfg = JSON.parse(a.config) as SocialConfig;
       try {
+        cfg = await this.socialCredentials(a);
         if (a.platform === "twitter") {
           const r = await xMentions(cfg);
           for (const m of r.replies) this.addInbound({ channel: "twitter", accountId: a.id, from: m.from, fromName: m.fromName, body: m.text, extId: m.extId, url: m.url, at: m.date });
           if (r.sinceId && r.sinceId !== cfg.sinceId) {
             cfg.sinceId = r.sinceId;
-            this.sql.exec("UPDATE accounts SET config=? WHERE id=?", JSON.stringify(cfg), a.id);
+            this.sql.exec("UPDATE accounts SET config=json_set(config, '$.sinceId', ?) WHERE id=? AND json_extract(config, '$.userId')=?", cfg.sinceId, a.id, cfg.userId ?? "");
           }
         } else {
           const posts = this.q<{ results: string }>("SELECT results FROM posts WHERE status IN ('published','partial') AND scheduled_at>=?", now() - 14 * DAY);

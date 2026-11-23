@@ -95,42 +95,10 @@ function AccountRow({ a, ctx, onEdit }: { a: Account; ctx: AppCtx; onEdit?: () =
 // ---------- social ----------
 
 const SOCIAL_FIELDS: Record<string, { key: string; label: string; secret?: boolean; optional?: boolean; placeholder?: string }[]> = {
-  twitter: [
-    { key: "apiKey", label: "API Key (Consumer Key)", secret: true },
-    { key: "apiSecret", label: "API Key Secret", secret: true },
-    { key: "accessToken", label: "Access Token", secret: true },
-    { key: "accessSecret", label: "Access Token Secret", secret: true },
-  ],
-  linkedin: [
-    { key: "token", label: "Access token", secret: true },
-    { key: "authorUrn", label: "Company page URN (optional)", optional: true, placeholder: "urn:li:organization:123456 — leave empty to post as yourself" },
-  ],
   medium: [{ key: "token", label: "Integration token", secret: true }],
 };
 
 const SOCIAL_HELP: Record<string, React.ReactNode> = {
-  twitter: (
-    <ol>
-      <li>
-        Open <a href="https://developer.x.com/en/portal/dashboard" target="_blank" rel="noopener">developer.x.com</a> and create a Project and App.
-      </li>
-      <li>In the app’s <b>User authentication settings</b>, set App permissions to <b>Read and write</b>.</li>
-      <li>Under <b>Keys and tokens</b>, copy the API Key and Secret, then generate the Access Token and Secret (after setting permissions).</li>
-      <li>Posting works on every plan. Showing @mentions in the inbox needs a plan that allows reading.</li>
-    </ol>
-  ),
-  linkedin: (
-    <ol>
-      <li>
-        Create an app at <a href="https://www.linkedin.com/developers/apps" target="_blank" rel="noopener">linkedin.com/developers</a> (it needs a company page to attach to).
-      </li>
-      <li>Under <b>Products</b>, add <b>Share on LinkedIn</b> and <b>Sign In with LinkedIn using OpenID Connect</b>.</li>
-      <li>
-        Use the <a href="https://www.linkedin.com/developers/tools/oauth/token-generator" target="_blank" rel="noopener">token generator</a> with the scopes <code>openid profile w_member_social</code> and paste the token here.
-      </li>
-      <li>LinkedIn tokens expire after 60 days; paste a new one when the account shows an error.</li>
-    </ol>
-  ),
   medium: (
     <ol>
       <li>
@@ -210,6 +178,48 @@ function FacebookConnect({ ctx }: { ctx: AppCtx }) {
   );
 }
 
+function ProviderConnect({ ctx, platform }: { ctx: AppCtx; platform: "linkedin" | "twitter" }) {
+  const label = platform === "linkedin" ? "LinkedIn" : "X";
+  const [enabled, setEnabled] = useState<boolean | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [notice, setNotice] = useState("");
+
+  useEffect(() => {
+    api<{ enabled: boolean }>(`${platform}/status`)
+      .then(({ enabled }) => setEnabled(enabled))
+      .catch(() => setNotice(`Could not check ${label} sign-in availability.`));
+    const query = new URLSearchParams(location.search);
+    if (query.get("provider") !== platform) return;
+    const result = query.get("connection");
+    query.delete("provider");
+    query.delete("connection");
+    history.replaceState(null, "", location.pathname + (query.size ? `?${query}` : "") + location.hash);
+    if (result === "connected") setNotice(`${label} connected.`);
+    else if (result === "cancelled") setNotice(`${label} sign-in was cancelled.`);
+    else setNotice(`${label} sign-in could not finish. Try again.`);
+  }, [label, platform]);
+
+  return (
+    <div>
+      <button type="button" className="adm-btn primary" disabled={busy || !enabled} onClick={async () => {
+        setBusy(true);
+        try {
+          const { url } = await api<{ url: string }>(`${platform}/start`, { body: {} });
+          location.assign(url);
+        } catch (err) {
+          ctx.toast((err as Error).message, "error");
+          setBusy(false);
+        }
+      }}>
+        <Brand platform={platform} size={20} /> Continue with {label}
+      </button>
+      {notice && <p className="adm-hint" role="status">{notice}</p>}
+      {enabled === false && <p className="adm-hint">Available after the {label} app is configured.</p>}
+      {enabled && platform === "linkedin" && <p className="adm-hint">Connect or reconnect a LinkedIn member profile.</p>}
+    </div>
+  );
+}
+
 function SocialAccounts({ ctx }: { ctx: AppCtx }) {
   const [editing, setEditing] = useState<{ platform: string; account?: Account } | null>(null);
   const list = ctx.accounts.filter((a) => a.kind === "social");
@@ -223,11 +233,13 @@ function SocialAccounts({ ctx }: { ctx: AppCtx }) {
         </div>
       </div>
       <FacebookConnect ctx={ctx} />
+      <ProviderConnect ctx={ctx} platform="linkedin" />
+      <ProviderConnect ctx={ctx} platform="twitter" />
       <div className="adm-platforms">
         {Object.keys(SOCIAL_FIELDS).map((p) => (
           <button key={p} className="adm-platform" onClick={() => setEditing({ platform: p })}>
             <Brand platform={p} size={28} />
-            <span>{PLATFORM_LABEL(p)}</span>
+            <span>{PLATFORM_LABEL(p)} integration token</span>
             <Icon name="plus" size={16} />
           </button>
         ))}
@@ -239,7 +251,7 @@ function SocialAccounts({ ctx }: { ctx: AppCtx }) {
               key={a.id}
               a={a}
               ctx={ctx}
-              onEdit={a.platform !== "facebook" ? () => setEditing({ platform: a.platform, account: a }) : undefined}
+              onEdit={a.platform === "medium" ? () => setEditing({ platform: a.platform, account: a }) : undefined}
             />
           ))}
         </div>
