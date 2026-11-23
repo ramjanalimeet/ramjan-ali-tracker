@@ -24,6 +24,7 @@ export interface EmailConfig {
 export interface OutMail {
   to: string;
   toName?: string;
+  replyTo?: string;
   subject: string;
   body: string;
   inReplyTo?: string;
@@ -74,6 +75,7 @@ function buildMime(c: EmailConfig, m: OutMail, messageId: string): string {
     "Content-Type: text/plain; charset=UTF-8",
     "Content-Transfer-Encoding: base64",
   ];
+  if (m.replyTo) headers.push(`Reply-To: ${m.replyTo}`);
   if (m.inReplyTo) headers.push(`In-Reply-To: ${m.inReplyTo}`, `References: ${m.references || m.inReplyTo}`);
   return headers.join("\r\n") + "\r\n\r\n" + wrap76(b64(m.body.replace(/\r?\n/g, "\r\n")));
 }
@@ -141,6 +143,7 @@ export async function sendMail(cfg: EmailConfig, m: OutMail): Promise<string> {
       body: JSON.stringify({
         from: c.fromName ? `${c.fromName} <${c.email}>` : c.email,
         to: [m.to],
+        ...(m.replyTo ? { reply_to: m.replyTo } : {}),
         subject: m.subject,
         text: body,
         headers,

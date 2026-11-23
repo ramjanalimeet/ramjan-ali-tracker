@@ -1,3 +1,4 @@
+import { POSTS } from "../lib/posts";
 // The dashboard's backend: one Durable Object with a SQLite database holding
 // accounts, contacts, outreach campaigns, the inbox, bookings
 // and settings. Every /api/admin request, the public lead/booking webhooks and
@@ -28,6 +29,7 @@ export interface Env {
   ADMIN_STORE: DurableObjectNamespace<AdminStore>;
   /** Optional: overrides the dashboard password (set as a Worker secret). */
   ADMIN_PASSWORD?: string;
+  LEAD_NOTIFY_EMAIL?: string;
 }
 
 // Default password hash (PBKDF2). Change the password from Settings, or set
@@ -60,6 +62,9 @@ interface Campaign {
   createdAt: number;
 }
 
+const EMAIL_ADDRESS = /^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+const RESERVED_BLOG_SLUGS = new Set(["local-seo", "google-maps", "technical-seo", "content-seo", "seo-strategy"]);
+
 const SCHEMA = `
 CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value TEXT);
 CREATE TABLE IF NOT EXISTS accounts (
@@ -83,6 +88,12 @@ CREATE INDEX IF NOT EXISTS msg_mid ON messages(message_id);
 CREATE TABLE IF NOT EXISTS bookings (
   id TEXT PRIMARY KEY, uid TEXT UNIQUE, title TEXT, start_at INTEGER, end_at INTEGER, name TEXT, email TEXT,
   status TEXT, notes TEXT, meeting_url TEXT, raw TEXT, created_at INTEGER);
+CREATE TABLE IF NOT EXISTS blog_entries (
+  slug TEXT PRIMARY KEY, title TEXT NOT NULL, excerpt TEXT NOT NULL, body TEXT NOT NULL,
+  status TEXT NOT NULL, publish_at INTEGER, updated_at INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS lead_notifications (
+  id TEXT PRIMARY KEY, recipient TEXT NOT NULL, account_id TEXT NOT NULL, reply_to TEXT,
+  subject TEXT NOT NULL, body TEXT NOT NULL, attempts INTEGER NOT NULL DEFAULT 0, due_at INTEGER NOT NULL);
 CREATE TABLE IF NOT EXISTS activity (id INTEGER PRIMARY KEY AUTOINCREMENT, level TEXT, text TEXT, created_at INTEGER);
 `;
 
@@ -91,6 +102,7 @@ export class AdminStore extends DurableObject<Env> {
   private fails = { count: 0, until: 0 };
   private leadHits = new Map<string, number[]>();
   private ticking = false;
+  private notifying = false;
 
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
@@ -159,6 +171,7 @@ export class AdminStore extends DurableObject<Env> {
     const url = new URL(req.url);
     const path = url.pathname;
     try {
+      if (req.method === "GET" && (path === "/api/blog-entries" || path.startsWith("/api/blog-entries/"))) return this.publicBlogs(path);
       if (path === "/api/lead") return await this.lead(req);
       if (path === "/api/hooks/cal") return await this.calHook(req, url);
       if (!path.startsWith("/api/admin")) return err("Not found", 404);
@@ -178,6 +191,44 @@ export class AdminStore extends DurableObject<Env> {
     return (await req.json().catch(() => ({}))) as T;
   }
 
+  private publicBlogs(path: string) {
+    const slug = path.split("/")[3];
+    const visible = "status IN ('scheduled','published') AND publish_at<=?";
+    if (!slug) return json(this.q(`SELECT slug,title,excerpt,publish_at FROM blog_entries WHERE ${visible} ORDER BY publish_at DESC`, now()));
+    const entry = this.one(`SELECT slug,title,excerpt,body,publish_at FROM blog_entries WHERE ${visible} AND slug=?`, now(), slug);
+    return entry ? json(entry) : err("Not found", 404);
+  }
+
+  private async blogs(req: Request, slug?: string) {
+    if (req.method === "GET") {
+      const entries = this.q(`SELECT *, CASE WHEN status='scheduled' AND publish_at<=? THEN 'published' ELSE status END AS current_status
+                              FROM blog_entries ORDER BY updated_at DESC`, now());
+      return json(entries);
+    }
+    if (req.method !== "POST") return err("Not found", 404);
+    const b = await this.body<{ slug?: string; title?: string; excerpt?: string; body?: string; status?: string; publishAt?: number }>(req);
+    const name = String(b.slug ?? "").trim();
+    const title = String(b.title ?? "").trim();
+    const body = String(b.body ?? "").trim();
+    const excerpt = String(b.excerpt ?? "").trim();
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(name) || name.length > 100 || RESERVED_BLOG_SLUGS.has(name) || POSTS.some((p) => p.slug === name))
+      return err("Choose a unique slug with lowercase letters, numbers and hyphens", 400);
+    if (!title || title.length > 160 || excerpt.length > 500 || body.length > 100_000)
+      return err("Check the title, summary and article length", 400);
+    const status = b.status;
+    if (status !== "draft" && status !== "scheduled" && status !== "published") return err("Choose a blog status", 400);
+    if (status !== "draft" && !body) return err("Write the article before publishing or scheduling it", 400);
+    const timestamp = now();
+    const existing = this.one<{ publish_at: number | null; status: string }>("SELECT publish_at, status FROM blog_entries WHERE slug=?", name);
+    if (slug ? slug !== name || !existing : Boolean(existing)) return err("This article could not be saved at that slug", 409);
+    const publishAt = status === "draft" ? null : status === "scheduled" ? b.publishAt : existing?.status !== "draft" && existing?.publish_at && existing.publish_at <= timestamp ? existing.publish_at : timestamp;
+    if (status === "scheduled" && (!Number.isSafeInteger(publishAt) || Number(publishAt) <= timestamp)) return err("Choose a future publication time", 400);
+    this.sql.exec(`INSERT INTO blog_entries(slug,title,excerpt,body,status,publish_at,updated_at) VALUES(?,?,?,?,?,?,?)
+      ON CONFLICT(slug) DO UPDATE SET title=excluded.title,excerpt=excluded.excerpt,body=excluded.body,status=excluded.status,
+      publish_at=excluded.publish_at,updated_at=excluded.updated_at`, name,title,excerpt,body,status,publishAt ?? null,timestamp);
+    return json({ ok: true });
+  }
+
   private async admin(req: Request, route: string, url: URL): Promise<Response> {
     const m = req.method;
     const seg = route.split("/").filter(Boolean);
@@ -192,6 +243,8 @@ export class AdminStore extends DurableObject<Env> {
       return json({ ok: true, overview: this.overview() });
     }
 
+
+    if (res === "blogs") return this.blogs(req, id);
 
     if (res === "accounts") {
       if (m === "GET") return json(this.listAccounts());
@@ -581,7 +634,7 @@ export class AdminStore extends DurableObject<Env> {
     if (!m) throw new Error("Message not found");
     const text = String(b.body ?? "").trim();
     if (!text) throw new Error("Write a reply first");
-    if (!EMAIL_RE.test(m.from_addr)) throw new Error("No email address is available for this conversation");
+    if (!EMAIL_ADDRESS.test(m.from_addr)) throw new Error("No email address is available for this conversation");
     const acc = this.emailAccounts().find((a) => a.id === (b.accountId || m.account_id)) ?? this.emailAccounts()[0];
     if (!acc) throw new Error("Add an email account in Settings first");
     const subject = m.subject ? (/^re:/i.test(m.subject) ? m.subject : `Re: ${m.subject}`) : "Re: your message";
@@ -693,20 +746,54 @@ export class AdminStore extends DurableObject<Env> {
     const lines = Object.entries(data)
       .filter(([k, v]) => v && !["email", "name"].includes(k))
       .map(([k, v]) => `${k.replace(/[_-]/g, " ")}: ${v}`);
-    let contactId: string | undefined;
-    if (/@/.test(email)) contactId = this.upsertContact({ email, name, phone: data.phone, company: data.company || data.business, website: data.website, source: "website" });
-    this.addInbound({
-      channel: "form",
-      contactId,
-      from: email || data.phone || "Website visitor",
-      fromName: name,
-      subject: formName,
-      body: lines.join("\n") || "(empty form)",
-      meta: { page: req.headers.get("referer") || "", fields: data },
+    const { email: recipient, account: sender } = this.leadNotificationSettings();
+    const body = lines.join("\n") || "(empty form)";
+    this.ctx.storage.transactionSync(() => {
+      const contactId = EMAIL_ADDRESS.test(email) ? this.upsertContact({ email, name, phone: data.phone, company: data.company || data.business, website: data.website, source: "website" }) : undefined;
+      this.addInbound({
+        channel: "form",
+        accountId: sender,
+        contactId,
+        from: email || data.phone || "Website visitor",
+        fromName: name,
+        subject: formName,
+        body,
+        meta: { page: req.headers.get("referer") || "", fields: data },
+      });
+      if (recipient && sender) {
+        this.sql.exec("INSERT INTO lead_notifications(id,recipient,account_id,reply_to,subject,body,due_at) VALUES(?,?,?,?,?,?,?)",
+          uid("lead_"), recipient, sender, EMAIL_ADDRESS.test(email) ? email : null, "New website form submission",
+          [`Form: ${formName}`, name && `Name: ${name}`, email && `Email: ${email}`, "", body].filter(Boolean).join("\n"),
+          now());
+      }
     });
+    if (recipient && sender) this.ctx.waitUntil(this.sendLeadNotifications());
     this.log("info", `New form submission from ${email || name || "a visitor"}`);
     if (redirect && /^https?:\/\//.test(redirect)) return Response.redirect(redirect, 303);
     return json({ ok: true }, 200, cors);
+  }
+
+  private async sendLeadNotifications() {
+    if (this.notifying) return;
+    this.notifying = true;
+    try {
+      const accounts = this.emailAccounts();
+      for (const n of this.q<{ id: string; recipient: string; account_id: string; reply_to: string | null; subject: string; body: string; attempts: number }>(
+        "SELECT * FROM lead_notifications WHERE due_at<=? AND attempts<5 ORDER BY due_at LIMIT 10", now(),
+      )) {
+        try {
+          const sender = accounts.find((a) => a.id === n.account_id);
+          if (!sender) throw new Error("Notification sending account is unavailable");
+          await sendMail(sender.cfg, { to: n.recipient, replyTo: n.reply_to ?? undefined, subject: n.subject, body: n.body });
+          this.sql.exec("DELETE FROM lead_notifications WHERE id=?", n.id);
+        } catch {
+          this.sql.exec("UPDATE lead_notifications SET attempts=attempts+1,due_at=? WHERE id=?", now() + 300_000 * 2 ** n.attempts, n.id);
+          this.log("warn", n.attempts === 4 ? "Form notification failed after five attempts. The submission is in Inbox." : "Form notification delivery failed. The dashboard will retry.");
+        }
+      }
+    } finally {
+      this.notifying = false;
+    }
   }
 
   /** Cal.com webhook (BOOKING_CREATED / RESCHEDULED / CANCELLED). */
@@ -787,21 +874,39 @@ export class AdminStore extends DurableObject<Env> {
 
   // ---------- settings ----------
 
+  private leadNotificationSettings() {
+    const email = this.setting("lead_notify_email") ?? this.env.LEAD_NOTIFY_EMAIL ?? "";
+    const explicitAccount = this.setting("lead_notify_account");
+    const account = explicitAccount ?? (email ? this.emailAccounts().find((a) => a.status === "ok" && a.cfg.email.toLowerCase() === email.toLowerCase())?.id : undefined);
+    return { email, account };
+  }
+
   private settingsOut(url: URL) {
     const origin = url.origin;
     const key = this.setting("hook_key")!;
+    const leadNotify = this.leadNotificationSettings();
     return {
       timezone: this.setting("timezone") || "Asia/Dhaka",
       anthropicKeySet: !!this.setting("anthropic_key"),
       calSecretSet: !!this.setting("cal_secret"),
       passwordFromEnv: !!this.env.ADMIN_PASSWORD,
       calWebhookUrl: `${origin}/api/hooks/cal?key=${key}`,
+      leadNotifyEmail: leadNotify.email,
+      leadNotifyAccount: leadNotify.account || "",
       leadEndpoint: `${origin}/api/lead`,
       unsubscribeLine: this.setting("unsubscribe_line") ?? "If this isn't relevant, just reply \"no thanks\" and I won't email again.",
     };
   }
 
   private async saveSettings(b: Record<string, string>, url: URL) {
+    if (typeof b.leadNotifyEmail === "string") {
+      const email = b.leadNotifyEmail.trim();
+      const account = b.leadNotifyAccount || "";
+      if (email && (!EMAIL_ADDRESS.test(email) || !this.emailAccounts().some((a) => a.id === account && a.status === "ok")))
+        throw new Error("Enter a valid recipient and select a connected email account");
+      this.setSetting("lead_notify_email", email);
+      this.setSetting("lead_notify_account", email ? account : "");
+    }
     if (b.timezone) {
       try {
         new Intl.DateTimeFormat("en-US", { timeZone: b.timezone });
@@ -836,6 +941,8 @@ export class AdminStore extends DurableObject<Env> {
     if (this.ticking) return;
     this.ticking = true;
     try {
+      await this.sendLeadNotifications();
+
       // Replies first, so nobody who answered gets a follow-up.
       await this.pollMail();
 

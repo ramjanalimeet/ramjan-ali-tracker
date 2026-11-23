@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { CalendarView } from "./CalendarView";
+import { BlogsView } from "./BlogsView";
 import { ContactsView } from "./ContactsView";
 import { EmailView } from "./EmailView";
 import { InboxView } from "./InboxView";
@@ -13,7 +13,7 @@ import { api, Icon } from "./ui";
 const NAV: { id: View; label: string; icon: string }[] = [
   { id: "overview", label: "Overview", icon: "home" },
   { id: "inbox", label: "Inbox", icon: "inbox" },
-  { id: "calendar", label: "Calendar", icon: "calendar" },
+  { id: "blogs", label: "Blogs", icon: "book" },
   { id: "email", label: "Email", icon: "mail" },
   { id: "contacts", label: "Contacts", icon: "users" },
 ];
@@ -192,7 +192,7 @@ function Shell() {
         <div className="adm-page">
           {view === "overview" && <OverviewView ctx={ctx} />}
           {view === "inbox" && <InboxView key="inbox" ctx={ctx} />}
-          {view === "calendar" && <CalendarView ctx={ctx} />}
+          {view === "blogs" && <BlogsView ctx={ctx} />}
           {view === "email" && <EmailView ctx={ctx} />}
           {view === "contacts" && <ContactsView ctx={ctx} />}
         </div>

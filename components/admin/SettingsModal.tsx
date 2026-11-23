@@ -287,6 +287,11 @@ function useSettings() {
 function WebsiteSettings({ ctx }: { ctx: AppCtx }) {
   const [s, setS] = useSettings();
   const [secret, setSecret] = useState("");
+  const [notify, setNotify] = useState({ email: "", account: "" });
+  const [savingNotify, setSavingNotify] = useState(false);
+  useEffect(() => {
+    if (s) setNotify({ email: s.leadNotifyEmail, account: s.leadNotifyAccount });
+  }, [s]);
   if (!s) return <div className="adm-skel" />;
   const snippet = `<form action="${s.leadEndpoint}" method="POST">
   <input name="name" placeholder="Name" required>
@@ -303,7 +308,7 @@ function WebsiteSettings({ ctx }: { ctx: AppCtx }) {
       <div className="adm-sec-head">
         <div>
           <h3>Cal.com bookings</h3>
-          <p>New, rescheduled and cancelled calls show up in your Inbox and Calendar.</p>
+          <p>New, rescheduled and cancelled calls show up in your Inbox and Overview.</p>
         </div>
       </div>
       <ol className="adm-steps">
@@ -339,6 +344,31 @@ function WebsiteSettings({ ctx }: { ctx: AppCtx }) {
           <p>Any form that posts to this address lands in your Inbox, and the person is added to Contacts.</p>
         </div>
       </div>
+      <form className="adm-stack" onSubmit={async (e) => {
+        e.preventDefault();
+        setSavingNotify(true);
+        try {
+          setS(await api<Settings>("settings", { body: { leadNotifyEmail: notify.email, leadNotifyAccount: notify.account } }));
+          ctx.toast(notify.email ? "Form notifications saved" : "Form notifications turned off");
+        } catch (error) {
+          ctx.toast((error as Error).message, "error");
+        } finally {
+          setSavingNotify(false);
+        }
+      }}>
+        <Field label="Send form notifications to" hint="Reply to the notification to email the visitor. Leave blank to turn notifications off.">
+          <input type="email" value={notify.email} onChange={(e) => setNotify({ ...notify, email: e.target.value })} />
+        </Field>
+        <Field label="Send with" hint="Choose a connected email account in Settings → Email accounts.">
+          <select required={Boolean(notify.email)} value={notify.account} onChange={(e) => setNotify({ ...notify, account: e.target.value })}>
+            <option value="">Select an email account</option>
+            {ctx.accounts.filter((account) => account.status === "ok").map((account) => (
+              <option key={account.id} value={account.id}>{account.label}</option>
+            ))}
+          </select>
+        </Field>
+        <button className="adm-btn primary" disabled={savingNotify}>{savingNotify ? "Saving…" : "Save notifications"}</button>
+      </form>
       <CopyField value={s.leadEndpoint} />
       <p className="adm-hint">Works with a plain HTML form (below), JavaScript <code>fetch</code> with JSON, or tools like Zapier, Tally and Typeform via webhook.</p>
       <pre className="adm-code">{snippet}</pre>
@@ -376,7 +406,7 @@ function General({ ctx }: { ctx: AppCtx }) {
     >
       <h3>General</h3>
       <div className="adm-grid2">
-        <Field label="Time zone" hint="Used for sending hours and the calendar.">
+        <Field label="Time zone" hint="Used for outreach sending hours.">
           <input value={form.timezone} onChange={(e) => setForm({ ...form, timezone: e.target.value })} placeholder="Asia/Dhaka" list="adm-tz" />
           <datalist id="adm-tz">
             {["Asia/Dhaka", "America/New_York", "America/Chicago", "America/Denver", "America/Los_Angeles", "Europe/London", "UTC"].map((z) => (
