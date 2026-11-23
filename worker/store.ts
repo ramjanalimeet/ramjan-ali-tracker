@@ -6,6 +6,7 @@ import { DurableObject } from "cloudflare:workers";
 import { aiWrite } from "./ai";
 import { fetchNewMail, sendMail, testEmail, withDefaults, type EmailConfig } from "./mail";
 import { exchangeSocialToken, facebookMessages, facebookPages, fbComments, publish, replyToFacebookComment, type FacebookPage, SOCIAL_OAUTH, type OAuthPlatform, verifySocial, xMentions, type Platform, type SocialConfig } from "./social";
+import { zernioAccount, zernioConnect, zernioPublish } from "./zernio";
 import {
   EMAIL_RE,
   addrOf,
@@ -31,6 +32,8 @@ export interface Env {
   ADMIN_PASSWORD?: string;
   META_APP_ID?: string;
   META_APP_SECRET?: string;
+  ZERNIO_API_KEY?: string;
+  ZERNIO_PROFILE_ID?: string;
   X_CLIENT_ID?: string;
   X_CLIENT_SECRET?: string;
   LINKEDIN_CLIENT_ID?: string;
@@ -250,6 +253,53 @@ export class AdminStore extends DurableObject<Env> {
     return err("Not found", 404);
   }
 
+  private zernioConfig() {
+    const key = this.env.ZERNIO_API_KEY;
+    const profileId = this.env.ZERNIO_PROFILE_ID;
+    if (!key || !profileId) return undefined;
+    return { key, profileId };
+  }
+
+  private async hostedSocialAuth(req: Request, platform: OAuthPlatform, action: string, url: URL): Promise<Response> {
+    const config = this.zernioConfig();
+    if (!config) return err("Hosted social sign-in requires Zernio setup", 503);
+    const session = parseCookies(req.headers.get("cookie"))[COOKIE]!;
+    const sessionKey = hex(await hmac(this.setting("session_secret")!, session));
+    const key = `hosted_oauth_${platform}`;
+    const finish = (status: string) => Response.redirect(`${url.origin}/admin?provider=${platform}&connection=${status}#settings`);
+    if (action === "start" && req.method === "POST") {
+      const state = uid();
+      const callback = new URL(`https://ramjanaliakash.com/api/admin/hosted-social/${platform}`);
+      callback.searchParams.set("dashboardState", state);
+      const authUrl = await zernioConnect(config, platform, callback.href);
+      this.setSetting(key, JSON.stringify({ sessionKey, state, expires: now() + 600_000 }));
+      return json({ url: authUrl });
+    }
+    if (action !== "callback" || req.method !== "GET") return err("Not found", 404);
+    const raw = this.setting(key);
+    const pending = raw ? JSON.parse(raw) as { sessionKey: string; state: string; expires: number } : undefined;
+    const state = url.searchParams.get("dashboardState");
+    if (!pending || pending.expires <= now() || !safeEqual(sessionKey, pending.sessionKey) || !state || !safeEqual(state, pending.state)) return finish("expired");
+    this.sql.exec("DELETE FROM settings WHERE key=?", key);
+    const accountId = url.searchParams.get("accountId");
+    if (url.searchParams.get("connected") !== platform || url.searchParams.get("profileId") !== config.profileId || !accountId) return finish("failed");
+    try {
+      const account = await zernioAccount(config, platform, accountId);
+      const label = account.displayName || account.username || platform;
+      const saved = this.one<{ id: string }>(
+        "SELECT id FROM accounts WHERE kind='social' AND platform=? AND json_extract(config,'$.zernioAccountId')=?",
+        platform, account._id,
+      );
+      const credentials = JSON.stringify({ zernioAccountId: account._id });
+      if (saved) this.sql.exec("UPDATE accounts SET label=?, config=?, status='ok', last_error=NULL WHERE id=?", label, credentials, saved.id);
+      else this.sql.exec("INSERT INTO accounts(id,kind,platform,label,config,status,created_at) VALUES(?,'social',?,?,?,'ok',?)",
+        uid("acc_"), platform, label, credentials, now());
+      return finish("connected");
+    } catch {
+      return finish("failed");
+    }
+  }
+
   private oauthClient(platform: OAuthPlatform) {
     return platform === "twitter"
       ? { id: this.env.X_CLIENT_ID, secret: this.env.X_CLIENT_SECRET }
@@ -258,7 +308,8 @@ export class AdminStore extends DurableObject<Env> {
 
   private async providerAuth(req: Request, platform: OAuthPlatform, action: string, url: URL): Promise<Response> {
     const { id, secret } = this.oauthClient(platform);
-    if (action === "status" && req.method === "GET") return json({ enabled: Boolean(id && secret) });
+    if (action === "status" && req.method === "GET") return json({ enabled: Boolean(this.zernioConfig() || (id && secret)) });
+    if (action === "start" && this.zernioConfig()) return this.hostedSocialAuth(req, platform, action, url);
     if (!id || !secret) return err("Provider sign-in is not configured", 503);
     const session = parseCookies(req.headers.get("cookie"))[COOKIE]!;
     const sessionKey = hex(await hmac(this.setting("session_secret")!, session));
@@ -357,6 +408,7 @@ export class AdminStore extends DurableObject<Env> {
     }
 
     if (res === "facebook") return this.facebookAuth(req, id, url);
+    if (res === "hosted-social" && (id === "twitter" || id === "linkedin")) return this.hostedSocialAuth(req, id, "callback", url);
     if (res === "twitter" || res === "linkedin") return this.providerAuth(req, res, id, url);
 
     if (res === "accounts") {
@@ -573,7 +625,11 @@ export class AdminStore extends DurableObject<Env> {
       let note = "";
       if (a.kind === "email") note = await testEmail(cfg);
       else {
-        const verified = await verifySocial(a.platform as Platform, cfg);
+        const hosted = this.zernioConfig();
+        const verified = cfg.zernioAccountId && (a.platform === "twitter" || a.platform === "linkedin")
+          ? { ...cfg, handle: hosted ? (await zernioAccount(hosted, a.platform, cfg.zernioAccountId)).displayName : undefined }
+          : await verifySocial(a.platform as Platform, cfg);
+        if (cfg.zernioAccountId && !hosted) throw new Error("Hosted social sign-in requires Zernio setup");
         this.sql.exec("UPDATE accounts SET config=?, label=? WHERE id=?", JSON.stringify(verified), verified.handle || a.label, id);
         note = `Connected as ${verified.handle ?? a.platform}`;
       }
@@ -624,7 +680,13 @@ export class AdminStore extends DurableObject<Env> {
         continue;
       }
       try {
-        const r = await publish(a.platform as Platform, await this.socialCredentials(a), { title: p.title, content: p.content, imageUrl: p.image_url || undefined });
+        const cfg = await this.socialCredentials(a);
+        const post = { title: p.title, content: p.content, imageUrl: p.image_url || undefined };
+        const hosted = this.zernioConfig();
+        if (cfg.zernioAccountId && !hosted) throw new Error("Hosted social sign-in requires Zernio setup");
+        const r = cfg.zernioAccountId && hosted && (a.platform === "twitter" || a.platform === "linkedin")
+          ? await zernioPublish(hosted, a.platform, cfg.zernioAccountId, post, `${id}:${accId}`)
+          : await publish(a.platform as Platform, cfg, post);
         results[accId] = { ok: true, id: r.id, url: r.url, platform: a.platform };
         this.log("info", `Published to ${a.platform} (${a.label})`);
       } catch (e) {
@@ -1293,6 +1355,7 @@ export class AdminStore extends DurableObject<Env> {
   private async pollSocial() {
     for (const a of this.q<{ id: string; platform: string; config: string; label: string }>("SELECT * FROM accounts WHERE kind='social' AND platform IN ('twitter','facebook')")) {
       let cfg = JSON.parse(a.config) as SocialConfig;
+      if (cfg.zernioAccountId) continue;
       try {
         cfg = await this.socialCredentials(a);
         if (a.platform === "twitter") {

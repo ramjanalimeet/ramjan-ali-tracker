@@ -214,8 +214,8 @@ function ProviderConnect({ ctx, platform }: { ctx: AppCtx; platform: "linkedin" 
         <Brand platform={platform} size={20} /> Continue with {label}
       </button>
       {notice && <p className="adm-hint" role="status">{notice}</p>}
-      {enabled === false && <p className="adm-hint">Available after the {label} app is configured.</p>}
-      {enabled && platform === "linkedin" && <p className="adm-hint">Connect or reconnect a LinkedIn member profile.</p>}
+      {enabled === false && <p className="adm-hint">Available after social sign-in is configured.</p>}
+      {enabled && platform === "linkedin" && <p className="adm-hint">Sign in on LinkedIn to connect or reconnect your account.</p>}
     </div>
   );
 }

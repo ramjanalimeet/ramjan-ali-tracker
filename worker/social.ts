@@ -11,6 +11,7 @@ export interface SocialConfig {
   accessSecret?: string;
   // LinkedIn / Facebook / Medium
   token?: string;
+  zernioAccountId?: string;
   refreshToken?: string;
   tokenExpiresAt?: number;
   messenger?: boolean;

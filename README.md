@@ -77,7 +77,18 @@ section shows comments from recent Page posts published through the dashboard. F
 AI drafts, add an Anthropic API key in **Settings → General**, then use **Draft with AI**
 and review your reply before posting it publicly.
 
-### LinkedIn and X sign-in
+### Hosted LinkedIn and X sign-in
+
+Create a Zernio profile for this dashboard and add `ZERNIO_PROFILE_ID` and
+`ZERNIO_API_KEY` in the production Worker's Variables and Secrets. The API key
+must be stored as a secret and allow account connections, account reads, and
+publishing. Once configured, **Continue with LinkedIn** and **Continue with X**
+use Zernio's sign-in. New hosted accounts can publish from the dashboard's
+existing scheduler. X usage may require Zernio billing setup. Hosted accounts
+are connected for publishing. Existing direct connections continue to use
+their current authorization and inbox integrations.
+
+### Direct LinkedIn and X sign-in
 
 - **LinkedIn:** Enable **Sign In with LinkedIn using OpenID Connect** and **Share on
   LinkedIn**. Register `https://ramjanaliakash.com/api/admin/linkedin/callback`
