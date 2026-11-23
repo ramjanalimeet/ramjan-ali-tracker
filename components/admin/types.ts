@@ -95,6 +95,7 @@ export interface Settings {
   timezone: string;
   anthropicKeySet: boolean;
   calSecretSet: boolean;
+  calConnected: boolean;
   passwordFromEnv: boolean;
   calWebhookUrl: string;
   leadEndpoint: string;

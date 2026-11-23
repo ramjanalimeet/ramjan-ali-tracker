@@ -307,36 +307,41 @@ function WebsiteSettings({ ctx }: { ctx: AppCtx }) {
   return (
     <div className="adm-stack">
       <div className="adm-sec-head">
-        <div>
-          <h3>Cal.com bookings</h3>
-          <p>New, rescheduled and cancelled calls show up in your Inbox and Overview.</p>
-        </div>
+        <h3>Cal.com bookings</h3>
+        <Status value={s.calConnected ? "connected" : "awaiting_webhook"} />
       </div>
-      <ol className="adm-steps">
-        <li>
-          Open <a href="https://app.cal.com/settings/developer/webhooks" target="_blank" rel="noopener">Cal.com → Settings → Developer → Webhooks</a> and click <b>New</b>.
-        </li>
-        <li>Paste this as the Subscriber URL:</li>
-      </ol>
-      <CopyField value={s.calWebhookUrl} />
-      <ol className="adm-steps" start={3}>
-        <li>Turn on Booking Created, Booking Rescheduled and Booking Cancelled, then save.</li>
-        <li>Optional: if you set a secret key in Cal.com, paste the same key here so each booking is verified.</li>
-      </ol>
-      <div className="adm-copy">
-        <input type="password" placeholder={s.calSecretSet ? "•••••••• saved" : "Cal.com webhook secret (optional)"} value={secret} onChange={(e) => setSecret(e.target.value)} />
-        <button
-          className="adm-btn"
-          disabled={!secret}
-          onClick={async () => {
-            setS(await api<Settings>("settings", { body: { calSecret: secret } }));
-            setSecret("");
-            ctx.toast("Secret saved");
-          }}
-        >
-          Save
-        </button>
-      </div>
+      {!s.calConnected && (
+        <details>
+          <summary>Set up Cal.com</summary>
+          <div className="adm-stack">
+            <p className="adm-hint">
+              In <a href="https://app.cal.com/settings/developer/webhooks" target="_blank" rel="noopener">Cal.com webhooks</a>,
+              add this subscriber URL and select Booking Created, Booking Rescheduled and Booking Cancelled.
+            </p>
+            <CopyField value={s.calWebhookUrl} />
+            <form className="adm-copy" onSubmit={async (e) => {
+              e.preventDefault();
+              try {
+                setS(await api<Settings>("settings", { body: { calSecret: secret } }));
+                setSecret("");
+                ctx.toast("Cal.com secret saved");
+              } catch (error) {
+                ctx.toast((error as Error).message, "error");
+              }
+            }}>
+              <input type="password" aria-label="Cal.com webhook secret" autoComplete="off" placeholder={s.calSecretSet ? "Secret saved" : "Cal.com webhook secret"} value={secret} onChange={(e) => setSecret(e.target.value)} />
+              <button type="submit" className="adm-btn" disabled={!secret.trim()}>Save secret</button>
+            </form>
+            <button type="button" className="adm-link" onClick={async () => {
+              try {
+                setS(await api<Settings>("settings"));
+              } catch (error) {
+                ctx.toast((error as Error).message, "error");
+              }
+            }}>Refresh status</button>
+          </div>
+        </details>
+      )}
 
       <div className="adm-divider" />
       <div className="adm-sec-head">

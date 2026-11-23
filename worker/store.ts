@@ -290,6 +290,12 @@ export class AdminStore extends DurableObject<Env> {
     }
 
     if (res === "inbox") {
+      if (m === "GET" && id && action === "sender") {
+        const message = this.replyMessage(id);
+        if (!message) return err("Message not found", 404);
+        const sender = this.replySender(message);
+        return json({ email: sender?.email ?? "", signature: Boolean(sender?.account?.cfg.signature) });
+      }
       if (m === "GET" && id && action === "thread") return json(this.thread(id));
       if (m === "GET") {
         const ch = url.searchParams.get("channel");
@@ -645,30 +651,40 @@ export class AdminStore extends DurableObject<Env> {
     }));
   }
 
-  private async reply(id: string, b: { body?: string; subject?: string; accountId?: string }) {
-    const m = this.one<{ channel: string; account_id: string; from_addr: string; from_name: string; subject: string; message_id: string; contact_id: string }>(
+  private replyMessage(id: string) {
+    return this.one<{ channel: string; account_id: string; from_addr: string; from_name: string; subject: string; message_id: string; contact_id: string }>(
       "SELECT * FROM messages WHERE id=? AND direction='in' AND channel IN ('email','form','booking')",
       id,
     );
+  }
+
+  private replySender(message: { channel: string; account_id: string; contact_id: string }, requestedAccount?: string) {
+    const cloud = this.cloudflareLeadMail();
+    if (cloud && (message.channel === "form" || (message.contact_id && this.one(
+      "SELECT id FROM messages WHERE contact_id=? AND direction='out' AND from_addr=? LIMIT 1", message.contact_id, CLOUDFLARE_FROM,
+    )))) return { email: CLOUDFLARE_FROM, cloud };
+    const accounts = this.emailAccounts();
+    const account = accounts.find((a) => a.id === (requestedAccount || message.account_id)) ?? accounts[0];
+    return account ? { email: account.cfg.email, account } : undefined;
+  }
+
+  private async reply(id: string, b: { body?: string; subject?: string; accountId?: string }) {
+    const m = this.replyMessage(id);
     if (!m) throw new Error("Message not found");
     const text = String(b.body ?? "").trim();
     if (!text) throw new Error("Write a reply first");
     if (!EMAIL_ADDRESS.test(m.from_addr)) throw new Error("No email address is available for this conversation");
-    const acc = this.emailAccounts().find((a) => a.id === (b.accountId || m.account_id)) ?? this.emailAccounts()[0];
-    const useCloudflare = Boolean(this.cloudflareLeadMail()) && (
-      m.channel === "form" || (m.contact_id && Boolean(this.one(
-        "SELECT id FROM messages WHERE contact_id=? AND direction='out' AND from_addr=? LIMIT 1", m.contact_id, CLOUDFLARE_FROM,
-      )))
-    );
-    if (!acc && !useCloudflare) throw new Error("Add an email account in Settings first");
+    const sender = this.replySender(m, b.accountId);
+    if (!sender) throw new Error("Connect a mailbox in Settings → Email accounts or enable Cloudflare Email Sending.");
     const enteredSubject = String(b.subject ?? "").replace(/[\r\n]+/g, " ").trim().slice(0, 200);
     const subject = enteredSubject || (m.subject ? (/^re:/i.test(m.subject) ? m.subject : `Re: ${m.subject}`) : "Re: your message");
     const mail = { to: m.from_addr, toName: m.from_name, subject, body: text, inReplyTo: m.message_id || undefined };
-    if (useCloudflare) {
+    if (sender.cloud) {
       const firstReply = !this.one("SELECT id FROM messages WHERE direction='out' AND channel='email' AND to_addr=? LIMIT 1", m.from_addr);
-      const result = await sendCloudflareMail(this.cloudflareLeadMail()!, { ...mail, portrait: firstReply });
+      const result = await sendCloudflareMail(sender.cloud, { ...mail, portrait: firstReply });
       this.recordOut({ accountId: "cloudflare", contactId: m.contact_id, to: m.from_addr, subject, body: text, messageId: result.messageId, from: CLOUDFLARE_FROM });
-    } else if (acc) {
+    } else if (sender.account) {
+      const acc = sender.account;
       const messageId = await sendMail(acc.cfg, mail);
       this.recordOut({ accountId: acc.id, contactId: m.contact_id, to: m.from_addr, subject, body: text, messageId, from: acc.cfg.email });
     }
@@ -857,7 +873,10 @@ export class AdminStore extends DurableObject<Env> {
       location?: string;
       rescheduleUid?: string;
     };
-    if (evt.triggerEvent === "PING" || !p) return json({ ok: true });
+    if (evt.triggerEvent === "PING") {
+      this.setSetting("cal_webhook_received", String(now()));
+      return json({ ok: true });
+    }
     const att = p.attendees?.[0] ?? {};
     const trigger = evt.triggerEvent || "BOOKING_CREATED";
     const status = /CANCEL/.test(trigger) ? "cancelled" : /RESCHEDULE/.test(trigger) ? "rescheduled" : "booked";
@@ -905,6 +924,7 @@ export class AdminStore extends DurableObject<Env> {
       extId: `cal:${bUid}:${trigger}:${p.startTime}`,
       url: meeting,
     });
+    this.setSetting("cal_webhook_received", String(now()));
     this.log("info", `Booking ${status}: ${att.name || att.email || ""} (${when})`);
     return json({ ok: true });
   }
@@ -938,6 +958,7 @@ export class AdminStore extends DurableObject<Env> {
       timezone: this.setting("timezone") || "Asia/Dhaka",
       anthropicKeySet: !!this.setting("anthropic_key"),
       calSecretSet: !!this.setting("cal_secret"),
+      calConnected: Boolean(this.setting("cal_webhook_received") || this.one("SELECT 1 FROM bookings LIMIT 1")),
       passwordFromEnv: !!this.env.ADMIN_PASSWORD,
       calWebhookUrl: `${origin}/api/hooks/cal?key=${key}`,
       leadNotifyEmail: leadNotify.email,
