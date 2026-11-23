@@ -59,7 +59,23 @@ A private, Notion-style workspace at `/admin` for social posting, email outreach
 - **Contacts** — CSV import, “Find emails” (reads public emails from business websites), website
   form leads and Cal.com bookings. Campaigns can auto-enroll new contacts by source.
 - **Inbox** — outreach replies, website form submissions (`POST /api/lead`), Cal.com bookings
-  (webhook URL shown in Settings → Website & bookings) and X mentions / Facebook comments.
+  (webhook URL shown in Settings → Website & bookings) and X mentions / Facebook messages.
+
+### Facebook sign-in
+
+Configure a Meta app for Facebook Login with Web OAuth enabled and register
+`https://ramjanaliakash.com/api/admin/facebook/callback` as a valid OAuth redirect URI.
+Set `META_APP_ID` and `META_APP_SECRET` as Worker secrets. Grant the app the Page
+permissions it requests, including `pages_messaging` for Messenger and
+`pages_manage_engagement` for public comment replies. Meta may require app review
+or advanced access before people outside the app's roles can connect.
+
+In the dashboard, open **Settings → Social accounts → Continue with Facebook** and
+choose your Page. The scheduler uses that connection to publish. The Inbox imports
+recent inbound messages from the Page's Messenger conversations. The **Comments**
+section shows comments from recent Page posts published through the dashboard. For
+AI drafts, add an Anthropic API key in **Settings → General**, then use **Draft with AI**
+and review your reply before posting it publicly.
 
 Backend: `worker/` — one SQLite Durable Object (`AdminStore`) holds everything; a cron every 5
 minutes (`triggers` in `wrangler.jsonc`) publishes due posts, sends due emails and checks replies.

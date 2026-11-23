@@ -67,6 +67,7 @@ export interface Campaign {
 export interface Message {
   id: string;
   direction: "in" | "out";
+  ext_id?: string;
   channel: string;
   account_id: string;
   contact_id: string;
@@ -124,4 +125,4 @@ export interface Settings {
   unsubscribeLine: string;
 }
 
-export type View = "overview" | "inbox" | "calendar" | "social" | "email" | "contacts";
+export type View = "overview" | "inbox" | "comments" | "calendar" | "social" | "email" | "contacts";

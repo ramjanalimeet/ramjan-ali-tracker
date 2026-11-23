@@ -152,6 +152,73 @@ const SOCIAL_HELP: Record<string, React.ReactNode> = {
   ),
 };
 
+function FacebookConnect({ ctx }: { ctx: AppCtx }) {
+  const [enabled, setEnabled] = useState(false);
+  const [pages, setPages] = useState<{ id: string; name: string }[]>([]);
+  const [pageId, setPageId] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [notice, setNotice] = useState("");
+  useEffect(() => {
+    api<{ enabled: boolean }>("facebook/status").then(({ enabled }) => setEnabled(enabled)).catch(() => {});
+    const status = new URLSearchParams(location.search).get("facebook");
+    if (!status) return;
+    history.replaceState(null, "", location.pathname + location.hash);
+    if (status === "choose") {
+      api<{ id: string; name: string }[]>("facebook/pages").then((list) => {
+        setPages(list);
+        setPageId(list[0]?.id ?? "");
+        if (!list.length) setNotice("No eligible Pages were available. Sign in again and grant access to your Page.");
+      }).catch(() => setNotice("Could not load your Pages. Start Facebook sign-in again."));
+    } else {
+      setNotice(status === "cancelled" ? "Facebook sign-in was cancelled." : "Facebook sign-in could not finish. Try again.");
+    }
+  }, []);
+  return (
+    <div className="adm-stack">
+      {notice && <p role="status">{notice}</p>}
+      {pages.length ? (
+        <form className="adm-stack" onSubmit={async (e) => {
+          e.preventDefault();
+          setBusy(true);
+          try {
+            await api("facebook/pages", { body: { pageId } });
+            await ctx.reloadAccounts();
+            setPages([]);
+            ctx.toast("Facebook Page connected");
+          } catch (err) {
+            ctx.toast((err as Error).message, "error");
+          } finally {
+            setBusy(false);
+          }
+        }}>
+          <Field label="Choose your Facebook Page">
+            <select value={pageId} onChange={(e) => setPageId(e.target.value)} disabled={busy}>
+              {pages.map(({ id, name }) => <option key={id} value={id}>{name}</option>)}
+            </select>
+          </Field>
+          <button className="adm-btn primary" disabled={busy || !pageId}>Connect Page</button>
+        </form>
+      ) : (
+        <div>
+          <button className="adm-btn primary" disabled={busy || !enabled} onClick={async () => {
+            setBusy(true);
+            try {
+              const { url } = await api<{ url: string }>("facebook/start", { body: {} });
+              location.assign(url);
+            } catch (err) {
+              ctx.toast((err as Error).message, "error");
+              setBusy(false);
+            }
+          }}>
+            <Brand platform="facebook" size={20} /> Continue with Facebook
+          </button>
+          {!enabled && <p className="adm-hint">Facebook sign-in requires Meta app setup.</p>}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function SocialAccounts({ ctx }: { ctx: AppCtx }) {
   const [editing, setEditing] = useState<{ platform: string; account?: Account } | null>(null);
   const list = ctx.accounts.filter((a) => a.kind === "social");
@@ -164,11 +231,12 @@ function SocialAccounts({ ctx }: { ctx: AppCtx }) {
           <p>Posts you schedule are published to these automatically.</p>
         </div>
       </div>
+      <FacebookConnect ctx={ctx} />
       <div className="adm-platforms">
         {Object.keys(SOCIAL_FIELDS).map((p) => (
           <button key={p} className="adm-platform" onClick={() => setEditing({ platform: p })}>
             <Brand platform={p} size={28} />
-            <span>{PLATFORM_LABEL(p)}</span>
+            <span>{p === "facebook" ? "Facebook token setup" : PLATFORM_LABEL(p)}</span>
             <Icon name="plus" size={16} />
           </button>
         ))}

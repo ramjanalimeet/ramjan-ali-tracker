@@ -11,6 +11,7 @@ export interface SocialConfig {
   accessSecret?: string;
   // LinkedIn / Facebook / Medium
   token?: string;
+  messenger?: boolean;
   pageId?: string; // Facebook Page id
   authorUrn?: string; // LinkedIn urn:li:person:xxx or urn:li:organization:xxx
   userId?: string; // Medium user id / X user id (filled automatically)
@@ -96,6 +97,67 @@ async function api(url: string, init: RequestInit, label: string) {
 }
 
 const FB = "https://graph.facebook.com/v23.0";
+
+export interface FacebookPage {
+  id: string;
+  name: string;
+  access_token: string;
+}
+
+export async function facebookPages(appId: string, secret: string, redirectUri: string, code: string): Promise<FacebookPage[]> {
+  const tokens = await api(`${FB}/oauth/access_token`, {
+    method: "POST",
+    body: new URLSearchParams({ client_id: appId, client_secret: secret, redirect_uri: redirectUri, code }),
+  }, "Facebook");
+  const longLived = await api(`${FB}/oauth/access_token`, {
+    method: "POST",
+    body: new URLSearchParams({
+      client_id: appId, client_secret: secret,
+      grant_type: "fb_exchange_token", fb_exchange_token: tokens.access_token,
+    }),
+  }, "Facebook");
+  const pages: FacebookPage[] = [];
+  let after: string | undefined;
+  do {
+    const query = new URLSearchParams({ fields: "id,name,access_token", limit: "100" });
+    if (after) query.set("after", after);
+    const result = await api(`${FB}/me/accounts?${query}`, {
+      headers: { Authorization: `Bearer ${longLived.access_token}` },
+    }, "Facebook");
+    pages.push(...(result.data ?? []).filter((page: FacebookPage) => page.access_token));
+    after = result.paging?.next ? result.paging.cursors?.after : undefined;
+  } while (after && pages.length < 500);
+  return pages;
+}
+
+export async function replyToFacebookComment(c: SocialConfig, commentId: string, message: string): Promise<string> {
+  const result = await api(`${FB}/${encodeURIComponent(commentId)}/comments`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${c.token}` },
+    body: new URLSearchParams({ message }),
+  }, "Facebook");
+  return result.id;
+}
+
+export async function facebookMessages(c: SocialConfig): Promise<SocialReply[]> {
+  const result = await api(`${FB}/${encodeURIComponent(c.pageId!)}/conversations?platform=messenger&limit=25&fields=link,messages.limit(25){id,from,message,created_time}`, {
+    headers: { Authorization: `Bearer ${c.token}` },
+  }, "Facebook Messenger");
+  const replies: SocialReply[] = [];
+  for (const t of result.data ?? []) {
+    const url = typeof t.link === "string" && t.link.startsWith("/")
+      ? `https://www.facebook.com${t.link}` : undefined;
+    for (const m of t.messages?.data ?? []) {
+      if (!m.id || !m.from?.id || m.from.id === c.pageId) continue;
+      replies.push({
+        extId: `fbdm:${m.id}`, from: m.from.id, fromName: m.from.name ?? "",
+        text: m.message || "Attachment or unsupported message", url,
+        date: Date.parse(m.created_time) || Date.now(),
+      });
+    }
+  }
+  return replies;
+}
 
 /** Checks the credentials and fills in ids the publisher needs (user id, author urn, handle). */
 export async function verifySocial(p: Platform, c: SocialConfig): Promise<SocialConfig> {

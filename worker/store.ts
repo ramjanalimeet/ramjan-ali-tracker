@@ -5,7 +5,7 @@
 import { DurableObject } from "cloudflare:workers";
 import { aiWrite } from "./ai";
 import { fetchNewMail, sendMail, testEmail, withDefaults, type EmailConfig } from "./mail";
-import { fbComments, publish, verifySocial, xMentions, type Platform, type SocialConfig } from "./social";
+import { facebookMessages, facebookPages, fbComments, publish, replyToFacebookComment, type FacebookPage, verifySocial, xMentions, type Platform, type SocialConfig } from "./social";
 import {
   EMAIL_RE,
   addrOf,
@@ -29,12 +29,20 @@ export interface Env {
   ADMIN_STORE: DurableObjectNamespace<AdminStore>;
   /** Optional: overrides the dashboard password (set as a Worker secret). */
   ADMIN_PASSWORD?: string;
+  META_APP_ID?: string;
+  META_APP_SECRET?: string;
 }
 
 // Default password hash (PBKDF2). Change the password from Settings, or set
 // the ADMIN_PASSWORD secret in Cloudflare.
 const DEFAULT_PASSWORD_HASH = "pbkdf2$100000$YWiHgA9TjAMol/TX0crtuQ==$mCWWefDX1fhuhtKnSjXfZO2TZq8ID4mf6J3jeOgg5iM=";
 const COOKIE = "ra_admin";
+const META_CALLBACK = "https://ramjanaliakash.com/api/admin/facebook/callback";
+const FACEBOOK_COMMENTS = "channel='facebook' AND ext_id GLOB 'fb:*'";
+const FACEBOOK_SCOPES = [
+  "pages_show_list", "pages_manage_posts", "pages_read_engagement",
+  "pages_read_user_content", "pages_manage_engagement", "pages_messaging",
+];
 const DAY = 86_400_000;
 const SECRET_KEYS = ["password", "resendKey", "apiKey", "apiSecret", "accessToken", "accessSecret", "token"];
 const MAX_SENDS_PER_TICK = 12;
@@ -183,6 +191,61 @@ export class AdminStore extends DurableObject<Env> {
     return (await req.json().catch(() => ({}))) as T;
   }
 
+  private async facebookAuth(req: Request, action: string, url: URL): Promise<Response> {
+    const appId = this.env.META_APP_ID;
+    const secret = this.env.META_APP_SECRET;
+    if (action === "status") return json({ enabled: Boolean(appId && secret) });
+    if (!appId || !secret) return err("Facebook sign-in is not configured", 503);
+    const session = parseCookies(req.headers.get("cookie"))[COOKIE]!;
+    const sessionKey = hex(await hmac(this.setting("session_secret")!, session));
+    const key = "facebook_oauth";
+    const raw = this.setting(key);
+    const pending = raw ? JSON.parse(raw) as { session: string; expires: number; state?: string; pages?: FacebookPage[] } : undefined;
+    const valid = pending && pending.expires > now() && safeEqual(pending.session, sessionKey) ? pending : undefined;
+    if (action === "start" && req.method === "POST") {
+      const state = uid();
+      this.setSetting(key, JSON.stringify({ session: sessionKey, expires: now() + 600_000, state }));
+      const query = new URLSearchParams({
+        client_id: appId, redirect_uri: META_CALLBACK, state,
+        scope: FACEBOOK_SCOPES.join(","), response_type: "code",
+      });
+      return json({ url: `https://www.facebook.com/v23.0/dialog/oauth?${query}` });
+    }
+    if (action === "callback" && req.method === "GET") {
+      const state = url.searchParams.get("state");
+      const code = url.searchParams.get("code");
+      if (!state || !valid?.state || !safeEqual(valid.state, state))
+        return Response.redirect(url.origin + "/admin?facebook=expired#settings");
+      this.setSetting(key, "");
+      if (!code) return Response.redirect(url.origin + "/admin?facebook=cancelled#settings");
+      try {
+        const pages = await facebookPages(appId, secret, META_CALLBACK, code);
+        if (this.setting(key)) return Response.redirect(url.origin + "/admin?facebook=expired#settings");
+        this.setSetting(key, JSON.stringify({ session: sessionKey, expires: now() + 600_000, pages }));
+        return Response.redirect(url.origin + "/admin?facebook=choose#settings");
+      } catch {
+        return Response.redirect(url.origin + "/admin?facebook=failed#settings");
+      }
+    }
+    if (action === "pages" && req.method === "GET")
+      return json((valid?.pages ?? []).map(({ id, name }) => ({ id, name })));
+    if (action === "pages" && req.method === "POST") {
+      const { pageId } = await this.body<{ pageId?: string }>(req);
+      const current = this.setting(key);
+      if (current !== raw) return err("Start Facebook sign-in again", 409);
+      const page = valid?.pages?.find((p) => p.id === pageId);
+      if (!page) return err("Start Facebook sign-in again", 409);
+      this.setSetting(key, "");
+      const existing = this.one<{ id: string }>(
+        "SELECT id FROM accounts WHERE kind='social' AND platform='facebook' AND json_extract(config,'$.pageId')=?",
+        page.id,
+      );
+      return json(await this.saveAccount({ id: existing?.id, platform: "facebook", label: page.name,
+        config: { pageId: page.id, token: page.access_token, messenger: true } }));
+    }
+    return err("Not found", 404);
+  }
+
   private async admin(req: Request, route: string, url: URL): Promise<Response> {
     const m = req.method;
     const seg = route.split("/").filter(Boolean);
@@ -196,6 +259,8 @@ export class AdminStore extends DurableObject<Env> {
       await this.tick(true);
       return json({ ok: true, overview: this.overview() });
     }
+
+    if (res === "facebook") return this.facebookAuth(req, id, url);
 
     if (res === "accounts") {
       if (m === "GET") return json(this.listAccounts());
@@ -254,12 +319,14 @@ export class AdminStore extends DurableObject<Env> {
 
     if (res === "inbox") {
       if (m === "GET" && id && action === "thread") return json(this.thread(id));
+      const comments = url.searchParams.get("view") === "comments";
+      const section = comments ? `AND (${FACEBOOK_COMMENTS})` : `AND NOT COALESCE((${FACEBOOK_COMMENTS}),0)`;
       if (m === "GET") {
         const ch = url.searchParams.get("channel");
         return json(
           this.q(
             `SELECT m.*, c.name AS contact_name, c.company AS contact_company FROM messages m LEFT JOIN contacts c ON c.id=m.contact_id
-             WHERE m.direction='in' ${ch ? "AND m.channel=?" : ""} ORDER BY m.created_at DESC LIMIT 300`,
+             WHERE m.direction='in' ${section} ${ch ? "AND m.channel=?" : ""} ORDER BY m.created_at DESC LIMIT 300`,
             ...(ch ? [ch] : []),
           ),
         );
@@ -269,7 +336,7 @@ export class AdminStore extends DurableObject<Env> {
         return json({ ok: true });
       }
       if (m === "POST" && id === "read-all") {
-        this.sql.exec("UPDATE messages SET read=1 WHERE direction='in'");
+        this.sql.exec(`UPDATE messages SET read=1 WHERE direction='in' ${section}`);
         return json({ ok: true });
       }
       if (m === "POST" && action === "reply") return json(await this.reply(id, await this.body(req)));
@@ -644,8 +711,10 @@ export class AdminStore extends DurableObject<Env> {
   // ---------- inbox ----------
 
   private thread(id: string) {
-    const m = this.one<{ contact_id: string; from_addr: string }>("SELECT * FROM messages WHERE id=?", id);
+    const m = this.one<{ contact_id: string; ext_id: string | null }>("SELECT * FROM messages WHERE id=?", id);
     if (!m) return [];
+    if (m.ext_id?.startsWith("fb:"))
+      return this.q("SELECT * FROM messages WHERE id=? OR (direction='out' AND channel='facebook' AND in_reply_to=?) ORDER BY created_at", id, id);
     return m.contact_id
       ? this.q("SELECT * FROM messages WHERE contact_id=? ORDER BY created_at", m.contact_id)
       : this.q("SELECT * FROM messages WHERE id=?", id);
@@ -658,15 +727,35 @@ export class AdminStore extends DurableObject<Env> {
     }));
   }
 
+  private readonly pendingCommentReplies = new Set<string>();
+
   private async reply(id: string, b: { body?: string; accountId?: string }) {
-    const m = this.one<{ channel: string; account_id: string; from_addr: string; from_name: string; subject: string; message_id: string; contact_id: string; in_reply_to: string }>(
-      "SELECT * FROM messages WHERE id=?",
+    const m = this.one<{ channel: string; account_id: string; from_addr: string; from_name: string; subject: string; message_id: string; contact_id: string; ext_id: string | null }>(
+      "SELECT * FROM messages WHERE id=? AND direction='in'",
       id,
     );
     if (!m) throw new Error("Message not found");
     const text = String(b.body ?? "").trim();
     if (!text) throw new Error("Write a reply first");
-    if (!/@/.test(m.from_addr)) throw new Error("Replies to social comments are not supported yet. Open the post to reply there.");
+    if (m.channel === "facebook" && m.ext_id?.startsWith("fb:")) {
+      if (this.pendingCommentReplies.has(id)) throw new Error("A reply is already being sent");
+      const account = this.one<{ config: string }>("SELECT config FROM accounts WHERE id=? AND kind='social' AND platform='facebook'", m.account_id);
+      if (!account) throw new Error("Reconnect the Facebook Page in Settings");
+      this.pendingCommentReplies.add(id);
+      try {
+        const sent = await replyToFacebookComment(JSON.parse(account.config), m.ext_id.slice(3), text);
+        this.sql.exec(
+          "INSERT OR IGNORE INTO messages(id,direction,channel,account_id,body,in_reply_to,ext_id,read,created_at) VALUES(?,'out','facebook',?,?,?,?,1,?)",
+          uid("msg_"), m.account_id, text, id, `fb:${sent}`, now(),
+        );
+        this.sql.exec("UPDATE messages SET read=1 WHERE id=?", id);
+        return { ok: true };
+      } finally {
+        this.pendingCommentReplies.delete(id);
+      }
+    }
+    if (["twitter", "facebook", "linkedin"].includes(m.channel) || !EMAIL_RE.test(m.from_addr))
+      throw new Error("Open the conversation on its platform to reply");
     const acc = this.emailAccounts().find((a) => a.id === (b.accountId || m.account_id)) ?? this.emailAccounts()[0];
     if (!acc) throw new Error("Add an email account in Settings first");
     const subject = m.subject ? (/^re:/i.test(m.subject) ? m.subject : `Re: ${m.subject}`) : "Re: your message";
@@ -1122,8 +1211,19 @@ export class AdminStore extends DurableObject<Env> {
             this.addInbound({ channel: "facebook", accountId: a.id, from: m.from, fromName: m.fromName, body: m.text, extId: m.extId, url: m.url, at: m.date });
         }
       } catch (e) {
-        // Reading mentions needs a paid X API plan; keep this quiet in the account status.
+        // Surface missing provider permissions in Settings.
         this.sql.exec("UPDATE accounts SET last_error=? WHERE id=?", `Replies: ${errMsg(e)}`.slice(0, 300), a.id);
+      }
+      if (a.platform === "facebook" && cfg.messenger) {
+        try {
+          for (const m of await facebookMessages(cfg)) {
+            this.addInbound({ channel: "facebook", accountId: a.id, from: m.from, fromName: m.fromName,
+              subject: "Facebook message", body: m.text, extId: m.extId, url: m.url, at: m.date });
+          }
+          this.sql.exec("UPDATE accounts SET last_error=NULL WHERE id=? AND last_error LIKE 'Messenger:%'", a.id);
+        } catch (e) {
+          this.sql.exec("UPDATE accounts SET last_error=? WHERE id=?", `Messenger: ${errMsg(e)}`.slice(0, 300), a.id);
+        }
       }
     }
   }
