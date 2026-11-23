@@ -109,7 +109,7 @@ function EmailAccounts({ ctx }: { ctx: AppCtx }) {
       <div className="adm-sec-head">
         <div>
           <h3>Email accounts</h3>
-          <p>Outreach is spread across these inboxes, each with its own daily limit. Replies are read from them every 5 minutes.</p>
+          <p>Connect a mailbox for email replies and form notifications.</p>
         </div>
         <button className="adm-btn primary" onClick={() => setEditing("new")}>
           <Icon name="plus" size={16} /> Add email
@@ -123,7 +123,7 @@ function EmailAccounts({ ctx }: { ctx: AppCtx }) {
         </div>
       ) : (
         <div className="adm-help">
-          Add 4–5 sending inboxes (for example on a separate outreach domain). Keep each one to about 30–50 emails a day so they stay out of spam.
+          Add a mailbox to send replies from the dashboard.
         </div>
       )}
     </div>
@@ -399,12 +399,9 @@ function WebsiteSettings({ ctx }: { ctx: AppCtx }) {
 
 function General({ ctx }: { ctx: AppCtx }) {
   const [s, setS] = useSettings();
-  const [form, setForm] = useState({ timezone: "", unsubscribeLine: "", anthropicKey: "", newPassword: "" });
+  const [form, setForm] = useState({ anthropicKey: "", newPassword: "" });
   const [activity, setActivity] = useState<{ id: number; level: string; text: string; created_at: number }[]>([]);
   const [running, setRunning] = useState(false);
-  useEffect(() => {
-    if (s) setForm((f) => ({ ...f, timezone: s.timezone, unsubscribeLine: s.unsubscribeLine }));
-  }, [s]);
   useEffect(() => {
     api<typeof activity>("activity").then(setActivity).catch(() => {});
   }, []);
@@ -424,19 +421,6 @@ function General({ ctx }: { ctx: AppCtx }) {
       }}
     >
       <h3>General</h3>
-      <div className="adm-grid2">
-        <Field label="Time zone" hint="Used for outreach sending hours.">
-          <input value={form.timezone} onChange={(e) => setForm({ ...form, timezone: e.target.value })} placeholder="Asia/Dhaka" list="adm-tz" />
-          <datalist id="adm-tz">
-            {["Asia/Dhaka", "America/New_York", "America/Chicago", "America/Denver", "America/Los_Angeles", "Europe/London", "UTC"].map((z) => (
-              <option key={z} value={z} />
-            ))}
-          </datalist>
-        </Field>
-      </div>
-      <Field label="Opt-out line" hint="Added to the first outreach email. Replies like “no thanks” or “unsubscribe” stop the sequence automatically.">
-        <input value={form.unsubscribeLine} onChange={(e) => setForm({ ...form, unsubscribeLine: e.target.value })} />
-      </Field>
       <Field label="Anthropic API key (for “Write with AI”)" hint={s.anthropicKeySet ? "A key is saved. Paste a new one to replace it." : "Optional. Get one at console.anthropic.com."}>
         <input type="password" autoComplete="off" value={form.anthropicKey} onChange={(e) => setForm({ ...form, anthropicKey: e.target.value })} placeholder={s.anthropicKeySet ? "•••••••• saved" : "sk-ant-…"} />
       </Field>
@@ -454,7 +438,7 @@ function General({ ctx }: { ctx: AppCtx }) {
       <div className="adm-sec-head">
         <div>
           <h3>Automation</h3>
-          <p>Runs every 5 minutes: sends due outreach emails and checks inboxes for replies.</p>
+          <p>Checks for replies and retries pending form notifications every 5 minutes.</p>
         </div>
         <button
           type="button"

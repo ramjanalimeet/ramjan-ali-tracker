@@ -39,7 +39,7 @@
       "bindings": [{ "name": "ADMIN_STORE", "class_name": "AdminStore" }]
     }
   },
-  // Every 5 minutes: send outreach emails and pull in replies.
+  // Every 5 minutes: retry form notifications and pull in replies.
   "triggers": { "crons": ["*/5 * * * *"] },
   "observability": { "enabled": true }
 }

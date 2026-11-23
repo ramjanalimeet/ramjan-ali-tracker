@@ -105,4 +105,4 @@ export interface Settings {
   unsubscribeLine: string;
 }
 
-export type View = "overview" | "inbox" | "blogs" | "email" | "contacts";
+export type View = "overview" | "inbox" | "blogs" | "contacts";
