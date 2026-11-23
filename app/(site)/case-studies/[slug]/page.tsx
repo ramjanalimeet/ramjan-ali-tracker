@@ -223,7 +223,7 @@ export default async function CaseStudyPage({ params }: Props) {
   return (
     <>
       <JsonLd data={schema} />
-      <section className="phero">
+      <section className="phero case-client-hero">
         <div className="wrap">
           <nav aria-label="Breadcrumb">
             <ol className="crumbs">
@@ -236,16 +236,16 @@ export default async function CaseStudyPage({ params }: Props) {
               <li aria-current="page">{c.client}</li>
             </ol>
           </nav>
-          <div className="phero-grid">
-            <div>
+          <div className="phero-grid case-client-hero-grid">
+            <div className="case-client-intro">
               <span className="eyebrow">
                 Case study · {c.trade} · {c.location}
               </span>
-              <h1 style={{ fontSize: "clamp(34px,4.4vw,58px)" }}>{c.title}</h1>
+              <h1>{c.title}</h1>
               <p className="lead">{c.summary}</p>
-              <div className="cta-row">
+              <div className="cta-row case-client-actions">
                 <Link className="btn btn-dark" href={c.website} target="_blank" rel="noopener">
-                  Visit Ecoverde website <span className="arr">↗</span>
+                  Visit Ecoverde website
                 </Link>
                 <MainCta />
               </div>

@@ -110,10 +110,10 @@ export default function CaseStudiesPage() {
                   </ul>
                   <div className="case-result-actions">
                     <Link className="btn btn-ghost btn-sm" href={c.website} target="_blank" rel="noopener">
-                      Visit website <span className="arr">↗</span>
+                      Visit website
                     </Link>
                     <Link className="btn btn-dark btn-sm" href={`/case-studies/${c.slug}`}>
-                      Read full case study <span className="arr">→</span>
+                      Read case study
                     </Link>
                   </div>
                 </div>

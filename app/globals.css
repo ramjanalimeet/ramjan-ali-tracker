@@ -2468,11 +2468,11 @@ dialog.booking::backdrop {
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 19px;
+  padding: 16px;
 }
 .case-result-body h2 {
-  margin-top: 12px;
-  font-size: clamp(21px, 1.8vw, 26px);
+  margin-top: 10px;
+  font-size: clamp(20px, 1.65vw, 24px);
   line-height: 1.08;
   letter-spacing: -0.035em;
   display: -webkit-box;
@@ -2483,23 +2483,23 @@ dialog.booking::backdrop {
 .case-result-body > p {
   display: -webkit-box;
   overflow: hidden;
-  margin-top: 11px;
+  margin-top: 8px;
   color: var(--ink-2);
   font-size: 14px;
   line-height: 1.45;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
 }
 .case-result-metrics {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 9px;
+  gap: 7px;
   list-style: none;
   padding: 0;
-  margin: 16px 0 0;
+  margin: 13px 0 0;
 }
 .case-result-metrics li {
-  padding: 10px;
+  padding: 8px;
   background: var(--bg-2);
   border: 1px solid var(--line);
   border-radius: 12px;
@@ -2509,19 +2509,35 @@ dialog.booking::backdrop {
   display: block;
 }
 .case-result-metrics b {
-  font-size: 17px;
+  font-size: 16px;
 }
 .case-result-metrics span {
   margin-top: 2px;
   color: var(--mute);
-  font-size: 12px;
+  font-size: 11px;
+  line-height: 1.25;
 }
 .case-result-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 9px;
+  gap: 8px;
   margin-top: auto;
-  padding-top: 18px;
+  padding-top: 14px;
+}
+.case-result-actions .btn {
+  min-height: 38px;
+  padding: 8px 13px;
+  font-size: 12.5px;
+}
+.case-client-hero {
+  padding-bottom: 48px;
+}
+.case-client-hero-grid {
+  align-items: center;
+}
+.case-client-hero h1 {
+  max-width: 16ch;
+  font-size: clamp(34px, 4.4vw, 58px);
 }
 .case-detail-hero {
   padding: 96px 0 54px;
@@ -2846,8 +2862,22 @@ dialog.booking::backdrop {
     font-size: clamp(38px, 12vw, 54px);
     white-space: normal;
   }
+  .case-result-card {
+    max-width: 430px;
+    margin-inline: auto;
+    border-radius: 18px;
+  }
+  .case-browserbar {
+    height: 25px;
+  }
   .case-result-body {
-    padding: 24px 20px;
+    padding: 15px;
+  }
+  .case-result-body h2 {
+    font-size: 21px;
+  }
+  .case-result-body > p {
+    font-size: 13.5px;
   }
   .case-results-grid {
     grid-template-columns: 1fr;
@@ -2856,10 +2886,15 @@ dialog.booking::backdrop {
     grid-template-columns: 1fr;
   }
   .case-result-metrics {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .case-result-actions {
     display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+  .case-result-actions .btn {
+    width: 100%;
+    padding-inline: 9px;
   }
   .playbook-head {
     margin-bottom: 24px;
@@ -2898,6 +2933,94 @@ dialog.booking::backdrop {
   }
   .case-plan-card {
     padding: 23px 20px;
+  }
+  .case-client-hero {
+    padding: 88px 0 34px;
+  }
+  .case-client-hero .crumbs {
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+  .case-client-hero-grid {
+    gap: 26px;
+  }
+  .case-client-hero h1 {
+    max-width: none;
+    font-size: clamp(34px, 10.5vw, 46px);
+    line-height: 1.01;
+    letter-spacing: -0.045em;
+  }
+  .case-client-hero .lead {
+    margin-top: 18px;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  .case-client-actions {
+    display: grid;
+    margin-top: 22px;
+  }
+  .case-client-actions .btn,
+  .case-client-actions > * {
+    width: 100%;
+  }
+  .case-client-hero .facts {
+    padding: 18px;
+    border-radius: 16px;
+  }
+  .case-client-hero .facts li {
+    display: grid;
+    grid-template-columns: 82px minmax(0, 1fr);
+    gap: 8px;
+    font-size: 14px;
+  }
+  .case-client-hero .facts li b {
+    min-width: 0;
+  }
+  .case-site-preview {
+    padding: 18px 0 28px;
+  }
+  .case-site-preview figure {
+    border-radius: 16px;
+  }
+  .case-site-preview img {
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: top center;
+  }
+  .case-site-preview figcaption {
+    padding: 12px 14px;
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
+  .case-site-preview + .sec.tight {
+    padding-top: 24px;
+  }
+  .case-site-preview + .sec.tight .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .case-site-preview + .sec.tight .stat {
+    padding: 16px;
+    border-radius: 16px;
+  }
+  .case-site-preview + .sec.tight .stat-val {
+    font-size: 30px;
+  }
+  .case-impact-card {
+    padding: 22px 20px;
+  }
+  .chart-card {
+    padding: 16px 12px 10px;
+  }
+  .quote {
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  .case-result-actions,
+  .case-site-preview + .sec.tight .stats {
+    grid-template-columns: 1fr;
   }
 }
 
