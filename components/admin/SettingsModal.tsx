@@ -101,31 +101,55 @@ const PROVIDERS = [
 ];
 
 function EmailAccounts({ ctx }: { ctx: AppCtx }) {
+  const [settings] = useSettings();
   const [editing, setEditing] = useState<Account | "new" | null>(null);
-  const list = ctx.accounts.filter((a) => a.kind === "email");
+  const [testing, setTesting] = useState(false);
+  const list = ctx.accounts.filter((account) => account.kind === "email");
   if (editing) return <EmailForm ctx={ctx} account={editing === "new" ? undefined : editing} onDone={() => setEditing(null)} />;
+  if (!settings) return <div className="adm-skel" />;
+  const enabled = settings.cloudflareLeadMail;
   return (
     <div className="adm-stack">
-      <div className="adm-sec-head">
-        <div>
-          <h3>Email accounts</h3>
-          <p>Connect a mailbox for email replies and form notifications.</p>
+      <h3>Email accounts</h3>
+      <div className="adm-acc">
+        <Brand platform="email" size={30} />
+        <div className="adm-acc-main">
+          <b>{settings.cloudflareEmailAddress}</b>
+          <span>Cloudflare · Form notifications and lead replies</span>
         </div>
-        <button className="adm-btn primary" onClick={() => setEditing("new")}>
-          <Icon name="plus" size={16} /> Add email
-        </button>
+        <Status value={enabled ? "connected" : "setup_required"} />
       </div>
-      {list.length ? (
-        <div className="adm-acc-list">
-          {list.map((a) => (
-            <AccountRow key={a.id} a={a} ctx={ctx} onEdit={() => setEditing(a)} />
-          ))}
-        </div>
-      ) : (
-        <div className="adm-help">
-          Add a mailbox to send replies from the dashboard.
+      {enabled && settings.leadNotifyEmail && (
+        <div className="adm-copy">
+          <p className="adm-hint">Form notifications go to {settings.leadNotifyEmail}.</p>
+          <button type="button" className="adm-btn" disabled={testing} onClick={async () => {
+            setTesting(true);
+            try {
+              await api("settings/test-lead-notification", { body: {} });
+              ctx.toast(`Test sent to ${settings.leadNotifyEmail}`);
+            } catch (error) {
+              ctx.toast((error as Error).message, "error");
+            } finally {
+              setTesting(false);
+            }
+          }}>{testing ? "Sending…" : "Send test email"}</button>
         </div>
       )}
+      <details open={!enabled}>
+        <summary>Other mailboxes{list.length ? ` (${list.length})` : ""}</summary>
+        <div className="adm-stack">
+          {list.length > 0 && (
+            <div className="adm-acc-list">
+              {list.map((account) => (
+                <AccountRow key={account.id} a={account} ctx={ctx} onEdit={() => setEditing(account)} />
+              ))}
+            </div>
+          )}
+          <button type="button" className="adm-btn self-start" onClick={() => setEditing("new")}>
+            <Icon name="plus" size={16} /> Add mailbox
+          </button>
+        </div>
+      </details>
     </div>
   );
 }

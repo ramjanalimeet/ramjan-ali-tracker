@@ -964,6 +964,7 @@ export class AdminStore extends DurableObject<Env> {
       leadNotifyEmail: leadNotify.email,
       leadNotifyAccount: this.setting("lead_notify_account") || "",
       cloudflareLeadMail: Boolean(this.cloudflareLeadMail()),
+      cloudflareEmailAddress: CLOUDFLARE_FROM,
       leadNotifySender: (this.cloudflareLeadMail() ? CLOUDFLARE_FROM : "") || this.emailAccounts().find((a) => a.id === leadNotify.account && a.status === "ok")?.cfg.email || "",
       leadEndpoint: `${origin}/api/lead`,
       unsubscribeLine: this.setting("unsubscribe_line") ?? "If this isn't relevant, just reply \"no thanks\" and I won't email again.",
