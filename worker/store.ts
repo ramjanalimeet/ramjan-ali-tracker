@@ -1,3 +1,4 @@
+import { CLOUDFLARE_FROM, sendCloudflareMail } from "./cloudflare-mail";
 import { POSTS } from "../lib/posts";
 // The dashboard's backend: one Durable Object with a SQLite database holding
 // accounts, contacts, outreach campaigns, the inbox, bookings
@@ -30,6 +31,8 @@ export interface Env {
   /** Optional: overrides the dashboard password (set as a Worker secret). */
   ADMIN_PASSWORD?: string;
   LEAD_NOTIFY_EMAIL?: string;
+  EMAIL?: SendEmail;
+  CLOUDFLARE_LEAD_MAIL?: string;
 }
 
 // Default password hash (PBKDF2). Change the password from Settings, or set
@@ -338,9 +341,10 @@ export class AdminStore extends DurableObject<Env> {
     if (res === "settings" && id === "test-lead-notification" && m === "POST") {
       const { email, account } = this.leadNotificationSettings();
       const sender = this.emailAccounts().find((a) => a.id === account && a.status === "ok");
-      if (!email || !sender) return err("Save a notification recipient and connect a sending account first", 400);
+      if (!email || (!sender && !this.cloudflareLeadMail()))
+        return err("Save a notification recipient and connect a sending account first", 400);
       try {
-        await sendMail(sender.cfg, {
+        await this.sendFormMail(sender?.cfg, {
           to: email,
           subject: "Website form notification test",
           body: "Your website dashboard sent this test to check delivery of new form notifications.",
@@ -653,11 +657,23 @@ export class AdminStore extends DurableObject<Env> {
     if (!text) throw new Error("Write a reply first");
     if (!EMAIL_ADDRESS.test(m.from_addr)) throw new Error("No email address is available for this conversation");
     const acc = this.emailAccounts().find((a) => a.id === (b.accountId || m.account_id)) ?? this.emailAccounts()[0];
-    if (!acc) throw new Error("Add an email account in Settings first");
+    const useCloudflare = Boolean(this.cloudflareLeadMail()) && (
+      m.channel === "form" || (m.contact_id && Boolean(this.one(
+        "SELECT id FROM messages WHERE contact_id=? AND direction='out' AND from_addr=? LIMIT 1", m.contact_id, CLOUDFLARE_FROM,
+      )))
+    );
+    if (!acc && !useCloudflare) throw new Error("Add an email account in Settings first");
     const enteredSubject = String(b.subject ?? "").replace(/[\r\n]+/g, " ").trim().slice(0, 200);
     const subject = enteredSubject || (m.subject ? (/^re:/i.test(m.subject) ? m.subject : `Re: ${m.subject}`) : "Re: your message");
-    const messageId = await sendMail(acc.cfg, { to: m.from_addr, toName: m.from_name, subject, body: text, inReplyTo: m.message_id || undefined });
-    this.recordOut({ accountId: acc.id, contactId: m.contact_id, to: m.from_addr, subject, body: text, messageId, from: acc.cfg.email });
+    const mail = { to: m.from_addr, toName: m.from_name, subject, body: text, inReplyTo: m.message_id || undefined };
+    if (useCloudflare) {
+      const firstReply = !this.one("SELECT id FROM messages WHERE direction='out' AND channel='email' AND to_addr=? LIMIT 1", m.from_addr);
+      const result = await sendCloudflareMail(this.cloudflareLeadMail()!, { ...mail, portrait: firstReply });
+      this.recordOut({ accountId: "cloudflare", contactId: m.contact_id, to: m.from_addr, subject, body: text, messageId: result.messageId, from: CLOUDFLARE_FROM });
+    } else if (acc) {
+      const messageId = await sendMail(acc.cfg, mail);
+      this.recordOut({ accountId: acc.id, contactId: m.contact_id, to: m.from_addr, subject, body: text, messageId, from: acc.cfg.email });
+    }
     this.sql.exec("UPDATE messages SET read=1 WHERE id=?", id);
     this.log("info", `Replied to ${m.from_addr}`);
     return { ok: true };
@@ -785,7 +801,7 @@ export class AdminStore extends DurableObject<Env> {
           now());
       }
     });
-    if (recipient && sender) this.ctx.waitUntil(this.sendLeadNotifications());
+    if (recipient && (sender || this.cloudflareLeadMail())) this.ctx.waitUntil(this.sendLeadNotifications());
     this.log("info", `New form submission from ${email || name || "a visitor"}`);
     if (redirect && /^https?:\/\//.test(redirect)) return Response.redirect(redirect, 303);
     return json({ ok: true }, 200, cors);
@@ -803,11 +819,11 @@ export class AdminStore extends DurableObject<Env> {
           const preferred = accounts.find((a) => a.id === n.account_id && a.status === "ok");
           const selectedId = preferred?.id || this.leadNotificationSettings().account;
           const sender = accounts.find((a) => a.id === selectedId && a.status === "ok");
-          if (!sender) {
+          if (!sender && !this.cloudflareLeadMail()) {
             this.sql.exec("UPDATE lead_notifications SET due_at=? WHERE id=?", now() + 300_000, n.id);
             continue;
           }
-          await sendMail(sender.cfg, { to: n.recipient, replyTo: n.reply_to ?? undefined, subject: n.subject, body: n.body });
+          await this.sendFormMail(sender?.cfg, { to: n.recipient, replyTo: n.reply_to ?? undefined, subject: n.subject, body: n.body });
           this.sql.exec("DELETE FROM lead_notifications WHERE id=?", n.id);
         } catch {
           this.sql.exec("UPDATE lead_notifications SET attempts=attempts+1,due_at=? WHERE id=?", now() + 300_000 * 2 ** n.attempts, n.id);
@@ -897,6 +913,17 @@ export class AdminStore extends DurableObject<Env> {
 
   // ---------- settings ----------
 
+  private cloudflareLeadMail() {
+    return this.env.CLOUDFLARE_LEAD_MAIL === "1" ? this.env.EMAIL : undefined;
+  }
+
+  private async sendFormMail(sender: EmailConfig | undefined, mail: { to: string; subject: string; body: string; replyTo?: string }) {
+    const email = this.cloudflareLeadMail();
+    if (email) return sendCloudflareMail(email, mail);
+    if (!sender) throw new Error("Notification sending account is unavailable");
+    return sendMail(sender, mail);
+  }
+
   private leadNotificationSettings() {
     const email = this.setting("lead_notify_email") ?? this.env.LEAD_NOTIFY_EMAIL ?? "";
     const explicitAccount = this.setting("lead_notify_account");
@@ -917,7 +944,8 @@ export class AdminStore extends DurableObject<Env> {
       calWebhookUrl: `${origin}/api/hooks/cal?key=${key}`,
       leadNotifyEmail: leadNotify.email,
       leadNotifyAccount: this.setting("lead_notify_account") || "",
-      leadNotifySender: this.emailAccounts().find((a) => a.id === leadNotify.account && a.status === "ok")?.cfg.email || "",
+      cloudflareLeadMail: Boolean(this.cloudflareLeadMail()),
+      leadNotifySender: (this.cloudflareLeadMail() ? CLOUDFLARE_FROM : "") || this.emailAccounts().find((a) => a.id === leadNotify.account && a.status === "ok")?.cfg.email || "",
       leadEndpoint: `${origin}/api/lead`,
       unsubscribeLine: this.setting("unsubscribe_line") ?? "If this isn't relevant, just reply \"no thanks\" and I won't email again.",
     };

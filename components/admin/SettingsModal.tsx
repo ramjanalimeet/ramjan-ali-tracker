@@ -360,14 +360,14 @@ function WebsiteSettings({ ctx }: { ctx: AppCtx }) {
         <Field label="Send form notifications to" hint="Reply to the notification to email the visitor. Leave blank to turn notifications off.">
           <input type="email" value={notify.email} onChange={(e) => setNotify({ ...notify, email: e.target.value })} />
         </Field>
-        <Field label="Send with" hint="Choose a connected email account in Settings → Email accounts.">
+        {!s.cloudflareLeadMail && <Field label="Send with" hint="Choose a connected email account in Settings → Email accounts.">
           <select value={notify.account} onChange={(e) => setNotify({ ...notify, account: e.target.value })}>
             <option value="">Automatic (use a connected sender)</option>
             {ctx.accounts.filter((account) => account.status === "ok").map((account) => (
               <option key={account.id} value={account.id}>{account.label}</option>
             ))}
           </select>
-        </Field>
+        </Field>}
         {s.leadNotifyEmail && (
           <p className="adm-hint" role="status">
             {s.leadNotifySender ? `Sending from ${s.leadNotifySender} to ${s.leadNotifyEmail}.` : "Connect an email account to deliver queued notifications."}

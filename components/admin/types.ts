@@ -101,6 +101,7 @@ export interface Settings {
   leadNotifyEmail: string;
   leadNotifyAccount: string;
   leadNotifySender: string;
+  cloudflareLeadMail: boolean;
   unsubscribeLine: string;
 }
 
