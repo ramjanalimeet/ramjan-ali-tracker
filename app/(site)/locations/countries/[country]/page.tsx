@@ -5,6 +5,7 @@ import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 import { MainCta } from "@/components/MainCta";
+import { AiMock, MapMock } from "@/components/Mocks";
 import { GLOBAL_COUNTRIES, getGlobalCountry, slugifyPlace } from "@/lib/global-locations";
 import { type FaqItem, SITE_URL, faqSchema, pageMeta } from "@/lib/site";
 
@@ -17,13 +18,13 @@ export function generateStaticParams() {
 type Props = { params: Promise<{ country: string }> };
 
 const descriptionFor = (name: string) =>
-  `Local SEO and AI visibility for local businesses in ${name}. Explore city strategies for Google Maps, organic search and AI recommendations.`;
+  `Local SEO and AI visibility services in ${name}. Explore city strategies for Maps, organic discovery, enquiries and AI recommendations.`;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const country = getGlobalCountry((await params).country);
   if (!country) return {};
   return pageMeta({
-    title: `Local SEO in ${country.name} | City Strategies`,
+    title: `Local SEO Services in ${country.name} | City Guides`,
     description: descriptionFor(country.name),
     path: `/locations/countries/${country.slug}`,
   });
@@ -47,6 +48,14 @@ export default async function CountryLocationPage({ params }: Props) {
     {
       q: `Which businesses can use local SEO in ${country.name}?`,
       a: `The strategy fits local service companies, clinics, professional firms, automotive businesses, restaurants, hospitality and other businesses customers visit or contact in a defined area.`,
+    },
+    {
+      q: `How is local SEO performance measured in ${country.name}?`,
+      a: `Reporting combines city-level map rankings, non-brand organic clicks, calls, forms, review growth and accurate AI mentions. Each city is tracked separately so one strong market does not hide a weaker one.`,
+    },
+    {
+      q: `Can one Google Business Profile rank across all of ${country.name}?`,
+      a: `Usually not. Map visibility is strongly tied to the verified location and the searcher's proximity. A multi-location business needs eligible profiles and useful landing pages for its real locations; a service-area business should target only places it genuinely serves.`,
     },
   ];
 
@@ -150,7 +159,78 @@ export default async function CountryLocationPage({ params }: Props) {
         </div>
       </section>
 
-      <Faq items={faqs} />
+      <section className="sec alt">
+        <div className="wrap">
+          <div className="sec-head rv">
+            <div>
+              <span className="eyebrow">Search foundations</span>
+              <h2>Build a verifiable local presence in {country.name}.</h2>
+            </div>
+            <p>A strong campaign aligns the website, business profiles and third-party evidence before it expands into more city targets.</p>
+          </div>
+          <div className="grid g3">
+            <article className="card rv"><h3>Accurate business entities</h3><p>Names, services, locations and contact details stay consistent across {country.platforms.slice(0, 3).join(", ")} and the website.</p></article>
+            <article className="card rv"><h3>City-specific relevance</h3><p>Each active location has useful service evidence and its own intent instead of duplicated pages covering every city in {country.name}.</p></article>
+            <article className="card rv"><h3>Trust and prominence</h3><p>Reviews, local mentions, credentials and first-party proof help customers and search systems validate the business.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section className="sec">
+        <div className="wrap split">
+          <div className="body rv">
+            <span className="eyebrow">Maps and local discovery</span>
+            <h2>Track visibility city by city in {country.name}.</h2>
+            <p>
+              A national average cannot show whether customers can find a business in a specific service area. Campaigns
+              use city and neighbourhood rank checks, then connect that coverage with calls, forms and visits.
+            </p>
+            <p>
+              The first priority is the market closest to each verified location. Expansion follows only where the business
+              has real coverage, operational capacity and evidence customers can trust.
+            </p>
+          </div>
+          <MapMock query={`${country.sectors[0]} in ${country.cities[0]}`} name="Your Business" />
+        </div>
+      </section>
+
+      <section className="sec alt">
+        <div className="wrap split">
+          <div className="body rv">
+            <span className="eyebrow">AI visibility</span>
+            <h2>Make local expertise understandable to AI systems.</h2>
+            <p>
+              Search and answer engines need corroborated facts. Clear services, consistent profiles, strong local pages,
+              reviews and trusted mentions give them evidence about what a business does and where it is relevant.
+            </p>
+            <p>
+              Recommendation checks use repeatable customer questions and verify accuracy, not just whether the business
+              name appears once.
+            </p>
+          </div>
+          <AiMock prompt={`Who is a trusted ${country.sectors[1]} provider in ${country.cities[0]}?`} name="Your Business" />
+        </div>
+      </section>
+
+      <section className="sec">
+        <div className="wrap">
+          <div className="sec-head rv">
+            <div>
+              <span className="eyebrow">Reporting</span>
+              <h2>Measure outcomes across {country.name}.</h2>
+            </div>
+            <p>Every active city has a defined keyword set, landing-page purpose and conversion view, reducing overlap and making progress easier to judge.</p>
+          </div>
+          <div className="loc-metrics">
+            <article className="loc-metric rv"><b>Map rankings</b><span>Coverage around each verified location</span></article>
+            <article className="loc-metric rv"><b>Organic demand</b><span>Non-brand clicks by city and service</span></article>
+            <article className="loc-metric rv"><b>Enquiries</b><span>Calls and forms from local pages</span></article>
+            <article className="loc-metric rv"><b>AI accuracy</b><span>Correct mentions across tracked prompts</span></article>
+          </div>
+        </div>
+      </section>
+
+      <Faq items={faqs} title={`${country.name} local SEO questions.`} />
       <CtaBand title={`Build a stronger local presence in ${country.name}.`} />
     </>
   );

@@ -5,7 +5,7 @@ import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
-import { MapMock } from "@/components/Mocks";
+import { AiMock, MapMock } from "@/components/Mocks";
 import { CITIES, type City, type TradeKey, citiesIn, getCity, groupOf } from "@/lib/cities";
 import {
   AREA_INTRO,
@@ -38,8 +38,6 @@ const fill = (s: string, c: City) =>
     .replaceAll("{a1}", c.areas[1])
     .replaceAll("{a2}", c.areas[2]);
 
-const titleCase = (s: string) => s.replace(/\b\w/g, (ch) => ch.toUpperCase());
-
 /** Trims a description to Google's ~160 characters at a word boundary. */
 function fit(text: string, limit = 160) {
   if (text.length <= limit) return text;
@@ -51,10 +49,10 @@ function fit(text: string, limit = 160) {
 
 function seo(c: City) {
   const L = LOCALES[c.locale];
-  const base = `${c.place} Local SEO for ${titleCase(L.noun)}`;
+  const base = `Local SEO Services in ${c.place}`;
   const title = `${base} | Ramjan Ali Akash`.length <= 60 ? `${base} | Ramjan Ali Akash` : base;
   const description = fit(
-    `Local SEO for ${c.place} ${L.tradesDesc}. Rank in the map pack across ${c.areas[0]}, ${c.areas[1]} and ${c.areas[2]}. Book a free call.`,
+    `Local SEO and AI visibility services in ${c.place}. Improve Maps rankings and qualified enquiries across ${c.areas[0]}, ${c.areas[1]} and ${c.areas[2]}.`,
   );
   return { title, description };
 }
@@ -76,6 +74,10 @@ function faqsFor(c: City): FaqItem[] {
     {
       q: `You are based in Bangladesh. Can you really do local SEO for ${c.name}?`,
       a: `Yes. Local SEO is done through your Google Business Profile, website, citations, reviews and links, all of which I manage remotely. Local knowledge comes from keyword data, map-rank tracking across your service area, competitor research, and from you and your team. ${LOCALES[c.locale].hours}`,
+    },
+    {
+      q: `What should a useful ${c.name} location page include?`,
+      a: `It should explain the services genuinely available in ${c.name}, show relevant proof, answer local customer questions and provide a clear next step. Nearby areas such as ${c.areas.slice(0, 3).join(", ")} should appear only where the business can support them with real coverage and evidence.`,
     },
   ];
 }
@@ -181,7 +183,7 @@ export default async function CityPage({ params }: Props) {
             <div>
               <span className="eyebrow">Local SEO · {c.place}</span>
               <h1>
-                Local SEO for <span className="hl">{c.name}</span> {L.noun}.
+                Local SEO for <span className="hl">{c.name}</span> businesses.
               </h1>
               <p className="lead">{c.lead}</p>
               <div className="cta-row">
@@ -320,6 +322,25 @@ export default async function CityPage({ params }: Props) {
               </Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="sec alt">
+        <div className="wrap split">
+          <div className="body rv">
+            <span className="eyebrow">AI recommendations</span>
+            <h2>Build verifiable AI visibility in {c.name}.</h2>
+            <p>
+              AI systems need the same evidence customers look for: clear services, consistent business details,
+              relevant local pages, credible reviews and trusted mentions. I strengthen those signals across the site
+              and major business profiles.
+            </p>
+            <p>
+              A fixed set of customer questions is checked over time so reporting can show whether the business is named,
+              whether the description is accurate and which competitors appear more often.
+            </p>
+          </div>
+          <AiMock prompt={`Who is a trusted ${labels[trades[0]].replace(" SEO", "")} in ${c.name}?`} name="Your Business" />
         </div>
       </section>
 

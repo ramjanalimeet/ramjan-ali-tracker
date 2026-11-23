@@ -2604,6 +2604,41 @@ dialog.booking::backdrop {
 .case-impact-card p {
   margin-top: 12px;
 }
+.loc-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+.loc-metric {
+  min-width: 0;
+  padding: 22px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+.loc-metric::before {
+  content: "";
+  display: block;
+  width: 34px;
+  height: 4px;
+  margin-bottom: 20px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+.loc-metric b,
+.loc-metric span {
+  display: block;
+}
+.loc-metric b {
+  font-size: 18px;
+  line-height: 1.15;
+}
+.loc-metric span {
+  margin-top: 7px;
+  color: var(--ink-2);
+  font-size: 14px;
+  line-height: 1.45;
+}
 .case-context {
   max-width: none;
   margin: 0 0 24px;
@@ -2783,6 +2818,9 @@ dialog.booking::backdrop {
   .case-results-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .loc-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .case-detail-grid,
   .case-plan-grid {
     grid-template-columns: 1fr;
@@ -2812,6 +2850,9 @@ dialog.booking::backdrop {
     padding: 24px 20px;
   }
   .case-results-grid {
+    grid-template-columns: 1fr;
+  }
+  .loc-metrics {
     grid-template-columns: 1fr;
   }
   .case-result-metrics {

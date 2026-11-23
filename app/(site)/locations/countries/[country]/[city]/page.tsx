@@ -5,6 +5,7 @@ import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 import { MainCta } from "@/components/MainCta";
+import { AiMock, MapMock } from "@/components/Mocks";
 import { GLOBAL_COUNTRIES, getGlobalCity, slugifyPlace } from "@/lib/global-locations";
 import { type FaqItem, SITE_URL, faqSchema, pageMeta } from "@/lib/site";
 
@@ -31,14 +32,43 @@ const titles = [
   "Grow a stronger local search presence",
 ];
 
+const marketHeadings = [
+  (city: string) => `How local customers compare options in ${city}.`,
+  (city: string) => `Build relevance for searches centred on ${city}.`,
+  (city: string) => `Turn ${city} search demand into a defined market.`,
+  (city: string) => `Make every ${city} signal support the same intent.`,
+  (city: string) => `Focus visibility on customers who can take action in ${city}.`,
+];
+
+const intentHeadings = [
+  (city: string) => `Queries worth targeting in ${city}.`,
+  (city: string) => `Find the service searches that matter in ${city}.`,
+  (city: string) => `Separate research traffic from buying intent in ${city}.`,
+  (city: string) => `Map the words ${city} customers use before they enquire.`,
+  (city: string) => `Build a practical local keyword set for ${city}.`,
+];
+
+const localApproaches = [
+  (city: string) => `The useful searches in ${city} come from people comparing nearby providers and deciding who to contact. The profile, landing pages and citations therefore reinforce real service availability rather than chasing traffic from places the business cannot support.`,
+  (city: string) => `A ${city} campaign starts with proximity and eligibility, then strengthens service relevance, reputation and conversion. That sequence helps the business compete for customers who can realistically call, book or visit.`,
+  (city: string) => `Visibility in ${city} is treated as a connected system: an eligible profile, a crawlable website, accurate listings and persuasive evidence. No single city page can compensate for missing fundamentals.`,
+  (city: string) => `Customers in ${city} see profiles, reviews, service pages and third-party mentions before choosing. The campaign makes those touchpoints consistent so each one supports the same local promise.`,
+  (city: string) => `The target is qualified discovery inside ${city}, not generic visits from everywhere. Keywords and pages are prioritised by service value, local relevance and whether the business can fulfil the enquiry.`,
+];
+
+const titleFor = (city: string, country: string) => {
+  const full = `Local SEO Services in ${city}, ${country} | Ramjan Ali Akash`;
+  return full.length <= 65 ? full : `Local SEO in ${city}, ${country}`;
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { country: countrySlug, city: citySlug } = await params;
   const match = getGlobalCity(countrySlug, citySlug);
   if (!match) return {};
   const { country, city } = match;
-  const title = `Local SEO in ${city}, ${country.name}`;
+  const title = titleFor(city, country.name);
   const description = fit(
-    `Local SEO and AI visibility for local businesses in ${city}, ${country.name}. Improve Google Maps rankings, local organic visibility and qualified enquiries.`,
+    `Local SEO and AI visibility services in ${city}, ${country.name}. Improve Maps rankings, organic discovery and qualified enquiries for local businesses.`,
   );
   return pageMeta({ title, description, path: `/locations/countries/${country.slug}/${citySlug}` });
 }
@@ -49,9 +79,9 @@ export default async function GlobalCityPage({ params }: Props) {
   if (!match) notFound();
   const { country, city, index } = match;
   const url = `${SITE_URL}/locations/countries/${country.slug}/${citySlug}`;
-  const title = `Local SEO in ${city}, ${country.name}`;
+  const title = titleFor(city, country.name);
   const description = fit(
-    `Local SEO and AI visibility for local businesses in ${city}, ${country.name}. Improve Google Maps rankings, local organic visibility and qualified enquiries.`,
+    `Local SEO and AI visibility services in ${city}, ${country.name}. Improve Maps rankings, organic discovery and qualified enquiries for local businesses.`,
   );
   const primarySectors = [...country.sectors.slice(index % country.sectors.length), ...country.sectors].slice(0, 3);
   const nearbyCities = [...country.cities.slice(index + 1), ...country.cities.slice(0, index)].slice(0, 4);
@@ -62,6 +92,18 @@ export default async function GlobalCityPage({ params }: Props) {
     `local business in ${city}`,
     `${primarySectors[0]} near ${city}`,
   ];
+  const contentAngles = [
+    `Service pages that explain what a ${primarySectors[0]} provider offers, who it is for and how customers in ${city} can enquire.`,
+    `Proof-led pages for ${primarySectors[1]} businesses, using real qualifications, reviews, photos and service details rather than generic city copy.`,
+    `Useful answers around pricing, availability and selection criteria for people comparing ${primarySectors[2]} options in ${city}.`,
+  ];
+  const metrics = [
+    ["Map coverage", `Rank-grid movement across ${city}`],
+    ["Qualified demand", "Calls and forms by service page"],
+    ["Organic growth", "Non-brand clicks and impressions"],
+    ["AI presence", "Accurate mentions in answer engines"],
+  ];
+  const variant = index % marketHeadings.length;
   const faqs: FaqItem[] = [
     {
       q: `What does local SEO in ${city} include?`,
@@ -74,6 +116,18 @@ export default async function GlobalCityPage({ params }: Props) {
     {
       q: `Will a ${city} page rank in every nearby city?`,
       a: `No single page should target every market. ${nearbyCities.join(", ")} and other genuine service areas need their own useful evidence when they are important enough to target. Map visibility also depends heavily on the verified business location.`,
+    },
+    {
+      q: `How long does local SEO take in ${city}?`,
+      a: `Most businesses need several months of consistent work. Timing depends on the current profile, website quality, review strength and competition in ${city}. Early technical and profile fixes can appear sooner, while broader map coverage and authority usually take longer.`,
+    },
+    {
+      q: `How do you measure a ${city} local SEO campaign?`,
+      a: `I track map rankings from multiple points in ${city}, organic clicks, calls, forms, indexed pages, review growth and AI mentions. Reporting separates visibility from enquiries so the campaign stays focused on useful business outcomes.`,
+    },
+    {
+      q: `Do you need an office in ${city} to rank locally?`,
+      a: `A verified local address strongly influences map visibility, but service-area businesses can hide their address and define genuine coverage. Website pages should describe real services and evidence in ${city}; they cannot replace an eligible Google Business Profile location.`,
     },
   ];
 
@@ -153,16 +207,30 @@ export default async function GlobalCityPage({ params }: Props) {
         <div className="wrap split">
           <div className="body rv">
             <span className="eyebrow">The {city} search market</span>
-            <h2>One city, one clear search intent.</h2>
+            <h2>{marketHeadings[variant](city)}</h2>
             <p>{country.market}</p>
-            <p>
-              For a business in {city}, the goal is not generic traffic from everywhere. The useful searches come from
-              people who need a nearby provider, compare credible options and are ready to call, visit or enquire.
-              The page, profile and citations therefore use {city} only where the business has real relevance.
-            </p>
+            <p>{localApproaches[variant](city)}</p>
             <p>
               This approach separates {city} from {nearbyCities.slice(0, 2).join(" and ")}. Each market has its own
               canonical URL, heading, metadata, internal links and tracked keyword set, reducing overlap between pages.
+            </p>
+          </div>
+          <MapMock query={`${primarySectors[0]} in ${city}`} name="Your Business" />
+        </div>
+      </section>
+
+      <section className="sec">
+        <div className="wrap split">
+          <div className="body rv">
+            <span className="eyebrow">Search intent</span>
+            <h2>{intentHeadings[variant](city)}</h2>
+            <p>
+              A useful keyword set combines the service, the place and the reason someone is searching. Broad traffic
+              is filtered out so the campaign can focus on searches that can realistically lead to a call, booking or visit.
+            </p>
+            <p>
+              Language and wording are checked against actual customer behaviour in {country.name}; the same phrase is
+              not assumed to work unchanged in every country or city.
             </p>
           </div>
           <div className="panel rv">
@@ -175,6 +243,65 @@ export default async function GlobalCityPage({ params }: Props) {
       </section>
 
       <section className="sec alt">
+        <div className="wrap">
+          <div className="sec-head rv">
+            <div>
+              <span className="eyebrow">Useful local content</span>
+              <h2>Content built for real decisions in {city}.</h2>
+            </div>
+            <p>Each page has a defined job, supports a genuine service and adds evidence that a generic location swap cannot provide.</p>
+          </div>
+          <div className="grid g3">
+            {contentAngles.map((text, i) => (
+              <article className="card rv" key={text}>
+                <span className="ic" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+                <h3>{primarySectors[i]} content</h3>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="sec">
+        <div className="wrap split">
+          <div className="body rv">
+            <span className="eyebrow">AI recommendations</span>
+            <h2>Help answer engines verify a {city} business.</h2>
+            <p>
+              AI visibility starts with clear entities and corroborated facts: the same business name, services,
+              location, expertise and reputation should be understandable across the site, profiles and trusted listings.
+            </p>
+            <p>
+              I also check whether answers describe the business accurately. A mention only helps when the service,
+              location and reason for recommending it are correct.
+            </p>
+          </div>
+          <AiMock prompt={`Who is a trusted ${primarySectors[1]} provider in ${city}?`} name="Your Business" />
+        </div>
+      </section>
+
+      <section className="sec alt">
+        <div className="wrap">
+          <div className="sec-head rv">
+            <div>
+              <span className="eyebrow">Measurement</span>
+              <h2>Prove what local visibility produces in {city}.</h2>
+            </div>
+            <p>Reporting connects rankings and discovery to actions a business can value, instead of treating traffic as the final result.</p>
+          </div>
+          <div className="loc-metrics">
+            {metrics.map(([label, detail]) => (
+              <article className="loc-metric rv" key={label}>
+                <b>{label}</b>
+                <span>{detail}</span>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="sec">
         <div className="wrap">
           <div className="sec-head rv">
             <div>
@@ -212,7 +339,7 @@ export default async function GlobalCityPage({ params }: Props) {
         </div>
       </section>
 
-      <Faq items={faqs} />
+      <Faq items={faqs} title={`${city} local SEO questions.`} />
       <CtaBand title={`Plan your local visibility in ${city}.`} />
     </>
   );
