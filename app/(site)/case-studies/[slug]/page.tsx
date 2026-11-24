@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CASE_STUDY_HERO, CaseStudySections, CaseStudyTrust } from "@/components/CaseStudySections";
 import { notFound } from "next/navigation";
 import { AiVisibilityCharts, MapGridCompare, SearchConsoleCharts } from "@/components/charts/CaseCharts";
 import { CtaBand } from "@/components/CtaBand";
@@ -239,7 +240,7 @@ export default async function CaseStudyPage({ params }: Props) {
           <div className="phero-grid case-client-hero-grid">
             <div className="case-client-intro">
               <span className="eyebrow">
-                Case study · {c.trade} · {c.location}
+                {CASE_STUDY_HERO}
               </span>
               <h1>{c.title}</h1>
               <p className="lead">{c.summary}</p>
@@ -282,6 +283,7 @@ export default async function CaseStudyPage({ params }: Props) {
           </div>
         </div>
       </section>
+      <CaseStudyTrust />
 
       <section className="sec tight case-site-preview">
         <div className="wrap">
@@ -402,20 +404,7 @@ export default async function CaseStudyPage({ params }: Props) {
         </section>
       )}
 
-      {c.quote && (
-        <section className="sec tight">
-          <div className="wrap">
-            <blockquote className="quote rv">
-              <p>&ldquo;{c.quote.text}&rdquo;</p>
-              <cite>
-                {c.quote.name}, {c.quote.role}
-              </cite>
-            </blockquote>
-          </div>
-        </section>
-      )}
-
-      <CtaBand title="Want results like this for your business?" />
+      <CaseStudySections quote={c.quote} />
     </>
   );
 }
