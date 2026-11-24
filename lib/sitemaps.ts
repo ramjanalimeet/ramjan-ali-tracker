@@ -1,3 +1,4 @@
+import { CASE_OVERVIEWS, caseOverviewCover, caseOverviewPath } from "./case-overviews";
 import { CASE_STUDIES } from "./case-studies";
 import { ELITE_SEPTIC_PATH } from "./elite-septic";
 import { CITIES } from "./cities";
@@ -62,6 +63,11 @@ const SITEMAPS: Record<SitemapName, () => Entry[]> = {
     })),
     { path: ELITE_SEPTIC_PATH, lastmod: "2026-11-24" },
     { path: "/case-studies/wolfpixel", lastmod: "2026-11-24", images: [`${SITE_URL}/assets/case-studies/wolfpixel-card.webp`] },
+    ...CASE_OVERVIEWS.map(({ slug }) => ({
+      path: caseOverviewPath(slug),
+      lastmod: "2026-11-24",
+      images: [SITE_URL + caseOverviewCover(slug)],
+    })),
   ],
 };
 
