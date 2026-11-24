@@ -15,7 +15,7 @@
         <title>XML Sitemap | Ramjan Ali</title>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
         <style>
-          :root{--bg:#F2F3F0;--card:#fff;--ink:#111210;--ink-2:#3C3E39;--mute:#6E716A;--line:#D9DCD4;--accent:#C6F432;--accent-ink:#1A2400}
+          :root{--bg:#F2F3F0;--table-bg:#f4f7ed;--ink:#111210;--ink-2:#3C3E39;--mute:#6E716A;--line:#D9DCD4;--accent:#C6F432;--accent-ink:#1A2400}
           *{box-sizing:border-box}
           body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
           a{color:inherit}
@@ -36,12 +36,11 @@
           .count b{background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:1px 10px;font-weight:700}
           .back{font-weight:600;text-decoration:none}
           .back:hover{text-decoration:underline}
-          .table{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+          .table{background:var(--table-bg);border:1px solid var(--line);border-radius:18px;overflow:hidden}
           .scroll{overflow-x:auto}
           table{width:100%;border-collapse:collapse;min-width:520px}
-          th{background:var(--ink);color:var(--bg);text-align:left;font-size:13px;font-weight:600;padding:14px 18px;white-space:nowrap}
-          td{padding:13px 18px;border-top:1px solid #ebede7;font-size:14px;vertical-align:middle}
-          tr:nth-child(even) td{background:#fafbf8}
+          th{text-align:left;font-size:13px;font-weight:600;padding:14px 18px;white-space:nowrap}
+          td{padding:13px 18px;border-top:1px solid var(--line);font-size:14px;vertical-align:middle}
           tr:hover td{background:#f4fbe0}
           td a{text-decoration:none;word-break:break-all}
           td a:hover{text-decoration:underline}
