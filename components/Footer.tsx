@@ -36,7 +36,7 @@ export function Footer() {
                 </li>
               ))}
               <li>
-                <Link href="/locations">Locations</Link>
+                <Link href="/locations">Locations →</Link>
               </li>
             </ul>
           </div>
