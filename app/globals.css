@@ -2079,6 +2079,12 @@ dialog.booking::backdrop {
 }
 
 /* Blog */
+.article-cover img,
+.post-cover,
+.feature-cover {
+  box-shadow: 0 10px 22px -10px rgba(17, 18, 16, 0.3),
+    0 2px 6px rgba(17, 18, 16, 0.08);
+}
 .post-cover {
   display: block;
   width: 100%;
