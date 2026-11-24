@@ -48,6 +48,12 @@ a {
 table {
   background-color: var(--table-bg);
 }
+thead {
+  background-color: var(--accent);
+}
+thead th {
+  color: var(--accent-ink);
+}
 h1,
 h2,
 h3,
@@ -3180,7 +3186,6 @@ dialog.booking::backdrop {
   border-bottom: 1px solid var(--line);
 }
 .ctable th {
-  color: var(--mute);
   font-weight: 600;
 }
 .grid-card .rgrid {
@@ -3450,7 +3455,6 @@ dialog.booking::backdrop {
   min-width: 520px;
 }
 .prose th {
-  color: var(--ink);
   border-bottom: 1px solid var(--line);
   text-align: left;
   font-weight: 600;
