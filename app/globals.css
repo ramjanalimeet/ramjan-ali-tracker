@@ -2542,6 +2542,9 @@ dialog.booking::backdrop {
   font-size: 11px;
   line-height: 1.25;
 }
+.case-result-body > p + .case-result-actions {
+  margin-top: auto;
+}
 .case-result-actions {
   display: flex;
   flex-wrap: wrap;

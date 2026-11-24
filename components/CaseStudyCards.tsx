@@ -2,6 +2,8 @@ import Link from "next/link";
 import { ELITE_SEPTIC_PATH, ELITE_SEPTIC_METRICS, ELITE_SEPTIC_WEBSITE } from "@/lib/elite-septic";
 import { CASE_STUDIES } from "@/lib/case-studies";
 
+import { CASE_OVERVIEWS, caseOverviewCover, caseOverviewPath } from "@/lib/case-overviews";
+
 const PROJECT_CARDS = [
   ...CASE_STUDIES.map((c) => {
     const isEcoverde = c.slug === "ecoverde-valeting-local-seo-ai-visibility";
@@ -45,6 +47,13 @@ const PROJECT_CARDS = [
     href: "/case-studies/wolfpixel",
     detailLabel: "Read overview",
   },
+  ...CASE_OVERVIEWS.map((overview) => ({
+    ...overview,
+    cover: caseOverviewCover(overview.slug),
+    href: caseOverviewPath(overview.slug),
+    highlights: [],
+    detailLabel: "Read overview",
+  })),
 ];
 
 export function CaseStudyCards() {
@@ -61,11 +70,13 @@ export function CaseStudyCards() {
           <div className="case-result-body">
             <h2>{project.name}</h2>
             <p>{project.summary}</p>
-            <ul className="case-result-metrics">
-              {project.highlights.map(({ label, value }) => (
-                <li key={label}><b>{value}</b><span>{label}</span></li>
-              ))}
-            </ul>
+            {project.highlights.length > 0 && (
+              <ul className="case-result-metrics">
+                {project.highlights.map(({ label, value }) => (
+                  <li key={label}><b>{value}</b><span>{label}</span></li>
+                ))}
+              </ul>
+            )}
             <div className="case-result-actions">
               <Link className="btn btn-ghost btn-sm" href={project.website} target="_blank" rel="noopener">View website</Link>
               <Link className="btn btn-dark btn-sm" href={project.href}>{project.detailLabel} <span aria-hidden="true">→</span></Link>

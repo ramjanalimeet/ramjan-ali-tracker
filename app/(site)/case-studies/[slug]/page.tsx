@@ -1,3 +1,4 @@
+import { CASE_OVERVIEWS, caseOverviewCover, caseOverviewPath, getCaseOverview } from "@/lib/case-overviews";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CaseStudyHero, CaseStudyResults, CaseStudySections } from "@/components/CaseStudySections";
@@ -12,7 +13,7 @@ import { SITE_URL, pageMeta } from "@/lib/site";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return ALL_CASES.map((c) => ({ slug: c.slug }));
+  return [...ALL_CASES, ...CASE_OVERVIEWS].map((c) => ({ slug: c.slug }));
 }
 
 type Props = { params: Promise<{ slug: string }> };
@@ -20,7 +21,16 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = (await params).slug;
   const c = getCase(slug);
-  if (!c) return {};
+  if (!c) {
+    const overview = getCaseOverview(slug);
+    if (!overview) return {};
+    return pageMeta({
+      title: `${overview.name} | Website Overview`,
+      description: overview.summary,
+      path: caseOverviewPath(slug),
+      image: { url: caseOverviewCover(slug), width: 960, height: 540, alt: overview.alt },
+    });
+  }
   return pageMeta({
     title: `${c.title} | Local SEO Case Study`,
     description: c.summary.slice(0, 160),
@@ -165,7 +175,33 @@ function PlaybookCaseStudyPage({ p }: { p: Playbook }) {
 export default async function CaseStudyPage({ params }: Props) {
   const slug = (await params).slug;
   const c = getCase(slug);
-  if (!c) notFound();
+  if (!c) {
+    const overview = getCaseOverview(slug);
+    if (!overview) notFound();
+
+    return (
+      <>
+        <CaseStudyHero
+          name={overview.name}
+          context={`Public website review · ${overview.category}`}
+          title={overview.name}
+          summary={overview.summary}
+          website={overview.website}
+          image={{ src: caseOverviewCover(slug), alt: overview.alt }}
+        />
+        <section className="case-reading-body">
+          <div className="wrap">
+            <article className="prose case-reading-copy">
+              {overview.sections.map(({ title, text }) => (
+                <div key={title}><h2>{title}</h2><p>{text}</p></div>
+              ))}
+            </article>
+          </div>
+        </section>
+        <CaseStudySections />
+      </>
+    );
+  }
   const url = `${SITE_URL}/case-studies/${c.slug}`;
   const period = `${monthLabel(c.period.start, true)} to ${monthLabel(c.period.end, true)}`;
 
