@@ -2426,22 +2426,27 @@ dialog.booking::backdrop {
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: calc(var(--r) + 4px);
+  box-shadow: 0 14px 32px -22px rgba(17, 18, 16, 0.26);
 }
 .case-result-image {
   display: block;
   overflow: hidden;
-  border-bottom: 1px solid var(--line);
+  margin: 12px 12px 0;
+  border: 1px solid var(--line);
+  border-radius: 14px;
   color: var(--ink);
   text-decoration: none;
-  background: #edf0e9;
+  background: var(--table-bg);
+  box-shadow: 0 10px 22px -10px rgba(17, 18, 16, 0.3),
+    0 2px 6px rgba(17, 18, 16, 0.08);
 }
 .case-browserbar {
   display: flex;
   align-items: center;
   gap: 5px;
-  height: 30px;
+  height: 25px;
   padding: 0 10px;
-  background: #f7f8f4;
+  background: var(--table-bg);
   border-bottom: 1px solid var(--line);
 }
 .case-browserbar i {
@@ -2479,12 +2484,18 @@ dialog.booking::backdrop {
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 16px;
+  padding: 15px 16px 16px;
+}
+.case-result-body > .tag {
+  color: var(--mute);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
 }
 .case-result-body h2 {
-  margin-top: 10px;
-  font-size: clamp(20px, 1.65vw, 24px);
-  line-height: 1.08;
+  margin-top: 6px;
+  font-size: clamp(18px, 1.55vw, 21px);
+  line-height: 1.2;
   letter-spacing: -0.035em;
   display: -webkit-box;
   overflow: hidden;
@@ -2494,9 +2505,9 @@ dialog.booking::backdrop {
 .case-result-body > p {
   display: -webkit-box;
   overflow: hidden;
-  margin-top: 8px;
+  margin-top: 6px;
   color: var(--ink-2);
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.45;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -2511,7 +2522,7 @@ dialog.booking::backdrop {
 }
 .case-result-metrics li {
   padding: 8px;
-  background: var(--bg-2);
+  background: var(--table-bg);
   border: 1px solid var(--line);
   border-radius: 12px;
 }
@@ -2520,7 +2531,9 @@ dialog.booking::backdrop {
   display: block;
 }
 .case-result-metrics b {
-  font-size: 16px;
+  font-size: 15px;
+  line-height: 1.3;
+  font-variant-numeric: tabular-nums;
 }
 .case-result-metrics span {
   margin-top: 2px;
@@ -2538,7 +2551,7 @@ dialog.booking::backdrop {
 .case-result-actions .btn {
   min-height: 38px;
   padding: 8px 13px;
-  font-size: 12.5px;
+  font-size: 12px;
 }
 .case-client-hero {
   padding-bottom: 48px;
@@ -2878,17 +2891,8 @@ dialog.booking::backdrop {
     margin-inline: auto;
     border-radius: 18px;
   }
-  .case-browserbar {
-    height: 25px;
-  }
   .case-result-body {
     padding: 15px;
-  }
-  .case-result-body h2 {
-    font-size: 21px;
-  }
-  .case-result-body > p {
-    font-size: 13.5px;
   }
   .case-results-grid {
     grid-template-columns: 1fr;
