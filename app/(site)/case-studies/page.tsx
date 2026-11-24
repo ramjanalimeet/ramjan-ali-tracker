@@ -12,17 +12,22 @@ const DESCRIPTION =
 export const metadata = pageMeta({ title: TITLE, description: DESCRIPTION, path: "/case-studies" });
 
 const PROJECT_CARDS = [
-  ...CASE_STUDIES.map((c) => ({
-    name: c.client,
-    category: "Car Detailing (UK)",
-    cover: "/assets/case-studies/ecoverde-card.webp",
-    alt: "A vehicle being foam washed by Ecoverde",
-    summary: "Local SEO and AI visibility work for an eco-friendly mobile valeting service in West London.",
-    highlights: c.highlights.slice(0, 3).map(({ after, label }) => ({ value: after, label })),
-    website: c.website,
-    href: `/case-studies/${c.slug}`,
-    detailLabel: "Read case study",
-  })),
+  ...CASE_STUDIES.map((c) => {
+    const isEcoverde = c.slug === "ecoverde-valeting-local-seo-ai-visibility";
+    return {
+      name: c.client,
+      category: isEcoverde ? "Car Detailing (UK)" : c.trade,
+      cover: isEcoverde ? "/assets/case-studies/ecoverde-card.webp" : c.image,
+      alt: isEcoverde ? "A vehicle being foam washed by Ecoverde" : c.imageAlt,
+      summary: isEcoverde
+        ? "Local SEO and AI visibility work for an eco-friendly mobile valeting service in West London."
+        : c.summary,
+      highlights: c.highlights.slice(0, 3).map(({ after, label }) => ({ value: after, label })),
+      website: c.website,
+      href: `/case-studies/${c.slug}`,
+      detailLabel: "Read case study",
+    };
+  }),
   {
     name: "Elite Septic Service",
     category: "Septic Service (USA)",
