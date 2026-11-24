@@ -4465,3 +4465,35 @@ dialog.hire::backdrop {
   flex: none;
   color: var(--accent-deep);
 }
+
+.case-study-hero-theme {
+  color: var(--mute);
+  font-size: 14px;
+  font-weight: 600;
+}
+.case-study-support-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  padding: 0;
+  margin: 16px 0 0;
+  list-style: none;
+}
+.case-study-support-grid dd {
+  margin: 4px 0 0;
+  font-size: 26px;
+}
+.case-study-support-grid h3 {
+  font-size: 18px;
+}
+.case-study-support-grid p {
+  margin-top: 8px;
+}
+#case-featured + p {
+  margin-bottom: 16px;
+}
+@media (max-width: 640px) {
+  .case-study-support-grid {
+    grid-template-columns: 1fr;
+  }
+}
