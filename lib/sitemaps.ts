@@ -61,6 +61,7 @@ const SITEMAPS: Record<SitemapName, () => Entry[]> = {
       images: [`${SITE_URL}${c.image}`],
     })),
     { path: ELITE_SEPTIC_PATH, lastmod: "2026-11-24" },
+    { path: "/case-studies/wolfpixel", lastmod: "2026-11-24", images: [`${SITE_URL}/assets/case-studies/wolfpixel-card.webp`] },
   ],
 };
 
