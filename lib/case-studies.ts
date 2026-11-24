@@ -70,7 +70,7 @@ export const CASE_STUDIES: CaseStudy[] = [{
   location: "West London, United Kingdom",
   period: { start: "2026-08", end: "2026-11" },
   published: "2026-11-22",
-  title: "How Ecoverde built a profitable organic search presence in West London",
+  title: "How Ecoverde earned 520 Google Search clicks in three months",
   summary:
     "A focused Local SEO and AI visibility strategy helped Ecoverde turn a clear eco-friendly mobile valeting offer into measurable Google demand and recommendations in ChatGPT and Gemini.",
   challenge: [
@@ -95,19 +95,19 @@ export const CASE_STUDIES: CaseStudy[] = [{
   ],
   businessImpact: [
     {
-      title: "A specific offer attracted better-fit searches",
+      title: "The offer became easier to understand",
       text: "The site leads with an eco-friendly mobile service for West London instead of generic car-care language. That connects the brand with customers looking for convenience, detailing quality and a provider who comes to them.",
     },
     {
-      title: "Organic visibility created a repeatable lead channel",
+      title: "Google Search brought visitors to the site",
       text: "Search Console recorded 520 clicks and 64.6K impressions over the supplied three-month view. That gives the business an owned stream of discovery that can compound as service and location authority grows.",
     },
     {
-      title: "The website converts attention into enquiries",
+      title: "Visitors have clear ways to ask for a quote",
       text: "Free Quote, phone and WhatsApp actions sit beside reviews and experience signals. Visitors can verify the offer and contact the business without navigating through unnecessary steps.",
     },
     {
-      title: "AI visibility extended discovery beyond Google results",
+      title: "Ecoverde appeared in AI recommendation checks",
       text: "Ecoverde appeared in supplied ChatGPT and Gemini recommendation checks for relevant West London detailing queries, giving the business another route into high-intent consideration.",
     },
   ],

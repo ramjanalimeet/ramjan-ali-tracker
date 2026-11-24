@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { CASE_STUDY_HERO, CaseStudySections, CaseStudyTrust } from "@/components/CaseStudySections";
+import { CaseStudyHero, CaseStudySections } from "@/components/CaseStudySections";
 import { pageMeta } from "@/lib/site";
 
 const title = "Wolfpixel Design Agency Overview";
@@ -10,31 +9,24 @@ export const metadata = pageMeta({ title, description, path: "/case-studies/wolf
 export default function WolfpixelOverview() {
   return (
     <>
-      <section className="sec">
+      <CaseStudyHero
+        name="Wolfpixel"
+        context="Public portfolio overview · Design agency"
+        title={title}
+        summary={description}
+        website="https://www.wolfpixel.agency/"
+        image={{ src: "/assets/case-studies/wolfpixel-card.webp", alt: "OpsLoop product interface from Wolfpixel’s portfolio" }}
+      />
+      <section className="case-reading-body">
         <div className="wrap">
-          <nav aria-label="Breadcrumb">
-            <ol className="crumbs">
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/case-studies">Case Studies</Link></li>
-              <li aria-current="page">Wolfpixel</li>
-            </ol>
-          </nav>
-          <article className="prose">
-            <span className="eyebrow">Public portfolio overview</span>
-            <p className="case-study-hero-theme">{CASE_STUDY_HERO}</p>
-            <h1>{title}</h1>
-            <p className="lead">{description}</p>
-            <figure className="article-cover">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/assets/case-studies/wolfpixel-card.webp" alt="OpsLoop product interface shown on a tablet, from Wolfpixel’s portfolio" width={960} height={540} />
-            </figure>
-            <h2>How the portfolio is organized</h2>
-            <p>Wolfpixel presents selected projects alongside its product design, branding and web design services. Visitors can open individual examples to see how the studio applies those services across different products and industries.</p>
-            <p><Link className="btn btn-dark" href="https://www.wolfpixel.agency/" target="_blank" rel="noopener">View Wolfpixel website</Link></p>
+          <article className="prose case-reading-copy">
+            <h2>How Wolfpixel presents its work</h2>
+            <p>Wolfpixel’s website pairs descriptions of its product, brand and web design services with individual project pages. Examples include OpsLoop, SpareCharge and Wayfare.</p>
+            <h2>What other agencies can use</h2>
+            <p>Give each project a dedicated page. Explain who it was for, what the team designed and how the work fits the client’s needs. Link relevant examples from the service pages so visitors can see what hiring the agency might involve.</p>
           </article>
         </div>
       </section>
-      <CaseStudyTrust />
       <CaseStudySections />
     </>
   );

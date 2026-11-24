@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { CASE_STUDY_HERO, CaseStudySections, CaseStudyTrust } from "@/components/CaseStudySections";
+import { CaseStudyHero, CaseStudySections, CaseStudyResults } from "@/components/CaseStudySections";
 import { ELITE_SEPTIC_METRICS, ELITE_SEPTIC_PATH, ELITE_SEPTIC_WEBSITE } from "@/lib/elite-septic";
 import { pageMeta } from "@/lib/site";
 
@@ -11,35 +10,20 @@ export const metadata = pageMeta({ title, description, path: ELITE_SEPTIC_PATH }
 export default function EliteSepticCaseStudy() {
   return (
     <>
-      <section className="sec">
+      <CaseStudyHero
+        name="Elite Septic Service"
+        context="Industry example · Lufkin and Jasper, Texas"
+        title={title}
+        summary={description}
+        website={ELITE_SEPTIC_WEBSITE}
+        image={{ src: "/assets/case-studies/elite-card.webp", alt: "Elite Septic Service technician working on a septic system" }}
+      />
+      <CaseStudyResults source="Publicly reported Google Business Profile data · June to early November 2026" highlights={ELITE_SEPTIC_METRICS} />
+      <section className="case-reading-body">
         <div className="wrap">
-          <nav aria-label="Breadcrumb">
-            <ol className="crumbs">
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/case-studies">Case Studies</Link></li>
-              <li aria-current="page">Elite Septic Service</li>
-            </ol>
-          </nav>
-          <article className="prose">
-            <span className="eyebrow">Industry example · East Texas</span>
-            <p className="case-study-hero-theme">{CASE_STUDY_HERO}</p>
-            <h1>{title}</h1>
-            <p className="lead">{description}</p>
-
-            <p>
-              <Link className="btn btn-ghost btn-sm" href={ELITE_SEPTIC_WEBSITE} target="_blank" rel="noopener">
-                Visit website
-              </Link>
-            </p>
-
-            <h2>What Google Business Profile recorded</h2>
-            <ul className="case-result-metrics">
-              {ELITE_SEPTIC_METRICS.map(({ label, value }) => (
-                <li key={label}><b>{value}</b><span>{label}</span></li>
-              ))}
-            </ul>
-            <p>These figures come from publicly reported Google Business Profile data covering June through early November 2026. Google counted 100 calls among 232 profile interactions, or about 43%. The figures cover activity from the profile. Booking and revenue figures were unavailable, and the reporting period has no comparable baseline.</p>
-
+          <article className="prose case-reading-copy">
+            <h2>What the numbers mean</h2>
+            <p>Google Business Profile recorded 100 calls out of 232 profile interactions. That is about 43%. The published report covers profile activity, with no comparison period or booking and revenue figures.</p>
             <h2>Put the service and location first</h2>
             <p>A homeowner dealing with a septic backup needs to know whether the company can handle the problem and reach their address. Elite Septic’s site makes its services, including pumping, repairs, inspections and installation, easy to find alongside coverage in Lufkin, Jasper and nearby East Texas communities.</p>
 
@@ -51,7 +35,6 @@ export default function EliteSepticCaseStudy() {
           </article>
         </div>
       </section>
-      <CaseStudyTrust />
       <CaseStudySections />
     </>
   );
