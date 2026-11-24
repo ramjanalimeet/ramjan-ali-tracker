@@ -43,7 +43,7 @@ const PROJECT_CARDS = [
     name: "Wolfpixel",
     category: "Design Agency",
     cover: "/assets/case-studies/wolfpixel-card.webp",
-    alt: "Wolfpixel’s branding and product design agency cover",
+    alt: "OpsLoop product interface shown on a tablet, from Wolfpixel’s portfolio",
     summary: "A design agency for SaaS companies and startups, with a portfolio spanning product design, branding and websites.",
     highlights: [
       { value: "Product", label: "Digital design" },

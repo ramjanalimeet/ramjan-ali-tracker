@@ -23,7 +23,7 @@ export default function WolfpixelOverview() {
           <p className="lead">{description}</p>
           <figure className="article-cover">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/case-studies/wolfpixel-card.webp" alt="Wolfpixel branding and product design agency" width={960} height={540} />
+            <img src="/assets/case-studies/wolfpixel-card.webp" alt="OpsLoop product interface shown on a tablet, from Wolfpixel’s portfolio" width={960} height={540} />
           </figure>
           <h2>How the portfolio is organized</h2>
           <p>Wolfpixel presents selected projects alongside its product design, branding and web design services. Visitors can open individual examples to see how the studio applies those services across different products and industries.</p>
