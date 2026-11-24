@@ -1481,18 +1481,17 @@ body:has(.adm-login) {
   font-size: 12.5px;
   padding: 9px 16px;
   border-bottom: 1px solid var(--a-line);
-  background: #fafaf9;
 }
 .adm-table td {
   padding: 9px 16px;
-  border-bottom: 1px solid #f2f2f0;
+  border-bottom: 1px solid var(--a-line);
   vertical-align: middle;
 }
 .adm-table tbody tr {
   cursor: pointer;
 }
 .adm-table tbody tr:hover {
-  background: #fafaf9;
+  background: #edf2e2;
 }
 .adm-person {
   display: flex;

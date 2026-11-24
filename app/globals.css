@@ -2,6 +2,7 @@
   --bg: #f2f3f0;
   --bg-2: #e8eae4;
   --card: #ffffff;
+  --table-bg: #f4f7ed;
   --ink: #111210;
   --ink-2: #3c3e39;
   --mute: #656861;
@@ -43,6 +44,9 @@ img {
 }
 a {
   color: inherit;
+}
+table {
+  background-color: var(--table-bg);
 }
 h1,
 h2,
@@ -3432,7 +3436,7 @@ dialog.booking::backdrop {
   margin: 26px 0;
   border: 1px solid var(--line);
   border-radius: var(--r-sm);
-  background: var(--card);
+  background: var(--table-bg);
 }
 .prose table {
   width: 100%;
@@ -3441,8 +3445,8 @@ dialog.booking::backdrop {
   min-width: 520px;
 }
 .prose th {
-  background: var(--ink);
-  color: var(--bg);
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
   text-align: left;
   font-weight: 600;
   padding: 12px 14px;
@@ -3451,9 +3455,6 @@ dialog.booking::backdrop {
   padding: 12px 14px;
   border-top: 1px solid var(--line);
   vertical-align: top;
-}
-.prose tr:nth-child(even) td {
-  background: #fafbf8;
 }
 .prose blockquote {
   margin: 30px 0;
