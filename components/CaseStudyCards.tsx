@@ -4,14 +4,22 @@ import { CASE_STUDIES } from "@/lib/case-studies";
 
 import { CASE_OVERVIEWS, caseOverviewCover, caseOverviewPath } from "@/lib/case-overviews";
 
+const OVERVIEW_THUMBNAILS: Readonly<Record<string, string>> = {
+  "legacy-of-the-heart": "Legacy of the Heart homepage featuring its jewelry collections",
+  aidfast: "AidFast homepage with healthcare directory categories and a Bangla app banner",
+  shopilier: "Shopilier homepage introducing its online store builder",
+  "a2-auto-care": "A2 Auto Care homepage advertising Edinburgh mobile detailing and ceramic coating",
+  "detailing-knights": "Detailing Knights homepage advertising waterless mobile detailing in the Toronto area",
+};
+
 const PROJECT_CARDS = [
   ...CASE_STUDIES.map((c) => {
     const isEcoverde = c.slug === "ecoverde-valeting-local-seo-ai-visibility";
     return {
       name: c.client,
       category: isEcoverde ? "Car Detailing (UK)" : c.trade,
-      cover: isEcoverde ? "/assets/case-studies/ecoverde-card.webp" : c.image,
-      alt: isEcoverde ? "A vehicle being foam washed by Ecoverde" : c.imageAlt,
+      cover: isEcoverde ? "/assets/case-studies/ecoverde-site-thumbnail.webp" : c.image,
+      alt: isEcoverde ? "Ecoverde homepage with mobile valeting services and booking options" : c.imageAlt,
       summary: isEcoverde
         ? "Local SEO and AI visibility work for an eco-friendly mobile valeting service in West London."
         : c.summary,
@@ -24,8 +32,8 @@ const PROJECT_CARDS = [
   {
     name: "Elite Septic Service",
     category: "Septic Service (USA)",
-    cover: "/assets/case-studies/elite-card.webp",
-    alt: "An Elite Septic Service technician working on a septic system",
+    cover: "/assets/case-studies/elite-site-thumbnail.webp",
+    alt: "Elite Septic Service homepage with a free estimate form",
     summary: "An industry example of how a service website and Google Business Profile help East Texas homeowners find and call a septic company.",
     highlights: ELITE_SEPTIC_METRICS,
     website: ELITE_SEPTIC_WEBSITE,
@@ -35,8 +43,8 @@ const PROJECT_CARDS = [
   {
     name: "Wolfpixel",
     category: "Design Agency",
-    cover: "/assets/case-studies/wolfpixel-card.webp",
-    alt: "OpsLoop product interface shown on a tablet, from Wolfpixel’s portfolio",
+    cover: "/assets/case-studies/wolfpixel-site-thumbnail.webp",
+    alt: "Wolfpixel homepage introducing its product and brand design services",
     summary: "A design agency for SaaS companies and startups, with a portfolio spanning product design, branding and websites.",
     highlights: [
       { value: "Product", label: "Digital design" },
@@ -49,7 +57,10 @@ const PROJECT_CARDS = [
   },
   ...CASE_OVERVIEWS.map((overview) => ({
     ...overview,
-    cover: caseOverviewCover(overview.slug),
+    cover: OVERVIEW_THUMBNAILS[overview.slug]
+      ? `/assets/case-studies/${overview.slug}-site-thumbnail.webp`
+      : caseOverviewCover(overview.slug),
+    alt: OVERVIEW_THUMBNAILS[overview.slug] ?? overview.alt,
     href: caseOverviewPath(overview.slug),
     highlights: [],
     detailLabel: "Read overview",
