@@ -2084,6 +2084,7 @@ dialog.booking::backdrop {
 
 /* Blog */
 .article-cover img,
+.article-guide img,
 .post-cover,
 .feature-cover {
   box-shadow: 0 10px 22px -10px rgba(17, 18, 16, 0.3),

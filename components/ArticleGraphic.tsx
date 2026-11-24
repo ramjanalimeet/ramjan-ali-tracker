@@ -8,12 +8,12 @@ export function ArticleGraphic({ post }: { post: Post }) {
       <picture>
         <source
           media="(max-width: 600px)"
-          srcSet={`/assets/blog/${post.slug}-diagram-mobile.webp`}
+          srcSet={`/assets/blog/${post.slug}-diagram-mobile-pale.webp`}
           width={700}
           height={post.graphic.mobileHeight}
         />
         <img
-          src={`/assets/blog/${post.slug}-diagram.webp`}
+          src={`/assets/blog/${post.slug}-diagram-pale.webp`}
           width={1360}
           height={post.graphic.height}
           alt={`${title}. A text version follows.`}
