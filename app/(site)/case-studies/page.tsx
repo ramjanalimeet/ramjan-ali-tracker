@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { JsonLd } from "@/components/JsonLd";
+import { ELITE_SEPTIC_PATH, ELITE_SEPTIC_METRICS } from "@/lib/elite-septic";
 import { CASE_STUDIES } from "@/lib/case-studies";
 import { SITE_URL, pageMeta } from "@/lib/site";
 
@@ -78,14 +79,14 @@ export default function CaseStudiesPage() {
           </nav>
           <div className="case-index-intro rv">
             <div>
-              <span className="eyebrow">Verified client work</span>
+              <span className="eyebrow">Client work and industry examples</span>
               <h1>
                 See our <span className="hl">case studies</span>.
               </h1>
             </div>
             <p>
               Explore the strategy, measurable search visibility and commercial thinking behind real Local SEO and AI
-              visibility work. No demo clients and no invented results.
+              visibility work, including clearly labeled industry examples.
             </p>
           </div>
           <div className="case-results-grid">
@@ -94,7 +95,7 @@ export default function CaseStudiesPage() {
                 <Link className="case-result-image" href={`/case-studies/${c.slug}`} aria-label={`Read ${c.client} case study`}>
                   <span className="case-browserbar" aria-hidden="true">
                     <i /><i /><i />
-                    <b>ecoverdevaleting.co.uk</b>
+                    <b>{new URL(c.website).hostname}</b>
                   </span>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={c.image} alt={c.imageAlt} width={1280} height={720} />
@@ -107,6 +108,25 @@ export default function CaseStudiesPage() {
                     {c.highlights.slice(0, 3).map((h) => (
                       <li key={h.label}><b>{h.after}</b><span>{h.label}</span></li>
                     ))}
+            <article className="case-result-card rv">
+              <Link className="case-result-image case-result-editorial" href={ELITE_SEPTIC_PATH} aria-label="Read the Elite Septic Service breakdown">
+                <span>East Texas · Local SEO</span>
+                <strong>From Google Maps<br />to a phone call</strong>
+              </Link>
+              <div className="case-result-body">
+                <span className="tag">Industry example · Lufkin &amp; Jasper</span>
+                <h2>Elite Septic Service</h2>
+                <p>How a service website and Google Business Profile can help homeowners find and call a septic company.</p>
+                <ul className="case-result-metrics">
+                  {ELITE_SEPTIC_METRICS.map(({ label, value }) => (
+                    <li key={label}><b>{value}</b><span>{label}</span></li>
+                  ))}
+                </ul>
+                <div className="case-result-actions">
+                  <Link className="btn btn-dark btn-sm" href={ELITE_SEPTIC_PATH}>Read breakdown</Link>
+                </div>
+              </div>
+            </article>
                   </ul>
                   <div className="case-result-actions">
                     <Link className="btn btn-ghost btn-sm" href={c.website} target="_blank" rel="noopener">

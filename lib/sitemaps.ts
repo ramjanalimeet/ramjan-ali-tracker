@@ -1,4 +1,5 @@
 import { CASE_STUDIES } from "./case-studies";
+import { ELITE_SEPTIC_PATH } from "./elite-septic";
 import { CITIES } from "./cities";
 import { GLOBAL_COUNTRIES, slugifyPlace } from "./global-locations";
 import { ALL_INDUSTRIES } from "./industries";
@@ -53,12 +54,14 @@ const SITEMAPS: Record<SitemapName, () => Entry[]> = {
       lastmod: p.updated ?? p.date,
       images: [SITE_URL + p.cover.url, `${SITE_URL}/assets/blog/${p.slug}-diagram.webp`],
     })),
-  "case-study": () =>
-    CASE_STUDIES.map((c) => ({
+  "case-study": () => [
+    ...CASE_STUDIES.map((c) => ({
       path: `/case-studies/${c.slug}`,
       lastmod: c.published,
       images: [`${SITE_URL}${c.image}`],
     })),
+    { path: ELITE_SEPTIC_PATH, lastmod: "2026-11-24" },
+  ],
 };
 
 const ORDER: SitemapName[] = ["page", "service", "industry", "location", "case-study", "post"];

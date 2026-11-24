@@ -2446,6 +2446,25 @@ dialog.booking::backdrop {
   box-shadow: 0 10px 22px -10px rgba(17, 18, 16, 0.3),
     0 2px 6px rgba(17, 18, 16, 0.08);
 }
+.case-result-editorial {
+  display: grid;
+  align-content: center;
+  gap: 8px;
+  aspect-ratio: 16 / 9;
+  padding: 18px;
+  border-color: #d7e3c1;
+  background: radial-gradient(circle at 90% 15%, #e0edbb, transparent 55%), var(--table-bg);
+}
+.case-result-editorial span {
+  color: var(--ink-2);
+  font-size: 12px;
+}
+.case-result-editorial strong {
+  font-size: clamp(20px, 2.2vw, 31px);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
 .case-browserbar {
   display: flex;
   align-items: center;
