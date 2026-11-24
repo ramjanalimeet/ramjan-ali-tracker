@@ -921,6 +921,7 @@ a.card:hover {
   font-size: 16px;
 }
 .card .go {
+  margin-top: auto;
   padding-top: 14px;
   font-weight: 600;
   font-size: 15px;
@@ -2728,6 +2729,7 @@ dialog.booking::backdrop {
   border-bottom: 0;
 }
 .pb-more {
+  margin-top: auto;
   padding-top: 14px;
 }
 .pb-more summary {
