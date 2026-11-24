@@ -4466,34 +4466,79 @@ dialog.hire::backdrop {
   color: var(--accent-deep);
 }
 
-.case-study-hero-theme {
-  color: var(--mute);
-  font-size: 14px;
-  font-weight: 600;
+.case-reading-hero {
+  padding: clamp(76px, 9vw, 120px) 0 32px;
 }
-.case-study-support-grid {
+.case-reading-intro {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  padding: 0;
-  margin: 16px 0 0;
-  list-style: none;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 30%);
+  gap: clamp(20px, 5vw, 60px);
+  align-items: center;
 }
-.case-study-support-grid dd {
-  margin: 4px 0 0;
-  font-size: 26px;
+.case-reading-intro h1 {
+  max-width: 22ch;
+  margin-top: 10px;
+  font-size: clamp(31px, 4.5vw, 54px);
 }
-.case-study-support-grid h3 {
-  font-size: 18px;
+.case-reading-intro .lead {
+  max-width: 60ch;
+  margin: 14px 0 18px;
 }
-.case-study-support-grid p {
-  margin-top: 8px;
+.case-reading-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 12px 24px -12px rgb(17 18 16 / 28%);
 }
-#case-featured + p {
-  margin-bottom: 16px;
+.case-reading-results {
+  padding: 20px 0 32px;
 }
-@media (max-width: 640px) {
-  .case-study-support-grid {
+.case-reading-results h2 {
+  font-size: clamp(24px, 3vw, 34px);
+}
+.case-reading-results p {
+  margin: 8px 0 14px;
+  color: var(--mute);
+}
+.case-reading-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr));
+  gap: 10px;
+  margin: 0;
+}
+.case-reading-metrics > div {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--table-bg);
+}
+.case-reading-metrics dt,
+.case-reading-metrics small {
+  color: var(--ink-2);
+  font-size: 13px;
+}
+.case-reading-metrics dd {
+  margin: 3px 0 0;
+}
+.case-reading-metrics strong {
+  font-size: clamp(20px, 2.5vw, 28px);
+}
+.case-reading-metrics small {
+  display: block;
+  margin-top: 3px;
+}
+.case-reading-body {
+  padding: 24px 0 32px;
+}
+.case-reading-copy {
+  max-width: 70ch;
+  margin-inline: auto;
+}
+@media (max-width: 660px) {
+  .case-reading-intro {
     grid-template-columns: 1fr;
+  }
+  .case-reading-photo {
+    width: min(100%, 300px);
   }
 }

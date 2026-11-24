@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CASE_STUDY_HERO, CaseStudySections, CaseStudyTrust } from "@/components/CaseStudySections";
+import { CaseStudyHero, CaseStudyResults, CaseStudySections } from "@/components/CaseStudySections";
 import { notFound } from "next/navigation";
 import { AiVisibilityCharts, MapGridCompare, SearchConsoleCharts } from "@/components/charts/CaseCharts";
 import { CtaBand } from "@/components/CtaBand";
@@ -8,7 +8,6 @@ import { JsonLd } from "@/components/JsonLd";
 import { ALL_CASES, getCase, monthLabel } from "@/lib/case-studies";
 import { type Playbook, serviceOf } from "@/lib/playbooks";
 import { SITE_URL, pageMeta } from "@/lib/site";
-import { MainCta } from "@/components/MainCta";
 
 export const dynamicParams = false;
 
@@ -224,135 +223,30 @@ export default async function CaseStudyPage({ params }: Props) {
   return (
     <>
       <JsonLd data={schema} />
-      <section className="phero case-client-hero">
+      <CaseStudyHero
+        name={c.client}
+        context={`${c.location} · ${c.services.map((service) => serviceOf(service).name).join(" + ")}`}
+        title={c.title}
+        summary={c.summary}
+        website={c.website}
+        image={{ src: "/assets/case-studies/ecoverde-card.webp", alt: "A vehicle being foam washed by Ecoverde" }}
+      />
+      <CaseStudyResults
+        source={`Google Search Console and supplied AI visibility checks · ${period}`}
+        highlights={c.highlights.map(({ label, after, note }) => ({ label, value: after, note }))}
+      />
+      <section className="case-reading-body">
         <div className="wrap">
-          <nav aria-label="Breadcrumb">
-            <ol className="crumbs">
-              <li>
-                <Link href="/">Home</Link>
-              </li>
-              <li>
-                <Link href="/case-studies">Case Studies</Link>
-              </li>
-              <li aria-current="page">{c.client}</li>
-            </ol>
-          </nav>
-          <div className="phero-grid case-client-hero-grid">
-            <div className="case-client-intro">
-              <span className="eyebrow">
-                {CASE_STUDY_HERO}
-              </span>
-              <h1>{c.title}</h1>
-              <p className="lead">{c.summary}</p>
-              <div className="cta-row case-client-actions">
-                <Link className="btn btn-dark" href={c.website} target="_blank" rel="noopener">
-                  Visit Ecoverde website
-                </Link>
-                <MainCta />
-              </div>
-            </div>
-            <aside className="facts">
-              <h2>At a glance</h2>
-              <ul>
-                <li>
-                  <b>Client</b>
-                  <span>{c.client}</span>
-                </li>
-                <li>
-                  <b>Trade</b>
-                  <span>
-                    <Link href={`/local-seo/${c.tradeSlug}`}>{c.trade}</Link>
-                  </span>
-                </li>
-                <li>
-                  <b>Services</b>
-                  <span>{c.services.map((s) => serviceOf(s).name).join(", ")}</span>
-                </li>
-                <li>
-                  <b>Plan</b>
-                  <span>
-                    <Link href="/pricing">{c.plan}</Link>
-                  </span>
-                </li>
-                <li>
-                  <b>Period</b>
-                  <span>{period}</span>
-                </li>
-              </ul>
-            </aside>
-          </div>
-        </div>
-      </section>
-      <CaseStudyTrust />
-
-      <section className="sec tight case-site-preview">
-        <div className="wrap">
-          <figure>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={c.image} alt={c.imageAlt} width={1280} height={720} />
-            <figcaption>Ecoverde&apos;s conversion-focused homepage presents the offer, location, proof and contact actions in one clear view.</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section className="sec tight">
-        <div className="wrap">
-          <div className="stats">
-            {c.highlights.map((h) => (
-              <div className="stat rv" key={h.label}>
-                <span className="stat-label">{h.label}</span>
-                <span className="stat-val">{h.after}</span>
-                <span className="stat-from">{h.note}</span>
-              </div>
+          <article className="prose case-reading-copy">
+            <h2>The challenge</h2>
+            <ul>{c.challenge.map((item) => <li key={item}>{item}</li>)}</ul>
+            <h2>What changed</h2>
+            <ul>{c.work.map((item) => <li key={item}>{item}</li>)}</ul>
+            <h2>What the results tell us</h2>
+            {c.businessImpact.map(({ title, text }) => (
+              <div key={title}><h3>{title}</h3><p>{text}</p></div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="sec case-impact">
-        <div className="wrap">
-          <div className="sec-head rv">
-            <div>
-              <span className="eyebrow">Business impact</span>
-              <h2>How visibility became profitable customer acquisition.</h2>
-            </div>
-            <p>
-              Private revenue and margin figures are not published here. The commercial impact is explained using the
-              verified acquisition signals and the conversion path visible on the website.
-            </p>
-          </div>
-          <div className="grid g2">
-            {c.businessImpact.map((item, index) => (
-              <article className="case-impact-card rv" key={item.title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="sec alt">
-        <div className="wrap split">
-          <div className="body rv">
-            <span className="eyebrow">Starting point</span>
-            <h2>The challenge.</h2>
-            <ul className="ticks">
-              {c.challenge.map((x) => (
-                <li key={x}>{x}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="body rv">
-            <span className="eyebrow">The work</span>
-            <h2>What was done.</h2>
-            <ul className="ticks">
-              {c.work.map((x) => (
-                <li key={x}>{x}</li>
-              ))}
-            </ul>
-          </div>
+          </article>
         </div>
       </section>
 

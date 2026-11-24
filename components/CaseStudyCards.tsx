@@ -47,13 +47,7 @@ const PROJECT_CARDS = [
   },
 ];
 
-const WOLFPIXEL_DEMO_METRICS = [
-  { value: "+35%", label: "Demo organic traffic" },
-  { value: "18", label: "Demo enquiries" },
-  { value: "12", label: "Demo ranking keywords" },
-];
-
-export function CaseStudyCards({ showDemo = false }: { showDemo?: boolean }) {
+export function CaseStudyCards() {
   return (
     <div className="case-results-grid">
       {PROJECT_CARDS.map((project) => (
@@ -68,7 +62,7 @@ export function CaseStudyCards({ showDemo = false }: { showDemo?: boolean }) {
             <h2>{project.name}</h2>
             <p>{project.summary}</p>
             <ul className="case-result-metrics">
-              {(showDemo && project.href === "/case-studies/wolfpixel" ? WOLFPIXEL_DEMO_METRICS : project.highlights).map(({ label, value }) => (
+              {project.highlights.map(({ label, value }) => (
                 <li key={label}><b>{value}</b><span>{label}</span></li>
               ))}
             </ul>
