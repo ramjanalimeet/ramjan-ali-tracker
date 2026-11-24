@@ -39,6 +39,7 @@
           .table{background:var(--table-bg);border:1px solid var(--line);border-radius:18px;overflow:hidden}
           .scroll{overflow-x:auto}
           table{width:100%;border-collapse:collapse;min-width:520px}
+          thead{background:var(--accent);color:var(--accent-ink)}
           th{text-align:left;font-size:13px;font-weight:600;padding:14px 18px;white-space:nowrap}
           td{padding:13px 18px;border-top:1px solid var(--line);font-size:14px;vertical-align:middle}
           tr:hover td{background:#f4fbe0}

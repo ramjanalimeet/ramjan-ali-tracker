@@ -1477,7 +1477,6 @@ body:has(.adm-login) {
 .adm-table th {
   text-align: left;
   font-weight: 500;
-  color: var(--a-mute);
   font-size: 12.5px;
   padding: 9px 16px;
   border-bottom: 1px solid var(--a-line);
