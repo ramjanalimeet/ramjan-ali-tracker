@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { JsonLd } from "@/components/JsonLd";
-import { ELITE_SEPTIC_PATH, ELITE_SEPTIC_METRICS } from "@/lib/elite-septic";
+import { ELITE_SEPTIC_PATH, ELITE_SEPTIC_METRICS, ELITE_SEPTIC_WEBSITE } from "@/lib/elite-septic";
 import { CASE_STUDIES } from "@/lib/case-studies";
 import { SITE_URL, pageMeta } from "@/lib/site";
 
@@ -108,6 +108,18 @@ export default function CaseStudiesPage() {
                     {c.highlights.slice(0, 3).map((h) => (
                       <li key={h.label}><b>{h.after}</b><span>{h.label}</span></li>
                     ))}
+                  </ul>
+                  <div className="case-result-actions">
+                    <Link className="btn btn-ghost btn-sm" href={c.website} target="_blank" rel="noopener">
+                      Visit website
+                    </Link>
+                    <Link className="btn btn-dark btn-sm" href={`/case-studies/${c.slug}`}>
+                      Read case study
+                    </Link>
+                  </div>
+                </div>
+              </article>
+            ))}
             <article className="case-result-card rv">
               <Link className="case-result-image case-result-editorial" href={ELITE_SEPTIC_PATH} aria-label="Read the Elite Septic Service breakdown">
                 <span>East Texas · Local SEO</span>
@@ -123,22 +135,13 @@ export default function CaseStudiesPage() {
                   ))}
                 </ul>
                 <div className="case-result-actions">
+                  <Link className="btn btn-ghost btn-sm" href={ELITE_SEPTIC_WEBSITE} target="_blank" rel="noopener">
+                    Visit website
+                  </Link>
                   <Link className="btn btn-dark btn-sm" href={ELITE_SEPTIC_PATH}>Read breakdown</Link>
                 </div>
               </div>
             </article>
-                  </ul>
-                  <div className="case-result-actions">
-                    <Link className="btn btn-ghost btn-sm" href={c.website} target="_blank" rel="noopener">
-                      Visit website
-                    </Link>
-                    <Link className="btn btn-dark btn-sm" href={`/case-studies/${c.slug}`}>
-                      Read case study
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            ))}
           </div>
         </div>
       </section>

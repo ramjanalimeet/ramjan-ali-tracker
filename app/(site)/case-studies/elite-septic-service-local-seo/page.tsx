@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ELITE_SEPTIC_METRICS, ELITE_SEPTIC_PATH } from "@/lib/elite-septic";
+import { ELITE_SEPTIC_METRICS, ELITE_SEPTIC_PATH, ELITE_SEPTIC_WEBSITE } from "@/lib/elite-septic";
 import { pageMeta } from "@/lib/site";
 
 const title = "Elite Septic Service: From Google Maps to a phone call";
@@ -22,6 +22,12 @@ export default function EliteSepticCaseStudy() {
           <span className="eyebrow">Industry example · East Texas</span>
           <h1>{title}</h1>
           <p className="lead">{description}</p>
+
+          <p>
+            <Link className="btn btn-ghost btn-sm" href={ELITE_SEPTIC_WEBSITE} target="_blank" rel="noopener">
+              Visit website
+            </Link>
+          </p>
 
           <h2>What Google Business Profile recorded</h2>
           <ul className="case-result-metrics">
