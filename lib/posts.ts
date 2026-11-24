@@ -74,8 +74,8 @@ export const POSTS: Post[] = [
     slug: "google-business-profile-categories-for-contractors",
     takeaway: "Start with the category that describes the work your business mainly sells. Add secondary categories for services you actually provide, then check that your website gives customers a clear way to book those services.",
     cover: {
-      url: "/assets/blog/google-business-profile-categories-for-contractors-editorial-lime.webp",
-      thumbnail: "/assets/blog/google-business-profile-categories-for-contractors-editorial-lime-640.webp",
+      url: "/assets/blog/google-business-profile-categories-for-contractors-editorial-lime-tips.webp",
+      thumbnail: "/assets/blog/google-business-profile-categories-for-contractors-editorial-lime-tips-640.webp",
       alt: "A listing card with a map pin and category lines.",
     },
     graphic: {
@@ -101,8 +101,8 @@ export const POSTS: Post[] = [
     slug: "how-to-get-more-google-reviews",
     takeaway: "Ask every eligible customer for an honest review once the job is complete. Put the direct review link in the follow-up message and use the same process regardless of how you expect the customer to rate you.",
     cover: {
-      url: "/assets/blog/how-to-get-more-google-reviews-editorial-lime.webp",
-      thumbnail: "/assets/blog/how-to-get-more-google-reviews-editorial-lime-640.webp",
+      url: "/assets/blog/how-to-get-more-google-reviews-editorial-lime-tips.webp",
+      thumbnail: "/assets/blog/how-to-get-more-google-reviews-editorial-lime-tips-640.webp",
       alt: "A review card with five lime stars and a reply bubble.",
     },
     graphic: {
@@ -128,8 +128,8 @@ export const POSTS: Post[] = [
     slug: "roofing-storm-damage-leads",
     takeaway: "Publish one useful storm-damage page before severe weather. Explain the warning signs, where you can respond, and what happens during an inspection. Update availability after a storm and track calls to that page.",
     cover: {
-      url: "/assets/blog/roofing-storm-damage-leads-editorial-lime.webp",
-      thumbnail: "/assets/blog/roofing-storm-damage-leads-editorial-lime-640.webp",
+      url: "/assets/blog/roofing-storm-damage-leads-editorial-lime-tips.webp",
+      thumbnail: "/assets/blog/roofing-storm-damage-leads-editorial-lime-tips-640.webp",
       alt: "A roof outline with a highlighted area and a storm cloud.",
     },
     graphic: {
@@ -155,8 +155,8 @@ export const POSTS: Post[] = [
     slug: "high-value-plumbing-keywords",
     takeaway: "Group plumbing keywords by the job the customer needs, such as drain cleaning or water heater repair. Prioritize services you can deliver profitably and give each distinct job a page with a clear booking option.",
     cover: {
-      url: "/assets/blog/high-value-plumbing-keywords-editorial-lime.webp",
-      thumbnail: "/assets/blog/high-value-plumbing-keywords-editorial-lime-640.webp",
+      url: "/assets/blog/high-value-plumbing-keywords-editorial-lime-tips.webp",
+      thumbnail: "/assets/blog/high-value-plumbing-keywords-editorial-lime-tips-640.webp",
       alt: "A pipe bends through a large search icon.",
     },
     graphic: {
@@ -182,8 +182,8 @@ export const POSTS: Post[] = [
     slug: "hvac-seo-calendar",
     takeaway: "Update cooling pages before the first hot spell and heating pages before the first cold one. Use the quieter months to refresh maintenance offers, check booking forms and review which pages brought in calls last season.",
     cover: {
-      url: "/assets/blog/hvac-seo-calendar-editorial-lime.webp",
-      thumbnail: "/assets/blog/hvac-seo-calendar-editorial-lime-640.webp",
+      url: "/assets/blog/hvac-seo-calendar-editorial-lime-tips.webp",
+      thumbnail: "/assets/blog/hvac-seo-calendar-editorial-lime-tips-640.webp",
       alt: "A calendar with two groups of lime markers for busy seasons.",
     },
     graphic: {
@@ -209,8 +209,8 @@ export const POSTS: Post[] = [
     slug: "how-much-does-local-seo-cost",
     takeaway: "Compare SEO quotes by the work included each month, the markets covered and how leads are measured. Estimate how many additional booked jobs would cover the fee using gross profit per job.",
     cover: {
-      url: "/assets/blog/how-much-does-local-seo-cost-editorial-lime.webp",
-      thumbnail: "/assets/blog/how-much-does-local-seo-cost-editorial-lime-640.webp",
+      url: "/assets/blog/how-much-does-local-seo-cost-editorial-lime-tips.webp",
+      thumbnail: "/assets/blog/how-much-does-local-seo-cost-editorial-lime-tips-640.webp",
       alt: "A calculator beside a rising three-bar chart.",
     },
     graphic: {
@@ -236,8 +236,8 @@ export const POSTS: Post[] = [
     slug: "local-link-building-for-contractors",
     takeaway: "Start with suppliers, associations and local partners who can genuinely recommend your work. Give them a useful resource to link to, then check that new links point to the page a referred customer needs.",
     cover: {
-      url: "/assets/blog/local-link-building-for-contractors-editorial-lime.webp",
-      thumbnail: "/assets/blog/local-link-building-for-contractors-editorial-lime-640.webp",
+      url: "/assets/blog/local-link-building-for-contractors-editorial-lime-tips.webp",
+      thumbnail: "/assets/blog/local-link-building-for-contractors-editorial-lime-tips-640.webp",
       alt: "Three location markers connected by lines.",
     },
     graphic: {
@@ -263,8 +263,8 @@ export const POSTS: Post[] = [
     slug: "local-seo-audit",
     takeaway: "Audit the path a customer takes from search to booking. Check that your listing is accurate, your priority pages can be indexed, and a customer on a phone can reach you without getting stuck.",
     cover: {
-      url: "/assets/blog/local-seo-audit-editorial-lime.webp",
-      thumbnail: "/assets/blog/local-seo-audit-editorial-lime-640.webp",
+      url: "/assets/blog/local-seo-audit-editorial-lime-tips.webp",
+      thumbnail: "/assets/blog/local-seo-audit-editorial-lime-tips-640.webp",
       alt: "A checklist and magnifier highlighting a point in the audit.",
     },
     graphic: {
@@ -290,8 +290,8 @@ export const POSTS: Post[] = [
     slug: "local-business-schema-for-contractors",
     takeaway: "Mark up facts already visible on your site, such as your business name, phone and services. Keep those details consistent with your listing and validate the JSON-LD after publishing.",
     cover: {
-      url: "/assets/blog/local-business-schema-for-contractors-editorial-lime.webp",
-      thumbnail: "/assets/blog/local-business-schema-for-contractors-editorial-lime-640.webp",
+      url: "/assets/blog/local-business-schema-for-contractors-editorial-lime-tips.webp",
+      thumbnail: "/assets/blog/local-business-schema-for-contractors-editorial-lime-tips-640.webp",
       alt: "Code brackets surrounding a structured business listing.",
     },
     graphic: {
@@ -317,8 +317,8 @@ export const POSTS: Post[] = [
     slug: "check-if-ai-recommends-your-business",
     takeaway: "Write a short list of service-and-city questions your customers ask. Run the same prompts across the AI tools you want to monitor and record the date, whether you were named, and which sources were cited.",
     cover: {
-      url: "/assets/blog/check-if-ai-recommends-your-business-editorial-lime.webp",
-      thumbnail: "/assets/blog/check-if-ai-recommends-your-business-editorial-lime-640.webp",
+      url: "/assets/blog/check-if-ai-recommends-your-business-editorial-lime-tips.webp",
+      thumbnail: "/assets/blog/check-if-ai-recommends-your-business-editorial-lime-tips-640.webp",
       alt: "A search lens over an illustrated AI response.",
     },
     graphic: {
@@ -344,8 +344,8 @@ export const POSTS: Post[] = [
     slug: "google-business-profile-suspended",
     takeaway: "Check the suspension notice against the profile rules, then collect registration and other evidence that matches the profile. Submit a single appeal with consistent business details and keep the case reference.",
     cover: {
-      url: "/assets/blog/google-business-profile-suspended-editorial-lime.webp",
-      thumbnail: "/assets/blog/google-business-profile-suspended-editorial-lime-640.webp",
+      url: "/assets/blog/google-business-profile-suspended-editorial-lime-tips.webp",
+      thumbnail: "/assets/blog/google-business-profile-suspended-editorial-lime-tips-640.webp",
       alt: "A shield with an alert beside a business listing card.",
     },
     graphic: {
@@ -371,8 +371,8 @@ export const POSTS: Post[] = [
     slug: "local-services-ads-vs-seo-for-contractors",
     takeaway: "Compare Local Services Ads and SEO using booked jobs and revenue by channel. Decide how much immediate demand you need and which services deserve a longer-term investment in organic visibility.",
     cover: {
-      url: "/assets/blog/local-services-ads-vs-seo-for-contractors-editorial-lime.webp",
-      thumbnail: "/assets/blog/local-services-ads-vs-seo-for-contractors-editorial-lime-640.webp",
+      url: "/assets/blog/local-services-ads-vs-seo-for-contractors-editorial-lime-tips.webp",
+      thumbnail: "/assets/blog/local-services-ads-vs-seo-for-contractors-editorial-lime-tips-640.webp",
       alt: "Two columns compare paid leads and organic visibility.",
     },
     graphic: {
@@ -398,8 +398,8 @@ export const POSTS: Post[] = [
     slug: "how-to-get-more-septic-pumping-customers",
     takeaway: "Make your pumping page useful to a homeowner ready to call. List where you work, what affects the quote and how to prepare for a visit. Give emergency and routine jobs distinct contact instructions if your process differs.",
     cover: {
-      url: "/assets/blog/how-to-get-more-septic-pumping-customers-editorial-lime.webp",
-      thumbnail: "/assets/blog/how-to-get-more-septic-pumping-customers-editorial-lime-640.webp",
+      url: "/assets/blog/how-to-get-more-septic-pumping-customers-editorial-lime-tips.webp",
+      thumbnail: "/assets/blog/how-to-get-more-septic-pumping-customers-editorial-lime-tips-640.webp",
       alt: "A service truck alongside a location pin and route.",
     },
     graphic: {
@@ -425,8 +425,8 @@ export const POSTS: Post[] = [
     slug: "get-recommended-by-chatgpt",
     takeaway: "Make your service and coverage pages specific enough to answer who you help, what you do and where you work. Publish evidence you can verify and track whether AI answers cite those pages over time.",
     cover: {
-      url: "/assets/blog/get-recommended-by-chatgpt-editorial-lime.webp",
-      thumbnail: "/assets/blog/get-recommended-by-chatgpt-editorial-lime-640.webp",
+      url: "/assets/blog/get-recommended-by-chatgpt-editorial-lime-tips.webp",
+      thumbnail: "/assets/blog/get-recommended-by-chatgpt-editorial-lime-tips-640.webp",
       alt: "An answer bubble with a lime checkmark and supporting lines.",
     },
     graphic: {
@@ -453,8 +453,8 @@ export const POSTS: Post[] = [
     slug: "geo-vs-seo-home-services",
     takeaway: "Use local SEO to improve visibility in search results and Maps. Test AI visibility separately with a repeatable set of customer questions and record the sources each answer cites.",
     cover: {
-      url: "/assets/blog/geo-vs-seo-home-services-editorial-lime.webp",
-      thumbnail: "/assets/blog/geo-vs-seo-home-services-editorial-lime-640.webp",
+      url: "/assets/blog/geo-vs-seo-home-services-editorial-lime-tips.webp",
+      thumbnail: "/assets/blog/geo-vs-seo-home-services-editorial-lime-tips-640.webp",
       alt: "A location pin and a chat bubble connected by arrows.",
     },
     graphic: {
@@ -480,8 +480,8 @@ export const POSTS: Post[] = [
     slug: "local-seo-checklist-for-contractors",
     takeaway: "Start with the work that removes friction for customers. Verify your listing, test the phone and form on mobile, and improve the pages for your highest-priority jobs before expanding to new towns.",
     cover: {
-      url: "/assets/blog/local-seo-checklist-for-contractors-editorial-lime.webp",
-      thumbnail: "/assets/blog/local-seo-checklist-for-contractors-editorial-lime-640.webp",
+      url: "/assets/blog/local-seo-checklist-for-contractors-editorial-lime-tips.webp",
+      thumbnail: "/assets/blog/local-seo-checklist-for-contractors-editorial-lime-tips-640.webp",
       alt: "A checked list with a location pin.",
     },
     graphic: {
@@ -507,8 +507,8 @@ export const POSTS: Post[] = [
     slug: "how-to-rank-in-google-map-pack",
     takeaway: "Compare map rankings from several points across your service area. Improve category and service relevance, keep your profile accurate and track calls alongside changes in geographic coverage.",
     cover: {
-      url: "/assets/blog/how-to-rank-in-google-map-pack-editorial-lime.webp",
-      thumbnail: "/assets/blog/how-to-rank-in-google-map-pack-editorial-lime-640.webp",
+      url: "/assets/blog/how-to-rank-in-google-map-pack-editorial-lime-tips.webp",
+      thumbnail: "/assets/blog/how-to-rank-in-google-map-pack-editorial-lime-tips-640.webp",
       alt: "A map grid with a central pin and surrounding rank markers.",
     },
     graphic: {
@@ -534,8 +534,8 @@ export const POSTS: Post[] = [
     slug: "technical-seo-for-service-business-websites",
     takeaway: "Check that your most important service pages return a successful status, can be indexed and have working mobile contact controls. Fix those issues before spending time on minor performance scores.",
     cover: {
-      url: "/assets/blog/technical-seo-for-service-business-websites-editorial-lime.webp",
-      thumbnail: "/assets/blog/technical-seo-for-service-business-websites-editorial-lime-640.webp",
+      url: "/assets/blog/technical-seo-for-service-business-websites-editorial-lime-tips.webp",
+      thumbnail: "/assets/blog/technical-seo-for-service-business-websites-editorial-lime-tips-640.webp",
       alt: "Code brackets and a performance gauge.",
     },
     graphic: {
@@ -561,8 +561,8 @@ export const POSTS: Post[] = [
     slug: "service-area-pages-that-rank",
     takeaway: "Publish area pages for places you actually serve. Use relevant job examples, travel details or service limitations to explain what a customer in that area can expect.",
     cover: {
-      url: "/assets/blog/service-area-pages-that-rank-editorial-lime.webp",
-      thumbnail: "/assets/blog/service-area-pages-that-rank-editorial-lime-640.webp",
+      url: "/assets/blog/service-area-pages-that-rank-editorial-lime-tips.webp",
+      thumbnail: "/assets/blog/service-area-pages-that-rank-editorial-lime-tips-640.webp",
       alt: "Three page cards connected to different points on a map.",
     },
     graphic: {
@@ -588,8 +588,8 @@ export const POSTS: Post[] = [
     slug: "how-long-does-local-seo-take",
     takeaway: "Set a baseline for impressions, calls and booked jobs before changing anything. Compare similar seasons and use early visibility changes to decide what to investigate while lead volume catches up.",
     cover: {
-      url: "/assets/blog/how-long-does-local-seo-take-editorial-lime.webp",
-      thumbnail: "/assets/blog/how-long-does-local-seo-take-editorial-lime-640.webp",
+      url: "/assets/blog/how-long-does-local-seo-take-editorial-lime-tips.webp",
+      thumbnail: "/assets/blog/how-long-does-local-seo-take-editorial-lime-tips-640.webp",
       alt: "A timeline with three markers and a rising line.",
     },
     graphic: {
