@@ -1716,6 +1716,31 @@ body:has(.adm-login) {
   margin: -6px 0 6px;
   color: var(--a-mute);
 }
+.adm-login-password {
+  position: relative;
+}
+.adm-login-password input {
+  padding-inline-end: 40px;
+}
+.adm-login-password button {
+  position: absolute;
+  inset-block: 2px;
+  inset-inline-end: 2px;
+  width: 34px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--a-mute);
+  cursor: pointer;
+}
+.adm-login-password button:hover,
+.adm-login-password button:focus-visible {
+  background: var(--a-line);
+  color: var(--a-ink);
+}
 .adm-login .adm-btn.primary {
   background: #1f1f1d;
   border: 0;

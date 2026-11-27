@@ -44,6 +44,7 @@ export function AdminApp() {
 
 function Login({ onDone }: { onDone: () => void }) {
   const [password, setPassword] = useState("");
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   return (
@@ -67,14 +68,26 @@ function Login({ onDone }: { onDone: () => void }) {
         <div className="adm-ws-logo big">R</div>
         <h1>Ramjan Ali</h1>
         <p>Sign in to your workspace</p>
-        <input
-          type="password"
-          autoFocus
-          autoComplete="current-password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="adm-login-password">
+          <input
+            type={passwordVisible ? "text" : "password"}
+            autoFocus
+            autoComplete="current-password"
+            spellCheck={false}
+            autoCapitalize="none"
+            aria-label="Password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button
+            type="button"
+            aria-label={passwordVisible ? "Hide password" : "Show password"}
+            onClick={() => setPasswordVisible((visible) => !visible)}
+          >
+            <Icon name={passwordVisible ? "eye-off" : "eye"} size={18} />
+          </button>
+        </div>
         {error && <div className="adm-error">{error}</div>}
         <button className="adm-btn primary block" disabled={busy || !password}>
           {busy ? "Signing in…" : "Continue"}
