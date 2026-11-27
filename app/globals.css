@@ -4280,12 +4280,6 @@ dialog.hire::backdrop {
   border-color: var(--accent-deep);
   box-shadow: 0 0 0 3px rgba(198, 244, 50, 0.35);
 }
-.hire-hp {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-}
 .hire-err {
   margin: 0;
   color: #b42318;

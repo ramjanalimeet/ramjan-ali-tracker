@@ -52,7 +52,7 @@ export function HirePopup({
   const [step, setStep] = useState<1 | 2>(initialStep);
   const [plan, setPlan] = useState(initialPlan);
   const [addOns, setAddOns] = useState<string[]>([]);
-  const [f, setF] = useState({ name: "", email: "", phone: "", website: "", message: "", _gotcha: "" });
+  const [f, setF] = useState({ name: "", email: "", phone: "", website: "", message: "" });
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
   const chosen = PLAN_OPTIONS.find((p) => p.id === plan);
@@ -87,7 +87,6 @@ export function HirePopup({
           services: [chosen?.id === "Custom" ? "" : chosen?.includes, ...addOns].filter(Boolean).join(", "),
           message: f.message,
           page: location.pathname,
-          _gotcha: f._gotcha,
         }),
       });
       const result = await res.json().catch(() => null);
@@ -222,7 +221,6 @@ export function HirePopup({
                   About your business and goals
                   <textarea rows={4} value={f.message} onChange={set("message")} placeholder="Trade, service area, what you want more of…" />
                 </label>
-                <input className="hire-hp" tabIndex={-1} autoComplete="off" aria-hidden="true" value={f._gotcha} onChange={set("_gotcha")} />
                 {status === "error" && <p className="hire-err">{error}</p>}
                 <p className="hire-trust">
                   <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
