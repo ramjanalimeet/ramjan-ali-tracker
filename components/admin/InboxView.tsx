@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { AppCtx } from "./AdminApp";
 import type { Message } from "./types";
 import { api, Brand, Empty, fmtDateTime, Icon, timeAgo } from "./ui";
@@ -16,6 +16,7 @@ export function InboxView({ ctx }: { ctx: AppCtx }) {
   const [items, setItems] = useState<Message[] | null>(null);
   const [filter, setFilter] = useState("");
   const [sel, setSel] = useState<string | null>(null);
+  const [refreshing, setRefreshing] = useState(false);
 
   const { toast } = ctx;
   const load = useCallback(
@@ -48,6 +49,13 @@ export function InboxView({ ctx }: { ctx: AppCtx }) {
     [items, filter],
   );
   const current = items?.find((m) => m.id === sel) ?? null;
+  const counts = useMemo(() => Object.fromEntries(FILTERS.map((f) => [f.id, (items ?? []).filter((m) => !f.id || m.channel === f.id).length])), [items]);
+
+  const refreshNow = async () => {
+    setRefreshing(true);
+    await load();
+    window.setTimeout(() => setRefreshing(false), 250);
+  };
 
   const open = async (m: Message) => {
     setSel(m.id);
@@ -63,8 +71,8 @@ export function InboxView({ ctx }: { ctx: AppCtx }) {
       <div className="adm-inbox-list">
         <div className="adm-inbox-top">
           <h1>Inbox</h1>
-          <button className="adm-link" type="button" onClick={() => void load()}>
-            Refresh
+          <button className={`adm-icon-btn adm-refresh${refreshing ? " spinning" : ""}`} type="button" onClick={() => void refreshNow()} aria-label="Refresh inbox" title="Refresh inbox" disabled={refreshing}>
+            <Icon name="refresh" size={16} />
           </button>
           <button
             className="adm-link"
@@ -74,22 +82,22 @@ export function InboxView({ ctx }: { ctx: AppCtx }) {
               ctx.refreshBadge();
             }}
           >
-            Mark all read
+            <Icon name="check" size={14} /> Mark all read
           </button>
         </div>
         <div className="adm-chips">
           {FILTERS.map((f) => (
-            <button key={f.id} className={`adm-chip${filter === f.id ? " on" : ""}`} onClick={() => setFilter(f.id)}>
-              {f.label}
+            <button key={f.id} className={`adm-chip${filter === f.id ? " on" : ""}`} onClick={() => setFilter(f.id)} aria-pressed={filter === f.id}>
+              {f.label}<span>{counts[f.id] ?? 0}</span>
             </button>
           ))}
         </div>
         {!items ? (
-          <div className="adm-skel" />
+          <div className={`adm-inbox-loading${refreshing ? " show" : ""}`}><div className="adm-skel" /></div>
         ) : shown.length ? (
           <ul className="adm-mlist">
             {shown.map((m) => (
-              <li key={m.id} className={`${m.read ? "" : "unread"}${sel === m.id ? " sel" : ""}`} onClick={() => open(m)}>
+              <li key={m.id} className={`${m.read ? "" : "unread"}${sel === m.id ? " sel" : ""}`} onClick={() => open(m)} aria-current={sel === m.id ? "true" : undefined}>
                 <Brand platform={m.channel} size={28} />
                 <div className="adm-mlist-main">
                   <div className="adm-mlist-top">
@@ -154,6 +162,7 @@ function Detail({ m, ctx, onBack, onDelete }: { m: Message; ctx: AppCtx; onBack:
   const [writtenReply, setReply] = useState<string | null>(null);
   const reply = writtenReply ?? (firstFormReply ? template : "");
   const [busy, setBusy] = useState<"" | "send" | "ai">("");
+  const threadEnd = useRef<HTMLDivElement>(null);
   const hasThread = Boolean(m.contact_id);
   const canReply = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m.from_addr);
 
@@ -173,6 +182,10 @@ function Detail({ m, ctx, onBack, onDelete }: { m: Message; ctx: AppCtx; onBack:
   useEffect(() => {
     if (hasThread) api<Message[]>(`inbox/${m.id}/thread`).then(setThread).catch(() => {});
   }, [m.id, hasThread]);
+
+  useEffect(() => {
+    threadEnd.current?.scrollIntoView({ block: "end" });
+  }, [thread]);
 
   return (
     <div className="adm-detail">
@@ -220,6 +233,7 @@ function Detail({ m, ctx, onBack, onDelete }: { m: Message; ctx: AppCtx; onBack:
             )}
           </article>
         ))}
+        <div ref={threadEnd} />
       </div>
 
       {canReply ? (
@@ -241,7 +255,7 @@ function Detail({ m, ctx, onBack, onDelete }: { m: Message; ctx: AppCtx; onBack:
             }
           }}
         >
-          <div className="adm-hint">To {m.from_addr}{sender?.email ? ` · From ${sender.email}` : ""}</div>
+          <div className="adm-reply-meta"><span><b>To</b> {m.from_addr}</span>{sender?.email && <span><b>From</b> {sender.email}</span>}</div>
           {!sender?.email && (
             <p className="adm-hint" role="status">
               {senderError ? "The sending account could not be checked. " : sender ? "No sending account is connected. " : "Checking sending account…"}
@@ -249,7 +263,9 @@ function Detail({ m, ctx, onBack, onDelete }: { m: Message; ctx: AppCtx; onBack:
             </p>
           )}
           <input aria-label="Email subject" required maxLength={200} placeholder="Subject" value={subject} onChange={(e) => setSubject(e.target.value)} />
-          <textarea aria-label="Email message" rows={7} placeholder={`Reply to ${m.from_name || m.from_addr}…`} value={reply} onChange={(e) => setReply(e.target.value)} />
+          <textarea aria-label="Email message" rows={6} placeholder={`Reply to ${m.from_name || m.from_addr}…`} value={reply} onChange={(e) => setReply(e.target.value)} onKeyDown={(e) => {
+            if ((e.metaKey || e.ctrlKey) && e.key === "Enter") e.currentTarget.form?.requestSubmit();
+          }} />
           {sender?.signature && <p className="adm-hint">Your sending account’s signature will be added.</p>}
           <div className="adm-reply-bar">
             <button
@@ -270,9 +286,9 @@ function Detail({ m, ctx, onBack, onDelete }: { m: Message; ctx: AppCtx; onBack:
             >
               <Icon name="sparkle" size={15} /> {busy === "ai" ? "Writing…" : "Draft with AI"}
             </button>
-            <button className="adm-btn primary" disabled={!!busy || !sender?.email || !reply.trim() || !subject.trim()}>
-              <Icon name="send" size={15} /> {busy === "send" ? "Sending…" : "Send"}
-            </button>
+            <div className="adm-reply-send"><span>{reply.trim() ? `${reply.trim().length} characters` : "Ctrl/⌘ + Enter to send"}</span><button className="adm-btn primary" disabled={!!busy || !sender?.email || !reply.trim() || !subject.trim()}>
+              <Icon name="send" size={15} /> {busy === "send" ? "Sending…" : "Send reply"}
+            </button></div>
           </div>
         </form>
       ) : (
