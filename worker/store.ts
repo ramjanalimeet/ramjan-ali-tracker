@@ -42,6 +42,7 @@ export interface Env {
 const DEFAULT_PASSWORD_HASH = "pbkdf2$100000$YWiHgA9TjAMol/TX0crtuQ==$mCWWefDX1fhuhtKnSjXfZO2TZq8ID4mf6J3jeOgg5iM=";
 const COOKIE = "ra_admin";
 const DAY = 86_400_000;
+const RESEND_INBOUND_ADDRESS = "0ca11aba@selumelol.resend.app";
 const SECRET_KEYS = ["password", "resendKey", "resendWebhookSecret", "apiKey", "apiSecret", "accessToken", "accessSecret", "token", "refreshToken"];
 
 type Row = Record<string, SqlStorageValue>;
@@ -175,6 +176,7 @@ export class AdminStore extends DurableObject<Env> {
     const url = new URL(req.url);
     const path = url.pathname;
     try {
+      if (!this.setting("resend_inbox_connected_v1")) this.ctx.waitUntil(this.ensureResendInbox(url));
       if (req.method === "GET" && (path === "/api/blog-entries" || path.startsWith("/api/blog-entries/"))) return this.publicBlogs(path);
       if (path === "/api/lead") return await this.lead(req);
       if (path === "/api/hooks/cal") return await this.calHook(req, url);
@@ -496,6 +498,27 @@ export class AdminStore extends DurableObject<Env> {
     this.sql.exec("UPDATE accounts SET config=?,status='ok',last_error=NULL WHERE id=?", JSON.stringify(cfg), id);
     this.log("info", `Resend inbox connected for ${inbound}`);
     return { ok: true, note: "Resend inbox connected", inbound };
+  }
+
+  /** One-time production migration for the account's Resend receiving address. */
+  private async ensureResendInbox(url: URL) {
+    const accounts = this.q<{ id: string; config: string }>("SELECT id,config FROM accounts WHERE kind='email'");
+    const account = accounts.find((row) => {
+      const cfg = JSON.parse(row.config || "{}") as EmailConfig;
+      return cfg.provider === "resend" && Boolean(cfg.resendKey);
+    });
+    if (!account) return;
+    const cfg = JSON.parse(account.config || "{}") as EmailConfig & Record<string, unknown>;
+    if (!cfg.resendInboundAddress) {
+      cfg.resendInboundAddress = RESEND_INBOUND_ADDRESS;
+      this.sql.exec("UPDATE accounts SET config=? WHERE id=?", JSON.stringify(cfg), account.id);
+    }
+    try {
+      await this.connectResendInbox(account.id, url);
+      this.setSetting("resend_inbox_connected_v1", String(now()));
+    } catch (error) {
+      this.log("warn", `Resend inbox setup: ${errMsg(error)}`);
+    }
   }
 
   private async verifyResendWebhook(req: Request, raw: string, secret: string): Promise<boolean> {
