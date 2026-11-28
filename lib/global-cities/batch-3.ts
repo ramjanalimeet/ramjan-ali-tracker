@@ -513,7 +513,7 @@ export const CITY_GUIDES_3: Record<string, GlobalCityGuide> = {
   },
   "united-kingdom/leicester": {
     summary: "Local SEO for Leicester businesses on Belgrave's Golden Mile, in Clarendon Park, Stoneygate and the city centre, for a diverse, multilingual customer base.",
-    lead: "Leicester's local search reflects one of the UK's most diverse cities, with strong South Asian and Eastern European communities. Businesses that speak to these customers win loyalty.",
+    lead: "Leicester's local search reflects a very diverse city, with strong South Asian and Eastern European communities. Businesses that speak to these customers win loyalty.",
     profile: [
       "Leicester is an East Midlands city with universities, manufacturing and a large retail centre. It is known for its Diwali celebrations on Belgrave Road.",
       "Food, jewellery and clothing businesses thrive along the Golden Mile. In residential areas, clinics, tutors and home services compete for families who value trust and language support.",
