@@ -1801,7 +1801,8 @@ body:has(.adm-login) {
 .adm-contact-table-meta { display: flex; justify-content: space-between; gap: 16px; padding: 12px 16px; border-bottom: 1px solid var(--a-line); color: var(--a-mute); font-size: 12px; }
 .adm-contact-table-meta b { color: var(--a-ink); }
 .adm-contact-table-wrap .adm-table th { background: #f6f8f3; color: #687064; font-weight: 650; text-transform: uppercase; letter-spacing: .055em; font-size: 10.5px; }
-.adm-contact-table-wrap .adm-table tbody tr { transition: background .15s ease; }
+.adm-contact-table-wrap .adm-table tbody tr { background: #f3f6ed; transition: background .15s ease; }
+.adm-contact-table-wrap .adm-table tbody tr:hover { background: #eaf1dd; }
 .adm-contact-table-wrap .adm-table tbody tr:last-child td { border-bottom: 0; }
 .adm-contact-table-wrap .adm-avatar { width: 34px; height: 34px; border-radius: 11px; background: linear-gradient(145deg, #eff7e8, #e6efdf); }
 .adm-contact-table-wrap .adm-tag { background: #f0f2ee; border-radius: 999px; padding: 3px 8px; }
