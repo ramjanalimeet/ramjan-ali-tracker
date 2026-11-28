@@ -540,11 +540,12 @@ export class AdminStore extends DurableObject<Env> {
 
   private async resendHook(req: Request, url: URL): Promise<Response> {
     if (req.method === "GET") {
-      const connected = this.q<{ config: string }>("SELECT config FROM accounts WHERE kind='email'").some((row) => {
-        const cfg = JSON.parse(row.config || "{}") as Record<string, unknown>;
+      const accounts = this.q<{ config: string }>("SELECT config FROM accounts WHERE kind='email'").map((row) => JSON.parse(row.config || "{}") as Record<string, unknown>);
+      const resendAccounts = accounts.filter((cfg) => cfg.provider === "resend");
+      const connected = resendAccounts.some((cfg) => {
         return cfg.provider === "resend" && cfg.resendInboundAddress === RESEND_INBOUND_ADDRESS && Boolean(cfg.resendWebhookSecret);
       });
-      return json({ connected, error: connected ? "" : (this.setting("resend_inbox_setup_error") || "") });
+      return json({ connected, resendAccounts: resendAccounts.length, apiKeySet: resendAccounts.some((cfg) => Boolean(cfg.resendKey)), error: connected ? "" : (this.setting("resend_inbox_setup_error") || "") });
     }
     if (req.method !== "POST") return err("Use POST", 405);
     const accountId = url.searchParams.get("account") || "";
