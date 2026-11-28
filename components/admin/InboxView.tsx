@@ -39,7 +39,7 @@ export function InboxView({ ctx }: { ctx: AppCtx }) {
     const refresh = () => {
       if (document.visibilityState === "visible") void load(false);
     };
-    const timer = window.setInterval(refresh, 30_000);
+    const timer = window.setInterval(refresh, 5_000);
     document.addEventListener("visibilitychange", refresh);
     return () => {
       window.clearInterval(timer);
@@ -54,7 +54,7 @@ export function InboxView({ ctx }: { ctx: AppCtx }) {
       ),
     [items, filter],
   );
-  const current = items?.find((m) => m.id === sel) ?? null;
+  const current = items?.find((m) => (m.contact_id || m.id) === sel) ?? null;
   const counts = useMemo(() => Object.fromEntries(FILTERS.map((f) => [f.id, (items ?? []).filter((m) => !f.id || m.channel === f.id).length])), [items]);
 
   const refreshNow = async () => {
@@ -64,7 +64,7 @@ export function InboxView({ ctx }: { ctx: AppCtx }) {
   };
 
   const open = async (m: Message) => {
-    setSel(m.id);
+    setSel(m.contact_id || m.id);
     if (!m.read) {
       setItems((list) => list?.map((x) => (x.id === m.id ? { ...x, read: 1 } : x)) ?? null);
       await api(`inbox/${m.id}/read`, { body: {} }).catch(() => {});
@@ -103,7 +103,7 @@ export function InboxView({ ctx }: { ctx: AppCtx }) {
         ) : shown.length ? (
           <ul className="adm-mlist">
             {shown.map((m) => (
-              <li key={m.id} className={`${m.read ? "" : "unread"}${sel === m.id ? " sel" : ""}`} onClick={() => open(m)} aria-current={sel === m.id ? "true" : undefined}>
+              <li key={m.id} className={`${m.read ? "" : "unread"}${sel === (m.contact_id || m.id) ? " sel" : ""}`} onClick={() => open(m)} aria-current={sel === (m.contact_id || m.id) ? "true" : undefined}>
                 <Brand platform={m.channel} size={28} />
                 <div className="adm-mlist-main">
                   <div className="adm-mlist-top">
@@ -125,9 +125,10 @@ export function InboxView({ ctx }: { ctx: AppCtx }) {
       <div className="adm-inbox-detail">
         {current ? (
           <Detail
-            key={current.id}
+            key={sel}
             m={current}
             ctx={ctx}
+            onChanged={() => void load(false)}
             onBack={() => setSel(null)}
             onDelete={async () => {
               await api(`inbox/${current.id}`, { method: "DELETE" });
@@ -143,7 +144,7 @@ export function InboxView({ ctx }: { ctx: AppCtx }) {
   );
 }
 
-function Detail({ m, ctx, onBack, onDelete }: { m: Message; ctx: AppCtx; onBack: () => void; onDelete: () => void }) {
+function Detail({ m, ctx, onBack, onDelete, onChanged }: { m: Message; ctx: AppCtx; onBack: () => void; onDelete: () => void; onChanged: () => void }) {
   const [thread, setThread] = useState<Message[]>([m]);
   const fields: Record<string, string> = useMemo(() => {
     try {
@@ -190,9 +191,26 @@ function Detail({ m, ctx, onBack, onDelete }: { m: Message; ctx: AppCtx; onBack:
     return () => { current = false; };
   }, [m.id, canReply, ctx.accounts]);
 
-  useEffect(() => {
-    if (hasThread) api<Message[]>(`inbox/${m.id}/thread`).then(setThread).catch(() => {});
+  const loadThread = useCallback(() => {
+    if (!hasThread || document.visibilityState !== "visible") return;
+    void api<Message[]>(`inbox/${m.id}/thread`).then((next) => {
+      setThread((current) => {
+        const currentKey = current.map((item) => `${item.id}:${item.created_at}`).join("|");
+        const nextKey = next.map((item) => `${item.id}:${item.created_at}`).join("|");
+        return currentKey === nextKey ? current : next;
+      });
+    }).catch(() => {});
   }, [m.id, hasThread]);
+
+  useEffect(() => {
+    loadThread();
+    const timer = window.setInterval(loadThread, 5_000);
+    document.addEventListener("visibilitychange", loadThread);
+    return () => {
+      window.clearInterval(timer);
+      document.removeEventListener("visibilitychange", loadThread);
+    };
+  }, [loadThread]);
 
   useEffect(() => {
     threadEnd.current?.scrollIntoView({ block: "end" });
@@ -285,11 +303,30 @@ function Detail({ m, ctx, onBack, onDelete }: { m: Message; ctx: AppCtx; onBack:
             if (busy || !sender?.email || !reply.trim() || !subject.trim()) return;
             setBusy("send");
             try {
-              await api(`inbox/${m.id}/reply`, { body: { body: reply, subject, attachments } });
+              const sentBody = reply;
+              const sentSubject = subject;
+              const sentAt = Date.now();
+              await api(`inbox/${m.id}/reply`, { body: { body: sentBody, subject: sentSubject, attachments } });
+              setThread((current) => [...current, {
+                ...m,
+                id: `sent-${sentAt}`,
+                direction: "out",
+                channel: "email",
+                account_id: "resend",
+                from_addr: sender.email,
+                from_name: "Ramjan Ali Akash",
+                to_addr: m.from_addr,
+                subject: sentSubject,
+                body: sentBody,
+                meta: JSON.stringify({ attachments: attachments.map(({ filename, contentType, size }) => ({ filename, contentType, size })) }),
+                read: 1,
+                created_at: sentAt,
+              }]);
               ctx.toast("Reply sent");
               setReply("");
               setAttachments([]);
-              if (hasThread) setThread(await api<Message[]>(`inbox/${m.id}/thread`));
+              onChanged();
+              window.setTimeout(loadThread, 500);
             } catch (err) {
               ctx.toast((err as Error).message, "error");
             } finally {
