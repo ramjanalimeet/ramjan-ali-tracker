@@ -12,7 +12,7 @@ import { MainCta } from "@/components/MainCta";
 export const metadata = pageMeta({
   title: "SEO Services for Local Businesses | Ramjan Ali Akash",
   description:
-    "Technical SEO, on-page SEO, content SEO, link building and SEO audits for local service businesses. The foundations behind strong local rankings.",
+    "SEO services for local businesses: Local SEO, GEO & AI Visibility, technical SEO, on-page SEO, SEO audits and link building, all under one specialist.",
   path: "/seo-services",
 });
 
@@ -48,9 +48,9 @@ const SCHEMA = {
       "@type": "WebPage",
       "@id": `${SITE_URL}/seo-services#webpage`,
       url: `${SITE_URL}/seo-services`,
-      name: "SEO Services: Technical, On-Page, Content, Links & Audits | Ramjan Ali Akash",
+      name: "SEO Services: Local SEO, AI Visibility, Technical, On-Page, Links & Audits | Ramjan Ali Akash",
       description:
-        "Technical SEO, on-page SEO, content SEO, link building and SEO audits for local service businesses. The foundations behind strong local rankings.",
+        "SEO services for local businesses: Local SEO, GEO & AI Visibility, technical SEO, on-page SEO, SEO audits and link building, all under one specialist.",
       isPartOf: {
         "@id": `${SITE_URL}/#website`,
       },

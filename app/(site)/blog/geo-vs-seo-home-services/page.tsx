@@ -433,8 +433,8 @@ export default function GeoVsSeoPage() {
 
       <h2>How I handle it</h2>
       <p>
-        I do not sell GEO on its own. Every plan starts with <Link href="/local-seo">local SEO</Link>, and{" "}
-        <Link href="/ai-search">GEO &amp; AI Visibility</Link> is included from the Growth plan up, with the full
+        I do not sell GEO on its own. Every plan starts with <Link href="/seo-services/local-seo">local SEO</Link>, and{" "}
+        <Link href="/seo-services/ai-visibility">GEO &amp; AI Visibility</Link> is included from the Growth plan up, with the full
         version in Pro. You can see what each includes on the <Link href="/pricing">pricing page</Link>, or{" "}
         <Link href="/book-a-call">book a free call</Link> and I will show you what AI tools currently say about your
         business.

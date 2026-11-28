@@ -31,7 +31,12 @@ const nextConfig: NextConfig = {
       { source: "/free-seo-audit", destination: "/?book", permanent: true },
       // Booking is a popup on every page now; /book-a-call opens it on the home page.
       { source: "/book-a-call", destination: "/?book", permanent: true },
-      { source: "/seo-services/content-seo", destination: "/local-seo", permanent: true },
+      // Core services moved under /seo-services with the rest of the service pages.
+      { source: "/local-seo", destination: "/seo-services/local-seo", permanent: true },
+      { source: "/ai-search", destination: "/seo-services/ai-visibility", permanent: true },
+      { source: "/ai-visibility", destination: "/seo-services/ai-visibility", permanent: true },
+      { source: "/seo-services/ai-search", destination: "/seo-services/ai-visibility", permanent: true },
+      { source: "/seo-services/content-seo", destination: "/seo-services/local-seo", permanent: true },
       { source: "/locations/texas", destination: "/locations", permanent: true },
       { source: "/locations/florida", destination: "/locations", permanent: true },
       { source: "/locations/georgia", destination: "/locations", permanent: true },

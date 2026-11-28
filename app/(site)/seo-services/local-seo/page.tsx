@@ -10,12 +10,14 @@ import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
 import { MainCta } from "@/components/MainCta";
+import { ServiceChips } from "@/components/ServiceChips";
+import { ELITE_SEPTIC_METRICS, ELITE_SEPTIC_PATH } from "@/lib/elite-septic";
 
 export const metadata = pageMeta({
-  title: "Local SEO for Local Businesses | Ramjan Ali Akash",
+  title: "Local SEO Services for Local Businesses | Ramjan Ali Akash",
   description:
-    "Local SEO for local businesses: Google Business Profile, map rankings, reviews, citations and pages that also support AI search answers.",
-  path: "/local-seo",
+    "Local SEO services that win Google map pack rankings: Google Business Profile, service and area pages, reviews, citations, local links and monthly map rank tracking.",
+  path: "/seo-services/local-seo",
 });
 
 const FAQ: FaqItem[] = [
@@ -35,6 +37,22 @@ const FAQ: FaqItem[] = [
     q: "Will you post fake reviews or create extra listings?",
     a: "Never. Both break Google's rules and the FTC's rules on fake reviews, and they put your business at risk.",
   },
+  {
+    q: "How long until I see results?",
+    a: "Profile and technical fixes are often picked up in 4 to 8 weeks. Competitive towns and new service pages usually take 3 to 6 months to settle. You see map rankings across your area in every monthly report, so progress is never a guess.",
+  },
+  {
+    q: "Can you rank me in towns where I don't have an office?",
+    a: "Map pack rankings fade with distance from your address, so the honest answer is: partly. A well-built service area, a strong page for each town and local proof from jobs there win organic results and widen how far your map ranking reaches.",
+  },
+  {
+    q: "Do I own everything you build?",
+    a: "Yes. Your Google Business Profile, website, pages, listings and reports stay in your name. If we stop working together, you keep all of it.",
+  },
+  {
+    q: "Is local SEO better than Google Ads or Local Services Ads?",
+    a: "They do different jobs. Ads buy calls today and stop when the budget stops. Local SEO takes longer but keeps bringing calls without paying per click. Many of my clients run both, then lower ad spend as organic calls grow.",
+  },
 ];
 
 const SCHEMA = {
@@ -52,11 +70,11 @@ const SCHEMA = {
     },
     {
       "@type": "WebPage",
-      "@id": `${SITE_URL}/local-seo#webpage`,
-      url: `${SITE_URL}/local-seo`,
+      "@id": `${SITE_URL}/seo-services/local-seo#webpage`,
+      url: `${SITE_URL}/seo-services/local-seo`,
       name: "Local SEO Services for Local Businesses | Ramjan Ali Akash",
       description:
-        "Local SEO for local businesses: Google Business Profile, map rankings, reviews, citations and pages that also support AI search answers.",
+        "Local SEO services that win Google map pack rankings: Google Business Profile, service and area pages, reviews, citations, local links and monthly map rank tracking.",
       isPartOf: {
         "@id": `${SITE_URL}/#website`,
       },
@@ -76,22 +94,41 @@ const SCHEMA = {
         {
           "@type": "ListItem",
           position: 2,
+          name: "SEO Services",
+          item: `${SITE_URL}/seo-services`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
           name: "Local SEO",
-          item: `${SITE_URL}/local-seo`,
+          item: `${SITE_URL}/seo-services/local-seo`,
         },
       ],
     },
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/local-seo#service`,
+      "@id": `${SITE_URL}/seo-services/local-seo#service`,
       name: "Local SEO",
       description:
-        "Local SEO for local businesses: Google Business Profile, map rankings, reviews, citations and pages that also support AI search answers.",
-      url: `${SITE_URL}/local-seo`,
+        "Local SEO services that win Google map pack rankings: Google Business Profile, service and area pages, reviews, citations, local links and monthly map rank tracking.",
+      url: `${SITE_URL}/seo-services/local-seo`,
       provider: {
         "@id": `${SITE_URL}/#business`,
       },
       serviceType: "Local SEO",
+      areaServed: "United States",
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Local SEO services",
+        itemListElement: [
+          "Google Business Profile optimization",
+          "Service and area pages",
+          "Review generation system",
+          "Citation building and cleanup",
+          "Local link building",
+          "Map rank tracking and reporting",
+        ].map((name) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name } })),
+      },
     },
     faqSchema(FAQ),
   ],
@@ -108,12 +145,15 @@ export default function LocalSeoPage() {
               <li>
                 <Link href="/">Home</Link>
               </li>
+              <li>
+                <Link href="/seo-services">SEO Services</Link>
+              </li>
               <li aria-current="page">Local SEO</li>
             </ol>
           </nav>
           <div className="phero-grid">
             <div>
-              <span className="eyebrow">Local SEO</span>
+              <span className="eyebrow">SEO Services · Local SEO</span>
               <h1>
                 Local SEO for <span className="hl">local businesses</span>.
               </h1>
@@ -156,7 +196,83 @@ export default function LocalSeoPage() {
           </div>
         </div>
       </section>
-      <section className="sec" id="trades">
+      <section className="sec">
+        <div className="wrap">
+          <div className="sec-head rv">
+            <div>
+              <span className="eyebrow">Sound familiar?</span>
+              <h2>Signs your local SEO is costing you jobs.</h2>
+            </div>
+            <p>
+              Most local businesses do not have a traffic problem. They have a visibility problem in the few searches
+              that turn into calls.
+            </p>
+          </div>
+          <div className="grid g3">
+            <div className="card rv">
+              <span className="ic" aria-hidden="true">
+                01
+              </span>
+              <h3>Competitors own the map pack</h3>
+              <p>
+                You do the better work, but the same three businesses show up every time someone searches for your
+                service in your town.
+              </p>
+            </div>
+            <div className="card rv">
+              <span className="ic" aria-hidden="true">
+                02
+              </span>
+              <h3>You only rank next to your office</h3>
+              <p>
+                You show up a few streets from your address and disappear in the towns where the bigger, better-paying
+                jobs are.
+              </p>
+            </div>
+            <div className="card rv">
+              <span className="ic" aria-hidden="true">
+                03
+              </span>
+              <h3>Calls depend on ads</h3>
+              <p>
+                When the ad budget pauses, the phone goes quiet. Nothing on Google is bringing in calls you do not pay
+                for.
+              </p>
+            </div>
+            <div className="card rv">
+              <span className="ic" aria-hidden="true">
+                04
+              </span>
+              <h3>Your profile is half finished</h3>
+              <p>
+                Wrong categories, missing services, old photos, unanswered reviews, or a suspension you never fully
+                recovered from.
+              </p>
+            </div>
+            <div className="card rv">
+              <span className="ic" aria-hidden="true">
+                05
+              </span>
+              <h3>One page for every service</h3>
+              <p>
+                Your website lists everything on a single services page, so Google has nothing strong to rank for each
+                job or each town.
+              </p>
+            </div>
+            <div className="card rv">
+              <span className="ic" aria-hidden="true">
+                06
+              </span>
+              <h3>No idea what is working</h3>
+              <p>
+                You have paid for SEO before and got a report full of charts, but nobody could tell you how many calls
+                it brought in.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="sec alt" id="trades">
         <div className="wrap">
           <div className="sec-head rv">
             <div>
@@ -239,7 +355,7 @@ export default function LocalSeoPage() {
           </div>
         </div>
       </section>
-      <section className="sec alt">
+      <section className="sec">
         <div className="wrap split">
           <div className="body rv">
             <span className="eyebrow">How Google ranks local businesses</span>
@@ -356,8 +472,157 @@ export default function LocalSeoPage() {
           </div>
         </div>
       </section>
-      <HowItWorks />
-      <PricingSection id="pricing" alt showAllLink />
+      <section className="sec">
+        <div className="wrap">
+          <div className="sec-head rv">
+            <div>
+              <span className="eyebrow">Proof</span>
+              <h2>Real calls from a real profile.</h2>
+            </div>
+            <p>
+              Elite Septic Service, a local septic company. Publicly reported Google Business Profile data, June to
+              early November 2026.
+            </p>
+          </div>
+          <div className="grid g3">
+            {ELITE_SEPTIC_METRICS.map((m) => (
+              <div className="stat rv" key={m.label}>
+                <span className="stat-label">{m.label}</span>
+                <span className="stat-val">{m.value}</span>
+              </div>
+            ))}
+          </div>
+          <div className="cta-row rv">
+            <Link className="btn btn-ghost" href={ELITE_SEPTIC_PATH}>
+              Read the case study <span className="arr">→</span>
+            </Link>
+            <Link className="btn btn-ghost" href="/case-studies">
+              All case studies <span className="arr">→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+      <section className="sec alt">
+        <div className="wrap split">
+          <div className="body rv">
+            <span className="eyebrow">Monthly reporting</span>
+            <h2>A report you can read in five minutes.</h2>
+            <p>
+              No vanity charts. Every month you get a short, plain-English report that answers three questions: are we
+              more visible, is the phone ringing more, and what happens next.
+            </p>
+            <p>
+              Rankings are checked on a grid across your whole service area, not just from your office, so you see
+              exactly which towns you win and which ones still need work.
+            </p>
+          </div>
+          <div className="panel rv">
+            <h3>What every report covers</h3>
+            <ul className="ticks">
+              <li>Map pack rankings on a grid across your service area</li>
+              <li>Calls, direction requests and website clicks from your profile</li>
+              <li>Form leads and tracked calls from the website</li>
+              <li>New reviews, rating and review replies</li>
+              <li>Pages, citations and links added this month</li>
+              <li>The priorities for next month, in order</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section className="sec">
+        <div className="wrap">
+          <div className="sec-head rv">
+            <div>
+              <span className="eyebrow">Compare</span>
+              <h2>Local SEO vs paying for every call.</h2>
+            </div>
+            <p>Ads and SEO are not rivals. But only one keeps working after you stop paying.</p>
+          </div>
+          <div className="prose rv" style={{ maxWidth: "none" }}>
+            <div className="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Local SEO</th>
+                    <th scope="col">Google Ads</th>
+                    <th scope="col">Local Services Ads</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">How you pay</th>
+                    <td>Flat monthly fee</td>
+                    <td>Per click</td>
+                    <td>Per lead</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Speed</th>
+                    <td>Builds over 3 to 6 months</td>
+                    <td>Same day</td>
+                    <td>Days, after screening</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">When you stop</th>
+                    <td>Rankings and pages keep working</td>
+                    <td>Calls stop</td>
+                    <td>Calls stop</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Map pack and AI answers</th>
+                    <td>Yes, organic</td>
+                    <td>Sponsored slots only</td>
+                    <td>Sponsored slots only</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Best for</th>
+                    <td>Steady, lower-cost calls long term</td>
+                    <td>Filling the calendar quickly</td>
+                    <td>Trades eligible for Google Guaranteed</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div className="cta-row rv">
+            <Link className="btn btn-ghost" href="/blog/local-services-ads-vs-seo-for-contractors">
+              Read the full comparison <span className="arr">→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+      <HowItWorks alt />
+      <PricingSection id="pricing" showAllLink />
+      <section className="sec alt">
+        <div className="wrap">
+          <div className="sec-head rv">
+            <div>
+              <span className="eyebrow">Fit check</span>
+              <h2>Who local SEO works best for.</h2>
+            </div>
+            <p>I would rather say no up front than take on a market I cannot win for you.</p>
+          </div>
+          <div className="grid g2">
+            <div className="panel rv">
+              <h3>Good fit</h3>
+              <ul className="ticks">
+                <li>You serve customers in a defined area and want more calls from it</li>
+                <li>You have a real address that can be verified on Google</li>
+                <li>You can answer or return calls quickly</li>
+                <li>You will ask happy customers for reviews</li>
+              </ul>
+            </div>
+            <div className="panel rv">
+              <h3>Not a fit</h3>
+              <ul className="crosses">
+                <li>You want guaranteed #1 rankings in a few weeks</li>
+                <li>You want virtual offices, fake listings or bought reviews</li>
+                <li>You need every lead this week and cannot wait for organic growth</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
       <section className="sec tight">
         <div className="wrap split">
           <div className="body rv">
@@ -369,18 +634,19 @@ export default function LocalSeoPage() {
             </p>
           </div>
           <div className="panel rv">
-            <h3>AI Search Visibility</h3>
+            <h3>GEO &amp; AI Visibility</h3>
             <p className="muted" style={{ marginBottom: 16 }}>
               How I get local businesses named when customers ask AI who to choose.
             </p>
-            <Link className="btn btn-dark btn-sm" href="/ai-search">
-              AI search visibility <span className="arr">→</span>
+            <Link className="btn btn-dark btn-sm" href="/seo-services/ai-visibility">
+              GEO &amp; AI Visibility <span className="arr">→</span>
             </Link>
           </div>
         </div>
       </section>
       <Faq items={FAQ} />
-      <RelatedLinks page="/local-seo" topics={["local-seo", "google-maps", "content"]} />
+      <ServiceChips exclude="/seo-services/local-seo" />
+      <RelatedLinks page="/seo-services/local-seo" topics={["local-seo", "google-maps", "content"]} />
       <CtaBand title="Find out what is holding your rankings back." />
     </>
   );

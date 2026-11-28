@@ -243,7 +243,7 @@ export default function MapPackPage() {
       </ul>
       <p>
         Prominence is also what AI tools lean on when they recommend local businesses, which is why the same work helps
-        your <Link href="/ai-search">AI search visibility</Link>.
+        your <Link href="/seo-services/ai-visibility">AI search visibility</Link>.
       </p>
 
       <h2 id="profile">Getting the most from your Google Business Profile</h2>
@@ -450,7 +450,7 @@ export default function MapPackPage() {
       <p>
         Want to know where you stand? <Link href="/book-a-call">Book a free strategy call</Link> and I will compare your
         profile with the three businesses beating you in the map, or see how I handle it in my{" "}
-        <Link href="/local-seo">Local SEO service</Link>.
+        <Link href="/seo-services/local-seo">Local SEO service</Link>.
       </p>
     </ArticleLayout>
   );

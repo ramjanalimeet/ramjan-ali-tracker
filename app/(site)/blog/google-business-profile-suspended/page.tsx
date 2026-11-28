@@ -104,7 +104,7 @@ export default function GoogleBusinessProfileSuspendedPage() {
       <li><strong>Stop making edits.</strong> Every edit while suspended adds noise to the review.</li>
       <li><strong>Screenshot everything:</strong> the suspension notice, your current profile details, and any emails from Google.</li>
       <li><strong>Read the notice carefully.</strong> It sometimes names the policy area. Then check your profile against <Ext href="https://support.google.com/business/answer/3038177">Google&apos;s guidelines</Ext> and the trigger table above.</li>
-      <li><strong>Keep the phone covered.</strong> While the profile is down, make sure your website, any <Link href="/blog/local-services-ads-vs-seo-for-contractors">Local Services Ads</Link> and other listings carry the right number so you lose as few calls as possible. AI assistants also pull from those sources, which is one more reason to keep them accurate (see <Link href="/ai-search">AI search visibility</Link>).</li>
+      <li><strong>Keep the phone covered.</strong> While the profile is down, make sure your website, any <Link href="/blog/local-services-ads-vs-seo-for-contractors">Local Services Ads</Link> and other listings carry the right number so you lose as few calls as possible. AI assistants also pull from those sources, which is one more reason to keep them accurate (see <Link href="/seo-services/ai-visibility">AI search visibility</Link>).</li>
       </ol>
       <h2 id="evidence">The evidence that gets profiles reinstated</h2>
       <p>An appeal is a request for Google to check that you are a real business operating as described. The more clearly you show that, the better. Prepare these before you submit:</p>

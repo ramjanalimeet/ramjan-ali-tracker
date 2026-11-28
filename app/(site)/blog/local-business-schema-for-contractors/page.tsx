@@ -199,7 +199,7 @@ export default function LocalBusinessSchemaForContractorsPage() {
       </div>
       <p>Whatever the platform, keep one source of truth for your business details, so a phone or hours change does not leave old values in the markup.</p>
       <h2 id="ai">Schema and AI search</h2>
-      <p>AI assistants and Google&apos;s AI Overviews pull facts from many sources: your Business Profile, directories, reviews and your website. Clear, consistent structured data is one of the easiest ways to make sure the facts they find on your site match everything else. This is part of the work covered in <Link href="/ai-search">GEO and AI visibility</Link>, and in <Link href="/blog/geo-vs-seo-home-services">GEO vs SEO for home services</Link>.</p>
+      <p>AI assistants and Google&apos;s AI Overviews pull facts from many sources: your Business Profile, directories, reviews and your website. Clear, consistent structured data is one of the easiest ways to make sure the facts they find on your site match everything else. This is part of the work covered in <Link href="/seo-services/ai-visibility">GEO and AI visibility</Link>, and in <Link href="/blog/geo-vs-seo-home-services">GEO vs SEO for home services</Link>.</p>
       <h2 id="mistakes">Common schema mistakes</h2>
       <div className="table-wrap">
       <table>

@@ -35,7 +35,9 @@ npm run typecheck
 - `lib/services.ts` — the Services menu and service pages list
 - `lib/posts.ts` — blog article list (each article lives in `app/blog/<slug>/page.tsx`)
 - `public/` — images and favicon
-- `next.config.ts` — 301 redirects for retired `/seo-services/*`, `/locations/*`
+- `next.config.ts` — 301 redirects for retired `/seo-services/*`, `/locations/*`,
+  the old core service URLs (`/local-seo` → `/seo-services/local-seo`, `/ai-search` →
+  `/seo-services/ai-visibility`)
   and blog category URLs
 
 ## Deploy

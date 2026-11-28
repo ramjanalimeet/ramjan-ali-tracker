@@ -6,8 +6,8 @@
 export type ServiceKey = "local-seo" | "ai-search" | "technical" | "on-page" | "links" | "audit";
 
 export const PLAYBOOK_SERVICES: { key: ServiceKey; name: string; href: string }[] = [
-  { key: "local-seo", name: "Local SEO", href: "/local-seo" },
-  { key: "ai-search", name: "GEO & AI Visibility", href: "/ai-search" },
+  { key: "local-seo", name: "Local SEO", href: "/seo-services/local-seo" },
+  { key: "ai-search", name: "GEO & AI Visibility", href: "/seo-services/ai-visibility" },
   { key: "technical", name: "Technical SEO", href: "/seo-services/technical-seo" },
   { key: "on-page", name: "On-Page SEO", href: "/seo-services/on-page-seo" },
   { key: "links", name: "Link Building", href: "/seo-services/link-building" },
