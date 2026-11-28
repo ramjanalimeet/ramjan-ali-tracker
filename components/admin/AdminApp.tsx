@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { BlogsView } from "./BlogsView";
 import { ContactsView } from "./ContactsView";
 import { InboxView } from "./InboxView";
@@ -105,6 +105,7 @@ function Shell() {
   const [toasts, setToasts] = useState<{ id: number; msg: string; kind: string }[]>([]);
   const [navOpen, setNavOpen] = useState(false);
   const [menu, setMenu] = useState(false);
+  const unreadRef = useRef<number | null>(null);
 
   const toast = useCallback((msg: string, kind: "ok" | "error" = "ok") => {
     const id = Date.now() + Math.random();
@@ -118,9 +119,21 @@ function Shell() {
 
   const refreshBadge = useCallback(() => {
     api<{ unread: number }>("overview")
-      .then((o) => setUnread(o.unread))
+      .then((o) => {
+        const previous = unreadRef.current;
+        if (previous !== null && o.unread > previous) {
+          const added = o.unread - previous;
+          toast(`${added === 1 ? "New message" : `${added} new messages`} in Inbox`);
+          if (document.visibilityState !== "visible" && "Notification" in window && Notification.permission === "granted") {
+            new Notification("New inbox message", { body: added === 1 ? "A client sent you a new message." : `${added} clients sent new messages.`, icon: "/assets/ramjan-ali-avatar.webp" });
+          }
+        }
+        unreadRef.current = o.unread;
+        setUnread(o.unread);
+        document.title = o.unread ? `(${o.unread}) Inbox · Ramjan Ali` : "Ramjan Ali · Admin";
+      })
       .catch(() => {});
-  }, []);
+  }, [toast]);
 
   useEffect(() => {
     const fromHash = () => {
@@ -132,7 +145,7 @@ function Shell() {
     window.addEventListener("hashchange", fromHash);
     reloadAccounts().catch(() => {});
     refreshBadge();
-    const t = setInterval(refreshBadge, 60_000);
+    const t = setInterval(refreshBadge, 5_000);
     return () => {
       window.removeEventListener("hashchange", fromHash);
       clearInterval(t);
@@ -143,6 +156,7 @@ function Shell() {
     setView(v);
     setNavOpen(false);
     history.replaceState(null, "", `#${v}`);
+    if (v === "inbox" && "Notification" in window && Notification.permission === "default") void Notification.requestPermission();
   };
 
   const ctx: AppCtx = { accounts, reloadAccounts, openSettings: (t) => setSettings(t ?? "email"), go, toast, refreshBadge };

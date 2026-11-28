@@ -1189,6 +1189,36 @@ body:has(.adm-login) {
 .adm-detail-back {
   display: none !important;
 }
+.adm-conversation-actions {
+  position: relative;
+}
+.adm-action-menu {
+  position: absolute;
+  z-index: 20;
+  right: 0;
+  top: calc(100% + 8px);
+  width: 210px;
+  padding: 6px;
+  border: 1px solid #dfe2da;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 14px 40px rgba(24, 28, 21, .14);
+}
+.adm-action-menu button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 11px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--a-ink);
+  text-align: left;
+  cursor: pointer;
+}
+.adm-action-menu button:hover { background: var(--a-hover); }
+.adm-action-menu button.danger { color: var(--a-red); }
 .adm-thread {
   flex: 1;
   overflow: auto;

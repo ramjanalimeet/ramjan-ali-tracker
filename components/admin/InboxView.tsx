@@ -3,13 +3,14 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { AppCtx } from "./AdminApp";
 import type { Message } from "./types";
-import { api, Brand, Empty, fmtDateTime, Icon, timeAgo } from "./ui";
+import { api, Brand, Empty, fmtDateTime, Icon, Modal, timeAgo } from "./ui";
 
 const FILTERS = [
   { id: "", label: "All" },
   { id: "email", label: "Replies" },
   { id: "form", label: "Forms" },
   { id: "booking", label: "Bookings" },
+  { id: "spam", label: "Spam" },
 ];
 
 type ReplyAttachment = { filename: string; contentType: string; content: string; size: number };
@@ -20,6 +21,7 @@ function messageMeta(message: Message): { fields?: Record<string, string>; attac
 
 export function InboxView({ ctx }: { ctx: AppCtx }) {
   const [items, setItems] = useState<Message[] | null>(null);
+  const [spamItems, setSpamItems] = useState<Message[]>([]);
   const [filter, setFilter] = useState("");
   const [sel, setSel] = useState<string | null>(null);
   const [refreshing, setRefreshing] = useState(false);
@@ -27,8 +29,8 @@ export function InboxView({ ctx }: { ctx: AppCtx }) {
   const { toast } = ctx;
   const load = useCallback(
     (showError = true) =>
-      api<Message[]>("inbox")
-        .then(setItems)
+      Promise.all([api<Message[]>("inbox"), api<Message[]>("inbox?box=spam")])
+        .then(([inbox, spam]) => { setItems(inbox); setSpamItems(spam); })
         .catch((e) => {
           if (showError) toast(e.message, "error");
         }),
@@ -49,13 +51,11 @@ export function InboxView({ ctx }: { ctx: AppCtx }) {
 
   const shown = useMemo(
     () =>
-      (items ?? []).filter((m) =>
-        !filter || m.channel === filter,
-      ),
-    [items, filter],
+      filter === "spam" ? spamItems : (items ?? []).filter((m) => !filter || m.channel === filter),
+    [items, spamItems, filter],
   );
-  const current = items?.find((m) => (m.contact_id || m.id) === sel) ?? null;
-  const counts = useMemo(() => Object.fromEntries(FILTERS.map((f) => [f.id, (items ?? []).filter((m) => !f.id || m.channel === f.id).length])), [items]);
+  const current = [...(items ?? []), ...spamItems].find((m) => (m.contact_id || m.id) === sel) ?? null;
+  const counts = useMemo(() => Object.fromEntries(FILTERS.map((f) => [f.id, f.id === "spam" ? spamItems.length : (items ?? []).filter((m) => !f.id || m.channel === f.id).length])), [items, spamItems]);
 
   const refreshNow = async () => {
     setRefreshing(true);
@@ -128,12 +128,12 @@ export function InboxView({ ctx }: { ctx: AppCtx }) {
             key={sel}
             m={current}
             ctx={ctx}
+            inSpam={spamItems.some((message) => (message.contact_id || message.id) === (current.contact_id || current.id))}
             onChanged={() => void load(false)}
             onBack={() => setSel(null)}
             onDelete={async () => {
-              await api(`inbox/${current.id}`, { method: "DELETE" });
               setSel(null);
-              load();
+              await load(false);
             }}
           />
         ) : (
@@ -144,7 +144,7 @@ export function InboxView({ ctx }: { ctx: AppCtx }) {
   );
 }
 
-function Detail({ m, ctx, onBack, onDelete, onChanged }: { m: Message; ctx: AppCtx; onBack: () => void; onDelete: () => void; onChanged: () => void }) {
+function Detail({ m, ctx, onBack, onDelete, onChanged, inSpam }: { m: Message; ctx: AppCtx; onBack: () => void; onDelete: () => void; onChanged: () => void; inSpam: boolean }) {
   const [thread, setThread] = useState<Message[]>([m]);
   const fields: Record<string, string> = useMemo(() => {
     try {
@@ -175,6 +175,9 @@ function Detail({ m, ctx, onBack, onDelete, onChanged }: { m: Message; ctx: AppC
   const videoInput = useRef<HTMLInputElement>(null);
   const replyBox = useRef<HTMLTextAreaElement>(null);
   const [attachments, setAttachments] = useState<ReplyAttachment[]>([]);
+  const [actionsOpen, setActionsOpen] = useState(false);
+  const [confirmAction, setConfirmAction] = useState<"delete" | "spam" | null>(null);
+  const [confirmation, setConfirmation] = useState("");
   const hasThread = Boolean(m.contact_id);
   const canReply = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m.from_addr);
 
@@ -262,10 +265,34 @@ function Detail({ m, ctx, onBack, onDelete, onChanged }: { m: Message; ctx: AppC
             <Icon name="link" size={14} /> Open
           </a>
         )}
-        <button className="adm-icon-btn" onClick={onDelete} aria-label="Delete">
-          <Icon name="trash" size={17} />
-        </button>
+        <div className="adm-conversation-actions">
+          <button className="adm-icon-btn" onClick={() => setActionsOpen((open) => !open)} aria-label="Conversation options" aria-expanded={actionsOpen}>
+            <Icon name="more" size={19} />
+          </button>
+          {actionsOpen && <div className="adm-action-menu">
+            {inSpam ? <button onClick={async () => { await api(`inbox/${m.id}/not-spam`, { body: {} }); setActionsOpen(false); onBack(); onChanged(); ctx.refreshBadge(); ctx.toast("Moved to Inbox"); }}><Icon name="inbox" size={16} /> Not spam</button>
+              : <button onClick={() => { setActionsOpen(false); setConfirmation(""); setConfirmAction("spam"); }}><Icon name="mail" size={16} /> Mark as spam</button>}
+            <button className="danger" onClick={() => { setActionsOpen(false); setConfirmation(""); setConfirmAction("delete"); }}><Icon name="trash" size={16} /> Delete conversation</button>
+          </div>}
+        </div>
       </div>
+
+      {confirmAction && <Modal title={confirmAction === "spam" ? "Mark as spam?" : "Delete conversation?"} onClose={() => setConfirmAction(null)} footer={<>
+        <button className="adm-btn" onClick={() => setConfirmAction(null)}>Cancel</button>
+        <button className="adm-btn danger" disabled={confirmAction === "spam" ? confirmation.trim().toLowerCase() !== "spam" : confirmation.trim().toLowerCase() !== m.from_addr.toLowerCase()} onClick={async () => {
+          if (confirmAction === "spam") {
+            await api(`inbox/${m.id}/spam`, { body: { confirm: confirmation } });
+            ctx.toast("Conversation moved to Spam");
+          } else {
+            await api(`inbox/${m.id}/delete-conversation`, { body: { confirmEmail: confirmation } });
+            ctx.toast("Conversation deleted");
+          }
+          setConfirmAction(null); onDelete(); ctx.refreshBadge();
+        }}>{confirmAction === "spam" ? "Move to Spam" : "Delete permanently"}</button>
+      </>}>
+        <p>{confirmAction === "spam" ? <>Type <b>spam</b> to move this conversation to the Spam box.</> : <>This permanently deletes the complete conversation. Type <b>{m.from_addr}</b> to confirm.</>}</p>
+        <input autoFocus value={confirmation} onChange={(event) => setConfirmation(event.target.value)} placeholder={confirmAction === "spam" ? "Type spam" : m.from_addr} />
+      </Modal>}
 
       <div className="adm-thread">
         {thread.map((t) => (

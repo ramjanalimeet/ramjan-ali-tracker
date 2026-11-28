@@ -92,6 +92,10 @@ CREATE TABLE IF NOT EXISTS messages (
   ext_id TEXT UNIQUE, url TEXT, meta TEXT, read INTEGER DEFAULT 0, created_at INTEGER);
 CREATE INDEX IF NOT EXISTS msg_dir ON messages(direction, created_at);
 CREATE INDEX IF NOT EXISTS msg_mid ON messages(message_id);
+CREATE TABLE IF NOT EXISTS spam_conversations (
+  id TEXT PRIMARY KEY, contact_id TEXT, email TEXT, created_at INTEGER);
+CREATE INDEX IF NOT EXISTS spam_contact ON spam_conversations(contact_id);
+CREATE INDEX IF NOT EXISTS spam_email ON spam_conversations(email);
 CREATE TABLE IF NOT EXISTS bookings (
   id TEXT PRIMARY KEY, uid TEXT UNIQUE, title TEXT, start_at INTEGER, end_at INTEGER, name TEXT, email TEXT,
   status TEXT, notes TEXT, meeting_url TEXT, raw TEXT, created_at INTEGER);
@@ -317,9 +321,12 @@ export class AdminStore extends DurableObject<Env> {
       if (m === "GET" && id && action === "thread") return json(this.thread(id));
       if (m === "GET") {
         const ch = url.searchParams.get("channel");
+        const spam = url.searchParams.get("box") === "spam";
         const rows = this.q<MessageRow>(
             `SELECT m.*, c.name AS contact_name, c.company AS contact_company FROM messages m LEFT JOIN contacts c ON c.id=m.contact_id
-             WHERE m.direction='in' AND m.channel IN ('email','form','booking') ${ch ? "AND m.channel=?" : ""} ORDER BY m.created_at DESC LIMIT 300`,
+             WHERE m.direction='in' AND m.channel IN ('email','form','booking')
+             AND ${spam ? "" : "NOT "}EXISTS (SELECT 1 FROM spam_conversations s WHERE (m.contact_id!='' AND s.contact_id=m.contact_id) OR (m.from_addr!='' AND s.email=m.from_addr))
+             ${ch ? "AND m.channel=?" : ""} ORDER BY m.created_at DESC LIMIT 300`,
             ...(ch ? [ch] : []),
           );
         const seen = new Set<string>();
@@ -339,6 +346,31 @@ export class AdminStore extends DurableObject<Env> {
         return json({ ok: true });
       }
       if (m === "POST" && action === "reply") return json(await this.reply(id, await this.body(req)));
+      if (m === "POST" && action === "spam") {
+        const message = this.replyMessage(id);
+        if (!message) return err("Conversation not found", 404);
+        const body = await this.body<{ confirm?: string }>(req);
+        if (String(body.confirm ?? "").trim().toLowerCase() !== "spam") return err("Type spam to confirm", 400);
+        this.sql.exec("INSERT OR REPLACE INTO spam_conversations(id,contact_id,email,created_at) VALUES(?,?,?,?)", message.contact_id || message.from_addr, message.contact_id || "", message.from_addr, now());
+        this.sql.exec("UPDATE messages SET read=1 WHERE contact_id=? OR from_addr=?", message.contact_id || "", message.from_addr);
+        return json({ ok: true });
+      }
+      if (m === "POST" && action === "not-spam") {
+        const message = this.replyMessage(id);
+        if (!message) return err("Conversation not found", 404);
+        this.sql.exec("DELETE FROM spam_conversations WHERE contact_id=? OR email=?", message.contact_id || "", message.from_addr);
+        return json({ ok: true });
+      }
+      if (m === "POST" && action === "delete-conversation") {
+        const message = this.replyMessage(id);
+        if (!message) return err("Conversation not found", 404);
+        const body = await this.body<{ confirmEmail?: string }>(req);
+        if (String(body.confirmEmail ?? "").trim().toLowerCase() !== message.from_addr.toLowerCase()) return err("Enter the client email to confirm", 400);
+        if (message.contact_id) this.sql.exec("DELETE FROM messages WHERE contact_id=?", message.contact_id);
+        else this.sql.exec("DELETE FROM messages WHERE from_addr=? OR to_addr=?", message.from_addr, message.from_addr);
+        this.sql.exec("DELETE FROM spam_conversations WHERE contact_id=? OR email=?", message.contact_id || "", message.from_addr);
+        return json({ ok: true });
+      }
       if (m === "DELETE" && id) {
         this.sql.exec("DELETE FROM messages WHERE id=?", id);
         return json({ ok: true });
@@ -404,7 +436,8 @@ export class AdminStore extends DurableObject<Env> {
     const n = (sql: string, ...a: SqlStorageValue[]) => Number(this.one<{ n: number }>(sql, ...a)?.n ?? 0);
     const today = startOfDay();
     return {
-      unread: n("SELECT COUNT(*) n FROM messages WHERE direction='in' AND read=0 AND channel IN ('email','form','booking')"),
+      unread: n(`SELECT COUNT(*) n FROM messages m WHERE direction='in' AND read=0 AND channel IN ('email','form','booking')
+        AND NOT EXISTS (SELECT 1 FROM spam_conversations s WHERE (m.contact_id!='' AND s.contact_id=m.contact_id) OR (m.from_addr!='' AND s.email=m.from_addr))`),
       sentToday: n("SELECT COUNT(*) n FROM messages WHERE direction='out' AND channel='email' AND created_at>=?", today),
       sentWeek: n("SELECT COUNT(*) n FROM messages WHERE direction='out' AND channel='email' AND created_at>=?", now() - 7 * DAY),
       repliesWeek: n("SELECT COUNT(*) n FROM messages WHERE direction='in' AND channel='email' AND created_at>=?", now() - 7 * DAY),
@@ -412,7 +445,10 @@ export class AdminStore extends DurableObject<Env> {
       activeSequences: n("SELECT COUNT(*) n FROM enrollments WHERE status='active'"),
       leadsWeek: n("SELECT COUNT(*) n FROM messages WHERE direction='in' AND channel IN ('form','booking') AND created_at>=?", now() - 7 * DAY),
       upcomingBookings: this.q("SELECT id,title,start_at,name,email,meeting_url,status FROM bookings WHERE start_at>=? AND status!='cancelled' ORDER BY start_at LIMIT 5", now() - 3600_000),
-      recentInbox: this.q("SELECT id,channel,from_addr,from_name,subject,body,read,created_at FROM messages WHERE direction='in' AND channel IN ('email','form','booking') ORDER BY created_at DESC LIMIT 6"),
+      recentInbox: this.q(`SELECT id,channel,from_addr,from_name,subject,body,read,created_at FROM messages m
+        WHERE direction='in' AND channel IN ('email','form','booking')
+        AND NOT EXISTS (SELECT 1 FROM spam_conversations s WHERE (m.contact_id!='' AND s.contact_id=m.contact_id) OR (m.from_addr!='' AND s.email=m.from_addr))
+        ORDER BY created_at DESC LIMIT 6`),
       accounts: this.listAccounts().map((a) => ({ id: a.id, kind: a.kind, platform: a.platform, label: a.label, status: a.status })),
       daily: this.q(
         `SELECT (created_at / 86400000) * 86400000 AS day, direction, COUNT(*) AS n FROM messages WHERE channel='email' AND created_at>=? GROUP BY day, direction`,
