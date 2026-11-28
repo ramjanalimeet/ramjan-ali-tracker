@@ -16,7 +16,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "Naples", note: "Canal-side island community with high-value homes and strong demand for marine, home and premium services." },
     ],
     nearby: ["Lakewood", "Signal Hill", "Seal Beach", "Carson"],
-    language: "Most searches are in English, with a large share of Spanish-language searches and a notable Khmer-speaking community around Cambodia Town. Spanish pages and listings help many service businesses here.",
+    language: "English leads, with a large share of Spanish-language searches and a notable Khmer-speaking community around Cambodia Town. Spanish pages and listings help many service businesses here.",
     demand: [
       { when: "April", what: "The Grand Prix of Long Beach street race fills downtown hotels and restaurants for the weekend." },
       { when: "Summer", what: "Beach, boating and Shoreline Village traffic lifts searches for rentals, food and water activities." },
@@ -30,7 +30,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     ],
   },
   "united-states/virginia-beach": {
-    summary: "Local SEO for Virginia Beach businesses, covering the Oceanfront, Town Center and military communities, with plans built for summer tourism and year-round residents.",
+    summary: "Local SEO for Virginia Beach businesses on the Oceanfront, in Town Center and near the bases, planned around summer tourism and military families.",
     lead: "Virginia Beach lives two lives: a summer resort along the Oceanfront and a large, spread-out suburban city the rest of the year. Winning local search here means serving tourists in season and military families and homeowners all year.",
     profile: [
       "Virginia Beach is part of the Hampton Roads region in southeastern Virginia. Naval Air Station Oceana and Joint Expeditionary Base Little Creek-Fort Story bring a large military population, alongside a resort strip on the Atlantic and wide suburban neighborhoods inland.",
@@ -58,7 +58,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     ],
   },
   "united-states/miami": {
-    summary: "Local SEO for Miami businesses in Brickell, Wynwood, Little Havana and beyond, with bilingual English and Spanish search and winter tourist season built in.",
+    summary: "Local SEO for Miami businesses in Brickell, Wynwood, Little Havana and beyond, with bilingual English and Spanish search and winter tourism in mind.",
     lead: "Miami is a bilingual city where many customers search in Spanish as often as English. Competition in the map pack is intense, especially in dense districts like Brickell and Downtown.",
     profile: [
       "Miami is the heart of South Florida and a gateway for trade and travel with Latin America and the Caribbean. Finance, tourism, cruise traffic, real estate and international business all meet here, in a city split into strongly branded neighborhoods.",
@@ -67,7 +67,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     areas: [
       { name: "Brickell", note: "Dense financial district full of condos, where professionals search for gyms, dining and personal services nearby." },
       { name: "Wynwood", note: "Arts district known for murals, galleries and nightlife, with heavy food and entertainment searches." },
-      { name: "Little Havana", note: "Cultural centre around Calle Ocho where Spanish-language searches are the norm." },
+      { name: "Little Havana", note: "Cultural center around Calle Ocho where Spanish-language searches are the norm." },
       { name: "Coconut Grove", note: "Leafy, affluent bayfront area with strong demand for premium services and family businesses." },
       { name: "Downtown Miami", note: "Commercial core near the port and arenas, busy with offices, visitors and new towers." },
     ],
@@ -86,7 +86,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     ],
   },
   "united-states/oakland": {
-    summary: "Local SEO for Oakland businesses, from Rockridge and Temescal to Jack London Square, competing with San Francisco firms across the bay for East Bay customers.",
+    summary: "Local SEO for Oakland businesses, from Rockridge and Temescal to Jack London Square, competing with San Francisco firms for East Bay customers.",
     lead: "Oakland is the anchor of the East Bay and a market with its own strong local pride. Customers here often prefer Oakland businesses, but San Francisco competitors still chase the same searches.",
     profile: [
       "Oakland sits across the bay from San Francisco in Alameda County, with a major container port, a busy downtown and hillside neighborhoods. It has a long history as a working city, and a diverse population with strong neighborhood identities.",
@@ -201,7 +201,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     summary: "Local SEO for Wichita businesses, from Old Town to Delano and east Wichita, in the Air Capital of the World with storm season and steady home demand.",
     lead: "Wichita is known as the Air Capital of the World for its long aircraft manufacturing history. Local search here is practical: homeowners, factory workers and families looking for nearby, trusted services.",
     profile: [
-      "Wichita is the main commercial center of Kansas, sitting on the Arkansas River in the south-central part of the state. Aviation manufacturing is a major employer, alongside healthcare, agriculture and Wichita State University.",
+      "Wichita is the economic hub of south-central Kansas, sitting on the Arkansas River. Aviation manufacturing is a major employer, alongside healthcare, agriculture and Wichita State University.",
       "Long-time residents here lean on reliability and word of mouth, and online reviews now carry that same weight. Roofers, HVAC firms, mechanics and clinics are the busiest map pack categories, and a single spring storm can reshape demand overnight.",
     ],
     areas: [
@@ -282,7 +282,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     ],
   },
   "canada/toronto": {
-    summary: "Local SEO for Toronto businesses, from Yorkville and Liberty Village to Scarborough and North York, built for a dense, multilingual and very competitive market.",
+    summary: "Local SEO for Toronto businesses, from Yorkville and Liberty Village to Scarborough and North York, built for a dense, multilingual, crowded market.",
     lead: "Toronto is Canada's financial capital and one of its toughest local search markets. Customers search by neighbourhood, and many search in languages other than English.",
     profile: [
       "Toronto is Ontario's capital and Canada's main financial and business centre. The city merged with its suburbs in the late 1990s, so it now includes areas like Scarborough, Etobicoke and North York, each with its own character.",
@@ -338,7 +338,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     ],
   },
   "canada/vancouver": {
-    summary: "Local SEO for Vancouver businesses, from Kitsilano and Gastown to Mount Pleasant, built for a rainy, multilingual Pacific market with tourists and condo dwellers.",
+    summary: "Local SEO for Vancouver businesses, from Kitsilano and Gastown to Mount Pleasant, for a rainy, multilingual market of tourists and condo dwellers.",
     lead: "Vancouver is a coastal city between mountains and ocean, with dense condo neighbourhoods and a busy port. Its customers search in English, Chinese, Punjabi and more, often switching between them.",
     profile: [
       "Vancouver is the core of Metro Vancouver in British Columbia. It is a major Pacific port, a film and tech centre and a tourist destination, with neighbourhoods packed into a small area between water and mountains.",
@@ -366,7 +366,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     ],
   },
   "canada/calgary": {
-    summary: "Local SEO for Calgary businesses in Beltline, Kensington, Inglewood and the suburbs, shaped by the energy sector, Stampede and fast-changing prairie weather.",
+    summary: "Local SEO for Calgary businesses in Beltline, Kensington, Inglewood and the suburbs, shaped by energy jobs, Stampede and hail.",
     lead: "Calgary is an energy-industry city on the edge of the Rockies, and its economy shapes customer spending. Local search here is driven by homeowners in sprawling suburbs and professionals in the inner city.",
     profile: [
       "Calgary is where much of Canada's oil and gas industry keeps its head offices. It sits where the Bow and Elbow rivers meet, with Banff and the Rocky Mountains close by.",
@@ -394,7 +394,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     ],
   },
   "canada/edmonton": {
-    summary: "Local SEO for Edmonton businesses in Old Strathcona, Downtown, Windermere and beyond, in Alberta's capital with long winters and a big summer festival season.",
+    summary: "Local SEO for Edmonton businesses in Old Strathcona, Downtown, Windermere and beyond, in Alberta's capital, with long winters and a busy festival summer.",
     lead: "Edmonton is Alberta's capital and a gateway to northern resource industries. Its long, cold winters and busy summer festival season shape what local customers search for.",
     profile: [
       "Edmonton sits on the North Saskatchewan River, with a long river valley park system running through the city. Government, the University of Alberta, energy services and West Edmonton Mall all shape its economy.",
@@ -450,7 +450,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     ],
   },
   "canada/winnipeg": {
-    summary: "Local SEO for Winnipeg businesses in the Exchange District, Osborne Village, St. Boniface and beyond, built for deep prairie winters and a loyal local market.",
+    summary: "Local SEO for Winnipeg businesses in the Exchange District, Osborne Village, St. Boniface and beyond, built for deep prairie winters and loyal locals.",
     lead: "Winnipeg sits at the meeting of the Red and Assiniboine rivers, near the centre of Canada. Its very cold winters and tight-knit communities shape how locals search and choose businesses.",
     profile: [
       "Winnipeg is Manitoba's capital and a transport and distribution hub for the prairies. The Forks, the Exchange District's historic buildings and the Canadian Museum for Human Rights draw visitors.",
@@ -562,7 +562,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     ],
   },
   "canada/mississauga": {
-    summary: "Local SEO for Mississauga businesses in City Centre, Port Credit, Streetsville and Meadowvale, competing with Toronto while serving a large, diverse suburb.",
+    summary: "Local SEO for Mississauga businesses in City Centre, Port Credit, Streetsville and Meadowvale, a large, diverse city competing with Toronto.",
     lead: "Mississauga is a large city just west of Toronto, with its own downtown around Square One. It is very diverse, and many customers search in languages other than English.",
     profile: [
       "Mississauga is in Peel Region and home to Toronto Pearson International Airport and many corporate offices. It grew from a collection of villages, and areas like Port Credit and Streetsville still keep their own identities.",
@@ -591,7 +591,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
   },
   "canada/brampton": {
     summary: "Local SEO for Brampton businesses in downtown, Bramalea, Springdale and Mount Pleasant, serving a young, fast-growing and largely South Asian community.",
-    lead: "Brampton is one of the fastest-growing cities in the GTA, with a young, diverse population. A large South Asian community shapes local demand, and many searches happen in Punjabi or Hindi.",
+    lead: "Brampton has grown quickly over recent decades into a young, diverse city in Peel Region. A large South Asian community shapes local demand, and many searches happen in Punjabi or Hindi.",
     profile: [
       "Brampton is in Peel Region, northwest of Toronto. It has a strong logistics and manufacturing base, and many residents commute to Toronto or Mississauga for work.",
       "Young families and newcomers here often ask their community first, then check Google reviews before booking. Realtors, driving schools, immigration consultants, dentists and restaurants are among the most crowded categories.",
@@ -619,7 +619,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
   },
   "canada/surrey": {
     summary: "Local SEO for Surrey, BC businesses in Whalley, Newton, Fleetwood, Cloverdale and South Surrey, a fast-growing city with a large South Asian community.",
-    lead: "Surrey is one of the fastest-growing cities in British Columbia, made up of distinct town centres. Many customers search by those town names, and Punjabi is widely used.",
+    lead: "Surrey is a big, quickly growing city south of the Fraser River, made up of distinct town centres. Many customers search by those town names, and Punjabi is widely used.",
     profile: [
       "Surrey sits southeast of Vancouver in Metro Vancouver. It is made up of several communities, including Whalley (City Centre), Newton, Fleetwood, Cloverdale and South Surrey, each with its own feel.",
       "Young families, new Canadians and commuters drive most local demand. Realtors, trucking firms, trades, dentists and restaurants all fight for visibility, and the large Punjabi-speaking population shapes how many of them market.",
@@ -702,7 +702,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     ],
   },
   "canada/markham": {
-    summary: "Local SEO for Markham businesses in Unionville, Markham Village, Cornell and Milliken, a tech and family suburb with large Chinese and South Asian communities.",
+    summary: "Local SEO for Markham businesses in Unionville, Markham Village, Cornell and Milliken, a tech and family suburb with large Chinese and Tamil communities.",
     lead: "Markham is a fast-growing suburb northeast of Toronto, known for its tech companies and diverse communities. Many locals search in Chinese, Tamil or other languages as well as English.",
     profile: [
       "Markham is in York Region and is home to many technology firms and corporate offices. It combines historic villages like Unionville and Markham Village with newer planned communities like Cornell.",
@@ -926,11 +926,11 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     ],
   },
   "canada/regina": {
-    summary: "Local SEO for Regina businesses in the Cathedral area, Downtown, Harbour Landing and the Warehouse District, Saskatchewan's capital and a Riders football town.",
+    summary: "Local SEO for Regina businesses in Cathedral, Downtown, Harbour Landing and the Warehouse District, in Saskatchewan's capital and a Riders town.",
     lead: "Regina is Saskatchewan's capital, a government and farm-economy city on flat open prairie. When the Roughriders play at Mosaic Stadium, the whole city turns green, and local businesses feel it.",
     profile: [
       "Regina is home to the provincial legislature, the RCMP training academy and the University of Regina. Wascana Lake and its large park sit at the heart of the city, and agriculture, potash and oil support much of the regional economy.",
-      "Public servants, students and farm families from surrounding districts make up much of the customer base. Furnace and plumbing trades, auto shops, restaurants and dentists compete for a market where word of mouth still travels fast.",
+      "Public servants, students and farm families from surrounding districts make up much of the customer base. Heating contractors, plumbers, mechanics, restaurants and dentists compete for a market where word of mouth still travels fast.",
     ],
     areas: [
       { name: "Cathedral", note: "Character neighbourhood with independent cafes, an annual arts festival and older homes needing repairs." },
@@ -982,7 +982,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     ],
   },
   "canada/richmond-hill": {
-    summary: "Local SEO for Richmond Hill businesses along Yonge Street, in Oak Ridges, Bayview Hill and Richmond Hill Centre, a York Region suburb with high family demand.",
+    summary: "Local SEO for Richmond Hill businesses along Yonge Street, in Oak Ridges, Bayview Hill and Richmond Hill Centre, a York Region family suburb.",
     lead: "Richmond Hill stretches along Yonge Street north of Toronto, from busy plazas in the south to the Oak Ridges Moraine in the north. Families here spend heavily on education, healthcare and home services.",
     profile: [
       "Richmond Hill is in York Region, home to the David Dunlap Observatory lands and a mix of older village streets and large subdivisions. Many residents take the GO train or Highway 404 into Toronto each day.",
@@ -1094,7 +1094,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     ],
   },
   "canada/sherbrooke": {
-    summary: "Local SEO for Sherbrooke businesses in Centre-ville, Fleurimont, Lennoxville and Rock Forest, the French-speaking university hub of Quebec's Eastern Townships.",
+    summary: "Local SEO for Sherbrooke businesses in Centre-ville, Fleurimont, Lennoxville and Rock Forest, the francophone university hub of the Eastern Townships.",
     lead: "Sherbrooke is the main city of Quebec's Eastern Townships, where two rivers meet among rolling hills. Students from its universities and colleges keep local demand lively all year.",
     profile: [
       "Sherbrooke is home to the Université de Sherbrooke and Bishop's University in Lennoxville, along with major hospitals. It serves as a regional centre for shopping and healthcare across the Townships.",
