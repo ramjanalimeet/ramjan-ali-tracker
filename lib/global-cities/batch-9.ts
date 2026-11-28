@@ -2,7 +2,7 @@ import type { GlobalCityGuide } from "../cities/deep-types";
 
 export const CITY_GUIDES_9: Record<string, GlobalCityGuide> = {
   "spain/malaga": {
-    summary: "Local SEO for Málaga businesses: win Google Maps across Centro, Teatinos and El Palo, and reach Costa del Sol residents, expats and visitors in Spanish and English.",
+    summary: "Málaga local SEO: win Google Maps in Centro, Teatinos and El Palo, and reach Costa del Sol residents, expats and visitors in Spanish and English.",
     lead: "Málaga mixes a busy airport and cruise port with a fast-growing tech scene and a large international population. Local search here has to work for residents, newcomers and holiday visitors at the same time.",
     profile: [
       "Málaga is the provincial capital and the main city of the Costa del Sol in Andalusia. Its economy rests on tourism, services, the port and a technology park on the western edge of the city.",
@@ -30,7 +30,7 @@ export const CITY_GUIDES_9: Record<string, GlobalCityGuide> = {
     ],
   },
   "spain/murcia": {
-    summary: "Local SEO for Murcia businesses: get found in the city centre, Espinardo and El Palmar, and across the huerta towns that ring the capital of the Región de Murcia.",
+    summary: "Get found in Murcia's centre, Espinardo and El Palmar, and across the huerta pedanías around the capital of the Región de Murcia, with local SEO.",
     lead: "Murcia is an inland regional capital surrounded by the irrigated farmland of the Segura valley. Its customers are mostly local families, students and the farming and food businesses of the huerta.",
     profile: [
       "As capital of the Región de Murcia, the city hosts regional government, two universities and a large agri-food sector. The surrounding huerta is dotted with pedanías, small districts that belong to the municipality but feel like separate villages.",
@@ -114,7 +114,7 @@ export const CITY_GUIDES_9: Record<string, GlobalCityGuide> = {
     ],
   },
   "spain/alicante": {
-    summary: "Local SEO for Alicante businesses: rank in Centro, Playa de San Juan and Benalúa, and serve the Costa Blanca's Spanish, Valencian and international customers.",
+    summary: "Alicante local SEO: rank in Centro, Playa de San Juan and Benalúa, and serve the Costa Blanca's Spanish, Valencian and international customers.",
     lead: "Alicante is a port city and the main hub of the Costa Blanca, with a large airport and a sizeable foreign community. Searches come from locals, long-stay residents from northern Europe and summer visitors.",
     profile: [
       "Alicante sits in the Valencian Community and is home to the EU's intellectual property office, a busy port and a big tourism sector. Its university is in neighbouring San Vicente del Raspeig.",
@@ -142,7 +142,7 @@ export const CITY_GUIDES_9: Record<string, GlobalCityGuide> = {
     ],
   },
   "spain/cordoba": {
-    summary: "Local SEO for Córdoba: reach tourists around the Mezquita and Judería and residents in Ciudad Jardín and El Brillante, from hot summers to the busy month of May.",
+    summary: "Córdoba local SEO for tourists near the Mezquita and residents in Ciudad Jardín and El Brillante, from scorching summers to the festivals of May.",
     lead: "Córdoba is famous for the Mosque-Cathedral and its flower-filled patios. Its local market blends heritage tourism with a large resident population in the Guadalquivir valley.",
     profile: [
       "The city is a provincial capital in Andalusia with a historic centre listed by UNESCO. Tourism, public services, the university and agriculture from the surrounding countryside drive the economy.",
@@ -310,7 +310,7 @@ export const CITY_GUIDES_9: Record<string, GlobalCityGuide> = {
     ],
   },
   "spain/vitoria-gasteiz": {
-    summary: "Local SEO for Vitoria-Gasteiz: get found in Casco Viejo, Lakua, Salburua and Zabalgana, in Spanish and Basque, across the green capital of the Basque Country.",
+    summary: "Vitoria-Gasteiz local SEO: get found in Casco Viejo, Lakua, Salburua and Zabalgana, in Spanish and Basque, in the Basque Country's capital.",
     lead: "Vitoria-Gasteiz is the seat of the Basque Parliament and Government, ringed by parks and a large industrial belt. Its customers are public employees, factory staff and young families in big new districts.",
     profile: [
       "The city is the capital of Álava and the political capital of the Basque Country. Manufacturing, including a large van factory, logistics and public administration provide much of the work.",
@@ -338,7 +338,7 @@ export const CITY_GUIDES_9: Record<string, GlobalCityGuide> = {
     ],
   },
   "spain/granada": {
-    summary: "Local SEO for Granada: reach visitors near the Alhambra, students across the university and residents in Zaidín and Realejo, from ski season to Erasmus term.",
+    summary: "Granada local SEO: reach visitors near the Alhambra, students across the university and residents in Zaidín, from ski season to Erasmus term.",
     lead: "Granada pairs the Alhambra with one of Spain's best-known universities and the slopes of Sierra Nevada an hour away. Few cities of its size juggle tourists, students and skiers in the same week.",
     profile: [
       "This Andalusian provincial capital sits at the foot of the Sierra Nevada. Heritage tourism, the university and public services drive the local economy.",
@@ -366,7 +366,7 @@ export const CITY_GUIDES_9: Record<string, GlobalCityGuide> = {
     ],
   },
   "spain/elche": {
-    summary: "Local SEO for Elche: reach customers in Centro, Altabix and Carrús and along the Arenales del Sol coast, in the city of the UNESCO palm grove and shoe industry.",
+    summary: "Elche local SEO for Centro, Altabix, Carrús and the Arenales del Sol coast, in the city of the UNESCO palm grove and the Spanish shoe industry.",
     lead: "Elche is known for its huge historic palm grove and a long tradition of shoe making. The municipality stretches from inland industrial estates down to Mediterranean beaches.",
     profile: [
       "The city lies in the province of Alicante, in the Valencian Community, and the region's main airport sits within its municipality. Footwear, manufacturing and a public university shape daily life.",
@@ -478,7 +478,7 @@ export const CITY_GUIDES_9: Record<string, GlobalCityGuide> = {
     ],
   },
   "spain/terrassa": {
-    summary: "Local SEO for Terrassa: get found in Centre, Ca n'Aurell, Sant Pere and Can Boada, in Catalan and Spanish, in the Vallès Occidental's industrial co-capital.",
+    summary: "Terrassa local SEO in Catalan and Spanish: get found in Centre, Ca n'Aurell, Sant Pere and Can Boada, in the Vallès Occidental's mill city.",
     lead: "Terrassa grew rich on wool and textile mills and still shows its modernista factories. Today it is a regional services centre for the Vallès Occidental with a strong university presence.",
     profile: [
       "The city shares the role of county capital with Sabadell and has a campus of the Universitat Politècnica de Catalunya. It is also known for field hockey and its jazz scene.",
@@ -506,7 +506,7 @@ export const CITY_GUIDES_9: Record<string, GlobalCityGuide> = {
     ],
   },
   "spain/jerez-de-la-frontera": {
-    summary: "Local SEO for Jerez de la Frontera: reach sherry tourists, flamenco fans and residents in Centro and Santiago, through the Feria del Caballo and the MotoGP weekend.",
+    summary: "Jerez de la Frontera local SEO: reach sherry tourists, flamenco fans and residents, through the Feria del Caballo and the MotoGP weekend.",
     lead: "Jerez is the home of sherry, Andalusian horses and a deep flamenco tradition. Its local market mixes wine tourism, big annual events and a large resident population in Cádiz province.",
     profile: [
       "The city is in the province of Cádiz in Andalusia and is surrounded by vineyards. Bodegas, the equestrian school and the motor racing circuit attract visitors from across Spain and abroad.",
@@ -646,7 +646,7 @@ export const CITY_GUIDES_9: Record<string, GlobalCityGuide> = {
     ],
   },
   "italy/turin": {
-    summary: "Local SEO for Turin: get found in San Salvario, Crocetta, Vanchiglia and Lingotto, and in the cintura towns of Moncalieri and Rivoli, in Piedmont's capital.",
+    summary: "Turin local SEO: get found in San Salvario, Crocetta, Vanchiglia and Lingotto, and in cintura towns like Moncalieri and Rivoli, in Piedmont.",
     lead: "Turin built Italy's car industry and still carries the stamp of engineering, from the Politecnico to the old Lingotto factory. Its arcaded centre is matched by a ring of industrial suburbs.",
     profile: [
       "The capital of Piedmont was the first capital of united Italy and remains a manufacturing and engineering centre. Universities, food culture and the nearby Alps add students and visitors.",
@@ -758,7 +758,7 @@ export const CITY_GUIDES_9: Record<string, GlobalCityGuide> = {
     ],
   },
   "italy/florence": {
-    summary: "Local SEO for Florence: compete in the Centro Storico, Oltrarno, Santa Croce and Campo di Marte, for tourists, study-abroad students and Florentine residents.",
+    summary: "Florence local SEO for the Centro Storico, Oltrarno, Santa Croce and Campo di Marte: reach tourists, study-abroad students and Florentines.",
     lead: "Florence is the cradle of the Renaissance and one of the most visited cities in Europe. Behind the crowds lies a working city of artisans, students and families in Tuscany's capital.",
     profile: [
       "The capital of Tuscany draws visitors to the Uffizi, the Duomo and the Ponte Vecchio, and it hosts many foreign university programmes. Leather, fashion and craft workshops are a big part of the economy.",
@@ -898,7 +898,7 @@ export const CITY_GUIDES_9: Record<string, GlobalCityGuide> = {
     ],
   },
   "italy/messina": {
-    summary: "Local SEO for Messina: reach residents, students and ferry passengers on the Strait, from the city centre to Ganzirri and Torre Faro on the northern tip of Sicily.",
+    summary: "Messina local SEO: reach residents, students and ferry passengers on the Strait, from the city centre to Ganzirri and Torre Faro.",
     lead: "Messina faces mainland Italy across the narrow Strait of Messina, linked by constant ferries to Calabria. Its port and university shape a city that is both a crossing point and a regional centre.",
     profile: [
       "The city is a provincial capital in north-eastern Sicily, rebuilt after the great earthquake of 1908. The port handles ferries and cruise ships, and the university draws students from across the area.",
@@ -926,7 +926,7 @@ export const CITY_GUIDES_9: Record<string, GlobalCityGuide> = {
     ],
   },
   "italy/padua": {
-    summary: "Local SEO for Padua: get found in the Centro Storico, Portello, Arcella and Guizza, by students, pilgrims to Saint Anthony and visitors to nearby spa towns.",
+    summary: "Padua (Padova) local SEO: get found in the Centro Storico, Portello, Arcella and Guizza by students, pilgrims and spa visitors.",
     lead: "Padua is one of Italy's great university cities and a major pilgrimage destination for the Basilica of Saint Anthony. It sits in the busy heart of Veneto between Venice and Vicenza.",
     profile: [
       "The city's university is among the oldest in the world, and its hospital is a leading medical centre. Giotto's Scrovegni Chapel and the basilica bring steady visitors.",
@@ -1010,7 +1010,7 @@ export const CITY_GUIDES_9: Record<string, GlobalCityGuide> = {
     ],
   },
   "italy/brescia": {
-    summary: "Local SEO for Brescia: compete in the Centro Storico, Brescia Due and Mompiano, and in towns between the city and Lake Garda, in Lombardy's industrial heartland.",
+    summary: "Brescia local SEO: compete in the Centro Storico, Brescia Due and Mompiano, and in the towns toward Lake Garda, in industrial Lombardy.",
     lead: "Brescia is one of Lombardy's great manufacturing cities, known for metalworking and machinery. Its Roman and Lombard heritage sits beside a strong business economy between Lake Garda and Lake Iseo.",
     profile: [
       "The city is a provincial capital with many small and medium industrial firms. Its monastic complex of Santa Giulia is listed by UNESCO, and the Mille Miglia classic car race starts and finishes here.",
@@ -1038,7 +1038,7 @@ export const CITY_GUIDES_9: Record<string, GlobalCityGuide> = {
     ],
   },
   "italy/prato": {
-    summary: "Local SEO for Prato: reach customers in the walled centre, Macrolotto Zero and the industrial macrolotti, in Italian and Chinese, right next door to Florence.",
+    summary: "Prato local SEO in Italian and Chinese: reach customers in the walled centre, Macrolotto Zero and the textile zones next door to Florence.",
     lead: "Prato has made cloth for centuries and is now home to one of Europe's largest Chinese communities. Old family mills and fast-fashion workshops share the same industrial estates.",
     profile: [
       "This Tuscan provincial capital lies a short train ride from Florence. Its textile district spins yarn, weaves fabric and finishes cloth, and many Chinese-run firms produce clothing for markets across Europe.",
@@ -1066,7 +1066,7 @@ export const CITY_GUIDES_9: Record<string, GlobalCityGuide> = {
     ],
   },
   "italy/parma": {
-    summary: "Local SEO for Parma: get found in the Centro Storico, Oltretorrente and Cittadella, in the food valley of Parmigiano Reggiano, Parma ham and the Cibus fair.",
+    summary: "Parma local SEO for the Centro Storico, Oltretorrente and Cittadella, in the food valley of Parmigiano Reggiano, Parma ham and the Cibus fair.",
     lead: "Parma is a wealthy Emilian city whose name is known worldwide for ham and cheese. Big food companies and the European Food Safety Authority give it an unusually international workforce for its size.",
     profile: [
       "This provincial capital in Emilia-Romagna has a university, a strong food industry and a musical tradition tied to Verdi, who was born in the province. The hills to the south produce Parma ham, and the plains make Parmigiano Reggiano.",
@@ -1094,7 +1094,7 @@ export const CITY_GUIDES_9: Record<string, GlobalCityGuide> = {
     ],
   },
   "italy/modena": {
-    summary: "Local SEO for Modena: reach residents in the Centro Storico and Buon Pastore, and motor and food tourists heading to Maranello, Sassuolo and the balsamic acetaie.",
+    summary: "Modena local SEO: reach residents in the centre and Buon Pastore, and motor and food tourists bound for Maranello and the balsamic acetaie.",
     lead: "Modena sits at the heart of Italy's motor valley and is the home of traditional balsamic vinegar. Engineering money and food heritage give the city a busy, well-off local market.",
     profile: [
       "This Emilian provincial capital has Maserati in the city and Ferrari a short drive away in Maranello, plus the tile and ceramics district around Sassuolo. Its cathedral and Piazza Grande are listed by UNESCO.",
