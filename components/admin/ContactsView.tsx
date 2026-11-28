@@ -6,7 +6,7 @@ import type { Contact } from "./types";
 import { api, Empty, Field, Icon, initials, Modal, Status, timeAgo } from "./ui";
 
 const STATUSES = ["new", "contacted", "replied", "booked", "client", "unsubscribed", "bounced"];
-const SOURCE_LABEL: Record<string, string> = { website: "Website form", booking: "Booking", finder: "Found on website", import: "Import", manual: "Manual", "resend-inbound": "Email reply" };
+const SOURCE_LABEL: Record<string, string> = { website: "Website form", booking: "Booking", finder: "Found on website", import: "Import", manual: "Manual", "resend-inbound": "Email reply", "email-routing": "Email reply" };
 
 export function ContactsView({ ctx }: { ctx: AppCtx }) {
   const [list, setList] = useState<Contact[] | null>(null);

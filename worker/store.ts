@@ -125,6 +125,34 @@ export class AdminStore extends DurableObject<Env> {
     });
   }
 
+  /** Receives replies addressed to hello@ through Cloudflare Email Routing. */
+  async ingestRoutedEmail(mail: {
+    from: string; fromName?: string; to: string; subject?: string; body: string;
+    messageId?: string; inReplyTo?: string; references?: string; attachments?: { filename: string; contentType: string; size: number }[];
+  }) {
+    const from = addrOf(mail.from);
+    if (!EMAIL_ADDRESS.test(from)) throw new Error("Invalid routed sender");
+    const refs = [mail.inReplyTo, ...(mail.references || "").split(/\s+/)].filter(Boolean) as string[];
+    const original = refs.length ? this.one<{ contact_id: string }>(
+      `SELECT contact_id FROM messages WHERE direction='out' AND message_id IN (${refs.map(() => "?").join(",")}) LIMIT 1`, ...refs,
+    ) : undefined;
+    const contact = this.one<{ id: string }>("SELECT id FROM contacts WHERE email=?", from);
+    const contactId = original?.contact_id || contact?.id || this.upsertContact({ email: from, name: mail.fromName || "", source: "email-routing" });
+    const added = this.addInbound({
+      channel: "email", accountId: "cloudflare-routing", contactId, from, fromName: mail.fromName || "", to: mail.to,
+      subject: mail.subject || "(no subject)", body: cleanReplyBody(mail.body || "(empty email)").slice(0, 100000),
+      messageId: mail.messageId, inReplyTo: mail.inReplyTo, extId: mail.messageId ? `routing:${mail.messageId}` : undefined,
+      meta: mail.attachments?.length ? { attachments: mail.attachments } : undefined,
+    });
+    if (added) {
+      const unsub = /\b(unsubscribe|remove me|stop emailing|no thanks|not interested)\b/i.test(mail.body);
+      this.sql.exec("UPDATE contacts SET status=?,updated_at=? WHERE id=?", unsub ? "unsubscribed" : "replied", now(), contactId);
+      this.sql.exec("UPDATE enrollments SET status='replied' WHERE contact_id=? AND status='active'", contactId);
+      this.log("info", `Email reply from ${from}${unsub ? " (asked to stop)" : ""}`);
+    }
+    return { ok: true, added };
+  }
+
   // ---------- db helpers ----------
 
   private q<T = Row>(query: string, ...args: SqlStorageValue[]): T[] {
@@ -902,7 +930,7 @@ export class AdminStore extends DurableObject<Env> {
     }));
     if (attachments.some((file) => !file.content || file.size > 8_000_000) || attachments.reduce((sum, file) => sum + file.size, 0) > 12_000_000)
       throw new Error("Attachments must be under 8 MB each and 12 MB total");
-    const mail = { to: m.from_addr, toName: m.from_name, subject, body: text, inReplyTo: m.message_id || undefined, attachments };
+    const mail = { to: m.from_addr, toName: m.from_name, subject, body: text, replyTo: CLOUDFLARE_FROM, inReplyTo: m.message_id || undefined, attachments };
     const firstReply = !this.one("SELECT id FROM messages WHERE direction='out' AND channel='email' AND to_addr=? LIMIT 1", m.from_addr);
     if (sender.cloud) {
       const result = await sendCloudflareMail(sender.cloud, { ...mail, portrait: firstReply });
