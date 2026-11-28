@@ -11,6 +11,7 @@ import {
   EMAIL_RE,
   addrOf,
   b64,
+  cleanReplyBody,
   err,
   errMsg,
   hashPassword,
@@ -46,6 +47,7 @@ const RESEND_INBOUND_ADDRESS = "0ca11aba@selumelol.resend.app";
 const SECRET_KEYS = ["password", "resendKey", "resendWebhookSecret", "apiKey", "apiSecret", "accessToken", "accessSecret", "token", "refreshToken"];
 
 type Row = Record<string, SqlStorageValue>;
+type MessageRow = Row & { id: string; contact_id: string; channel: string };
 
 interface Step {
   delayDays: number;
@@ -315,13 +317,18 @@ export class AdminStore extends DurableObject<Env> {
       if (m === "GET" && id && action === "thread") return json(this.thread(id));
       if (m === "GET") {
         const ch = url.searchParams.get("channel");
-        return json(
-          this.q(
+        const rows = this.q<MessageRow>(
             `SELECT m.*, c.name AS contact_name, c.company AS contact_company FROM messages m LEFT JOIN contacts c ON c.id=m.contact_id
              WHERE m.direction='in' AND m.channel IN ('email','form','booking') ${ch ? "AND m.channel=?" : ""} ORDER BY m.created_at DESC LIMIT 300`,
             ...(ch ? [ch] : []),
-          ),
-        );
+          );
+        const seen = new Set<string>();
+        return json(rows.filter((message) => {
+          const conversation = message.contact_id ? `contact:${message.contact_id}` : `message:${message.id}`;
+          if (seen.has(conversation)) return false;
+          seen.add(conversation);
+          return true;
+        }).map((message) => message.channel === "email" && typeof message.body === "string" ? { ...message, body: cleanReplyBody(message.body) } : message));
       }
       if (m === "POST" && action === "read") {
         this.sql.exec("UPDATE messages SET read=1 WHERE id=?", id);
@@ -612,7 +619,7 @@ export class AdminStore extends DurableObject<Env> {
     const contactId = original?.contact_id || contact?.id || this.upsertContact({ email: from, name: nameOf(mail.from || ""), source: "resend-inbound" });
     const added = this.addInbound({
       channel: "email", accountId, contactId, from, fromName: nameOf(mail.from || ""), to: mail.to?.join(", ") || "",
-      subject: mail.subject || "(no subject)", body: (mail.text || stripHtml(mail.html || "") || "(empty email)").slice(0, 100000),
+      subject: mail.subject || "(no subject)", body: cleanReplyBody(mail.text || stripHtml(mail.html || "") || "(empty email)").slice(0, 100000),
       messageId: mail.message_id, inReplyTo, extId: `resend:${emailId}`,
       meta: { resendEmailId: emailId, attachments: mail.attachments || [] }, at: Date.parse(mail.created_at || event.created_at || "") || now(),
     });
@@ -802,9 +809,10 @@ export class AdminStore extends DurableObject<Env> {
   private thread(id: string) {
     const m = this.one<{ contact_id: string }>("SELECT * FROM messages WHERE id=? AND channel IN ('email','form','booking')", id);
     if (!m) return [];
-    return m.contact_id
+    const messages = m.contact_id
       ? this.q("SELECT * FROM messages WHERE contact_id=? AND channel IN ('email','form','booking') ORDER BY created_at", m.contact_id)
       : this.q("SELECT * FROM messages WHERE id=? AND channel IN ('email','form','booking')", id);
+    return messages.map((message) => message.channel === "email" && typeof message.body === "string" ? { ...message, body: cleanReplyBody(message.body) } : message);
   }
 
   private emailAccounts() {
@@ -838,7 +846,7 @@ export class AdminStore extends DurableObject<Env> {
     return account ? { email: account.cfg.email, account } : undefined;
   }
 
-  private async reply(id: string, b: { body?: string; subject?: string; accountId?: string }) {
+  private async reply(id: string, b: { body?: string; subject?: string; accountId?: string; attachments?: { filename?: string; contentType?: string; content?: string; size?: number }[] }) {
     const m = this.replyMessage(id);
     if (!m) throw new Error("Message not found");
     const text = String(b.body ?? "").trim();
@@ -848,15 +856,23 @@ export class AdminStore extends DurableObject<Env> {
     if (!sender) throw new Error("Connect a mailbox in Settings → Email accounts or enable Cloudflare Email Sending.");
     const enteredSubject = String(b.subject ?? "").replace(/[\r\n]+/g, " ").trim().slice(0, 200);
     const subject = enteredSubject || (m.subject ? (/^re:/i.test(m.subject) ? m.subject : `Re: ${m.subject}`) : "Re: your message");
-    const mail = { to: m.from_addr, toName: m.from_name, subject, body: text, inReplyTo: m.message_id || undefined };
+    const attachments = (b.attachments ?? []).slice(0, 6).map((file) => ({
+      filename: String(file.filename ?? "attachment").replace(/[\r\n/\\]/g, "_").slice(0, 120),
+      contentType: String(file.contentType ?? "application/octet-stream").slice(0, 100),
+      content: String(file.content ?? ""),
+      size: Number(file.size) || Math.floor(String(file.content ?? "").length * .75),
+    }));
+    if (attachments.some((file) => !file.content || file.size > 8_000_000) || attachments.reduce((sum, file) => sum + file.size, 0) > 12_000_000)
+      throw new Error("Attachments must be under 8 MB each and 12 MB total");
+    const mail = { to: m.from_addr, toName: m.from_name, subject, body: text, inReplyTo: m.message_id || undefined, attachments };
+    const firstReply = !this.one("SELECT id FROM messages WHERE direction='out' AND channel='email' AND to_addr=? LIMIT 1", m.from_addr);
     if (sender.cloud) {
-      const firstReply = !this.one("SELECT id FROM messages WHERE direction='out' AND channel='email' AND to_addr=? LIMIT 1", m.from_addr);
       const result = await sendCloudflareMail(sender.cloud, { ...mail, portrait: firstReply });
-      this.recordOut({ accountId: "cloudflare", contactId: m.contact_id, to: m.from_addr, subject, body: text, messageId: result.messageId, from: CLOUDFLARE_FROM });
+      this.recordOut({ accountId: "cloudflare", contactId: m.contact_id, to: m.from_addr, subject, body: text, messageId: result.messageId, from: CLOUDFLARE_FROM, attachments });
     } else if (sender.account) {
       const acc = sender.account;
-      const messageId = await sendMail(acc.cfg, mail);
-      this.recordOut({ accountId: acc.id, contactId: m.contact_id, to: m.from_addr, subject, body: text, messageId, from: acc.cfg.email });
+      const messageId = await sendMail(acc.cfg, { ...mail, includePortrait: firstReply });
+      this.recordOut({ accountId: acc.id, contactId: m.contact_id, to: m.from_addr, subject, body: text, messageId, from: acc.cfg.email, attachments });
     }
     this.sql.exec("UPDATE messages SET read=1 WHERE id=?", id);
     this.log("info", `Replied to ${m.from_addr}`);
@@ -876,9 +892,9 @@ export class AdminStore extends DurableObject<Env> {
     return { ok: true };
   }
 
-  private recordOut(o: { accountId: string; contactId?: string; campaignId?: string; to: string; subject: string; body: string; messageId: string; from: string }) {
+  private recordOut(o: { accountId: string; contactId?: string; campaignId?: string; to: string; subject: string; body: string; messageId: string; from: string; attachments?: { filename: string; contentType: string; size: number }[] }) {
     this.sql.exec(
-      "INSERT INTO messages(id,direction,channel,account_id,contact_id,campaign_id,from_addr,to_addr,subject,body,message_id,read,created_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,1,?)",
+      "INSERT INTO messages(id,direction,channel,account_id,contact_id,campaign_id,from_addr,to_addr,subject,body,message_id,meta,read,created_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,1,?)",
       uid("msg_"),
       "out",
       "email",
@@ -890,6 +906,7 @@ export class AdminStore extends DurableObject<Env> {
       o.subject,
       o.body,
       o.messageId,
+      o.attachments?.length ? JSON.stringify({ attachments: o.attachments.map(({ filename, contentType, size }) => ({ filename, contentType, size })) }) : "",
       now(),
     );
   }
@@ -1211,7 +1228,7 @@ export class AdminStore extends DurableObject<Env> {
             fromName: mail.fromName,
             to: c.email,
             subject: mail.subject,
-            body: mail.body,
+            body: cleanReplyBody(mail.body),
             messageId: mail.messageId,
             inReplyTo: mail.inReplyTo,
             extId: `mail:${mail.messageId || `${acc.id}:${mail.uid}`}`,

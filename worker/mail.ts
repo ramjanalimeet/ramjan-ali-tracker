@@ -2,6 +2,7 @@
 // email accounts.
 import { Conn } from "./net";
 import { addrOf, b64, dec, fromB64, nameOf, stripHtml, uid } from "./util";
+import { EMAIL_PORTRAIT } from "./email-portrait";
 
 export interface EmailConfig {
   email: string;
@@ -30,6 +31,16 @@ export interface OutMail {
   body: string;
   inReplyTo?: string;
   references?: string;
+  includePortrait?: boolean;
+  attachments?: { filename: string; contentType: string; content: string }[];
+}
+
+function emailHtml(body: string, portrait: boolean) {
+  const esc = (value: string) => value.replace(/[&<>]/g, (char) => char === "&" ? "&amp;" : char === "<" ? "&lt;" : "&gt;");
+  const linked = (value: string) => esc(value).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" style="color:#1769aa;text-decoration:underline">$1</a>');
+  const paragraphs = body.split(/\n\s*\n/).map((part) => `<p style="margin:0 0 16px">${linked(part).replace(/\n/g, "<br>")}</p>`).join("");
+  const identity = portrait ? '<table role="presentation" cellpadding="0" cellspacing="0" style="margin-top:22px"><tr><td style="padding-right:12px"><img src="cid:ramjan-ali-akash" width="56" height="56" alt="Ramjan Ali Akash" style="display:block;width:56px;height:56px;border-radius:50%;object-fit:cover"></td><td style="font:14px/1.4 Arial,sans-serif;color:#3c4043"><strong style="color:#171916">Ramjan Ali Akash</strong><br>Local SEO &amp; AI visibility</td></tr></table>' : "";
+  return `<div style="font:15px/1.6 Arial,sans-serif;color:#202124">${paragraphs}${identity}</div>`;
 }
 
 /** Fills SMTP/IMAP hosts for common providers so only email + app password are needed. */
@@ -147,7 +158,12 @@ export async function sendMail(cfg: EmailConfig, m: OutMail): Promise<string> {
         ...((m.replyTo || c.resendInboundAddress) ? { reply_to: m.replyTo || c.resendInboundAddress } : {}),
         subject: m.subject,
         text: body,
+        html: emailHtml(body, Boolean(m.includePortrait)),
         headers,
+        ...((m.attachments?.length || m.includePortrait) ? { attachments: [
+          ...(m.includePortrait ? [{ filename: "ramjan-ali-akash.jpg", content: EMAIL_PORTRAIT, content_id: "ramjan-ali-akash" }] : []),
+          ...(m.attachments ?? []).map((file) => ({ filename: file.filename, content: file.content, content_type: file.contentType })),
+        ] } : {}),
       }),
     });
     if (!res.ok) throw new Error(`Resend: ${res.status} ${await res.text()}`);

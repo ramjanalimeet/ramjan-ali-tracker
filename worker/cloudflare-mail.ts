@@ -8,7 +8,7 @@ function escapeHtml(value: string) {
 
 export async function sendCloudflareMail(
   email: SendEmail,
-  mail: { to: string; subject: string; body: string; replyTo?: string; inReplyTo?: string; portrait?: boolean },
+  mail: { to: string; subject: string; body: string; replyTo?: string; inReplyTo?: string; portrait?: boolean; attachments?: { filename: string; contentType: string; content: string }[] },
 ) {
   const cid = "ramjan-ali-akash";
   const messageId = mail.inReplyTo?.trim();
@@ -28,15 +28,18 @@ export async function sendCloudflareMail(
     text: mail.body,
     replyTo: mail.replyTo,
     headers: threadHeaders,
-    ...(html ? {
-      html,
-      attachments: [{
+    ...(html ? { html } : {}),
+    ...((html || mail.attachments?.length) ? {
+      attachments: [
+        ...(html ? [{
         disposition: "inline",
         filename: "ramjan-ali-akash.jpg",
         type: "image/jpeg",
         contentId: cid,
         content: EMAIL_PORTRAIT,
-      }],
+        }] : []),
+        ...(mail.attachments ?? []).map((file) => ({ disposition: "attachment", filename: file.filename, type: file.contentType, content: file.content })),
+      ],
     } : {}),
   });
 }

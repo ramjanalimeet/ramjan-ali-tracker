@@ -12,6 +12,12 @@ const FILTERS = [
   { id: "booking", label: "Bookings" },
 ];
 
+type ReplyAttachment = { filename: string; contentType: string; content: string; size: number };
+
+function messageMeta(message: Message): { fields?: Record<string, string>; attachments?: { filename: string; contentType?: string; size?: number }[] } {
+  try { return JSON.parse(message.meta || "{}"); } catch { return {}; }
+}
+
 export function InboxView({ ctx }: { ctx: AppCtx }) {
   const [items, setItems] = useState<Message[] | null>(null);
   const [filter, setFilter] = useState("");
@@ -163,6 +169,11 @@ function Detail({ m, ctx, onBack, onDelete }: { m: Message; ctx: AppCtx; onBack:
   const reply = writtenReply ?? (firstFormReply ? template : "");
   const [busy, setBusy] = useState<"" | "send" | "ai">("");
   const threadEnd = useRef<HTMLDivElement>(null);
+  const fileInput = useRef<HTMLInputElement>(null);
+  const imageInput = useRef<HTMLInputElement>(null);
+  const videoInput = useRef<HTMLInputElement>(null);
+  const replyBox = useRef<HTMLTextAreaElement>(null);
+  const [attachments, setAttachments] = useState<ReplyAttachment[]>([]);
   const hasThread = Boolean(m.contact_id);
   const canReply = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m.from_addr);
 
@@ -186,6 +197,33 @@ function Detail({ m, ctx, onBack, onDelete }: { m: Message; ctx: AppCtx; onBack:
   useEffect(() => {
     threadEnd.current?.scrollIntoView({ block: "end" });
   }, [thread]);
+
+  const addFiles = async (files: FileList | null) => {
+    const selected = Array.from(files ?? []).slice(0, Math.max(0, 6 - attachments.length));
+    const tooLarge = selected.find((file) => file.size > 8_000_000);
+    if (tooLarge || attachments.reduce((sum, file) => sum + file.size, 0) + selected.reduce((sum, file) => sum + file.size, 0) > 12_000_000) {
+      ctx.toast("Files must be under 8 MB each and 12 MB total", "error");
+      return;
+    }
+    const encoded = await Promise.all(selected.map((file) => new Promise<ReplyAttachment>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve({ filename: file.name, contentType: file.type || "application/octet-stream", size: file.size, content: String(reader.result).split(",")[1] || "" });
+      reader.onerror = () => reject(reader.error);
+      reader.readAsDataURL(file);
+    })));
+    setAttachments((current) => [...current, ...encoded]);
+  };
+
+  const insertLink = () => {
+    const box = replyBox.current;
+    if (!box) return;
+    const start = box.selectionStart;
+    const end = box.selectionEnd;
+    const selected = reply.slice(start, end);
+    const value = selected && /^https?:\/\//.test(selected) ? selected : selected ? `https://${selected}` : "https://";
+    setReply(`${reply.slice(0, start)}${value}${reply.slice(end)}`);
+    requestAnimationFrame(() => { box.focus(); box.setSelectionRange(start + value.length, start + value.length); });
+  };
 
   return (
     <div className="adm-detail">
@@ -219,9 +257,9 @@ function Detail({ m, ctx, onBack, onDelete }: { m: Message; ctx: AppCtx; onBack:
               <time>{fmtDateTime(t.created_at)}</time>
             </header>
             {t.direction === "out" && t.subject && <div className="adm-bubble-subj">{t.subject}</div>}
-            {t.channel === "form" && t.id === m.id && Object.keys(fields).length ? (
+            {t.channel === "form" && Object.keys(messageMeta(t).fields ?? {}).length ? (
               <dl className="adm-fields">
-                {Object.entries(fields).map(([k, v]) => (
+                {Object.entries(messageMeta(t).fields ?? {}).map(([k, v]) => (
                   <div key={k}>
                     <dt>{k.replace(/[_-]/g, " ")}</dt>
                     <dd>{v}</dd>
@@ -231,6 +269,9 @@ function Detail({ m, ctx, onBack, onDelete }: { m: Message; ctx: AppCtx; onBack:
             ) : (
               <p>{t.body}</p>
             )}
+            {(messageMeta(t).attachments ?? []).length > 0 && <div className="adm-message-files">
+              {(messageMeta(t).attachments ?? []).map((file, index) => <span key={`${file.filename}-${index}`}><Icon name={file.contentType?.startsWith("image/") ? "image" : file.contentType?.startsWith("video/") ? "video" : "clip"} size={14} />{file.filename}</span>)}
+            </div>}
           </article>
         ))}
         <div ref={threadEnd} />
@@ -244,9 +285,10 @@ function Detail({ m, ctx, onBack, onDelete }: { m: Message; ctx: AppCtx; onBack:
             if (busy || !sender?.email || !reply.trim() || !subject.trim()) return;
             setBusy("send");
             try {
-              await api(`inbox/${m.id}/reply`, { body: { body: reply, subject } });
+              await api(`inbox/${m.id}/reply`, { body: { body: reply, subject, attachments } });
               ctx.toast("Reply sent");
               setReply("");
+              setAttachments([]);
               if (hasThread) setThread(await api<Message[]>(`inbox/${m.id}/thread`));
             } catch (err) {
               ctx.toast((err as Error).message, "error");
@@ -263,14 +305,27 @@ function Detail({ m, ctx, onBack, onDelete }: { m: Message; ctx: AppCtx; onBack:
             </p>
           )}
           <input aria-label="Email subject" required maxLength={200} placeholder="Subject" value={subject} onChange={(e) => setSubject(e.target.value)} />
-          <textarea aria-label="Email message" rows={6} placeholder={`Reply to ${m.from_name || m.from_addr}…`} value={reply} onChange={(e) => setReply(e.target.value)} onKeyDown={(e) => {
+          <textarea ref={replyBox} aria-label="Email message" rows={6} placeholder={`Reply to ${m.from_name || m.from_addr}…`} value={reply} onChange={(e) => setReply(e.target.value)} onKeyDown={(e) => {
             if ((e.metaKey || e.ctrlKey) && e.key === "Enter") e.currentTarget.form?.requestSubmit();
           }} />
+          <input ref={fileInput} className="adm-file-input" type="file" multiple onChange={(e) => { void addFiles(e.target.files); e.currentTarget.value = ""; }} />
+          <input ref={imageInput} className="adm-file-input" type="file" accept="image/*" multiple onChange={(e) => { void addFiles(e.target.files); e.currentTarget.value = ""; }} />
+          <input ref={videoInput} className="adm-file-input" type="file" accept="video/*" multiple onChange={(e) => { void addFiles(e.target.files); e.currentTarget.value = ""; }} />
+          {attachments.length > 0 && <div className="adm-attachment-list">{attachments.map((file, index) => <span key={`${file.filename}-${index}`}>
+            <Icon name={file.contentType.startsWith("image/") ? "image" : file.contentType.startsWith("video/") ? "video" : "clip"} size={14} />
+            <b>{file.filename}</b><small>{file.size < 1_000_000 ? `${Math.ceil(file.size / 1000)} KB` : `${(file.size / 1_000_000).toFixed(1)} MB`}</small>
+            <button type="button" aria-label={`Remove ${file.filename}`} onClick={() => setAttachments((list) => list.filter((_, i) => i !== index))}><Icon name="x" size={13} /></button>
+          </span>)}</div>}
           {sender?.signature && <p className="adm-hint">Your sending account’s signature will be added.</p>}
           <div className="adm-reply-bar">
+            <div className="adm-compose-tools">
+              <button type="button" className="adm-icon-btn" title="Attach a file" aria-label="Attach a file" onClick={() => fileInput.current?.click()}><Icon name="clip" size={17} /></button>
+              <button type="button" className="adm-icon-btn" title="Add an image" aria-label="Add an image" onClick={() => imageInput.current?.click()}><Icon name="image" size={17} /></button>
+              <button type="button" className="adm-icon-btn" title="Add a video" aria-label="Add a video" onClick={() => videoInput.current?.click()}><Icon name="video" size={17} /></button>
+              <button type="button" className="adm-icon-btn" title="Insert a link" aria-label="Insert a link" onClick={insertLink}><Icon name="link" size={17} /></button>
             <button
               type="button"
-              className="adm-btn"
+              className="adm-btn adm-ai-draft"
               disabled={!!busy}
               onClick={async () => {
                 setBusy("ai");
@@ -286,6 +341,7 @@ function Detail({ m, ctx, onBack, onDelete }: { m: Message; ctx: AppCtx; onBack:
             >
               <Icon name="sparkle" size={15} /> {busy === "ai" ? "Writing…" : "Draft with AI"}
             </button>
+            </div>
             <div className="adm-reply-send"><span>{reply.trim() ? `${reply.trim().length} characters` : "Ctrl/⌘ + Enter to send"}</span><button className="adm-btn primary" disabled={!!busy || !sender?.email || !reply.trim() || !subject.trim()}>
               <Icon name="send" size={15} /> {busy === "send" ? "Sending…" : "Send reply"}
             </button></div>

@@ -118,6 +118,26 @@ export function stripHtml(html: string): string {
     .trim();
 }
 
+/** Keep only the newly-written part of a reply, removing quoted history added by mail clients. */
+export function cleanReplyBody(value: string): string {
+  const text = value.replace(/\r\n?/g, "\n").trim();
+  if (!text) return text;
+  const lines = text.split("\n");
+  let end = lines.length;
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (
+      /^On .{4,} wrote:$/i.test(line) ||
+      /^-{2,}\s*(Original Message|Forwarded message)\s*-{2,}$/i.test(line) ||
+      (/^From:\s/i.test(line) && lines.slice(i, i + 5).some((next) => /^\s*(Sent|Date|To|Subject):\s/i.test(next)))
+    ) {
+      end = i;
+      break;
+    }
+  }
+  return lines.slice(0, end).filter((line) => !/^\s*>/.test(line)).join("\n").replace(/\n{3,}/g, "\n\n").trim() || text;
+}
+
 export function startOfDay(t = Date.now()): number {
   const d = new Date(t);
   d.setUTCHours(0, 0, 0, 0);
