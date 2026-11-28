@@ -1,0 +1,522 @@
+/**
+ * Industry depth for automotive, food and hospitality, events, beauty, wellness,
+ * fitness and pet care pages. Same shape as DEEP in ./deep.
+ */
+import type { IndustryDeep } from "./deep";
+import { GUIDES } from "./deep";
+
+export const DEEP_EXTRA_6: Record<string, IndustryDeep> = {
+  "windshield-repair-seo": {
+    market: [
+      "Auto glass customers usually search the same day the damage happens. A rock chip on the highway or a cracked windshield after a cold morning sends them to Google for \"windshield chip repair near me\", and they want three answers fast: can you do it today, will you come to me, and do you work with my insurance.",
+      "Newer cars add a step most shops undersell. Many vehicles need ADAS camera calibration after a windshield replacement, and drivers who know this search for it by name. A shop that explains calibration clearly, and says whether it is done in-house, looks far more trustworthy than one that only lists \"windshields\".",
+    ],
+    categories: { primary: "Auto glass shop", secondary: ["Windshield repair service", "Window tinting service (if you do it)"] },
+    pages: [
+      { page: "Windshield replacement", why: "The core job. Say which makes you handle and how long it takes" },
+      { page: "Chip and crack repair", why: "Quick, cheap jobs that bring first-time customers and reviews" },
+      { page: "Mobile auto glass service", why: "Many drivers want the repair at home or work, so list the areas you cover" },
+      { page: "ADAS calibration", why: "A specific search from owners of newer cars, with few strong local pages" },
+      { page: "Insurance claims help", why: "Explains how glass claims work so customers do not call around first" },
+    ],
+    seasons: [
+      { when: "Winter", what: "Cold snaps and defroster heat spread chips into cracks. Push same-day repair messaging" },
+      { when: "Spring", what: "Road debris after winter and pothole season. Chip repair volume rises" },
+      { when: "Summer", what: "Road trips and construction gravel. Keep mobile service hours current" },
+      { when: "Fall", what: "Remind drivers to fix chips before the first freeze" },
+    ],
+    mistakes: [
+      "Not saying whether ADAS calibration is done in-house or sent elsewhere",
+      "Mobile service areas missing, so the shop only shows near its own address",
+      "No mention of which insurance carriers you bill directly",
+      "Profile hours that ignore mobile appointments outside shop hours",
+    ],
+    guide: GUIDES.categories,
+  },
+  "transmission-shop-seo": {
+    market: [
+      "Transmission customers are worried before they ever search. A slipping gear, a delayed shift or a warning light makes them expect a huge bill, so they look for a shop that offers honest diagnostics first and does not push a rebuild by default. Reviews that mention a fair diagnosis or a repair that was smaller than feared carry a lot of weight.",
+      "Most people compare two or three shops on Google Maps, then call. They read whether the shop works on their make, whether it offers a warranty on rebuilds, and whether it can tow the car in. Clear answers to those three questions on the site win the call more often than a low price claim.",
+    ],
+    categories: { primary: "Transmission shop", secondary: ["Auto repair shop", "Mechanic"] },
+    pages: [
+      { page: "Transmission diagnostics", why: "The first step for most customers, and the least scary thing to book" },
+      { page: "Transmission repair", why: "Covers smaller fixes like solenoids, leaks and fluid service" },
+      { page: "Transmission rebuilds and replacement", why: "The high-value job. Explain the process and your warranty in plain terms" },
+      { page: "Clutch repair", why: "Manual cars and trucks searched separately from automatic work" },
+      { page: "Makes and models you service", why: "Owners search with their brand, and CVT or diesel work needs its own mention" },
+    ],
+    seasons: [
+      { when: "Summer", what: "Heat and towing trips overwork transmissions. Expect breakdown calls" },
+      { when: "Before road trips", what: "Holiday and summer travel bring inspection and fluid service requests" },
+      { when: "Winter", what: "Cold starts expose hard shifting. Keep diagnostic booking easy" },
+      { when: "Tax refund season", what: "Owners who delayed a repair finally book it. Have rebuild pages ready" },
+    ],
+    mistakes: [
+      "No warranty details on rebuilds, which makes the shop look risky",
+      "Fluid service and rebuilds lumped on one generic page",
+      "Not saying whether you arrange towing",
+      "Ignoring reviews that accuse the shop of upselling instead of answering them calmly",
+    ],
+    guide: GUIDES.reviews,
+  },
+  "mobile-mechanic-seo": {
+    market: [
+      "People who search for a mobile mechanic are usually stuck. The car will not start in the driveway, the brakes are grinding and they cannot get to a shop, or they are buying a used car from a stranger and want it checked before paying. They pick whoever can confirm a time window quickly and says plainly what can and cannot be fixed on site.",
+      "Because there is no shop to visit, trust comes from the Business Profile and reviews. Photos of you working in real driveways and parking lots, a clear list of covered towns and honest notes on jobs you refer to a shop all help a stranger feel safe booking you.",
+    ],
+    categories: { primary: "Mechanic", secondary: ["Auto repair shop", "Brake shop", "Auto electrical service"] },
+    pages: [
+      { page: "Mobile diagnostics", why: "Check engine lights and no-start problems are the usual first call" },
+      { page: "Battery replacement", why: "Urgent, simple and done on site. A strong entry job" },
+      { page: "Brake service", why: "One of the most common repairs that works well in a driveway" },
+      { page: "Pre-purchase inspections", why: "Used car buyers search for this and book it ahead" },
+      { page: "Service area", why: "Lists the towns you drive to, since you have no storefront to rank from" },
+    ],
+    seasons: [
+      { when: "Winter", what: "Dead batteries and no-start mornings. Keep same-day slots visible" },
+      { when: "Spring", what: "Used car shopping rises with tax refunds. Promote pre-purchase inspections" },
+      { when: "Summer", what: "AC and cooling system problems. Say clearly which ones you fix on site" },
+      { when: "Fall", what: "Brake checks and maintenance before winter driving" },
+    ],
+    mistakes: [
+      "Showing a home address on the profile instead of setting it up as a service-area business",
+      "No list of jobs you cannot do on site, which leads to wasted trips and bad reviews",
+      "No way to book or request a time window online",
+      "Service area set far wider than you actually travel",
+    ],
+    guide: GUIDES.mapPack,
+  },
+  "restaurant-seo": {
+    market: [
+      "Restaurant choices are often made in the car or on the couch, minutes before eating. People search \"restaurant near me\" or a dish name, scan the map pack, and decide from photos, the star rating, the price level and whether the menu loads on their phone. A missing menu or old photos sends them to the next pin.",
+      "Planned visits work differently. Date nights, birthdays and private dining get researched days ahead, and people now ask AI assistants for \"the best Italian place for a group of ten\". Those answers draw on reviews that describe the food and the room, a readable menu, and a clear reservation link.",
+    ],
+    categories: { primary: "Your cuisine-specific type (e.g. Italian restaurant)", secondary: ["Restaurant", "Takeout Restaurant", "Caterer (if you cater)"] },
+    pages: [
+      { page: "Menu as real text", why: "Google and AI tools can read dishes and prices. A PDF or photo hides them" },
+      { page: "Reservations", why: "A direct booking link removes the reason to call or go elsewhere" },
+      { page: "Takeout and ordering", why: "Link to your own ordering first so third-party apps do not take the visit" },
+      { page: "Private dining and events", why: "Planned, higher-value bookings that need room photos and capacity" },
+      { page: "Catering", why: "Office and party orders searched by people who already like the food" },
+    ],
+    seasons: [
+      { when: "Valentine's Day", what: "Special menu and reservation link live by late January" },
+      { when: "Mother's Day", what: "One of the busiest days for brunch. Post hours and booking early" },
+      { when: "November and December", what: "Holiday parties and group bookings. Private dining page up to date" },
+      { when: "Public holidays", what: "Set special hours on the profile for every closure or change" },
+    ],
+    mistakes: [
+      "Menu only as a PDF or photo, so dishes never show up in search",
+      "Holiday hours not updated, and hungry customers arrive to a closed door",
+      "No reservation or ordering link on the Business Profile",
+      "Photos uploaded once and never refreshed when the menu changes",
+    ],
+    guide: GUIDES.aiCheck,
+  },
+  "cafe-seo": {
+    market: [
+      "Cafe visits are habits and impulse stops. People search \"coffee near me\" on the way to work, while traveling, or when they need a spot to sit with a laptop. They decide from the map pin, opening time, photos of the drinks and the space, and small details like Wi-Fi, outlets, parking and oat milk.",
+      "Many coffee shops live on Instagram and neglect Google. That is a gap, because the morning commuter and the visitor in town rarely check Instagram first. A cafe that keeps its profile attributes, hours and food menu current shows up for \"breakfast near me\" and \"quiet cafe to work\" as well as plain coffee searches.",
+    ],
+    categories: { primary: "Coffee shop", secondary: ["Cafe", "Breakfast restaurant", "Espresso bar"] },
+    pages: [
+      { page: "Drinks menu", why: "Specialty drinks, roasts and milk options as readable text" },
+      { page: "Food and breakfast", why: "Catches breakfast and lunch searches that coffee alone misses" },
+      { page: "Online ordering", why: "Lets commuters skip the line, and keeps orders on your own system" },
+      { page: "About the beans", why: "Roaster and origin details give specialty searchers a reason to choose you" },
+      { page: "Visit and amenities", why: "Seating, Wi-Fi, parking and accessibility answered in one place" },
+    ],
+    seasons: [
+      { when: "Fall", what: "Seasonal drinks launch. Update photos and menu text the same week" },
+      { when: "Holidays", what: "Gift cards, beans by the bag and changed hours on the profile" },
+      { when: "Back to school", what: "Students and remote workers looking for study spots" },
+      { when: "Summer", what: "Iced and cold brew searches. Lead with them in photos" },
+    ],
+    mistakes: [
+      "Opening hours on Google that do not match the door sign",
+      "Only posting on Instagram while the Google profile has years-old photos",
+      "Profile attributes like Wi-Fi, outdoor seating and dine-in left blank",
+      "Food menu missing, so the cafe never appears for breakfast searches",
+    ],
+    guide: GUIDES.mapPack,
+  },
+  "catering-company-seo": {
+    market: [
+      "Catering is planned weeks or months ahead, and the buyer is often not the person eating. A couple, an office manager or a party host shortlists a few caterers, then compares menus, sample prices or packages, minimum headcounts and how fast each one replies to an inquiry.",
+      "Wedding and corporate buyers search differently and want different proof. Couples look for photos of plated dinners and buffets at real venues. Office buyers want drop-off options, ordering lead times and a simple way to repeat an order. One generic catering page rarely serves both.",
+    ],
+    categories: { primary: "Caterer", secondary: ["Event planner (if you coordinate events)", "Box lunch supplier (if listed)"] },
+    pages: [
+      { page: "Wedding catering", why: "High-value, planned bookings that need menus and real event photos" },
+      { page: "Corporate catering", why: "Recurring office orders. Show lead times and ordering steps" },
+      { page: "Drop-off catering", why: "A distinct search from people who do not need staff on site" },
+      { page: "Sample menus", why: "Real text menus help people shortlist you before they inquire" },
+      { page: "Venues you have worked", why: "Couples search venue names, and venue pages build trust" },
+    ],
+    seasons: [
+      { when: "January to March", what: "Engaged couples book caterers. Wedding pages and tastings ready" },
+      { when: "May to October", what: "Peak wedding and outdoor event season. Reply to inquiries fast" },
+      { when: "Graduation season", what: "Grad parties and family events. Promote party packages" },
+      { when: "November and December", what: "Office holiday parties. Corporate menus and booking cutoffs posted" },
+    ],
+    mistakes: [
+      "No menu or package examples at all, only \"contact us for a quote\"",
+      "Minimum headcount and service area hidden until the second email",
+      "Inquiry forms that take days to get a reply",
+      "Event photos with no venue or event type named",
+    ],
+    guide: GUIDES.reviews,
+  },
+  "bakery-seo": {
+    market: [
+      "Bakeries get two kinds of customer. Walk-in shoppers search \"bakery near me\" or a specific item like croissants or kolaches and decide from photos, opening time and what sells out. Custom cake customers plan ahead, scroll through portfolios and want to know lead times, flavors and how to order before they reach out.",
+      "Cake buyers often find bakers on Instagram, then check Google reviews before paying a deposit. A bakery that shows its custom work on its own site, with clear ordering steps, keeps those buyers from drifting to a home baker with a stronger gallery.",
+    ],
+    categories: { primary: "Bakery", secondary: ["Cake shop", "Wedding bakery", "Pastry shop"] },
+    pages: [
+      { page: "Custom cakes", why: "Birthday and celebration cakes with a gallery, flavors and lead times" },
+      { page: "Wedding cakes", why: "Planned months ahead. Explain tastings and how booking works" },
+      { page: "Daily menu", why: "What is baked each day, as text, so item searches find you" },
+      { page: "How to order", why: "Order form, deposit rules and pickup or delivery in one place" },
+      { page: "Dessert tables and catering", why: "Events and offices searching beyond a single cake" },
+    ],
+    seasons: [
+      { when: "Thanksgiving", what: "Pie preorders. Open them early and post a firm cutoff" },
+      { when: "Christmas and Hanukkah", what: "Holiday cookies, breads and gift boxes. Update hours too" },
+      { when: "Valentine's Day and Mother's Day", what: "Small cakes and treat boxes. Preorder links live weeks ahead" },
+      { when: "Wedding season", what: "Tastings fill up in late winter and spring. Booking page current" },
+    ],
+    mistakes: [
+      "Custom cake lead times not stated, so people ask for next-day orders",
+      "Gallery only on Instagram and none on the website",
+      "Holiday preorder cutoffs announced too late",
+      "No dietary details like gluten-free or nut-free options",
+    ],
+    guide: GUIDES.mapPack,
+  },
+  "wedding-venue-seo": {
+    market: [
+      "Venue is usually the first big decision a couple makes, and everything else waits on it. They search by style and place (\"barn wedding venue\", \"outdoor wedding venue near Austin\"), browse photos for a long time, check capacity and dates, and book a tour with only a few places.",
+      "Wedding listing sites take a lot of these searches, so a venue's own site has to answer what those sites do: real photos across seasons, guest capacity, what is included, whether outside catering is allowed and how to see open dates. Reviews that describe the coordinator and the day itself help more than generic five-star notes.",
+    ],
+    categories: { primary: "Wedding venue", secondary: ["Event venue", "Banquet hall"] },
+    pages: [
+      { page: "Ceremonies", why: "Indoor and outdoor ceremony spaces, with rain plans shown" },
+      { page: "Receptions", why: "Capacity, layouts and photos of the room set for dinner" },
+      { page: "Packages and what is included", why: "Couples compare inclusions first. Hiding them loses tours" },
+      { page: "Book a tour", why: "The main conversion. Make it a simple form or calendar link" },
+      { page: "Rehearsal dinners and other events", why: "Showers, rehearsals and corporate events fill weekdays" },
+    ],
+    seasons: [
+      { when: "December to February", what: "Engagement season. Tours and inquiries rise. Reply the same day" },
+      { when: "Spring", what: "Couples book for next year. Show availability clearly" },
+      { when: "Summer and fall", what: "Peak wedding dates. Share real weddings and collect reviews after each" },
+      { when: "Off-season", what: "Promote weekday and winter dates to fill the calendar" },
+    ],
+    mistakes: [
+      "Capacity and what is included missing from the website",
+      "Only listing-site profiles, with a thin site of your own",
+      "Photos from one season only, so couples cannot picture their date",
+      "Tour requests that go to an inbox nobody checks on weekends",
+    ],
+    guide: GUIDES.schema,
+  },
+  "hotel-seo": {
+    market: [
+      "Hotel guests search in two ways. Travelers planning ahead compare on booking sites and Google Hotels, and look at price, location, photos and recent reviews. Last-minute searchers type \"hotel near me\" from the road and need to see that a room is open tonight and how to get there.",
+      "A smaller hotel or inn competes with big chains by being specific: what is nearby, who it suits (families, business trips, wedding groups) and what makes the stay different. AI assistants often get asked for \"a quiet inn near the lake\" or \"a hotel with meeting rooms\", and they answer from detailed pages and reviews, not star ratings alone.",
+    ],
+    categories: { primary: "Hotel", secondary: ["Inn (if that fits your property)", "Extended stay hotel (if you offer it)", "Event venue (if you host events)"] },
+    pages: [
+      { page: "Rooms and suites", why: "One section per room type with real photos and amenities" },
+      { page: "Book direct", why: "A clear direct booking path so guests do not default to third-party sites" },
+      { page: "Extended stays", why: "Traveling workers and relocations searching for weekly rates" },
+      { page: "Group blocks and weddings", why: "Planners need a simple way to request a block of rooms" },
+      { page: "Location and things nearby", why: "Answers \"hotel near\" searches for venues, hospitals and attractions" },
+    ],
+    seasons: [
+      { when: "Summer", what: "Family travel peak. Pool, parking and family room details up front" },
+      { when: "Wedding season", what: "Room block requests. Have the group booking form working" },
+      { when: "Local events", what: "Festivals, games and graduations. Mention them on the site ahead of time" },
+      { when: "Holidays", what: "Family visits and travel. Keep rates and policies current on every channel" },
+    ],
+    mistakes: [
+      "Different amenities or policies listed on Google, booking sites and your own site",
+      "No direct booking link on the Business Profile",
+      "Old photos that no longer match renovated rooms",
+      "Reviews mentioning problems left unanswered for weeks",
+    ],
+    guide: GUIDES.aiCheck,
+  },
+  "event-planner-seo": {
+    market: [
+      "Hiring an event planner is a trust decision made well in advance. A couple, a company or a family looks for someone who has done their kind of event before, at the kind of venue they are considering, and who fits their style. They browse past events, read reviews closely and usually talk to two or three planners before deciding.",
+      "Many planners rely on referrals and Instagram, which works until the client searches by service (\"day-of coordinator\", \"corporate event planner\") and finds nothing. Separate pages for each type of event, with real examples and how pricing is structured, catch those searches.",
+    ],
+    categories: { primary: "Event planner", secondary: ["Wedding planner", "Party planner", "Event management company"] },
+    pages: [
+      { page: "Wedding planning", why: "Full planning explained, with real weddings and venue names" },
+      { page: "Day-of coordination", why: "A separate, common search from couples who planned the rest" },
+      { page: "Corporate events", why: "Conferences, retreats and launches need different proof than weddings" },
+      { page: "Private parties", why: "Milestone birthdays and anniversaries booked by a different buyer" },
+      { page: "How we work", why: "Process, timelines and how fees are structured, so clients self-qualify" },
+    ],
+    seasons: [
+      { when: "Winter", what: "Newly engaged couples look for planners. Portfolio and inquiry form ready" },
+      { when: "Spring", what: "Corporate planning for summer and fall events" },
+      { when: "Summer and fall", what: "Peak event dates. Ask for reviews soon after each event" },
+      { when: "Late fall", what: "Holiday parties. Promote corporate party planning by early fall" },
+    ],
+    mistakes: [
+      "No examples of past events with the venue and event type named",
+      "Full planning and day-of coordination mixed on one page",
+      "Not saying which areas or venues you travel to",
+      "Inquiry form with no idea of what happens next",
+    ],
+    guide: GUIDES.reviews,
+  },
+  "florist-seo": {
+    market: [
+      "Florist searches swing between urgent and planned. Someone who forgot a birthday or needs sympathy flowers today searches \"flower delivery near me\" and picks whoever shows same-day delivery and clear arrangement photos. Brides and event planners plan months ahead and choose from a portfolio and a consultation.",
+      "Wire services and national order sites often outrank local shops for delivery searches, and some take a cut of the order. A florist that shows its own arrangements, delivery areas and cutoff times on its own site, and links ordering from the Business Profile, keeps more of those orders.",
+    ],
+    categories: { primary: "Florist", secondary: ["Flower delivery", "Flower designer", "Gift shop (if you sell gifts)"] },
+    pages: [
+      { page: "Flower delivery", why: "Delivery areas, same-day cutoff and fees answered on one page" },
+      { page: "Wedding flowers", why: "Portfolio, consultation steps and venues you have worked" },
+      { page: "Sympathy and funeral flowers", why: "Sensitive orders. Make it easy to send to a funeral home" },
+      { page: "Event florals", why: "Corporate events, galas and parties beyond weddings" },
+      { page: "Shop online", why: "Your own ordering, so customers do not go through a wire service" },
+    ],
+    seasons: [
+      { when: "Valentine's Day", what: "The biggest rush. Open preorders early and post delivery cutoffs" },
+      { when: "Mother's Day", what: "Second big peak. Same-day and weekend delivery details clear" },
+      { when: "Prom and graduation", what: "Corsages and boutonnieres. Order page live by early spring" },
+      { when: "Wedding season", what: "Consultations book in winter and spring for summer and fall dates" },
+    ],
+    mistakes: [
+      "Delivery area and same-day cutoff time not stated",
+      "Ordering only through a wire service link instead of your own shop",
+      "No funeral home delivery info on the sympathy page",
+      "Preorders for Valentine's Day opened too late",
+    ],
+    guide: GUIDES.mapPack,
+  },
+  "hair-salon-seo": {
+    market: [
+      "Salon clients search by service and result, not by salon name. They type \"balayage near me\" or \"curly hair salon\", look at photos of the stylist's work and check whether they can book online tonight. Seeing hair like theirs in the portfolio matters more than the salon's decor.",
+      "Booking apps and Instagram do a lot of the work, but clients often check Google reviews before trusting someone with their color. Reviews that name the stylist and the service, and a website that lists each stylist's specialties, help the right client pick the right chair.",
+    ],
+    categories: { primary: "Hair salon", secondary: ["Beauty salon", "Hair extension technician (if listed)"] },
+    pages: [
+      { page: "Haircuts", why: "Cuts for each hair type, with stylists who specialize" },
+      { page: "Hair color and balayage", why: "High-value services searched by name. Needs real photos" },
+      { page: "Hair extensions", why: "A planned, high-ticket service with consultation steps" },
+      { page: "Meet the stylists", why: "Clients choose a person. Show each one's work and skills" },
+      { page: "Book online", why: "A direct booking link that works on a phone at night" },
+    ],
+    seasons: [
+      { when: "Prom season", what: "Updos and color. Booking slots open well ahead" },
+      { when: "Wedding season", what: "Bridal hair and trials. Bridal page and inquiry form ready" },
+      { when: "Back to school", what: "Kids' cuts and fresh starts in late summer" },
+      { when: "November and December", what: "Holiday party color. Post holiday hours and gift cards" },
+    ],
+    mistakes: [
+      "Booking link missing from the Business Profile",
+      "Portfolio photos with no service or hair type described",
+      "Service price ranges or consultation rules hidden until the client calls",
+      "Stylists leave and their reviews and photos stay on the site",
+    ],
+    guide: GUIDES.aiCheck,
+  },
+  "barber-shop-seo": {
+    market: [
+      "Barber shop customers often decide the same day. They search \"barber near me\" when their hair needs a cut, check the wait or the next open slot, and choose based on photos of fades and beard work and reviews that name a barber. Walk-in policy and opening hours matter a lot.",
+      "Loyalty is high once a client finds the right barber, so the first visit is what you are competing for. A profile that shows real cuts, the services offered (kids' cuts, hot towel shaves, beard trims) and an online booking link catches new movers and people whose barber just left.",
+    ],
+    categories: { primary: "Barber shop", secondary: ["Hair salon (if you cut all hair types)", "Hairdresser (if listed)"] },
+    pages: [
+      { page: "Men's haircuts", why: "Fades, tapers and classic cuts named the way clients search" },
+      { page: "Beard trims and lineups", why: "Often booked with a cut, and searched on its own too" },
+      { page: "Hot towel shaves", why: "A specialty service that sets a shop apart" },
+      { page: "Kids' haircuts", why: "Parents search for patient barbers and kid-friendly shops" },
+      { page: "Barbers and booking", why: "Each barber's style, schedule and booking link" },
+    ],
+    seasons: [
+      { when: "Back to school", what: "Kids' cut rush in August. Extra slots and clear walk-in rules" },
+      { when: "Prom and graduation", what: "Fresh cuts before photos. Promote booking ahead" },
+      { when: "Holidays", what: "Busy week before Christmas and New Year. Post changed hours" },
+      { when: "Wedding season", what: "Groom and groomsmen packages for summer weekends" },
+    ],
+    mistakes: [
+      "Walk-in versus appointment policy not stated anywhere",
+      "No photos of actual cuts, just the shop interior",
+      "Each barber uses a different booking app with no single link",
+      "Hours on Google wrong on holidays and Sundays",
+    ],
+    guide: GUIDES.reviews,
+  },
+  "med-spa-seo": {
+    market: [
+      "Med spa clients research for a long time before booking. They search for a specific treatment (\"laser hair removal near me\", \"Botox consultation\"), read about who performs it, look at results, and compare reviews for comfort and trust. Many book a consultation first, not the treatment itself.",
+      "Trust is the whole decision. Clients want to know the provider's credentials, the medical oversight, what the treatment involves and what recovery looks like. Before-and-after photos and claims about results are sensitive, so they should be real, shown with patient consent and described carefully. Check the rules that apply in your state and on each platform before you post them.",
+    ],
+    categories: { primary: "Medical spa", secondary: ["Skin care clinic", "Laser hair removal service", "Facial spa"] },
+    pages: [
+      { page: "Facial treatments", why: "One page per treatment, explaining the process and aftercare" },
+      { page: "Laser hair removal", why: "Searched by name, booked as a series. Explain sessions and skin types" },
+      { page: "Injectables consultation", why: "Clients want to meet the provider first. Make booking simple" },
+      { page: "Providers and credentials", why: "Who performs each treatment, and their training" },
+      { page: "Results gallery", why: "Real, consented photos with honest context, not promises" },
+    ],
+    seasons: [
+      { when: "January", what: "New year self-care. Consultation booking ready" },
+      { when: "Fall and winter", what: "Laser hair removal season, since less sun exposure suits it" },
+      { when: "Before weddings", what: "Brides plan skin treatments months ahead. Bridal timeline page" },
+      { when: "November and December", what: "Gift cards and pre-party treatments. Set special hours on the profile" },
+    ],
+    mistakes: [
+      "Treatment pages that promise results instead of explaining the process",
+      "Providers and their credentials not named on the site",
+      "Before-and-after photos posted without clear consent or honest context",
+      "No consultation booking link, only a phone number",
+    ],
+    guide: GUIDES.aiCheck,
+  },
+  "massage-therapy-seo": {
+    market: [
+      "Massage clients search by need: pain relief, sports recovery, pregnancy or simply relaxing. They type \"deep tissue massage near me\" or \"prenatal massage\", then look at who the therapist is, how long sessions run and whether they can book a time this week. A calm, clear website matters, because trust and comfort drive the choice.",
+      "Big franchise chains and spa apps compete hard for generic searches. An independent practice wins with specifics: each technique explained, each therapist's training, a clear note on what to expect at a first visit and reviews that mention the problem that got better.",
+    ],
+    categories: { primary: "Massage therapist", secondary: ["Massage spa (if you have a spa setting)", "Sports massage therapist (if listed)"] },
+    pages: [
+      { page: "Therapeutic massage", why: "Pain and tension relief, explained without medical promises" },
+      { page: "Deep tissue massage", why: "One of the most searched techniques. Say who it suits" },
+      { page: "Sports massage", why: "Athletes and runners searching for recovery work" },
+      { page: "Prenatal massage", why: "Expecting clients want to know the therapist is trained for it" },
+      { page: "First visit and booking", why: "What to expect, intake, and a link to book online" },
+    ],
+    seasons: [
+      { when: "January", what: "Wellness resolutions and gift card redemptions. Open more slots" },
+      { when: "Mother's Day", what: "Gift cards and couples sessions. Online gift card link ready" },
+      { when: "Race and sports seasons", what: "Local marathons and league seasons. Promote sports massage" },
+      { when: "Holidays", what: "Gift cards are a top seller. Make them easy to buy online" },
+    ],
+    mistakes: [
+      "One page listing every technique with no detail",
+      "Therapist license and training not shown",
+      "No online gift card purchase before the holidays",
+      "Health claims on the site that a therapist cannot back up",
+    ],
+    guide: GUIDES.reviews,
+  },
+  "fitness-studio-seo": {
+    market: [
+      "Fitness searches come in waves of motivation. Someone decides to get in shape, searches \"personal trainer near me\" or \"beginner strength class\", and picks a place that looks welcoming for their level, close to home or work, and easy to try. A free or intro session and a visible class schedule tip the decision.",
+      "Studios compete with big-box gyms and apps, so they win on coaching and community. Pages that show real coaches, real members and how a first week works answer the question most beginners have, which is \"will I fit in here?\"",
+    ],
+    categories: { primary: "Gym (or Personal trainer for training-led studios)", secondary: ["Personal trainer", "Pilates studio (if you teach it)", "Boot camp (if listed)"] },
+    pages: [
+      { page: "Personal training", why: "One-on-one coaching. Show the coaches and how sessions work" },
+      { page: "Group fitness classes", why: "Class types and a live schedule people can check" },
+      { page: "Strength training", why: "A growing search, often from people new to lifting" },
+      { page: "Beginner programs", why: "Lowers the fear of the first visit and converts newcomers" },
+      { page: "Intro offer and booking", why: "One clear first step to try the studio" },
+    ],
+    seasons: [
+      { when: "January", what: "The biggest sign-up month. Intro offers and beginner pages ready by December" },
+      { when: "Spring", what: "Summer goals. Run challenges and short programs" },
+      { when: "September", what: "Back-to-routine season after summer. Refresh the schedule" },
+      { when: "Holidays", what: "Gift memberships and changed class times on the profile" },
+    ],
+    mistakes: [
+      "Class schedule only inside an app, not on the website",
+      "Nothing aimed at beginners, so newcomers assume they will not fit in",
+      "No coach bios or credentials",
+      "Intro offer buried below the fold or not on the profile",
+    ],
+    guide: GUIDES.categories,
+  },
+  "dog-groomer-seo": {
+    market: [
+      "Dog owners choose a groomer carefully, because they are handing over their pet. They search \"dog groomer near me\" or by breed and service, then read reviews for how the groomer treats nervous dogs, and look at photos of finished cuts on breeds like theirs. Availability matters too, since good groomers book out.",
+      "Most clients become regulars on a set schedule, so the first booking is the one to win. A clear service list by size and coat, what is included, how long the dog stays and an easy way to book or join a waitlist all reduce the calls a busy groomer has to answer.",
+    ],
+    categories: { primary: "Dog groomer", secondary: ["Pet groomer", "Pet supply store (if you sell products)"] },
+    pages: [
+      { page: "Full-service grooming", why: "Bath, cut and finish explained by size and coat type" },
+      { page: "Bath and tidy", why: "Lighter service between full grooms, a common search" },
+      { page: "Nail trims", why: "Quick visits that bring new clients in the door" },
+      { page: "De-shedding", why: "Double-coated breed owners search for this by name" },
+      { page: "First visit and policies", why: "Vaccines, drop-off times and how nervous dogs are handled" },
+    ],
+    seasons: [
+      { when: "Spring", what: "Shedding season. Promote de-shedding and open more slots" },
+      { when: "Summer", what: "Summer cuts and baths after swimming and hikes" },
+      { when: "November and December", what: "Holiday grooms book up early. Post cutoff dates" },
+      { when: "Year-round", what: "Rebook every client before they leave to keep the schedule full" },
+    ],
+    mistakes: [
+      "No photos of finished grooms, or only one breed shown",
+      "Vaccine and drop-off rules missing until the dog arrives",
+      "Holiday appointments fully booked with no waitlist option",
+      "Negative reviews about a nervous dog left without a calm reply",
+    ],
+    guide: GUIDES.reviews,
+  },
+  "veterinarian-seo": {
+    market: [
+      "Pet owners pick a vet in two moods. For routine care, they compare clinics near home, read reviews about how staff treat anxious pets, and check whether the clinic takes new patients and books online. For urgent problems, they need to know right away whether a clinic sees same-day cases or where to go after hours.",
+      "Owners also search by species and service: \"exotic vet\", \"cat-friendly vet\", \"dog dental cleaning\". Clinics that list the animals they treat, the services they offer and what to do in an emergency show up for far more of these searches than a single \"services\" page.",
+    ],
+    categories: { primary: "Veterinarian", secondary: ["Animal hospital", "Emergency veterinarian service (only if you offer it)"] },
+    pages: [
+      { page: "Wellness exams", why: "The main reason new clients book. Explain what a visit covers" },
+      { page: "Vaccinations", why: "Puppy, kitten and boarding vaccine searches" },
+      { page: "Urgent care and emergencies", why: "Say clearly what you see same day and where to go after hours" },
+      { page: "Dental care", why: "A common planned procedure. Explain anesthesia and aftercare" },
+      { page: "New patients", why: "Accepting new clients, species treated and how to book" },
+    ],
+    seasons: [
+      { when: "Spring", what: "Flea, tick and heartworm prevention. Puppy and kitten season begins" },
+      { when: "Summer", what: "Heat, travel and boarding vaccine requirements" },
+      { when: "July 4th and New Year's", what: "Fireworks anxiety and lost pets. Post guidance and holiday hours" },
+      { when: "Holidays", what: "Food toxicity calls rise. Keep after-hours referral info current" },
+    ],
+    mistakes: [
+      "No clear answer on whether new patients are accepted",
+      "Emergency info missing, so panicked owners call and get voicemail",
+      "Species you treat not listed, especially cats and exotics",
+      "Holiday hours not set on the Business Profile",
+    ],
+    guide: GUIDES.schema,
+  },
+  "pet-daycare-seo": {
+    market: [
+      "Daycare and boarding are trust purchases. Owners search \"dog daycare near me\" or \"pet boarding\" and look for clean play areas, how dogs are grouped, staff-to-dog supervision and whether there are cameras. Reviews that describe a happy, tired dog at pickup carry more weight than anything else.",
+      "Boarding is booked ahead of trips, and spots run out around holidays. A facility that shows availability rules, the requirements for a first visit (vaccines, temperament test) and a simple reservation form gets booked while competitors are still returning phone calls.",
+    ],
+    categories: { primary: "Dog day care center", secondary: ["Pet boarding service", "Kennel", "Dog trainer (if you train)"] },
+    pages: [
+      { page: "Dog daycare", why: "Daily play explained: groups, schedule and packages" },
+      { page: "Overnight boarding", why: "Sleeping areas, feeding, meds and what a day looks like" },
+      { page: "Puppy daycare", why: "Owners of young dogs search for socialization and safe groups" },
+      { page: "Requirements and first visit", why: "Vaccines and temperament evaluation, before they book" },
+      { page: "Reservations", why: "A clear way to request boarding dates for busy holidays" },
+    ],
+    seasons: [
+      { when: "Summer", what: "Vacation boarding peak. Open reservations early" },
+      { when: "Thanksgiving to New Year's", what: "Boarding sells out. Post booking deadlines and waitlist info" },
+      { when: "Spring break", what: "Family trips. Remind past clients to book" },
+      { when: "Back to the office", what: "Owners returning to work search for daycare packages" },
+    ],
+    mistakes: [
+      "No photos or video of the actual play areas and sleeping spaces",
+      "Vaccine and evaluation rules not explained, so first visits get turned away",
+      "Holiday boarding full with no mention online",
+      "No information on supervision or how dogs are grouped",
+    ],
+    guide: GUIDES.reviews,
+  },
+};
