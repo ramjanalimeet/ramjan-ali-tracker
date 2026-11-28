@@ -33,7 +33,7 @@ export const CITY_GUIDES_5: Record<string, GlobalCityGuide> = {
     summary: "Local SEO in Düsseldorf: stand out on the Kö, in Oberkassel and Bilk, and reach the city's fashion, advertising and Japanese business communities.",
     lead: "Düsseldorf mixes the Rhine-side Altstadt, the luxury Königsallee and a large international workforce. Local search here rewards businesses that speak to both long-time Rhinelanders and newly arrived professionals.",
     profile: [
-      "As the capital of North Rhine-Westphalia, Düsseldorf is a city of government offices, trade fairs, advertising agencies and fashion houses. It also has one of Europe's best-known Japanese communities, centred on the streets around Immermannstraße.",
+      "As the capital of North Rhine-Westphalia, Düsseldorf is a city of government offices, trade fairs, advertising agencies and fashion houses. It also has a large, well-known Japanese community, centred on the streets around Immermannstraße.",
       "Competition is sharp in beauty, dining and professional services, where image matters as much as location. Many customers are relocating staff who search in English first, so businesses that offer clear English information alongside German often pick up clients that competitors miss.",
     ],
     areas: [
@@ -61,7 +61,7 @@ export const CITY_GUIDES_5: Record<string, GlobalCityGuide> = {
     summary: "Local SEO for Leipzig: get found in Plagwitz, Gohlis and Südvorstadt as new residents, students and trade fair visitors search for local services.",
     lead: "Leipzig has grown fast, and many of its newer residents choose a provider by searching their Viertel on Google Maps. That makes it a good city for businesses that build a strong neighbourhood presence early.",
     profile: [
-      "Leipzig is the largest city in Saxony and a long-standing trade fair and music city, with a busy main station and a major logistics hub at its airport. Old industrial areas have been turned into studios, flats and cafés, drawing young professionals and creatives from across Germany.",
+      "Leipzig is a major Saxon city and a long-standing trade fair and music city, with a busy main station and a major logistics hub at its airport. Old industrial areas have been turned into studios, flats and cafés, drawing young professionals and creatives from across Germany.",
       "Because so many residents are relatively new, word of mouth is weaker than in older cities and Google reviews fill the gap. Trades that renovate Gründerzeit flats, independent cafés and health practices all compete for people who do not yet have a regular provider.",
     ],
     areas: [
@@ -227,7 +227,7 @@ export const CITY_GUIDES_5: Record<string, GlobalCityGuide> = {
   },
   "germany/nuremberg": {
     summary: "Local SEO for Nuremberg: reach customers in the Altstadt, Gostenhof and St. Johannis, from Christkindlesmarkt crowds to toy fair visitors.",
-    lead: "Nürnberg is Franconia's main city, known for its walled old town, castle and one of Germany's most famous Christmas markets. Beyond tourism, it is a solid business city with engineering, retail and trade fairs.",
+    lead: "Nürnberg is Franconia's main city, known for its walled old town, its castle and a famous Christmas market. Beyond tourism, it is a solid business city with engineering, retail and trade fairs.",
     profile: [
       "Nuremberg is in Bavaria but sees itself as Franconian, and it forms a joined-up region with neighbouring Fürth and Erlangen. Its economy covers manufacturing, IT, market research, logistics and a busy exhibition centre.",
       "Tourists dominate searches in the old town for much of the year, while districts outside the walls behave like any large German city. Local customers appreciate Franconian food and traditions, and businesses that show local character, not just generic listings, tend to earn better reviews.",
@@ -313,7 +313,7 @@ export const CITY_GUIDES_5: Record<string, GlobalCityGuide> = {
     summary: "Local SEO in Wuppertal: compete in Elberfeld, Barmen and the Luisenviertel in a hilly Bergisches Land city famous for its suspension railway.",
     lead: "Wuppertal stretches along a narrow, steep valley, linked end to end by its famous Schwebebahn. That long shape means customers in Elberfeld, Barmen and Vohwinkel each tend to search close to home.",
     profile: [
-      "Wuppertal is the largest city of the Bergisches Land in North Rhine-Westphalia, formed from older towns including Elberfeld and Barmen. Its textile and chemical history has given way to a mix of industry, a university and many small and medium firms.",
+      "Wuppertal is the main city of the Bergisches Land in North Rhine-Westphalia, formed from older towns including Elberfeld and Barmen. Its textile and chemical history has given way to a mix of industry, a university and many small and medium firms.",
       "The hills and long valley make travel slow, so a provider ten minutes away by map can feel far. Trades that handle steep driveways and old houses, plus health and food businesses in each centre, compete within their own part of town rather than citywide.",
     ],
     areas: [
@@ -423,7 +423,7 @@ export const CITY_GUIDES_5: Record<string, GlobalCityGuide> = {
   },
   "germany/karlsruhe": {
     summary: "Local SEO in Karlsruhe: win searches in Durlach, the Südstadt and Weststadt in a court and tech city laid out like a fan around its palace.",
-    lead: "Karlsruhe is home to Germany's highest courts and a leading technology institute, with streets radiating from its palace. IT firms, researchers and lawyers make for a well-educated, detail-minded customer base.",
+    lead: "Karlsruhe is home to Germany's highest courts and a major technology institute, with streets radiating from its palace. IT firms, researchers and lawyers make for a well-educated, detail-minded customer base.",
     profile: [
       "Karlsruhe is in Baden-Württemberg, close to the Rhine and the French border. It hosts the Federal Constitutional Court and the Federal Court of Justice, alongside a strong IT sector and a large technical university.",
       "People here tend to research before they buy, so complete profiles, clear prices and well-written pages pay off. The city also draws customers from the surrounding Baden region, and Durlach, an old town in its own right, has a separate local identity.",
@@ -479,7 +479,7 @@ export const CITY_GUIDES_5: Record<string, GlobalCityGuide> = {
   },
   "germany/augsburg": {
     summary: "Local SEO in Augsburg: compete in the Innenstadt, Göggingen and Lechhausen in a Roman-founded Bavarian city of industry and Munich commuters.",
-    lead: "Augsburg is one of Germany's oldest cities, founded by the Romans, and home to the Fuggerei social housing estate. Today it is a manufacturing and university city where many residents also commute to Munich.",
+    lead: "Augsburg is an ancient city, founded by the Romans, and home to the Fuggerei social housing estate. Today it is a manufacturing and university city where many residents also commute to Munich.",
     profile: [
       "Augsburg is the main city of Bavarian Swabia, with industries such as machinery, aerospace parts and robotics, plus a university and a university of applied sciences. Its old town, puppet theatre and Renaissance buildings draw visitors.",
       "Being close to Munich shapes the market. Some residents work there and expect big-city service, while local customers remain loyal to traditional businesses. Trades, healthcare and food businesses compete district by district, especially in growing suburbs to the south.",
@@ -523,7 +523,7 @@ export const CITY_GUIDES_5: Record<string, GlobalCityGuide> = {
     language: "Searches are in German, with English used by many American families and international staff. Bilingual pages can help for health, car and home services.",
     demand: [
       { when: "August", what: "The Rheingau wine week fills the centre and lifts searches for dining and hospitality." },
-      { when: "Advent", what: "The Christmas market with its star-shaped lights draws visitors to central shops and restaurants." },
+      { when: "Advent", what: "The Christmas market in the centre draws visitors to central shops and restaurants." },
       { when: "Year round", what: "Spa and wellness visitors search for thermal baths, massages and beauty treatments." },
     ],
     queries: ["Zahnarzt Wiesbaden Innenstadt", "english speaking doctor Wiesbaden", "Restaurant Biebrich", "Kfz Werkstatt Wiesbaden", "Massage Wiesbaden"],
@@ -608,7 +608,7 @@ export const CITY_GUIDES_5: Record<string, GlobalCityGuide> = {
     demand: [
       { when: "Summer", what: "The Fêtes de Genève bring lakeside crowds and boost searches for food, events and accommodation." },
       { when: "December", what: "The Escalade festival brings parades and seasonal treats, lifting searches for bakeries and restaurants." },
-      { when: "Spring", what: "Major watch and motor fairs draw international visitors who search for hotels and dining." },
+      { when: "Spring", what: "A major watch fair draws international visitors who search for hotels and dining." },
     ],
     queries: ["dentiste Genève Eaux-Vives", "english speaking doctor Geneva", "restaurant Plainpalais", "avocat Genève", "coiffeur Champel"],
     sectors: ["private clinics", "law firms", "restaurants"],
@@ -705,7 +705,7 @@ export const CITY_GUIDES_5: Record<string, GlobalCityGuide> = {
     summary: "Local SEO in Winterthur: compete in the Altstadt, Töss and Oberwinterthur in an old engineering town that now serves Zurich commuters and students.",
     lead: "Winterthur built its name on machinery and textiles, and many of its old factory halls now hold flats, schools and offices. Being a short train ride from Zurich, it attracts families who want city access with more space.",
     profile: [
-      "Winterthur is the second city of the canton of Zurich, with a car-free old town, well-known art museums and a large university of applied sciences. Insurance, health care and technology firms have joined its engineering heritage.",
+      "Winterthur is a major city in the canton of Zurich, with a car-free old town, well-known art museums and a large university of applied sciences. Insurance, health care and technology firms have joined its engineering heritage.",
       "Many residents commute, so evening and Saturday availability matters to them. Customers in Winterthur often prefer to stay local rather than travel into Zurich, which gives local trades, clinics and shops a real chance if they show up clearly in their own quarter.",
     ],
     areas: [
@@ -731,7 +731,7 @@ export const CITY_GUIDES_5: Record<string, GlobalCityGuide> = {
   },
   "switzerland/lucerne": {
     summary: "Local SEO for Lucerne: reach tourists by the Chapel Bridge and residents in Kriens, Tribschen and the Neustadt in central Switzerland's lake city.",
-    lead: "Luzern is one of Switzerland's busiest tourist stops, with the wooden Chapel Bridge, the lake and Mount Pilatus drawing visitors all year. Behind the postcard views, it is also a regional centre for central Switzerland with its own steady local market.",
+    lead: "Luzern is a major Swiss tourist stop, with the wooden Chapel Bridge, the lake and Mount Pilatus drawing visitors all year. Behind the postcard views, it is also a regional centre for central Switzerland with its own steady local market.",
     profile: [
       "Lucerne is the capital of the canton of Lucerne and the main city of central Switzerland. Tourism, watch and jewellery retail, healthcare, education and the cultural centre by the lake form the core of its economy.",
       "That gives local businesses two audiences. In the old town, visitors search in English and other languages for food, souvenirs and watches, while residents in districts like Tribschen or Littau want everyday services close to home. Each needs a different kind of page.",
@@ -789,7 +789,7 @@ export const CITY_GUIDES_5: Record<string, GlobalCityGuide> = {
     summary: "Local SEO for Lugano: reach residents and visitors in the Centro, Cassarate and Paradiso in Ticino's Italian-speaking lakeside finance city.",
     lead: "Lugano brings Italian language and lifestyle to Switzerland, with palm-lined lake promenades and mountains on every side. Finance, tourism and a university keep its local economy busy.",
     profile: [
-      "Lugano is the largest town in Ticino, the Italian-speaking canton south of the Alps. Banking, trading, a university and summer tourism form its economy, and many workers commute in from nearby Italy.",
+      "Lugano is a lakeside city in Ticino, the Italian-speaking canton south of the Alps. Banking, trading, a university and summer tourism form its economy, and many workers commute in from nearby Italy.",
       "Customers include locals, Swiss German holidaymakers, Italian cross-border workers and international residents. That means searches come in Italian, German and English. Businesses that cover more than one language often reach customers their rivals miss.",
     ],
     areas: [
@@ -814,7 +814,7 @@ export const CITY_GUIDES_5: Record<string, GlobalCityGuide> = {
     ],
   },
   "switzerland/biel-bienne": {
-    summary: "Local SEO in Biel/Bienne: rank in German and French in Switzerland's largest bilingual city, a watchmaking centre on the shores of Lake Biel.",
+    summary: "Local SEO in Biel/Bienne: rank in German and French in an officially bilingual city, a watchmaking centre on the shores of Lake Biel.",
     lead: "Biel/Bienne is officially bilingual, and street signs, shops and everyday life switch between German and French. Its watchmaking firms, precision industry and lakeside setting shape a distinct local market.",
     profile: [
       "Biel/Bienne is in the canton of Bern at the foot of the Jura mountains. It is a major centre for Swiss watchmaking and precision engineering, with several big watch companies based here.",
@@ -957,7 +957,7 @@ export const CITY_GUIDES_5: Record<string, GlobalCityGuide> = {
     summary: "Local SEO for Schaffhausen: reach residents and Rhine Falls visitors in a border town of painted oriel windows, the Munot fortress and precision industry.",
     lead: "Schaffhausen sits on the Rhine just upstream of the Rhine Falls, almost surrounded by Germany. Its old town with painted facades and oriel windows draws visitors, while watchmaking and industry provide the jobs.",
     profile: [
-      "Schaffhausen is the capital of the canton of Schaffhausen in northern Switzerland. Its economy includes watchmaking, packaging and engineering firms, and it is close to German towns that share the same daily routines.",
+      "Schaffhausen is the capital of the canton of Schaffhausen in northern Switzerland. Its economy includes watchmaking, engineering and other industrial firms, and it is close to German towns that share the same daily routines.",
       "Customers include locals, tourists heading to the Rhine Falls and shoppers from Germany. Local businesses can reach both residents and visitors if they keep their listings clear, but most loyalty is built on reliable everyday service.",
     ],
     areas: [
@@ -965,7 +965,7 @@ export const CITY_GUIDES_5: Record<string, GlobalCityGuide> = {
       { name: "Breite", note: "A residential area above the old town with families." },
       { name: "Herblingen", note: "A northern district with business parks and housing." },
       { name: "Buchthalen", note: "A residential area east of the centre with local services." },
-      { name: "Hochstrasse area", note: "A residential zone west of the old town with schools and shops." },
+      { name: "Bahnhof area", note: "The streets around the station, a gateway for commuters and cross-border shoppers." },
     ],
     nearby: ["Neuhausen am Rheinfall", "Feuerthalen", "Thayngen", "Singen (Hohentwiel)"],
     language: "People search in standard German, without the ß. Tourists heading to the Rhine Falls often search in English.",
@@ -1038,7 +1038,7 @@ export const CITY_GUIDES_5: Record<string, GlobalCityGuide> = {
     ],
   },
   "france/lyon": {
-    summary: "Local SEO for Lyon: compete in the Presqu'île, Part-Dieu and Croix-Rousse in France's gastronomy capital, home to bouchons and the Fête des Lumières.",
+    summary: "Local SEO for Lyon: compete in the Presqu'île, Part-Dieu and Croix-Rousse in a city famed for food, home to bouchons and the Fête des Lumières.",
     lead: "Lyon sits where the Rhône and Saône meet, and its food culture, business district and old town all draw different crowds. Searches here often use the arrondissement, such as Lyon 6e or Lyon 3.",
     profile: [
       "Lyon is the capital of the Auvergne-Rhône-Alpes region, with strengths in finance, pharmaceuticals, biotech and education. The Part-Dieu business district and the station make it a hub for travel and work.",
@@ -1067,7 +1067,7 @@ export const CITY_GUIDES_5: Record<string, GlobalCityGuide> = {
   },
   "france/toulouse": {
     summary: "Local SEO in Toulouse: get found around the Capitole, Carmes and Saint-Cyprien in the pink city of aerospace, students and rugby.",
-    lead: "Toulouse is called la ville rose for its pink brick buildings, and it is the heart of the European aerospace industry. Engineers, students and rugby fans make for a young, busy local market.",
+    lead: "Toulouse is called la ville rose for its pink brick buildings, and it is a centre of the European aerospace industry. Engineers, students and rugby fans make for a young, busy local market.",
     profile: [
       "Toulouse is the capital of the Occitanie region, with an economy built on aircraft and space industries, research and a large student population. The Garonne river and the Canal du Midi run through the city.",
       "Many residents are newcomers drawn by aerospace jobs, so reviews and visibility matter for winning their trust. Students and young professionals search for food, housing and services, while families in suburbs like Blagnac and Colomiers prefer local providers.",

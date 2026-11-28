@@ -1033,7 +1033,7 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
     faqs: [
       {
         q: "Should I target ski travellers?",
-        a: "If you rent gear, sell tyre chains, service cars or offer lodging, yes. Skiers often stop in Chillán on the way up to the mountains, so being visible for searches like "arriendo de esquí Chillán" in June and July can bring a burst of extra trade.",
+        a: "If you rent gear, sell tyre chains, service cars or offer lodging, yes. Skiers often stop in Chillán on the way up to the mountains, so being visible for searches like \"arriendo de esquí Chillán\" in June and July can bring a burst of extra trade.",
       },
       {
         q: "Do I need a separate page for Chillán Viejo?",

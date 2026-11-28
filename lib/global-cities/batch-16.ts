@@ -474,7 +474,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     sectors: ["buggy and tour operators", "hotels and holiday rentals", "restaurants"],
     faqs: [
       { q: "Should a tour company target Natal or Genipabu?", a: "Both. Visitors search for Genipabu and the dunes by name, as well as for tours from Natal. A page for each tour destination, plus clear pickup details, helps you show up for more searches." },
-      { q: "Is Parnamirim a separate market?", a: "Yes. Parnamirim is its own city, home to the airport and many residents, and it has its own searches. If you serve it, create a dedicated page." },
+      { q: "Is Parnamirim a separate market?", a: "Yes. Parnamirim is its own city with a large residential population just south of Natal, and people there search with its name. If you serve it, create a dedicated page." },
     ],
   },
   "brazil/santo-andre": {
@@ -575,7 +575,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
     sectors: ["restaurants", "industrial services", "home repair"],
     faqs: [
-      { q: "Should I target Votorantim too?", a: "Yes, if you serve it. Votorantim borders Sorocaba and residents search with its name. A dedicated page helps." },
+      { q: "Do industrial buyers in Sorocaba really use Google Maps?", a: "Many do, especially for urgent jobs such as machining, maintenance or spare parts. A profile that names your capabilities, shows your workshop and lists the industrial districts you cover gets found when a line stops and someone needs help fast." },
       { q: "How can I reach new residents?", a: "Create pages for the newer districts you serve and list your services clearly. New residents search to find trusted local providers." },
     ],
   },
@@ -610,7 +610,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     sectors: ["bars and restaurants", "aesthetic clinics", "agricultural services"],
     faqs: [
       { q: "How do I prepare for Agrishow?", a: "Update your Google profile with hours, offers and photos before the fair. Visitors search for places to eat and stay near the event, so clear details win clicks." },
-      { q: "Should I target nearby towns?", a: "If you serve them, yes. Sertãozinho and Cravinhos are separate markets with their own searches. A page for each helps you appear there." },
+      { q: "Can one page reach both students and farm families?", a: "Rarely well. Students near the university campuses want price and convenience, while farm families expect premium service and trust. Separate sections or pages, each with its own photos and reviews, work better." },
     ],
   },
   "brazil/uberlandia": {
@@ -746,7 +746,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     sectors: ["cosmetic clinics", "short-term rentals", "restaurants"],
     faqs: [
       { q: "Should I create English pages?", a: "Yes, if you serve expats or tourists. Many search in English, especially for dentists and rentals. Keep Spanish as your main language and add English details." },
-      { q: "Is Envigado a separate market?", a: "Yes. Envigado is its own municipality with its own searches. If you serve it, create a dedicated page." },
+      { q: "How do I stand out in El Poblado?", a: "El Poblado is full of polished listings, so detail wins. Use real photos, answer every review in Spanish and English, and say exactly where you are, for example near Provenza or Parque Lleras." },
     ],
   },
   "colombia/cali": {
@@ -780,12 +780,12 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     sectors: ["dance schools", "cosmetic surgery clinics", "restaurants"],
     faqs: [
       { q: "How can a clinic reach foreign patients?", a: "Add English details, explain your process and show reviews from international patients. Patients research before travelling, so clear information builds trust." },
-      { q: "Should I target Jamundí?", a: "Yes, if you serve it. Many families live in Jamundí and search with its name." },
+      { q: "Does salsa tourism matter outside nightlife?", a: "It can. Visitors who come for dance classes and the Feria also need rooms, transport, laundry and food. Mentioning nearby dance schools or venues and keeping English details on your profile helps you catch those searches." },
     ],
   },
   "colombia/barranquilla": {
     summary: "Local SEO in Barranquilla: reach Carnaval crowds, port businesses and residents of El Prado, Riomar and Villa Country on Colombia's Caribbean coast.",
-    lead: "Barranquilla is a Caribbean port city famous for its Carnaval, one of the biggest in the world. Local businesses compete for residents, trade customers and visitors who arrive in huge numbers each year.",
+    lead: "Barranquilla is a Caribbean port city famous for a Carnaval that takes over the city in the days before Lent. Local businesses compete for residents, trade customers and visitors who arrive in huge numbers each year.",
     profile: [
       "Barranquilla is the capital of Atlántico, at the mouth of the Magdalena River. It is a major port and industrial centre, and its Carnaval is recognised by UNESCO.",
       "Retail, health and food businesses compete hard in the north, while logistics firms serve the port. The hot climate and riverfront developments shape demand for leisure and cooling services.",
@@ -814,7 +814,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     sectors: ["air conditioning services", "restaurants", "logistics and customs"],
     faqs: [
       { q: "How do I prepare for Carnaval?", a: "Update hours and closures, post Carnaval offers and add recent photos. Visitors search for food, costumes and places to stay, so clear details win." },
-      { q: "Should I target Soledad?", a: "Yes, if you serve it. Soledad is a separate municipality with many residents who search with its name." },
+      { q: "Should my listing account for arroyos?", a: "Yes, in a practical way. When heavy rain turns some streets into fast-moving arroyos, customers check whether a business is open and safe to reach. Posting updates and keeping hours accurate on storm days avoids wasted trips and bad reviews." },
     ],
   },
   "colombia/cartagena": {
@@ -881,8 +881,8 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
     sectors: ["dentists", "footwear stores", "restaurants"],
     faqs: [
-      { q: "Should I target Floridablanca and Girón?", a: "Yes, if you serve them. These towns are part of the metro area and have their own searches. A separate page for each helps." },
-      { q: "How do I reach students?", a: "Mention universities nearby, student hours and prices, and ask students for reviews." },
+      { q: "Can footwear makers use local search to reach buyers?", a: "Yes. Shoppers and resellers from other regions look for factory outlets and wholesale shoes in Bucaramanga. A profile listing your styles, retail and wholesale hours and clear showroom photos helps them find you." },
+      { q: "How do I reach students here?", a: "Name the university closest to you, list student prices or late hours, and ask students to leave reviews. They pick from what other students recommend on their phones." },
     ],
   },
   "colombia/pereira": {
@@ -915,8 +915,8 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
     sectors: ["restaurants", "country hotels", "clinics"],
     faqs: [
-      { q: "Should I target Dosquebradas?", a: "Yes, if you serve it. Dosquebradas is a separate municipality right next to Pereira, with its own searches." },
-      { q: "How can I reach coffee tourists?", a: "Create pages for tours, transfers and lodging, add English details and keep photos current." },
+      { q: "Do shoppers and coffee tourists need different content?", a: "Usually yes. Shoppers from nearby towns want parking, prices and opening hours, while coffee tourists want tours, transport and English details. Two clear sections help each group act quickly." },
+      { q: "Is Dosquebradas part of my Pereira market?", a: "In practice it often is, since the two cities run together across the Otún River, but residents still search with their own city name. If you serve Dosquebradas, give it a page with real service details." },
     ],
   },
   "colombia/santa-marta": {
@@ -983,8 +983,8 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
     sectors: ["restaurants", "student housing", "tour operators"],
     faqs: [
-      { q: "How do I reach students?", a: "Mention nearby universities, student-friendly hours and prices, and gather reviews from students." },
-      { q: "Should I target Villamaría?", a: "Yes, if you serve it. Villamaría is right next to Manizales with its own searches." },
+      { q: "How do I reach university students in Manizales?", a: "Mention the campus or area you are near, such as El Cable, and list student prices or hours. Students here walk between ridges and choose what is close and well reviewed." },
+      { q: "Does steep terrain change how I describe my location?", a: "It does. Manizales is built along ridges, so a short distance on the map can mean a long climb. Give clear directions from a main avenue or landmark, and say whether you offer parking or delivery." },
     ],
   },
   "colombia/cucuta": {
@@ -1018,7 +1018,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     sectors: ["money exchange", "legal services", "retail"],
     faqs: [
       { q: "How do I reach Venezuelan customers?", a: "Use clear, neutral Spanish and explain services like documents or payments. Many search for help with migration." },
-      { q: "Should I target Villa del Rosario?", a: "Yes, if you serve it. It is part of the metro area and near the border." },
+      { q: "How much does the border affect local search?", a: "A lot, for shops and services near the centre and the border routes. When crossings are busy, people search for exchange, transport, pharmacies and food. Keep hours current and say how close you are to the bridges." },
     ],
   },
   "colombia/ibague": {
@@ -1051,8 +1051,8 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
     sectors: ["restaurants", "music schools", "hotels"],
     faqs: [
-      { q: "How do I reach travellers?", a: "Mention routes, parking and opening hours. Travellers search on the go, so clear details help." },
-      { q: "Should I target nearby towns?", a: "If you serve them, create pages for towns like Espinal or Alvarado." },
+      { q: "Does the musical capital identity help my business?", a: "For music schools, instrument repair and event venues, yes, and it feels natural here. For other sectors, lead with clear service details rather than slogans." },
+      { q: "How do I catch drivers crossing the Andes?", a: "Ibagué is the last big stop before the climb over La Línea towards Quindío. Mention road access, parking and early or late hours, because drivers search from the road." },
     ],
   },
   "colombia/villavicencio": {
@@ -1066,8 +1066,8 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
       { name: "Centro", note: "Main commercial area with shops and public services." },
       { name: "Barzal", note: "Residential and commercial area with services." },
       { name: "La Esperanza", note: "Residential area with local commerce." },
-      { name: "Road to Restrepo", note: "Corridor with country hotels and restaurants serving weekend visitors." },
-      { name: "Road to Puerto López", note: "Corridor towards the plains with farms and tourism." },
+      { name: "Vía a Restrepo", note: "Road lined with country hotels, pools and grill restaurants that weekend visitors search for." },
+      { name: "Vía a Puerto López", note: "Route out onto the open plains, with farm stays and llanero tourism." },
     ],
     nearby: ["Restrepo", "Acacías", "Cumaral", "Puerto López"],
     language: "People search in Spanish. Llanero terms like joropo and carne a la llanera are common in searches.",
@@ -1086,7 +1086,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     sectors: ["country hotels", "restaurants", "oil services"],
     faqs: [
       { q: "How do I reach Bogotá visitors?", a: "Create pages for weekend packages and mention travel times from Bogotá. Many plan trips online." },
-      { q: "Should I target Restrepo?", a: "Yes, if you serve it. Many hotels are on the road to Restrepo, and visitors search with that name." },
+      { q: "Can oil and farm service firms benefit from Maps?", a: "Yes. Contractors arriving in Meta search for equipment hire, transport, lodging and workshops near Villavicencio. A profile that lists your services and the routes you cover helps them find you quickly." },
     ],
   },
   "colombia/valledupar": {
@@ -1099,9 +1099,9 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     areas: [
       { name: "Centro", note: "Historic centre with plazas and shops." },
       { name: "Plaza Alfonso López", note: "Main square at the heart of the vallenato festival." },
-      { name: "Northern residential areas", note: "Newer districts with families and demand for services." },
-      { name: "Guatapurí riverside", note: "Area near the river popular for leisure." },
-      { name: "Southern neighbourhoods", note: "Residential areas with local commerce." },
+      { name: "Cañaguate", note: "Traditional barrio closely tied to vallenato history, useful for cultural tourism." },
+      { name: "Balneario Hurtado", note: "Riverside bathing spot on the Guatapurí, busy with families at weekends." },
+      { name: "Parque de la Leyenda Vallenata", note: "Main festival venue, so nearby hotels and food stalls see sharp seasonal peaks." },
     ],
     nearby: ["La Paz", "Manaure Balcón del Cesar", "Agustín Codazzi", "Pueblo Bello"],
     language: "People search in Spanish with Caribbean expressions. Music terms like vallenato and acordeón appear often.",
@@ -1120,7 +1120,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     sectors: ["hotels", "music schools", "veterinary services"],
     faqs: [
       { q: "How do I prepare for the festival?", a: "Update hours, offers and photos early. Visitors search for lodging and events weeks before." },
-      { q: "Should I target nearby towns?", a: "If you serve them, create pages for towns like La Paz or Codazzi." },
+      { q: "Should I mention vallenato if I am not a music business?", a: "Only where it fits. A hotel can mention its distance to the Parque de la Leyenda, and a restaurant can mention live music nights. Forced references read as filler to locals." },
     ],
   },
   "colombia/monteria": {
@@ -1133,9 +1133,9 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     areas: [
       { name: "Centro", note: "Commercial core near the Sinú River." },
       { name: "Ronda del Sinú", note: "Riverside park with restaurants and leisure." },
-      { name: "Northern neighbourhoods", note: "Newer residential areas with families and services." },
-      { name: "Southern neighbourhoods", note: "Residential areas with local commerce." },
-      { name: "Road to Cereté", note: "Corridor with commerce and farm services." },
+      { name: "Northern Montería", note: "Where much of the newer housing and shopping has grown, with families searching for schools and clinics." },
+      { name: "Left bank of the Sinú", note: "Side of the river with large residential areas and neighbourhood shops." },
+      { name: "Vía a Cereté", note: "Road towards the Sinú valley farms, with agricultural suppliers and workshops." },
     ],
     nearby: ["Cereté", "Ciénaga de Oro", "Lorica", "San Pelayo"],
     language: "People search in Spanish with Caribbean expressions. Ranching terms like ganado and finca are common.",
@@ -1154,7 +1154,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     sectors: ["veterinary services", "farm suppliers", "restaurants"],
     faqs: [
       { q: "How do I reach farm clients?", a: "List towns and rural areas you serve, mention on-farm services and add contact details." },
-      { q: "Should I target Cereté?", a: "Yes, if you serve it. Cereté is close and has its own searches." },
+      { q: "Is being near the Ronda del Sinú worth mentioning?", a: "For restaurants, cafés and leisure businesses, yes. The riverside park is where many residents walk and eat in the cooler evenings, so mention it if you are close and show evening hours." },
     ],
   },
   "colombia/pasto": {
@@ -1166,10 +1166,10 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
     areas: [
       { name: "Centro", note: "Historic centre with shops and churches." },
-      { name: "Northern neighbourhoods", note: "Residential areas with families and services." },
-      { name: "Southern neighbourhoods", note: "Residential areas with local commerce." },
-      { name: "University area", note: "Area with students and demand for food and housing." },
-      { name: "Road to the airport", note: "Corridor with commerce and travel services." },
+      { name: "Carnival route", note: "Streets on the parade route, where shops and hotels see the biggest January demand." },
+      { name: "University area", note: "Student zone around the public university with demand for cheap food and rooms." },
+      { name: "Northern residential areas", note: "Family neighbourhoods towards the airport road, searching for clinics and schools." },
+      { name: "Road to La Cocha", note: "Route east to the lake, with trout restaurants and cabins near El Encano." },
     ],
     nearby: ["Chachagüí", "El Encano", "Tangua", "Ipiales"],
     language: "People search in Spanish with Andean wording. Local terms like cuy and barniz appear in searches.",
@@ -1187,8 +1187,8 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
     sectors: ["hotels", "restaurants", "craft shops"],
     faqs: [
-      { q: "How do I prepare for Carnaval?", a: "Update hours and offers early and post photos. Visitors search for lodging and food weeks before." },
-      { q: "Should I target Ipiales?", a: "If you serve it, yes. Ipiales is a separate border town with its own searches." },
+      { q: "Do I need a page for the carnival?", a: "A short seasonal page or post works well. Visitors search for lodging, costumes and parade routes in late December and early January, so publish details in December and keep Maps hours accurate on parade days." },
+      { q: "Do travellers from Ecuador search for businesses here?", a: "Some do, especially people crossing at Rumichaca who stop in Pasto. They search in Spanish, so clear hours, location and accepted payment methods matter most." },
     ],
   },
   "colombia/neiva": {
@@ -1200,10 +1200,10 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
     areas: [
       { name: "Centro", note: "Commercial core with shops and public services." },
-      { name: "Riverside area", note: "Area along the Magdalena with leisure and dining." },
-      { name: "Northern neighbourhoods", note: "Residential areas with families and services." },
-      { name: "Southern neighbourhoods", note: "Residential areas with local commerce." },
-      { name: "Road to the airport", note: "Corridor with hotels and travel services." },
+      { name: "Malecón del Magdalena", note: "Riverside promenade where evening dining and leisure searches cluster." },
+      { name: "Northern Neiva", note: "Growing residential side with newer apartments and family services." },
+      { name: "Southern Neiva", note: "Older working neighbourhoods served by local shops and workshops." },
+      { name: "Road south to Rivera", note: "Route towards the hot springs, with weekend restaurants and country houses." },
     ],
     nearby: ["Rivera", "Palermo", "Villavieja", "Campoalegre"],
     language: "People search in Spanish. Huila food terms like asado huilense appear in searches.",
@@ -1222,7 +1222,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     sectors: ["tour operators", "hotels", "restaurants"],
     faqs: [
       { q: "Should I target Tatacoa?", a: "Yes, if you run tours. Travellers search for Tatacoa by name. Create pages with pickup details from Neiva." },
-      { q: "How do I reach oil workers?", a: "Mention hours, location and services that suit shift workers, like early meals or long-stay rooms." },
+      { q: "How should I handle the San Pedro festival?", a: "Plan for it as your peak. Add festival hours and menus in advance, post photos of asado huilense if you serve it, and mention any parade or concert venues nearby." },
     ],
   },
   "colombia/armenia": {
@@ -1256,7 +1256,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     sectors: ["country hotels and fincas", "tour operators", "restaurants"],
     faqs: [
       { q: "Should I target Salento?", a: "Yes, if you run tours. Many tourists search for Salento by name. Create a page with details from Armenia." },
-      { q: "How do I reach foreign tourists?", a: "Add English details and photos, and ask for reviews from international guests." },
+      { q: "Is Parque del Café traffic worth chasing from Armenia?", a: "If you offer lodging, transport or food, yes. Many visitors to the park, which is in Montenegro, stay in or near Armenia. State honest travel times to the park and to the villages." },
     ],
   },
   "colombia/sincelejo": {
@@ -1268,10 +1268,10 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
     areas: [
       { name: "Centro", note: "Commercial core with shops and public services." },
-      { name: "Northern neighbourhoods", note: "Residential areas with families and services." },
-      { name: "Southern neighbourhoods", note: "Residential areas with local commerce." },
-      { name: "Road to Corozal", note: "Corridor with commerce and transport." },
-      { name: "Road to Tolú", note: "Corridor with travel services and roadside food." },
+      { name: "Newer residential areas", note: "Expanding family neighbourhoods on the edge of town, searching for schools and clinics." },
+      { name: "Market area", note: "Busy trading streets where rural visitors shop and compare prices." },
+      { name: "Vía a Corozal", note: "Road towards the neighbouring town and the airport, with commerce and transport." },
+      { name: "Vía a Tolú", note: "Route to the Gulf of Morrosquillo beaches, with roadside food and travel services." },
     ],
     nearby: ["Corozal", "Sampués", "Tolú", "Coveñas"],
     language: "People search in Spanish with Caribbean expressions. Festival terms like corralejas appear in searches.",
@@ -1290,7 +1290,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     sectors: ["veterinary services", "hotels", "retail"],
     faqs: [
       { q: "Should I target Tolú and Coveñas?", a: "If you serve them, yes. Many travellers search for beach towns by name." },
-      { q: "How do I prepare for the January festivities?", a: "Update hours and offers early, and post photos. Visitors search weeks before." },
+      { q: "Can a ranching supplier win local searches?", a: "Yes. Cattle owners in the Sucre savannas search for vets, feed and equipment near Sincelejo. List the towns you cover and the animals you treat or supply, and ask farm clients for reviews." },
     ],
   },
   "colombia/popayan": {
@@ -1302,10 +1302,10 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
     areas: [
       { name: "Centro Histórico", note: "White colonial centre with hotels, restaurants and churches." },
-      { name: "University area", note: "Area with students and demand for food and housing." },
-      { name: "Northern neighbourhoods", note: "Residential areas with families and services." },
-      { name: "Southern neighbourhoods", note: "Residential areas with local commerce." },
-      { name: "Road to Puracé", note: "Corridor towards the national park with tourism." },
+      { name: "Morro de Tulcán", note: "Hill viewpoint next to the centre that visitors look up, useful for nearby cafés and tours." },
+      { name: "University quarter", note: "Streets around the Universidad del Cauca, busy with students in term time." },
+      { name: "Northern Popayán", note: "Newer residential side with shopping centres and family services." },
+      { name: "Road to Puracé", note: "Route towards the national park, used by hiking and hot spring tours." },
     ],
     nearby: ["Timbío", "Silvia", "Puracé", "Cajibío"],
     language: "People search in Spanish. Local food terms appear in searches, especially during the gastronomy congress.",
@@ -1323,8 +1323,8 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
     sectors: ["hotels", "restaurants", "student housing"],
     faqs: [
-      { q: "How do I prepare for Holy Week?", a: "Update hours and offers early. Visitors book weeks ahead and search for lodging and food." },
-      { q: "Should I target students?", a: "Yes, if your service fits. Mention nearby universities and student-friendly prices." },
+      { q: "How do I prepare for Holy Week?", a: "Treat it as your high season. Rooms in the historic centre go early, so update availability, mention procession routes near you and keep evening hours accurate on procession nights." },
+      { q: "Should my restaurant mention Popayán's food heritage?", a: "Yes, if your menu reflects it. The city's UNESCO gastronomy recognition draws curious visitors, and naming traditional dishes you serve, such as empanadas de pipián, helps them find you." },
     ],
   },
   "colombia/floridablanca": {
@@ -1357,8 +1357,8 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
     sectors: ["clinics", "restaurants", "real estate"],
     faqs: [
-      { q: "Should I target Floridablanca or Bucaramanga?", a: "Both, if you serve both. Many people search for Floridablanca by name, especially for Cañaveral." },
-      { q: "How do I reach patients?", a: "Mention nearby clinics, parking and hours. Patients search before travelling." },
+      { q: "Will Bucaramanga businesses outrank me here?", a: "Not for searches made inside Floridablanca, where proximity counts. Use the Floridablanca name in your profile and pages, show a local address and gather reviews from local customers." },
+      { q: "Is Cañaveral the only area worth targeting?", a: "No. Cañaveral has the malls and much of the competition, but the traditional centre and the newer housing towards Piedecuesta have their own customers who search close to home." },
     ],
   },
 };
