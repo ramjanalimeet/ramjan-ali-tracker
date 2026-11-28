@@ -249,8 +249,8 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     queries: ["restaurants kilkenny medieval mile", "dentist kilkenny", "electrician kilkenny", "pubs john street kilkenny", "hairdresser kilkenny"],
     sectors: ["restaurants and pubs", "accommodation", "home trades"],
     faqs: [
-      { q: "How do I compete for tourist searches on the Medieval Mile?", a: "Use clear photos, accurate hours and menus, and mention nearby landmarks like the castle. Reviews from visitors help, but local reviews also build trust." },
-      { q: "Should I target nearby towns like Thomastown?", a: "If you serve them, yes. Many customers come in from the county. Pages and reviews that mention those towns can help you appear when they search locally." },
+      { q: "Do I need different listings for tourists and locals in Kilkenny?", a: "No, one listing can serve both, but your photos and posts should show both sides. Visitors want the castle, the Medieval Mile and opening hours, while locals look for parking, booking options and reviews from people they know in town." },
+      { q: "Should I mention hurling or GAA on my site?", a: "Only if it is genuinely part of your business, such as a pub that shows matches or a sports physio that treats club players. In Kilkenny that local connection is a strong trust signal, and it gives you content no chain competitor can copy." },
     ],
   },
   "ireland/wexford": {
@@ -277,8 +277,8 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     queries: ["restaurants wexford town", "dentist wexford", "b&b near rosslare port", "plumber wexford", "things to do curracloe"],
     sectors: ["restaurants", "accommodation", "home trades"],
     faqs: [
-      { q: "Should I target ferry travellers?", a: "If you are on the route, yes. Mention Rosslare and ferry travel on your site, keep early and late hours accurate, and add photos that show easy parking." },
-      { q: "How do I stay visible outside the summer?", a: "Focus on local customers. Reviews from residents, posts about local events and pages for nearby towns help keep enquiries coming when visitors are gone." },
+      { q: "Should I target Rosslare ferry passengers?", a: "If you are a cafe, garage, B&B or shop on the route, yes. Ferry passengers often search for food or a place to stay the night before an early sailing. Mention the port and the drive time, and keep early opening hours accurate." },
+      { q: "How do I keep enquiries coming once the beach season ends?", a: "Use the autumn, when the opera festival brings a second wave of visitors, and then turn to local customers. Reviews from residents of Clonard, Castlebridge and Enniscorthy carry more weight in winter than summer visitor reviews." },
     ],
   },
   "ireland/bray": {
@@ -361,8 +361,8 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     queries: ["trad music pubs ennis", "dentist ennis", "electrician co clare", "b&b near cliffs of moher", "mechanic ennis"],
     sectors: ["pubs and restaurants", "accommodation", "home trades"],
     faqs: [
-      { q: "How can an Ennis pub reach visitors heading to the Cliffs of Moher?", a: "Mention nearby attractions and travel times on your site, post music nights and keep photos current. Visitors plan routes on their phones, so clear listing details help you get chosen." },
-      { q: "Should I target Shannon as well as Ennis?", a: "If your customers come from Shannon, mention it. Many people work at the airport or industrial estate and live in Ennis or the villages between." },
+      { q: "How can an Ennis pub reach visitors heading to the Cliffs of Moher?", a: "Visitors often plan the day on their phones from their hotel in Ennis or as they drive through. Post your music nights, show food times clearly and mention the drive to the Burren and the coast, so you appear when they search for somewhere to eat on the way back." },
+      { q: "Is Shannon part of my market if I am based in Ennis?", a: "Often, yes. Many people work at Shannon Airport or the industrial estate and live in Ennis or the villages in between. A page that mentions Shannon and Newmarket-on-Fergus can catch searches from commuters who want a service near home." },
     ],
   },
   "ireland/tralee": {
@@ -389,8 +389,8 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     queries: ["restaurants tralee", "dentist tralee", "b&b tralee co kerry", "plumber tralee", "cafe blennerville"],
     sectors: ["accommodation", "restaurants and pubs", "home trades"],
     faqs: [
-      { q: "How do I get ready for the Rose of Tralee?", a: "Update your listing hours, add event-related posts and make sure your photos show what you offer. Visitors search on their phones during the festival, so a clear and active listing helps." },
-      { q: "Should I target Dingle as well?", a: "If you serve Dingle customers, mention it. But Dingle has its own businesses and Google will usually show those first to people searching there." },
+      { q: "How do I get ready for the Rose of Tralee week?", a: "Set special hours in your listing well before August, add photos that show what you offer during the festival and post about any events. Visitors and returning emigrants search on mobile, and a listing that looks active gets the click." },
+      { q: "Can a Tralee business also win Dingle customers?", a: "It is difficult for walk-in trade, because Dingle has its own restaurants and shops. Trades, wholesalers and clinics that travel or serve the whole peninsula can still mention Dingle, Castlegregory and Camp, backed by real jobs and reviews from there." },
     ],
   },
   "ireland/carlow": {
@@ -417,8 +417,8 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     queries: ["takeaway carlow", "dentist carlow town", "electrician carlow", "student accommodation carlow", "barber graiguecullen"],
     sectors: ["takeaways", "home trades", "dental clinics"],
     faqs: [
-      { q: "Should I mention Laois if I am in Graiguecullen?", a: "Yes. Your official address may be Laois, but customers think of it as Carlow. Naming both helps Google and customers understand where you are." },
-      { q: "Is it worth targeting students?", a: "If your service fits them, yes. Students search on phones, often late at night, and respond to clear prices and opening hours." },
+      { q: "Should I mention Laois if I am in Graiguecullen?", a: "Keep your official County Laois address in your listing, but describe yourself as being in Carlow town on your website. That matches how customers think and helps Google connect you to Carlow searches." },
+      { q: "Is Carlow too close to Kildare and Kilkenny to rank on its own?", a: "No. People in Carlow mostly search for services in Carlow, and the town has its own map pack. You only compete with Kilkenny or Athy businesses when customers search for those towns, so build pages for them only if you really serve them." },
     ],
   },
   "netherlands/amsterdam": {
@@ -453,7 +453,7 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     summary: "Rotterdam local SEO for Europe's big port city. Compete in Centrum, Kralingen, Kop van Zuid, Delfshaven and Hillegersberg in Dutch and English.",
     lead: "Rotterdam is a port city with a modern skyline, rebuilt after the Second World War. Its customers are spread across very different districts, from student Kralingen to leafy Hillegersberg and the growing south bank.",
     profile: [
-      "Rotterdam sits on the Nieuwe Maas in Zuid-Holland, with one of the world's major ports stretching to the North Sea at Maasvlakte. The city is known for bold architecture like the Erasmus Bridge and the Markthal, and for Erasmus University.",
+      "Rotterdam sits on the Nieuwe Maas in Zuid-Holland, with a vast port stretching to the North Sea at Maasvlakte. The city is known for bold architecture like the Erasmus Bridge and the Markthal, and for Erasmus University.",
       "The population is diverse, with many nationalities and a large working-class base alongside new professionals. Restaurants, trades and health services compete hard, and port-related B2B services add another layer.",
     ],
     areas: [
@@ -473,8 +473,8 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     queries: ["tandarts rotterdam centrum", "loodgieter rotterdam zuid", "restaurant kralingen", "kapper delfshaven", "schoonmaakbedrijf rotterdam"],
     sectors: ["restaurants", "plumbers and handymen", "cleaning services"],
     faqs: [
-      { q: "Should I target Rotterdam Zuid separately?", a: "Yes. Zuid is a large area with its own districts and search habits. Pages and listings that mention Zuid, Feijenoord or Charlois help you reach those customers." },
-      { q: "Do I need content in other languages?", a: "Dutch should come first, but English and sometimes Turkish or Arabic content can help, depending on your customers. Only add languages you can actually serve in." },
+      { q: "Is Rotterdam-Zuid a separate search market?", a: "In practice, yes. The river splits the city, and many people on the south bank search for services in Feijenoord, Charlois or IJsselmonde rather than in the centre. A page for Zuid, with the districts named, helps you show up there." },
+      { q: "Do I need content in other languages in Rotterdam?", a: "Dutch comes first, and English helps with students and international staff. If your team speaks Turkish, Arabic or another language your customers use, say so on your listing and site, because it is a strong reason to choose you." },
     ],
   },
   "netherlands/the-hague": {
@@ -501,8 +501,8 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     queries: ["tandarts den haag centrum", "english speaking doctor the hague", "restaurant scheveningen", "loodgieter den haag", "advocaat den haag"],
     sectors: ["lawyers", "restaurants", "health clinics"],
     faqs: [
-      { q: "Should I use The Hague or Den Haag on my site?", a: "Use both. Dutch searchers type Den Haag, while many expats search for The Hague. Mention both in titles and content so you appear for each." },
-      { q: "How do I reach expat customers?", a: "Offer an English version of your site, mention that you speak English and target areas like Statenkwartier and Benoordenhout. Reviews in English also help." },
+      { q: "Should I use The Hague or Den Haag on my site?", a: "Use both. Dutch searchers type Den Haag, while many international residents type The Hague. Put Den Haag in your Dutch titles and The Hague on your English pages, so each group sees the name they expect." },
+      { q: "How do I reach expat and diplomatic families?", a: "Offer a full English version of your service pages, list the languages your staff speak and mention areas like Statenkwartier, Benoordenhout and Wassenaar if you serve them. Many of these families find services through recommendations, so English reviews matter too." },
     ],
   },
   "netherlands/utrecht": {
@@ -529,8 +529,8 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     queries: ["tandarts utrecht", "fietsenmaker utrecht centrum", "kinderopvang leidsche rijn", "fysiotherapeut utrecht oost", "restaurant utrecht binnenstad"],
     sectors: ["restaurants and cafes", "bike shops", "childcare"],
     faqs: [
-      { q: "Should I create a page for Leidsche Rijn?", a: "Yes, if you serve it. It is a big district with its own shopping centres and search habits. A page for it helps you reach families there." },
-      { q: "How do I reach students?", a: "Keep prices and hours clear, list English if you speak it, and target areas near campus and the centre. Students search on phones and compare quickly." },
+      { q: "Should I build a separate page for Leidsche Rijn?", a: "If you serve it, yes. Leidsche Rijn is big enough to have its own centre and its own competitors, and families there often search with the district name. Mention the parts you cover, such as Vleuten or De Meern, if that is true for you." },
+      { q: "How do I reach commuters passing through Utrecht Centraal?", a: "Many travellers only search when they are near the station. Make sure your listing shows walking distance, opening hours and quick booking, and mention the station area on your website if you are close to it." },
     ],
   },
   "netherlands/eindhoven": {
@@ -557,8 +557,8 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     queries: ["tandarts eindhoven", "english speaking gp eindhoven", "restaurant strijp-s", "loodgieter eindhoven", "kapper woensel"],
     sectors: ["restaurants", "health clinics", "home services"],
     faqs: [
-      { q: "Should I add English content for Eindhoven?", a: "Yes. Many residents work in tech and search in English. Clear English pages, especially for health and home services, can bring in new customers." },
-      { q: "How do I reach customers in Veldhoven?", a: "Mention Veldhoven if you serve it and gather reviews from customers there. Many tech workers live there and search close to home." },
+      { q: "Should I add English content for Eindhoven?", a: "Yes, if you serve the tech community. Many engineers at Brainport employers search in English for doctors, dentists, childcare and home services. Clear English pages and English reviews help them choose you." },
+      { q: "How do I reach customers in Veldhoven and Best?", a: "Many international workers live in these towns because they are close to large employers. Mention them on your site if you serve them, and collect reviews from customers there, since they will usually search close to home." },
     ],
   },
   "netherlands/groningen": {
@@ -669,8 +669,8 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     queries: ["restaurant breda centrum", "kapper ginneken", "tandarts breda", "loodgieter breda", "terras breda"],
     sectors: ["restaurants and cafes", "hair salons", "home services"],
     faqs: [
-      { q: "Should I target Belgian customers?", a: "If you serve them, yes. Mention cross-border service, use clear prices and gather reviews from Belgian customers. Some may search with Flemish wording." },
-      { q: "How do I compete in the busy centre?", a: "Keep your listing photos and hours current, respond to reviews and use your site to show what makes you different. The centre is crowded, so details matter." },
+      { q: "Should I target Belgian customers from across the border?", a: "If you already serve them, yes. Customers from towns like Hoogstraten and Baarle search in Dutch but may use Flemish wording. Mention that you serve Belgium, explain delivery or travel costs and gather reviews from Belgian clients." },
+      { q: "How do I stand out in Breda's busy centre?", a: "The Grote Markt and Havermarkt are crowded with terraces, so small details decide the click. Up-to-date photos of your terrace, clear menus, honest opening hours during carnival and quick review replies all help." },
     ],
   },
   "netherlands/nijmegen": {
@@ -697,8 +697,8 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     queries: ["tandarts nijmegen", "restaurant nijmegen centrum", "kinderopvang lent", "fietsenmaker nijmegen", "loodgieter nijmegen"],
     sectors: ["restaurants and bars", "bike shops", "health clinics"],
     faqs: [
-      { q: "How do I prepare for the Four Days Marches?", a: "Update your hours, post about the event and make sure your listing shows what you offer. Many visitors search on their phones, so a clear and active listing helps." },
-      { q: "Should I target Lent separately?", a: "Yes. Lent is across the river and growing fast. A page for it can help you reach families there." },
+      { q: "How do I prepare for the Four Days Marches?", a: "Plan your listing weeks ahead. Add special hours, post about the Vierdaagsefeesten and make sure your photos and menu are current. Walkers and visitors search on their phones throughout the week, often late at night." },
+      { q: "Is Lent worth its own page?", a: "Yes, if you serve it. Lent lies across the Waal and has grown quickly with new homes, so many families there search for services on their own side of the river. A page that names Lent and the Waalsprong area can help." },
     ],
   },
   "netherlands/haarlem": {
@@ -725,8 +725,8 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     queries: ["kapper haarlem centrum", "tandarts haarlem noord", "restaurant grote markt haarlem", "loodgieter haarlem", "fietsverhuur haarlem"],
     sectors: ["independent shops", "restaurants", "hair salons"],
     faqs: [
-      { q: "How can a Haarlem shop compete with Amsterdam?", a: "Lean into being local. Mention your street, collect reviews from Haarlem customers and post about local events. Many people prefer to shop close to home if they can find you." },
-      { q: "Should I target Heemstede and Bloemendaal?", a: "If you serve them, mention them. These are affluent areas just next to Haarlem, and many residents search for services nearby." },
+      { q: "How can a Haarlem shop compete with Amsterdam?", a: "Most Haarlem residents search close to home, so you are not really competing with Amsterdam for local customers. Name your street and neighbourhood, collect reviews from Haarlem customers and post about local events to make that local connection clear." },
+      { q: "Should I target Heemstede and Bloemendaal?", a: "If you serve them, yes. These affluent towns border Haarlem, and many residents look for premium services nearby. A page that mentions them, with real jobs or clients there, can bring in good customers." },
     ],
   },
   "netherlands/arnhem": {
@@ -753,8 +753,8 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     queries: ["tandarts arnhem zuid", "restaurant arnhem centrum", "fietsverhuur veluwe arnhem", "loodgieter arnhem", "kapper klarendal"],
     sectors: ["restaurants", "accommodation", "home trades"],
     faqs: [
-      { q: "Should I target Arnhem-Zuid separately?", a: "Yes. The river splits the city, and many people in Zuid search for services on their own side. A page for Zuid can help you reach them." },
-      { q: "How do I reach Veluwe visitors?", a: "Mention the Veluwe and nearby attractions on your site, add photos and keep your hours current. Visitors plan trips on their phones." },
+      { q: "Should I target Arnhem-Zuid separately?", a: "Yes. The Rhine divides the city, and many people in Zuid search for services on their own side of the river. A page for Zuid, naming districts like Schuytgraaf, can help you reach them." },
+      { q: "How do I reach Veluwe and history visitors?", a: "Mention the Veluwe, Oosterbeek and the bridge on your site if they are part of your story, and add English text for international visitors. Many plan trips around September commemorations or summer holidays and search ahead." },
     ],
   },
   "netherlands/zaanstad": {
@@ -809,15 +809,15 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     queries: ["kinderopvang vathorst", "tandarts amersfoort", "restaurant amersfoort binnenstad", "loodgieter amersfoort", "fysiotherapeut nieuwland"],
     sectors: ["childcare", "restaurants", "home services"],
     faqs: [
-      { q: "Should I create a page for Vathorst?", a: "Yes, if you serve it. Vathorst is a large district with its own centre, and people search with its name." },
-      { q: "How do I reach commuters?", a: "Highlight evening and weekend hours, keep your listing accurate and collect reviews from local customers." },
+      { q: "Should I create a page for Vathorst?", a: "If you serve it, yes. Vathorst is large enough to have its own shopping centre and competitors, and families there often search with the district name. Do the same for Nieuwland if it is part of your area." },
+      { q: "How do I reach commuters in Amersfoort?", a: "Many residents leave early and return late, so evening and Saturday hours are a real selling point. Show them clearly in your listing, and ask commuting customers to mention that in their reviews." },
     ],
   },
   "netherlands/apeldoorn": {
     summary: "Apeldoorn local SEO on the Veluwe. Reach older residents, young families in Zuidbroek and the many visitors drawn by Paleis Het Loo and the forests.",
     lead: "Apeldoorn is a spread-out, green city surrounded by the Veluwe forests, with a royal palace as its best-known sight. Tourism, healthcare and a large older population shape what people search for.",
     profile: [
-      "Apeldoorn is in Gelderland, home to Paleis Het Loo and a gateway to the Veluwe, the largest forested area in the Netherlands. Government agencies, insurers and healthcare providers are major employers, and the city attracts many retirees.",
+      "Apeldoorn is in Gelderland, home to Paleis Het Loo and a gateway to the Veluwe, a large area of forest and heath. Government agencies, insurers and healthcare providers are major employers, and the city attracts many retirees.",
       "Because the city is wide and low-rise, customers rarely travel far for everyday services, so district names matter. Holiday parks and campsites nearby create summer demand for food, bikes and activities, while home care, physios and trades serve residents all year.",
     ],
     areas: [
@@ -893,8 +893,8 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     queries: ["english speaking dentist hoofddorp", "kinderopvang floriande", "parkeren schiphol hoofddorp", "fysiotherapeut hoofddorp", "kapper hoofddorp centrum"],
     sectors: ["childcare", "health clinics", "airport parking and taxis"],
     faqs: [
-      { q: "Should I target Haarlemmermeer or Hoofddorp?", a: "Use Hoofddorp, because that is what people type. Mention Haarlemmermeer and nearby towns like Nieuw-Vennep on your site." },
-      { q: "How do I reach international staff?", a: "Offer English content, mention that you speak English and target business areas and expat-heavy districts." },
+      { q: "Should I target Haarlemmermeer or Hoofddorp?", a: "Use Hoofddorp in titles, because that is what people type. Mention Haarlemmermeer and nearby villages like Nieuw-Vennep and Badhoevedorp on your site if you serve them." },
+      { q: "How do I reach international staff in Hoofddorp?", a: "Offer English pages, list the languages you speak and mention business areas like Beukenhorst if you are close. Many international staff choose services near work, especially for health and childcare." },
     ],
   },
   "netherlands/maastricht": {
@@ -949,13 +949,13 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     queries: ["tandarts leiden", "fietsenmaker leiden centrum", "restaurant leiden", "kinderopvang merenwijk", "english speaking gp leiden"],
     sectors: ["restaurants and cafes", "bike shops", "health clinics"],
     faqs: [
-      { q: "Should I offer English content in Leiden?", a: "Yes, if you serve students or researchers. Many international staff search in English for health and home services." },
-      { q: "Should I target Oegstgeest and Leiderdorp?", a: "If you serve them, mention them. These towns border Leiden and many residents search for services nearby." },
+      { q: "Should I offer English content in Leiden?", a: "If you serve students or researchers, yes. Many international staff at the university and the Bio Science Park search in English for doctors, dentists and home services." },
+      { q: "Should I target Oegstgeest and Leiderdorp?", a: "If you serve them, mention them. Both towns border Leiden, and many families there search close to home for childcare, health and trades." },
     ],
   },
   "netherlands/dordrecht": {
     summary: "Dordrecht local SEO for the historic river city in the Drechtsteden. Reach residents in the Binnenstad, Sterrenburg, Stadspolders and Dubbeldam.",
-    lead: "Dordrecht sits where several rivers meet, and its old harbours and merchant houses make it one of the most historic cities in Holland. It is also the centre of the Drechtsteden, a group of riverside towns with a strong maritime industry.",
+    lead: "Dordrecht sits where several rivers meet, and its old harbours and merchant houses give it a strong claim to being the oldest city in Holland. It is also the centre of the Drechtsteden, a group of riverside towns with a strong maritime industry.",
     profile: [
       "Dordrecht is in Zuid-Holland, on an island surrounded by rivers including the Oude Maas and the Merwede. It has a well-preserved historic centre, the Grote Kerk, and the nearby Biesbosch national park.",
       "Customers include families, commuters to Rotterdam and workers in shipbuilding and related trades. Home services, restaurants and health clinics compete strongly, and the Christmas market in the old centre brings a big seasonal peak.",
@@ -977,8 +977,8 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     queries: ["tandarts dordrecht", "restaurant dordrecht centrum", "loodgieter dordt", "kapper sterrenburg", "fietsverhuur biesbosch"],
     sectors: ["home trades", "restaurants", "dental clinics"],
     faqs: [
-      { q: "Should I use Dordt or Dordrecht?", a: "Use both. Many locals type Dordt, but official addresses use Dordrecht." },
-      { q: "Should I target the other Drechtsteden?", a: "If you serve Zwijndrecht or Papendrecht, mention them. Many people search across the river for services." },
+      { q: "Should I use Dordt or Dordrecht on my site?", a: "Use both. Many locals type Dordt, while official addresses use Dordrecht. Putting both in your content helps you match how people search." },
+      { q: "Should I target the other Drechtsteden towns?", a: "If you serve Zwijndrecht, Papendrecht or Sliedrecht, mention them. Many people cross the rivers for services, and pages for those towns can widen your reach." },
     ],
   },
   "germany/berlin": {
@@ -1013,7 +1013,7 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     summary: "Hamburg local SEO for the port city on the Elbe and Alster. Win searches in Altona, Eimsbüttel, Eppendorf, Winterhude, HafenCity and St. Pauli.",
     lead: "Hamburg is Germany's great port city, with water everywhere from the Elbe to the Alster lakes and canals. Its districts have strong identities, and locals search by Stadtteil.",
     profile: [
-      "Hamburg is a city-state in northern Germany, with one of Europe's largest ports, a big media industry and the new HafenCity district on the Elbe. The Speicherstadt warehouses, the Elbphilharmonie and the Reeperbahn draw many visitors.",
+      "Hamburg is a city-state in northern Germany, with a huge container port, a big media industry and the new HafenCity district on the Elbe. The Speicherstadt warehouses, the Elbphilharmonie and the Reeperbahn draw many visitors.",
       "Customers include affluent residents in Eppendorf and Winterhude, students and creatives in Altona and the Schanze, and port and logistics businesses. Restaurants, doctors, Handwerker and beauty services compete strongly.",
     ],
     areas: [
@@ -1033,8 +1033,8 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     queries: ["Zahnarzt Eppendorf", "Friseur Altona", "Elektriker Hamburg", "Restaurant HafenCity", "Hausarzt Eimsbüttel"],
     sectors: ["doctors and dentists", "restaurants", "electricians and Handwerker"],
     faqs: [
-      { q: "Should I target Hamburg or my Stadtteil?", a: "Your Stadtteil. People search for services close by, and Hamburg is large. Pages for your area and nearby districts help." },
-      { q: "Do suburbs like Norderstedt count as Hamburg?", a: "Many customers think so, but Norderstedt is in Schleswig-Holstein. If you serve it, mention it separately." },
+      { q: "Should I target Hamburg or my Stadtteil?", a: "Your Stadtteil. Hamburg is large and spread out along the water, and people search for services close by, such as \"Zahnarzt Eppendorf\". Pages for your district and its neighbours work better than a general Hamburg page." },
+      { q: "Do suburbs like Norderstedt count as Hamburg?", a: "Many customers think so, but Norderstedt and Pinneberg are in Schleswig-Holstein, and Buxtehude is in Lower Saxony. If you serve them, give them their own mention, because people there often search with the town name." },
     ],
   },
   "germany/munich": {
@@ -1061,15 +1061,15 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     queries: ["Zahnarzt Schwabing", "Biergarten München", "Elektriker München", "Hausarzt Maxvorstadt", "Friseur Haidhausen"],
     sectors: ["doctors and dentists", "restaurants and beer gardens", "electricians and Handwerker"],
     faqs: [
-      { q: "How do I prepare for Oktoberfest?", a: "Update your hours, post about the event and make sure your listing shows what you offer. Many visitors search on their phones." },
-      { q: "Should I target suburbs like Garching?", a: "If you serve them, mention them. Many people live outside the city and commute in." },
+      { q: "How should a Munich business handle Oktoberfest?", a: "Set special hours, post about the Wiesn and make sure your listing shows what you offer. Restaurants, hotels and taxis get a huge spike, while other services may need to plan around road closures and busy transport." },
+      { q: "Is it worth targeting the commuter belt around Munich?", a: "Yes, if you serve it. Many people live in places like Garching, Unterhaching or Freising because of housing costs, and they search with their own town name. A page for each area you really cover helps." },
     ],
   },
   "germany/cologne": {
     summary: "Cologne (Köln) local SEO by Veedel: win searches in Ehrenfeld, the Belgian Quarter, Südstadt, Nippes and Deutz, through carnival and trade fair season.",
     lead: "In Köln, people call their neighbourhood their Veedel, and loyalty to it runs deep. Local businesses that speak to a specific Veedel often beat those that just say Köln.",
     profile: [
-      "Cologne sits on the Rhine in North Rhine-Westphalia, with its famous cathedral, a large media industry and the Koelnmesse trade fair grounds in Deutz. It is one of Germany's oldest cities and has a strong local culture, Kölsch beer and dialect included.",
+      "Cologne sits on the Rhine in North Rhine-Westphalia, with its famous cathedral, a large media industry and the Koelnmesse trade fair grounds in Deutz. Founded by the Romans, it has a strong local culture, Kölsch beer and dialect included.",
       "Customers include media workers, students, families and huge numbers of trade fair visitors. Bars, restaurants, doctors and Handwerker compete strongly, and carnival changes the city every year.",
     ],
     areas: [
@@ -1089,13 +1089,13 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     queries: ["Zahnarzt Ehrenfeld", "Kneipe Südstadt", "Elektriker Köln", "Hotel Messe Deutz", "Friseur Belgisches Viertel"],
     sectors: ["bars and restaurants", "doctors and dentists", "electricians and Handwerker"],
     faqs: [
-      { q: "Should I use Köln or Cologne?", a: "Use Köln for local customers and add Cologne if you serve international visitors." },
-      { q: "How do I prepare for carnival?", a: "Update your hours and post about carnival. Many people search for what is open during the festival days." },
+      { q: "Should I use Köln or Cologne?", a: "Use Köln for local customers, because that is what they type. Add Cologne on English pages if you serve trade fair visitors or tourists." },
+      { q: "How do I prepare for carnival?", a: "Update your hours and post about the Karneval days, from Weiberfastnacht to Rosenmontag. Many people search for what is open, and a correct listing avoids bad reviews from customers who find you closed." },
     ],
   },
   "germany/frankfurt": {
     summary: "Frankfurt local SEO in Germany's financial centre. Reach bankers, expats and trade fair visitors in Sachsenhausen, Bornheim, Nordend and Westend.",
-    lead: "Frankfurt is a compact city with a big international footprint, thanks to its banks, the European Central Bank and one of Europe's busiest airports. Many local customers are expats who search in English.",
+    lead: "Frankfurt is a compact city with a big international footprint, thanks to its banks, the European Central Bank and a major international airport. Many local customers are expats who search in English.",
     profile: [
       "Frankfurt am Main is in Hesse, known for its skyline, the stock exchange, the European Central Bank and a large trade fair that hosts the Frankfurt Book Fair each autumn. The airport makes it a hub for travel and logistics.",
       "Customers include finance professionals, international families, trade fair visitors and locals who love their apple wine taverns. Restaurants, doctors, dentists and lawyers compete strongly, and English content can reach a large audience.",
@@ -1117,8 +1117,8 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     queries: ["Zahnarzt Sachsenhausen", "english speaking doctor frankfurt", "Restaurant Bornheim", "Anwalt Frankfurt", "Friseur Nordend"],
     sectors: ["doctors and dentists", "restaurants", "lawyers"],
     faqs: [
-      { q: "Do I need English content in Frankfurt?", a: "If you serve expats, yes. Many finance workers search in English. Keep legal pages in German." },
-      { q: "Should I target Offenbach?", a: "If you serve it, mention it. Offenbach is right next door, but it is a separate city with its own businesses." },
+      { q: "Do I need English content in Frankfurt?", a: "If you serve expats, yes. Many finance and airport staff search in English, especially for doctors, dentists and lawyers. Keep your Impressum and legal pages in German." },
+      { q: "Should I target Offenbach or Bad Homburg?", a: "If you serve them, mention them. Offenbach is right next door, and Bad Homburg is in the Taunus. Both are separate cities with their own businesses, so dedicated pages help." },
     ],
   },
 };
