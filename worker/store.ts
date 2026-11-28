@@ -255,7 +255,15 @@ export class AdminStore extends DurableObject<Env> {
 
     if (res === "accounts") {
       if (m === "GET") return json(this.listAccounts());
-      if (m === "POST" && !id) return json(await this.saveAccount(await this.body(req)));
+      if (m === "POST" && !id) {
+        const saved = await this.saveAccount(await this.body(req));
+        if (saved?.config?.provider === "resend" && !saved.secretsSet.includes("resendWebhookSecret")) {
+          await this.connectResendInbox(saved.id, url);
+          this.setSetting("resend_inbox_connected_v1", String(now()));
+          return json(this.listAccounts().find((account) => account.id === saved.id));
+        }
+        return json(saved);
+      }
       if (m === "POST" && action === "test") return json(await this.testAccount(id));
       if (m === "POST" && action === "connect-inbox") return json(await this.connectResendInbox(id, url));
       if (m === "DELETE" && id) {
