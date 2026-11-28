@@ -632,7 +632,7 @@ export const CITY_GUIDES_5: Record<string, GlobalCityGuide> = {
       { name: "Bachletten", note: "A green residential district with established households." },
     ],
     nearby: ["Riehen", "Allschwil", "Binningen", "Muttenz"],
-    language: "Searches are in standard German without the ß. English and French are also common, especially among international staff and cross-border workers.",
+    language: "Written German here follows Swiss rules, and local terms like Tram, Velo and Coiffeur are what people type. Life science staff often search in English, and Alsace commuters in French.",
     demand: [
       { when: "Late winter", what: "The Fasnacht carnival fills the old town for three days and lifts food and costume searches." },
       { when: "June", what: "Art Basel brings international visitors searching for hotels, dining and taxis." },
@@ -688,7 +688,7 @@ export const CITY_GUIDES_5: Record<string, GlobalCityGuide> = {
       { name: "Bümpliz", note: "A western district with its own centre and many residents." },
     ],
     nearby: ["Köniz", "Ostermundigen", "Muri bei Bern", "Ittigen"],
-    language: "Searches are in standard German without the ß. French and English are also used by federal and embassy staff.",
+    language: "Bernese German is spoken everywhere, but people type standard German. Federal staff from Romandy and embassy households add searches in French and English.",
     demand: [
       { when: "Late November", what: "The Zibelemärit onion market fills the old town and lifts food and retail searches." },
       { when: "Summer", what: "Swimming in the Aare draws locals and visitors to cafés and leisure services." },
@@ -772,7 +772,7 @@ export const CITY_GUIDES_5: Record<string, GlobalCityGuide> = {
       { name: "Lachen", note: "A dense residential quarter west of the centre." },
     ],
     nearby: ["Gossau", "Herisau", "Wittenbach", "Rorschach"],
-    language: "Searches are in standard German, with no ß. Local speech is a distinct eastern Swiss German, but written copy should stay standard.",
+    language: "Local speech is a distinct eastern Swiss German, but searches are typed in standard German. Treuhand, not Steuerberater, is the usual word for an accountant or fiduciary.",
     demand: [
       { when: "October", what: "The OLMA agricultural and consumer fair draws big crowds, lifting searches for food, parking and hotels." },
       { when: "Summer", what: "The open-air music festival in the Sitter valley brings campers who search for supplies and transport." },
@@ -856,7 +856,7 @@ export const CITY_GUIDES_5: Record<string, GlobalCityGuide> = {
       { name: "Strättligen", note: "The southern part of town with newer housing and shops." },
     ],
     nearby: ["Steffisburg", "Spiez", "Heimberg", "Hilterfingen"],
-    language: "People search in standard German, written without ß. Visitors heading into the Oberland also search in English.",
+    language: "Bernese German is the spoken language, with searches in standard German. Visitors bound for Interlaken and the mountains often search in English.",
     demand: [
       { when: "Summer", what: "Lake cruises, swimming and the open-air lake stage musical bring visitors searching for food, boats and parking." },
       { when: "Winter", what: "Skiers passing through on the way to Oberland resorts search for ski service, rentals and quick meals." },
@@ -968,7 +968,7 @@ export const CITY_GUIDES_5: Record<string, GlobalCityGuide> = {
       { name: "Bahnhof area", note: "The streets around the station, a gateway for commuters and cross-border shoppers." },
     ],
     nearby: ["Neuhausen am Rheinfall", "Feuerthalen", "Thayngen", "Singen (Hohentwiel)"],
-    language: "People search in standard German, without the ß. Tourists heading to the Rhine Falls often search in English.",
+    language: "Searches are in standard German, and German visitors from across the border use the same words, so a single German page serves both. Rhine Falls tourists add English searches.",
     demand: [
       { when: "Summer", what: "Visitors to the Rhine Falls and riverside walks fill restaurants and cafés." },
       { when: "Year round", what: "Cross-border shoppers and commuters search for services near the old town and station." },

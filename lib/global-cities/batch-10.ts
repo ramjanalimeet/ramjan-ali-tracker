@@ -5,7 +5,7 @@ export const CITY_GUIDES_10: Record<string, GlobalCityGuide> = {
     summary: "Local SEO in Reggio Calabria for businesses on the Strait of Messina, from the Lungomare and Corso Garibaldi to Sbarre, Gallico and Pellaro.",
     lead: "Reggio Calabria sits on the toe of Italy, looking across the Strait of Messina to Sicily. Searches here swing between residents in the city's long coastal districts and summer visitors heading for the seafront and the Riace Bronzes.",
     profile: [
-      "Reggio is the main city of Calabria and a port and transport point for the strait, with ferries, an airport and a busy public sector. Its shape is long and thin, so the city stretches along the coast from Catona in the north to Pellaro in the south.",
+      "It is a port and transport point for the strait, with an airport, a university and a busy public sector, while ferries to Sicily also leave from nearby Villa San Giovanni. Its shape is long and thin, so the city stretches along the coast from Catona in the north to Pellaro in the south.",
       "That linear layout matters for local search. A customer in Gallico rarely wants a plumber or a dentist from the far southern end, so district names carry real weight. Many businesses still rely on word of mouth, which means a well kept Google profile with fresh reviews can stand out quickly.",
     ],
     areas: [
@@ -32,7 +32,7 @@ export const CITY_GUIDES_10: Record<string, GlobalCityGuide> = {
     sectors: ["seafront restaurants", "dentists", "holiday accommodation"],
     faqs: [
       { q: "Should my pages say \"Reggio Calabria\" or just \"Reggio\"?", a: "Use the full name in titles and your Google profile. Many people say \"Reggio\", but search engines and visitors from elsewhere need the full name to separate the city from Reggio Emilia." },
-      { q: "Is it worth targeting Villa San Giovanni as well?", a: "If you serve it, yes. Villa San Giovanni is a short drive away and a ferry point for the strait, so a dedicated page for it can capture searches that a Reggio page will not." },
+      { q: "Is it worth targeting Villa San Giovanni as well?", a: "Villa San Giovanni is a short drive away and a ferry point for the strait, so a dedicated page for it can capture searches that a Reggio page will not." },
     ],
   },
   "italy/reggio-emilia": {
@@ -65,7 +65,7 @@ export const CITY_GUIDES_10: Record<string, GlobalCityGuide> = {
     ],
     sectors: ["home heating and plumbing", "accountants", "traditional restaurants"],
     faqs: [
-      { q: "Do I need separate pages for towns like Scandiano and Correggio?", a: "If you serve them regularly, yes. These towns have their own identity and residents search with the town name, not with \"Reggio Emilia\"." },
+      { q: "Do I need separate pages for towns like Scandiano and Correggio?", a: "Yes, for any town you cover regularly. These towns have their own identity and residents search with the town name, not with \"Reggio Emilia\"." },
       { q: "How do I compete with businesses in Modena and Parma?", a: "Make your Reggio Emilia address and service area clear and collect reviews from local customers. Google favours nearby, well reviewed businesses, so a strong local profile beats a bigger firm further down the Via Emilia." },
     ],
   },
@@ -269,7 +269,7 @@ export const CITY_GUIDES_10: Record<string, GlobalCityGuide> = {
     ],
     sectors: ["dentists", "student accommodation", "gyms"],
     faqs: [
-      { q: "Can I rank in Guimarães from a Braga address?", a: "It is harder, because Google favours nearby businesses. If you serve Guimarães often, a dedicated page and reviews from customers there will help." },
+      { q: "Can I rank in Guimarães from a Braga address?", a: "It is harder, since proximity to the searcher weighs heavily in map results. If you serve Guimarães often, a dedicated page and reviews from customers there will help." },
       { q: "Is Holy Week worth planning for?", a: "Yes, for restaurants and accommodation. Update your Google profile with special hours and events before the week starts, because visitors search close to the dates." },
     ],
   },
@@ -304,7 +304,7 @@ export const CITY_GUIDES_10: Record<string, GlobalCityGuide> = {
     sectors: ["student accommodation", "clinics and pharmacies", "restaurants"],
     faqs: [
       { q: "How do I handle the summer slowdown?", a: "Shift your focus to residents and visitors in summer. Update your Google profile with summer hours and offers, and target tourist searches near the university." },
-      { q: "Is it worth targeting Mealhada or Condeixa?", a: "If you serve them, yes. These towns are close enough to be part of your market, and residents often search with their own town name." },
+      { q: "Is it worth targeting Mealhada or Condeixa?", a: "Mealhada is known across Portugal for roast suckling pig, so restaurants there get searches by the town name from far away. For trades and clinics, a page per town only pays off where you already have customers." },
     ],
   },
   "portugal/funchal": {
@@ -338,7 +338,7 @@ export const CITY_GUIDES_10: Record<string, GlobalCityGuide> = {
     sectors: ["restaurants", "tours and excursions", "car rental"],
     faqs: [
       { q: "Should I build pages in English and German?", a: "If many of your customers are visitors, yes. Keep Portuguese for residents and add English and German pages for the services visitors look for." },
-      { q: "Can I rank across the island from Funchal?", a: "Google favours nearby businesses, so a Funchal address will mostly win searches in and around the city. Separate pages for towns you serve, like Caniço or Câmara de Lobos, can help." },
+      { q: "Can I rank across the island from Funchal?", a: "A Funchal address will mostly win searches in and around the city, because the steep roads make distance feel longer than it looks. Separate pages for towns you serve, like Caniço or Câmara de Lobos, can help." },
     ],
   },
   "portugal/faro": {
@@ -405,7 +405,7 @@ export const CITY_GUIDES_10: Record<string, GlobalCityGuide> = {
     ],
     sectors: ["boat tours", "restaurants and pastry shops", "student accommodation"],
     faqs: [
-      { q: "Should I create a page for Costa Nova?", a: "If you serve customers there, yes. Costa Nova is in Ílhavo, and visitors search by the beach name, not by Aveiro." },
+      { q: "Should I create a page for Costa Nova?", a: "For beach-related or holiday rental services, it is a good idea. Costa Nova sits in the municipality of Ílhavo, and visitors search for its striped houses and beach by name rather than for Aveiro." },
       { q: "How do I compete with many boat tour operators?", a: "Keep your photos, times and booking details up to date, and ask happy customers for reviews. Visitors compare options quickly on Maps, so a complete, recent profile helps." },
     ],
   },
@@ -473,7 +473,7 @@ export const CITY_GUIDES_10: Record<string, GlobalCityGuide> = {
     ],
     sectors: ["dentists", "accountants", "home trades"],
     faqs: [
-      { q: "Should I target Fátima or Batalha too?", a: "If you serve them, yes, with separate pages. Visitors search for those places by name, and a Leiria page alone will not reach them." },
+      { q: "Should I target Fátima or Batalha too?", a: "Separate pages work better than squeezing them into your Leiria page. Visitors search for those places by name, and a Leiria page alone will not reach them." },
       { q: "How do I reach industrial clients?", a: "Create pages for your B2B services and mention the industries you serve. Keep your Google profile accurate, because businesses also search on Maps for suppliers nearby." },
     ],
   },
@@ -542,7 +542,7 @@ export const CITY_GUIDES_10: Record<string, GlobalCityGuide> = {
     sectors: ["restaurants", "accommodation", "dentists"],
     faqs: [
       { q: "Should I target Caldas das Taipas separately?", a: "Yes, if you serve it. Residents search by the town name, and a dedicated page can capture those searches." },
-      { q: "How do I compete with Braga businesses?", a: "Make your Guimarães address clear and collect reviews from local customers. Google favours nearby businesses, so a strong local profile wins over a Braga competitor for local searches." },
+      { q: "How do I compete with Braga businesses?", a: "Lean on local pride. Guimarães residents like to support businesses from their own city, so a clear Guimarães address, local photos and reviews from customers in parishes like Azurém or Creixomil all signal that you belong here." },
     ],
   },
   "portugal/viseu": {
@@ -609,7 +609,7 @@ export const CITY_GUIDES_10: Record<string, GlobalCityGuide> = {
     ],
     sectors: ["wine tourism", "riverside restaurants", "home trades"],
     faqs: [
-      { q: "Should I say \"Gaia\" or \"Vila Nova de Gaia\"?", a: "Use both. Locals often say \"Gaia\", but the full name helps search engines and visitors find you." },
+      { q: "Should I say \"Gaia\" or \"Vila Nova de Gaia\"?", a: "Locals mostly say \"Gaia\", so include it naturally in your copy, but keep the full name in titles and your profile because the full name helps search engines and visitors find you." },
       { q: "How do I avoid being lost in Porto searches?", a: "Use your Gaia address clearly in your profile and pages, and create pages for the parishes you serve. Many residents search for local services within Gaia, not Porto." },
     ],
   },
@@ -644,7 +644,7 @@ export const CITY_GUIDES_10: Record<string, GlobalCityGuide> = {
     sectors: ["real estate", "clinics", "restaurants"],
     faqs: [
       { q: "Do I need English pages in Cascais?", a: "Yes, for most businesses. Many residents are international and search in English, so English pages and review replies help." },
-      { q: "Should I target Estoril separately?", a: "If you serve it, yes. Estoril has its own identity, and people search for it by name." },
+      { q: "Should I target Estoril separately?", a: "Estoril is part of the Cascais municipality but many people treat it as its own place, especially hotels, golf and premium services. A dedicated page lets you match those searches without diluting your main Cascais page." },
     ],
   },
   "portugal/sintra": {
@@ -1289,76 +1289,76 @@ export const CITY_GUIDES_10: Record<string, GlobalCityGuide> = {
     ],
     sectors: ["restaurants", "diving and water sports", "holiday rentals"],
     faqs: [
-      { q: "Should I spell it Mellieħa or Mellieha?", a: "Use both. Many people type Mellieha without the Maltese letter, so including both versions helps." },
+      { q: "Should I spell it Mellieħa or Mellieha?", a: "Keep the correct Maltese spelling on your profile and address. Many visitors type \"Mellieha\" on English keyboards, so mention that form once in your page text too." },
       { q: "Can I reach Gozo ferry passengers?", a: "Yes, if you are near Ċirkewwa. Mention the ferry and keep hours clear for travellers." },
     ],
   },
   "malta/victoria": {
-    summary: "Local SEO in Victoria, Gozo's capital (Rabat to locals): reach residents and visitors around the Cittadella, It-Tokk and Republic Street.",
-    lead: "Victoria is the capital of Gozo, Malta's sister island, and the hub for its shops, offices and services. Locals usually call it Rabat, and its hilltop Cittadella overlooks the whole island.",
+    summary: "Local SEO in Victoria, Gozo's capital (Rabat to locals): reach Gozitans and island visitors around the Cittadella, It-Tokk and Republic Street.",
+    lead: "Victoria is the capital of Gozo and the place almost every Gozitan comes to for banking, shopping, the hospital and the courts. Locals still call it Rabat, and its hilltop Cittadella can be seen from most of the island.",
     profile: [
-      "The town holds Gozo's main hospital, law courts, government offices and shopping streets. Visitors come for the Cittadella and the market square, It-Tokk.",
-      "Local businesses serve the whole island, as most Gozitans come here for services. Restaurants, shops and clinics compete, and many customers arrive from villages by car or bus.",
+      "Gozo is quieter and more rural than Malta, and Victoria is its only real town centre. The Cittadella, the It-Tokk market square and the opera houses on Republic Street give it a cultural side that draws day-trippers off the ferry.",
+      "Island life shapes local search. Customers may drive in from Nadur or Għarb, so a business here effectively serves all of Gozo, while visitors arriving from Malta search on their phones the moment they land. Businesses that explain Gozo-specific details (delivery to villages, ferry timing, parking) win trust quickly.",
     ],
     areas: [
-      { name: "Cittadella", note: "The hilltop fortress with visitor demand and nearby cafés." },
-      { name: "It-Tokk", note: "The main square with the market, cafés and shops." },
-      { name: "Republic Street", note: "The main shopping street with banks and services." },
-      { name: "Hospital area", note: "Clinics and pharmacies near Gozo's main hospital." },
-      { name: "Residential areas", note: "Homes on the edges of town with family services." },
+      { name: "Cittadella", note: "The fortified hilltop citadel, the island's main visitor sight, with cafés and craft shops nearby." },
+      { name: "It-Tokk (Independence Square)", note: "The market square and busy meeting point, lined with cafés." },
+      { name: "Republic Street (Triq ir-Repubblika)", note: "The main street with banks, shops and the town's opera houses." },
+      { name: "Hospital area", note: "Clinics, pharmacies and food near Gozo's general hospital, busy with visitors from all villages." },
+      { name: "Victoria bus terminus area", note: "Where island buses meet, giving shops and snack bars steady footfall." },
     ],
     nearby: ["Xewkija", "Kerċem", "Għajnsielem", "Nadur"],
-    language: "English and Maltese are both used. Use both \"Victoria\" and \"Rabat Gozo\" in your content.",
+    language: "English and Maltese are both used. Searches use \"Victoria\", \"Rabat Gozo\" and the Maltese \"Ir-Rabat, Għawdex\", so cover all three names in your content.",
     demand: [
-      { when: "Summer", what: "Tourists and Maltese visitors fill Gozo, lifting food and stay searches." },
-      { when: "Year-round", what: "Gozitans come to Victoria for services, shopping and clinics." },
-      { when: "Festa season", what: "Village feasts bring crowds and late-night food demand." },
+      { when: "Summer", what: "Maltese families and foreign tourists fill Gozo, lifting searches for restaurants, car hire and farmhouse stays." },
+      { when: "Easter and Christmas", what: "Many Maltese cross for short breaks, and nativity and Holy Week events draw crowds into Victoria." },
+      { when: "Year-round weekdays", what: "Gozitans come in for clinics, government offices and shopping, so service businesses stay busy outside the season." },
     ],
     queries: [
       "restaurant Victoria Gozo",
-      "pharmacy Rabat Gozo",
-      "Cittadella tours",
-      "dentist Gozo",
-      "car hire Gozo",
+      "pharmacy Rabat Għawdex",
+      "Cittadella opening hours",
+      "car hire Gozo Victoria",
+      "accountant Gozo",
     ],
-    sectors: ["restaurants", "pharmacies and clinics", "car hire"],
+    sectors: ["restaurants", "car hire", "accountants and professional services"],
     faqs: [
-      { q: "Should I target \"Gozo\" or \"Victoria\"?", a: "Both. People often search for Gozo in general, but Victoria is the official name of the capital." },
-      { q: "Do Maltese visitors search differently?", a: "They often search in English and use Maltese place names. Keep your content in English with local names." },
+      { q: "Should my pages say Gozo or Victoria?", a: "Lead with Gozo for island-wide services and add Victoria for your actual location. Many people search \"Gozo\" plus the service, because the island is small enough to feel like one market." },
+      { q: "Can a Victoria business reach customers on Malta?", a: "For services people travel for, such as weddings, diving or holiday rentals, yes. For everyday trades, Maltese searchers usually want someone on their own island, so focus on Gozo." },
     ],
   },
   "malta/zabbar": {
-    summary: "Local SEO in Żabbar, a south-eastern Malta town near Cottonera and Marsaskala, reaching residents in the town centre, St Peter's and newer housing areas.",
-    lead: "Żabbar is a residential town in the south-east of Malta, between the Three Cities and Marsaskala. It has a strong parish life and a growing population.",
+    summary: "Local SEO in Żabbar, a south-eastern Maltese town between the Three Cities and Marsaskala, reaching families in the centre, St Peter's and newer estates.",
+    lead: "Żabbar is a residential town in the south-east of Malta, with the Three Cities on one side and Marsaskala on the other. Its sanctuary of Our Lady of Graces and the old Żabbar Gate are landmarks people use to give directions.",
     profile: [
-      "The town is known for its sanctuary church dedicated to Our Lady of Graces and the old Żabbar Gate. Many families live here and commute to work in other parts of the island.",
-      "Local businesses compete for residents and nearby towns. Clinics, shops and trades benefit from clear location signals, and Żabbar is often compared with Fgura and Marsaskala.",
+      "The town is largely made up of family homes, with a lively parish core and a long tradition of devotion to Our Lady of Graces, whose sanctuary holds a well-known collection of ex-voto paintings. Most residents work elsewhere on the island and drive out each morning.",
+      "That makes Żabbar a neighbourhood services market. Clinics, pharmacies, hairdressers and trades compete for nearby families, and the boundary with Fgura is so blurred that many customers barely notice which town they are in. Covering both in your pages is often the simplest win.",
     ],
     areas: [
-      { name: "Town centre", note: "Around the sanctuary church, with shops and cafés." },
-      { name: "St Peter's", note: "A residential area with family demand." },
-      { name: "Żabbar Gate", note: "A historic landmark on the main road." },
-      { name: "Newer housing areas", note: "Growing residential streets on the outskirts." },
-      { name: "Main roads", note: "Busy routes with car services and retail." },
+      { name: "Sanctuary area", note: "The parish core around the sanctuary, with traditional shops, band clubs and cafés." },
+      { name: "St Peter's (San Pietru)", note: "A residential area toward the coast with family demand for local services." },
+      { name: "Żabbar Gate", note: "The old Knights-era gate on the main road, a landmark for directions." },
+      { name: "Main road to Marsaskala", note: "A busy route where garages, retail and takeaways cluster." },
+      { name: "Newer housing estates", note: "Apartment blocks on the edges of town, where new residents need home services." },
     ],
     nearby: ["Fgura", "Marsaskala", "Xgħajra", "Kalkara"],
-    language: "Searches are mostly in English, with Maltese common for local services. Many people type Zabbar without the dot.",
+    language: "Searches are mostly in English with Maltese wording common for local services. People write both Żabbar and Zabbar, and the Maltese Ħaż-Żabbar appears in addresses.",
     demand: [
-      { when: "September", what: "The festa of Our Lady of Graces brings fireworks and crowds." },
-      { when: "Summer", what: "Heat drives air conditioning searches." },
-      { when: "Year-round", what: "Families search for nearby clinics and trades." },
+      { when: "September", what: "The festa of Our Lady of Graces brings fireworks, band marches and crowds into the centre." },
+      { when: "Summer", what: "Hot nights push up searches for air conditioning repairs, while nearby Marsaskala draws beachgoers." },
+      { when: "Year-round", what: "Families search for nearby clinics, tutors and trades they can reach without crossing the island." },
     ],
     queries: [
       "dentist Zabbar",
       "pharmacy Żabbar",
-      "plumber Zabbar",
-      "air conditioning Zabbar",
-      "restaurant Zabbar",
+      "air conditioning repair Zabbar",
+      "hairdresser Fgura Zabbar",
+      "takeaway Zabbar",
     ],
-    sectors: ["clinics and pharmacies", "home trades", "restaurants"],
+    sectors: ["clinics and pharmacies", "hairdressers and beauty", "air conditioning"],
     faqs: [
-      { q: "Should I use Żabbar or Zabbar?", a: "Use both. Many people type without the Maltese letter, so including both helps." },
-      { q: "Can I reach Marsaskala customers?", a: "Yes, as it is close. Mention it on your pages and collect reviews from customers there." },
+      { q: "My shop is on the Fgura border. Which town should I target?", a: "Use the town in your official address for your Google profile, and mention the other in your page text. Customers on either side see the two towns as one area." },
+      { q: "Is Marsaskala worth a separate page?", a: "If you do work there, yes. Marsaskala has many summer residents and rental flats, so demand there peaks at different times to Żabbar." },
     ],
   },
 };
