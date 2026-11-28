@@ -110,6 +110,7 @@ const PROVIDERS = [
   { id: "custom", label: "Other (SMTP + IMAP)", smtpHost: "", smtpPort: 465, imapHost: "" },
   { id: "resend", label: "Resend (send + receive)", smtpHost: "", smtpPort: 0, imapHost: "" },
 ];
+const RESEND_INBOUND_ADDRESS = "0ca11aba@selumelol.resend.app";
 
 function EmailAccounts({ ctx }: { ctx: AppCtx }) {
   const [settings] = useSettings();
@@ -207,7 +208,7 @@ function EmailForm({ ctx, account, initialProvider, onDone }: { ctx: AppCtx; acc
     fromName: String(c.fromName ?? "Ramjan Ali"),
     password: "",
     resendKey: "",
-    resendInboundAddress: String(c.resendInboundAddress ?? ""),
+    resendInboundAddress: String(c.resendInboundAddress ?? (initialProvider === "resend" ? RESEND_INBOUND_ADDRESS : "")),
     smtpHost: String(c.smtpHost ?? ""),
     smtpPort: String(c.smtpPort ?? ""),
     imapHost: String(c.imapHost ?? ""),
