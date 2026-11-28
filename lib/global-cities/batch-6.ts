@@ -114,7 +114,7 @@ export const CITY_GUIDES_6: Record<string, GlobalCityGuide> = {
     ],
   },
   "france/lille": {
-    summary: "Local SEO for Lille, a border city in Hauts-de-France where Vieux-Lille, Wazemmes and the wider metropole compete, and Belgian shoppers are a short trip away.",
+    summary: "Local SEO for Lille, the Hauts-de-France border city, where Vieux-Lille, Wazemmes and the wider metropole compete and Belgian shoppers are close by.",
     lead: "Lille is the hub of a large cross-border metropole, linked to Paris, London and Brussels by fast trains. Local businesses here compete for students, commuters and Belgian visitors as well as residents.",
     profile: [
       "Lille is the prefecture of the Nord department and the capital of Hauts-de-France. A former textile and industrial centre, it now relies on services, retail, universities and the Euralille business district beside its two main stations.",
@@ -254,7 +254,7 @@ export const CITY_GUIDES_6: Record<string, GlobalCityGuide> = {
     ],
   },
   "france/le-havre": {
-    summary: "Local SEO for Le Havre, Normandy's port city rebuilt by Perret, for businesses serving port workers, cruise visitors and families from Sainte-Adresse to Graville.",
+    summary: "Local SEO for Le Havre, Normandy's port city rebuilt by Perret, for businesses serving dock workers, cruise visitors and families from Sanvic to Graville.",
     lead: "Le Havre is a major port at the mouth of the Seine, with a city centre rebuilt after the war and listed by UNESCO. Local businesses here serve dock workers, families and cruise passengers.",
     profile: [
       "Le Havre is in the Seine-Maritime department of Normandy and is one of France's main container ports. Logistics, energy, chemicals and port services dominate, with cruise ships and ferries adding tourism.",
@@ -394,7 +394,7 @@ export const CITY_GUIDES_6: Record<string, GlobalCityGuide> = {
     ],
   },
   "france/villeurbanne": {
-    summary: "Local SEO for Villeurbanne, Lyon's neighbour, for businesses in Gratte-Ciel, Charpennes and La Doua competing with Lyon for searches on both sides of the line.",
+    summary: "Local SEO for Villeurbanne, Lyon's neighbour, for businesses in Gratte-Ciel, Charpennes and La Doua competing with Lyon for searches across the city line.",
     lead: "Villeurbanne is a separate city right next to Lyon, with its own centre at Gratte-Ciel and a big science campus at La Doua. Many customers here search with the Lyon name, so getting both right matters.",
     profile: [
       "Villeurbanne is in the Rhône department and part of the Métropole de Lyon in Auvergne-Rhône-Alpes. It is home to the La Doua campus, engineering schools, the TNP theatre and a dense mix of housing and shops.",
@@ -450,7 +450,7 @@ export const CITY_GUIDES_6: Record<string, GlobalCityGuide> = {
     ],
   },
   "france/aix-en-provence": {
-    summary: "Local SEO for Aix-en-Provence, the university and festival city near Marseille, for businesses on the Cours Mirabeau, in Les Milles and in villages like Puyricard.",
+    summary: "Local SEO for Aix-en-Provence, the student and festival city near Marseille, for businesses on the Cours Mirabeau, in Les Milles and in Puyricard.",
     lead: "Aix-en-Provence is an elegant student and festival city with a strong pull for tourists and expats. Local businesses here compete for visitors, students and wealthy residents, often alongside Marseille.",
     profile: [
       "Aix-en-Provence is in the Bouches-du-Rhône department of Provence-Alpes-Côte d'Azur. Its university, law courts, tech businesses at Les Milles and tourism linked to Cézanne and the summer opera festival shape the economy.",
@@ -702,7 +702,7 @@ export const CITY_GUIDES_6: Record<string, GlobalCityGuide> = {
     ],
   },
   "belgium/bruges": {
-    summary: "Local SEO for Bruges (Brugge), the canal city of West Flanders, for businesses serving day-trippers in the historic centre and residents in Sint-Andries and Assebroek.",
+    summary: "Local SEO for Bruges (Brugge), the West Flanders canal city, for businesses serving day-trippers in the centre and residents in Sint-Andries and Assebroek.",
     lead: "Bruges is one of Europe's best-known medieval cities, with crowds of visitors almost all year. Residents in the outer districts search in Dutch for everyday services.",
     profile: [
       "Bruges is the capital of West Flanders. Tourism dominates the historic centre, while the port at Zeebrugge, health services and small industry support the wider economy.",
@@ -814,7 +814,7 @@ export const CITY_GUIDES_6: Record<string, GlobalCityGuide> = {
     ],
   },
   "belgium/mechelen": {
-    summary: "Local SEO for Mechelen, the cathedral city halfway between Antwerp and Brussels, for businesses in the centre, Nekkerspoel and Muizen serving commuting families.",
+    summary: "Local SEO for Mechelen, the cathedral city between Antwerp and Brussels, for businesses in the centre, Nekkerspoel and Muizen serving commuter families.",
     lead: "Mechelen sits on the Dijle almost exactly between Antwerp and Brussels, so many residents commute both ways. The revived historic centre and its new housing around the station keep local demand steady.",
     profile: [
       "Mechelen belongs to Antwerp province in Flanders, though its Dijle valley location puts Brussels within easy reach by train. St Rumbold's Cathedral and its carillon tradition anchor a compact centre, while logistics, health care and retail provide much of the work.",
@@ -842,7 +842,7 @@ export const CITY_GUIDES_6: Record<string, GlobalCityGuide> = {
     ],
   },
   "belgium/aalst": {
-    summary: "Local SEO for Aalst on the Dender, known for its pre-Lent carnival, for businesses in the centre, Erembodegem and Hofstade serving families and Brussels commuters.",
+    summary: "Local SEO for Aalst, the Dender carnival town, for businesses in the centre, Erembodegem and Hofstade serving local families and Brussels commuters.",
     lead: "Aalst is famous in Belgium for its satirical carnival, but for most of the year it is a working Dender town with fast trains to Brussels. Locals search in Dutch, and many search by the former village they live in.",
     profile: [
       "Aalst lies in East Flanders on the Dender river, west of Brussels. Retail, logistics, health care and small manufacturing support the town, and a large share of residents commute to the capital.",
@@ -898,7 +898,7 @@ export const CITY_GUIDES_6: Record<string, GlobalCityGuide> = {
     ],
   },
   "belgium/kortrijk": {
-    summary: "Local SEO for Kortrijk (Courtrai) on the Leie, a West Flanders design and retail town near Lille, with Dutch pages and French ones for cross-border shoppers.",
+    summary: "Local SEO for Kortrijk (Courtrai) on the Leie, a West Flanders design and retail town near Lille, with Dutch pages and French ones for border shoppers.",
     lead: "Kortrijk sits on the Leie a few minutes from the French border, so French shoppers from the Lille area mix with Flemish locals. A business here often needs to be found as both Kortrijk and Courtrai.",
     profile: [
       "Kortrijk is a regional centre in the south of West Flanders. Furniture, textiles and interior design have long roots here, and the town hosts a well-known interior design biennial alongside a busy retail centre.",
@@ -954,7 +954,7 @@ export const CITY_GUIDES_6: Record<string, GlobalCityGuide> = {
     ],
   },
   "belgium/sint-niklaas": {
-    summary: "Local SEO for Sint-Niklaas, the main town of the Waasland between Antwerp and Ghent, for businesses around the Grote Markt and in Belsele, Sinaai and Nieuwkerken.",
+    summary: "Local SEO for Sint-Niklaas, hub of the Waasland between Antwerp and Ghent, for businesses on the Grote Markt and in Belsele, Sinaai and Nieuwkerken.",
     lead: "Sint-Niklaas is the hub of the Waasland, a region between Antwerp and Ghent. Its very large market square is the centre of town life, while family homes in the surrounding villages keep trades busy.",
     profile: [
       "Sint-Niklaas is in East Flanders, close to the border with Antwerp province. Retail, services, small industry and commuting to Antwerp and Ghent shape the local economy.",
@@ -982,7 +982,7 @@ export const CITY_GUIDES_6: Record<string, GlobalCityGuide> = {
     ],
   },
   "austria/vienna": {
-    summary: "Local SEO for Vienna (Wien) across its 23 Bezirke, with German pages that use Austrian wording and postcodes, from Innere Stadt to Favoriten and Donaustadt.",
+    summary: "Local SEO for Vienna (Wien) across its 23 Bezirke, with German pages using Austrian wording and postcodes, from Innere Stadt to Favoriten and Donaustadt.",
     lead: "Vienna is a capital where people search by Bezirk and postcode, from 1010 in the centre to 1220 in Donaustadt. Austrian German wording matters, because a Viennese customer looks for an \"Installateur\", not a \"Klempner\".",
     profile: [
       "Vienna is Austria's capital and a federal state in its own right, divided into 23 numbered districts. It hosts UN agencies and many international organisations, a large university sector, a big public sector and a tourism trade built on palaces, museums, music and coffee houses.",
@@ -1066,7 +1066,7 @@ export const CITY_GUIDES_6: Record<string, GlobalCityGuide> = {
     ],
   },
   "austria/salzburg": {
-    summary: "Local SEO for Salzburg, Mozart's city and festival capital near the German border, for businesses in the Altstadt, Lehen and Maxglan serving tourists and residents.",
+    summary: "Local SEO for Salzburg, Mozart's festival city on the German border, for businesses in the Altstadt, Lehen and Maxglan serving tourists and residents.",
     lead: "Salzburg draws visitors all year for Mozart, the Salzburg Festival and its Christmas markets, while residents need trades, doctors and shops like anywhere else. Bavarian shoppers from just over the border add another layer.",
     profile: [
       "Salzburg is the capital of the Austrian state of the same name, on the Salzach river at the edge of the Alps. Tourism, trade, services, the university and its role as a gateway to ski resorts shape the economy.",
