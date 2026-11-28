@@ -512,7 +512,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
   },
   "brazil/osasco": {
-    summary: "Local SEO in Osasco, west of São Paulo: reach office workers, commuters and shoppers on the Calçadão and in neighbourhoods like Vila Yara and Presidente Altino.",
+    summary: "Local SEO in Osasco, west of São Paulo: reach office workers, commuters and shoppers on the Calçadão, in Vila Yara and in Presidente Altino.",
     lead: "Osasco is a busy business and commuter city on São Paulo's western edge, with banks, offices and a crowded pedestrian shopping street. Local businesses compete for workers by day and residents by night.",
     profile: [
       "Osasco borders São Paulo's west zone and is a major service and financial centre in its own right. Its Calçadão is a dense pedestrian shopping area, and the city links to the Alphaville business area in nearby Barueri.",
@@ -682,7 +682,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
   },
   "colombia/bogota": {
-    summary: "SEO local en Bogotá: rank across Chapinero, Usaquén, Suba and Teusaquillo in Colombia's capital, where customers search by locality and barrio.",
+    summary: "Local SEO in Bogotá: rank across Chapinero, Usaquén, Suba and Teusaquillo in Colombia's capital, where customers search by locality and barrio.",
     lead: "Bogotá is a huge high-altitude capital where people rarely search for the whole city. They look for a dentist in Chapinero or a restaurant in Usaquén, so localised pages and a strong Maps profile matter.",
     profile: [
       "Bogotá is Colombia's capital and largest economic centre, set on a cool Andean plateau. It is divided into localidades, and the city's estrato system shapes where businesses open and how they price.",
@@ -716,7 +716,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
   },
   "colombia/medellin": {
-    summary: "SEO local en Medellín: reach residents, expats and digital nomads in El Poblado, Laureles and Envigado across the Aburrá Valley.",
+    summary: "Local SEO in Medellín: reach residents, expats and digital nomads in El Poblado, Laureles and Envigado across the Aburrá Valley.",
     lead: "Medellín attracts residents, expats and visitors with its mild climate, metro and lively neighbourhoods. Local businesses compete hard in El Poblado and Laureles, where reviews and English details matter.",
     profile: [
       "Medellín is the capital of Antioquia, set in the Aburrá Valley and known as the city of eternal spring. It is a hub for business, fashion and health tourism, and its metro links the valley.",
@@ -750,7 +750,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
   },
   "colombia/cali": {
-    summary: "SEO local en Cali: reach salsa fans, health tourists and residents in Granada, San Antonio and Ciudad Jardín in the Valle del Cauca capital.",
+    summary: "Local SEO in Cali: reach salsa fans, health tourists and residents in Granada, San Antonio and Ciudad Jardín in the Valle del Cauca capital.",
     lead: "Cali is Colombia's salsa capital, a hot city where dance schools, clinics and restaurants compete for both locals and visitors. Getting found in the right barrio is key.",
     profile: [
       "Cali is the capital of Valle del Cauca, a warm city close to the Pacific coast. It is famous for salsa, the Feria de Cali in late December and a strong cosmetic surgery industry.",
@@ -784,7 +784,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
   },
   "colombia/barranquilla": {
-    summary: "SEO local en Barranquilla: reach Carnaval crowds, port businesses and residents of El Prado, Riomar and Villa Country on Colombia's Caribbean coast.",
+    summary: "Local SEO in Barranquilla: reach Carnaval crowds, port businesses and residents of El Prado, Riomar and Villa Country on Colombia's Caribbean coast.",
     lead: "Barranquilla is a Caribbean port city famous for its Carnaval, one of the biggest in the world. Local businesses compete for residents, trade customers and visitors who arrive in huge numbers each year.",
     profile: [
       "Barranquilla is the capital of Atlántico, at the mouth of the Magdalena River. It is a major port and industrial centre, and its Carnaval is recognised by UNESCO.",
@@ -818,7 +818,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
   },
   "colombia/cartagena": {
-    summary: "SEO local en Cartagena: reach tourists in the walled city and Getsemaní, cruise visitors and residents of Bocagrande and Manga on the Caribbean coast.",
+    summary: "Local SEO in Cartagena: reach tourists in the walled city and Getsemaní, cruise visitors and residents of Bocagrande and Manga on the Caribbean coast.",
     lead: "Cartagena's walled city and islands draw visitors from around the world, making tourism searches fiercely competitive. Residents also need services, so businesses must balance both markets.",
     profile: [
       "Cartagena is the capital of Bolívar and a UNESCO World Heritage city with colonial walls, a busy port and nearby islands. Tourism, cruises and events like the Hay Festival shape the economy.",
@@ -852,7 +852,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
   },
   "colombia/bucaramanga": {
-    summary: "SEO local en Bucaramanga, the city of parks in Santander: reach families, students and visitors in Cabecera del Llano, Sotomayor and the city centre.",
+    summary: "Local SEO in Bucaramanga, the city of parks in Santander: reach families, students and visitors in Cabecera del Llano, Sotomayor and the city centre.",
     lead: "Bucaramanga is a green, hilly city known for its parks, universities and strong local commerce. Businesses compete for residents and visitors from across Santander.",
     profile: [
       "Bucaramanga is the capital of Santander, known as the city of parks. It is a commercial and education hub, with footwear and textiles among local industries.",
@@ -886,7 +886,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
   },
   "colombia/pereira": {
-    summary: "SEO local en Pereira, the commercial hub of the Coffee Axis: reach shoppers, coffee tourists and families along the Circunvalar and in Cerritos.",
+    summary: "Local SEO in Pereira, the commercial hub of the Coffee Axis: reach shoppers, coffee tourists and families along the Circunvalar and in Cerritos.",
     lead: "Pereira is the busy commercial centre of Colombia's Coffee Axis, drawing shoppers from nearby towns and tourists heading to coffee farms. Local businesses compete for both residents and visitors.",
     profile: [
       "Pereira is the capital of Risaralda, in the Eje Cafetero. It is known for commerce, nightlife and as a base for exploring coffee country and thermal springs.",
@@ -920,7 +920,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
   },
   "colombia/santa-marta": {
-    summary: "SEO local en Santa Marta: reach travellers heading to Tayrona, Minca and Taganga, and residents in El Rodadero and the historic centre.",
+    summary: "Local SEO in Santa Marta: reach travellers heading to Tayrona, Minca and Taganga, and residents in El Rodadero and the historic centre.",
     lead: "Santa Marta is the gateway to Tayrona National Park and the Sierra Nevada, so tourism searches dominate. Residents also need everyday services, creating two distinct markets.",
     profile: [
       "Santa Marta is the capital of Magdalena and one of the oldest cities in the Americas. It sits between the Caribbean and the Sierra Nevada de Santa Marta, close to Tayrona National Park.",
@@ -954,7 +954,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
   },
   "colombia/manizales": {
-    summary: "SEO local en Manizales, the mountain university city of Caldas: reach students, coffee tourists and families in El Cable, Chipre and Palermo.",
+    summary: "Local SEO in Manizales, the mountain university city of Caldas: reach students, coffee tourists and families in El Cable, Chipre and Palermo.",
     lead: "Manizales is a hillside university city in the Coffee Axis, with views of the Nevado del Ruiz. Local businesses compete for students, families and visitors who come for the January fair.",
     profile: [
       "Manizales is the capital of Caldas, built on steep ridges in the Andes. It has several universities and is part of the coffee-growing region.",
@@ -988,7 +988,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
   },
   "colombia/cucuta": {
-    summary: "SEO local en Cúcuta, on the Venezuelan border: reach shoppers, migrants and families in Caobos, La Riviera and the busy centre of Norte de Santander.",
+    summary: "Local SEO in Cúcuta, on the Venezuelan border: reach shoppers, migrants and families in Caobos, La Riviera and the busy centre of Norte de Santander.",
     lead: "Cúcuta is a hot border city where trade with Venezuela and migration shape daily life. Local businesses compete for residents, border shoppers and new arrivals.",
     profile: [
       "Cúcuta is the capital of Norte de Santander, next to the Venezuelan border. It is a commercial hub, with many residents and visitors crossing between countries.",
@@ -1022,7 +1022,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
   },
   "colombia/ibague": {
-    summary: "SEO local en Ibagué, Colombia's musical capital in Tolima: reach families, students and travellers on the Bogotá to Pacific route with local pages.",
+    summary: "Local SEO in Ibagué, Colombia's musical capital in Tolima: reach families, students and travellers on the Bogotá to Pacific route with local pages.",
     lead: "Ibagué is the capital of Tolima and known as Colombia's musical capital. It sits on a key route between Bogotá and the west, so travellers and residents both search here.",
     profile: [
       "Ibagué is a mid-sized Andean city with a strong music tradition and a well-known conservatory. Tolima's food, such as lechona and tamales, is a point of local pride.",
@@ -1056,7 +1056,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
   },
   "colombia/villavicencio": {
-    summary: "SEO local en Villavicencio, gateway to Colombia's Llanos: reach weekend visitors from Bogotá, oil workers and families with local service pages.",
+    summary: "Local SEO in Villavicencio, gateway to Colombia's Llanos: reach weekend visitors from Bogotá, oil workers and families with local service pages.",
     lead: "Villavicencio is the gateway to the Llanos Orientales, a short drive from Bogotá. Tourism, oil and agriculture shape local demand, with busy weekends and holidays.",
     profile: [
       "Villavicencio is the capital of Meta and the main city of the eastern plains. It is known for llanero culture, carne a la llanera and joropo music.",
@@ -1090,7 +1090,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
   },
   "colombia/valledupar": {
-    summary: "SEO local en Valledupar, vallenato's home in Cesar: reach festival crowds, ranching families and residents with local pages and a strong Maps profile.",
+    summary: "Local SEO in Valledupar, vallenato's home in Cesar: reach festival crowds, ranching families and residents with local pages and a strong Maps profile.",
     lead: "Valledupar is the heart of vallenato music and hosts a famous festival each year. Local businesses compete for festival visitors and residents in a hot, ranching region.",
     profile: [
       "Valledupar is the capital of Cesar, set between the Sierra Nevada and the Serranía del Perijá. It is known for vallenato, cattle ranching and the Guatapurí River.",
@@ -1124,7 +1124,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
   },
   "colombia/monteria": {
-    summary: "SEO local en Montería, the cattle capital on the Sinú River: reach ranching families, students and residents with local pages and a strong Maps listing.",
+    summary: "Local SEO in Montería, the cattle capital on the Sinú River: reach ranching families, students and residents with local pages and a strong Maps listing.",
     lead: "Montería is the capital of Córdoba and a major cattle ranching centre on the Sinú River. Local businesses compete for residents, farm families and visitors from nearby towns.",
     profile: [
       "Montería is known as the pearl of the Sinú, with a long riverside park and a strong ranching economy. Agricultural fairs and rural trade shape demand.",
@@ -1158,7 +1158,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
   },
   "colombia/pasto": {
-    summary: "SEO local en Pasto, Nariño: reach Carnaval de Negros y Blancos visitors, families and travellers heading to Ecuador and Laguna de la Cocha.",
+    summary: "Local SEO in Pasto, Nariño: reach Carnaval de Negros y Blancos visitors, families and travellers heading to Ecuador and Laguna de la Cocha.",
     lead: "Pasto is a cool Andean city near the Ecuadorian border, famous for the Carnaval de Negros y Blancos. Local businesses compete for residents, travellers and festival crowds.",
     profile: [
       "Pasto is the capital of Nariño, set beneath the Galeras volcano. It is known for its carnival, crafts like barniz de Pasto and dishes such as cuy.",
@@ -1192,7 +1192,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
   },
   "colombia/neiva": {
-    summary: "SEO local en Neiva, capital of Huila: reach travellers heading to Tatacoa and San Agustín, oil workers and families in this hot Magdalena River city.",
+    summary: "Local SEO in Neiva, capital of Huila: reach travellers heading to Tatacoa and San Agustín, oil workers and families in this hot Magdalena River city.",
     lead: "Neiva is a hot river city and the gateway to the Tatacoa Desert and San Agustín. Local businesses compete for residents, oil workers and travellers.",
     profile: [
       "Neiva is the capital of Huila, on the Magdalena River. It is known for the San Pedro festival, asado huilense and as a base for exploring the region.",
@@ -1226,7 +1226,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
   },
   "colombia/armenia": {
-    summary: "SEO local en Armenia, Quindío: reach coffee tourists bound for Salento and Filandia, finca guests and residents in the heart of the Coffee Axis.",
+    summary: "Local SEO in Armenia, Quindío: reach coffee tourists bound for Salento and Filandia, finca guests and residents in the heart of the Coffee Axis.",
     lead: "Armenia is the capital of Quindío and the closest city to many of the Coffee Axis's best-known villages and theme parks. Tourism and residents both create strong local demand.",
     profile: [
       "Armenia sits in the centre of coffee country and was rebuilt after a major earthquake in 1999. It is a base for visiting Salento, Filandia and coffee farms.",
@@ -1260,7 +1260,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
   },
   "colombia/sincelejo": {
-    summary: "SEO local en Sincelejo, capital of Sucre: reach ranching families, January festival crowds and beachgoers heading to Tolú and Coveñas.",
+    summary: "Local SEO in Sincelejo, capital of Sucre: reach ranching families, January festival crowds and beachgoers heading to Tolú and Coveñas.",
     lead: "Sincelejo is the capital of Sucre, a cattle region near the Gulf of Morrosquillo beaches. Its January festival and regional trade shape local demand.",
     profile: [
       "Sincelejo is an inland Caribbean city known for its January festivities with corralejas and its cattle economy. It serves as a commercial hub for nearby towns.",
@@ -1294,7 +1294,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
   },
   "colombia/popayan": {
-    summary: "SEO local en Popayán, the white city of Cauca: reach Holy Week visitors, students and residents with local pages and a strong Maps presence.",
+    summary: "Local SEO in Popayán, the white city of Cauca: reach Holy Week visitors, students and residents with local pages and a strong Maps presence.",
     lead: "Popayán is known as the white city for its colonial buildings and is famous for its Holy Week processions. Students, tourists and residents create varied demand.",
     profile: [
       "Popayán is the capital of Cauca, with a well-preserved colonial centre and a strong university presence. It is recognised by UNESCO for its gastronomy and Holy Week traditions.",
@@ -1328,7 +1328,7 @@ export const CITY_GUIDES_16: Record<string, GlobalCityGuide> = {
     ],
   },
   "colombia/floridablanca": {
-    summary: "SEO local en Floridablanca, Santander: reach Cañaveral shoppers, clinic patients and families next to Bucaramanga, plus fans of the famous obleas.",
+    summary: "Local SEO in Floridablanca, Santander: reach Cañaveral shoppers, clinic patients and families next to Bucaramanga, plus fans of the famous obleas.",
     lead: "Floridablanca is part of the Bucaramanga metro area, known for its obleas, shopping centres and medical facilities. Local businesses compete for residents and patients from across the region.",
     profile: [
       "Floridablanca sits just south of Bucaramanga in Santander. It has a traditional centre known for obleas and a modern commercial area in Cañaveral.",
