@@ -5,11 +5,6 @@ import type { AppCtx } from "./AdminApp";
 import type { Overview } from "./types";
 import { api, Brand, Empty, fmtDateTime, Icon, timeAgo } from "./ui";
 
-function greeting() {
-  const h = new Date().getHours();
-  return h < 12 ? "Good morning" : h < 18 ? "Good afternoon" : "Good evening";
-}
-
 export function OverviewView({ ctx }: { ctx: AppCtx }) {
   const [o, setO] = useState<Overview | null>(null);
   useEffect(() => {
@@ -23,21 +18,6 @@ export function OverviewView({ ctx }: { ctx: AppCtx }) {
 
   return (
     <div className="adm-overview">
-      <header className="adm-overview-hero">
-        <div className="adm-overview-profile">
-          <img src="/assets/ramjan-ali-avatar.webp" alt="" width="52" height="52" />
-          <div>
-            <span className="adm-overview-kicker"><i /> Workspace overview</span>
-            <h1>{greeting()}, Ramjan</h1>
-            <p>{new Date().toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric", year: "numeric" })}</p>
-          </div>
-        </div>
-        <div className="adm-overview-actions">
-          <button className="adm-btn" onClick={() => ctx.go("contacts")}><Icon name="users" size={16} /> Contacts</button>
-          <button className="adm-btn primary" onClick={() => ctx.go("inbox")}><Icon name="mail" size={16} /> Open inbox</button>
-        </div>
-      </header>
-
       {!setupDone && (
         <div className="adm-callout">
           <Icon name="sparkle" />

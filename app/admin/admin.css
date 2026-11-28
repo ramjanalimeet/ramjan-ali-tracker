@@ -781,39 +781,7 @@ body:has(.adm-login) {
   max-width: 1180px;
   margin: 0 auto;
 }
-.adm-overview-hero {
-  min-height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 28px;
-  padding: 28px 30px;
-  border: 1px solid #dfe5d8;
-  border-radius: 20px;
-  background:
-    radial-gradient(circle at 88% 20%, rgba(190, 255, 35, .28), transparent 28%),
-    linear-gradient(135deg, #f8faf5 0%, #eef5e6 100%);
-  overflow: hidden;
-  position: relative;
-}
-.adm-overview-hero::after {
-  content: "";
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  right: -90px;
-  bottom: -145px;
-  border: 1px solid rgba(80, 112, 48, .18);
-  border-radius: 50%;
-}
-.adm-overview-profile { display: flex; align-items: center; gap: 16px; min-width: 0; position: relative; z-index: 1; }
-.adm-overview-profile img { border-radius: 16px; object-fit: cover; box-shadow: 0 6px 18px rgba(29, 39, 20, .13); }
-.adm-overview-profile h1 { margin: 3px 0 4px; font-size: clamp(26px, 3vw, 38px); line-height: 1.05; letter-spacing: -.045em; }
-.adm-overview-profile p { margin: 0; color: var(--a-mute); font-size: 13.5px; }
-.adm-overview-kicker, .adm-section-kicker { color: #66705f; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-.adm-overview-kicker { display: flex; align-items: center; gap: 7px; }
-.adm-overview-kicker i { width: 7px; height: 7px; border-radius: 50%; background: #8cce20; box-shadow: 0 0 0 4px rgba(140, 206, 32, .15); }
-.adm-overview-actions { display: flex; gap: 8px; position: relative; z-index: 1; }
+.adm-section-kicker { color: #66705f; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .adm-overview-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
 .adm-overview-stat {
   display: flex;
@@ -871,10 +839,6 @@ body:has(.adm-login) {
 }
 @media (max-width: 640px) {
   .adm-overview { gap: 14px; }
-  .adm-overview-hero { padding: 21px 18px; align-items: flex-start; flex-direction: column; border-radius: 16px; }
-  .adm-overview-profile img { width: 46px; height: 46px; }
-  .adm-overview-actions { width: 100%; }
-  .adm-overview-actions .adm-btn { flex: 1; }
   .adm-overview-stats, .adm-overview-side { grid-template-columns: 1fr; }
   .adm-overview-stat { padding: 14px; }
   .adm-overview .adm-card { padding: 16px; }
@@ -1820,6 +1784,42 @@ body:has(.adm-login) {
 }
 
 /* ---------- contacts ---------- */
+.adm-contacts { display: flex; flex-direction: column; gap: 18px; max-width: 1180px; margin: 0 auto; }
+.adm-contacts-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; padding: 8px 2px 4px; }
+.adm-contacts-head h1 { margin: 3px 0 2px; font-size: 34px; line-height: 1.08; letter-spacing: -.04em; }
+.adm-contacts-head p { margin: 0; color: var(--a-mute); font-size: 13.5px; }
+.adm-contact-summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.adm-contact-summary > div { padding: 14px 16px; border: 1px solid var(--a-line); border-radius: 14px; background: #fff; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 16px rgba(28, 33, 24, .025); }
+.adm-contact-summary span { color: var(--a-mute); font-size: 12.5px; }
+.adm-contact-summary b { font-size: 22px; letter-spacing: -.03em; }
+.adm-contact-tools { display: flex; gap: 10px; align-items: center; padding: 12px; border: 1px solid var(--a-line); border-radius: 15px; background: #fff; }
+.adm-contact-search { flex: 1; min-width: 220px; display: flex; align-items: center; gap: 9px; color: var(--a-mute); padding: 0 5px; }
+.adm-contact-search input { width: 100%; border: 0 !important; box-shadow: none !important; padding: 8px 0 !important; }
+.adm-contact-selects { display: flex; gap: 8px; }
+.adm-contact-selects select { min-width: 135px; width: auto; border-color: var(--a-line-2); background-color: #f8f9f7; }
+.adm-contact-statuses { display: flex; align-items: center; gap: 6px; overflow-x: auto; padding-bottom: 2px; }
+.adm-contact-statuses button { border: 1px solid var(--a-line-2); border-radius: 999px; background: #fff; padding: 6px 12px; color: var(--a-ink-2); font-size: 12.5px; white-space: nowrap; cursor: pointer; }
+.adm-contact-statuses button:hover { background: #f6f8f3; }
+.adm-contact-statuses button.on { background: #171916; border-color: #171916; color: #fff; }
+.adm-contact-statuses button.clear { margin-left: auto; border-color: transparent; background: transparent; color: #66705f; text-decoration: underline; }
+.adm-contact-table-wrap { overflow: hidden; border: 1px solid var(--a-line); border-radius: 16px; background: #fff; box-shadow: 0 8px 28px rgba(28, 33, 24, .035); }
+.adm-contact-table-meta { display: flex; justify-content: space-between; gap: 16px; padding: 12px 16px; border-bottom: 1px solid var(--a-line); color: var(--a-mute); font-size: 12px; }
+.adm-contact-table-meta b { color: var(--a-ink); }
+.adm-contact-table-wrap .adm-table th { background: #f6f8f3; color: #687064; font-weight: 650; text-transform: uppercase; letter-spacing: .055em; font-size: 10.5px; }
+.adm-contact-table-wrap .adm-table tbody tr { transition: background .15s ease; }
+.adm-contact-table-wrap .adm-table tbody tr:last-child td { border-bottom: 0; }
+.adm-contact-table-wrap .adm-avatar { width: 34px; height: 34px; border-radius: 11px; background: linear-gradient(145deg, #eff7e8, #e6efdf); }
+.adm-contact-table-wrap .adm-tag { background: #f0f2ee; border-radius: 999px; padding: 3px 8px; }
+@media (max-width: 760px) {
+  .adm-contacts-head { align-items: flex-start; flex-direction: column; }
+  .adm-contacts-head .adm-head-actions { width: 100%; }
+  .adm-contacts-head .adm-head-actions .adm-btn { flex: 1; }
+  .adm-contact-summary { grid-template-columns: 1fr; }
+  .adm-contact-tools { align-items: stretch; flex-direction: column; }
+  .adm-contact-selects select { flex: 1; min-width: 0; }
+  .adm-contact-statuses button.clear { margin-left: 0; }
+  .adm-contact-table-meta span:last-child { display: none; }
+}
 .adm-table {
   width: 100%;
   border-collapse: collapse;

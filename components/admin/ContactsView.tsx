@@ -1,17 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { AppCtx } from "./AdminApp";
 import type { Contact } from "./types";
 import { api, Empty, Field, Icon, initials, Modal, Status, timeAgo } from "./ui";
 
 const STATUSES = ["new", "contacted", "replied", "booked", "client", "unsubscribed", "bounced"];
-const SOURCE_LABEL: Record<string, string> = { website: "Website form", booking: "Booking", finder: "Found on website", import: "Import", manual: "Manual" };
+const SOURCE_LABEL: Record<string, string> = { website: "Website form", booking: "Booking", finder: "Found on website", import: "Import", manual: "Manual", "resend-inbound": "Email reply" };
 
 export function ContactsView({ ctx }: { ctx: AppCtx }) {
   const [list, setList] = useState<Contact[] | null>(null);
   const [q, setQ] = useState("");
   const [status, setStatus] = useState("");
+  const [source, setSource] = useState("");
+  const [age, setAge] = useState("");
   const [modal, setModal] = useState<"import" | "find" | "add" | null>(null);
   const [edit, setEdit] = useState<Contact | null>(null);
 
@@ -25,12 +27,23 @@ export function ContactsView({ ctx }: { ctx: AppCtx }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [q, status]);
 
+  const sources = useMemo(() => [...new Set((list ?? []).map((contact) => contact.source).filter(Boolean))].sort(), [list]);
+  const shown = useMemo(() => (list ?? []).filter((contact) => {
+    if (source && contact.source !== source) return false;
+    if (age && contact.created_at < Date.now() - Number(age) * 86_400_000) return false;
+    return true;
+  }), [list, source, age]);
+  const total = list?.length ?? 0;
+  const newCount = (list ?? []).filter((contact) => contact.status === "new").length;
+  const activeCount = (list ?? []).filter((contact) => ["contacted", "replied", "booked", "client"].includes(contact.status)).length;
+
   return (
-    <div className="adm-stack lg">
-      <header className="adm-head">
+    <div className="adm-contacts">
+      <header className="adm-contacts-head">
         <div>
+          <span className="adm-section-kicker">CRM workspace</span>
           <h1>Contacts</h1>
-          <p>Leads from your website, bookings, imports and emails found on business websites.</p>
+          <p>Manage every lead, client and conversation in one organized place.</p>
         </div>
         <div className="adm-head-actions">
           <button className="adm-btn" onClick={() => setModal("import")}>
@@ -45,29 +58,38 @@ export function ContactsView({ ctx }: { ctx: AppCtx }) {
         </div>
       </header>
 
-      <div className="adm-filters">
-        <div className="adm-searchbar">
-          <Icon name="search" size={16} />
-          <input placeholder="Search name, email, company or website" value={q} onChange={(e) => setQ(e.target.value)} />
+      <div className="adm-contact-summary">
+        <div><span>All contacts</span><b>{total}</b></div>
+        <div><span>New leads</span><b>{newCount}</b></div>
+        <div><span>Active relationships</span><b>{activeCount}</b></div>
+      </div>
+
+      <div className="adm-contact-tools">
+        <div className="adm-contact-search">
+          <Icon name="search" size={17} />
+          <input aria-label="Search contacts" placeholder="Search name, email, company or website…" value={q} onChange={(e) => setQ(e.target.value)} />
+          {q && <button type="button" className="adm-icon-btn" onClick={() => setQ("")} aria-label="Clear search"><Icon name="x" size={14} /></button>}
         </div>
-        <select value={status} onChange={(e) => setStatus(e.target.value)}>
-          <option value="">All statuses</option>
-          {STATUSES.map((s) => (
-            <option key={s} value={s}>
-              {s}
-            </option>
-          ))}
-        </select>
+        <div className="adm-contact-selects">
+          <select aria-label="Filter by source" value={source} onChange={(e) => setSource(e.target.value)}><option value="">All sources</option>{sources.map((item) => <option key={item} value={item}>{SOURCE_LABEL[item] ?? item}</option>)}</select>
+          <select aria-label="Filter by date added" value={age} onChange={(e) => setAge(e.target.value)}><option value="">Any time</option><option value="7">Last 7 days</option><option value="30">Last 30 days</option><option value="90">Last 90 days</option></select>
+        </div>
+      </div>
+
+      <div className="adm-contact-statuses">
+        {[{ value: "", label: "All" }, { value: "new", label: "New" }, { value: "contacted", label: "Contacted" }, { value: "replied", label: "Replied" }, { value: "booked", label: "Booked" }, { value: "client", label: "Clients" }].map((item) => <button key={item.value} className={status === item.value ? "on" : ""} onClick={() => setStatus(item.value)}>{item.label}</button>)}
+        {(status || source || age || q) && <button className="clear" onClick={() => { setStatus(""); setSource(""); setAge(""); setQ(""); }}>Clear filters</button>}
       </div>
 
       {!list ? (
         <div className="adm-skel tall" />
-      ) : list.length === 0 ? (
-        <Empty icon="users" title={q || status ? "No matches" : "No contacts yet"}>
+      ) : shown.length === 0 ? (
+        <Empty icon="users" title={q || status || source || age ? "No matching contacts" : "No contacts yet"}>
           Import a CSV, paste a list of business websites to find their emails, or connect your website form.
         </Empty>
       ) : (
-        <div className="adm-card flush">
+        <div className="adm-contact-table-wrap">
+          <div className="adm-contact-table-meta"><span>Showing <b>{shown.length}</b> contact{shown.length === 1 ? "" : "s"}</span><span>Click a contact to view or edit details</span></div>
           <table className="adm-table">
             <thead>
               <tr>
@@ -79,7 +101,7 @@ export function ContactsView({ ctx }: { ctx: AppCtx }) {
               </tr>
             </thead>
             <tbody>
-              {list.map((c) => (
+              {shown.map((c) => (
                 <tr key={c.id} onClick={() => setEdit(c)}>
                   <td>
                     <div className="adm-person">
