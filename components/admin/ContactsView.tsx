@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import type { AppCtx } from "./AdminApp";
 import type { Contact } from "./types";
 import { api, Empty, Field, Icon, initials, Modal, Status, timeAgo } from "./ui";
@@ -12,8 +12,6 @@ export function ContactsView({ ctx }: { ctx: AppCtx }) {
   const [list, setList] = useState<Contact[] | null>(null);
   const [q, setQ] = useState("");
   const [status, setStatus] = useState("");
-  const [source, setSource] = useState("");
-  const [age, setAge] = useState("");
   const [modal, setModal] = useState<"import" | "find" | "add" | null>(null);
   const [edit, setEdit] = useState<Contact | null>(null);
 
@@ -27,15 +25,7 @@ export function ContactsView({ ctx }: { ctx: AppCtx }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [q, status]);
 
-  const sources = useMemo(() => [...new Set((list ?? []).map((contact) => contact.source).filter(Boolean))].sort(), [list]);
-  const shown = useMemo(() => (list ?? []).filter((contact) => {
-    if (source && contact.source !== source) return false;
-    if (age && contact.created_at < Date.now() - Number(age) * 86_400_000) return false;
-    return true;
-  }), [list, source, age]);
-  const total = list?.length ?? 0;
-  const newCount = (list ?? []).filter((contact) => contact.status === "new").length;
-  const activeCount = (list ?? []).filter((contact) => ["contacted", "replied", "booked", "client"].includes(contact.status)).length;
+  const shown = list ?? [];
 
   return (
     <div className="adm-contacts">
@@ -46,6 +36,11 @@ export function ContactsView({ ctx }: { ctx: AppCtx }) {
           <p>Manage every lead, client and conversation in one organized place.</p>
         </div>
         <div className="adm-head-actions">
+          <div className="adm-contact-search compact">
+            <Icon name="search" size={16} />
+            <input aria-label="Search contacts" placeholder="Search contacts…" value={q} onChange={(e) => setQ(e.target.value)} />
+            {q && <button type="button" className="adm-icon-btn" onClick={() => setQ("")} aria-label="Clear search"><Icon name="x" size={13} /></button>}
+          </div>
           <button className="adm-btn" onClick={() => setModal("import")}>
             Import CSV
           </button>
@@ -58,33 +53,15 @@ export function ContactsView({ ctx }: { ctx: AppCtx }) {
         </div>
       </header>
 
-      <div className="adm-contact-summary">
-        <div><span>All contacts</span><b>{total}</b></div>
-        <div><span>New leads</span><b>{newCount}</b></div>
-        <div><span>Active relationships</span><b>{activeCount}</b></div>
-      </div>
-
-      <div className="adm-contact-tools">
-        <div className="adm-contact-search">
-          <Icon name="search" size={17} />
-          <input aria-label="Search contacts" placeholder="Search name, email, company or website…" value={q} onChange={(e) => setQ(e.target.value)} />
-          {q && <button type="button" className="adm-icon-btn" onClick={() => setQ("")} aria-label="Clear search"><Icon name="x" size={14} /></button>}
-        </div>
-        <div className="adm-contact-selects">
-          <select aria-label="Filter by source" value={source} onChange={(e) => setSource(e.target.value)}><option value="">All sources</option>{sources.map((item) => <option key={item} value={item}>{SOURCE_LABEL[item] ?? item}</option>)}</select>
-          <select aria-label="Filter by date added" value={age} onChange={(e) => setAge(e.target.value)}><option value="">Any time</option><option value="7">Last 7 days</option><option value="30">Last 30 days</option><option value="90">Last 90 days</option></select>
-        </div>
-      </div>
-
       <div className="adm-contact-statuses">
         {[{ value: "", label: "All" }, { value: "new", label: "New" }, { value: "contacted", label: "Contacted" }, { value: "replied", label: "Replied" }, { value: "booked", label: "Booked" }, { value: "client", label: "Clients" }].map((item) => <button key={item.value} className={status === item.value ? "on" : ""} onClick={() => setStatus(item.value)}>{item.label}</button>)}
-        {(status || source || age || q) && <button className="clear" onClick={() => { setStatus(""); setSource(""); setAge(""); setQ(""); }}>Clear filters</button>}
+        {(status || q) && <button className="clear" onClick={() => { setStatus(""); setQ(""); }}>Clear filters</button>}
       </div>
 
       {!list ? (
         <div className="adm-skel tall" />
       ) : shown.length === 0 ? (
-        <Empty icon="users" title={q || status || source || age ? "No matching contacts" : "No contacts yet"}>
+        <Empty icon="users" title={q || status ? "No matching contacts" : "No contacts yet"}>
           Import a CSV, paste a list of business websites to find their emails, or connect your website form.
         </Empty>
       ) : (

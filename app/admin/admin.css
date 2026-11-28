@@ -1788,15 +1788,10 @@ body:has(.adm-login) {
 .adm-contacts-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; padding: 8px 2px 4px; }
 .adm-contacts-head h1 { margin: 3px 0 2px; font-size: 34px; line-height: 1.08; letter-spacing: -.04em; }
 .adm-contacts-head p { margin: 0; color: var(--a-mute); font-size: 13.5px; }
-.adm-contact-summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-.adm-contact-summary > div { padding: 14px 16px; border: 1px solid var(--a-line); border-radius: 14px; background: #fff; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 16px rgba(28, 33, 24, .025); }
-.adm-contact-summary span { color: var(--a-mute); font-size: 12.5px; }
-.adm-contact-summary b { font-size: 22px; letter-spacing: -.03em; }
-.adm-contact-tools { display: flex; gap: 10px; align-items: center; padding: 12px; border: 1px solid var(--a-line); border-radius: 15px; background: #fff; }
 .adm-contact-search { flex: 1; min-width: 220px; display: flex; align-items: center; gap: 9px; color: var(--a-mute); padding: 0 5px; }
 .adm-contact-search input { width: 100%; border: 0 !important; box-shadow: none !important; padding: 8px 0 !important; }
-.adm-contact-selects { display: flex; gap: 8px; }
-.adm-contact-selects select { min-width: 135px; width: auto; border-color: var(--a-line-2); background-color: #f8f9f7; }
+.adm-contact-search.compact { flex: 0 1 220px; min-width: 170px; height: 36px; padding: 0 9px; border: 1px solid var(--a-line-2); border-radius: 9px; background: #fff; }
+.adm-contact-search.compact input { min-width: 0; font-size: 13px; }
 .adm-contact-statuses { display: flex; align-items: center; gap: 6px; overflow-x: auto; padding-bottom: 2px; }
 .adm-contact-statuses button { border: 1px solid var(--a-line-2); border-radius: 999px; background: #fff; padding: 6px 12px; color: var(--a-ink-2); font-size: 12.5px; white-space: nowrap; cursor: pointer; }
 .adm-contact-statuses button:hover { background: #f6f8f3; }
@@ -1814,9 +1809,7 @@ body:has(.adm-login) {
   .adm-contacts-head { align-items: flex-start; flex-direction: column; }
   .adm-contacts-head .adm-head-actions { width: 100%; }
   .adm-contacts-head .adm-head-actions .adm-btn { flex: 1; }
-  .adm-contact-summary { grid-template-columns: 1fr; }
-  .adm-contact-tools { align-items: stretch; flex-direction: column; }
-  .adm-contact-selects select { flex: 1; min-width: 0; }
+  .adm-contact-search.compact { flex: 1 1 100%; order: -1; }
   .adm-contact-statuses button.clear { margin-left: 0; }
   .adm-contact-table-meta span:last-child { display: none; }
 }
