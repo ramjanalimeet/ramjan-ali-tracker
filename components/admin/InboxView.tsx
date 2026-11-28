@@ -302,32 +302,37 @@ function Detail({ m, ctx, onBack, onDelete, onChanged }: { m: Message; ctx: AppC
             e.preventDefault();
             if (busy || !sender?.email || !reply.trim() || !subject.trim()) return;
             setBusy("send");
+            const sentBody = reply;
+            const sentSubject = subject;
+            const sentAttachments = attachments;
+            const sentAt = Date.now();
+            const optimisticId = `sending-${sentAt}`;
+            setThread((current) => [...current, {
+              ...m,
+              id: optimisticId,
+              direction: "out",
+              channel: "email",
+              account_id: "resend",
+              from_addr: sender.email,
+              from_name: "Ramjan Ali Akash",
+              to_addr: m.from_addr,
+              subject: sentSubject,
+              body: sentBody,
+              meta: JSON.stringify({ attachments: sentAttachments.map(({ filename, contentType, size }) => ({ filename, contentType, size })) }),
+              read: 1,
+              created_at: sentAt,
+            }]);
+            setReply("");
+            setAttachments([]);
             try {
-              const sentBody = reply;
-              const sentSubject = subject;
-              const sentAt = Date.now();
-              await api(`inbox/${m.id}/reply`, { body: { body: sentBody, subject: sentSubject, attachments } });
-              setThread((current) => [...current, {
-                ...m,
-                id: `sent-${sentAt}`,
-                direction: "out",
-                channel: "email",
-                account_id: "resend",
-                from_addr: sender.email,
-                from_name: "Ramjan Ali Akash",
-                to_addr: m.from_addr,
-                subject: sentSubject,
-                body: sentBody,
-                meta: JSON.stringify({ attachments: attachments.map(({ filename, contentType, size }) => ({ filename, contentType, size })) }),
-                read: 1,
-                created_at: sentAt,
-              }]);
+              await api(`inbox/${m.id}/reply`, { body: { body: sentBody, subject: sentSubject, attachments: sentAttachments } });
               ctx.toast("Reply sent");
-              setReply("");
-              setAttachments([]);
               onChanged();
               window.setTimeout(loadThread, 500);
             } catch (err) {
+              setThread((current) => current.filter((message) => message.id !== optimisticId));
+              setReply(sentBody);
+              setAttachments(sentAttachments);
               ctx.toast((err as Error).message, "error");
             } finally {
               setBusy("");
