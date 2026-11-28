@@ -20,7 +20,13 @@ export function SettingsModal({ ctx, initial, onClose }: { ctx: AppCtx; initial:
       <div className="adm-settings">
         <nav className="adm-settings-nav">
           {TABS.map((t) => (
-            <button key={t.id} className={`adm-nav-item${tab === t.id ? " active" : ""}`} onClick={() => setTab(t.id)}>
+            <button
+              key={t.id}
+              type="button"
+              className={`adm-nav-item${tab === t.id ? " active" : ""}`}
+              aria-current={tab === t.id ? "page" : undefined}
+              onClick={() => setTab(t.id)}
+            >
               <Icon name={t.icon} size={17} />
               <span>{t.label}</span>
             </button>

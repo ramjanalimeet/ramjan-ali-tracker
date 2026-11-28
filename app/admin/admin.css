@@ -2612,3 +2612,217 @@ body:has(.adm-login) {
     padding-inline: 7px;
   }
 }
+
+/* Mobile settings is a dedicated app screen. This final override prevents
+   the desktop dialog rules above from shrinking it into a clipped popup. */
+@media (max-width: 760px) {
+  .adm-modal.wide:has(.adm-settings) {
+    position: fixed;
+    inset: 0;
+    width: 100dvw;
+    min-width: 100dvw;
+    max-width: 100dvw;
+    height: 100dvh;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: none;
+    background: #f7f9f5;
+  }
+
+  .adm-modal.wide:has(.adm-settings)[open] {
+    animation: adm-settings-up .2s ease-out;
+  }
+
+  @keyframes adm-settings-up {
+    from { opacity: 0; transform: translateY(12px); }
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-modal-box {
+    width: 100%;
+    height: 100dvh;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    overflow: hidden;
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-modal-head {
+    position: relative;
+    flex: 0 0 auto;
+    min-height: calc(56px + env(safe-area-inset-top));
+    padding: calc(10px + env(safe-area-inset-top)) 10px 10px 16px;
+    border-bottom: 1px solid #e4e8df;
+    background: rgba(255,255,255,.96);
+    backdrop-filter: blur(18px);
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-modal-head h2 {
+    font-size: 18px;
+    letter-spacing: -.025em;
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-modal-head .adm-icon-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: #f1f3ee;
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-modal-body {
+    min-height: 0;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-settings {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-settings-nav {
+    position: relative;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    width: 100%;
+    padding: 9px 10px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    border: 0;
+    border-bottom: 1px solid #e4e8df;
+    background: #fff;
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-settings-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-settings-nav .adm-nav-item {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: max-content;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    gap: 7px;
+    white-space: nowrap;
+    scroll-snap-align: start;
+    font-size: 13px;
+    font-weight: 600;
+    color: #555d52;
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-settings-nav .adm-nav-item.active {
+    border-color: #d9e8ce;
+    background: #eaf5e4;
+    color: #285d20;
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-settings-body {
+    flex: 1;
+    min-height: 0;
+    padding: 18px 14px calc(28px + env(safe-area-inset-bottom));
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    background: #f7f9f5;
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-settings-body > .adm-stack {
+    gap: 13px;
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-settings-body h3 {
+    margin-bottom: 2px;
+    font-size: 17px;
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-acc {
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 10px;
+    padding: 14px;
+    border: 1px solid #e1e6dc;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 4px 18px rgba(32, 43, 28, .04);
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-acc + .adm-acc {
+    border-top: 1px solid #e1e6dc;
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-acc-main {
+    min-width: 0;
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-acc-main b {
+    overflow-wrap: anywhere;
+    font-size: 14px;
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-acc-main span {
+    margin-top: 2px;
+    overflow-wrap: anywhere;
+    line-height: 1.35;
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-acc-actions {
+    grid-column: 2 / -1;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-copy {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border: 1px solid #e1e6dc;
+    border-radius: 14px;
+    background: #fff;
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-copy p {
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .adm-modal.wide:has(.adm-settings) details {
+    padding: 3px 2px;
+  }
+
+  .adm-modal.wide:has(.adm-settings) summary {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .adm-modal.wide:has(.adm-settings) .adm-settings-nav {
+    padding-inline: 8px;
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-settings-body {
+    padding-inline: 10px;
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-copy {
+    grid-template-columns: 1fr;
+  }
+
+  .adm-modal.wide:has(.adm-settings) .adm-copy .adm-btn {
+    justify-self: start;
+  }
+}
