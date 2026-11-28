@@ -536,6 +536,13 @@ export class AdminStore extends DurableObject<Env> {
   }
 
   private async resendHook(req: Request, url: URL): Promise<Response> {
+    if (req.method === "GET") {
+      const connected = this.q<{ config: string }>("SELECT config FROM accounts WHERE kind='email'").some((row) => {
+        const cfg = JSON.parse(row.config || "{}") as Record<string, unknown>;
+        return cfg.provider === "resend" && cfg.resendInboundAddress === RESEND_INBOUND_ADDRESS && Boolean(cfg.resendWebhookSecret);
+      });
+      return json({ connected });
+    }
     if (req.method !== "POST") return err("Use POST", 405);
     const accountId = url.searchParams.get("account") || "";
     const account = this.one<{ config: string }>("SELECT config FROM accounts WHERE id=? AND kind='email'", accountId);
