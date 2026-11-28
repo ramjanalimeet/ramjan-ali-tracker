@@ -1022,7 +1022,7 @@ export const CITY_GUIDES_10: Record<string, GlobalCityGuide> = {
     ],
   },
   "malta/valletta": {
-    summary: "Local SEO in Valletta, Malta's walled capital and cruise port: reach office workers, residents and visitors on Republic Street, Merchants Street and the Waterfront.",
+    summary: "Local SEO in Valletta, Malta's walled capital and cruise port: reach office workers and visitors on Republic Street, Strait Street and the Waterfront.",
     lead: "Valletta is Malta's capital, a compact walled city on a peninsula between two harbours. By day it fills with civil servants, lawyers and visitors, and in the evening its restaurants and bars take over.",
     profile: [
       "The whole city is a UNESCO World Heritage Site, and it holds the parliament, law courts, ministries and many professional offices. Cruise ships berth at the Valletta Waterfront, bringing short bursts of visitors into the streets.",
@@ -1260,7 +1260,7 @@ export const CITY_GUIDES_10: Record<string, GlobalCityGuide> = {
     ],
   },
   "malta/mellie-a": {
-    summary: "Local SEO in Mellieħa, north Malta's beach town, reaching visitors at Għadira Bay, Popeye Village and Ċirkewwa, and residents in the village and Santa Maria Estate.",
+    summary: "Local SEO in Mellieħa, north Malta's beach town, reaching visitors at Għadira Bay, Popeye Village and Ċirkewwa, plus residents of the village.",
     lead: "Mellieħa is a hilltop village in the north of Malta, overlooking the sandy beach at Għadira Bay. It is also the gateway to the Gozo ferry at Ċirkewwa.",
     profile: [
       "Tourism dominates in summer, with beachgoers at Għadira Bay and families visiting Popeye Village at Anchor Bay. The village itself has a parish church on the ridge and a residential community.",
