@@ -124,7 +124,7 @@ export default function HvacSeoCalendarPage() {
       <tr><td>Furnace replacement</td><td>Heating</td><td>Gas vs electric, efficiency, sizing</td></tr>
       <tr><td>Ductless mini-splits</td><td>Both</td><td>Additions, garages, older homes</td></tr>
       <tr><td>Maintenance plans</td><td>Shoulder</td><td>What is included, savings, sign-up</td></tr>
-      <tr><td>Indoor air quality and <Link href="/local-seo/air-duct-cleaning-seo">duct cleaning</Link></td><td>Shoulder</td><td>Allergies, filtration, humidity</td></tr>
+      <tr><td>Indoor air quality and <Link href="/industries/air-duct-cleaning-seo">duct cleaning</Link></td><td>Shoulder</td><td>Allergies, filtration, humidity</td></tr>
       <tr><td>Emergency HVAC</td><td>Peaks</td><td>Only if you truly answer after hours</td></tr>
       </tbody>
       </table>
@@ -211,7 +211,7 @@ export default function HvacSeoCalendarPage() {
       </ul>
       <p>For a realistic sense of how fast new pages move, see <Link href="/blog/how-long-does-local-seo-take">how long local SEO takes</Link>.</p>
       <h2 id="next">Start before the next peak</h2>
-      <p>Whatever month it is, the best time to start is before the next season. <Link href="/local-seo/hvac-seo">HVAC SEO</Link> follows this calendar, with pages, profile work and reviews planned around your peaks. Related trades such as <Link href="/local-seo/generator-installer-seo">generator installers</Link> and <Link href="/local-seo/insulation-seo">insulation contractors</Link> follow similar seasonal patterns.</p>
+      <p>Whatever month it is, the best time to start is before the next season. <Link href="/industries/hvac-seo">HVAC SEO</Link> follows this calendar, with pages, profile work and reviews planned around your peaks. Related trades such as <Link href="/industries/generator-installer-seo">generator installers</Link> and <Link href="/industries/insulation-seo">insulation contractors</Link> follow similar seasonal patterns.</p>
       <p>Book a <Link href="/book-a-call">free strategy call</Link> and I&apos;ll show you what to build before your next busy season, based on where you rank today.</p>
     </ArticleLayout>
   );

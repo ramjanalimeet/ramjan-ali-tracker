@@ -102,17 +102,17 @@ export default function GoogleBusinessProfileCategoriesForContractorsPage() {
       <tr><th>Trade</th><th>Usual primary category</th><th>Secondary categories to consider (only if you do the work)</th></tr>
       </thead>
       <tbody>
-      <tr><td><Link href="/local-seo/roofing-seo">Roofing</Link></td><td>Roofing contractor</td><td>Gutter cleaning service, Siding contractor, Skylight contractor, Commercial roofing contractor (if listed in your dashboard)</td></tr>
-      <tr><td><Link href="/local-seo/plumbing-seo">Plumbing</Link></td><td>Plumber</td><td>Water heater installation service, Drainage service, Septic system service, Water softening equipment supplier</td></tr>
-      <tr><td><Link href="/local-seo/hvac-seo">HVAC</Link></td><td>HVAC contractor</td><td>Air conditioning contractor, Air conditioning repair service, Furnace repair service, Heating contractor, Air duct cleaning service</td></tr>
-      <tr><td><Link href="/local-seo/septic-seo">Septic</Link></td><td>Septic system service</td><td>Drainage service, Excavating contractor, Portable toilet supplier</td></tr>
-      <tr><td><Link href="/local-seo/electrician-seo">Electrical</Link></td><td>Electrician</td><td>Electrical installation service, Lighting contractor, Generator shop, Electric vehicle charging station contractor</td></tr>
-      <tr><td><Link href="/local-seo/garage-door-seo">Garage doors</Link></td><td>Garage door supplier</td><td>Garage door repair service (if listed), Gate repair service</td></tr>
-      <tr><td><Link href="/local-seo/pest-control-seo">Pest control</Link></td><td>Pest control service</td><td>Termite control service, Wildlife control service</td></tr>
-      <tr><td><Link href="/local-seo/landscaping-seo">Landscaping</Link></td><td>Landscaper</td><td>Lawn care service, Landscape designer, Irrigation contractor, Tree service</td></tr>
-      <tr><td><Link href="/local-seo/water-damage-restoration-seo">Water damage</Link></td><td>Water damage restoration service</td><td>Fire damage restoration service, Mold remediation service (if listed), Carpet cleaning service</td></tr>
-      <tr><td><Link href="/local-seo/painting-seo">Painting</Link></td><td>Painter</td><td>House painter (if listed), Drywall contractor, Deck staining service</td></tr>
-      <tr><td><Link href="/local-seo/kitchen-remodeling-seo">Remodeling</Link></td><td>Kitchen remodeler or Bathroom remodeler</td><td>General contractor, Cabinet maker, Countertop store</td></tr>
+      <tr><td><Link href="/industries/roofing-seo">Roofing</Link></td><td>Roofing contractor</td><td>Gutter cleaning service, Siding contractor, Skylight contractor, Commercial roofing contractor (if listed in your dashboard)</td></tr>
+      <tr><td><Link href="/industries/plumbing-seo">Plumbing</Link></td><td>Plumber</td><td>Water heater installation service, Drainage service, Septic system service, Water softening equipment supplier</td></tr>
+      <tr><td><Link href="/industries/hvac-seo">HVAC</Link></td><td>HVAC contractor</td><td>Air conditioning contractor, Air conditioning repair service, Furnace repair service, Heating contractor, Air duct cleaning service</td></tr>
+      <tr><td><Link href="/industries/septic-seo">Septic</Link></td><td>Septic system service</td><td>Drainage service, Excavating contractor, Portable toilet supplier</td></tr>
+      <tr><td><Link href="/industries/electrician-seo">Electrical</Link></td><td>Electrician</td><td>Electrical installation service, Lighting contractor, Generator shop, Electric vehicle charging station contractor</td></tr>
+      <tr><td><Link href="/industries/garage-door-seo">Garage doors</Link></td><td>Garage door supplier</td><td>Garage door repair service (if listed), Gate repair service</td></tr>
+      <tr><td><Link href="/industries/pest-control-seo">Pest control</Link></td><td>Pest control service</td><td>Termite control service, Wildlife control service</td></tr>
+      <tr><td><Link href="/industries/landscaping-seo">Landscaping</Link></td><td>Landscaper</td><td>Lawn care service, Landscape designer, Irrigation contractor, Tree service</td></tr>
+      <tr><td><Link href="/industries/water-damage-restoration-seo">Water damage</Link></td><td>Water damage restoration service</td><td>Fire damage restoration service, Mold remediation service (if listed), Carpet cleaning service</td></tr>
+      <tr><td><Link href="/industries/painting-seo">Painting</Link></td><td>Painter</td><td>House painter (if listed), Drywall contractor, Deck staining service</td></tr>
+      <tr><td><Link href="/industries/kitchen-remodeling-seo">Remodeling</Link></td><td>Kitchen remodeler or Bathroom remodeler</td><td>General contractor, Cabinet maker, Countertop store</td></tr>
       </tbody>
       </table>
       </div>

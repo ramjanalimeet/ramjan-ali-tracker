@@ -12,7 +12,7 @@ export const metadata = pageMeta({
   title: "HVAC SEO | Local SEO for HVAC Companies | Ramjan Ali Akash",
   description:
     "Local SEO for HVAC contractors: rank in Google Maps for AC repair, furnace repair, heat pump and system replacement searches in your area. Free audit.",
-  path: "/local-seo/hvac-seo",
+  path: "/industries/hvac-seo",
 });
 
 const FAQ: FaqItem[] = [
@@ -49,8 +49,8 @@ const SCHEMA = {
     },
     {
       "@type": "WebPage",
-      "@id": `${SITE_URL}/local-seo/hvac-seo#webpage`,
-      url: `${SITE_URL}/local-seo/hvac-seo`,
+      "@id": `${SITE_URL}/industries/hvac-seo#webpage`,
+      url: `${SITE_URL}/industries/hvac-seo`,
       name: "HVAC SEO | Local SEO for HVAC Companies | Ramjan Ali Akash",
       description:
         "Local SEO for HVAC contractors: rank in Google Maps for AC repair, furnace repair, heat pump and system replacement searches in your area. Free audit.",
@@ -80,17 +80,17 @@ const SCHEMA = {
           "@type": "ListItem",
           position: 3,
           name: "HVAC SEO",
-          item: `${SITE_URL}/local-seo/hvac-seo`,
+          item: `${SITE_URL}/industries/hvac-seo`,
         },
       ],
     },
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/local-seo/hvac-seo#service`,
+      "@id": `${SITE_URL}/industries/hvac-seo#service`,
       name: "HVAC SEO",
       description:
         "Local SEO for HVAC contractors: rank in Google Maps for AC repair, furnace repair, heat pump and system replacement searches in your area. Free audit.",
-      url: `${SITE_URL}/local-seo/hvac-seo`,
+      url: `${SITE_URL}/industries/hvac-seo`,
       provider: {
         "@id": `${SITE_URL}/#business`,
       },
@@ -306,23 +306,23 @@ export default function HvacSeoPage() {
             <Link className="chip" href="/blog/hvac-seo-calendar">
               Guide: HVAC SEO calendar →
             </Link>
-            <Link className="chip" href="/local-seo/roofing-seo">
+            <Link className="chip" href="/industries/roofing-seo">
               Roofing SEO →
             </Link>
-            <Link className="chip" href="/local-seo/plumbing-seo">
+            <Link className="chip" href="/industries/plumbing-seo">
               Plumbing SEO →
             </Link>
-            <Link className="chip" href="/local-seo/septic-seo">
+            <Link className="chip" href="/industries/septic-seo">
               Septic SEO →
             </Link>
-            <Link className="chip" href="/local-seo/home-services-seo">
+            <Link className="chip" href="/industries/home-services-seo">
               Home Services SEO →
             </Link>
           </div>
         </div>
       </section>
       <RelatedLinks
-        page="/local-seo/hvac-seo"
+        page="/industries/hvac-seo"
         topics={["local-seo", "google-maps"]}
         industriesTitle="More industries"
       />

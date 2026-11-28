@@ -38,7 +38,7 @@ const SITEMAPS: Record<SitemapName, () => Entry[]> = {
     { path: "/seo-services", lastmod: SITE_UPDATED },
     ...ALL_SERVICES.map((s) => ({ path: s.href, lastmod: SITE_UPDATED })),
   ],
-  industry: () => ALL_INDUSTRIES.map((i) => ({ path: `/local-seo/${i.slug}`, lastmod: SITE_UPDATED })),
+  industry: () => ALL_INDUSTRIES.map((i) => ({ path: `/industries/${i.slug}`, lastmod: SITE_UPDATED })),
   location: () => [
     ...CITIES.map((c) => ({ path: `/locations/${c.slug}`, lastmod: SITE_UPDATED })),
     ...GLOBAL_COUNTRIES.flatMap((country) => [

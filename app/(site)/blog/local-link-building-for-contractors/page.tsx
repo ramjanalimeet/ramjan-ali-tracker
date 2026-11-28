@@ -132,7 +132,7 @@ export default function LocalLinkBuildingForContractorsPage() {
       <h3>9. Local resource pages</h3>
       <p>City sites, HOAs and neighborhood associations often keep pages of local resources or emergency contacts. Ask to be listed where it is genuinely helpful.</p>
       <h3>10. Real estate agents and home inspectors</h3>
-      <p>Agents need roof, septic and HVAC inspections for sales. A useful page for agents (turnaround times, what your report includes) gives them a reason to link and refer. This works especially well for <Link href="/local-seo/septic-seo">septic</Link> and <Link href="/local-seo/home-inspection-seo">inspection</Link> businesses.</p>
+      <p>Agents need roof, septic and HVAC inspections for sales. A useful page for agents (turnaround times, what your report includes) gives them a reason to link and refer. This works especially well for <Link href="/industries/septic-seo">septic</Link> and <Link href="/industries/home-inspection-seo">inspection</Link> businesses.</p>
       <h3>11. Useful local data or guides</h3>
       <p>The highest-effort, highest-reward idea: a resource others want to cite. Examples: a guide to permit rules by county, a hail history map of your area, average water hardness by neighborhood. Local news and bloggers link to genuinely useful local data.</p>
       <h3>12. Local events and workshops</h3>

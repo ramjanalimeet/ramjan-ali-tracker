@@ -5,6 +5,8 @@ import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 import { MainCta } from "@/components/MainCta";
+import { CountryDepth } from "@/components/CountryDepth";
+import { COUNTRY_DEEP } from "@/lib/countries-deep";
 import { AiMock, MapMock } from "@/components/Mocks";
 import { GLOBAL_COUNTRIES, getGlobalCountry, slugifyPlace } from "@/lib/global-locations";
 import { type FaqItem, SITE_URL, faqSchema, pageMeta } from "@/lib/site";
@@ -36,7 +38,9 @@ export default async function CountryLocationPage({ params }: Props) {
 
   const url = `${SITE_URL}/locations/countries/${country.slug}`;
   const description = descriptionFor(country.name);
+  const deep = COUNTRY_DEEP[country.slug];
   const faqs: FaqItem[] = [
+    ...(deep?.faqs ?? []),
     {
       q: `Can you manage local SEO for a business in ${country.name}?`,
       a: `Yes. The campaign is built around the cities and customer areas the business genuinely serves in ${country.name}, using market-relevant search terms, listings and competitors.`,
@@ -158,6 +162,8 @@ export default async function CountryLocationPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {deep && <CountryDepth deep={deep} country={country.name} />}
 
       <section className="sec alt">
         <div className="wrap">

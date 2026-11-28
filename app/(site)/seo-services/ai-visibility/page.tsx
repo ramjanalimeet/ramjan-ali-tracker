@@ -640,19 +640,19 @@ export default function AiVisibilityPage() {
             <Link className="chip" href="/seo-services/on-page-seo">
               On-Page SEO →
             </Link>
-            <Link className="chip" href="/local-seo/roofing-seo">
+            <Link className="chip" href="/industries/roofing-seo">
               Roofing SEO →
             </Link>
-            <Link className="chip" href="/local-seo/plumbing-seo">
+            <Link className="chip" href="/industries/plumbing-seo">
               Plumbing SEO →
             </Link>
-            <Link className="chip" href="/local-seo/septic-seo">
+            <Link className="chip" href="/industries/septic-seo">
               Septic SEO →
             </Link>
-            <Link className="chip" href="/local-seo/hvac-seo">
+            <Link className="chip" href="/industries/hvac-seo">
               HVAC SEO →
             </Link>
-            <Link className="chip" href="/local-seo/home-services-seo">
+            <Link className="chip" href="/industries/home-services-seo">
               Home Services SEO →
             </Link>
             <Link className="chip" href="/blog/check-if-ai-recommends-your-business">

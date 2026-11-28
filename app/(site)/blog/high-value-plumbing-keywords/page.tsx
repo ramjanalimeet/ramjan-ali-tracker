@@ -95,14 +95,14 @@ export default function HighValuePlumbingKeywordsPage() {
       <tr><th>Cluster</th><th>Example searches</th><th>Typical ticket</th><th>Page to build</th></tr>
       </thead>
       <tbody>
-      <tr><td>Water heaters</td><td>water heater replacement, water heater installation, no hot water</td><td>High</td><td><Link href="/local-seo/water-heater-seo">Water heater</Link> repair and replacement page</td></tr>
+      <tr><td>Water heaters</td><td>water heater replacement, water heater installation, no hot water</td><td>High</td><td><Link href="/industries/water-heater-seo">Water heater</Link> repair and replacement page</td></tr>
       <tr><td>Tankless</td><td>tankless water heater installation, tankless water heater cost</td><td>High</td><td>Tankless page with a comparison table</td></tr>
       <tr><td>Repiping</td><td>whole house repipe, PEX repipe, polybutylene pipe replacement</td><td>Very high</td><td>Repiping page with process and timeline</td></tr>
       <tr><td>Sewer lines</td><td>sewer line replacement, trenchless sewer repair, sewer camera inspection</td><td>Very high</td><td>Sewer line page, plus a camera inspection page</td></tr>
       <tr><td>Slab leaks</td><td>slab leak repair, slab leak detection, hot spot on floor</td><td>High</td><td>Slab leak page explaining detection and repair options</td></tr>
-      <tr><td>Drains</td><td>main drain clog, hydro jetting, recurring drain backup</td><td>Medium</td><td><Link href="/local-seo/drain-cleaning-seo">Drain cleaning</Link> page with a hydro jetting section</td></tr>
-      <tr><td>Water quality</td><td>water softener installation, whole house water filter</td><td>Medium to high</td><td><Link href="/local-seo/water-treatment-seo">Water treatment</Link> page</td></tr>
-      <tr><td>Wells</td><td>well pump replacement, no water from well</td><td>High</td><td><Link href="/local-seo/well-pump-seo">Well pump</Link> page (rural markets)</td></tr>
+      <tr><td>Drains</td><td>main drain clog, hydro jetting, recurring drain backup</td><td>Medium</td><td><Link href="/industries/drain-cleaning-seo">Drain cleaning</Link> page with a hydro jetting section</td></tr>
+      <tr><td>Water quality</td><td>water softener installation, whole house water filter</td><td>Medium to high</td><td><Link href="/industries/water-treatment-seo">Water treatment</Link> page</td></tr>
+      <tr><td>Wells</td><td>well pump replacement, no water from well</td><td>High</td><td><Link href="/industries/well-pump-seo">Well pump</Link> page (rural markets)</td></tr>
       <tr><td>Gas lines</td><td>gas line installation, gas leak repair</td><td>Medium to high</td><td>Gas line page (licensing permitting)</td></tr>
       </tbody>
       </table>
@@ -207,7 +207,7 @@ export default function HighValuePlumbingKeywordsPage() {
       </table>
       </div>
       <h2 id="next">Turning keywords into calls</h2>
-      <p>Keywords tell you what to build. The work is building the pages well, linking them together and backing them up with reviews and a strong profile. That is what <Link href="/local-seo/plumbing-seo">plumbing SEO</Link> covers, and why every plan includes new service and area pages each month. Plans are listed on the <Link href="/pricing">pricing page</Link>.</p>
+      <p>Keywords tell you what to build. The work is building the pages well, linking them together and backing them up with reviews and a strong profile. That is what <Link href="/industries/plumbing-seo">plumbing SEO</Link> covers, and why every plan includes new service and area pages each month. Plans are listed on the <Link href="/pricing">pricing page</Link>.</p>
       <p>Want to know which high-value plumbing searches you could realistically win in your area? Book a <Link href="/book-a-call">free strategy call</Link> and I&apos;ll walk through the opportunities and the competitors in your market.</p>
     </ArticleLayout>
   );

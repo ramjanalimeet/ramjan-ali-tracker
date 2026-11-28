@@ -444,8 +444,8 @@ export default function MapPackPage() {
         Profile fixes are often picked up within weeks. Moving into the top three for competitive searches in a large
         city usually takes several months of steady work on reviews, content and links. In smaller towns and less
         crowded trades it can be much faster. The trades also behave differently: roofing and HVAC are seasonal, while{" "}
-        <Link href="/local-seo/plumbing-seo">plumbing</Link> and{" "}
-        <Link href="/local-seo/pest-control-seo">pest control</Link> have steadier demand all year.
+        <Link href="/industries/plumbing-seo">plumbing</Link> and{" "}
+        <Link href="/industries/pest-control-seo">pest control</Link> have steadier demand all year.
       </p>
       <p>
         Want to know where you stand? <Link href="/book-a-call">Book a free strategy call</Link> and I will compare your

@@ -395,19 +395,19 @@ export default function ServiceAreaPagesPost() {
       <ul>
         <li>
           <strong>Roofing:</strong> hail or hurricane history, common roof types in that neighborhood, local permit
-          rules. See <Link href="/local-seo/roofing-seo">Roofing SEO</Link>.
+          rules. See <Link href="/industries/roofing-seo">Roofing SEO</Link>.
         </li>
         <li>
           <strong>Septic:</strong> soil types, which areas are off mains sewer, county inspection rules. See{" "}
-          <Link href="/local-seo/septic-seo">Septic SEO</Link>.
+          <Link href="/industries/septic-seo">Septic SEO</Link>.
         </li>
         <li>
           <strong>HVAC:</strong> climate, typical home sizes and ages, utility rebates in that area. See{" "}
-          <Link href="/local-seo/hvac-seo">HVAC SEO</Link>.
+          <Link href="/industries/hvac-seo">HVAC SEO</Link>.
         </li>
         <li>
           <strong>Pest control:</strong> the pests that are common in that area and season. See{" "}
-          <Link href="/local-seo/pest-control-seo">Pest Control SEO</Link>.
+          <Link href="/industries/pest-control-seo">Pest Control SEO</Link>.
         </li>
       </ul>
 

@@ -156,7 +156,7 @@ export default function HowToGetMoreSepticPumpingCustomersPage() {
       <li>Inspection requests and agent referrals.</li>
       <li>Review count and how recent the latest reviews are.</li>
       </ul>
-      <p>In areas where septic is common outside the cities, such as around <Link href="/locations/wilmington">Wilmington</Link> and <Link href="/locations/asheville">Asheville</Link> in North Carolina or <Link href="/locations/savannah">Savannah</Link> and <Link href="/locations/augusta">Augusta</Link> in Georgia, the opportunity is often bigger than owners expect. For the full done-for-you version of this plan, see <Link href="/local-seo/septic-seo">septic SEO services</Link>, or book a <Link href="/book-a-call">free strategy call</Link> to review your profile, website and the competitors in your area.</p>
+      <p>In areas where septic is common outside the cities, such as around <Link href="/locations/wilmington">Wilmington</Link> and <Link href="/locations/asheville">Asheville</Link> in North Carolina or <Link href="/locations/savannah">Savannah</Link> and <Link href="/locations/augusta">Augusta</Link> in Georgia, the opportunity is often bigger than owners expect. For the full done-for-you version of this plan, see <Link href="/industries/septic-seo">septic SEO services</Link>, or book a <Link href="/book-a-call">free strategy call</Link> to review your profile, website and the competitors in your area.</p>
     </ArticleLayout>
   );
 }

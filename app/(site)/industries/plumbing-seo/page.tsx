@@ -3,35 +3,34 @@ import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { HowItWorks } from "@/components/HowItWorks";
-import { fromPrice, usd } from "@/lib/pricing";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
 import { MainCta } from "@/components/MainCta";
 
 export const metadata = pageMeta({
-  title: "Home Services SEO for Contractors | Ramjan Ali Akash",
+  title: "Plumbing SEO | Local SEO for Plumbers | Ramjan Ali Akash",
   description:
-    "Local SEO for home service businesses: electricians, garage door, pest control, landscaping, pool, cleaning and more. Rank in Google Maps. Free audit.",
-  path: "/local-seo/home-services-seo",
+    "Local SEO for plumbing companies: rank in Google Maps for emergency plumber, water heater, drain and sewer searches in your service area. Free audit.",
+  path: "/industries/plumbing-seo",
 });
 
 const FAQ: FaqItem[] = [
   {
-    q: "My trade is not listed. Can you still help?",
-    a: "Very likely. If your customers search Google for a service and you go to them, or they come to you locally, the same local SEO approach applies. The audit will confirm it.",
+    q: "Should my Google profile say open 24 hours?",
+    a: "Only if someone really answers the phone 24 hours. Google uses open hours when ranking, and listing hours you do not keep leads to bad reviews and can hurt you.",
   },
   {
-    q: "Do you work with franchises?",
-    a: "Yes, for individual franchise locations, as long as the brand guidelines let us manage the local profile and location pages.",
-  },
-  {
-    q: "How long does it take?",
+    q: "How long does plumbing SEO take?",
     a: "Profile and technical fixes often show movement in 4 to 8 weeks. Competitive terms in a large metro usually take 4 to 9 months.",
   },
   {
-    q: "Do I need a big budget?",
-    a: `No. Plans are a fixed monthly price, starting at ${usd(fromPrice())}/month. You do not need to spend on ads for local SEO to work.`,
+    q: "Can you help me get more water heater and repipe jobs instead of small calls?",
+    a: "Yes. We build pages and profile services around the work you want, and target keywords that signal bigger jobs.",
+  },
+  {
+    q: "Do I need a new website?",
+    a: "Usually not. Most plumbing sites need better structure, faster pages and stronger service pages, not a rebuild. The audit tells you which you need.",
   },
 ];
 
@@ -50,11 +49,11 @@ const SCHEMA = {
     },
     {
       "@type": "WebPage",
-      "@id": `${SITE_URL}/local-seo/home-services-seo#webpage`,
-      url: `${SITE_URL}/local-seo/home-services-seo`,
-      name: "Home Services SEO | Local SEO for Service Businesses | Ramjan Ali Akash",
+      "@id": `${SITE_URL}/industries/plumbing-seo#webpage`,
+      url: `${SITE_URL}/industries/plumbing-seo`,
+      name: "Plumbing SEO | Local SEO for Plumbers | Ramjan Ali Akash",
       description:
-        "Local SEO for home service businesses: electricians, garage door, pest control, landscaping, pool, cleaning and more. Rank in Google Maps. Free audit.",
+        "Local SEO for plumbing companies: rank in Google Maps for emergency plumber, water heater, drain and sewer searches in your service area. Free audit.",
       isPartOf: {
         "@id": `${SITE_URL}/#website`,
       },
@@ -80,28 +79,28 @@ const SCHEMA = {
         {
           "@type": "ListItem",
           position: 3,
-          name: "Home Services SEO",
-          item: `${SITE_URL}/local-seo/home-services-seo`,
+          name: "Plumbing SEO",
+          item: `${SITE_URL}/industries/plumbing-seo`,
         },
       ],
     },
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/local-seo/home-services-seo#service`,
-      name: "Home Services SEO",
+      "@id": `${SITE_URL}/industries/plumbing-seo#service`,
+      name: "Plumbing SEO",
       description:
-        "Local SEO for home service businesses: electricians, garage door, pest control, landscaping, pool, cleaning and more. Rank in Google Maps. Free audit.",
-      url: `${SITE_URL}/local-seo/home-services-seo`,
+        "Local SEO for plumbing companies: rank in Google Maps for emergency plumber, water heater, drain and sewer searches in your service area. Free audit.",
+      url: `${SITE_URL}/industries/plumbing-seo`,
       provider: {
         "@id": `${SITE_URL}/#business`,
       },
-      serviceType: "Home Services SEO",
+      serviceType: "Plumbing SEO",
     },
     faqSchema(FAQ),
   ],
 };
 
-export default function HomeServicesSeoPage() {
+export default function PlumbingSeoPage() {
   return (
     <>
       <JsonLd data={SCHEMA} />
@@ -115,18 +114,18 @@ export default function HomeServicesSeoPage() {
               <li>
                 <Link href="/industries">Industries</Link>
               </li>
-              <li aria-current="page">Home Services SEO</li>
+              <li aria-current="page">Plumbing SEO</li>
             </ol>
           </nav>
           <div className="phero-grid">
             <div>
-              <span className="eyebrow">Local SEO · Home Services</span>
+              <span className="eyebrow">Local SEO · Plumbing</span>
               <h1>
-                Local SEO for <span className="hl">home service</span> businesses.
+                Plumbing SEO for the calls that <span className="hl">can't wait</span>.
               </h1>
               <p className="lead">
-                If customers search Google and then call you to come to their home, local SEO is how you get found. I
-                work with home-service companies across trades, with the same proven local foundations.
+                When a pipe bursts at 11pm, nobody scrolls to page two. I help plumbing companies rank in the map pack
+                for emergency and high-value searches, so the phone rings with jobs worth taking.
               </p>
               <div className="cta-row">
                 <MainCta />
@@ -137,13 +136,11 @@ export default function HomeServicesSeoPage() {
               <ul>
                 <li>
                   <b>For</b>
-                  <span>
-                    Electrical, garage door, pest control, landscaping, pools, cleaning, painting, restoration and more
-                  </span>
+                  <span>Residential and light commercial plumbers</span>
                 </li>
                 <li>
                   <b>Focus</b>
-                  <span>Map pack + organic for your core services</span>
+                  <span>Emergency, water heater, drain, sewer and repipe searches</span>
                 </li>
                 <li>
                   <b>First moves</b>
@@ -161,25 +158,24 @@ export default function HomeServicesSeoPage() {
       <section className="sec">
         <div className="wrap split">
           <div className="body rv">
-            <span className="eyebrow">How it works</span>
-            <h2>Different trade, same three ranking factors.</h2>
+            <span className="eyebrow">The problem</span>
+            <h2>Emergency searches go to whoever Google trusts nearby.</h2>
             <p>
-              Google ranks local businesses on three things: relevance to the search, distance from the searcher, and
-              prominence, meaning how well known and trusted the business is. That is true whether you fix garage doors
-              or treat termites.
+              Plumbing searches are urgent and local. The homeowner searches, sees three businesses on the map, checks
+              the stars and calls. If you are not in those three, you do not exist for that job.
             </p>
             <p>
-              What changes by trade is the detail: which categories to use, which services deserve their own page, when
-              demand peaks, and what customers worry about before they call.
+              Google decides those three spots by relevance, distance and prominence. You cannot move your address, but
+              you can make your profile, website and reviews the most relevant and trusted in your area.
             </p>
             <p>
-              I learn your trade, look at who is winning in your area and why, then build the profile, pages, reviews
-              and links to beat them.
+              I also separate the work you want more of. A drain clog and a whole-house repipe are very different
+              tickets, and your pages and profile should reflect which ones you are chasing.
             </p>
           </div>
           <div className="mock rv" aria-hidden="true">
             <div className="mcard">
-              <div className="mq">🔍 electrician near me</div>
+              <div className="mq">🔍 emergency plumber near me</div>
               <div className="mmap">
                 <i className="me" style={{ left: "46%", top: "38%" }}></i>
                 <i style={{ left: "22%", top: "55%" }}></i>
@@ -189,7 +185,7 @@ export default function HomeServicesSeoPage() {
                 <li className="mrow me">
                   <span className="pos">1</span>
                   <div>
-                    <b>Your Business</b>
+                    <b>Your Plumbing Co.</b>
                     <small>
                       <span className="st">★★★★★</span> 4.9 · Open 24 hours
                     </small>
@@ -229,16 +225,16 @@ export default function HomeServicesSeoPage() {
           </div>
           <div className="rv">
             <ul className="ticks two">
-              <li>electrician near me</li>
-              <li>garage door repair [city]</li>
-              <li>pest control near me</li>
-              <li>lawn care service [city]</li>
-              <li>pool cleaning near me</li>
-              <li>house cleaning service</li>
-              <li>water damage restoration</li>
-              <li>interior painters [city]</li>
-              <li>tree removal near me</li>
-              <li>pressure washing [city]</li>
+              <li>emergency plumber near me</li>
+              <li>24 hour plumber [city]</li>
+              <li>water heater replacement</li>
+              <li>tankless water heater install</li>
+              <li>drain cleaning near me</li>
+              <li>sewer line repair [city]</li>
+              <li>slab leak detection</li>
+              <li>repipe specialist</li>
+              <li>burst pipe repair</li>
+              <li>gas line plumber</li>
             </ul>
           </div>
         </div>
@@ -248,7 +244,7 @@ export default function HomeServicesSeoPage() {
           <div className="sec-head rv">
             <div>
               <span className="eyebrow">What is included</span>
-              <h2>The local foundations, tuned to your trade.</h2>
+              <h2>Everything a plumbing company needs to rank locally.</h2>
             </div>
           </div>
           <div className="grid g3">
@@ -257,42 +253,42 @@ export default function HomeServicesSeoPage() {
                 01
               </span>
               <h3>Google Business Profile</h3>
-              <p>The right categories for your trade, full services list, service areas, real photos and posts.</p>
+              <p>Correct categories, hours that match when you really answer, services, photos and regular posts.</p>
             </div>
             <div className="card rv">
               <span className="ic" aria-hidden="true">
                 02
               </span>
               <h3>Service pages</h3>
-              <p>One focused page per core service, written around what customers ask before booking.</p>
+              <p>Separate pages for emergency service, water heaters, drains, sewer, leak detection and repipes.</p>
             </div>
             <div className="card rv">
               <span className="ic" aria-hidden="true">
                 03
               </span>
               <h3>Service area pages</h3>
-              <p>Useful pages for the towns you serve, built from real jobs, not templates.</p>
+              <p>Pages for the towns and neighborhoods you cover, with real job details and local proof.</p>
             </div>
             <div className="card rv">
               <span className="ic" aria-hidden="true">
                 04
               </span>
               <h3>Reviews system</h3>
-              <p>A simple process to ask every happy customer, with replies that build trust.</p>
+              <p>A process that gets steady reviews mentioning the service, the town and the technician.</p>
             </div>
             <div className="card rv">
               <span className="ic" aria-hidden="true">
                 05
               </span>
               <h3>Citations and links</h3>
-              <p>Consistent listings and local links from suppliers, associations and community sites.</p>
+              <p>Clean, consistent listings plus local links from suppliers, sponsorships and community sites.</p>
             </div>
             <div className="card rv">
               <span className="ic" aria-hidden="true">
                 06
               </span>
-              <h3>Tracking and reports</h3>
-              <p>Calls, forms and rankings in one plain-English monthly report.</p>
+              <h3>Call tracking</h3>
+              <p>Know which calls came from Google Maps, which came from organic search, and what they were for.</p>
             </div>
           </div>
         </div>
@@ -306,27 +302,30 @@ export default function HomeServicesSeoPage() {
             <Link className="chip" href="/seo-services/ai-visibility">
               AI Search Visibility →
             </Link>
-            <Link className="chip" href="/local-seo/roofing-seo">
+            <Link className="chip" href="/blog/high-value-plumbing-keywords">
+              Guide: high-value plumbing keywords →
+            </Link>
+            <Link className="chip" href="/industries/roofing-seo">
               Roofing SEO →
             </Link>
-            <Link className="chip" href="/local-seo/plumbing-seo">
-              Plumbing SEO →
-            </Link>
-            <Link className="chip" href="/local-seo/septic-seo">
+            <Link className="chip" href="/industries/septic-seo">
               Septic SEO →
             </Link>
-            <Link className="chip" href="/local-seo/hvac-seo">
+            <Link className="chip" href="/industries/hvac-seo">
               HVAC SEO →
+            </Link>
+            <Link className="chip" href="/industries/home-services-seo">
+              Home Services SEO →
             </Link>
           </div>
         </div>
       </section>
       <RelatedLinks
-        page="/local-seo/home-services-seo"
+        page="/industries/plumbing-seo"
         topics={["local-seo", "google-maps"]}
         industriesTitle="More industries"
       />
-      <CtaBand title="Get found by the customers already searching." />
+      <CtaBand title="Be the plumber they call first." />
     </>
   );
 }

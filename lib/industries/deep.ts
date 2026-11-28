@@ -2,7 +2,7 @@
  * Trade-specific depth for the core industry pages: how each trade's customers
  * search, the Business Profile categories to start from, the pages to build,
  * when demand peaks and the mistakes that cost that trade calls. Rendered by
- * app/local-seo/[slug] so every core industry page carries its own substance,
+ * app/(site)/industries/[slug] so every core industry page carries its own substance,
  * not just the shared template.
  */
 export type IndustryDeep = {
@@ -27,6 +27,23 @@ const HVAC_CAL = { href: "/blog/hvac-seo-calendar", label: "The month-by-month H
 const STORM = { href: "/blog/roofing-storm-damage-leads", label: "Winning storm damage searches" };
 const AREA_PAGES = { href: "/blog/service-area-pages-that-rank", label: "Service area pages that rank" };
 const LINKS = { href: "/blog/local-link-building-for-contractors", label: "Local link building for contractors" };
+
+/** Blog guides an industry page can point to. */
+export const GUIDES = {
+  categories: CATEGORIES_GUIDE,
+  reviews: REVIEWS,
+  plumbingKeywords: PLUMBING_KW,
+  hvacCalendar: HVAC_CAL,
+  storm: STORM,
+  areaPages: AREA_PAGES,
+  links: LINKS,
+  mapPack: { href: "/blog/how-to-rank-in-google-map-pack", label: "How to rank in the Google map pack" },
+  schema: { href: "/blog/local-business-schema-for-contractors", label: "Local business schema, explained" },
+  technical: { href: "/blog/technical-seo-for-service-business-websites", label: "Technical SEO for service business websites" },
+  aiCheck: { href: "/blog/check-if-ai-recommends-your-business", label: "How to check if AI recommends your business" },
+  lsaVsSeo: { href: "/blog/local-services-ads-vs-seo-for-contractors", label: "Local Services Ads vs SEO" },
+  checklist: { href: "/blog/local-seo-checklist-for-contractors", label: "The local SEO checklist" },
+} as const;
 
 export const DEEP: Record<string, IndustryDeep> = {
   "electrician-seo": {
@@ -441,7 +458,7 @@ export const DEEP: Record<string, IndustryDeep> = {
     ],
     categories: { primary: "Generator shop", secondary: ["Electrician (if you are licensed)", "Electrical installation service"] },
     pages: [
-      { page: "Whole-home standby generators", why: "The main high-value page" },
+      { page: "Whole-home standby generators", why: "The biggest ticket in the trade, and usually researched for weeks" },
       { page: "Generator cost and sizing", why: "Heavily researched before buying" },
       { page: "Brands you install", why: "Dealer and brand searches convert well" },
       { page: "Generator maintenance plans", why: "Recurring revenue and repeat visits" },
@@ -517,4 +534,4 @@ export const DEEP: Record<string, IndustryDeep> = {
   },
 };
 
-export const getDeep = (slug: string): IndustryDeep | undefined => DEEP[slug];
+/** Use getDeep from ./deep-all, which also includes the extra trade files. */

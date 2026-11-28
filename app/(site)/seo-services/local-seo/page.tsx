@@ -282,7 +282,7 @@ export default function LocalSeoPage() {
             <p>Every trade has its own searches, seasons and competitors. Pick yours to see how I approach it.</p>
           </div>
           <div className="grid g3">
-            <Link className="card rv" href="/local-seo/roofing-seo">
+            <Link className="card rv" href="/industries/roofing-seo">
               <span className="ic" aria-hidden="true">
                 01
               </span>
@@ -295,7 +295,7 @@ export default function LocalSeoPage() {
                 Learn more <span>→</span>
               </span>
             </Link>
-            <Link className="card rv" href="/local-seo/plumbing-seo">
+            <Link className="card rv" href="/industries/plumbing-seo">
               <span className="ic" aria-hidden="true">
                 02
               </span>
@@ -308,7 +308,7 @@ export default function LocalSeoPage() {
                 Learn more <span>→</span>
               </span>
             </Link>
-            <Link className="card rv" href="/local-seo/septic-seo">
+            <Link className="card rv" href="/industries/septic-seo">
               <span className="ic" aria-hidden="true">
                 03
               </span>
@@ -321,7 +321,7 @@ export default function LocalSeoPage() {
                 Learn more <span>→</span>
               </span>
             </Link>
-            <Link className="card rv" href="/local-seo/hvac-seo">
+            <Link className="card rv" href="/industries/hvac-seo">
               <span className="ic" aria-hidden="true">
                 04
               </span>
@@ -334,7 +334,7 @@ export default function LocalSeoPage() {
                 Learn more <span>→</span>
               </span>
             </Link>
-            <Link className="card rv" href="/local-seo/home-services-seo">
+            <Link className="card rv" href="/industries/home-services-seo">
               <span className="ic" aria-hidden="true">
                 05
               </span>

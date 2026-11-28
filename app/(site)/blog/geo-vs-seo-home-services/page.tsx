@@ -401,19 +401,19 @@ export default function GeoVsSeoPage() {
       <ul>
         <li>
           <strong>Roofing:</strong> &quot;Who can inspect storm damage near me?&quot; Clear storm-response and insurance
-          pages help. See <Link href="/local-seo/roofing-seo">Roofing SEO</Link>.
+          pages help. See <Link href="/industries/roofing-seo">Roofing SEO</Link>.
         </li>
         <li>
           <strong>HVAC:</strong> &quot;Should I repair or replace my AC?&quot; Honest repair vs replace content earns
-          mentions. See <Link href="/local-seo/hvac-seo">HVAC SEO</Link>.
+          mentions. See <Link href="/industries/hvac-seo">HVAC SEO</Link>.
         </li>
         <li>
           <strong>Electricians:</strong> &quot;Who installs EV chargers near me?&quot; Specific service pages win. See{" "}
-          <Link href="/local-seo/electrician-seo">Electrician SEO</Link>.
+          <Link href="/industries/electrician-seo">Electrician SEO</Link>.
         </li>
         <li>
           <strong>Solar:</strong> &quot;Is solar worth it in my city?&quot; Local cost and incentive pages matter most.
-          See <Link href="/local-seo/home-services-seo">Home Services SEO</Link>.
+          See <Link href="/industries/home-services-seo">Home Services SEO</Link>.
         </li>
       </ul>
       <p>
