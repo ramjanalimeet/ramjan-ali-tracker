@@ -20,6 +20,7 @@ import {
 import { fromPrice, usd } from "@/lib/pricing";
 import { type FaqItem, SITE_URL, faqSchema, pageMeta } from "@/lib/site";
 import { MainCta } from "@/components/MainCta";
+import { CITY_DEEP } from "@/lib/cities/deep";
 
 // Only the cities in lib/cities exist; anything else is a 404.
 export const dynamicParams = false;
@@ -70,6 +71,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 function faqsFor(c: City): FaqItem[] {
   return [
     ...c.faqs,
+    ...(CITY_DEEP[c.slug]?.faqs ?? []),
     { q: `How long does local SEO take in ${c.name}?`, a: fill(TIMING[c.competition] ?? TIMING.Medium, c) },
     {
       q: `You are based in Bangladesh. Can you really do local SEO for ${c.name}?`,
@@ -92,6 +94,7 @@ export default async function CityPage({ params }: Props) {
   const group = groupOf(c.group);
   const { title, description } = seo(c);
   const faqs = faqsFor(c);
+  const deep = CITY_DEEP[c.slug];
 
   const allTrades = Object.keys(TRADE_LINKS) as TradeKey[];
   const trades = [
@@ -224,6 +227,52 @@ export default async function CityPage({ params }: Props) {
         </div>
       </section>
 
+      {deep && (
+        <>
+          <section className="sec alt">
+            <div className="wrap split">
+              <div className="body rv">
+                <span className="eyebrow">Homes in {c.name}</span>
+                <h2>What {c.name} homes mean for the work.</h2>
+                {deep.housing.map((p) => (
+                  <p key={p.slice(0, 24)}>{p}</p>
+                ))}
+              </div>
+              <div className="panel rv">
+                <h3>Who you are up against</h3>
+                <p>{deep.competition}</p>
+                <ul className="ticks" style={{ marginTop: 14 }}>
+                  <li>Search demand: {c.demand}</li>
+                  <li>Map pack competition: {c.competition}</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <section className="sec">
+            <div className="wrap">
+              <div className="sec-head rv">
+                <div>
+                  <span className="eyebrow">Local demand calendar</span>
+                  <h2>When {c.name} searches rise.</h2>
+                </div>
+                <p>
+                  Rankings take weeks to build, so pages, profile posts and review requests go in before each busy
+                  period, not during it.
+                </p>
+              </div>
+              <div className="grid g4">
+                {deep.seasons.map((r) => (
+                  <div className="card rv" key={r.when}>
+                    <h3>{r.when}</h3>
+                    <p>{r.what}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+
       <section className="sec alt">
         <div className="wrap">
           <div className="sec-head rv">
@@ -284,6 +333,16 @@ export default async function CityPage({ params }: Props) {
             </div>
             <p>{fill(AREA_INTRO[c.v.area], c)}</p>
           </div>
+          {deep && (
+            <div className="grid g3" style={{ marginBottom: 22 }}>
+              {deep.areas.map((a) => (
+                <div className="card rv" key={a.name}>
+                  <h3>{a.name}</h3>
+                  <p>{a.note}</p>
+                </div>
+              ))}
+            </div>
+          )}
           <div className="chips rv">
             {[c.name, ...c.areas].map((a) => {
               const sib = siblingByName.get(a);

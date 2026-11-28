@@ -8,6 +8,8 @@ import { MainCta } from "@/components/MainCta";
 import { AiMock, MapMock } from "@/components/Mocks";
 import { GLOBAL_COUNTRIES, getGlobalCity, slugifyPlace } from "@/lib/global-locations";
 import { type FaqItem, SITE_URL, faqSchema, pageMeta } from "@/lib/site";
+import { CountryDepth } from "@/components/CountryDepth";
+import { COUNTRY_DEEP } from "@/lib/countries-deep";
 
 export const dynamicParams = false;
 
@@ -241,6 +243,8 @@ export default async function GlobalCityPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {COUNTRY_DEEP[country.slug] && <CountryDepth deep={COUNTRY_DEEP[country.slug]} country={country.name} place={city} />}
 
       <section className="sec alt">
         <div className="wrap">
