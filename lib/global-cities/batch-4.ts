@@ -898,7 +898,7 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     ],
   },
   "netherlands/maastricht": {
-    summary: "Maastricht local SEO at the meeting point of three countries. Reach students, Belgian and German shoppers, and visitors in Wyck, Céramique and the Vrijthof.",
+    summary: "Maastricht local SEO at the meeting point of three countries. Reach students, Belgian and German shoppers and visitors in Wyck, Céramique and the Vrijthof.",
     lead: "Maastricht is closer to Liège and Aachen than to Amsterdam, and on a Saturday many of the shoppers in its streets come from Belgium and Germany. Local search here is often multilingual by necessity.",
     profile: [
       "Maastricht is the capital of Limburg, set on the Maas in the far south of the Netherlands. It is known for its Roman and medieval history, the Vrijthof square, a strong carnival tradition and Maastricht University, which attracts many international students.",

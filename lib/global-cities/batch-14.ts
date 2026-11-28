@@ -317,7 +317,7 @@ export const CITY_GUIDES_14: Record<string, GlobalCityGuide> = {
       },
       {
         q: "Is it worth mentioning Punjabi on a Woolgoolga business listing?",
-        a: "If someone on your team speaks it, yes. Woolgoolga's Sikh community is long established, and a line on your site and profile saying you can help in Punjabi is a genuine reason for local families to choose you.
+        a: "If someone on your team speaks it, yes. Woolgoolga's Sikh community is long established, and a line on your site and profile saying you can help in Punjabi is a genuine reason for local families to choose you.",
       },
     ],
   },
@@ -477,7 +477,7 @@ export const CITY_GUIDES_14: Record<string, GlobalCityGuide> = {
       },
       {
         q: "Our work drops off outside the fruit season. Can local search help?",
-        a: "It can smooth things out. Harvest brings short-term customers, but residents in Kialla, Mooroopna and Shepparton North need services all year. Pages and reviews aimed at those households keep enquiries coming when the pickers leave.
+        a: "It can smooth things out. Harvest brings short-term customers, but residents in Kialla, Mooroopna and Shepparton North need services all year. Pages and reviews aimed at those households keep enquiries coming when the pickers leave.",
       },
     ],
   },
@@ -517,7 +517,7 @@ export const CITY_GUIDES_14: Record<string, GlobalCityGuide> = {
       },
       {
         q: "Is Thrumster worth its own page?",
-        a: "Usually. New estates have few established local businesses online, so a page about the jobs you do there, with photos from local streets, can rank faster than a page about Port Macquarie as a whole.
+        a: "Usually. New estates have few established local businesses online, so a page about the jobs you do there, with photos from local streets, can rank faster than a page about Port Macquarie as a whole.",
       },
     ],
   },
@@ -557,7 +557,7 @@ export const CITY_GUIDES_14: Record<string, GlobalCityGuide> = {
       },
       {
         q: "Gladstone goes through booms and quiet spells. Should I pause marketing when work slows?",
-        a: "Keep your profile active either way. Competitors often go quiet in slow periods, and the reviews and posts you add then help you stand out when the next project brings workers back to town.
+        a: "Keep your profile active either way. Competitors often go quiet in slow periods, and the reviews and posts you add then help you stand out when the next project brings workers back to town.",
       },
     ],
   },
@@ -597,7 +597,7 @@ export const CITY_GUIDES_14: Record<string, GlobalCityGuide> = {
       },
       {
         q: "I work on farms across the region and have no shopfront. How should I set up my profile?",
-        a: "Set it up as a service-area business and hide your home address. Google still ranks you from your verified location, so add a page for each district you really cover, like Manilla or Gunnedah, and ask farm clients to mention where you worked in their reviews.
+        a: "Set it up as a service-area business and hide your home address. Google still ranks you from your verified location, so add a page for each district you really cover, like Manilla or Gunnedah, and ask farm clients to mention where you worked in their reviews.",
       },
     ],
   },
