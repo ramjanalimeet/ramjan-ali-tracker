@@ -458,7 +458,7 @@ export const DEEP: Record<string, IndustryDeep> = {
     ],
     categories: { primary: "Generator shop", secondary: ["Electrician (if you are licensed)", "Electrical installation service"] },
     pages: [
-      { page: "Whole-home standby generators", why: "The main high-value page" },
+      { page: "Whole-home standby generators", why: "The biggest ticket in the trade, and usually researched for weeks" },
       { page: "Generator cost and sizing", why: "Heavily researched before buying" },
       { page: "Brands you install", why: "Dealer and brand searches convert well" },
       { page: "Generator maintenance plans", why: "Recurring revenue and repeat visits" },
@@ -534,4 +534,4 @@ export const DEEP: Record<string, IndustryDeep> = {
   },
 };
 
-export const getDeep = (slug: string): IndustryDeep | undefined => DEEP[slug];
+/** Use getDeep from ./deep-all, which also includes the extra trade files. */

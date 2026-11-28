@@ -7,7 +7,7 @@ import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { AiMock, MapMock } from "@/components/Mocks";
 import { ALL_INDUSTRIES, INDUSTRIES, getIndustry, type Industry } from "@/lib/industries";
-import { getDeep } from "@/lib/industries/deep";
+import { getDeep } from "@/lib/industries/deep-all";
 import { fromPrice, usd } from "@/lib/pricing";
 import { type FaqItem, SITE_URL, faqSchema, pageMeta } from "@/lib/site";
 import { MainCta } from "@/components/MainCta";

@@ -325,7 +325,7 @@ export const DEEP_EXTRA_1: Record<string, IndustryDeep> = {
     mistakes: [
       "A generic \"we do everything\" page instead of a page per project type",
       "License and insurance details hard to find",
-      "Galleries with no description of scope or timeline",
+      "Project photos posted with no note on what was built, where or how long it took",
       "Taking every small job request instead of filtering by project size",
     ],
     guide: GUIDES.areaPages,
@@ -337,7 +337,7 @@ export const DEEP_EXTRA_1: Record<string, IndustryDeep> = {
     ],
     categories: { primary: "Bathroom remodeler", secondary: ["Kitchen remodeler", "Remodeler", "General contractor"] },
     pages: [
-      { page: "Bathroom remodeling", why: "The main service page, with process and timeline" },
+      { page: "Bathroom remodeling", why: "The core page. Walk through each stage from design to final walkthrough" },
       { page: "Tub-to-shower conversions", why: "A specific, high-intent search with many aging-in-place buyers" },
       { page: "Walk-in showers", why: "Very visual. Needs real tile and glass photos" },
       { page: "Accessible bathroom remodels", why: "Grab bars, curbless showers and wider doors. Families research carefully" },
