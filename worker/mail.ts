@@ -14,6 +14,7 @@ export interface EmailConfig {
   username?: string;
   password?: string;
   resendKey?: string;
+  resendInboundAddress?: string;
   dailyLimit?: number;
   signature?: string;
   // IMAP bookkeeping
@@ -143,13 +144,23 @@ export async function sendMail(cfg: EmailConfig, m: OutMail): Promise<string> {
       body: JSON.stringify({
         from: c.fromName ? `${c.fromName} <${c.email}>` : c.email,
         to: [m.to],
-        ...(m.replyTo ? { reply_to: m.replyTo } : {}),
+        ...((m.replyTo || c.resendInboundAddress) ? { reply_to: m.replyTo || c.resendInboundAddress } : {}),
         subject: m.subject,
         text: body,
         headers,
       }),
     });
     if (!res.ok) throw new Error(`Resend: ${res.status} ${await res.text()}`);
+    const sent = await res.json().catch(() => ({})) as { id?: string };
+    if (sent.id) {
+      const detail = await fetch(`https://api.resend.com/emails/${encodeURIComponent(sent.id)}`, {
+        headers: { authorization: `Bearer ${c.resendKey}` },
+      }).catch(() => undefined);
+      if (detail?.ok) {
+        const saved = await detail.json().catch(() => ({})) as { message_id?: string };
+        if (saved.message_id) return saved.message_id;
+      }
+    }
     return messageId;
   }
   if (!c.smtpHost || !c.password) throw new Error("SMTP host and password are required");

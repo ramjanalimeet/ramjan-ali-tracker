@@ -53,6 +53,17 @@ function AccountRow({ a, ctx, onEdit }: { a: Account; ctx: AppCtx; onEdit?: () =
       </div>
       <Status value={a.status === "ok" ? "connected" : a.status} />
       <div className="adm-acc-actions">
+        {a.config.provider === "resend" && (
+          <button className="adm-btn" disabled={busy} onClick={async () => {
+            setBusy(true);
+            try {
+              const r = await api<{ note?: string }>(`accounts/${a.id}/connect-inbox`, { body: {} });
+              ctx.toast(r.note || "Resend inbox connected");
+              await ctx.reloadAccounts();
+            } catch (error) { ctx.toast((error as Error).message, "error"); }
+            finally { setBusy(false); }
+          }}>{a.secretsSet.includes("resendWebhookSecret") ? "Inbox connected" : "Connect inbox"}</button>
+        )}
         <button
           className="adm-btn"
           disabled={busy}
@@ -97,7 +108,7 @@ const PROVIDERS = [
   { id: "outlook", label: "Outlook / Microsoft 365", smtpHost: "smtp.office365.com", smtpPort: 587, imapHost: "outlook.office365.com" },
   { id: "zoho", label: "Zoho Mail", smtpHost: "smtp.zoho.com", smtpPort: 465, imapHost: "imap.zoho.com" },
   { id: "custom", label: "Other (SMTP + IMAP)", smtpHost: "", smtpPort: 465, imapHost: "" },
-  { id: "resend", label: "Resend API (sending only)", smtpHost: "", smtpPort: 0, imapHost: "" },
+  { id: "resend", label: "Resend (send + receive)", smtpHost: "", smtpPort: 0, imapHost: "" },
 ];
 
 function EmailAccounts({ ctx }: { ctx: AppCtx }) {
@@ -163,6 +174,7 @@ function EmailForm({ ctx, account, onDone }: { ctx: AppCtx; account?: Account; o
     fromName: String(c.fromName ?? "Ramjan Ali"),
     password: "",
     resendKey: "",
+    resendInboundAddress: String(c.resendInboundAddress ?? ""),
     smtpHost: String(c.smtpHost ?? ""),
     smtpPort: String(c.smtpPort ?? ""),
     imapHost: String(c.imapHost ?? ""),
@@ -231,7 +243,7 @@ function EmailForm({ ctx, account, onDone }: { ctx: AppCtx; account?: Account; o
       {provider === "outlook" && <div className="adm-help">Use an app password, and make sure SMTP AUTH and IMAP are allowed for the mailbox in Microsoft 365.</div>}
       {provider === "resend" && (
         <div className="adm-help">
-          Resend sends from a verified domain. It can’t read replies, so point replies to an inbox you also add here, or check them yourself.
+          Resend sends your replies and securely delivers incoming client replies to this dashboard. Copy your address from Resend → Emails → Receiving → Inbound address.
         </div>
       )}
       <div className="adm-grid2">
@@ -243,9 +255,14 @@ function EmailForm({ ctx, account, onDone }: { ctx: AppCtx; account?: Account; o
         </Field>
       </div>
       {provider === "resend" ? (
-        <Field label="Resend API key">
-          <input type="password" autoComplete="off" value={f.resendKey} onChange={set("resendKey")} placeholder={account?.secretsSet.includes("resendKey") ? "•••••••• saved" : "re_…"} required={!account?.secretsSet.includes("resendKey")} />
-        </Field>
+        <div className="adm-grid2">
+          <Field label="Resend API key">
+            <input type="password" autoComplete="off" value={f.resendKey} onChange={set("resendKey")} placeholder={account?.secretsSet.includes("resendKey") ? "•••••••• saved" : "re_…"} required={!account?.secretsSet.includes("resendKey")} />
+          </Field>
+          <Field label="Resend inbound address" hint="Example: replies@abc123.resend.app">
+            <input type="email" value={f.resendInboundAddress} onChange={set("resendInboundAddress")} placeholder="replies@your-id.resend.app" required />
+          </Field>
+        </div>
       ) : (
         <Field label={provider === "gmail" ? "App password" : "Password / app password"}>
           <input type="password" autoComplete="new-password" value={f.password} onChange={set("password")} placeholder={account?.secretsSet.includes("password") ? "•••••••• saved — leave empty to keep" : ""} required={!account?.secretsSet.includes("password")} />

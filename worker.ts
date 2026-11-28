@@ -45,7 +45,7 @@ export default {
       return Response.redirect(url.toString(), 308);
     }
     const { pathname } = url;
-    if (pathname.startsWith("/api/admin/") || pathname === "/api/lead" || pathname === "/api/hooks/cal") {
+    if (pathname.startsWith("/api/admin/") || pathname === "/api/lead" || pathname === "/api/hooks/cal" || pathname === "/api/hooks/resend") {
       return withPrivateRobots(await store(env).fetch(request));
     }
     const response = await nextHandler.fetch(request, env, ctx);

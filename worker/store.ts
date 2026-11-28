@@ -10,12 +10,15 @@ import { fetchNewMail, sendMail, testEmail, withDefaults, type EmailConfig } fro
 import {
   EMAIL_RE,
   addrOf,
+  b64,
   err,
   errMsg,
   hashPassword,
   hex,
   hmac,
+  fromB64,
   json,
+  nameOf,
   now,
   parseCookies,
   safeEqual,
@@ -39,7 +42,7 @@ export interface Env {
 const DEFAULT_PASSWORD_HASH = "pbkdf2$100000$YWiHgA9TjAMol/TX0crtuQ==$mCWWefDX1fhuhtKnSjXfZO2TZq8ID4mf6J3jeOgg5iM=";
 const COOKIE = "ra_admin";
 const DAY = 86_400_000;
-const SECRET_KEYS = ["password", "resendKey", "apiKey", "apiSecret", "accessToken", "accessSecret", "token", "refreshToken"];
+const SECRET_KEYS = ["password", "resendKey", "resendWebhookSecret", "apiKey", "apiSecret", "accessToken", "accessSecret", "token", "refreshToken"];
 
 type Row = Record<string, SqlStorageValue>;
 
@@ -175,6 +178,7 @@ export class AdminStore extends DurableObject<Env> {
       if (req.method === "GET" && (path === "/api/blog-entries" || path.startsWith("/api/blog-entries/"))) return this.publicBlogs(path);
       if (path === "/api/lead") return await this.lead(req);
       if (path === "/api/hooks/cal") return await this.calHook(req, url);
+      if (path === "/api/hooks/resend") return await this.resendHook(req, url);
       if (!path.startsWith("/api/admin")) return err("Not found", 404);
       const route = path.slice("/api/admin".length) || "/";
       if (route === "/login" && req.method === "POST") return await this.login(req);
@@ -251,6 +255,7 @@ export class AdminStore extends DurableObject<Env> {
       if (m === "GET") return json(this.listAccounts());
       if (m === "POST" && !id) return json(await this.saveAccount(await this.body(req)));
       if (m === "POST" && action === "test") return json(await this.testAccount(id));
+      if (m === "POST" && action === "connect-inbox") return json(await this.connectResendInbox(id, url));
       if (m === "DELETE" && id) {
         this.sql.exec("DELETE FROM accounts WHERE id=? AND kind='email'", id);
         return json({ ok: true });
@@ -466,6 +471,94 @@ export class AdminStore extends DurableObject<Env> {
     }
   }
 
+  private async connectResendInbox(id: string, url: URL) {
+    const account = this.one<{ config: string }>("SELECT config FROM accounts WHERE id=? AND kind='email'", id);
+    if (!account) throw new Error("Account not found");
+    const cfg = JSON.parse(account.config || "{}") as EmailConfig & Record<string, unknown>;
+    if (cfg.provider !== "resend" || !cfg.resendKey) throw new Error("Connect a Resend API account first");
+    const inbound = String(cfg.resendInboundAddress ?? "").trim().toLowerCase();
+    if (!EMAIL_ADDRESS.test(inbound)) throw new Error("Add the Resend inbound address shown in Resend → Emails → Receiving");
+    if (cfg.resendWebhookId && cfg.resendWebhookSecret) {
+      return { ok: true, note: "Resend inbox is already connected", inbound };
+    }
+    const endpoint = `${url.origin}/api/hooks/resend?account=${encodeURIComponent(id)}`;
+    const response = await fetch("https://api.resend.com/webhooks", {
+      method: "POST",
+      headers: { authorization: `Bearer ${cfg.resendKey}`, "content-type": "application/json" },
+      body: JSON.stringify({ endpoint, events: ["email.received"] }),
+    });
+    const result = (await response.json().catch(() => ({}))) as { id?: string; signing_secret?: string; signingSecret?: string; message?: string };
+    if (!response.ok) throw new Error(result.message || `Resend rejected the webhook (${response.status})`);
+    const secret = result.signing_secret || result.signingSecret;
+    if (!result.id || !secret) throw new Error("Resend created the webhook but did not return its signing secret");
+    cfg.resendWebhookId = result.id;
+    cfg.resendWebhookSecret = secret;
+    this.sql.exec("UPDATE accounts SET config=?,status='ok',last_error=NULL WHERE id=?", JSON.stringify(cfg), id);
+    this.log("info", `Resend inbox connected for ${inbound}`);
+    return { ok: true, note: "Resend inbox connected", inbound };
+  }
+
+  private async verifyResendWebhook(req: Request, raw: string, secret: string): Promise<boolean> {
+    const id = req.headers.get("svix-id") || "";
+    const timestamp = req.headers.get("svix-timestamp") || "";
+    const signatures = (req.headers.get("svix-signature") || "").split(/\s+/).map((v) => v.split(",")[1]).filter(Boolean);
+    if (!id || !timestamp || !signatures.length || Math.abs(Date.now() / 1000 - Number(timestamp)) > 300) return false;
+    const key = secret.startsWith("whsec_") ? secret.slice(6) : secret;
+    let keyBytes: Uint8Array;
+    try { keyBytes = fromB64(key); } catch { return false; }
+    const cryptoKey = await crypto.subtle.importKey("raw", keyBytes, { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+    const signed = await crypto.subtle.sign("HMAC", cryptoKey, new TextEncoder().encode(`${id}.${timestamp}.${raw}`));
+    const expected = b64(new Uint8Array(signed));
+    return signatures.some((sig) => safeEqual(sig, expected));
+  }
+
+  private async resendHook(req: Request, url: URL): Promise<Response> {
+    if (req.method !== "POST") return err("Use POST", 405);
+    const accountId = url.searchParams.get("account") || "";
+    const account = this.one<{ config: string }>("SELECT config FROM accounts WHERE id=? AND kind='email'", accountId);
+    if (!account) return err("Unknown account", 404);
+    const cfg = JSON.parse(account.config || "{}") as EmailConfig & Record<string, unknown>;
+    const raw = await req.text();
+    const secret = String(cfg.resendWebhookSecret ?? "");
+    if (!secret || !(await this.verifyResendWebhook(req, raw, secret))) return err("Invalid webhook signature", 401);
+    const event = JSON.parse(raw) as { type?: string; created_at?: string; data?: { email_id?: string } };
+    if (event.type !== "email.received" || !event.data?.email_id) return json({ ok: true });
+    const emailId = event.data.email_id;
+    if (this.one("SELECT 1 FROM messages WHERE ext_id=?", `resend:${emailId}`)) return json({ ok: true });
+    const response = await fetch(`https://api.resend.com/emails/receiving/${encodeURIComponent(emailId)}`, {
+      headers: { authorization: `Bearer ${cfg.resendKey}` },
+    });
+    if (!response.ok) return err(`Could not retrieve received email (${response.status})`, 502);
+    const mail = await response.json() as {
+      from?: string; to?: string[]; subject?: string; text?: string; html?: string; created_at?: string;
+      message_id?: string; headers?: Record<string, string>; attachments?: unknown[];
+    };
+    const from = addrOf(mail.from || "");
+    if (!EMAIL_ADDRESS.test(from)) return err("Invalid sender", 400);
+    const headers = Object.fromEntries(Object.entries(mail.headers || {}).map(([k, v]) => [k.toLowerCase(), v]));
+    const inReplyTo = headers["in-reply-to"] || "";
+    const references = (headers.references || "").split(/\s+/).filter(Boolean);
+    const refs = [inReplyTo, ...references].filter(Boolean);
+    const original = refs.length ? this.one<{ contact_id: string; campaign_id: string }>(
+      `SELECT contact_id,campaign_id FROM messages WHERE direction='out' AND message_id IN (${refs.map(() => "?").join(",")}) LIMIT 1`, ...refs,
+    ) : undefined;
+    const contact = this.one<{ id: string }>("SELECT id FROM contacts WHERE email=?", from);
+    const contactId = original?.contact_id || contact?.id || this.upsertContact({ email: from, name: nameOf(mail.from || ""), source: "resend-inbound" });
+    const added = this.addInbound({
+      channel: "email", accountId, contactId, from, fromName: nameOf(mail.from || ""), to: mail.to?.join(", ") || "",
+      subject: mail.subject || "(no subject)", body: (mail.text || stripHtml(mail.html || "") || "(empty email)").slice(0, 100000),
+      messageId: mail.message_id, inReplyTo, extId: `resend:${emailId}`,
+      meta: { resendEmailId: emailId, attachments: mail.attachments || [] }, at: Date.parse(mail.created_at || event.created_at || "") || now(),
+    });
+    if (added) {
+      const unsub = /\b(unsubscribe|remove me|stop emailing|no thanks|not interested)\b/i.test(mail.text || "");
+      this.sql.exec("UPDATE contacts SET status=?,updated_at=? WHERE id=?", unsub ? "unsubscribed" : "replied", now(), contactId);
+      this.sql.exec("UPDATE enrollments SET status='replied' WHERE contact_id=? AND status='active'", contactId);
+      this.log("info", `Resend reply from ${from}${unsub ? " (asked to stop)" : ""}`);
+    }
+    return json({ ok: true });
+  }
+
   // ---------- contacts ----------
 
   /** Adds or updates a contact by email and returns its id. Enrolls new contacts into matching auto campaigns. */
@@ -659,11 +752,18 @@ export class AdminStore extends DurableObject<Env> {
   }
 
   private replySender(message: { channel: string; account_id: string; contact_id: string }, requestedAccount?: string) {
+    const accounts = this.emailAccounts();
+    const selected = accounts.find((a) => a.id === (requestedAccount || message.account_id));
+    const resendInbox = selected?.cfg.provider === "resend" && selected.cfg.resendInboundAddress
+      ? selected
+      : accounts.find((a) => a.status === "ok" && a.cfg.provider === "resend" && a.cfg.resendInboundAddress);
+    // Website leads use Resend when its inbound address is connected, so the
+    // client's reply returns to this dashboard instead of a forwarding inbox.
+    if (message.channel === "form" && resendInbox) return { email: resendInbox.cfg.email, account: resendInbox };
     const cloud = this.cloudflareLeadMail();
     if (cloud && (message.channel === "form" || (message.contact_id && this.one(
       "SELECT id FROM messages WHERE contact_id=? AND direction='out' AND from_addr=? LIMIT 1", message.contact_id, CLOUDFLARE_FROM,
     )))) return { email: CLOUDFLARE_FROM, cloud };
-    const accounts = this.emailAccounts();
     const account = accounts.find((a) => a.id === (requestedAccount || message.account_id)) ?? accounts[0];
     return account ? { email: account.cfg.email, account } : undefined;
   }
