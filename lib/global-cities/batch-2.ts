@@ -3,7 +3,7 @@ import type { GlobalCityGuide } from "../cities/deep-types";
 export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
   "united-states/long-beach": {
     summary: "Local SEO for Long Beach businesses, from Belmont Shore and Downtown to Bixby Knolls, built around port jobs, beach visitors and LA County search.",
-    lead: "Long Beach sits on the edge of Los Angeles County with one of the country's busiest ports on its waterfront. Local customers search by neighborhood, so a business in Belmont Shore competes very differently from one near the port or in North Long Beach.",
+    lead: "Long Beach sits on the edge of Los Angeles County with a huge container port on its waterfront. Local customers search by neighborhood, so a business in Belmont Shore competes very differently from one near the port or in North Long Beach.",
     profile: [
       "Long Beach is a coastal city in southern Los Angeles County, shaped by its port, the Queen Mary, a convention center and Cal State Long Beach. It has its own downtown and its own identity, separate from Los Angeles proper.",
       "That mix brings dock and logistics workers, students, retirees and weekend visitors into the same search results. Restaurants, auto repair, dentists and home services all fight hard here, and many LA-based companies also target Long Beach searches, so local proof and neighborhood pages matter.",
@@ -87,7 +87,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
   },
   "united-states/oakland": {
     summary: "Local SEO for Oakland businesses, from Rockridge and Temescal to Jack London Square, competing with San Francisco firms across the bay for East Bay customers.",
-    lead: "Oakland is the East Bay's largest city and a market with its own strong local pride. Customers here often prefer Oakland businesses, but San Francisco competitors still chase the same searches.",
+    lead: "Oakland is the anchor of the East Bay and a market with its own strong local pride. Customers here often prefer Oakland businesses, but San Francisco competitors still chase the same searches.",
     profile: [
       "Oakland sits across the bay from San Francisco in Alameda County, with a major container port, a busy downtown and hillside neighborhoods. It has a long history as a working city, and a diverse population with strong neighborhood identities.",
       "Local customers include long-time residents, families priced out of San Francisco and tech workers. Restaurants, contractors, cafes and wellness businesses compete hard, and showing real roots in a specific neighborhood can be a strong advantage over regional chains.",
@@ -117,7 +117,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     summary: "Local SEO for Minneapolis businesses in Uptown, North Loop, Northeast and beyond, planned around long winters, lake summers and Twin Cities search habits.",
     lead: "Minneapolis has hard winters and busy summers, and local search demand swings with both. Its neighborhoods have strong identities, and customers often search by them.",
     profile: [
-      "Minneapolis is Minnesota's largest city and, with neighboring St. Paul, the core of the Twin Cities metro. It is home to major corporate headquarters, the University of Minnesota and a chain of city lakes, with a skyway system linking downtown buildings.",
+      "Minneapolis is the commercial heart of Minnesota and, with neighboring St. Paul, the core of the Twin Cities metro. It is home to major corporate headquarters, the University of Minnesota and a chain of city lakes, with a skyway system linking downtown buildings.",
       "Customers include office workers, students and families in older single-family neighborhoods. Home services, restaurants, breweries and healthcare compete strongly, and businesses here must plan for snow, cold and the rush of the short summer.",
     ],
     areas: [
@@ -156,7 +156,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "South Tulsa", note: "Large suburban area with families searching for healthcare, home and auto services." },
     ],
     nearby: ["Broken Arrow", "Jenks", "Owasso", "Bixby"],
-    language: "Searches are in English, with a growing Spanish-speaking population in east Tulsa. Locals often refer to \"Midtown\" and \"South Tulsa\" in searches.",
+    language: "English dominates. East Tulsa has a large Spanish-speaking community, and locals use \"Midtown\" and \"South Tulsa\" as everyday search terms.",
     demand: [
       { when: "Spring", what: "Severe storm and hail season drives urgent searches for roofers, storm shelters and auto hail repair." },
       { when: "Summer", what: "Heat brings strong demand for AC repair, pool services and lawn care." },
@@ -166,7 +166,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     sectors: ["roofing and storm restoration", "hvac", "restaurants"],
     faqs: [
       { q: "How do I stand out from out-of-town storm chasers after hail?", a: "Show that you are local. Use your real Tulsa address, show photos of local jobs and keep collecting reviews all year, not just after storms. Homeowners in Tulsa are wary of crews that appear only after a hailstorm." },
-      { q: "Should I build pages for Broken Arrow and Jenks?", a: "If you serve them, yes. They are separate cities with their own searches, and a page for each with real jobs and reviews there often ranks faster than a Tulsa page alone." },
+      { q: "Should I build pages for Broken Arrow and Jenks?", a: "Yes, when you work there. Broken Arrow in particular is a sizeable city in its own right, and people there search with its name rather than Tulsa." },
     ],
   },
   "united-states/bakersfield": {
@@ -194,14 +194,14 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     sectors: ["hvac and ac repair", "auto repair", "solar installers"],
     faqs: [
       { q: "My business serves all of Kern County. Should I build a page for every town?", a: "Start with the places you serve most and can show real jobs in, such as Bakersfield neighborhoods, Delano or Shafter. A few strong pages beat many thin ones, and Google can treat lots of near-duplicate town pages as low quality." },
-      { q: "Do I need Spanish content in Bakersfield?", a: "For most service businesses, yes. Many local customers search in Spanish, and a Spanish service page, Spanish replies to reviews and a Spanish-speaking contact option can make a real difference." },
+      { q: "Do I need Spanish content in Bakersfield?", a: "For most service businesses, yes. Spanish is spoken in many Bakersfield homes, so a Spanish service page, a Spanish-speaking contact and replies to Spanish reviews widen your reach." },
     ],
   },
   "united-states/wichita": {
     summary: "Local SEO for Wichita businesses, from Old Town to Delano and east Wichita, in the Air Capital of the World with storm season and steady home demand.",
     lead: "Wichita is known as the Air Capital of the World for its long aircraft manufacturing history. Local search here is practical: homeowners, factory workers and families looking for nearby, trusted services.",
     profile: [
-      "Wichita is the largest city in Kansas, sitting on the Arkansas River in the south-central part of the state. Aviation manufacturing is a major employer, alongside healthcare, agriculture and Wichita State University.",
+      "Wichita is the main commercial center of Kansas, sitting on the Arkansas River in the south-central part of the state. Aviation manufacturing is a major employer, alongside healthcare, agriculture and Wichita State University.",
       "Customers are often long-time residents who value reliability and word of mouth. Roofers, HVAC, auto repair and healthcare compete strongly, and spring storms can change demand overnight.",
     ],
     areas: [
@@ -212,7 +212,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "West Wichita", note: "Growing residential area where families search for home, auto and kids' services." },
     ],
     nearby: ["Derby", "Andover", "Maize", "Haysville"],
-    language: "Searches are in English, with Spanish and Vietnamese communities in parts of the city. Locals often search with \"east side\" or \"west side\" in the query.",
+    language: "English is the norm, with established Vietnamese and Spanish-speaking communities. Many locals frame searches around \"east side\" or \"west side\".",
     demand: [
       { when: "Spring", what: "Tornado and hail season drives searches for roofers, storm shelters and auto hail repair." },
       { when: "Summer", what: "Heat brings demand for AC repair, lawn care and pool services." },
@@ -222,7 +222,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     sectors: ["roofing", "hvac", "auto repair"],
     faqs: [
       { q: "Should I target \"east Wichita\" or \"west Wichita\" separately?", a: "If you have customers on both sides, a page for each can help, since many locals search that way. Make each page genuinely different, with local jobs, photos and reviews." },
-      { q: "How do I compete for storm work against out-of-town crews?", a: "Keep a strong, up-to-date Google Business Profile with a real Wichita address and many local reviews. Homeowners often look for signs that a company will still be around next year." },
+      { q: "Hail season is short. How do I keep leads coming the rest of the year?", a: "Build pages for year-round work, like gutter replacement, siding or furnace service, and ask every customer for a review. A profile that stays active all year is in a stronger position when the next storm hits." },
     ],
   },
   "united-states/arlington": {
@@ -271,7 +271,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     language: "English is dominant, with a large Spanish-speaking population. Spanish pages help many service businesses, and \"Tampa Bay\" is a common search term.",
     demand: [
       { when: "Winter", what: "Seasonal residents and visitors lift searches for restaurants, rentals and personal services." },
-      { when: "Hurricane season", what: "From June to November, storm prep and recovery drive roofing, tree, generator and water damage searches." },
+      { when: "Hurricane season", what: "Through summer and fall, storm prep and recovery drive roofing, tree, generator and water damage searches." },
       { when: "Late January", what: "Gasparilla pirate festival brings crowds and spikes in parking, food and party searches." },
     ],
     queries: ["roofer Tampa hurricane damage", "brunch Hyde Park Tampa", "dentist New Tampa", "abogado Tampa", "cuban sandwich Ybor City"],
@@ -283,7 +283,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
   },
   "canada/toronto": {
     summary: "Local SEO for Toronto businesses, from Yorkville and Liberty Village to Scarborough and North York, built for a dense, multilingual and very competitive market.",
-    lead: "Toronto is Canada's largest city and one of its toughest local search markets. Customers search by neighbourhood, and many search in languages other than English.",
+    lead: "Toronto is Canada's financial capital and one of its toughest local search markets. Customers search by neighbourhood, and many search in languages other than English.",
     profile: [
       "Toronto is Ontario's capital and Canada's main financial and business centre. The city merged with its suburbs in the late 1990s, so it now includes areas like Scarborough, Etobicoke and North York, each with its own character.",
       "The population is very diverse, and many customers prefer businesses that speak their language. Dentists, lawyers, restaurants, real estate agents and home services all face crowded map results, so neighbourhood pages and steady reviews matter.",
@@ -296,24 +296,24 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "North York", note: "Busy area along Yonge Street with offices, condos and strong Korean and Persian communities." },
     ],
     nearby: ["Mississauga", "Vaughan", "Markham", "Pickering"],
-    language: "English is the main search language, but Cantonese, Mandarin, Punjabi, Tamil, Korean, Portuguese and many others are common. Many people also search using \"GTA\".",
+    language: "Most searches are in English, yet whole neighbourhoods search in Cantonese, Mandarin, Tamil, Korean, Portuguese or Tagalog. The label \"GTA\" turns up in many service queries.",
     demand: [
       { when: "September", what: "The Toronto International Film Festival fills downtown with visitors searching for dining and hotels." },
-      { when: "Winter", what: "Snow and cold raise searches for furnace repair, snow removal and winter tires." },
+      { when: "Winter", what: "The first big snowfall sets off searches for furnace repair, driveway clearing and tire swaps across the inner suburbs." },
       { when: "Summer", what: "Patio season, festivals and the CNE lift restaurant and event searches." },
     ],
     queries: ["dentist Yorkville", "plumber Scarborough", "best pho North York", "real estate lawyer Toronto", "dog walker Liberty Village"],
     sectors: ["dentists", "lawyers", "restaurants"],
     faqs: [
       { q: "Should I target Toronto or the GTA?", a: "Target the neighbourhood and the city first, because that is where map results are decided. Use GTA in your copy for wider reach, and add pages for Mississauga or Vaughan only if you really serve them." },
-      { q: "Is it worth creating pages in other languages?", a: "If you serve a language community, yes. A well-written page in Cantonese, Punjabi or Korean, for example, can reach customers who rarely search in English." },
+      { q: "Is it worth creating pages in other languages?", a: "When a language community makes up a real share of your clients, yes. A Tamil page for a Scarborough clinic or a Korean page for a North York salon reaches people who may never type an English query." },
     ],
   },
   "canada/montreal": {
     summary: "Local SEO for Montreal businesses in the Plateau, Old Montreal, Griffintown and beyond, with French-first search and English pages done properly.",
     lead: "Montreal is a French-speaking city with a large English-speaking community, and local search reflects both. A business that ranks only in English misses a big share of its customers.",
     profile: [
-      "Montreal is Quebec's largest city, built on an island in the St. Lawrence River. It has major universities, a strong arts and festival scene, aerospace and tech industries, and neighbourhoods with very distinct personalities.",
+      "Montreal is Quebec's economic and cultural centre, built on an island in the St. Lawrence River. It has major universities, a strong arts and festival scene, aerospace and tech industries, and neighbourhoods with very distinct personalities.",
       "Quebec's language rules mean French must be front and centre in business signage and communications. Restaurants, dentists, renovation firms and real estate services compete fiercely, and bilingual pages are often the difference between being found or not.",
     ],
     areas: [
@@ -324,17 +324,17 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "Westmount", note: "Affluent, largely English-speaking area with demand for premium services." },
     ],
     nearby: ["Laval", "Longueuil", "Brossard", "Pointe-Claire"],
-    language: "Most locals search in French, using terms like \"près de moi\" and \"plombier Montréal\". English searches are common downtown and in the West Island, so a bilingual site with proper French content works best.",
+    language: "French dominates local queries (\"plombier Montréal\", \"près de moi\", \"dépanneur ouvert\"). English is strong downtown, in Westmount and in the West Island, so most businesses need both, with the French written by a fluent writer.",
     demand: [
       { when: "Summer", what: "Festival season, including the Jazz Festival and Just for Laughs, brings visitors and heavy food and hotel searches." },
       { when: "July 1", what: "Moving day, when many leases end, drives huge demand for movers, cleaners and storage." },
-      { when: "Winter", what: "Snow and cold raise searches for snow removal, heating repair and winter tire changes." },
+      { when: "Winter", what: "From late fall, déneigement contracts, heat pump repairs and the required switch to winter tires dominate searches." },
     ],
     queries: ["plombier Montréal urgence", "dentiste Plateau Mont-Royal", "déménageur 1er juillet Montréal", "restaurant Vieux-Montréal", "lawyer downtown Montreal"],
     sectors: ["restaurants", "renovation contractors", "movers"],
     faqs: [
       { q: "Do I need a French version of my website in Montreal?", a: "Yes. Most locals search in French, and Quebec's language rules expect French to be present in business communications. Write proper French pages, not machine translations, and keep an English version for anglophone customers." },
-      { q: "How do I prepare for Moving Day on July 1?", a: "Moving and cleaning businesses should publish seasonal pages and update their Google Business Profile well before July. Searches start weeks ahead, so early visibility helps capture bookings." },
+      { q: "When should movers start promoting for July 1?", a: "Earlier than most expect. Tenants book weeks or months before Moving Day, so seasonal pages and Google Business Profile updates should be live by spring." },
     ],
   },
   "canada/vancouver": {
@@ -352,25 +352,25 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "Yaletown", note: "Upscale condo district with high-end dining and personal services." },
     ],
     nearby: ["Burnaby", "Richmond", "North Vancouver", "Surrey"],
-    language: "English is the main search language, but Cantonese, Mandarin and Punjabi are common in parts of the region. Many searches also include \"Lower Mainland\" or \"Metro Vancouver\".",
+    language: "English leads, with Cantonese and Mandarin strong in parts of the city and Punjabi in South Vancouver. \"Lower Mainland\" and \"Metro Van\" appear in many service queries.",
     demand: [
-      { when: "Rainy season", what: "Long wet winters raise searches for roofing, gutters, drainage and mould removal." },
+      { when: "Rainy season", what: "The wet season, roughly October to March, brings leaky roof calls, gutter clearing and mould remediation." },
       { when: "Summer", what: "Cruise ships and tourists boost demand for restaurants, tours and hotels." },
       { when: "Ski season", what: "Winter brings searches for ski rentals, tune-ups and shuttles to the North Shore mountains and Whistler." },
     ],
     queries: ["dentist Kitsilano", "sushi Yaletown", "roof repair Vancouver rain", "brewery Mount Pleasant", "massage therapist downtown Vancouver"],
     sectors: ["restaurants", "dentists", "home renovation"],
     faqs: [
-      { q: "Should I build pages for Burnaby and Richmond?", a: "If you serve them, yes. They are separate cities with their own search results, and many customers search with their own city name rather than Vancouver." },
-      { q: "Is it worth adding Chinese-language content?", a: "If you serve Chinese-speaking customers, yes. A properly written page in simplified or traditional Chinese, depending on your clients, can reach people who rarely search in English." },
+      { q: "Should I build pages for Burnaby and Richmond?", a: "Only if you really work there. Burnaby and Richmond are separate municipalities, and residents tend to search with their own city name, so a Vancouver page alone rarely reaches them." },
+      { q: "Is it worth adding Chinese-language content?", a: "It depends on your clients. Long-settled Cantonese speakers often read traditional characters, while newer Mandarin-speaking arrivals usually read simplified. Ask clients before you translate." },
     ],
   },
   "canada/calgary": {
     summary: "Local SEO for Calgary businesses in Beltline, Kensington, Inglewood and the suburbs, shaped by the energy sector, Stampede and fast-changing prairie weather.",
     lead: "Calgary is an energy-industry city on the edge of the Rockies, and its economy shapes customer spending. Local search here is driven by homeowners in sprawling suburbs and professionals in the inner city.",
     profile: [
-      "Calgary is Alberta's largest city and the headquarters of much of Canada's oil and gas industry. It sits where the Bow and Elbow rivers meet, with Banff and the Rocky Mountains close by.",
-      "Many residents live in large suburban communities and drive to services. Roofers, HVAC, auto repair and restaurants compete hard, and sudden weather, including chinooks and hail, can change demand quickly.",
+      "Calgary is where much of Canada's oil and gas industry keeps its head offices. It sits where the Bow and Elbow rivers meet, with Banff and the Rocky Mountains close by.",
+      "Many residents live in large suburban communities and drive to services. Roofing crews, furnace techs, mechanics and restaurants fight for map spots, and sudden weather, including chinooks and hail, can change demand quickly.",
     ],
     areas: [
       { name: "Beltline", note: "Dense inner-city area with condos, restaurants and nightlife on 17th Avenue." },
@@ -380,7 +380,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "Seton", note: "Newer southeast community with growing demand for family and healthcare services." },
     ],
     nearby: ["Airdrie", "Cochrane", "Okotoks", "Chestermere"],
-    language: "Searches are mainly in English, with Punjabi, Tagalog and Chinese communities in parts of the city. Many locals search by quadrant, such as \"NW Calgary\" or \"SE Calgary\".",
+    language: "English is the norm, and Calgarians often search by quadrant, typing \"NW Calgary\" or \"SE Calgary\". Large Punjabi, Filipino and Chinese communities add other languages, especially in the northeast.",
     demand: [
       { when: "July", what: "The Calgary Stampede brings huge crowds and boosts searches for western wear, food and events." },
       { when: "Summer", what: "Hail storms can damage roofs and cars, driving roofing and auto body searches." },
@@ -390,7 +390,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     sectors: ["roofing", "hvac and furnace repair", "restaurants"],
     faqs: [
       { q: "Should I target Calgary quadrants like NW and SE?", a: "If you serve several quadrants, yes. Many locals search that way, and a page for each quadrant with real local jobs can pick up searches a single city page misses." },
-      { q: "How do I prepare for hail season?", a: "Update your Google Business Profile, publish hail-damage pages before summer, and keep collecting reviews all year. Homeowners compare companies quickly after a storm, and steady reviews build trust." },
+      { q: "Hail can hit on any summer afternoon. What should a roofer do before it does?", a: "Update your Google Business Profile, publish hail-damage pages before summer, and keep collecting reviews all year. Homeowners compare companies quickly after a storm, and steady reviews build trust." },
     ],
   },
   "canada/edmonton": {
@@ -404,11 +404,11 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "Old Strathcona", note: "Historic area on Whyte Avenue with restaurants, bars and independent shops." },
       { name: "Downtown Edmonton", note: "Government and office core near the arena district with weekday service searches." },
       { name: "Oliver", note: "Dense residential area with apartments, cafes and personal services." },
-      { name: "Windermere", note: "Newer southwest community with families and strong demand for healthcare and home services." },
+      { name: "Windermere", note: "Fast-growing southwest suburb where new homeowners look for landscapers, dentists and daycare." },
       { name: "West Edmonton", note: "Area around West Edmonton Mall with shopping, hotels and visitor traffic." },
     ],
     nearby: ["St. Albert", "Sherwood Park", "Spruce Grove", "Leduc"],
-    language: "Searches are mainly in English, with a francophone community in areas like Bonnie Doon and many Filipino, Punjabi and Ukrainian-heritage families. Most locals search by neighbourhood or \"south side\" and \"north side\".",
+    language: "English dominates, though the French Quarter around Bonnie Doon has French-language schools and businesses. Locals split the city into \"south side\" and \"north side\" in everyday searches.",
     demand: [
       { when: "Winter", what: "Long, cold months raise searches for furnace repair, block heaters, snow removal and winter tires." },
       { when: "Summer", what: "Festival season, including the Fringe and Folk festivals, brings visitors and food searches." },
@@ -417,8 +417,8 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     queries: ["furnace repair Edmonton", "restaurants Whyte Ave", "dentist Windermere Edmonton", "winter tires south side Edmonton", "plumber St. Albert"],
     sectors: ["hvac and furnace repair", "auto services", "restaurants"],
     faqs: [
-      { q: "Should I target St. Albert and Sherwood Park separately?", a: "If you serve them, yes. They are separate communities and people there search with their own names, so a dedicated page for each helps." },
-      { q: "How do I plan local search for winter?", a: "Publish winter service pages before the first cold snap, keep your hours accurate on your Google Business Profile, and post updates when you add winter services." },
+      { q: "Should I target St. Albert and Sherwood Park separately?", a: "Worth it if you work there. St. Albert is its own city and Sherwood Park is in Strathcona County, so Google treats both as separate places from Edmonton." },
+      { q: "My business slows down in January. What should I do in local search?", a: "Use the quiet weeks to collect reviews from fall customers, refresh photos and write pages for spring services, so they are indexed before demand returns. Keep cold-weather and holiday hours accurate on your profile." },
     ],
   },
   "canada/ottawa": {
@@ -426,7 +426,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     lead: "Ottawa is Canada's capital, and the federal government shapes much of its economy. It sits right across the river from Gatineau, so many customers search in both English and French.",
     profile: [
       "Ottawa is home to Parliament, federal departments and national museums, with a tech sector centred in Kanata. The Rideau Canal runs through the city and turns into a skating rink in winter.",
-      "Customers include public servants, students, tech workers and families in suburbs like Barrhaven and Orléans. Dentists, home services, restaurants and lawyers compete strongly, and bilingual service is a real advantage.",
+      "Federal workers, students, Kanata tech staff and families in Barrhaven and Orléans make up the customer base. Dentists, home services, restaurants and law firms all compete, and serving clients in French wins work on both sides of the river.",
     ],
     areas: [
       { name: "ByWard Market", note: "Historic market area with restaurants, nightlife and tourist traffic." },
@@ -436,24 +436,24 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "Orléans", note: "Eastern suburb with a large francophone population and growing service demand." },
     ],
     nearby: ["Gatineau", "Barrhaven", "Nepean", "Stittsville"],
-    language: "English is the main search language, but French is common, especially in Orléans and Vanier and among customers from Gatineau. Bilingual pages help many businesses here.",
+    language: "English and French are both in daily use. French searches are strongest in Orléans and Vanier and from Gatineau residents who cross the river for work.",
     demand: [
       { when: "February", what: "Winterlude brings visitors and boosts searches for skating, food and events along the canal." },
       { when: "Summer", what: "Canada Day and tourist season fill downtown, lifting hotel and restaurant searches." },
-      { when: "Winter", what: "Cold and snow drive searches for furnace repair, snow removal and winter tires." },
+      { when: "Winter", what: "Long, snowy winters keep snow removal contracts, furnace repair and ice dam fixes in steady demand." },
     ],
     queries: ["dentist Kanata", "restaurants ByWard Market", "plombier Orléans", "snow removal Barrhaven", "lawyer downtown Ottawa"],
     sectors: ["dentists", "home services", "restaurants"],
     faqs: [
       { q: "Should my Ottawa business have French pages?", a: "If you serve francophone customers or cross-river clients from Gatineau, yes. Proper French service pages, not machine translations, can reach a large audience." },
-      { q: "Should I target suburbs like Kanata and Orléans separately?", a: "Yes, if you serve them. Many locals search with suburb names, and a page for each area with local proof often ranks better than a single Ottawa page." },
+      { q: "Should I target suburbs like Kanata and Orléans separately?", a: "Often, yes. Kanata, Barrhaven and Orléans each feel like their own town, and people type those names. A page for each area you serve, with jobs and reviews from there, usually does better than one Ottawa page." },
     ],
   },
   "canada/winnipeg": {
     summary: "Local SEO for Winnipeg businesses in the Exchange District, Osborne Village, St. Boniface and beyond, built for deep prairie winters and a loyal local market.",
     lead: "Winnipeg sits at the meeting of the Red and Assiniboine rivers, near the centre of Canada. Its very cold winters and tight-knit communities shape how locals search and choose businesses.",
     profile: [
-      "Winnipeg is Manitoba's capital and largest city, a transport and distribution hub for the prairies. The Forks, the Exchange District's historic buildings and the Canadian Museum for Human Rights draw visitors.",
+      "Winnipeg is Manitoba's capital and a transport and distribution hub for the prairies. The Forks, the Exchange District's historic buildings and the Canadian Museum for Human Rights draw visitors.",
       "Many residents are long-time locals who value trust and word of mouth, so reviews carry weight. Furnace repair, plumbing, auto services and restaurants compete strongly, and winter planning is essential.",
     ],
     areas: [
@@ -461,10 +461,10 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "Osborne Village", note: "Dense, lively area with cafes, shops and apartments." },
       { name: "St. Boniface", note: "Francophone quarter with French-language businesses and searches." },
       { name: "Corydon", note: "Popular dining strip with restaurants and patios." },
-      { name: "Bridgwater", note: "Newer southwest community with families and growing service demand." },
+      { name: "Bridgwater", note: "Quickly built southwest subdivisions where new homeowners need fences, decks and landscaping." },
     ],
     nearby: ["Steinbach", "Selkirk", "East St. Paul", "Headingley"],
-    language: "Searches are mostly in English, with French in St. Boniface and a large Filipino community. Many locals use neighbourhood names in searches.",
+    language: "English is standard, French lives on in St. Boniface, and Tagalog is common in the large Filipino community. Neighbourhood names appear in many local searches.",
     demand: [
       { when: "Winter", what: "Deep cold raises searches for furnace repair, block heaters, frozen pipes and towing." },
       { when: "February", what: "Festival du Voyageur in St. Boniface brings visitors and boosts food and event searches." },
@@ -474,7 +474,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     sectors: ["hvac and furnace repair", "plumbing", "restaurants"],
     faqs: [
       { q: "Is a French version worth it for a Winnipeg business?", a: "If you serve St. Boniface or francophone customers, it can help. A few well-written French pages and French replies to reviews show respect for that community." },
-      { q: "How do I prepare for spring flood season?", a: "Publish pages on basement waterproofing or sump pumps before the thaw, update your Google Business Profile with seasonal services, and keep your hours accurate when demand spikes." },
+      { q: "What should a waterproofing company do before the spring thaw?", a: "Publish pages on basement waterproofing or sump pumps before the thaw, update your Google Business Profile with seasonal services, and keep your hours accurate when demand spikes." },
     ],
   },
   "canada/quebec-city": {
@@ -492,11 +492,11 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "Limoilou", note: "Popular residential area with families and small businesses." },
     ],
     nearby: ["Lévis", "Beauport", "Charlesbourg", "L'Ancienne-Lorette"],
-    language: "Locals search almost entirely in French, using terms like \"près de moi\" and \"Québec\" (without \"City\"). English pages help mainly for tourist-facing businesses.",
+    language: "Residents search in French and usually just say \"Québec\" for the city. English pages mostly matter for hotels, tours and restaurants inside the walls.",
     demand: [
       { when: "February", what: "The Winter Carnival brings visitors and boosts searches for hotels, restaurants and activities." },
       { when: "July", what: "The Festival d'été de Québec fills the city with music fans looking for food and lodging." },
-      { when: "Winter", what: "Snow and cold raise searches for déneigement, heating repair and winter tires." },
+      { when: "Winter", what: "Heavy snowfalls mean déneigement contracts and abri d'auto installs are searched from late fall." },
     ],
     queries: ["restaurant Vieux-Québec", "déneigement Québec", "dentiste Sainte-Foy", "plombier Limoilou", "hôtel près du Château Frontenac"],
     sectors: ["restaurants and hotels", "renovation contractors", "healthcare clinics"],
@@ -520,22 +520,22 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "Locke Street", note: "Walkable strip with boutiques, cafes and restaurants." },
     ],
     nearby: ["Burlington", "Stoney Creek", "Dundas", "Grimsby"],
-    language: "Searches are mainly in English, with Italian, Portuguese and Arabic communities in parts of the city. Locals often search with \"the Mountain\" or \"lower city\".",
+    language: "People search in English and lean on local geography: \"on the Mountain\", \"lower city\" and \"east end\" all show up in queries. Italian and Portuguese are heard in older neighbourhoods.",
     demand: [
-      { when: "Winter", what: "Snow and cold raise searches for furnace repair, snow removal and winter tires." },
+      { when: "Winter", what: "Snowy escarpment roads and Mountain streets bring searches for plowing, towing and winter tires." },
       { when: "Academic year", what: "McMaster students lift demand for food, housing and services in Westdale." },
       { when: "Summer", what: "Waterfall hiking and outdoor dining bring searches for patios and local activities." },
     ],
     queries: ["dentist Hamilton Mountain", "restaurants Locke Street", "plumber Ancaster", "student housing Westdale", "furnace repair Stoney Creek"],
     sectors: ["home services", "dentists", "restaurants"],
     faqs: [
-      { q: "Should I target Ancaster and Stoney Creek separately?", a: "Yes, if you serve them. Locals still search by these community names even though they are part of Hamilton, so dedicated pages can help." },
-      { q: "How do I reach people moving from Toronto?", a: "Make your Google Business Profile complete, collect steady reviews and create pages for the neighbourhoods newcomers are buying in. New arrivals tend to choose businesses based on reviews." },
+      { q: "Should I target Ancaster and Stoney Creek separately?", a: "Often, yes. Both are now part of Hamilton, but people still type \"plumber Ancaster\" rather than Hamilton, so a page for each former town can help." },
+      { q: "How do I reach people moving from Toronto?", a: "Newcomers have no local habits yet, so they pick from map results and reviews. Pages for the areas they buy in, such as the Mountain or Stoney Creek, plus a full profile and a steady flow of reviews, put you in front of them." },
     ],
   },
   "canada/halifax": {
     summary: "Local SEO for Halifax businesses in downtown, the North End, Dartmouth and Bedford, in a port city with naval roots, universities and a busy cruise season.",
-    lead: "Halifax is Nova Scotia's capital and the main city of Atlantic Canada. Its harbour, universities and navy base bring a steady mix of students, military families and visitors.",
+    lead: "Halifax is Nova Scotia's capital and a regional centre for all of Atlantic Canada. Its harbour, universities and navy base bring a steady mix of students, military families and visitors.",
     profile: [
       "Halifax is a historic port with a large naval base and several universities, including Dalhousie and Saint Mary's. The Halifax Regional Municipality covers the city, Dartmouth, Bedford and wide rural areas.",
       "Customers include students, public servants, military families and tourists in summer. Restaurants, home services and healthcare compete strongly, and coastal weather brings storm-related demand.",
@@ -547,8 +547,8 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "Dartmouth", note: "Across the harbour, with growing residential and commercial areas." },
       { name: "Bedford", note: "Affluent suburban area with families and premium services." },
     ],
-    nearby: ["Dartmouth", "Bedford", "Sackville", "Cole Harbour"],
-    language: "Searches are mostly in English, with a small Acadian French community in the region. Locals often say \"HRM\" or use community names in searches.",
+    nearby: ["Lower Sackville", "Cole Harbour", "Fall River", "Timberlea"],
+    language: "Searches are in English. Locals talk about \"HRM\", \"the peninsula\" and \"across the harbour\", and use community names like Bedford or Sackville.",
     demand: [
       { when: "Summer and fall", what: "Cruise ships and tourists lift searches for seafood, tours and hotels." },
       { when: "Storm season", what: "Fall storms and hurricanes drive searches for roofing, tree work and generator services." },
@@ -557,8 +557,8 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     queries: ["seafood restaurant Halifax waterfront", "roofer Dartmouth", "dentist Bedford NS", "student apartments South End Halifax", "plumber Halifax"],
     sectors: ["restaurants", "roofing and storm repair", "healthcare clinics"],
     faqs: [
-      { q: "Should I target Dartmouth and Bedford separately?", a: "Yes, if you serve them. They are part of Halifax Regional Municipality, but locals search with their community names, so separate pages often help." },
-      { q: "How do I prepare for tourist season?", a: "Restaurants and tour businesses should update hours, menus and photos before cruise season starts, and ask visitors for reviews while they are still in town." },
+      { q: "Should I target Dartmouth and Bedford separately?", a: "Usually. Both sit inside Halifax Regional Municipality, but people in Bedford tend to search with Bedford in the query. A page for each with local jobs matches how they search." },
+      { q: "When should a waterfront restaurant get ready for cruise season?", a: "Before the ships start arriving. Update hours, menus and photos ahead of time, and ask visitors for reviews while they are still in town, since many leave the same day." },
     ],
   },
   "canada/mississauga": {
@@ -572,21 +572,21 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "City Centre", note: "Area around Square One with condos, offices and shopping." },
       { name: "Port Credit", note: "Lakeside village with restaurants, boutiques and affluent residents." },
       { name: "Streetsville", note: "Historic village with independent shops and a loyal local community." },
-      { name: "Meadowvale", note: "Large residential area with families and growing service demand." },
+      { name: "Meadowvale", note: "Planned west-side suburb with parks, schools and families looking for nearby services." },
       { name: "Malton", note: "Area near the airport with diverse communities and many multilingual searches." },
     ],
     nearby: ["Brampton", "Oakville", "Etobicoke", "Milton"],
-    language: "English is the main search language, but Punjabi, Urdu, Arabic, Mandarin, Polish and Tagalog are common in parts of the city. Many people also search using \"GTA\" or \"Peel\".",
+    language: "English leads, with Urdu, Arabic, Punjabi, Polish, Mandarin and Tagalog all in daily use. Many queries say \"Peel\" or \"Peel Region\" instead of the city name.",
     demand: [
-      { when: "Winter", what: "Snow and cold raise searches for furnace repair, snow removal and winter tires." },
+      { when: "Winter", what: "Winter brings steady searches for driveway plowing contracts and furnace service in older homes in Cooksville and Clarkson." },
       { when: "Summer", what: "Waterfront events in Port Credit lift restaurant and patio searches." },
       { when: "Festival seasons", what: "Diwali, Eid and Lunar New Year bring demand for caterers, sweet shops and event services." },
     ],
     queries: ["dentist Square One", "restaurants Port Credit", "real estate agent Mississauga", "Punjabi caterer Mississauga", "furnace repair Meadowvale"],
     sectors: ["dentists", "real estate agents", "home services"],
     faqs: [
-      { q: "How do I compete with Toronto businesses targeting Mississauga?", a: "Use your local address, show reviews from Mississauga customers and create neighbourhood pages. Google weighs distance in map results, so a real Mississauga location helps." },
-      { q: "Should I create pages in other languages?", a: "If you serve language communities, yes. A well-written page in Punjabi, Urdu or Mandarin can reach customers who rarely search in English." },
+      { q: "Toronto companies advertise heavily here. Can a local business still win the map pack?", a: "Yes, because the map pack leans on distance and relevance, not ad spend. A Mississauga address, reviews that mention areas like Port Credit or Meadowvale, and a page for each area you serve give you an edge." },
+      { q: "Is Urdu or Arabic content worth it for a Mississauga clinic?", a: "If many of your patients speak those languages, yes. A properly written page, and reviews from those patients, help families find a provider who can explain things in their own language." },
     ],
   },
   "canada/brampton": {
@@ -599,22 +599,22 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     areas: [
       { name: "Downtown Brampton", note: "Historic core with civic buildings, restaurants and small businesses." },
       { name: "Bramalea", note: "Older planned community with a major shopping centre and diverse residents." },
-      { name: "Springdale", note: "Large residential area with families and strong South Asian community." },
+      { name: "Springdale", note: "Northeast suburb with many South Asian families and busy plazas." },
       { name: "Mount Pleasant", note: "Newer area around the GO station with growing family services." },
-      { name: "Castlemore", note: "Affluent area with large homes and demand for premium services." },
+      { name: "Castlemore", note: "Area of large custom homes where landscaping, interlock and premium renovation work are in demand." },
     ],
     nearby: ["Mississauga", "Caledon", "Vaughan", "Georgetown"],
     language: "English and Punjabi are both common search languages, with Hindi, Urdu and Gujarati too. Many people search with \"near me\" and community-specific terms.",
     demand: [
       { when: "Fall", what: "Diwali season brings strong demand for sweets, decorations, caterers and event venues." },
-      { when: "Wedding season", what: "Summer and fall weddings lift searches for banquet halls, decorators and photographers." },
-      { when: "Winter", what: "Snow and cold raise searches for furnace repair, snow removal and winter tires." },
+      { when: "Wedding season", what: "Big South Asian weddings in the warmer months keep banquet halls, DJs, decorators and mehndi artists busy." },
+      { when: "Winter", what: "Snowstorms bring searches for driveway plowing and furnace repair, plus tire swaps for the city's many truck and delivery drivers." },
     ],
     queries: ["Punjabi driving school Brampton", "banquet hall Brampton", "immigration consultant Brampton", "dentist Springdale", "sweet shop near me Brampton"],
     sectors: ["real estate agents", "immigration and travel services", "restaurants and sweet shops"],
     faqs: [
-      { q: "Should I make Punjabi pages for my Brampton business?", a: "If you serve Punjabi-speaking customers, yes. A well-written Punjabi page and replies to reviews in Punjabi can build strong trust in the community." },
-      { q: "How do I stand out in such a crowded market?", a: "Focus on specific neighbourhoods and services, collect steady reviews and make sure your Google Business Profile is complete with photos, services and hours." },
+      { q: "Should I make Punjabi pages for my Brampton business?", a: "Yes, if Punjabi speakers are part of your client base. Have a fluent writer prepare it in Gurmukhi script, and reply to Punjabi reviews in Punjabi." },
+      { q: "There are dozens of driving schools and realtors near me. How do I stand out?", a: "Pick a narrow focus, such as G2 road test prep or first-time buyers in Mount Pleasant, and build pages for it. Then keep reviews coming in steadily, because Brampton customers compare star ratings closely." },
     ],
   },
   "canada/surrey": {
@@ -634,20 +634,20 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     nearby: ["Langley", "Delta", "White Rock", "Burnaby"],
     language: "English and Punjabi are both common search languages, with Hindi and other South Asian languages too. Many people search by town centre name rather than \"Surrey\".",
     demand: [
-      { when: "Rainy season", what: "Long wet winters raise searches for roofing, gutters, drainage and mould removal." },
-      { when: "Wedding season", what: "Summer and fall weddings lift searches for banquet halls, decorators and caterers." },
+      { when: "Rainy season", what: "Months of rain bring calls for gutter cleaning, perimeter drains and moss removal on roofs." },
+      { when: "Wedding season", what: "Wedding season fills banquet halls in Newton and Fleetwood and keeps caterers and decorators busy." },
       { when: "May", what: "Cloverdale Rodeo and spring events bring visitors and food searches." },
     ],
     queries: ["Punjabi lawyer Surrey", "banquet hall Newton Surrey", "roof repair South Surrey", "dentist Fleetwood", "trucking company Surrey BC"],
     sectors: ["real estate agents", "home services", "restaurants"],
     faqs: [
-      { q: "Should I target each Surrey town centre separately?", a: "Yes, if you serve them. Many locals search by town centre name, so pages for Newton, Fleetwood or South Surrey can pick up searches a single Surrey page misses." },
-      { q: "Is Punjabi content worth it in Surrey?", a: "If you serve Punjabi-speaking customers, yes. Well-written Punjabi pages and review replies can build strong trust in the community." },
+      { q: "Should I target each Surrey town centre separately?", a: "It often helps. People say \"Newton\" or \"Cloverdale\" more than \"Surrey\", so a page for each area you really serve matches how they search." },
+      { q: "Is Punjabi content worth it in Surrey?", a: "For many trades, lawyers and clinics in Newton and Fleetwood, yes. Customers often want to speak Punjabi with the business, so say on your profile and pages that you do." },
     ],
   },
   "canada/laval": {
     summary: "Local SEO for Laval businesses in Chomedey, Sainte-Dorothée, Vimont and beyond, an island suburb of Montreal where most searches happen in French.",
-    lead: "Laval is Quebec's third-largest city and sits on its own island just north of Montreal. Most residents search in French, but a diverse population brings Greek, Arabic and other language searches too.",
+    lead: "Laval covers its own island, Île Jésus, just north of Montreal across the Rivière des Prairies. Most residents search in French, but a diverse population brings Greek, Arabic and other language searches too.",
     profile: [
       "Laval is a large suburban city, made up of former municipalities like Chomedey, Vimont and Sainte-Rose. It has big shopping centres, a growing downtown near the Montmorency metro and many commuters.",
       "Customers are mainly families who drive to services. Renovation, dentists, auto repair and restaurants compete strongly, and French is the default for business communication.",
@@ -663,13 +663,13 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     language: "Locals search mostly in French, using terms like \"près de moi\" and \"Laval\". English, Greek and Arabic searches are common in parts of the city.",
     demand: [
       { when: "July 1", what: "Quebec's Moving Day drives demand for movers, cleaners and storage." },
-      { when: "Winter", what: "Snow and cold raise searches for déneigement, heating repair and winter tires." },
+      { when: "Winter", what: "Winter means déneigement contracts, abri d'auto installs and frozen pipe calls in older bungalows." },
       { when: "Summer", what: "Outdoor projects bring demand for landscaping, pools and renovations." },
     ],
     queries: ["dentiste Chomedey", "déneigement Laval", "plombier Sainte-Rose", "restaurant grec Laval", "garage auto Vimont"],
     sectors: ["renovation contractors", "dentists", "auto repair"],
     faqs: [
-      { q: "Do I need French content in Laval?", a: "Yes. Most locals search in French, and Quebec's language rules expect French in business communication. Write proper French pages and keep an English version if you serve anglophones." },
+      { q: "Do I need French content in Laval?", a: "Yes. French is the default for customers and for Quebec's rules on business communication. Use natural French on every page, and add English only for the clients who need it." },
       { q: "Should I target Montreal too?", a: "Only if you serve it. Montreal is a separate city with its own search results, so a dedicated page with local proof works better than adding it to your Laval page." },
     ],
   },
@@ -691,13 +691,13 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     language: "Searches are in English. Many people add \"Ontario\" or \"ON\" to separate it from London, England.",
     demand: [
       { when: "Academic year", what: "Western and Fanshawe students boost demand for food, housing and services." },
-      { when: "Winter", what: "Snow and cold raise searches for furnace repair, snow removal and winter tires." },
+      { when: "Winter", what: "Snowbelt weather off Lake Huron can bury the city, so plows, salt and furnace service are searched hard each winter." },
       { when: "Summer", what: "Festivals and events lift restaurant and patio searches." },
     ],
     queries: ["dentist London Ontario", "student housing near Western", "furnace repair London ON", "restaurants Old East Village", "plumber Byron London"],
     sectors: ["dentists", "student housing", "home services"],
     faqs: [
-      { q: "How do I make sure Google knows I mean London, Ontario?", a: "Use \"London, ON\" in your titles, address and Google Business Profile, and mention nearby places like St. Thomas. Your profile address does most of the work, but consistent wording helps." },
+      { q: "People in England keep finding my site. Does that matter?", a: "It is a sign Google is unsure which London you mean. Use \"London, ON\" in titles and your address, mention nearby places like St. Thomas, and keep your Google Business Profile accurate, which anchors you to Ontario." },
       { q: "Is it worth targeting students?", a: "For restaurants, student housing and services near campus, yes. Keep your hours accurate, especially in September, and ask students for reviews." },
     ],
   },
@@ -716,16 +716,16 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "Markham Centre", note: "Developing downtown with condos, offices and shopping." },
     ],
     nearby: ["Richmond Hill", "Scarborough", "Stouffville", "Vaughan"],
-    language: "English is the main search language, but Cantonese, Mandarin and Tamil are common. Many people search using \"York Region\" or \"GTA\".",
+    language: "Many residents search in Chinese (traditional or simplified) or Tamil as readily as English. \"York Region\" also appears in many service searches.",
     demand: [
-      { when: "Lunar New Year", what: "Celebrations bring demand for restaurants, bakeries and event services." },
-      { when: "Academic year", what: "Families search for tutoring, music lessons and after-school programs." },
-      { when: "Winter", what: "Snow and cold raise searches for furnace repair, snow removal and winter tires." },
+      { when: "Lunar New Year", what: "Banquet restaurants, bakeries and florists see a rush of bookings in the weeks before the holiday." },
+      { when: "Academic year", what: "Tutoring, enrichment and competitive math programs see heavy searches from September onward." },
+      { when: "Winter", what: "Cold months bring snow clearing and furnace calls, plus searches for indoor kids' activities." },
     ],
     queries: ["tutoring Markham", "dim sum Milliken", "dentist Unionville", "real estate agent Markham", "furnace repair Cornell"],
     sectors: ["dentists", "tutoring centres", "real estate agents"],
     faqs: [
-      { q: "Should I create Chinese-language pages?", a: "If you serve Chinese-speaking customers, yes. A well-written page in simplified or traditional Chinese, depending on your clients, can reach people who rarely search in English." },
+      { q: "Should I create Chinese-language pages?", a: "For many dentists, tutors and realtors here, yes. Ask clients which script they read, since older Cantonese speakers often prefer traditional characters and newer arrivals from mainland China use simplified." },
       { q: "Should I target Unionville separately?", a: "Yes, if you serve it. Unionville has a strong local identity and many people search by its name." },
     ],
   },
@@ -748,13 +748,13 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     demand: [
       { when: "Summer", what: "Canada's Wonderland draws visitors and boosts restaurant and hotel searches." },
       { when: "Spring", what: "Home renovation season lifts demand for contractors, landscapers and pool services." },
-      { when: "Winter", what: "Snow and cold raise searches for furnace repair, snow removal and winter tires." },
+      { when: "Winter", what: "Large lots and long driveways keep snow plowing contracts in demand all winter." },
     ],
     queries: ["Italian restaurant Woodbridge", "contractor Vaughan", "dentist Thornhill", "real estate agent Maple", "pool installation Kleinburg"],
     sectors: ["renovation contractors", "real estate agents", "restaurants"],
     faqs: [
-      { q: "Should I target Woodbridge and Maple separately?", a: "Yes, if you serve them. Many locals search by community name, so pages for each can pick up searches a single Vaughan page misses." },
-      { q: "How do I compete with Toronto businesses?", a: "Use your local address, show reviews from Vaughan customers and create community pages. Distance matters in map results, so a real Vaughan location helps." },
+      { q: "Should I target Woodbridge and Maple separately?", a: "Usually. Woodbridge in particular has a strong identity, and many people type \"Woodbridge\" rather than Vaughan, so a dedicated page with local projects tends to help." },
+      { q: "Is the new downtown at VMC worth a separate page?", a: "If you serve the condo towers there, yes. Residents are new to the area and searching for nearby dentists, gyms and cleaners, and a page that names the Vaughan Metropolitan Centre matches how they search." },
     ],
   },
   "canada/gatineau": {
@@ -789,7 +789,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     summary: "Local SEO for Saskatoon businesses on Broadway, in Riversdale, Stonebridge and near the University of Saskatchewan, a prairie city of bridges and potash.",
     lead: "Saskatoon is known as the City of Bridges, spread along both banks of the South Saskatchewan River. Potash mining, agriculture and the university keep its economy busy and its new suburbs growing.",
     profile: [
-      "Saskatoon is the largest centre in northern and central Saskatchewan and a service hub for farms and mines across the region. The University of Saskatchewan sits on the east bank, near Broadway and Nutana.",
+      "Saskatoon is the main service hub for farms and mines across the region. The University of Saskatchewan sits on the east bank, near Broadway and Nutana.",
       "Rural customers drive in for shopping, equipment and healthcare, so a Saskatoon business often serves people from far outside the city. Furnace repair, auto services, ag equipment dealers and restaurants all compete hard on Google.",
     ],
     areas: [
@@ -800,16 +800,16 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "University Heights", note: "Northeast suburbs where young families search for schools, dentists and home services." },
     ],
     nearby: ["Martensville", "Warman", "Dalmeny", "Clavet"],
-    language: "Searches are in English, with Cree and Michif spoken in some families and a growing Filipino and Ukrainian-heritage community. Locals often use \"east side\" and \"west side\" because the river divides the city.",
+    language: "English is the search language. Because the river splits the city, locals talk about the \"east side\" and \"west side\" when they look for nearby services.",
     demand: [
       { when: "Winter", what: "Prairie cold means block heaters, furnace calls and remote starters top local searches." },
-      { when: "Harvest", what: "Late summer and fall bring farm customers searching for parts, repairs and truck services." },
+      { when: "Harvest", what: "Harvest months bring farm customers searching for parts, repairs and truck services." },
       { when: "Summer", what: "Fringe and folk festivals and riverbank events fill patios and lift food searches." },
     ],
     queries: ["furnace repair Saskatoon", "brunch Broadway Saskatoon", "block heater install Saskatoon", "dentist Stonebridge", "tractor parts near Saskatoon"],
     sectors: ["hvac and furnace repair", "auto services", "agricultural equipment and parts"],
     faqs: [
-      { q: "Should I target Martensville and Warman?", a: "If you serve them, yes. Both are growing commuter towns north of the city, and people there often search with their own town name first." },
+      { q: "Should I target Martensville and Warman?", a: "Yes, when you do work there. Both are growing commuter towns north of the city, and people there often search with their own town name first." },
       { q: "How do I reach rural customers who drive into Saskatoon?", a: "Mention the region you serve and the towns customers come from, keep accurate hours and directions on your Google Business Profile, and list services rural clients need, like after-hours pickup or parts ordering." },
     ],
   },
@@ -832,7 +832,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     demand: [
       { when: "October", what: "Oktoberfest brings visitors and boosts searches for German food, events and rides." },
       { when: "Academic year", what: "Conestoga and the Waterloo universities lift demand for rentals, food and quick services." },
-      { when: "Winter", what: "Lake-effect snow raises searches for snow clearing, salt delivery and furnace calls." },
+      { when: "Winter", what: "Winter storms push up searches for snow clearing, salt delivery and furnace calls." },
     ],
     queries: ["dentist downtown Kitchener", "schnitzel KW", "snow removal Kitchener", "plumber Waterloo Region", "student rental near Conestoga Doon"],
     sectors: ["home builders and renovation", "dentists", "restaurants"],
@@ -856,7 +856,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "Boulevard Taschereau", note: "Commercial corridor with car dealerships, retail and service businesses." },
     ],
     nearby: ["Brossard", "Boucherville", "Saint-Lambert", "Montréal"],
-    language: "Most searches are in French, using words like \"Rive-Sud\" and \"près de moi\". English is common in Greenfield Park and Saint-Lambert.",
+    language: "French is the everyday search language, and many people type \"Rive-Sud\" instead of a city name. English is common in Greenfield Park and Saint-Lambert.",
     demand: [
       { when: "July 1", what: "Moving Day brings strong demand for movers, cleaners and storage on the South Shore." },
       { when: "Winter", what: "Snow and ice keep déneigement and heating services busy for months." },
@@ -866,7 +866,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     sectors: ["renovation contractors", "auto garages", "dentists"],
     faqs: [
       { q: "Should I use \"Rive-Sud\" in my pages?", a: "Yes. Many locals search with Rive-Sud rather than a city name, so including it alongside Longueuil helps you match those searches." },
-      { q: "Should I create pages for Brossard and Boucherville?", a: "If you serve them, yes. They are separate cities with their own searches, and a French page for each works best." },
+      { q: "Should I create pages for Brossard and Boucherville?", a: "When you work there regularly, yes. Brossard and Boucherville are separate cities, and Brossard has a large multilingual community, so check which languages your clients there use." },
     ],
   },
   "canada/burnaby": {
@@ -884,24 +884,24 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "SFU and UniverCity", note: "Mountain-top campus community with students and families." },
     ],
     nearby: ["Vancouver", "New Westminster", "Coquitlam", "Richmond"],
-    language: "English is the main search language, but Cantonese, Mandarin and Korean are common. Many people search with \"Metro Vancouver\" or \"Lower Mainland\".",
+    language: "English, Cantonese, Mandarin and Korean are all common, and the Heights keeps its Italian roots. Searches often add \"Burnaby BC\" or \"Metro Vancouver\".",
     demand: [
       { when: "Academic year", what: "SFU and BCIT students boost demand for food, housing and services." },
-      { when: "Rainy season", what: "Wet winters raise searches for roofing, drainage and mould removal." },
-      { when: "Lunar New Year", what: "Celebrations bring demand for restaurants, bakeries and event services." },
+      { when: "Rainy season", what: "Rainy months keep strata buildings and homeowners searching for leak repair and window sealing." },
+      { when: "Lunar New Year", what: "Metrotown restaurants and bakeries fill up with family dinners and gift orders." },
     ],
     queries: ["dim sum Metrotown", "dentist Brentwood Burnaby", "condo cleaning Burnaby", "Italian deli Burnaby Heights", "student housing SFU"],
     sectors: ["restaurants", "dentists", "real estate agents"],
     faqs: [
-      { q: "Should I target Metrotown and Brentwood separately?", a: "Yes, if you serve them. Many locals search by town centre, and a page for each can help you match those searches." },
-      { q: "Should I add Chinese-language content?", a: "If you serve Chinese-speaking customers, yes. A well-written page in simplified or traditional Chinese can reach people who rarely search in English." },
+      { q: "Most of my customers live in towers near SkyTrain. How should I target them?", a: "Name the station areas they use, such as Metrotown, Brentwood or Edmonds, in your pages and posts. Condo residents often want something close to their building, so distance and a clear service area matter." },
+      { q: "Should a Burnaby business chase Vancouver searches?", a: "Burnaby borders Vancouver, so you may already show up for searches near Boundary Road. Win Burnaby first, then add a Vancouver page only if you get real work there." },
     ],
   },
   "canada/windsor": {
     summary: "Local SEO for Windsor, Ontario businesses downtown, in Walkerville, Erie Street and South Windsor, a border auto city facing Detroit.",
     lead: "Windsor sits on the Detroit River, directly across from Detroit, and its economy has long been tied to the auto industry. Customers include cross-border workers, students and families in established neighbourhoods.",
     profile: [
-      "Windsor is the southernmost major city in Canada and a key border crossing via the Ambassador Bridge and the tunnel. Auto manufacturing, the University of Windsor and a casino shape the economy.",
+      "Windsor is a key border crossing to Detroit via the Ambassador Bridge and the Detroit-Windsor Tunnel. Auto manufacturing, the University of Windsor and a casino shape the economy.",
       "Customers range from factory workers to students and retirees. Auto repair, home services, dentists and restaurants compete strongly, and some Detroit-area businesses also target Windsor searches.",
     ],
     areas: [
@@ -912,16 +912,16 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "Riverside", note: "East-end area along the river with established homes." },
     ],
     nearby: ["Tecumseh", "LaSalle", "Lakeshore", "Amherstburg"],
-    language: "Searches are mainly in English, with French in some nearby communities and a large Arabic-speaking population. Many people add \"Ontario\" to separate it from other Windsors.",
+    language: "English leads, Arabic is widely spoken, and French has deep roots in nearby Tecumseh and Lakeshore. Adding \"ON\" helps separate the city from other Windsors.",
     demand: [
       { when: "Summer", what: "Riverfront events and festivals lift restaurant and patio searches." },
-      { when: "Winter", what: "Snow and cold raise searches for furnace repair, snow removal and winter tires." },
+      { when: "Winter", what: "Winters are milder than much of Ontario but still bring freezing rain and sudden snow, raising calls for furnace repair and towing." },
       { when: "Academic year", what: "University of Windsor students boost demand for food, housing and services." },
     ],
     queries: ["auto repair Windsor Ontario", "Italian restaurant Erie Street", "dentist South Windsor", "furnace repair Tecumseh", "student housing near UWindsor"],
     sectors: ["auto repair", "home services", "restaurants"],
     faqs: [
-      { q: "How do I make sure Google knows I mean Windsor, Ontario?", a: "Use \"Windsor, ON\" in your titles, address and Google Business Profile, and mention nearby places like Tecumseh and LaSalle." },
+      { q: "Do I need Arabic content for my Windsor business?", a: "If you serve the city's Arabic-speaking families, it can help. A few clear service pages in Arabic and replies to Arabic reviews show customers they will be understood." },
       { q: "Should I target Detroit customers?", a: "Only if you serve them. Detroit is a separate market in a different country with its own search results, so focus on Windsor and nearby towns first." },
     ],
   },
@@ -965,10 +965,10 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "Golden Village", note: "Asian dining and shopping hub around Aberdeen and nearby malls, with heavy Chinese-language searches." },
       { name: "Steveston", note: "Historic fishing village with seafood, tourists and a waterfront boardwalk." },
       { name: "Bridgeport", note: "Area near the airport and casino with hotels and business services." },
-      { name: "Terra Nova", note: "Western residential area with families and established homes." },
+      { name: "Terra Nova", note: "Quiet west-side neighbourhood near the dyke trails, with family homes." },
     ],
     nearby: ["Vancouver", "Delta", "Burnaby", "New Westminster"],
-    language: "English and Chinese (Cantonese and Mandarin) are both everyday search languages, with Tagalog and Punjabi also present. Many customers search in Chinese characters, so listings in both scripts help.",
+    language: "Chinese (Cantonese and Mandarin) sits alongside English in daily searches, with Tagalog and Punjabi also present. Many customers search in Chinese characters, so listings in both scripts help.",
     demand: [
       { when: "Summer", what: "The Richmond Night Market draws crowds and lifts food and parking searches." },
       { when: "Lunar New Year", what: "Families search for restaurants, bakeries, flowers and gifts across the Golden Village." },
@@ -985,20 +985,20 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     summary: "Local SEO for Richmond Hill businesses along Yonge Street, in Oak Ridges, Bayview Hill and Richmond Hill Centre, a York Region suburb with high family demand.",
     lead: "Richmond Hill stretches along Yonge Street north of Toronto, from busy plazas in the south to the Oak Ridges Moraine in the north. Families here spend heavily on education, healthcare and home services.",
     profile: [
-      "Richmond Hill is in York Region, home to the David Dunlap Observatory lands and a mix of older village streets and large subdivisions. Many residents commute to Toronto, while others work in nearby tech offices.",
+      "Richmond Hill is in York Region, home to the David Dunlap Observatory lands and a mix of older village streets and large subdivisions. Many residents take the GO train or Highway 404 into Toronto each day.",
       "The population is diverse, with large Chinese, Iranian and Russian-speaking communities. Tutoring centres, dentists, real estate agents and restaurants compete strongly along Yonge and Highway 7, where plazas are packed with similar businesses.",
     ],
     areas: [
       { name: "Yonge Street corridor", note: "Main commercial spine with plazas, clinics and restaurants." },
-      { name: "Bayview Hill", note: "Affluent area with large homes and premium service demand." },
+      { name: "Bayview Hill", note: "Neighbourhood of large houses where owners hire landscapers, cleaners and private tutors." },
       { name: "Oak Ridges", note: "Northern community on the moraine with lakes, trails and newer homes." },
       { name: "Richmond Hill Centre", note: "Area around Highway 7 and the transit hub, with condos and offices." },
       { name: "Mill Pond", note: "Historic village area with older homes and independent businesses." },
     ],
     nearby: ["Markham", "Vaughan", "Aurora", "Thornhill"],
-    language: "English is the main search language, but Farsi, Mandarin, Cantonese and Russian are common. Persian businesses along Yonge often rely on Farsi-language searches.",
+    language: "Farsi, Mandarin, Cantonese and Russian are all widely searched alongside English. Persian businesses on Yonge Street often get much of their traffic from Farsi queries.",
     demand: [
-      { when: "Academic year", what: "Families search for tutoring, music lessons and test prep from September to June." },
+      { when: "Academic year", what: "Tutoring, swim lessons and music schools get most of their searches between September and June." },
       { when: "Nowruz", what: "Persian New Year in March lifts searches for bakeries, flowers and gift shops." },
       { when: "Winter", what: "Long driveways and big lots make snow clearing contracts a steady search." },
     ],
@@ -1011,7 +1011,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
   },
   "canada/oakville": {
     summary: "Local SEO for Oakville businesses in Downtown Oakville, Bronte, Glen Abbey and North Oakville, an affluent lakeside town in Halton Region.",
-    lead: "Oakville is one of the GTA's wealthiest towns, with a historic harbour downtown and large homes along the lake. Customers expect premium service and check reviews carefully before they call.",
+    lead: "Oakville is a wealthy lakeside town, with a historic harbour downtown and large homes along the lake. Customers expect premium service and check reviews carefully before they call.",
     profile: [
       "Oakville sits on Lake Ontario between Mississauga and Burlington, in Halton Region. It has a Ford assembly plant, corporate head offices, Sheridan College and a busy GO line into Toronto.",
       "High household incomes mean strong demand for renovations, landscaping, private schools, cosmetic dentistry and fitness. Competition is tight because many Toronto and Mississauga firms also chase Oakville clients.",
@@ -1024,7 +1024,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "Old Oakville", note: "Historic area with large homes and luxury services." },
     ],
     nearby: ["Burlington", "Mississauga", "Milton", "Georgetown"],
-    language: "Searches are in English, with growing Mandarin, Arabic and Urdu-speaking communities. Many people search with \"Halton\" for services that cover the region.",
+    language: "Most Oakville searches are in English, though Mandarin, Arabic and Urdu are increasingly heard. Many people search with \"Halton\" for services that cover the region.",
     demand: [
       { when: "Spring", what: "Landscaping, pool openings and exterior renovation searches climb as the snow melts." },
       { when: "Summer", what: "Harbour season brings boaters and diners to Bronte and Downtown Oakville." },
@@ -1041,13 +1041,13 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     summary: "Local SEO for Burlington businesses in Downtown Burlington, Aldershot, Alton Village and Millcroft, a lakeside Halton city between Hamilton and Oakville.",
     lead: "Burlington sits on Lake Ontario between Hamilton and Oakville, with a lively waterfront downtown and established suburbs. Customers here often search for family services, home improvement and dining by the lake.",
     profile: [
-      "Burlington is in Halton Region, with Spencer Smith Park on the lake, the Royal Botanical Gardens on its edge and the Niagara Escarpment rising to the north. Many residents commute to Toronto or Hamilton.",
+      "Burlington is in Halton Region, with Spencer Smith Park on the lake, the Royal Botanical Gardens on its edge and the Niagara Escarpment rising to the north. Commuters head east to Toronto by GO train or west to Hamilton.",
       "It is a family town with a large retired population, so healthcare, home services, dentists and restaurants compete strongly. Hamilton and Oakville businesses also target Burlington, so local proof matters.",
     ],
     areas: [
       { name: "Downtown Burlington", note: "Waterfront core with restaurants, patios and boutiques on Brant Street." },
       { name: "Aldershot", note: "West end near the botanical gardens with established homes." },
-      { name: "Alton Village", note: "Newer north-end community with young families." },
+      { name: "Alton Village", note: "North-end subdivision full of young families and newer schools." },
       { name: "Millcroft", note: "Golf course community with affluent residents." },
       { name: "Appleby", note: "East-end area with big plazas and everyday services." },
     ],
@@ -1083,13 +1083,13 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     language: "Searches are in English. Many locals use \"Durham\" or \"Durham Region\" in service searches.",
     demand: [
       { when: "Academic year", what: "Students drive demand for rentals, cheap eats and quick services in the north end." },
-      { when: "Winter", what: "Lake-effect snow raises searches for snow clearing and winter tire changes." },
+      { when: "Winter", what: "Snow squalls off Lake Ontario bring calls for plowing, tire changes and battery boosts." },
       { when: "Spring", what: "New homeowners in Windfields and Taunton search for fences, decks and landscaping." },
     ],
     queries: ["auto repair Oshawa", "student rental near Ontario Tech", "dentist Windfields", "fence installer Durham Region", "plumber Oshawa ON"],
     sectors: ["auto repair", "home services", "dentists"],
     faqs: [
-      { q: "Should I target Whitby and Courtice too?", a: "If you serve them, yes. They are separate communities with their own searches, and a page for each helps you appear there." },
+      { q: "Should I target Whitby and Courtice too?", a: "Worth it if you take jobs there. Whitby is its own town and Courtice is part of Clarington, so people there rarely type \"Oshawa\" when they want someone nearby." },
       { q: "Is \"Durham Region\" worth targeting?", a: "Yes, for services that cover the region. Use it in headings and descriptions, but keep your main pages focused on Oshawa and the neighbourhoods you serve." },
     ],
   },
@@ -1104,11 +1104,11 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "Centre-ville", note: "Downtown core along Wellington and King streets with restaurants and shops." },
       { name: "Fleurimont", note: "Large borough near the university hospital with families and services." },
       { name: "Lennoxville", note: "Borough with Bishop's University and an English-speaking community." },
-      { name: "Rock Forest", note: "Western residential area with families and shopping centres." },
+      { name: "Rock Forest", note: "Western sector with newer homes and big shopping strips." },
       { name: "Mont-Bellevue", note: "Area near the Université de Sherbrooke with students and rentals." },
     ],
     nearby: ["Magog", "Orford", "North Hatley", "Coaticook"],
-    language: "Most searches are in French, using words like \"Estrie\" and \"près de moi\". English is common in Lennoxville and among Bishop's students.",
+    language: "French is the language of almost all local searches, and the regional name \"Estrie\" is common. English shows up in Lennoxville and among Bishop's students.",
     demand: [
       { when: "Academic year", what: "University and CEGEP students drive demand for rentals, food and services from late August." },
       { when: "Winter", what: "Nearby ski hills and heavy snow raise searches for ski shops, déneigement and winter tires." },
@@ -1117,8 +1117,8 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     queries: ["restaurant centre-ville Sherbrooke", "déneigement Rock Forest", "dentiste Fleurimont", "appartement étudiant Sherbrooke", "garage Lennoxville"],
     sectors: ["restaurants", "renovation contractors", "healthcare clinics"],
     faqs: [
-      { q: "Do I need English pages in Sherbrooke?", a: "Only if you serve Lennoxville, Bishop's students or tourists. Most locals search in French, so French should lead on your site and Google Business Profile." },
-      { q: "Should I target Magog and Orford?", a: "If you serve them, yes. They are separate tourist towns with their own searches, and a French page for each helps you appear there." },
+      { q: "Is an English version worth it for Lennoxville customers?", a: "Only if you serve Lennoxville, Bishop's students or tourists. Most locals search in French, so French should lead on your site and Google Business Profile." },
+      { q: "Should I target Magog and Orford?", a: "Yes, if you take work there. Magog sits on Lac Memphrémagog and Orford near Mont Orford, and both draw visitors and cottage owners who search with those names." },
     ],
   },
 };
