@@ -835,9 +835,11 @@ export class AdminStore extends DurableObject<Env> {
     const resendInbox = selected?.cfg.provider === "resend" && selected.cfg.resendInboundAddress
       ? selected
       : accounts.find((a) => a.status === "ok" && a.cfg.provider === "resend" && a.cfg.resendInboundAddress);
-    // Website leads use Resend when its inbound address is connected, so the
-    // client's reply returns to this dashboard instead of a forwarding inbox.
-    if (message.channel === "form" && resendInbox) return { email: resendInbox.cfg.email, account: resendInbox };
+    // Keep the whole conversation on Resend once its inbound address is
+    // connected. A client's reply changes the message channel from `form` to
+    // `email`; falling back to the Cloudflare binding at that point can reject
+    // arbitrary recipients as unverified destinations and split the thread.
+    if (resendInbox) return { email: resendInbox.cfg.email, account: resendInbox };
     const cloud = this.cloudflareLeadMail();
     if (cloud && (message.channel === "form" || (message.contact_id && this.one(
       "SELECT id FROM messages WHERE contact_id=? AND direction='out' AND from_addr=? LIMIT 1", message.contact_id, CLOUDFLARE_FROM,
