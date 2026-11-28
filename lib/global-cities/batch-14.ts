@@ -443,7 +443,7 @@ export const CITY_GUIDES_14: Record<string, GlobalCityGuide> = {
   },
   "australia/shepparton": {
     summary: "Shepparton local SEO for the Goulburn Valley: rank in Kialla, Mooroopna and Shepparton North, and reach a multicultural, farming-focused community.",
-    lead: "Shepparton is the Goulburn Valley's main city, ringed by orchards and dairy farms. Its customers are one of regional Victoria's most culturally diverse populations.",
+    lead: "Shepparton is the Goulburn Valley's main city, ringed by orchards and dairy farms. Its customers come from a remarkably wide mix of cultures and languages.",
     profile: [
       "Shepparton sits in northern Victoria, surrounded by irrigated orchards, dairy and food processing. It serves a wide rural area and has long welcomed migrant communities from Italy, Albania, the Middle East, Afghanistan and Africa.",
       "That diversity shapes local search. Businesses that offer service in another language, or show they understand different communities, can stand out. Trades, health and food businesses compete hardest in the map pack.",
@@ -763,7 +763,7 @@ export const CITY_GUIDES_14: Record<string, GlobalCityGuide> = {
   },
   "new-zealand/tauranga": {
     summary: "Tauranga local SEO in the Bay of Plenty: reach Mount Maunganui, Papamoa and Bethlehem customers in a harbour city that keeps growing outwards.",
-    lead: "Tauranga combines a busy port, kiwifruit country and some of the North Island's most popular beaches. Retirees, young families and summer visitors all search here.",
+    lead: "Tauranga combines a busy port, kiwifruit country and long surf beaches. Retirees, young families and summer visitors all search here.",
     profile: [
       "Tauranga sits on a harbour in the Bay of Plenty, with Mount Maunganui at its entrance. The port, kiwifruit, horticulture and tourism support the economy, and many people have moved here from Auckland.",
       "Growth has pushed new suburbs east to Papamoa and west to Pyes Pa and Ōmokoroa. Trades, healthcare and hospitality compete hardest, and the Mount often behaves like its own separate market.",
