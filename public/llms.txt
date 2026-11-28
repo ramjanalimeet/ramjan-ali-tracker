@@ -6,8 +6,8 @@
 
 - [Home](https://ramjanaliakash.com/): Overview of local SEO and AI visibility services.
 - [Services](https://ramjanaliakash.com/seo-services): All available SEO services.
-- [Local SEO](https://ramjanaliakash.com/local-seo): Local search and Google Maps service.
-- [AI visibility](https://ramjanaliakash.com/ai-search): Visibility in AI-assisted search experiences.
+- [Local SEO](https://ramjanaliakash.com/seo-services/local-seo): Local search and Google Maps service.
+- [AI visibility](https://ramjanaliakash.com/seo-services/ai-visibility): Visibility in AI-assisted search experiences.
 - [Industries](https://ramjanaliakash.com/industries): Local-business industries served.
 - [Locations](https://ramjanaliakash.com/locations): Country and city service coverage.
 - [Pricing](https://ramjanaliakash.com/pricing): Service plans and pricing.

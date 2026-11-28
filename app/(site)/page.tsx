@@ -96,10 +96,10 @@ export default function HomePage() {
             </div>
             <p className="fine">Free, no pitch, and you keep the action plan either way.</p>
             <div className="chips">
-              <Link className="chip" href="/local-seo">
+              <Link className="chip" href="/seo-services/local-seo">
                 Local SEO
               </Link>
-              <Link className="chip" href="/ai-search">
+              <Link className="chip" href="/seo-services/ai-visibility">
                 AI Search Visibility
               </Link>
               <Link className="chip" href="/industries">
@@ -182,10 +182,10 @@ export default function HomePage() {
               the business Google ranks and AI recommends.
             </p>
             <div className="cta-row">
-              <Link className="btn btn-ghost" href="/local-seo">
+              <Link className="btn btn-ghost" href="/seo-services/local-seo">
                 Local SEO <span className="arr">→</span>
               </Link>
-              <Link className="btn btn-ghost" href="/ai-search">
+              <Link className="btn btn-ghost" href="/seo-services/ai-visibility">
                 AI search visibility <span className="arr">→</span>
               </Link>
             </div>
@@ -242,7 +242,7 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid g2">
-            <Link className="card rv" href="/local-seo">
+            <Link className="card rv" href="/seo-services/local-seo">
               <span className="ic" aria-hidden="true">
                 01
               </span>
@@ -256,7 +256,7 @@ export default function HomePage() {
                 Learn more <span>→</span>
               </span>
             </Link>
-            <Link className="card rv" href="/ai-search">
+            <Link className="card rv" href="/seo-services/ai-visibility">
               <span className="ic" aria-hidden="true">
                 02
               </span>

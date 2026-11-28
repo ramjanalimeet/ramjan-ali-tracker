@@ -323,7 +323,7 @@ export default async function IndustryPage({ params }: Props) {
               ))}
             </ul>
             <div className="cta-row">
-              <Link className="btn btn-ghost" href="/ai-search">
+              <Link className="btn btn-ghost" href="/seo-services/ai-visibility">
                 How GEO &amp; AI visibility works <span className="arr">→</span>
               </Link>
             </div>

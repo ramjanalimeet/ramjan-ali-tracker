@@ -187,8 +187,8 @@ export default function HowToGetMoreGoogleReviewsPage() {
       </table>
       </div>
       <h2 id="next">Reviews are one part of the plan</h2>
-      <p>Reviews work best alongside the right <Link href="/blog/google-business-profile-categories-for-contractors">profile categories</Link>, strong service pages and local links. They also feed AI assistants: many AI answers about &quot;the best plumber near me&quot; summarize your reviews, which is why review detail matters for <Link href="/ai-search">AI search visibility</Link> too.</p>
-      <p>Every <Link href="/local-seo">Local SEO</Link> plan I run includes a review request system set up for your team. If you want a second pair of eyes on your current reviews and how they compare with the businesses beating you, book a <Link href="/book-a-call">free strategy call</Link>.</p>
+      <p>Reviews work best alongside the right <Link href="/blog/google-business-profile-categories-for-contractors">profile categories</Link>, strong service pages and local links. They also feed AI assistants: many AI answers about &quot;the best plumber near me&quot; summarize your reviews, which is why review detail matters for <Link href="/seo-services/ai-visibility">AI search visibility</Link> too.</p>
+      <p>Every <Link href="/seo-services/local-seo">Local SEO</Link> plan I run includes a review request system set up for your team. If you want a second pair of eyes on your current reviews and how they compare with the businesses beating you, book a <Link href="/book-a-call">free strategy call</Link>.</p>
     </ArticleLayout>
   );
 }

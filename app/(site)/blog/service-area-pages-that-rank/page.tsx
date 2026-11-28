@@ -439,7 +439,7 @@ export default function ServiceAreaPagesPost() {
         </p>
       </div>
       <p>
-        Need help planning or writing them? Area pages are part of every <Link href="/local-seo">Local SEO plan</Link>.{" "}
+        Need help planning or writing them? Area pages are part of every <Link href="/seo-services/local-seo">Local SEO plan</Link>.{" "}
         <Link href="/book-a-call">Book a free call</Link> and I will tell you which towns are worth a page for your
         business, or start with the full{" "}
         <Link href="/blog/local-seo-checklist-for-contractors">local SEO checklist</Link>.

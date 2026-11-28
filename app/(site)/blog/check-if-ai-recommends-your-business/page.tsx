@@ -209,7 +209,7 @@ export default function CheckIfAiRecommendsYourBusinessPage() {
       <li>Do not ignore Google. Most local customers still search there, and many AI answers draw on the same signals.</li>
       </ul>
       <h2 id="next">Let me track it for you</h2>
-      <p>Running these checks every month takes time, and turning the results into fixes is the real work. <Link href="/ai-search">GEO and AI visibility</Link> is included from the {AI_PLAN.name} plan, which tracks 25 AI questions for your business monthly, alongside your Local SEO. See the <Link href="/pricing">pricing page</Link> for details, or book a <Link href="/book-a-call">free strategy call</Link> and I&apos;ll show you what AI tools say about your business today.</p>
+      <p>Running these checks every month takes time, and turning the results into fixes is the real work. <Link href="/seo-services/ai-visibility">GEO and AI visibility</Link> is included from the {AI_PLAN.name} plan, which tracks 25 AI questions for your business monthly, alongside your Local SEO. See the <Link href="/pricing">pricing page</Link> for details, or book a <Link href="/book-a-call">free strategy call</Link> and I&apos;ll show you what AI tools say about your business today.</p>
     </ArticleLayout>
   );
 }

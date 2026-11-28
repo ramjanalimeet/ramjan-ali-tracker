@@ -17,19 +17,19 @@ export const TOPICS: Topic[] = [
     id: "local-seo",
     name: "Local SEO",
     blurb: "The full playbook for ranking a home service business in its own towns.",
-    service: { href: "/local-seo", name: "Local SEO" },
+    service: { href: "/seo-services/local-seo", name: "Local SEO" },
   },
   {
     id: "google-maps",
     name: "Google Maps",
     blurb: "Google Business Profile, reviews and what puts you in the map pack.",
-    service: { href: "/local-seo", name: "Local SEO" },
+    service: { href: "/seo-services/local-seo", name: "Local SEO" },
   },
   {
     id: "ai-search",
     name: "GEO & AI Search",
     blurb: "Getting named by ChatGPT, Gemini, Perplexity and Google's AI Overviews.",
-    service: { href: "/ai-search", name: "GEO & AI Visibility" },
+    service: { href: "/seo-services/ai-visibility", name: "GEO & AI Visibility" },
   },
   {
     id: "technical",

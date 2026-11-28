@@ -240,10 +240,10 @@ export default function LocationsPage() {
         <div className="wrap rv">
           <span className="eyebrow">Related</span>
           <div className="chips" style={{ marginTop: 6 }}>
-            <Link className="chip" href="/local-seo">
+            <Link className="chip" href="/seo-services/local-seo">
               Local SEO →
             </Link>
-            <Link className="chip" href="/ai-search">
+            <Link className="chip" href="/seo-services/ai-visibility">
               AI Search Visibility →
             </Link>
             <Link className="chip" href="/industries">

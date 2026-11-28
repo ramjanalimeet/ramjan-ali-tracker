@@ -137,7 +137,7 @@ export default function LocalSeoChecklistPage() {
       <p>
         This checklist is the same order of work I use for client accounts. It starts with the things that move rankings
         fastest and ends with the habits that keep you there. If you would rather have it done for you, that is what my{" "}
-        <Link href="/local-seo">Local SEO service</Link> covers, but everything below is something you can do yourself.
+        <Link href="/seo-services/local-seo">Local SEO service</Link> covers, but everything below is something you can do yourself.
       </p>
 
       <h2 id="what">What local SEO is, and how Google ranks local businesses</h2>
@@ -407,7 +407,7 @@ export default function LocalSeoChecklistPage() {
         <Link href="/blog/get-recommended-by-chatgpt">
           how to get your business recommended by ChatGPT and AI search
         </Link>
-        , and it is included in my <Link href="/ai-search">GEO &amp; AI Visibility</Link> service.
+        , and it is included in my <Link href="/seo-services/ai-visibility">GEO &amp; AI Visibility</Link> service.
       </p>
 
       <h2 id="tracking">Tracking and reporting</h2>

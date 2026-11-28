@@ -15,8 +15,8 @@ export const SERVICE_GROUPS: ServiceGroup[] = [
     intro:
       "The two services every plan is built on: ranking in Google Maps and local results, and being named when people ask AI tools who to call.",
     items: [
-      { href: "/local-seo", name: "Local SEO", blurb: "Rank in Google Maps and local results" },
-      { href: "/ai-search", name: "GEO & AI Visibility", blurb: "Get cited by ChatGPT, Gemini and AI Overviews" },
+      { href: "/seo-services/local-seo", name: "Local SEO", blurb: "Rank in Google Maps and local results" },
+      { href: "/seo-services/ai-visibility", name: "GEO & AI Visibility", blurb: "Get cited by ChatGPT, Gemini and AI Overviews" },
     ],
   },
   {

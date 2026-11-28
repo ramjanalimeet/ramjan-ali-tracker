@@ -179,7 +179,7 @@ export default function GoogleBusinessProfileCategoriesForContractorsPage() {
       </div>
       <h2 id="next">Where categories fit in the bigger picture</h2>
       <p>Categories get you into the right race. Reviews, your website, local links and your distance from the searcher decide where you finish. Once your categories are right, the next steps are a steady <Link href="/blog/how-to-get-more-google-reviews">review system</Link> and the full plan in <Link href="/blog/how-to-rank-in-google-map-pack">how to rank in the Google map pack</Link>.</p>
-      <p>Not sure whether your categories are holding you back? On a <Link href="/book-a-call">free strategy call</Link> I compare your profile with the three businesses beating you in the map and tell you exactly what I would change first. Profile setup and category strategy are part of every <Link href="/local-seo">Local SEO</Link> plan.</p>
+      <p>Not sure whether your categories are holding you back? On a <Link href="/book-a-call">free strategy call</Link> I compare your profile with the three businesses beating you in the map and tell you exactly what I would change first. Profile setup and category strategy are part of every <Link href="/seo-services/local-seo">Local SEO</Link> plan.</p>
     </ArticleLayout>
   );
 }

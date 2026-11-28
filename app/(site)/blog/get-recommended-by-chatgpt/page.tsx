@@ -383,7 +383,7 @@ export default function GetRecommendedByChatGptPage() {
       <p>
         Repeat it every month with the same questions. Answers change with wording, location and time, so one check
         means little. A steady record over a few months shows whether you are moving in the right direction, which is
-        exactly how I track it in my <Link href="/ai-search">GEO &amp; AI Visibility</Link> work.
+        exactly how I track it in my <Link href="/seo-services/ai-visibility">GEO &amp; AI Visibility</Link> work.
       </p>
 
       <h2 id="avoid">What not to do</h2>
@@ -418,7 +418,7 @@ export default function GetRecommendedByChatGptPage() {
         your marketing, read <Link href="/blog/geo-vs-seo-home-services">GEO vs SEO for home service businesses</Link>.
       </p>
       <p>
-        If you would rather have it done for you, <Link href="/ai-search">GEO &amp; AI Visibility</Link> is included in
+        If you would rather have it done for you, <Link href="/seo-services/ai-visibility">GEO &amp; AI Visibility</Link> is included in
         my Growth and Pro <Link href="/pricing">plans</Link>, alongside the local SEO work it depends on. Or{" "}
         <Link href="/book-a-call">book a free call</Link> and I will show you what AI tools currently say about your
         business.

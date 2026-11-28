@@ -9,7 +9,7 @@ import { ALL_SERVICES } from "./services";
 import { SITE_URL } from "./site";
 
 /** Bump when site-wide page content changes. */
-const SITE_UPDATED = "2026-11-22";
+const SITE_UPDATED = "2026-11-28";
 
 type Entry = { path: string; lastmod: string; images?: string[] };
 export type SitemapName = "page" | "service" | "industry" | "location" | "post" | "case-study";
