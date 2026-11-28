@@ -113,10 +113,12 @@ const PROVIDERS = [
 
 function EmailAccounts({ ctx }: { ctx: AppCtx }) {
   const [settings] = useSettings();
-  const [editing, setEditing] = useState<Account | "new" | null>(null);
+  const [editing, setEditing] = useState<Account | "new" | "resend" | null>(null);
   const [testing, setTesting] = useState(false);
   const list = ctx.accounts.filter((account) => account.kind === "email");
-  if (editing) return <EmailForm ctx={ctx} account={editing === "new" ? undefined : editing} onDone={() => setEditing(null)} />;
+  const resend = list.find((account) => account.config.provider === "resend");
+  const otherMailboxes = list.filter((account) => account.config.provider !== "resend");
+  if (editing) return <EmailForm ctx={ctx} account={typeof editing === "object" ? editing : undefined} initialProvider={editing === "resend" ? "resend" : undefined} onDone={() => setEditing(null)} />;
   if (!settings) return <div className="adm-skel" />;
   const enabled = settings.cloudflareLeadMail;
   return (
@@ -146,12 +148,13 @@ function EmailAccounts({ ctx }: { ctx: AppCtx }) {
           }}>{testing ? "Sending…" : "Send test email"}</button>
         </div>
       )}
+      <ResendInboxRow account={resend} ctx={ctx} onConnect={() => setEditing(resend || "resend")} />
       <details open={!enabled}>
-        <summary>Other mailboxes{list.length ? ` (${list.length})` : ""}</summary>
+        <summary>Other mailboxes{otherMailboxes.length ? ` (${otherMailboxes.length})` : ""}</summary>
         <div className="adm-stack">
-          {list.length > 0 && (
+          {otherMailboxes.length > 0 && (
             <div className="adm-acc-list">
-              {list.map((account) => (
+              {otherMailboxes.map((account) => (
                 <AccountRow key={account.id} a={account} ctx={ctx} onEdit={() => setEditing(account)} />
               ))}
             </div>
@@ -165,9 +168,39 @@ function EmailAccounts({ ctx }: { ctx: AppCtx }) {
   );
 }
 
-function EmailForm({ ctx, account, onDone }: { ctx: AppCtx; account?: Account; onDone: () => void }) {
+function ResendInboxRow({ account, ctx, onConnect }: { account?: Account; ctx: AppCtx; onConnect: () => void }) {
+  const [busy, setBusy] = useState(false);
+  const connected = Boolean(account?.secretsSet.includes("resendWebhookSecret"));
+  return (
+    <div className="adm-acc">
+      <Brand platform="email" size={30} />
+      <div className="adm-acc-main">
+        <b>Resend inbox</b>
+        <span>{connected ? `Replies route through ${account?.config.resendInboundAddress}` : "Send replies and receive client responses in this dashboard"}</span>
+        {account?.last_error && <span className="adm-acc-err">{account.last_error}</span>}
+      </div>
+      <Status value={connected ? "connected" : "setup_required"} />
+      <div className="adm-acc-actions">
+        {!connected && account && (
+          <button className="adm-btn primary" disabled={busy} onClick={async () => {
+            setBusy(true);
+            try {
+              const result = await api<{ note?: string }>(`accounts/${account.id}/connect-inbox`, { body: {} });
+              ctx.toast(result.note || "Resend inbox connected");
+              await ctx.reloadAccounts();
+            } catch (error) { ctx.toast((error as Error).message, "error"); }
+            finally { setBusy(false); }
+          }}>{busy ? "Connecting…" : "Connect Resend"}</button>
+        )}
+        {(!account || connected) && <button className="adm-btn" onClick={onConnect}>{connected ? "Edit" : "Connect Resend"}</button>}
+      </div>
+    </div>
+  );
+}
+
+function EmailForm({ ctx, account, initialProvider, onDone }: { ctx: AppCtx; account?: Account; initialProvider?: string; onDone: () => void }) {
   const c = account?.config ?? {};
-  const guess = c.provider === "resend" ? "resend" : PROVIDERS.find((p) => p.smtpHost && p.smtpHost === c.smtpHost)?.id ?? (account ? "custom" : "gmail");
+  const guess = initialProvider || (c.provider === "resend" ? "resend" : PROVIDERS.find((p) => p.smtpHost && p.smtpHost === c.smtpHost)?.id ?? (account ? "custom" : "gmail"));
   const [provider, setProvider] = useState(guess);
   const [f, setF] = useState<Record<string, string>>({
     email: String(c.email ?? ""),
