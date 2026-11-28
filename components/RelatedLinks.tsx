@@ -22,7 +22,7 @@ export function RelatedLinks({
 }) {
   const seed = seedOf(page);
   const reads = relatedPosts(topics, posts, seed, page.replace("/blog/", ""));
-  const inds = someIndustries(industries, seed, page.replace("/local-seo/", ""));
+  const inds = someIndustries(industries, seed, page.replace("/industries/", ""));
   return (
     <section className="sec tight related">
       <div className="wrap related-grid">
@@ -46,7 +46,7 @@ export function RelatedLinks({
             <span className="eyebrow">{industriesTitle}</span>
             <div className="chips" style={{ marginTop: 6 }}>
               {inds.map((i) => (
-                <Link className="chip" href={`/local-seo/${i.slug}`} key={i.slug}>
+                <Link className="chip" href={`/industries/${i.slug}`} key={i.slug}>
                   {i.name}
                 </Link>
               ))}

@@ -112,7 +112,7 @@ function PlaybookCaseStudyPage({ p }: { p: Playbook }) {
               <h1>{p.title}</h1>
               <p className="lead">{p.summary}</p>
               <div className="case-detail-actions">
-                <Link className="btn btn-dark" href={p.website ?? `/local-seo/${p.tradeSlug}`} target={p.website ? "_blank" : undefined} rel={p.website ? "noopener" : undefined}>
+                <Link className="btn btn-dark" href={p.website ?? `/industries/${p.tradeSlug}`} target={p.website ? "_blank" : undefined} rel={p.website ? "noopener" : undefined}>
                   {p.website ? "Visit client website" : `Explore ${p.trade} SEO`} <span className="arr">→</span>
                 </Link>
                 <Link className="btn btn-accent" href="/pricing">View {p.plan} pricing <span className="arr">→</span></Link>
@@ -158,7 +158,7 @@ function PlaybookCaseStudyPage({ p }: { p: Playbook }) {
           <aside className="panel rv">
             <h3>Explore the related pages</h3>
             <div className="case-related-links">
-              <Link href={`/local-seo/${p.tradeSlug}`}>{p.trade} SEO services →</Link>
+              <Link href={`/industries/${p.tradeSlug}`}>{p.trade} SEO services →</Link>
               <Link href={service.href}>{service.name} →</Link>
               <Link href="/pricing">{p.plan} plan pricing →</Link>
               <Link href="/case-studies">All case studies →</Link>

@@ -47,7 +47,7 @@ export const INDUSTRIES: Industry[] = ALL_TRADES;
 /** Kept for the hub API; all researched trades now have a dedicated page. */
 export const ALSO_SERVED: { slug: string; name: string; category: CategoryId }[] = [];
 
-/** Hand-written industry pages that live in their own folders under app/local-seo. */
+/** Hand-written industry pages that live in their own folders under app/(site)/industries. */
 const CUSTOM: IndustryLink[] = [
   { slug: "roofing-seo", name: "Roofers", blurb: "Roof repair, replacement and storm work", category: "exterior" },
   { slug: "plumbing-seo", name: "Plumbers", blurb: "Emergency and high-value plumbing calls", category: "mechanical" },

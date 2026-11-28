@@ -212,7 +212,7 @@ export default async function BlogPage() {
           </div>
           <div className="chips rv">
             {popularTrades.map((t) => (
-              <Link className="chip" href={`/local-seo/${t.slug}`} key={t.slug}>
+              <Link className="chip" href={`/industries/${t.slug}`} key={t.slug}>
                 {t.name}
               </Link>
             ))}

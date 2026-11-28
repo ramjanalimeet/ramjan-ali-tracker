@@ -45,7 +45,7 @@ export function Footer() {
             <ul>
               {ALL_INDUSTRIES.slice(0, 6).map((t) => (
                 <li key={t.slug}>
-                  <Link href={`/local-seo/${t.slug}`}>{t.name}</Link>
+                  <Link href={`/industries/${t.slug}`}>{t.name}</Link>
                 </li>
               ))}
               <li>

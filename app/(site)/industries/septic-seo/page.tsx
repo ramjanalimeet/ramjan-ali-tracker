@@ -9,28 +9,28 @@ import { type FaqItem, faqSchema, pageMeta } from "@/lib/site";
 import { MainCta } from "@/components/MainCta";
 
 export const metadata = pageMeta({
-  title: "Plumbing SEO | Local SEO for Plumbers | Ramjan Ali Akash",
+  title: "Septic SEO | Local SEO for Septic Companies | Ramjan Ali Akash",
   description:
-    "Local SEO for plumbing companies: rank in Google Maps for emergency plumber, water heater, drain and sewer searches in your service area. Free audit.",
-  path: "/local-seo/plumbing-seo",
+    "Local SEO for septic companies: rank for septic pumping, inspection, repair and installation searches across your rural service area. Free audit.",
+  path: "/industries/septic-seo",
 });
 
 const FAQ: FaqItem[] = [
   {
-    q: "Should my Google profile say open 24 hours?",
-    a: "Only if someone really answers the phone 24 hours. Google uses open hours when ranking, and listing hours you do not keep leads to bad reviews and can hurt you.",
+    q: "Is septic SEO worth it in a rural market?",
+    a: "Usually yes. Competition is lighter, so good foundations often move rankings faster than in crowded metro trades, and each job is valuable.",
   },
   {
-    q: "How long does plumbing SEO take?",
-    a: "Profile and technical fixes often show movement in 4 to 8 weeks. Competitive terms in a large metro usually take 4 to 9 months.",
+    q: "Can I rank in a county far from my address?",
+    a: "You can rank organically there with good county and town pages. The map pack is harder far from your address, but rural searches often show fewer competitors in the map.",
   },
   {
-    q: "Can you help me get more water heater and repipe jobs instead of small calls?",
-    a: "Yes. We build pages and profile services around the work you want, and target keywords that signal bigger jobs.",
+    q: "Do you write about local septic rules?",
+    a: "I write useful, general content and link to the official county or state source for the specific rules, which you or your team confirm before anything goes live.",
   },
   {
-    q: "Do I need a new website?",
-    a: "Usually not. Most plumbing sites need better structure, faster pages and stronger service pages, not a rebuild. The audit tells you which you need.",
+    q: "What do you need from me?",
+    a: "Access to your profile and website, job photos, the list of towns and counties you serve, and a few minutes a week for reviews.",
   },
 ];
 
@@ -49,11 +49,11 @@ const SCHEMA = {
     },
     {
       "@type": "WebPage",
-      "@id": `${SITE_URL}/local-seo/plumbing-seo#webpage`,
-      url: `${SITE_URL}/local-seo/plumbing-seo`,
-      name: "Plumbing SEO | Local SEO for Plumbers | Ramjan Ali Akash",
+      "@id": `${SITE_URL}/industries/septic-seo#webpage`,
+      url: `${SITE_URL}/industries/septic-seo`,
+      name: "Septic SEO | Local SEO for Septic Companies | Ramjan Ali Akash",
       description:
-        "Local SEO for plumbing companies: rank in Google Maps for emergency plumber, water heater, drain and sewer searches in your service area. Free audit.",
+        "Local SEO for septic companies: rank for septic pumping, inspection, repair and installation searches across your rural service area. Free audit.",
       isPartOf: {
         "@id": `${SITE_URL}/#website`,
       },
@@ -79,28 +79,28 @@ const SCHEMA = {
         {
           "@type": "ListItem",
           position: 3,
-          name: "Plumbing SEO",
-          item: `${SITE_URL}/local-seo/plumbing-seo`,
+          name: "Septic SEO",
+          item: `${SITE_URL}/industries/septic-seo`,
         },
       ],
     },
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/local-seo/plumbing-seo#service`,
-      name: "Plumbing SEO",
+      "@id": `${SITE_URL}/industries/septic-seo#service`,
+      name: "Septic SEO",
       description:
-        "Local SEO for plumbing companies: rank in Google Maps for emergency plumber, water heater, drain and sewer searches in your service area. Free audit.",
-      url: `${SITE_URL}/local-seo/plumbing-seo`,
+        "Local SEO for septic companies: rank for septic pumping, inspection, repair and installation searches across your rural service area. Free audit.",
+      url: `${SITE_URL}/industries/septic-seo`,
       provider: {
         "@id": `${SITE_URL}/#business`,
       },
-      serviceType: "Plumbing SEO",
+      serviceType: "Septic SEO",
     },
     faqSchema(FAQ),
   ],
 };
 
-export default function PlumbingSeoPage() {
+export default function SepticSeoPage() {
   return (
     <>
       <JsonLd data={SCHEMA} />
@@ -114,18 +114,18 @@ export default function PlumbingSeoPage() {
               <li>
                 <Link href="/industries">Industries</Link>
               </li>
-              <li aria-current="page">Plumbing SEO</li>
+              <li aria-current="page">Septic SEO</li>
             </ol>
           </nav>
           <div className="phero-grid">
             <div>
-              <span className="eyebrow">Local SEO · Plumbing</span>
+              <span className="eyebrow">Local SEO · Septic</span>
               <h1>
-                Plumbing SEO for the calls that <span className="hl">can't wait</span>.
+                Septic SEO for <span className="hl">wide service areas</span>.
               </h1>
               <p className="lead">
-                When a pipe bursts at 11pm, nobody scrolls to page two. I help plumbing companies rank in the map pack
-                for emergency and high-value searches, so the phone rings with jobs worth taking.
+                Septic customers live spread out, across counties and small towns. I help septic pumping, inspection and
+                installation companies show up everywhere they actually drive to, not just near the shop.
               </p>
               <div className="cta-row">
                 <MainCta />
@@ -136,15 +136,15 @@ export default function PlumbingSeoPage() {
               <ul>
                 <li>
                   <b>For</b>
-                  <span>Residential and light commercial plumbers</span>
+                  <span>Septic pumping, inspection, repair and install companies</span>
                 </li>
                 <li>
                   <b>Focus</b>
-                  <span>Emergency, water heater, drain, sewer and repipe searches</span>
+                  <span>Rural and county-wide visibility</span>
                 </li>
                 <li>
                   <b>First moves</b>
-                  <span>Usually visible in 4 to 8 weeks</span>
+                  <span>Often faster than metro trades</span>
                 </li>
                 <li>
                   <b>Contract</b>
@@ -158,24 +158,25 @@ export default function PlumbingSeoPage() {
       <section className="sec">
         <div className="wrap split">
           <div className="body rv">
-            <span className="eyebrow">The problem</span>
-            <h2>Emergency searches go to whoever Google trusts nearby.</h2>
+            <span className="eyebrow">The opportunity</span>
+            <h2>Less competition, but a huge area to cover.</h2>
             <p>
-              Plumbing searches are urgent and local. The homeowner searches, sees three businesses on the map, checks
-              the stars and calls. If you are not in those three, you do not exist for that job.
+              Septic is less crowded online than plumbing or roofing, but the service area is the challenge. Your
+              customers might be 40 minutes from your yard, in towns Google does not connect to your business yet.
             </p>
             <p>
-              Google decides those three spots by relevance, distance and prominence. You cannot move your address, but
-              you can make your profile, website and reviews the most relevant and trusted in your area.
+              The fix is a clear structure: service pages for pumping, inspections, real estate inspections, repairs and
+              new installs, plus useful pages for the counties and towns you serve. Combined with a strong profile and
+              reviews from across that area, Google learns where you work.
             </p>
             <p>
-              I also separate the work you want more of. A drain clog and a whole-house repipe are very different
-              tickets, and your pages and profile should reflect which ones you are chasing.
+              Septic also has strong seasonal and real estate demand. I plan content around home sales, maintenance
+              reminders and problem searches like "septic backing up" that bring urgent calls.
             </p>
           </div>
           <div className="mock rv" aria-hidden="true">
             <div className="mcard">
-              <div className="mq">🔍 emergency plumber near me</div>
+              <div className="mq">🔍 septic pumping near me</div>
               <div className="mmap">
                 <i className="me" style={{ left: "46%", top: "38%" }}></i>
                 <i style={{ left: "22%", top: "55%" }}></i>
@@ -185,7 +186,7 @@ export default function PlumbingSeoPage() {
                 <li className="mrow me">
                   <span className="pos">1</span>
                   <div>
-                    <b>Your Plumbing Co.</b>
+                    <b>Your Septic Service</b>
                     <small>
                       <span className="st">★★★★★</span> 4.9 · Open 24 hours
                     </small>
@@ -225,16 +226,16 @@ export default function PlumbingSeoPage() {
           </div>
           <div className="rv">
             <ul className="ticks two">
-              <li>emergency plumber near me</li>
-              <li>24 hour plumber [city]</li>
-              <li>water heater replacement</li>
-              <li>tankless water heater install</li>
-              <li>drain cleaning near me</li>
-              <li>sewer line repair [city]</li>
-              <li>slab leak detection</li>
-              <li>repipe specialist</li>
-              <li>burst pipe repair</li>
-              <li>gas line plumber</li>
+              <li>septic pumping near me</li>
+              <li>septic tank cleaning [county]</li>
+              <li>septic inspection for home sale</li>
+              <li>septic system installation</li>
+              <li>drain field repair</li>
+              <li>septic backing up</li>
+              <li>grease trap pumping</li>
+              <li>aerobic septic maintenance</li>
+              <li>septic tank locating</li>
+              <li>perc test [county]</li>
             </ul>
           </div>
         </div>
@@ -244,7 +245,7 @@ export default function PlumbingSeoPage() {
           <div className="sec-head rv">
             <div>
               <span className="eyebrow">What is included</span>
-              <h2>Everything a plumbing company needs to rank locally.</h2>
+              <h2>Everything a septic company needs to rank locally.</h2>
             </div>
           </div>
           <div className="grid g3">
@@ -253,42 +254,48 @@ export default function PlumbingSeoPage() {
                 01
               </span>
               <h3>Google Business Profile</h3>
-              <p>Correct categories, hours that match when you really answer, services, photos and regular posts.</p>
+              <p>
+                Service area set up correctly, the right categories and services, photos from real jobs and regular
+                posts.
+              </p>
             </div>
             <div className="card rv">
               <span className="ic" aria-hidden="true">
                 02
               </span>
               <h3>Service pages</h3>
-              <p>Separate pages for emergency service, water heaters, drains, sewer, leak detection and repipes.</p>
+              <p>Pumping, inspections, real estate inspections, repairs, drain fields, installs and commercial work.</p>
             </div>
             <div className="card rv">
               <span className="ic" aria-hidden="true">
                 03
               </span>
-              <h3>Service area pages</h3>
-              <p>Pages for the towns and neighborhoods you cover, with real job details and local proof.</p>
+              <h3>County and town pages</h3>
+              <p>
+                Pages for the counties and towns you cover, with useful local detail such as soil, permits and typical
+                systems.
+              </p>
             </div>
             <div className="card rv">
               <span className="ic" aria-hidden="true">
                 04
               </span>
               <h3>Reviews system</h3>
-              <p>A process that gets steady reviews mentioning the service, the town and the technician.</p>
+              <p>Steady reviews from customers across your whole area, mentioning the town and the service.</p>
             </div>
             <div className="card rv">
               <span className="ic" aria-hidden="true">
                 05
               </span>
-              <h3>Citations and links</h3>
-              <p>Clean, consistent listings plus local links from suppliers, sponsorships and community sites.</p>
+              <h3>Real estate partners</h3>
+              <p>Content and links that make you the go-to for inspection searches by agents and buyers.</p>
             </div>
             <div className="card rv">
               <span className="ic" aria-hidden="true">
                 06
               </span>
-              <h3>Call tracking</h3>
-              <p>Know which calls came from Google Maps, which came from organic search, and what they were for.</p>
+              <h3>Tracking</h3>
+              <p>See which towns and services the calls come from so we can push the profitable ones.</p>
             </div>
           </div>
         </div>
@@ -302,30 +309,30 @@ export default function PlumbingSeoPage() {
             <Link className="chip" href="/seo-services/ai-visibility">
               AI Search Visibility →
             </Link>
-            <Link className="chip" href="/blog/high-value-plumbing-keywords">
-              Guide: high-value plumbing keywords →
-            </Link>
-            <Link className="chip" href="/local-seo/roofing-seo">
+            <Link className="chip" href="/industries/roofing-seo">
               Roofing SEO →
             </Link>
-            <Link className="chip" href="/local-seo/septic-seo">
-              Septic SEO →
+            <Link className="chip" href="/industries/plumbing-seo">
+              Plumbing SEO →
             </Link>
-            <Link className="chip" href="/local-seo/hvac-seo">
+            <Link className="chip" href="/industries/hvac-seo">
               HVAC SEO →
             </Link>
-            <Link className="chip" href="/local-seo/home-services-seo">
+            <Link className="chip" href="/industries/home-services-seo">
               Home Services SEO →
+            </Link>
+            <Link className="chip" href="/blog/how-to-get-more-septic-pumping-customers">
+              Guide: 90-day septic SEO plan →
             </Link>
           </div>
         </div>
       </section>
       <RelatedLinks
-        page="/local-seo/plumbing-seo"
+        page="/industries/septic-seo"
         topics={["local-seo", "google-maps"]}
         industriesTitle="More industries"
       />
-      <CtaBand title="Be the plumber they call first." />
+      <CtaBand title="Be the septic company every town in your area finds." />
     </>
   );
 }

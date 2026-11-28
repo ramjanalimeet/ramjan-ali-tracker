@@ -24,7 +24,7 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const ind = getIndustry((await params).slug);
   if (!ind) return {};
-  return pageMeta({ title: ind.title, description: ind.description, path: `/local-seo/${ind.slug}` });
+  return pageMeta({ title: ind.title, description: ind.description, path: `/industries/${ind.slug}` });
 }
 
 const GENERAL_INCLUDED = [
@@ -67,7 +67,7 @@ export default async function IndustryPage({ params }: Props) {
   const ind = getIndustry((await params).slug);
   if (!ind) notFound();
 
-  const url = `${SITE_URL}/local-seo/${ind.slug}`;
+  const url = `${SITE_URL}/industries/${ind.slug}`;
   const faq = faqFor(ind);
   const related = ALL_INDUSTRIES.filter((i) => i.category === ind.category && i.slug !== ind.slug);
   const business = `Your ${ind.short} Co.`;
@@ -384,7 +384,7 @@ export default async function IndustryPage({ params }: Props) {
           <span className="eyebrow">Related industries</span>
           <div className="chips" style={{ marginTop: 6 }}>
             {related.map((r) => (
-              <Link className="chip" href={`/local-seo/${r.slug}`} key={r.slug}>
+              <Link className="chip" href={`/industries/${r.slug}`} key={r.slug}>
                 {r.name} →
               </Link>
             ))}
@@ -395,7 +395,7 @@ export default async function IndustryPage({ params }: Props) {
         </div>
       </section>
 
-      <RelatedLinks page={`/local-seo/${ind.slug}`} topics={["local-seo", "google-maps", "ai-search"]} industries={0} />
+      <RelatedLinks page={`/industries/${ind.slug}`} topics={["local-seo", "google-maps", "ai-search"]} industries={0} />
       <CtaBand title={ind.cta} />
     </>
   );

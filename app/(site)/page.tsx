@@ -291,7 +291,7 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid g3">
-            <Link className="card rv" href="/local-seo/roofing-seo">
+            <Link className="card rv" href="/industries/roofing-seo">
               <span className="ic" aria-hidden="true">
                 01
               </span>
@@ -304,7 +304,7 @@ export default function HomePage() {
                 Learn more <span>→</span>
               </span>
             </Link>
-            <Link className="card rv" href="/local-seo/plumbing-seo">
+            <Link className="card rv" href="/industries/plumbing-seo">
               <span className="ic" aria-hidden="true">
                 02
               </span>
@@ -317,7 +317,7 @@ export default function HomePage() {
                 Learn more <span>→</span>
               </span>
             </Link>
-            <Link className="card rv" href="/local-seo/dentist-seo">
+            <Link className="card rv" href="/industries/dentist-seo">
               <span className="ic" aria-hidden="true">
                 03
               </span>
@@ -329,7 +329,7 @@ export default function HomePage() {
                 Learn more <span>→</span>
               </span>
             </Link>
-            <Link className="card rv" href="/local-seo/personal-injury-lawyer-seo">
+            <Link className="card rv" href="/industries/personal-injury-lawyer-seo">
               <span className="ic" aria-hidden="true">
                 04
               </span>
@@ -341,7 +341,7 @@ export default function HomePage() {
                 Learn more <span>→</span>
               </span>
             </Link>
-            <Link className="card rv" href="/local-seo/restaurant-seo">
+            <Link className="card rv" href="/industries/restaurant-seo">
               <span className="ic" aria-hidden="true">
                 05
               </span>

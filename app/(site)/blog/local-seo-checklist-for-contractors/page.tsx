@@ -506,8 +506,8 @@ export default function LocalSeoChecklistPage() {
       <p>
         Wondering how long until it pays off? I broke down a realistic timeline in{" "}
         <Link href="/blog/how-long-does-local-seo-take">how long local SEO takes</Link>. For trade-specific advice, see
-        the pages for <Link href="/local-seo/roofing-seo">roofers</Link>,{" "}
-        <Link href="/local-seo/plumbing-seo">plumbers</Link>, <Link href="/local-seo/hvac-seo">HVAC companies</Link> and{" "}
+        the pages for <Link href="/industries/roofing-seo">roofers</Link>,{" "}
+        <Link href="/industries/plumbing-seo">plumbers</Link>, <Link href="/industries/hvac-seo">HVAC companies</Link> and{" "}
         <Link href="/industries">60+ other trades</Link>.
       </p>
 

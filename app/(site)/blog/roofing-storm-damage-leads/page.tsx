@@ -185,8 +185,8 @@ export default function RoofingStormDamageLeadsPage() {
       </ul>
       <p>Over two or three seasons, this shows which towns are worth building up and which are better covered by ads.</p>
       <h2 id="related">Related trades</h2>
-      <p>Storms also drive gutter, siding and window work. If you offer these, give each its own page and link them from your storm pages. See how I approach <Link href="/local-seo/gutter-seo">gutter</Link>, <Link href="/local-seo/siding-seo">siding</Link> and <Link href="/local-seo/window-door-seo">window and door</Link> companies.</p>
-      <p>Want to be the roofer homeowners find first after the next storm? <Link href="/local-seo/roofing-seo">Roofing SEO</Link> covers the pages, profile and reviews in this guide. Or book a <Link href="/book-a-call">free strategy call</Link> and I&apos;ll show you where you rank for storm searches right now, town by town.</p>
+      <p>Storms also drive gutter, siding and window work. If you offer these, give each its own page and link them from your storm pages. See how I approach <Link href="/industries/gutter-seo">gutter</Link>, <Link href="/industries/siding-seo">siding</Link> and <Link href="/industries/window-door-seo">window and door</Link> companies.</p>
+      <p>Want to be the roofer homeowners find first after the next storm? <Link href="/industries/roofing-seo">Roofing SEO</Link> covers the pages, profile and reviews in this guide. Or book a <Link href="/book-a-call">free strategy call</Link> and I&apos;ll show you where you rank for storm searches right now, town by town.</p>
     </ArticleLayout>
   );
 }

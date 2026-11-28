@@ -49,6 +49,9 @@ const nextConfig: NextConfig = {
       { source: "/blog/seo-strategy", destination: "/blog", permanent: true },
       // Trades without a dedicated page are listed on /industries.
       ...ALSO_SERVED.map((i) => ({ source: `/local-seo/${i.slug}`, destination: "/industries", permanent: true })),
+      ...ALSO_SERVED.map((i) => ({ source: `/industries/${i.slug}`, destination: "/industries", permanent: true })),
+      // Industry pages moved from /local-seo/<slug> to /industries/<slug>.
+      { source: "/local-seo/:slug", destination: "/industries/:slug", permanent: true },
       // City pages outside the US market.
       ...RETIRED_CITY_SLUGS.map((slug) => ({ source: `/locations/${slug}`, destination: "/locations", permanent: true })),
     ];

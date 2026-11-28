@@ -256,23 +256,23 @@ export default function HowLongLocalSeoPage() {
       <ul>
         <li>
           <strong>Roofing:</strong> storm-driven. Start in the off-season so rankings are ready before hail or hurricane
-          season. See <Link href="/local-seo/roofing-seo">Roofing SEO</Link>.
+          season. See <Link href="/industries/roofing-seo">Roofing SEO</Link>.
         </li>
         <li>
           <strong>HVAC:</strong> peaks in summer and winter. Starting in June means ranking in September, after the
-          rush. See <Link href="/local-seo/hvac-seo">HVAC SEO</Link>.
+          rush. See <Link href="/industries/hvac-seo">HVAC SEO</Link>.
         </li>
         <li>
           <strong>Plumbing and drains:</strong> steady all year, with winter spikes for frozen pipes and water heaters.
-          See <Link href="/local-seo/plumbing-seo">Plumbing SEO</Link>.
+          See <Link href="/industries/plumbing-seo">Plumbing SEO</Link>.
         </li>
         <li>
           <strong>Landscaping, lawn care and pools:</strong> customers sign up in early spring, so rank by late winter.
-          See <Link href="/local-seo/landscaping-seo">Landscaping SEO</Link>.
+          See <Link href="/industries/landscaping-seo">Landscaping SEO</Link>.
         </li>
         <li>
           <strong>Chimney and snow removal:</strong> booked in late summer and autumn. See{" "}
-          <Link href="/local-seo/home-services-seo">Home Services SEO</Link>.
+          <Link href="/industries/home-services-seo">Home Services SEO</Link>.
         </li>
       </ul>
       <p>

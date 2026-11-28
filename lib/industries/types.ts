@@ -14,7 +14,7 @@ export type CategoryId =
 
 export type IndustryFaq = { q: string; a: string };
 
-/** One generated industry page under /local-seo/<slug>. */
+/** One generated industry page under /industries/<slug>. */
 export type Industry = {
   /** URL slug, e.g. "electrician-seo". */
   slug: string;

@@ -24,7 +24,7 @@ npm run typecheck
 - `lib/site.ts` — site URL, contact links, industries, page metadata helper
 - `lib/pricing.ts` — **every price on the site**; edit plans and prices here
 - `lib/industries/` — industry pages. Only the trades in `CORE_SLUGS` (index.ts) get a
-  dedicated page under `/local-seo/<slug>`, rendered by `app/local-seo/[slug]/page.tsx` with
+  dedicated page under `/industries/<slug>`, rendered by `app/(site)/industries/[slug]/page.tsx` with
   trade-specific depth from `deep.ts`. Every other trade is listed by name on `/industries`,
   and its old URL redirects there (see `next.config.ts`)
 - `lib/cities/` — city location pages. Only cities in `ACTIVE_GROUPS` (index.ts, currently

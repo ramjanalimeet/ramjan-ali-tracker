@@ -36,7 +36,7 @@ const SCHEMA = {
         "@type": "ListItem",
         position: n + 1,
         name: i.name,
-        url: `${SITE_URL}/local-seo/${i.slug}`,
+        url: `${SITE_URL}/industries/${i.slug}`,
       })),
     },
   ],
@@ -95,7 +95,7 @@ export default function IndustriesPage() {
               </div>
               <div className="ind-grid">
                 {items.map((i) => (
-                  <Link className="ind-card rv" href={`/local-seo/${i.slug}`} key={i.slug}>
+                  <Link className="ind-card rv" href={`/industries/${i.slug}`} key={i.slug}>
                     <b>{i.name}</b>
                     <small>{i.blurb}</small>
                     <span className="arr" aria-hidden="true">
@@ -107,7 +107,7 @@ export default function IndustriesPage() {
               {also.length > 0 && (
                 <p className="muted rv" style={{ marginTop: 18 }}>
                   Also: {also.map((i) => i.name).join(", ")}.{" "}
-                  <Link href="/local-seo/home-services-seo">How I work with these trades →</Link>
+                  <Link href="/industries/home-services-seo">How I work with these trades →</Link>
                 </p>
               )}
             </div>

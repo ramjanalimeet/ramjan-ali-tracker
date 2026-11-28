@@ -1,11 +1,11 @@
 import type { LocaleKey, TradeKey } from "./types";
 
 export const TRADE_LINKS: Record<TradeKey, string> = {
-  roofing: "/local-seo/roofing-seo",
-  plumbing: "/local-seo/plumbing-seo",
-  septic: "/local-seo/septic-seo",
-  hvac: "/local-seo/hvac-seo",
-  home: "/local-seo/home-services-seo",
+  roofing: "/industries/roofing-seo",
+  plumbing: "/industries/plumbing-seo",
+  septic: "/industries/septic-seo",
+  hvac: "/industries/hvac-seo",
+  home: "/industries/home-services-seo",
 };
 
 type Locale = {

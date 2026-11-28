@@ -12,7 +12,7 @@ export const metadata = pageMeta({
   title: "Roofing SEO for Roofing Contractors | Ramjan Ali Akash",
   description:
     "Local SEO for roofing companies: rank in the Google map pack for roof repair, roof replacement and storm damage searches in your service area. Free audit.",
-  path: "/local-seo/roofing-seo",
+  path: "/industries/roofing-seo",
 });
 
 const FAQ: FaqItem[] = [
@@ -49,8 +49,8 @@ const SCHEMA = {
     },
     {
       "@type": "WebPage",
-      "@id": `${SITE_URL}/local-seo/roofing-seo#webpage`,
-      url: `${SITE_URL}/local-seo/roofing-seo`,
+      "@id": `${SITE_URL}/industries/roofing-seo#webpage`,
+      url: `${SITE_URL}/industries/roofing-seo`,
       name: "Roofing SEO | Local SEO for Roofing Contractors | Ramjan Ali Akash",
       description:
         "Local SEO for roofing companies: rank in the Google map pack for roof repair, roof replacement and storm damage searches in your service area. Free audit.",
@@ -80,17 +80,17 @@ const SCHEMA = {
           "@type": "ListItem",
           position: 3,
           name: "Roofing SEO",
-          item: `${SITE_URL}/local-seo/roofing-seo`,
+          item: `${SITE_URL}/industries/roofing-seo`,
         },
       ],
     },
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/local-seo/roofing-seo#service`,
+      "@id": `${SITE_URL}/industries/roofing-seo#service`,
       name: "Roofing SEO",
       description:
         "Local SEO for roofing companies: rank in the Google map pack for roof repair, roof replacement and storm damage searches in your service area. Free audit.",
-      url: `${SITE_URL}/local-seo/roofing-seo`,
+      url: `${SITE_URL}/industries/roofing-seo`,
       provider: {
         "@id": `${SITE_URL}/#business`,
       },
@@ -314,23 +314,23 @@ export default function RoofingSeoPage() {
             <Link className="chip" href="/blog/roofing-storm-damage-leads">
               Guide: storm damage leads →
             </Link>
-            <Link className="chip" href="/local-seo/plumbing-seo">
+            <Link className="chip" href="/industries/plumbing-seo">
               Plumbing SEO →
             </Link>
-            <Link className="chip" href="/local-seo/septic-seo">
+            <Link className="chip" href="/industries/septic-seo">
               Septic SEO →
             </Link>
-            <Link className="chip" href="/local-seo/hvac-seo">
+            <Link className="chip" href="/industries/hvac-seo">
               HVAC SEO →
             </Link>
-            <Link className="chip" href="/local-seo/home-services-seo">
+            <Link className="chip" href="/industries/home-services-seo">
               Home Services SEO →
             </Link>
           </div>
         </div>
       </section>
       <RelatedLinks
-        page="/local-seo/roofing-seo"
+        page="/industries/roofing-seo"
         topics={["local-seo", "google-maps"]}
         industriesTitle="More industries"
       />

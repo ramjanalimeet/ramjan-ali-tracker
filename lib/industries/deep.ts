@@ -2,7 +2,7 @@
  * Trade-specific depth for the core industry pages: how each trade's customers
  * search, the Business Profile categories to start from, the pages to build,
  * when demand peaks and the mistakes that cost that trade calls. Rendered by
- * app/local-seo/[slug] so every core industry page carries its own substance,
+ * app/(site)/industries/[slug] so every core industry page carries its own substance,
  * not just the shared template.
  */
 export type IndustryDeep = {
