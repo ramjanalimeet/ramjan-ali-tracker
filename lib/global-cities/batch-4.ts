@@ -524,7 +524,7 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     demand: [
       { when: "Academic year", what: "Students drive demand for rentals, food delivery and bike repairs." },
       { when: "Autumn", what: "The Netherlands Film Festival brings visitors to cinemas, restaurants and bars." },
-      { when: "Winter", what: "Heating repairs and indoor activities see more searches." },
+      { when: "Spring and summer", what: "Wharf-level terraces along the Oudegracht fill up, raising searches for cafes and restaurants." },
     ],
     queries: ["tandarts utrecht", "fietsenmaker utrecht centrum", "kinderopvang leidsche rijn", "fysiotherapeut utrecht oost", "restaurant utrecht binnenstad"],
     sectors: ["restaurants and cafes", "bike shops", "childcare"],
@@ -748,7 +748,7 @@ export const CITY_GUIDES_4: Record<string, GlobalCityGuide> = {
     demand: [
       { when: "September", what: "Airborne commemorations bring visitors searching for accommodation and food." },
       { when: "Summer", what: "Veluwe tourism lifts searches for bike rental, hotels and restaurants." },
-      { when: "Winter", what: "Heating repairs and indoor activities see more searches." },
+      { when: "Academic year", what: "ArtEZ and HAN students drive demand for rooms, bikes, cheap food and studio supplies." },
     ],
     queries: ["tandarts arnhem zuid", "restaurant arnhem centrum", "fietsverhuur veluwe arnhem", "loodgieter arnhem", "kapper klarendal"],
     sectors: ["restaurants", "accommodation", "home trades"],
