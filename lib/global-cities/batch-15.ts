@@ -24,7 +24,7 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
     ],
     queries: [
       "plumber Rustenburg Geelhoutpark",
-      "guest house near Waterfall Mall Rustenburg",
+      "guest house Waterfall East Rustenburg",
       "tyre fitment Rustenburg open Sunday",
       "dentist Rustenburg CBD",
       "mine contractor accommodation Kroondal",
@@ -325,7 +325,7 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
     summary: "Midrand local SEO between Johannesburg and Pretoria: reach offices, estates and new apartments in Waterfall, Vorna Valley, Kyalami and Halfway House.",
     lead: "Midrand sits on the N1 between Johannesburg and Pretoria, and it has grown fast with business parks, conference venues and dense new housing. Local businesses compete for busy professionals who search on the go.",
     profile: [
-      "Midrand falls within the City of Johannesburg but works as its own hub, with corporate head offices, the Gallagher convention centre and the large Waterfall development. Kyalami adds equestrian estates and its well-known race circuit.",
+      "Midrand falls within the City of Johannesburg but works as its own hub, with corporate head offices, a major convention centre and the large Waterfall development. Kyalami adds equestrian estates and its well-known race circuit.",
       "Many residents are young professionals and families in security complexes, which means strong demand for convenience: food delivery, gyms, crèches, car services and home repairs. Competition is fierce because businesses from Sandton, Fourways and Centurion also target Midrand searches.",
     ],
     areas: [
@@ -833,7 +833,7 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
     faqs: [
       {
         q: "Should I target Padre Las Casas as well as Temuco?",
-        a: "If you serve it, yes. It is a separate comuna across the river, and people search for it by name. Content and reviews that mention it help you show up there.",
+        a: "Usually, yes. Padre Las Casas sits just across the Cautín River and many of its residents use Temuco services daily, but they often type their own comuna. A short section on how you serve it, plus a few reviews from customers there, makes the link clear to Google.",
       },
       {
         q: "Is tourism relevant for a business in Temuco?",
@@ -873,7 +873,7 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
     faqs: [
       {
         q: "Should I target Machalí as well as Rancagua?",
-        a: "Yes, if you serve it. Machalí is a separate comuna with many new homes, and people search for it by name. Mentioning it on your website and listing helps.",
+        a: "If you work there, yes. Machalí has grown into the area's newer, higher-income residential zone on the road up towards the mountains, and those households tend to search with Machalí rather than Rancagua. A page that shows your work in its condominiums can win searches the city page will not.",
       },
       {
         q: "Do I compete with Santiago businesses?",
@@ -913,11 +913,11 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
     faqs: [
       {
         q: "Should I target nearby comunas like San Clemente?",
-        a: "If you serve them, yes. People often search with their own comuna name, so mentioning them on your website and in your listing helps you appear.",
+        a: "Only the ones you genuinely cover. San Clemente is a large rural comuna to the east, and its residents often search with its name when they need a vet, mechanic or builder. A short page per comuna you serve, with real examples, works better than a long list of town names.",
       },
       {
         q: "How do I reach farmers in the region?",
-        a: "Farmers search for specific services and suppliers. Clear categories, photos of your work and reviews from agricultural clients make it easier for them to find and trust you.",
+        a: "Vineyard and orchard owners in the Maule often look for exact services such as irrigation, pruning crews or machinery repair, and many decide by phone. Precise categories, a click-to-call number and reviews from farm clients matter more than a polished city-centre website.",
       },
     ],
   },
@@ -957,7 +957,7 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
       },
       {
         q: "How do I reach travellers heading south?",
-        a: "Travellers plan online and rely on reviews. Clear information about your services, accurate hours and English content for key pages help you show up when they are looking.",
+        a: "Many arrive by plane, bus or cruise ship and only have a day or two before heading to Chiloé or the Carretera Austral. Make it obvious on your listing what you offer them (car hire, ferry advice, gear, a quick meal), keep summer hours exact and add an English summary to your key pages.",
       },
     ],
   },
@@ -997,7 +997,7 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
       },
       {
         q: "How do I attract astronomy tourists?",
-        a: "Visitors plan online, often in English. Clear information about tours, transport and timing, plus reviews from past visitors, help them choose you.",
+        a: "Stargazing tours depend on moon phases, cloud and the long drive into the Elqui Valley, so visitors search with lots of questions. Answer them on your site: pick-up points in La Serena, what happens if the sky is cloudy, and how long the trip takes. Reviews that mention a clear night sky are persuasive here.",
       },
     ],
   },
@@ -1033,11 +1033,11 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
     faqs: [
       {
         q: "Should I target ski travellers?",
-        a: "If you offer gear, transport or accommodation, yes. Visitors search online before and during their trip, so clear information and accurate winter hours help.",
+        a: "If you rent gear, sell tyre chains, service cars or offer lodging, yes. Skiers often stop in Chillán on the way up to the mountains, so being visible for searches like "arriendo de esquí Chillán" in June and July can bring a burst of extra trade.",
       },
       {
         q: "Do I need a separate page for Chillán Viejo?",
-        a: "If you serve it, a page or section that mentions it helps, since people search for it by name.",
+        a: "Chillán Viejo is its own comuna and the historic birthplace of Bernardo O'Higgins, so residents identify with it. If you serve it, a short section with its name and a couple of local reviews is enough to signal that you cover it.",
       },
     ],
   },
@@ -1073,7 +1073,7 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
     faqs: [
       {
         q: "Should I target Alto Hospicio as well?",
-        a: "If you serve it, yes. It is a separate comuna with many residents, and people search for it by name. Mentioning it on your website and listing helps you appear there.",
+        a: "For most home services, yes. Alto Hospicio sits on the plateau above the city and has grown very fast, but it is a separate comuna with fewer established businesses. Trades and clinics that clearly say they reach Alto Hospicio, and show reviews from there, often face less competition than in Iquique itself.",
       },
       {
         q: "How do I reach ZOFRI shoppers?",
@@ -1096,7 +1096,7 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
       { name: "Route towards Puyehue", note: "Road used by travellers heading to the lakes and hot springs." },
     ],
     nearby: ["Purranque", "Río Negro", "Entre Lagos", "San Pablo"],
-    language: "Searches are in Chilean Spanish.",
+    language: "Searches are in Chilean Spanish. German surnames and heritage are common in the area, but customers search in Spanish, using local words like leña and gasfíter.",
     demand: [
       { when: "Winter", what: "Cold, rainy months bring demand for firewood, heating and roof repairs." },
       { when: "Summer", what: "Travellers heading to the lakes search for car services and food." },
@@ -1113,11 +1113,11 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
     faqs: [
       {
         q: "How do I reach farmers around Osorno?",
-        a: "Farmers search for specific services. Clear categories, photos of your work and reviews from agricultural clients help them find and trust you.",
+        a: "Dairy and cattle farmers tend to search for exact things, like a large-animal vet, a milking equipment technician or a tractor part. Choose precise Business Profile categories, list the rural areas you travel to and show photos of real farm jobs rather than generic images.",
       },
       {
         q: "Is tourism relevant for my business?",
-        a: "For car services, food and accommodation, yes. Many travellers pass through on the way to the lakes, so mentioning that and keeping summer hours accurate can help.",
+        a: "Partly. Osorno is mainly a working farm city, but summer traffic towards Puyehue and the Argentine border crossing passes through. Car services, fuel, food and lodging can pick up those travellers by mentioning the route and keeping holiday hours current.",
       },
     ],
   },
@@ -1136,7 +1136,7 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
       { name: "Sindempart", note: "Residential area with everyday service demand." },
     ],
     nearby: ["La Serena", "Tongoy", "Guanaqueros", "Ovalle"],
-    language: "Searches are in Chilean Spanish.",
+    language: "Searches are in Chilean Spanish. Coquimbo and La Serena run into each other, but locals still search with the specific city, sector or beach name, such as La Herradura or Peñuelas.",
     demand: [
       { when: "Summer", what: "Beach season brings demand for restaurants, rentals and tours." },
       { when: "Fishing seasons", what: "Fishing activity drives demand for marine services and seafood restaurants." },
@@ -1153,11 +1153,11 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
     faqs: [
       {
         q: "How do I stand out from La Serena businesses?",
-        a: "Be specific about your Coquimbo location and the sector you serve. Searchers looking for something nearby will choose a clear, local listing.",
+        a: "Lean into what is distinctly Coquimbo: the fishing port, Barrio Inglés, the Cruz del Tercer Milenio and the bays south of the city. Naming those landmarks and sectors on your site and listing makes you the natural local answer, rather than one more result in the wider La Serena area.",
       },
       {
         q: "Should I target Tongoy and Guanaqueros?",
-        a: "If you serve them, yes. They are popular summer spots that people search for by name.",
+        a: "If you rent cabins, run a restaurant or offer services there, yes. Summer visitors search for Tongoy and Guanaqueros directly, and these small beach towns have far fewer well-kept listings than the city, so a complete profile stands out quickly.",
       },
     ],
   },
@@ -1193,11 +1193,11 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
     faqs: [
       {
         q: "How do I reach students at the university?",
-        a: "Students search on their phones for nearby services. Clear listings, good reviews and content about Isla Teja and the centre help you get noticed.",
+        a: "The main campus is on Isla Teja, so students often search for things on the island or a short walk across the bridge into the centre. Mentioning Isla Teja, offering student deals in March and keeping late hours accurate during exams gives you a clear edge.",
       },
       {
         q: "Is it worth targeting tourists?",
-        a: "For food, tours and lodging, yes. Visitors plan online and rely on reviews, so clear information and accurate hours help.",
+        a: "For river trips, food and lodging, clearly yes. Summer visitors combine the city with boat trips to Niebla and Corral, and many check Maps for where to eat near the riverside market. Photos of the river and the Costanera, and replies to reviews in English, help you get chosen.",
       },
     ],
   },
@@ -1353,7 +1353,7 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
     faqs: [
       {
         q: "Should I target Lauro de Freitas as well?",
-        a: "If you serve it, yes. It is a separate city next to Salvador, and many people search for it by name, especially around the airport and the north coast.",
+        a: "If you serve it, yes. Lauro de Freitas is a separate municipality beside the airport and the start of the north coast, with many condominiums whose residents search with its name. A page covering it, and reviews from clients there, helps you appear beyond Salvador's city limits.",
       },
       {
         q: "How do I prepare my listing for Carnaval?",
@@ -1376,7 +1376,7 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
       { name: "Messejana", note: "Large residential area with busy local trade." },
     ],
     nearby: ["Caucaia", "Maracanaú", "Aquiraz", "Eusébio"],
-    language: "Searches are in Brazilian Portuguese, often with the bairro name. Tourists may search in English and Spanish.",
+    language: "Searches are in Brazilian Portuguese, and cearenses use plenty of regional slang in reviews. Many visitors come from other Brazilian states, so Portuguese matters most, with English or Spanish useful for beach and tour businesses.",
     demand: [
       { when: "July holidays", what: "Peak tourism brings demand for hotels, restaurants and tours." },
       { when: "Rainy season", what: "The first half of the year brings rain and calls for roofing and drainage." },
@@ -1393,11 +1393,11 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
     faqs: [
       {
         q: "Should I target Aquiraz and Eusébio?",
-        a: "If you serve them, yes. They are separate cities near Fortaleza, and people search for them by name, especially for beach and residential services.",
+        a: "If you serve them, yes. Eusébio has many gated condominiums and Aquiraz has the beaches and resorts east of the city, and people there tend to search by their own town. A page for each, with real jobs or visitors you have served, helps you show up outside Fortaleza.",
       },
       {
         q: "How do I reach tourists?",
-        a: "Visitors rely on reviews and Maps. Clear information in Portuguese and English, accurate hours and good photos help them choose you.",
+        a: "Most visitors stay along the Beira Mar in Meireles or Iracema and decide where to go from their phone. Describe how close you are to the seafront, show photos of what they will get, and make sure the barraca or restaurant name on Maps matches the sign people see on the beach.",
       },
     ],
   },
@@ -1433,7 +1433,7 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
     faqs: [
       {
         q: "Should I target Nova Lima as well as BH?",
-        a: "If you serve it, yes. Nova Lima has many upmarket condominiums near BH, and people search for it by name.",
+        a: "If you serve it, yes. Nova Lima, just south of BH along the road to the condominiums around Vale do Sereno and Alphaville, is a separate city with many affluent households. They tend to search with Nova Lima, so a page that covers it can win clients your BH pages miss.",
       },
       {
         q: "Should I use BH or Belo Horizonte on my pages?",
@@ -1456,7 +1456,7 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
       { name: "Distrito Industrial", note: "Industrial zone with factories and business services." },
     ],
     nearby: ["Iranduba", "Manacapuru", "Presidente Figueiredo", "Rio Preto da Eva"],
-    language: "Searches are in Brazilian Portuguese. Tourists may search in English for jungle tours.",
+    language: "Searches are in Brazilian Portuguese, with regional words from the Amazon in everyday speech. Jungle lodge and tour businesses also need English, since many foreign visitors book from abroad.",
     demand: [
       { when: "Rainy season", what: "Heavy rains bring demand for roofing, drainage and electrical repairs." },
       { when: "Year round heat", what: "Constant heat drives demand for air conditioning and refrigeration." },
@@ -1473,11 +1473,11 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
     faqs: [
       {
         q: "How do I reach tourists?",
-        a: "Visitors plan online, often in English. Clear information about tours and transport, plus reviews from past visitors, help them choose you.",
+        a: "Most foreign visitors arrive in Manaus with little time before heading upriver, and they book trips to lodges and the Meeting of the Waters from their phones. English pages, clear pick-up points from the port or hotels, and honest details about trip length and conditions help them trust you.",
       },
       {
         q: "Should I target the industrial district?",
-        a: "If you serve factories, yes. Buyers search Maps for nearby suppliers, so clear categories and business reviews help.",
+        a: "Yes, if you sell to the factories of the Zona Franca. Purchasing and maintenance teams often look for nearby suppliers on Maps when something breaks. A listing in the Distrito Industrial with exact categories, opening hours that fit shift patterns and reviews from business clients can bring steady B2B work.",
       },
     ],
   },
@@ -1496,7 +1496,7 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
       { name: "Santa Felicidade", note: "Italian-heritage area known for its restaurants." },
     ],
     nearby: ["São José dos Pinhais", "Pinhais", "Colombo", "Araucária"],
-    language: "Searches are in Brazilian Portuguese, often with the bairro name.",
+    language: "Searches are in Brazilian Portuguese, usually with the bairro name. Curitibanos have their own words for things, such as vina for a hot dog sausage, which show up in food searches and reviews.",
     demand: [
       { when: "Winter", what: "Cold months bring demand for heating, warm clothing and indoor activities." },
       { when: "Summer rains", what: "Storms bring calls for roofing and drainage." },
@@ -1513,11 +1513,11 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
     faqs: [
       {
         q: "Should I target São José dos Pinhais?",
-        a: "If you serve it, yes. It is a separate city next to Curitiba, home to the airport, and people search for it by name.",
+        a: "If you serve it, yes. São José dos Pinhais is a separate city that hosts Curitiba's international airport and a large car manufacturing base. Its residents search with their own city name, so a dedicated page helps you reach them.",
       },
       {
         q: "How important are reviews in Curitiba?",
-        a: "Very. Customers often compare carefully before choosing, so a steady flow of genuine reviews and replies builds trust.",
+        a: "Very. Curitibanos are known for being cautious with new businesses and comparing before they commit. A steady flow of genuine, detailed reviews, plus polite replies to each one, does a lot of the persuading that a sales pitch cannot.",
       },
     ],
   },
@@ -1536,7 +1536,7 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
       { name: "Espinheiro", note: "Residential bairro with local trade and services." },
     ],
     nearby: ["Olinda", "Jaboatão dos Guararapes", "Paulista", "Camaragibe"],
-    language: "Searches are in Brazilian Portuguese, often with the bairro name.",
+    language: "Searches are in Brazilian Portuguese, often with the bairro name. Pernambucanos use plenty of regional expressions, and the tech firms in Porto Digital also search in English for B2B services.",
     demand: [
       { when: "Carnaval", what: "The Galo da Madrugada and Olinda's street Carnival bring huge crowds who need lodging, food and transport." },
       { when: "Rainy season", what: "Mid-year rains bring calls for roofing, drainage and electrical repairs." },
@@ -1553,11 +1553,11 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
     faqs: [
       {
         q: "Should I target Olinda as well?",
-        a: "If you serve it, yes. Olinda is a separate city with its own identity, and people search for it by name.",
+        a: "If you serve it, yes. Olinda is a separate city with its own historic centre and Carnival, and residents and visitors search for it by name. A clear page about your Olinda service, rather than assuming Recife covers it, catches those searches.",
       },
       {
         q: "How do I prepare for Carnaval?",
-        a: "Update hours and posts, and make clear how customers can reach you when roads close.",
+        a: "Carnival in Recife and Olinda closes streets and changes how people move around for days. Update holiday hours, post about whether you open, and make clear how customers can reach you. Hotels and restaurants should show their distance from the main circuits.",
       },
     ],
   },
@@ -1593,11 +1593,11 @@ export const CITY_GUIDES_15: Record<string, GlobalCityGuide> = {
     faqs: [
       {
         q: "Should I target Canoas as well?",
-        a: "If you serve it, yes. Canoas is a separate city next to Porto Alegre, and people search for it by name.",
+        a: "If you work there, yes. Canoas is a large city just north of Porto Alegre, linked by the train line, and its residents usually search with Canoas. A page for it, backed by reviews from local customers, helps you show up in the map pack there.",
       },
       {
         q: "Should I use POA or Porto Alegre?",
-        a: "Use both. Locals often type POA, while visitors use the full name.",
+        a: "Use both, naturally. Gaúchos often type POA in searches and social posts, while visitors and directories use the full name. Including both in headings and page text covers either habit.",
       },
     ],
   },
