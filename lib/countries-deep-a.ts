@@ -467,191 +467,194 @@ export const COUNTRY_DEEP_A: Record<string, CountryDeep> = {
 
   norway: {
     overview: [
-      "Google is dominant in Norway, and most local searches are in Norwegian. Apple Maps is common on iPhones and Bing has a smaller share. Norwegians also use Gule Sider and 1881 to find businesses and phone numbers.",
-      "Norway has counties (fylker) and municipalities, with large distances between towns outside the main cities. Many businesses serve wide rural areas, so service area and town pages matter. Reviews and trust are central, and quote platforms like Mittanbud are popular for trades.",
+      "Google is the main search engine in Norway, and almost all local searches are in Norwegian. Apple Maps is widely used because iPhones are common, and Bing has a smaller share. Norwegians also look businesses up on Gule Sider and 1881, which work as both directories and phone lookups, so a number that shows the wrong name there costs calls.",
+      "Distance shapes everything. Outside Oslo, Bergen, Trondheim and Stavanger, towns are far apart and many businesses cover a whole municipality or several of them, so town and service area pages matter more than in denser countries. Trust is built through reviews, recommendations and visible company details, and for trades many homeowners start on Mittanbud to compare quotes. Demand is strongly seasonal, with the July holiday period (fellesferie) and the autumn and spring tyre change shifting what people search for.",
     ],
     directories: [
-      { name: "Gule Sider", why: "Norway's best-known business directory and a core citation." },
-      { name: "1881", why: "A widely used Norwegian directory and phone lookup service." },
-      { name: "Mittanbud", why: "A popular platform for getting quotes from tradespeople." },
-      { name: "Legelisten.no", why: "A review site for doctors and health providers in Norway." },
-      { name: "Proff.no", why: "A company information site customers use to check businesses." },
+      { name: "Gule Sider", why: "Norway's best-known business directory, with maps and reviews, and a core citation." },
+      { name: "1881", why: "A widely used directory and phone lookup, so your number must show the right business name." },
+      { name: "Mittanbud", why: "A leading quote platform where homeowners compare and review tradespeople." },
+      { name: "Legelisten.no", why: "Patients use it to find and review doctors, dentists and other health providers." },
+      { name: "Proff.no", why: "Shows company register and accounts data, which customers use to check a business before hiring." },
+      { name: "Tripadvisor", why: "Important for restaurants, hotels and tourism businesses, from Oslo to the fjords and Tromsø." },
     ],
     language:
-      "Write in Norwegian, usually Bokmål, though Nynorsk is common in parts of western Norway. Use local terms such as rørlegger (plumber), elektriker, tømrer (carpenter) and tannlege (dentist). In Oslo and Bergen, also cover the bydeler (city districts) people search by name, such as Grünerløkka or Frogner. Addresses use street then number, then a four-digit postcode and town. Norwegian phone numbers are eight digits with no area codes, with +47 internationally. Keep æ, ø and å correct across listings.",
+      "Write in Norwegian, normally Bokmål. Nynorsk is the main written form in many western and inland municipalities, and Northern Sami matters in parts of the far north, so match the area you serve. Use local terms such as rørlegger (plumber), elektriker, tømrer (carpenter), tannlege (dentist) and advokat (lawyer). In Oslo and Bergen, cover the bydeler (city districts) people search by name, such as Grünerløkka or Frogner. Addresses use street then number (for example, Storgata 10), then a four-digit postcode and town. Phone numbers are eight digits with no area codes, with +47 internationally. Show your organisation number (organisasjonsnummer) from the Brønnøysund Register Centre, and keep æ, ø and å correct everywhere.",
     rules:
-      "Norway is not in the EU but is in the EEA, so GDPR applies, overseen by Datatilsynet. The Marketing Control Act covers misleading advertising and fake reviews, enforced by the Consumer Authority. Marketing emails and texts generally need consent. Health professionals follow strict advertising rules.",
+      "Norway is not in the EU but is in the EEA, so GDPR applies through the Norwegian Personal Data Act, overseen by Datatilsynet. The Marketing Control Act (markedsføringsloven) bans misleading marketing, including fake or bought reviews, and it requires prior consent for most marketing emails and texts to private individuals. The Norwegian Consumer Authority (Forbrukertilsynet) enforces it and is known for acting on hidden advertising and influencer marketing. Health personnel must keep their advertising factual and objective under Norwegian health law, and lawyers follow the Norwegian Bar Association's rules of conduct.",
     tips: [
-      "Create town pages for the wide areas many Norwegian businesses serve.",
-      "Keep Gule Sider, 1881 and Google listings identical, with correct Norwegian characters.",
-      "Use Mittanbud for trades leads and collect reviews there and on Google.",
-      "Consider Nynorsk content if you serve areas where it is common.",
+      "Build pages for the municipalities and towns you actually drive to, since a single city page will not reach customers spread across a wide area.",
+      "Search your own number on 1881 and Gule Sider and fix any old or wrong business name linked to it.",
+      "Plan content and hours around fellesferie in July, Easter and the tyre change seasons, when demand and opening times shift.",
+      "Use Nynorsk pages if your service area is mainly Nynorsk, as it signals that you are a genuinely local business.",
     ],
     faqs: [
       {
-        q: "Does GDPR apply in Norway?",
-        a: "Yes. Norway is in the EEA, so GDPR applies, overseen by the Norwegian Data Protection Authority.",
+        q: "Can I send review requests by text to customers in Norway?",
+        a: "Usually only with consent. The Marketing Control Act requires prior consent for most marketing texts and emails to individuals. Asking a customer in person, or adding a review link to an invoice or service email they expect, is the safer route.",
       },
       {
-        q: "Should I write in Bokmål or Nynorsk?",
-        a: "Bokmål is most common, but Nynorsk is used in parts of western Norway. Match the language your customers use.",
+        q: "Should my website be in Bokmål or Nynorsk?",
+        a: "Bokmål reaches most of the country. If most of your customers live in western Norway or other areas where Nynorsk is the norm, Nynorsk pages can feel more local and are worth considering for key services.",
       },
       {
-        q: "Is Mittanbud worth it for Norwegian tradespeople?",
-        a: "Many homeowners use it to get quotes, so it can bring leads. Keep your details consistent with Google and your website.",
+        q: "Why does my phone number show another company's name in Norway?",
+        a: "Directories like 1881 and Gule Sider link numbers to businesses, and old records can linger after a number changes hands. Claim your listings and correct them, because customers often look up a number before calling back.",
       },
     ],
   },
 
   finland: {
     overview: [
-      "Google is the main search engine in Finland, and most local searches are in Finnish. Finland is officially bilingual, with Swedish spoken along the coast and in some cities. Apple Maps is common on iPhones and Bing has a smaller share.",
-      "Finland is divided into regions (maakunnat) and municipalities. Customers value accurate information, especially opening hours, and use Fonecta's directories alongside Google. Reviews matter, but Finns also tend to prefer clear, factual information over heavy marketing language. Seasonal patterns are strong, with demand for services shifting between the long winter and the short summer.",
+      "Google is the main search engine in Finland, and most local searches are in Finnish. Finland is officially bilingual, with Swedish spoken along the west and south coasts, in cities like Vaasa and parts of Helsinki and Espoo, and on the Åland Islands, which are Swedish-speaking. Apple Maps is common on iPhones and Bing has a smaller share. Fonecta's directory services, including Finder.fi, remain a familiar way to look up businesses.",
+      "Finnish grammar changes how people search. A plumber in Tampere might be searched as putkimies Tampere or putkimies Tampereella, using the place-name case ending, so pages should use both forms naturally. Finland is divided into regions (maakunnat) and municipalities. Customers tend to trust clear, factual information over heavy sales language, and seasons matter a lot, with winter services, the household tax credit for home work and the summer cottage (mökki) season all shaping demand.",
     ],
     directories: [
-      { name: "Fonecta", why: "Finland's main business directory provider and a core citation source." },
-      { name: "Finder.fi", why: "A Fonecta service customers use to find businesses and check details." },
-      { name: "YTJ (Business Information System)", why: "The official register that confirms your business ID (Y-tunnus) and details." },
-      { name: "Tripadvisor", why: "Important for restaurants, hotels and tourism businesses." },
-      { name: "Trustpilot", why: "Used by many Finnish service and ecommerce businesses for reviews." },
+      { name: "Fonecta", why: "Finland's main business directory provider, feeding listings to its own services and partners." },
+      { name: "Finder.fi", why: "A Fonecta business search site that customers use to check contact details and company data." },
+      { name: "YTJ (Business Information System)", why: "The official register for your business ID (Y-tunnus), which other directories draw on." },
+      { name: "Wolt", why: "Finnish-founded and widely used for food delivery, so restaurant details there should match Google." },
+      { name: "Tripadvisor", why: "Important for restaurants, hotels and tourism businesses, including Lapland." },
+      { name: "Trustpilot", why: "Used by many Finnish service and ecommerce businesses to collect public reviews." },
     ],
     language:
-      "Write in Finnish, with Swedish pages for bilingual areas such as parts of Helsinki, Espoo, Vaasa and Turku. Use local terms such as putkimies (plumber), sähköasentaja (electrician) and hammaslääkäri (dentist). Addresses use street then number, then a five-digit postcode and city. Phone numbers use area codes such as 09 for Helsinki, with +358 internationally. Show your Y-tunnus (business ID) on the site.",
+      "Write in Finnish, and add Swedish pages for bilingual areas. Use the Swedish city names on those pages (Helsingfors, Esbo, Åbo for Turku, Vasa for Vaasa). Use local terms such as putkimies (plumber), sähköasentaja (electrician), hammaslääkäri (dentist) and asianajaja (attorney). Include place names in their case forms, such as Helsingissä or Oulussa, as well as the base form. Addresses use street then number (for example, Mannerheimintie 10), then a five-digit postcode and city. Phone numbers use area codes such as 09 for Helsinki, with +358 internationally. Show your Y-tunnus on the site.",
     rules:
-      "GDPR applies, overseen by the Data Protection Ombudsman, with cookie consent required. The Consumer Protection Act covers misleading marketing and fake reviews, enforced by the Finnish Competition and Consumer Authority. EU rules require transparency on review checks. Marketing emails and texts generally need consent. Health professionals follow their own advertising rules.",
+      "GDPR applies, overseen by the Data Protection Ombudsman (Tietosuojavaltuutettu). Cookie consent and electronic direct marketing fall under Finland's electronic communications law, with Traficom supervising cookie rules, and marketing emails and texts to consumers generally need prior consent. The Consumer Protection Act bans misleading marketing, including fake reviews, and the Consumer Ombudsman at the Finnish Competition and Consumer Authority (KKV) enforces it. Health professionals are supervised by Valvira and regional authorities, and their marketing must stay factual. Attorneys follow the Finnish Bar Association's rules.",
     tips: [
-      "Add Swedish pages if you serve bilingual coastal areas or Swedish-speaking customers.",
-      "Keep opening hours accurate across Google and Fonecta, as Finnish customers rely on them.",
-      "Show your Y-tunnus and full business details, which Finnish customers expect.",
-      "Write factual, clear content rather than heavy marketing language.",
+      "Use Finnish place names in both base and case forms on city pages, such as Tampere and Tampereella, so the text matches how people search.",
+      "If you offer work that qualifies for the household tax credit (kotitalousvähennys), say so clearly on service pages.",
+      "Update Google and Fonecta hours for juhannus (Midsummer), Christmas and the July holiday period, when many businesses close or shorten hours.",
+      "Add Swedish pages with Swedish place names if you serve Vaasa, the coast or Swedish-speaking customers in Helsinki and Espoo.",
     ],
     faqs: [
       {
-        q: "Do I need Swedish pages in Finland?",
-        a: "Only if you serve Swedish-speaking areas or customers. In bilingual cities and coastal regions, Swedish pages can help reach more customers.",
+        q: "Does Finnish grammar affect local SEO?",
+        a: "Yes. Finnish adds endings to place names, so people search for Helsinki, Helsingissä and similar forms. Pages that use these forms naturally match more searches than pages that repeat only the base name.",
       },
       {
-        q: "Is Fonecta important for local SEO?",
-        a: "Yes. Fonecta is a key source of business data in Finland, and accurate listings help keep your information consistent.",
+        q: "Should I mention the household tax credit on my site?",
+        a: "If your work qualifies, yes. Many homeowners look for services that qualify for kotitalousvähennys, and clear information on your pages helps them choose you. Do not promise a specific amount; point to the Tax Administration for details.",
       },
       {
-        q: "Should I show my Y-tunnus on my website?",
-        a: "Yes. It builds trust and helps customers and platforms confirm your business details.",
+        q: "Do I need Swedish pages for customers in Helsinki?",
+        a: "Not always. Most Helsinki residents search in Finnish, but there is a real Swedish-speaking community. Swedish pages for key services, using Helsingfors and other Swedish names, can reach customers your competitors miss.",
       },
     ],
   },
 
   spain: {
     overview: [
-      "Google dominates search in Spain, and most local searches are in Spanish. Catalan, Basque, Galician and Valencian are co-official in their regions, and many people search in those languages. Apple Maps is common on iPhones and Bing has a smaller share.",
-      "Spain has 17 autonomous communities and 50 provinces. Major cities like Madrid and Barcelona are split into districts (distritos) and neighbourhoods (barrios) that people search by name. Tourism is huge, so many businesses also serve visitors searching in English, German or French.",
+      "Google dominates search in Spain, and local searches such as fontanero cerca de mí or dentista en Valencia are very common. Apple Maps is widely used on iPhones, and Bing has a smaller share. Spanish customers rely on Google reviews and on platforms that suit their sector, such as Doctoralia for health, Habitissimo for home improvement and TheFork for restaurants. WhatsApp is a normal way to contact a local business, so a WhatsApp number is often expected alongside the phone.",
+      "Spain has 17 autonomous communities, 50 provinces and two autonomous cities, and language follows the map. Catalan is co-official in Catalonia and the Balearic Islands, Valencian in the Valencian Community, Basque in the Basque Country and parts of Navarre, and Galician in Galicia. Madrid and Barcelona are split into districts (distritos) and neighbourhoods (barrios) that people search by name, such as Chamberí or Gràcia. Opening hours are distinctive too, with many businesses using split hours (horario partido) and reduced hours or closures in August.",
     ],
     directories: [
       { name: "Páginas Amarillas", why: "Spain's best-known business directory and a core citation." },
-      { name: "Habitissimo", why: "A major platform for finding and reviewing home improvement professionals." },
-      { name: "Doctoralia", why: "The main site for finding and booking doctors and specialists." },
-      { name: "TheFork (ElTenedor)", why: "A key restaurant booking and review platform." },
-      { name: "Tripadvisor", why: "Essential for restaurants, hotels and tourism businesses." },
+      { name: "Habitissimo", why: "A major platform where homeowners find, compare and review reformas (renovation) professionals." },
+      { name: "Doctoralia", why: "The leading site for finding, booking and reviewing doctors, dentists and clinics." },
+      { name: "TheFork (ElTenedor)", why: "A key restaurant booking and review platform, especially in Madrid and Barcelona." },
+      { name: "Tripadvisor", why: "Essential in tourist areas such as the Costa del Sol, the Balearics and the Canary Islands." },
     ],
     language:
-      "Write in Spanish, with Catalan pages for Catalonia, Basque for the Basque Country and Galician for Galicia where you serve local customers. Use Spain's terms, such as fontanero (plumber), abogado (lawyer) and dentista, not Latin American ones. Addresses put the street type first (for example, Calle Mayor 10), then a five-digit postcode and city. Phone numbers are nine digits, with +34 internationally.",
+      "Write in Spanish from Spain, not Latin American Spanish: fontanero (plumber), not plomero; reformas for renovations; gestoría for an administrative agency; abogado and dentista. Add Catalan pages for Barcelona and Catalonia, Valencian for Valencia and Alicante, and Basque or Galician where you serve local customers. Addresses put the street type first and often include floor and door (for example, Calle Mayor 10, 3º 2ª), then a five-digit postcode and city; keep abbreviations like C/ and Avda. identical across listings. Phone numbers are nine digits, with landlines starting with 9 (91 for Madrid, 93 for Barcelona) and mobiles with 6 or 7, and +34 internationally. Show your NIF on the site.",
     rules:
-      "GDPR applies, overseen by the AEPD, with strict cookie consent. The LSSI requires websites to show business information. Spanish consumer law covers misleading advertising and fake reviews, and EU rules require transparency on review checks. Health professionals follow their own advertising rules.",
+      "GDPR applies alongside Spain's data protection law (LOPDGDD), and the AEPD is an active regulator, including on cookies and marketing emails sent without consent. The LSSI requires commercial websites to show the business name, NIF, address, contact email and, where relevant, registry details, and it requires prior consent for most commercial emails and texts. Fake reviews and misleading claims breach Spain's unfair competition and consumer protection laws, and EU rules require you to say how reviews are checked. Consumer-facing businesses must also offer official complaint forms (hojas de reclamaciones), which are regulated by each autonomous community. In Catalonia, consumers have the right to be served in Catalan. Health centres and lawyers follow their own regional and professional advertising rules.",
     tips: [
-      "Add regional language pages in Catalonia, the Basque Country and Galicia.",
-      "Build pages for barrios and districts in Madrid and Barcelona.",
-      "Add English pages in tourist areas like Málaga, Alicante and Palma.",
-      "Use sector platforms like Doctoralia or Habitissimo and keep details matched with Google.",
+      "Set split hours and August hours correctly on Google and every directory, since wrong hours are a common source of bad reviews in Spain.",
+      "Show a WhatsApp contact option on your site and profile, because many Spanish customers prefer to message first.",
+      "Build Catalan or Valencian versions of key pages in those regions, with hreflang, rather than relying on Spanish alone.",
+      "In tourist areas, add English pages (and German or French where relevant) for foreign residents and visitors, but keep Spanish pages as the base for local customers.",
     ],
     faqs: [
       {
-        q: "Do I need Catalan pages in Barcelona?",
-        a: "It helps. Many people in Catalonia search in Catalan, and Catalan pages show local commitment.",
+        q: "Do I need Catalan pages for a business in Barcelona?",
+        a: "It is strongly recommended. Many people in Catalonia search and read in Catalan, and Catalan consumer rules give customers the right to be served in Catalan. Spanish and Catalan versions together reach the whole local market.",
       },
       {
-        q: "Should I use Latin American Spanish terms?",
-        a: "No. Use Spain's terms, such as fontanero instead of plomero. Spanish customers notice the difference.",
+        q: "What legal information must a Spanish business website show?",
+        a: "Under the LSSI, a commercial website should show your business name, NIF, address and contact email, plus registry details if you are registered. Most businesses put this in an aviso legal page linked from the footer, alongside a privacy and cookie policy.",
       },
       {
-        q: "Is Habitissimo worth it?",
-        a: "Many homeowners use it to find professionals, so it can bring leads. Keep your details consistent with Google.",
+        q: "How should I list opening hours in Spain?",
+        a: "Use your real hours, including split hours such as morning and late afternoon. Update Google and directories for August, public holidays and regional festivals, which differ between autonomous communities and towns.",
       },
     ],
   },
 
   italy: {
     overview: [
-      "Google is dominant in Italy, and most local searches are in Italian. Apple Maps is common on iPhones and Bing has a smaller share. Italians rely heavily on personal recommendations, so reviews and reputation matter.",
-      "Italy has 20 regions, each split into provinces, and the north and south differ a lot in how people choose businesses. Big cities like Rome and Milan are split into districts (municipi or quartieri) that people search by name. Tourism is important, so many businesses also serve visitors searching in English.",
+      "Google is dominant in Italy, and most local searches are in Italian, often with a city or district name. Apple Maps is common on iPhones, and Bing has a smaller share. Personal recommendations carry a lot of weight, so Google reviews act as the online version of word of mouth. Sector platforms also matter: MioDottore for health, ProntoPro for trades and professionals, and TheFork and Tripadvisor for restaurants.",
+      "Italy has 20 regions, each split into provinces, and many habits differ between north and south. Big cities are divided into districts: Rome into 15 numbered municipi and Milan into 9, plus many quartieri that people actually search by name, such as Trastevere or Navigli. Two regions are bilingual: South Tyrol (Alto Adige), where German is widely spoken, and the Aosta Valley, where French is co-official. Opening hours often include a lunch break and change around Ferragosto in mid-August.",
     ],
     directories: [
       { name: "PagineGialle", why: "Italy's best-known business directory and a core citation." },
-      { name: "PagineBianche", why: "A widely used Italian directory for finding businesses and phone numbers." },
-      { name: "MioDottore", why: "The main site for finding and booking doctors and specialists." },
-      { name: "ProntoPro", why: "A platform for finding and reviewing local professionals." },
-      { name: "TheFork", why: "A key restaurant booking and review platform." },
-      { name: "Tripadvisor", why: "Essential for restaurants, hotels and tourism businesses." },
+      { name: "PagineBianche", why: "A widely used directory for looking up businesses and phone numbers." },
+      { name: "MioDottore", why: "The leading site for finding, booking and reviewing doctors and dentists." },
+      { name: "ProntoPro", why: "A platform customers use to request quotes from local tradespeople and professionals." },
+      { name: "TheFork", why: "A key restaurant booking and review platform in Italian cities." },
+      { name: "Tripadvisor", why: "Essential for restaurants, hotels and tourism businesses in a major tourism market." },
     ],
     language:
-      "Write in Italian, using local terms such as idraulico (plumber), elettricista and commercialista (accountant). Addresses put the street type first (for example, Via Roma 10), then a five-digit postcode (CAP) and city with province code. Phone numbers keep the leading zero (such as 06 for Rome and 02 for Milan), with +39 internationally. Show your Partita IVA (VAT number) on the site.",
+      "Write in Italian, using local terms such as idraulico (plumber), elettricista, imbianchino (painter), commercialista (accountant) and avvocato. Add German pages for South Tyrol and French where relevant in the Aosta Valley. Addresses put the street type first (for example, Via Roma 10), then a five-digit postcode (CAP), the city and the two-letter province code (for example, 00184 Roma RM). Phone numbers keep the leading zero (06 for Rome, 02 for Milan), with +39 internationally, and mobiles start with 3. Show your Partita IVA, and many businesses also show their PEC (certified email) address.",
     rules:
-      "GDPR applies, overseen by the Garante, with strict cookie consent. Italian businesses must show their Partita IVA on websites. Consumer law covers misleading advertising and fake reviews, enforced by AGCM. EU rules require transparency on review checks. Health professionals follow strict advertising rules.",
+      "GDPR applies, overseen by the Garante per la protezione dei dati personali, which has issued detailed cookie guidelines, so trackers must not load before consent and the cookie banner must make refusing easy. Italian VAT law requires businesses to show their Partita IVA on their website. The Consumer Code (Codice del Consumo) bans misleading practices, including fake reviews, and the AGCM enforces it. EU rules require transparency about how reviews are checked. Marketing emails and texts generally need prior consent. Health providers must keep advertising informative and in line with their professional code, and lawyers follow the forensic code of conduct, which limits how they promote themselves.",
     tips: [
-      "Show your Partita IVA on every page, usually in the footer.",
-      "Build pages for districts in Rome and Milan.",
-      "Add English pages in tourist cities like Florence and Rome.",
-      "Use sector platforms like MioDottore or ProntoPro and keep details matched with Google.",
+      "Put your Partita IVA and full company details in the footer of every page, which Italian customers and the law both expect.",
+      "Build pages for the quartieri you serve in Rome, Milan and Naples, using the names locals use, not just municipio numbers.",
+      "Update Google hours for lunch breaks, Ferragosto and local patron saint holidays, which differ from city to city.",
+      "For South Tyrol, publish German and Italian pages with matching listings, and use both place names (Bolzano and Bozen).",
     ],
     faqs: [
       {
-        q: "Do I need to show my Partita IVA online?",
-        a: "Yes. Italian businesses must show their VAT number on their websites.",
+        q: "Do I need to show my Partita IVA on my website?",
+        a: "Yes. Italian businesses with a VAT number must show it on their website, usually in the footer. Showing it with your full company details also builds trust with Italian customers.",
       },
       {
-        q: "Are PagineGialle and PagineBianche still used?",
-        a: "Yes. Both are well known in Italy and help keep your business data consistent.",
+        q: "Should I target Rome by municipio or by neighbourhood?",
+        a: "By neighbourhood, mostly. Romans rarely search by municipio number, but they do search for areas like Prati, Trastevere or EUR. Use neighbourhood names on your pages and mention the municipio only as extra context.",
       },
       {
-        q: "Should I write for each city differently?",
-        a: "Yes. Local terms, landmarks and districts differ, and pages that reflect the city feel more trustworthy.",
+        q: "Can an Italian doctor or dentist collect online reviews?",
+        a: "Yes, they can manage profiles on Google and MioDottore and ask patients for honest feedback. Replies must protect patient confidentiality, and advertising must stay informative and within the rules of their professional order.",
       },
     ],
   },
 
   portugal: {
     overview: [
-      "Google is dominant in Portugal, and most local searches are in Portuguese. Apple Maps is common on iPhones and Bing has a smaller share. Lisbon, Porto and the Algarve have strong international demand from tourists and foreign residents.",
-      "Portugal has districts, municipalities (concelhos) and parishes (freguesias). People search by city and often by parish in Lisbon and Porto. Reviews and reputation matter, and Portal da Queixa is a well-known place where customers post complaints. Funchal (Madeira) and the Azores are island markets with their own seasonal and tourism patterns.",
+      "Google is dominant in Portugal, and most local searches are in Portuguese. Apple Maps is common on iPhones, and Bing has a smaller share. In Lisbon, Porto, the Algarve and Madeira, there is also strong English-language demand from tourists and the many foreign residents who have moved there, so these markets often need two languages.",
+      "Portugal is organised into districts, municipalities (concelhos) and parishes (freguesias), and people search by city and often by neighbourhood or parish, such as Alfama, Belém or Foz do Douro. Customers check Google reviews, and many also look at Portal da Queixa, a well-known public complaints site, before they buy. For trades and home services, Zaask and Fixando are common ways to request quotes. Madeira and the Azores are island markets with their own tourism patterns.",
     ],
     directories: [
       { name: "Páginas Amarelas", why: "Portugal's best-known business directory and a core citation." },
-      { name: "Zaask", why: "A popular platform for finding and reviewing local professionals." },
-      { name: "Fixando", why: "A platform homeowners use to request quotes from service providers." },
-      { name: "Portal da Queixa", why: "A well-known complaints platform; how you respond affects reputation." },
+      { name: "Zaask", why: "A popular platform for requesting quotes from local professionals and trades." },
+      { name: "Fixando", why: "A service marketplace homeowners use to compare quotes and reviews." },
+      { name: "Portal da Queixa", why: "A widely read complaints site; public, polite replies there protect your reputation." },
+      { name: "TheFork", why: "A key restaurant booking and review platform in Lisbon and Porto." },
       { name: "Tripadvisor", why: "Essential for restaurants, hotels and tourism businesses." },
     ],
     language:
-      "Write in European Portuguese, not Brazilian. Use terms such as canalizador (plumber, not encanador), advogado and dentista. Addresses put the street type first (for example, Rua Augusta 10), then a postcode in the format 1234-567 and city. Phone numbers are nine digits, with area codes such as 21 for Lisbon and 22 for Porto, and +351 internationally. Show your NIF on the site.",
+      "Write in European Portuguese, not Brazilian. Use terms such as canalizador (plumber, not encanador), eletricista, obras (building work), advogado and dentista. Addresses put the street type first, often with floor and side (for example, Rua Augusta, 10, 2.º Esq.), then a postcode in the format 1234-567 and the town. Phone numbers are nine digits: landlines start with 2 (21 for Lisbon, 22 for Porto) and mobiles with 9, with +351 internationally. Show your NIF or NIPC on the site, and add English pages where you serve foreign residents.",
     rules:
-      "GDPR applies, overseen by the CNPD, with cookie consent required. Businesses must offer the Livro de Reclamações (complaints book), including the electronic version. Consumer law covers misleading advertising and fake reviews, and EU rules require transparency on review checks. Health professionals follow their own advertising rules.",
+      "GDPR applies, overseen by the CNPD, with cookie consent required and prior consent needed for most marketing emails and texts. Businesses serving consumers must provide the complaints book (Livro de Reclamações), and those with a website must link to its electronic version. Consumer-facing websites must also tell customers which alternative dispute resolution (RAL) entities they can use. The Advertising Code and consumer law ban misleading claims, including fake reviews, enforced by bodies such as the Directorate-General for Consumers and ASAE. Health providers must be registered with the health regulator (ERS), and doctors and lawyers follow the advertising rules of their professional orders.",
     tips: [
-      "Use European Portuguese terms, not Brazilian ones.",
-      "Link to the electronic Livro de Reclamações on your website.",
-      "Add English pages in Lisbon, Porto and the Algarve for international customers.",
-      "Respond to Portal da Queixa complaints quickly and politely.",
+      "Add the electronic Livro de Reclamações link and RAL information to your website footer, since both are expected of consumer-facing businesses.",
+      "Create English pages for Lisbon, Porto, the Algarve and Madeira, with hreflang, while keeping European Portuguese pages for local customers.",
+      "Reply to every Portal da Queixa complaint publicly and calmly, then solve it offline; a visible fix often wins more trust than no complaints at all.",
+      "Build neighbourhood or parish pages in Lisbon and Porto, using names locals actually search, such as Campo de Ourique or Matosinhos.",
     ],
     faqs: [
       {
+        q: "Do I need the electronic complaints book on my website?",
+        a: "Yes, if you sell to consumers and have a website. Portuguese law requires a visible link to the electronic Livro de Reclamações, usually in the footer, alongside information about alternative dispute resolution entities.",
+      },
+      {
         q: "Should I use European or Brazilian Portuguese?",
-        a: "European Portuguese. Portuguese customers notice Brazilian terms and spelling.",
+        a: "European Portuguese. Spelling, vocabulary and tone differ, and Portuguese customers notice Brazilian terms such as encanador. Content written for Portugal reads as more local and trustworthy.",
       },
       {
-        q: "Do I need to show the Livro de Reclamações online?",
-        a: "Many businesses must provide access to the electronic complaints book, usually via a link on their website.",
-      },
-      {
-        q: "Are English pages worth it in Portugal?",
-        a: "In Lisbon, Porto and the Algarve, yes. Many foreign residents and tourists search in English.",
+        q: "How should I handle a complaint on Portal da Queixa?",
+        a: "Reply quickly, politely and in public, then contact the customer to fix the problem. Future customers read these threads, and a calm, helpful reply shows you take service seriously. Never post fake positive replies or reviews.",
       },
     ],
   },
