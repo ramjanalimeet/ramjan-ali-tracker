@@ -27,3 +27,27 @@ export type CountryDeep = {
   /** Three country-specific questions and answers. */
   faqs: { q: string; a: string }[];
 };
+
+/** City-specific content for one international city guide (/locations/countries/<country>/<city>). */
+export type GlobalCityGuide = {
+  /** Meta description, unique to this city, 120 to 155 characters. */
+  summary: string;
+  /** Hero lead, two sentences about this city and its local search market. */
+  lead: string;
+  /** What kind of place this is and what its local business landscape looks like. Two short paragraphs. */
+  profile: [string, string];
+  /** Five real districts, neighbourhoods or suburbs people search by, each with one line on why it matters. */
+  areas: { name: string; note: string }[];
+  /** Three or four real nearby towns or suburbs in the same catchment. */
+  nearby: string[];
+  /** The language(s) people search in here and any local wording to use. One or two sentences. */
+  language: string;
+  /** Three rows of local demand patterns: seasons, tourism, events, academic year, weather. */
+  demand: { when: string; what: string }[];
+  /** Five example local searches, in the local language where that is how people search. */
+  queries: string[];
+  /** Three local business types where map pack competition is strongest here. */
+  sectors: string[];
+  /** Two city-specific questions and answers. */
+  faqs: { q: string; a: string }[];
+};
