@@ -88,7 +88,7 @@ export function InboxView({ ctx }: { ctx: AppCtx }) {
               ctx.refreshBadge();
             }}
           >
-            <Icon name="check" size={14} /> Mark all read
+            <Icon name="check" size={14} /><span className="adm-mark-label">Mark all read</span>
           </button>
         </div>
         <div className="adm-chips">

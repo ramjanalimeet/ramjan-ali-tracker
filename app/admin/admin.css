@@ -2445,3 +2445,170 @@ body:has(.adm-login) {
   .adm .adm-reply textarea { min-height: 52px; }
   .adm .adm-overview-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+/* Inbox mobile polish. Keep this last so legacy responsive rules cannot
+   override the app-style layout. */
+@media (max-width: 760px) {
+  .adm-main:has(.adm-inbox) .adm-topbar {
+    display: none;
+  }
+
+  .adm-main:has(.adm-inbox) {
+    min-height: calc(100dvh - 64px - env(safe-area-inset-bottom));
+  }
+
+  .adm .adm-inbox {
+    height: calc(100dvh - 64px - env(safe-area-inset-bottom));
+    min-height: 0;
+    overflow: hidden;
+    background: #f8faf6;
+  }
+
+  .adm .adm-inbox-list {
+    min-width: 0;
+    background: #fff;
+  }
+
+  .adm .adm-inbox-top {
+    min-height: 58px;
+    padding: calc(10px + env(safe-area-inset-top)) 14px 8px;
+    gap: 4px;
+    border-bottom: 0;
+  }
+
+  .adm .adm-inbox-top h1 {
+    min-width: 0;
+    margin-right: auto;
+    font-size: 23px;
+    line-height: 1;
+  }
+
+  .adm .adm-inbox-top .adm-icon-btn,
+  .adm .adm-inbox-top .adm-link {
+    flex: 0 0 auto;
+    width: 36px;
+    height: 36px;
+    min-height: 36px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 11px;
+    color: #4d554b;
+  }
+
+  .adm .adm-inbox-top .adm-link {
+    font-size: 0;
+  }
+
+  .adm .adm-inbox-top .adm-link svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .adm .adm-inbox-list > .adm-chips {
+    position: relative;
+    display: flex;
+    width: 100%;
+    gap: 7px;
+    padding: 2px 14px 12px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    border-bottom: 1px solid #edf0e9;
+  }
+
+  .adm .adm-inbox-list > .adm-chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .adm .adm-inbox-list .adm-chip {
+    flex: 0 0 auto;
+    min-height: 34px;
+    padding: 5px 11px;
+    gap: 6px;
+    border-radius: 999px;
+    scroll-snap-align: start;
+    font-size: 12px;
+  }
+
+  .adm .adm-inbox-list .adm-chip span {
+    min-width: 18px;
+    height: 18px;
+    padding-inline: 4px;
+    font-size: 10px;
+  }
+
+  .adm .adm-mlist {
+    flex: 1;
+    min-height: 0;
+    padding: 8px 10px 18px;
+    background: #f8faf6;
+  }
+
+  .adm .adm-mlist li {
+    min-height: 76px;
+    margin: 0 0 7px;
+    padding: 12px;
+    gap: 11px;
+    border: 1px solid #e8ece4;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 3px 12px rgba(31, 40, 27, .035);
+  }
+
+  .adm .adm-mlist li.unread {
+    border-color: #dce8cf;
+    background: #fbfff6;
+    box-shadow: inset 3px 0 #a9e728, 0 3px 12px rgba(31, 40, 27, .04);
+  }
+
+  .adm .adm-mlist-main {
+    min-width: 0;
+  }
+
+  .adm .adm-mlist-top b,
+  .adm .adm-mlist-subj,
+  .adm .adm-mlist-snip {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .adm .adm-mlist-top b {
+    font-size: 14px;
+  }
+
+  .adm .adm-mlist-top time {
+    flex: 0 0 auto;
+    margin-left: 8px;
+    font-size: 11px;
+  }
+
+  .adm .adm-mlist-subj {
+    font-size: 12.5px;
+  }
+
+  .adm .adm-mlist-snip {
+    font-size: 12px;
+    color: #737a70;
+  }
+
+  .adm .adm-inbox.has-sel .adm-inbox-detail {
+    height: 100%;
+    min-height: 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .adm .adm-inbox-top {
+    padding-inline: 11px;
+  }
+
+  .adm .adm-inbox-list > .adm-chips {
+    padding-inline: 11px;
+  }
+
+  .adm .adm-mlist {
+    padding-inline: 7px;
+  }
+}
