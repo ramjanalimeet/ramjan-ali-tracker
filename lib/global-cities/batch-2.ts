@@ -26,7 +26,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     sectors: ["restaurants and bars", "auto repair", "dentists"],
     faqs: [
       { q: "Should a Long Beach business target \"Los Angeles\" searches too?", a: "Usually not as the main target. Google treats Long Beach as its own city, and most local customers search with Long Beach or a neighborhood name. Rank for those first, then add pages for nearby cities like Lakewood or Signal Hill if you serve them." },
-      { q: "Is it worth having a Spanish version of my site in Long Beach?", a: "For many service businesses, yes. A large share of residents search in Spanish, and a translated service page plus Spanish replies to reviews can win customers that English-only competitors miss." },
+      { q: "Is it worth having a Spanish version of my site in Long Beach?", a: "For many service businesses, yes. Many residents search in Spanish, and a translated service page plus Spanish replies to reviews can win customers that English-only competitors miss." },
     ],
   },
   "united-states/virginia-beach": {
@@ -118,7 +118,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     lead: "Minneapolis has hard winters and busy summers, and local search demand swings with both. Its neighborhoods have strong identities, and customers often search by them.",
     profile: [
       "Minneapolis is the commercial heart of Minnesota and, with neighboring St. Paul, the core of the Twin Cities metro. It is home to major corporate headquarters, the University of Minnesota and a chain of city lakes, with a skyway system linking downtown buildings.",
-      "Customers include office workers, students and families in older single-family neighborhoods. Home services, restaurants, breweries and healthcare compete strongly, and businesses here must plan for snow, cold and the rush of the short summer.",
+      "Office workers, University of Minnesota students and families in older houses all shop locally here. Aging housing keeps plumbers, electricians and HVAC firms busy, while restaurants and breweries crowd the map pack, and every business has to plan for snow, deep cold and a short, intense summer.",
     ],
     areas: [
       { name: "Downtown Minneapolis", note: "Corporate core linked by skyways, where lunch, fitness and professional services see weekday searches." },
@@ -174,7 +174,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     lead: "Bakersfield is a working city built on oil and agriculture in Kern County. Customers search for practical services, and summer heat makes AC repair one of the hottest local markets.",
     profile: [
       "Bakersfield sits at the southern end of California's San Joaquin Valley, surrounded by farmland and oil fields. It has its own country music history, and a steadily growing population of families drawn by lower housing costs than coastal California.",
-      "Customers include farm and oil workers, families in newer subdivisions and commuters. HVAC, auto repair, solar installers and healthcare compete heavily, and businesses often serve wide areas across the county, so service-area setup matters.",
+      "Farm and oil field workers, families in newer subdivisions and long-distance commuters make up much of the market. HVAC, auto repair and solar installers fight hard for searches, and many businesses cover wide stretches of Kern County, so a well-set service area matters.",
     ],
     areas: [
       { name: "Downtown Bakersfield", note: "Older core with restaurants, offices and civic buildings, seeing a slow revival." },
@@ -184,7 +184,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "Seven Oaks", note: "Upscale area in the southwest with demand for premium home and personal services." },
     ],
     nearby: ["Delano", "Shafter", "Arvin", "Tehachapi"],
-    language: "English and Spanish are both widely used. Many residents search in Spanish, so Spanish pages and listings help most service businesses here.",
+    language: "Spanish is as common as English in many Bakersfield households, especially in East Bakersfield and the farm towns nearby. Bilingual listings and pages pay off for most service businesses.",
     demand: [
       { when: "Summer", what: "Extreme valley heat makes AC repair, pool service and solar searches spike." },
       { when: "Harvest season", what: "Farm work and processing increase demand for truck repair, equipment parts and worker housing." },
@@ -202,7 +202,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     lead: "Wichita is known as the Air Capital of the World for its long aircraft manufacturing history. Local search here is practical: homeowners, factory workers and families looking for nearby, trusted services.",
     profile: [
       "Wichita is the main commercial center of Kansas, sitting on the Arkansas River in the south-central part of the state. Aviation manufacturing is a major employer, alongside healthcare, agriculture and Wichita State University.",
-      "Customers are often long-time residents who value reliability and word of mouth. Roofers, HVAC, auto repair and healthcare compete strongly, and spring storms can change demand overnight.",
+      "Long-time residents here lean on reliability and word of mouth, and online reviews now carry that same weight. Roofers, HVAC firms, mechanics and clinics are the busiest map pack categories, and a single spring storm can reshape demand overnight.",
     ],
     areas: [
       { name: "Old Town", note: "Downtown brick warehouse district with restaurants, bars and entertainment searches." },
@@ -333,13 +333,13 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     queries: ["plombier Montréal urgence", "dentiste Plateau Mont-Royal", "déménageur 1er juillet Montréal", "restaurant Vieux-Montréal", "lawyer downtown Montreal"],
     sectors: ["restaurants", "renovation contractors", "movers"],
     faqs: [
-      { q: "Do I need a French version of my website in Montreal?", a: "Yes. Most locals search in French, and Quebec's language rules expect French to be present in business communications. Write proper French pages, not machine translations, and keep an English version for anglophone customers." },
+      { q: "Do I need a French version of my website in Montreal?", a: "Yes. Local customers search in French, and Quebec's language rules expect French to be present in business communications. Write proper French pages, not machine translations, and keep an English version for anglophone customers." },
       { q: "When should movers start promoting for July 1?", a: "Earlier than most expect. Tenants book weeks or months before Moving Day, so seasonal pages and Google Business Profile updates should be live by spring." },
     ],
   },
   "canada/vancouver": {
     summary: "Local SEO for Vancouver businesses, from Kitsilano and Gastown to Mount Pleasant, built for a rainy, multilingual Pacific market with tourists and condo dwellers.",
-    lead: "Vancouver is a coastal city between mountains and ocean, with dense condo neighbourhoods and a busy port. Many customers search in Chinese, Punjabi and other languages, as well as English.",
+    lead: "Vancouver is a coastal city between mountains and ocean, with dense condo neighbourhoods and a busy port. Its customers search in English, Chinese, Punjabi and more, often switching between them.",
     profile: [
       "Vancouver is the core of Metro Vancouver in British Columbia. It is a major Pacific port, a film and tech centre and a tourist destination, with neighbourhoods packed into a small area between water and mountains.",
       "High housing costs and dense living shape demand for services. Restaurants, dentists, real estate, renovation and wellness businesses face crowded map results, and multilingual pages can reach customers others miss.",
@@ -361,7 +361,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     queries: ["dentist Kitsilano", "sushi Yaletown", "roof repair Vancouver rain", "brewery Mount Pleasant", "massage therapist downtown Vancouver"],
     sectors: ["restaurants", "dentists", "home renovation"],
     faqs: [
-      { q: "Should I build pages for Burnaby and Richmond?", a: "Only if you really work there. Burnaby and Richmond are separate municipalities, and residents tend to search with their own city name, so a Vancouver page alone rarely reaches them." },
+      { q: "Do customers in Burnaby and Richmond find my Vancouver page?", a: "Only if you really work there. Burnaby and Richmond are separate municipalities, and residents tend to search with their own city name, so a Vancouver page alone rarely reaches them." },
       { q: "Is it worth adding Chinese-language content?", a: "It depends on your clients. Long-settled Cantonese speakers often read traditional characters, while newer Mandarin-speaking arrivals usually read simplified. Ask clients before you translate." },
     ],
   },
@@ -398,7 +398,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     lead: "Edmonton is Alberta's capital and a gateway to northern resource industries. Its long, cold winters and busy summer festival season shape what local customers search for.",
     profile: [
       "Edmonton sits on the North Saskatchewan River, with a long river valley park system running through the city. Government, the University of Alberta, energy services and West Edmonton Mall all shape its economy.",
-      "Customers include public servants, students, oil field workers and families in growing suburbs. Furnace repair, auto services, roofing and restaurants compete strongly, and winter preparedness is a constant theme.",
+      "Public servants, students, oil field workers on rotation and families in new suburbs all shop here. Furnace repair, auto services, roofing and restaurants see heavy competition, and every service business has to plan around winter.",
     ],
     areas: [
       { name: "Old Strathcona", note: "Historic area on Whyte Avenue with restaurants, bars and independent shops." },
@@ -454,7 +454,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     lead: "Winnipeg sits at the meeting of the Red and Assiniboine rivers, near the centre of Canada. Its very cold winters and tight-knit communities shape how locals search and choose businesses.",
     profile: [
       "Winnipeg is Manitoba's capital and a transport and distribution hub for the prairies. The Forks, the Exchange District's historic buildings and the Canadian Museum for Human Rights draw visitors.",
-      "Many residents are long-time locals who value trust and word of mouth, so reviews carry weight. Furnace repair, plumbing, auto services and restaurants compete strongly, and winter planning is essential.",
+      "Many Winnipeggers have lived here for generations and trust businesses friends recommend, so online reviews act as a stand-in for that word of mouth. Furnace and plumbing trades, auto shops and restaurants face the stiffest map competition, and winter readiness is never optional.",
     ],
     areas: [
       { name: "Exchange District", note: "Historic downtown area with restaurants, creative businesses and events." },
@@ -482,7 +482,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     lead: "Quebec City is the capital of Quebec and one of the most French-speaking cities in North America. Locals search almost entirely in French, while tourists add English searches in high season.",
     profile: [
       "Quebec City sits on cliffs above the St. Lawrence River, with a walled historic old town recognized by UNESCO. Government, universities, insurance and tourism are major parts of the economy.",
-      "Most customers are francophone residents, and French is the default for business communication. Restaurants, hotels, renovation firms and healthcare compete strongly, and tourist seasons change demand in the old town.",
+      "Francophone residents make up most of the market, and French is the expected language of business. Restaurants and hotels in the old town chase tourists, renovation firms and clinics serve the suburbs, and the seasons swing demand sharply between the two.",
     ],
     areas: [
       { name: "Vieux-Québec", note: "Historic walled city with hotels, restaurants and heavy tourist traffic." },
@@ -501,7 +501,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     queries: ["restaurant Vieux-Québec", "déneigement Québec", "dentiste Sainte-Foy", "plombier Limoilou", "hôtel près du Château Frontenac"],
     sectors: ["restaurants and hotels", "renovation contractors", "healthcare clinics"],
     faqs: [
-      { q: "Do I need English pages in Quebec City?", a: "Only if you serve tourists or English-speaking clients. Most locals search in French, so your main pages, Google Business Profile and review replies should be in French." },
+      { q: "Do I need English pages in Quebec City?", a: "Only if you serve tourists or English-speaking clients. Residents expect French, so your main pages, Google Business Profile and review replies should be in French." },
       { q: "Should I target Lévis as well?", a: "If you serve the south shore, yes. Lévis is a separate city and people there search with its name, so a dedicated French page helps." },
     ],
   },
@@ -510,7 +510,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     lead: "Hamilton is an old steel city at the western end of Lake Ontario that has reinvented itself around healthcare and education. Many new residents have moved from Toronto, and they rely on Google to find local businesses.",
     profile: [
       "Hamilton is split by the Niagara Escarpment, which locals call \"the Mountain\", into the lower city and upper city. McMaster University, large hospitals and steel and manufacturing all shape the economy.",
-      "Customers include long-time working families, students and newcomers from the Toronto area. Home services, restaurants, dentists and contractors compete strongly, and searches often use local area names like \"the Mountain\".",
+      "Long-time working families, McMaster students and newcomers from the Toronto area now share the same neighbourhoods. Contractors, dentists, restaurants and home services battle for searches, and local wording like \"the Mountain\" often appears in what people type.",
     ],
     areas: [
       { name: "Downtown Hamilton", note: "Revived core with restaurants, offices and new apartments." },
@@ -538,7 +538,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     lead: "Halifax is Nova Scotia's capital and a regional centre for all of Atlantic Canada. Its harbour, universities and navy base bring a steady mix of students, military families and visitors.",
     profile: [
       "Halifax is a historic port with a large naval base and several universities, including Dalhousie and Saint Mary's. The Halifax Regional Municipality covers the city, Dartmouth, Bedford and wide rural areas.",
-      "Customers include students, public servants, military families and tourists in summer. Restaurants, home services and healthcare compete strongly, and coastal weather brings storm-related demand.",
+      "Students, public servants, naval families and summer tourists each bring their own demand. Waterfront restaurants, suburban home services and healthcare clinics see the heaviest competition, and Atlantic storms add sudden spikes.",
     ],
     areas: [
       { name: "Downtown Halifax", note: "Waterfront core with restaurants, hotels and offices." },
@@ -566,7 +566,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     lead: "Mississauga is a large city just west of Toronto, with its own downtown around Square One. It is very diverse, and many customers search in languages other than English.",
     profile: [
       "Mississauga is in Peel Region and home to Toronto Pearson International Airport and many corporate offices. It grew from a collection of villages, and areas like Port Credit and Streetsville still keep their own identities.",
-      "Customers include commuters, families in suburban neighbourhoods and new Canadians. Dentists, real estate agents, home services and restaurants compete strongly, and Toronto businesses also target Mississauga searches.",
+      "Commuters, suburban families and many new Canadians make up the customer base. Dentists, realtors, home services and restaurants are crowded categories, and Toronto businesses also bid for Mississauga searches.",
     ],
     areas: [
       { name: "City Centre", note: "Area around Square One with condos, offices and shopping." },
@@ -594,7 +594,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     lead: "Brampton is one of the fastest-growing cities in the GTA, with a young, diverse population. A large South Asian community shapes local demand, and many searches happen in Punjabi or Hindi.",
     profile: [
       "Brampton is in Peel Region, northwest of Toronto. It has a strong logistics and manufacturing base, and many residents commute to Toronto or Mississauga for work.",
-      "Customers are often young families and new Canadians who rely on community word of mouth and Google reviews. Real estate, driving schools, immigration services, dentists and restaurants compete strongly.",
+      "Young families and newcomers here often ask their community first, then check Google reviews before booking. Realtors, driving schools, immigration consultants, dentists and restaurants are among the most crowded categories.",
     ],
     areas: [
       { name: "Downtown Brampton", note: "Historic core with civic buildings, restaurants and small businesses." },
@@ -622,7 +622,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     lead: "Surrey is one of the fastest-growing cities in British Columbia, made up of distinct town centres. Many customers search by those town names, and Punjabi is widely used.",
     profile: [
       "Surrey sits southeast of Vancouver in Metro Vancouver. It is made up of several communities, including Whalley (City Centre), Newton, Fleetwood, Cloverdale and South Surrey, each with its own feel.",
-      "Customers include young families, new Canadians and commuters. Real estate, trucking, home services, dentists and restaurants compete strongly, and a large Punjabi-speaking population shapes demand.",
+      "Young families, new Canadians and commuters drive most local demand. Realtors, trucking firms, trades, dentists and restaurants all fight for visibility, and the large Punjabi-speaking population shapes how many of them market.",
     ],
     areas: [
       { name: "Whalley (City Centre)", note: "Growing downtown with new towers, offices and transit links." },
@@ -632,7 +632,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "South Surrey", note: "Affluent area near White Rock with premium service demand." },
     ],
     nearby: ["Langley", "Delta", "White Rock", "Burnaby"],
-    language: "English and Punjabi are both common search languages, with Hindi and other South Asian languages too. Many people search by town centre name rather than \"Surrey\".",
+    language: "Punjabi is heard almost as often as English in Newton and parts of Fleetwood, with Hindi and Urdu as well. Residents usually search by town centre name rather than \"Surrey\".",
     demand: [
       { when: "Rainy season", what: "Months of rain bring calls for gutter cleaning, perimeter drains and moss removal on roofs." },
       { when: "Wedding season", what: "Wedding season fills banquet halls in Newton and Fleetwood and keeps caterers and decorators busy." },
@@ -650,7 +650,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     lead: "Laval covers its own island, Île Jésus, just north of Montreal across the Rivière des Prairies. Most residents search in French, but a diverse population brings Greek, Arabic and other language searches too.",
     profile: [
       "Laval is a large suburban city, made up of former municipalities like Chomedey, Vimont and Sainte-Rose. It has big shopping centres, a growing downtown near the Montmorency metro and many commuters.",
-      "Customers are mainly families who drive to services. Renovation, dentists, auto repair and restaurants compete strongly, and French is the default for business communication.",
+      "Most customers are families who drive to shopping centres and service strips. Renovation contractors, dentists, garages and restaurants are crowded categories, and French is the default for business communication.",
     ],
     areas: [
       { name: "Chomedey", note: "Large, diverse area with Greek and Arabic communities and busy commercial streets." },
@@ -678,7 +678,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     lead: "London, Ontario is a regional centre for healthcare, education and shopping in southwestern Ontario. Its university and hospitals bring a steady flow of students and medical staff.",
     profile: [
       "London sits on the Thames River, between Toronto and Detroit. Western University, Fanshawe College and major hospitals are large employers, along with manufacturing and insurance.",
-      "Customers include students, healthcare workers and families in growing suburbs. Dentists, home services, restaurants and student housing compete strongly, and searches must make clear you mean London, Ontario.",
+      "Students, hospital staff and families in new subdivisions make up much of the market. Dentists, trades, restaurants and student landlords are busy categories, and pages must make it clear you mean London, Ontario.",
     ],
     areas: [
       { name: "Downtown London", note: "Core with offices, restaurants and entertainment." },
@@ -706,7 +706,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     lead: "Markham is a fast-growing suburb northeast of Toronto, known for its tech companies and diverse communities. Many locals search in Chinese, Tamil or other languages as well as English.",
     profile: [
       "Markham is in York Region and is home to many technology firms and corporate offices. It combines historic villages like Unionville and Markham Village with newer planned communities like Cornell.",
-      "Customers include families, tech workers and new Canadians. Dentists, tutoring centres, real estate agents and restaurants compete strongly, and multilingual service is often a deciding factor.",
+      "Families, tech workers and new Canadians make up a market where spending on education and healthcare is high. Dentists, tutoring centres, realtors and restaurants crowd the map pack, and serving clients in their own language often wins the job.",
     ],
     areas: [
       { name: "Unionville", note: "Historic main street with boutiques, restaurants and affluent residents." },
@@ -734,7 +734,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     lead: "Vaughan is a fast-growing city north of Toronto, with a new downtown around the subway and established communities like Woodbridge and Maple. Canada's Wonderland and Vaughan Mills draw visitors from across the region.",
     profile: [
       "Vaughan is in York Region and is made up of communities including Woodbridge, Maple, Concord, Kleinburg and part of Thornhill. Construction, manufacturing and logistics are major industries.",
-      "Customers include families in large homes, new condo residents and businesses in industrial areas. Home renovation, real estate, dentists and restaurants compete strongly, and many locals search by community name.",
+      "Homeowners in large houses, new condo residents and firms in the industrial parks around Concord all need local services. Renovation, real estate, dental and restaurant searches are fiercely contested, and many locals search by community name.",
     ],
     areas: [
       { name: "Woodbridge", note: "Area with a strong Italian community, family businesses and restaurants." },
@@ -846,7 +846,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     lead: "Longueuil sits on Montreal's South Shore, a short metro ride from downtown. Most customers search in French, and many prefer to stay on their side of the river for everyday services.",
     profile: [
       "Longueuil is in Quebec's Montérégie region and includes the boroughs of Le Vieux-Longueuil, Saint-Hubert and Greenfield Park. Aerospace and transport are important here, with an airport in Saint-Hubert.",
-      "Customers are mostly families and commuters. Renovation firms, dentists, garages and restaurants compete strongly, and the bridges into Montreal mean residents prefer services close to home.",
+      "Families and commuters make up most of the market. Renovation firms, garages, dentists and restaurants are busy categories, and since the bridges into Montreal clog at rush hour, residents prefer services close to home.",
     ],
     areas: [
       { name: "Vieux-Longueuil", note: "Historic core along Saint-Charles Street with restaurants and independent shops." },
@@ -874,7 +874,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     lead: "Burnaby is a dense city east of Vancouver, built around SkyTrain stations and fast-rising towers. Metrotown and Brentwood are major shopping hubs, and many locals search in Chinese and other languages.",
     profile: [
       "Burnaby is in Metro Vancouver, home to Simon Fraser University on Burnaby Mountain and BCIT. Its town centres, including Metrotown, Brentwood and Edmonds, have grown quickly around transit.",
-      "Customers include students, condo dwellers and families. Restaurants, dentists, real estate agents and home services compete strongly, and multilingual service is often a deciding factor.",
+      "Students, condo dwellers and families in older houses all live within a few SkyTrain stops of each other. Restaurants, dentists, realtors and home services are crowded categories, and many businesses serve customers in more than one language.",
     ],
     areas: [
       { name: "Metrotown", note: "Major shopping area with towers and heavy restaurant and service searches." },
@@ -902,7 +902,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     lead: "Windsor sits on the Detroit River, directly across from Detroit, and its economy has long been tied to the auto industry. Customers include cross-border workers, students and families in established neighbourhoods.",
     profile: [
       "Windsor is a key border crossing to Detroit via the Ambassador Bridge and the Detroit-Windsor Tunnel. Auto manufacturing, the University of Windsor and a casino shape the economy.",
-      "Customers range from factory workers to students and retirees. Auto repair, home services, dentists and restaurants compete strongly, and some Detroit-area businesses also target Windsor searches.",
+      "Auto plant workers, students and retirees are all key customer groups. Mechanics, trades, dentists and restaurants face the most competition, and some Detroit-area firms also show up in local results.",
     ],
     areas: [
       { name: "Downtown Windsor", note: "Core along the riverfront with restaurants, offices and the casino." },
@@ -968,7 +968,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
       { name: "Terra Nova", note: "Quiet west-side neighbourhood near the dyke trails, with family homes." },
     ],
     nearby: ["Vancouver", "Delta", "Burnaby", "New Westminster"],
-    language: "Chinese (Cantonese and Mandarin) sits alongside English in daily searches, with Tagalog and Punjabi also present. Many customers search in Chinese characters, so listings in both scripts help.",
+    language: "Chinese (Cantonese and Mandarin) sits alongside English in daily searches, with Tagalog and Punjabi also present. Plenty of queries are typed in Chinese characters, so descriptions in both scripts help.",
     demand: [
       { when: "Summer", what: "The Richmond Night Market draws crowds and lifts food and parking searches." },
       { when: "Lunar New Year", what: "Families search for restaurants, bakeries, flowers and gifts across the Golden Village." },
@@ -1042,7 +1042,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     lead: "Burlington sits on Lake Ontario between Hamilton and Oakville, with a lively waterfront downtown and established suburbs. Customers here often search for family services, home improvement and dining by the lake.",
     profile: [
       "Burlington is in Halton Region, with Spencer Smith Park on the lake, the Royal Botanical Gardens on its edge and the Niagara Escarpment rising to the north. Commuters head east to Toronto by GO train or west to Hamilton.",
-      "It is a family town with a large retired population, so healthcare, home services, dentists and restaurants compete strongly. Hamilton and Oakville businesses also target Burlington, so local proof matters.",
+      "It is a family town with many retirees, so healthcare, home services, dental and restaurant searches stay steady. Hamilton and Oakville businesses also target Burlington, which makes local reviews and photos important.",
     ],
     areas: [
       { name: "Downtown Burlington", note: "Waterfront core with restaurants, patios and boutiques on Brant Street." },
@@ -1070,7 +1070,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     lead: "Oshawa built its name on General Motors, and auto work still shapes the city. Newer suburbs and two post-secondary campuses now add young families and students to the customer base.",
     profile: [
       "Oshawa is in Durham Region on the east side of the GTA. Ontario Tech University and Durham College share a north-end campus, and the GO train extension has made commuting to Toronto easier.",
-      "Customers include auto workers, students and young families priced out of Toronto. Home services, auto repair, dentists and restaurants compete strongly, and Whitby and Ajax businesses also target Oshawa searches.",
+      "Auto workers, students and young families priced out of Toronto form the core market. Trades, mechanics, dentists and restaurants are busy categories, and businesses from Whitby and Ajax chase the same searches.",
     ],
     areas: [
       { name: "Downtown Oshawa", note: "Core with restaurants, offices and a growing student presence." },
@@ -1098,7 +1098,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     lead: "Sherbrooke is the main city of Quebec's Eastern Townships, where two rivers meet among rolling hills. Students from its universities and colleges keep local demand lively all year.",
     profile: [
       "Sherbrooke is home to the Université de Sherbrooke and Bishop's University in Lennoxville, along with major hospitals. It serves as a regional centre for shopping and healthcare across the Townships.",
-      "Most customers are francophone, though Lennoxville has a long English-speaking tradition. Restaurants, renovation firms, garages and healthcare clinics compete strongly, and student turnover each fall brings a wave of new customers.",
+      "Most customers are francophone, though Lennoxville has a long English-speaking tradition. Restaurants, renovation firms, garages and clinics see the most competition, and each fall a new wave of students arrives needing everything at once.",
     ],
     areas: [
       { name: "Centre-ville", note: "Downtown core along Wellington and King streets with restaurants and shops." },
@@ -1117,7 +1117,7 @@ export const CITY_GUIDES_2: Record<string, GlobalCityGuide> = {
     queries: ["restaurant centre-ville Sherbrooke", "déneigement Rock Forest", "dentiste Fleurimont", "appartement étudiant Sherbrooke", "garage Lennoxville"],
     sectors: ["restaurants", "renovation contractors", "healthcare clinics"],
     faqs: [
-      { q: "Is an English version worth it for Lennoxville customers?", a: "Only if you serve Lennoxville, Bishop's students or tourists. Most locals search in French, so French should lead on your site and Google Business Profile." },
+      { q: "Is an English version worth it for Lennoxville customers?", a: "Only if you serve Lennoxville, Bishop's students or tourists. The rest of the city lives in French, so French should lead on your site and Google Business Profile." },
       { q: "Should I target Magog and Orford?", a: "Yes, if you take work there. Magog sits on Lac Memphrémagog and Orford near Mont Orford, and both draw visitors and cottage owners who search with those names." },
     ],
   },
