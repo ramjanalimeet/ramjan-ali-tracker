@@ -177,6 +177,7 @@ export class AdminStore extends DurableObject<Env> {
     const path = url.pathname;
     try {
       if (!this.setting("resend_inbox_connected_v1")) this.ctx.waitUntil(this.ensureResendInbox(url));
+      else if (!this.setting("resend_self_test_sent_at")) this.ctx.waitUntil(this.sendResendSelfTest());
       if (req.method === "GET" && (path === "/api/blog-entries" || path.startsWith("/api/blog-entries/"))) return this.publicBlogs(path);
       if (path === "/api/lead") return await this.lead(req);
       if (path === "/api/hooks/cal") return await this.calHook(req, url);
@@ -532,6 +533,22 @@ export class AdminStore extends DurableObject<Env> {
     }
   }
 
+  private async sendResendSelfTest() {
+    const account = this.emailAccounts().find((row) => row.cfg.provider === "resend" && row.cfg.resendInboundAddress && row.cfg.resendKey);
+    if (!account) return;
+    try {
+      await sendMail(account.cfg, {
+        to: account.cfg.resendInboundAddress!,
+        subject: "[System test] Resend inbox connected",
+        body: "This automated message confirms that dashboard replies can travel through Resend and return through the signed inbound webhook.",
+      });
+      this.setSetting("resend_self_test_sent_at", String(now()));
+      this.log("info", "Resend end-to-end inbox test sent");
+    } catch (error) {
+      this.setSetting("resend_self_test_error", errMsg(error).replace(/re_[A-Za-z0-9_-]+/g, "[redacted]").slice(0, 240));
+    }
+  }
+
   private async verifyResendWebhook(req: Request, raw: string, secret: string): Promise<boolean> {
     const id = req.headers.get("svix-id") || "";
     const timestamp = req.headers.get("svix-timestamp") || "";
@@ -553,7 +570,14 @@ export class AdminStore extends DurableObject<Env> {
       const connected = resendAccounts.some((cfg) => {
         return cfg.provider === "resend" && cfg.resendInboundAddress === RESEND_INBOUND_ADDRESS && Boolean(cfg.resendWebhookSecret);
       });
-      return json({ connected, resendAccounts: resendAccounts.length, apiKeySet: resendAccounts.some((cfg) => Boolean(cfg.resendKey)), error: connected ? "" : (this.setting("resend_inbox_setup_error") || "") });
+      return json({
+        connected,
+        resendAccounts: resendAccounts.length,
+        apiKeySet: resendAccounts.some((cfg) => Boolean(cfg.resendKey)),
+        selfTestSent: Boolean(this.setting("resend_self_test_sent_at")),
+        selfTestReceived: Boolean(this.setting("resend_self_test_received_at")),
+        error: connected ? (this.setting("resend_self_test_error") || "") : (this.setting("resend_inbox_setup_error") || ""),
+      });
     }
     if (req.method !== "POST") return err("Use POST", 405);
     const accountId = url.searchParams.get("account") || "";
@@ -593,6 +617,10 @@ export class AdminStore extends DurableObject<Env> {
       meta: { resendEmailId: emailId, attachments: mail.attachments || [] }, at: Date.parse(mail.created_at || event.created_at || "") || now(),
     });
     if (added) {
+      if (mail.subject === "[System test] Resend inbox connected") {
+        this.setSetting("resend_self_test_received_at", String(now()));
+        this.setSetting("resend_self_test_error", "");
+      }
       const unsub = /\b(unsubscribe|remove me|stop emailing|no thanks|not interested)\b/i.test(mail.text || "");
       this.sql.exec("UPDATE contacts SET status=?,updated_at=? WHERE id=?", unsub ? "unsubscribed" : "replied", now(), contactId);
       this.sql.exec("UPDATE enrollments SET status='replied' WHERE contact_id=? AND status='active'", contactId);
