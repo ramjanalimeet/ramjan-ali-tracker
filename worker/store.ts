@@ -516,8 +516,11 @@ export class AdminStore extends DurableObject<Env> {
     try {
       await this.connectResendInbox(account.id, url);
       this.setSetting("resend_inbox_connected_v1", String(now()));
+      this.setSetting("resend_inbox_setup_error", "");
     } catch (error) {
-      this.log("warn", `Resend inbox setup: ${errMsg(error)}`);
+      const message = errMsg(error).replace(/re_[A-Za-z0-9_-]+/g, "[redacted]").slice(0, 240);
+      this.setSetting("resend_inbox_setup_error", message);
+      this.log("warn", `Resend inbox setup: ${message}`);
     }
   }
 
@@ -541,7 +544,7 @@ export class AdminStore extends DurableObject<Env> {
         const cfg = JSON.parse(row.config || "{}") as Record<string, unknown>;
         return cfg.provider === "resend" && cfg.resendInboundAddress === RESEND_INBOUND_ADDRESS && Boolean(cfg.resendWebhookSecret);
       });
-      return json({ connected });
+      return json({ connected, error: connected ? "" : (this.setting("resend_inbox_setup_error") || "") });
     }
     if (req.method !== "POST") return err("Use POST", 405);
     const accountId = url.searchParams.get("account") || "";
