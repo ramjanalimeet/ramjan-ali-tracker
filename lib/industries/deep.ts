@@ -28,6 +28,23 @@ const STORM = { href: "/blog/roofing-storm-damage-leads", label: "Winning storm 
 const AREA_PAGES = { href: "/blog/service-area-pages-that-rank", label: "Service area pages that rank" };
 const LINKS = { href: "/blog/local-link-building-for-contractors", label: "Local link building for contractors" };
 
+/** Blog guides an industry page can point to. */
+export const GUIDES = {
+  categories: CATEGORIES_GUIDE,
+  reviews: REVIEWS,
+  plumbingKeywords: PLUMBING_KW,
+  hvacCalendar: HVAC_CAL,
+  storm: STORM,
+  areaPages: AREA_PAGES,
+  links: LINKS,
+  mapPack: { href: "/blog/how-to-rank-in-google-map-pack", label: "How to rank in the Google map pack" },
+  schema: { href: "/blog/local-business-schema-for-contractors", label: "Local business schema, explained" },
+  technical: { href: "/blog/technical-seo-for-service-business-websites", label: "Technical SEO for service business websites" },
+  aiCheck: { href: "/blog/check-if-ai-recommends-your-business", label: "How to check if AI recommends your business" },
+  lsaVsSeo: { href: "/blog/local-services-ads-vs-seo-for-contractors", label: "Local Services Ads vs SEO" },
+  checklist: { href: "/blog/local-seo-checklist-for-contractors", label: "The local SEO checklist" },
+} as const;
+
 export const DEEP: Record<string, IndustryDeep> = {
   "electrician-seo": {
     market: [
