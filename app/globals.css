@@ -3559,6 +3559,70 @@ dialog.booking::backdrop {
 .bundle > * {
   min-width: 0;
 }
+
+/* Long city and country names must wrap inside the copy column instead of
+   crossing into the at-a-glance card. The cloned gradient preserves the
+   accent underline on every wrapped line. */
+.location-city-hero .phero-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
+  gap: clamp(36px, 5vw, 72px);
+  align-items: start;
+}
+.location-city-hero h1 {
+  max-width: 15ch;
+  font-size: clamp(42px, 4.7vw, 66px);
+  text-wrap: balance;
+}
+.location-city-hero .hl {
+  white-space: normal;
+  padding-inline: .025em;
+  background: linear-gradient(to bottom, transparent 70%, var(--accent) 70% 96%, transparent 96%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.location-city-hero .hl::after {
+  display: none;
+}
+.location-city-hero .facts {
+  width: 100%;
+  margin-top: 26px;
+}
+.location-city-hero .facts li {
+  align-items: flex-start;
+}
+.location-city-hero .facts li span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 960px) {
+  .location-city-hero .phero-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .location-city-hero h1 {
+    max-width: 17ch;
+  }
+  .location-city-hero .facts {
+    max-width: 620px;
+    margin-top: 0;
+  }
+}
+@media (max-width: 640px) {
+  .location-city-hero h1 {
+    max-width: none;
+    font-size: clamp(38px, 12vw, 52px);
+  }
+  .location-city-hero .facts {
+    padding: 20px;
+  }
+  .location-city-hero .facts li {
+    display: grid;
+    grid-template-columns: minmax(100px, .8fr) minmax(0, 1.2fr);
+  }
+  .location-city-hero .facts li b {
+    min-width: 0;
+  }
+}
 .prose {
   min-width: 0;
   overflow-wrap: break-word;

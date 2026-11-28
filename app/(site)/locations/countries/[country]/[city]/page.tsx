@@ -119,7 +119,7 @@ export default async function GlobalCityPage({ params }: Props) {
   return (
     <>
       <JsonLd data={schema} />
-      <section className="phero">
+      <section className="phero location-city-hero">
         <div className="wrap">
           <nav aria-label="Breadcrumb">
             <ol className="crumbs">
